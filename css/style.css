@@ -1,0 +1,120 @@
+/* 
+  Project: Takwimu
+  Author: Code for Africa
+  File: CSS
+  */
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    min-height: auto;
+    display: block;
+    position: relative;
+    background-size: cover;
+    background-color:rgba(0,46,102,.8);
+    //background-image: url('../assets/bg-background.jpg');
+    font-family: 'Roboto', sans-serif;
+}
+
+img{
+    max-width:120%;
+    height:auto;
+}
+
+h1 {
+    font-weight: 200;
+    font-size: 9rem;
+}
+
+h2.lead {
+    font-size: 1.8rem;
+    line-height: 3rem;
+}
+
+h3.subtitle {
+    font-size: 1.5rem;
+}
+
+p {
+    line-height: 2rem;
+    font-size: 1rem;
+}
+
+.main-content {
+    padding-top: 3rem;
+}
+
+.social-media-box {
+    display: flex;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    justify-content: center;
+}
+
+.social-media-box a {
+   color:#4C4C4C;
+}
+
+.card {
+    margin: 15px;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0;
+    perspective: 400px;
+    transform-style: preserve-3d;
+    transition: .5s ease;
+    box-shadow: 0 30px 30px rgba(0, 0, 0, .5);
+}
+
+.card-front,
+.card-back {
+    top: 0;
+    bottom: 0;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.card-front {
+    display: flex;
+    padding-top: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back {
+    display: flex;
+    font-size:12px;
+    padding-top: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.card.back {
+    transform: rotateY(180deg);
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #ffd144;
+    border-color: #ffd144;
+}
+
+.btn-primary:hover,
+.btn-success:active:focus {
+    background-color: #f926b0!important;
+    border-color: #f926b0!important;
+    outline: none!important;
+    box-shadow: none;
+}
