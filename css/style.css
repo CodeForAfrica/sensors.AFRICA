@@ -1,9 +1,9 @@
 /* 
-  Project: Takwimu
+  Project: Takwimu Landing Page
   Author: Code for Africa
   */
 
-html {
+  html {
     height: 100%;
 }
 
@@ -22,13 +22,11 @@ section.landing {
   margin:0;
   padding:0;
   background-size: cover;
-  //background-color:rgba(0,46,102,.8);
   color:black;
 }
-  
 
 img {
-    max-width:120%;
+    max-width:100%;
     height:auto;
 }
 
@@ -63,7 +61,7 @@ p {
 }
 
 .social-media-box a {
-   color:#4C4C4C;
+ color:#4C4C4C;
 }
 
 .card {
@@ -119,8 +117,8 @@ p {
 
 .btn-primary:hover,
 .btn-success:active:focus {
-    background-color: #0da5ce!important;
-    border-color: #0da5ce!important;
-    outline: none!important;
+    background-color: #0da5ce;
+    border-color: #0da5ce;
+    outline: none;
     box-shadow: none;
 }
