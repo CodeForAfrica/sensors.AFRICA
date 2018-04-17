@@ -6,7 +6,6 @@
   html {
     height: 100%;
   }
-
   body {
     margin: 0;
     padding: 0;
@@ -19,8 +18,6 @@
   }
 
   section.landing {
-    margin:0;
-    padding:0;
     background-size: cover;
     color:#333;
   }
@@ -48,59 +45,35 @@
     line-height: 2rem;
     font-size: 1rem;
   }
-
-  .main-content {
-    padding-top: 3rem;
+  .d-flex a {
+    color:#4C4C4C;
+  }
+  .card {
+    margin: 15px;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 5;
+    perspective: 400px;
+    box-shadow: 0 30px 30px rgba(0, 0, 0, .5);
+  }
+  .card:hover,
+  .card:focus {
+    color:#0A5478;
+  }
+  .fa{
+    text-decoration: none;
   }
 
-  .social-media-box {
-    display: flex;
-    padding-right: 1rem;
-    padding-top: 2rem;
-    justify-content: center;
+  .btn-primary {
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
   }
 
-  .social-media-box a {
-   color:#4C4C4C;
- }
- .card {
-  margin: 15px;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 5;
-  perspective: 400px;
-  box-shadow: 0 30px 30px rgba(0, 0, 0, .5);
-}
-.card-front{
-  top: 0;
-  bottom: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  position: absolute;
-}
-
-.card-front {
-  display: flex;
-  padding-top: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.card:hover,
-.card:focus {
-  color:#0A5478;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #333;
-  border-color: #333;
-}
-
-.btn-primary:hover,
-.btn-success:active:focus {
-  background-color: #4FA1CA;
-  border-color: #4FA1CA;
-  outline: none;
-  box-shadow: none;
-}
+  .btn-primary:hover,
+  .btn-success:active:focus {
+    background-color: #4FA1CA;
+    border-color: #4FA1CA;
+    outline: none;
+    box-shadow: none;
+  }
