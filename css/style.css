@@ -1,7 +1,7 @@
-/* 
+  /* ----------------------
   Project: Takwimu Landing Page
   Author: Code for Africa
-  */
+  -------------------------*/
 
   html {
     height: 100%;
@@ -27,7 +27,6 @@
 
   img {
     max-width:100%;
-    color:black;
     height:auto;
   }
 
@@ -68,7 +67,7 @@
   margin: 15px;
   width: 4rem;
   height: 4rem;
-  border-radius: 0;
+  border-radius: 5;
   perspective: 400px;
   box-shadow: 0 30px 30px rgba(0, 0, 0, .5);
 }
@@ -89,13 +88,13 @@
 
 .card:hover,
 .card:focus {
-  color:#ffd144;
+  color:#0da5ce;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #ffd144;
-  border-color: #ffd144;
+  background-color: #333;
+  border-color: #333;
 }
 
 .btn-primary:hover,
