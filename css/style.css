@@ -88,7 +88,7 @@
 
 .card:hover,
 .card:focus {
-  color:#0da5ce;
+  color:#0A5478;
 }
 
 .btn-primary {
@@ -99,8 +99,8 @@
 
 .btn-primary:hover,
 .btn-success:active:focus {
-  background-color: #0da5ce;
-  border-color: #0da5ce;
+  background-color: #4FA1CA;
+  border-color: #4FA1CA;
   outline: none;
   box-shadow: none;
 }
