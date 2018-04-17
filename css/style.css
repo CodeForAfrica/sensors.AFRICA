@@ -30,7 +30,7 @@
     color:black;
     height:auto;
   }
-  
+
   h1 {
     font-weight: 200;
     font-size: 9rem;
@@ -118,9 +118,6 @@
 
 .btn-primary:hover,
 .btn-success:active:focus {
-  background-color: #0da5ce;
-  border-color: #0da5ce;
-  outline: none;
   background-color: #0da5ce;
   border-color: #0da5ce;
   outline: none;
