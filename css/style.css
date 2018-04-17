@@ -1,84 +1,85 @@
-  /* ----------------------
-  Project: Takwimu Landing Page
-  Author: Code for Africa
-  -------------------------*/
+/* ----------------------
+Project: Takwimu Landing Page
+Author: Code for Africa
+-------------------------*/
 
-  html {
-    height: 100%;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    max-height: auto;
-    width:100%;
-    display:block;
-    position: relative;
-    font-family: 'Roboto', sans-serif; 
-    background-color: #F7F7F7; 
-  }
+html {
+  height: 100%;
+}
 
-  section {
-    background-size: cover;
-    color:#333;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  max-height: auto;
+  width:100%;
+  display:block;
+  position: relative;
+  font-family: 'Roboto', sans-serif; 
+  background-color: #F7F7F7; 
+}
 
-  img {
-    max-width:100%;
-    height:auto;
-  }
+section {
+  background-size: cover;
+  color:#333;
+}
 
-  h1 {
-    font-weight: 200;
-    font-size: 9rem;
-  }
+img {
+  max-width:100%;
+  height:auto;
+}
 
-  h2.lead {
-    font-size: 1.8rem;
-    line-height: 3rem;
-  }
+h1 {
+  font-weight: 200;
+  font-size: 9rem;
+}
 
-  h3.subtitle {
-    font-size: 1.5rem;
-  }
+h2.lead {
+  font-size: 1.8rem;
+  line-height: 3rem;
+}
 
-  p {
-    line-height: 2rem;
-    font-size: 1rem;
-  }
+h3.subtitle {
+  font-size: 1.5rem;
+}
 
-  .d-flex a {
-    color:#4C4C4C;
-  }
+p {
+  line-height: 2rem;
+  font-size: 1rem;
+}
 
-  .card {
-    margin: 15px;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 5;
-    perspective: 400px;
-    box-shadow: 0 30px 30px rgba(0, 0, 0, .5);
-  }
+.d-flex a {
+  color:#4C4C4C;
+}
 
-  .card:hover,
-  .card:focus {
-    color:#0A5478;
-  }
+.card {
+  margin: 15px;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5;
+  perspective: 400px;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, .5);
+}
 
-  a:hover{
-    text-decoration: none;
-  }
+.card:hover,
+.card:focus {
+  color:#0A5478;
+}
 
-  .btn-primary {
-    color: #fff;
-    background-color: #333;
-    border-color: #333;
-  }
+a:hover{
+  text-decoration: none;
+}
 
-  .btn-primary:hover,
-  .btn-success:active:focus {
-    background-color: #4FA1CA;
-    border-color: #4FA1CA;
-    outline: none;
-    box-shadow: none;
-  }
+.btn-primary {
+  color: #fff;
+  background-color: #333;
+  border-color: #333;
+}
+
+.btn-primary:hover,
+.btn-success:active:focus {
+  background-color: #4FA1CA;
+  border-color: #4FA1CA;
+  outline: none;
+  box-shadow: none;
+}
