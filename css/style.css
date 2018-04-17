@@ -14,10 +14,11 @@
     width:100%;
     display:block;
     position: relative;
-    font-family: 'Roboto', sans-serif;  
+    font-family: 'Roboto', sans-serif; 
+    background-color: #F7F7F7; 
   }
 
-  section.landing {
+  section {
     background-size: cover;
     color:#333;
   }
@@ -45,7 +46,7 @@
     line-height: 2rem;
     font-size: 1rem;
   }
-  
+
   .d-flex a {
     color:#4C4C4C;
   }
