@@ -26,6 +26,12 @@ section.landing {
 }
 
 img {
+  max-width:100%;
+  color:black;
+}
+  
+
+img {
     max-width:100%;
     height:auto;
 }
@@ -117,6 +123,9 @@ p {
 
 .btn-primary:hover,
 .btn-success:active:focus {
+    background-color: #0da5ce;
+    border-color: #0da5ce;
+    outline: none;
     background-color: #0da5ce;
     border-color: #0da5ce;
     outline: none;
