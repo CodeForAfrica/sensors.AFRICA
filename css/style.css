@@ -45,9 +45,11 @@
     line-height: 2rem;
     font-size: 1rem;
   }
+  
   .d-flex a {
     color:#4C4C4C;
   }
+
   .card {
     margin: 15px;
     width: 4rem;
@@ -56,11 +58,13 @@
     perspective: 400px;
     box-shadow: 0 30px 30px rgba(0, 0, 0, .5);
   }
+
   .card:hover,
   .card:focus {
     color:#0A5478;
   }
-  .fa{
+
+  a:hover{
     text-decoration: none;
   }
 
