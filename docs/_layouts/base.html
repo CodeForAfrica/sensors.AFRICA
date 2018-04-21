@@ -9,6 +9,13 @@
 		<meta name="description" content="{{ site.description }}">
 		<meta name="author" content="{{ site.author }}">
 
+		<!-- Enforce SSL -->
+		<script type="text/javascript">
+			var host = "{{ site.enforce_ssl }}";
+			if ((host == window.location.host) && (window.location.protocol != "https:"))
+					window.location.protocol = "https";
+		</script>
+
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="/css/style.css" rel="stylesheet">
