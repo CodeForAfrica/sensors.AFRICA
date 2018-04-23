@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="901b1da8-78d0-465c-b539-8cb19e9a7034" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/TAKWIMU.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TAKWIMU/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TAKWIMU/settings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TAKWIMU/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TAKWIMU/wsgi.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manage.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/home.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/404.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/CNAME" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Gemfile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Gemfile.lock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/_config.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/_layouts/base.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/_layouts/default.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/img/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-    </list>
+    <list default="true" id="901b1da8-78d0-465c-b539-8cb19e9a7034" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,14 +56,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TAKWIMU/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
+            <state relative-caret-position="192">
               <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
               <folding>
                 <element signature="e#309#318#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,6 +100,7 @@
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/TAKWIMU/urls.py" />
         <option value="$PROJECT_DIR$/TAKWIMU/settings.py" />
+        <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
   </component>
@@ -151,22 +139,6 @@
           <expand>
             <path>
               <item name="TAKWIMU" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TAKWIMU" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TAKWIMU" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TAKWIMU" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TAKWIMU" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TAKWIMU" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TAKWIMU" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TAKWIMU" type="462c0819:PsiDirectoryNode" />
               <item name="TAKWIMU" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -327,11 +299,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TAKWIMU/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
+        <state relative-caret-position="192">
           <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding>
             <element signature="e#309#318#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
