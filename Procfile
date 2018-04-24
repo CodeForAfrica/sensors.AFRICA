@@ -1,1 +1,1 @@
-web: gunicorn TAKWIMU.wsgi
+web: gunicorn takwimu.wsgi
