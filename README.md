@@ -30,9 +30,10 @@ TODO
 
 ---
 
+
 ## Contributing
 
-[TODO](https://github.com/TakwimuAfrica/TAKWIMU/issues/8)
+If you'd like to contribute to TAKWIMU, check out the [CONTRIBUTING.md](CONTRIBUTING.md) file on how to get started.
 
 ## Attribution
 
