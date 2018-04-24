@@ -95,10 +95,14 @@ Once your changes and tests are ready to submit for review:
 
 ## Code Style
 
-Please adhere to the [PEP8](https://www.python.org/dev/peps/pep-0008/) Coding 
-conventions for the Python language. This style guide evolves over time as 
-additional conventions are identified and past conventions are rendered obsolete
-by changes in the language itself. Ensure to keep updated.
+Please adhere to the [PEP8](https://www.python.org/dev/peps/pep-0008/) 
+coding conventions for the Python language,
+[Google HTML/CSS Style](https://google.github.io/styleguide/htmlcssguide.html) for HTML/CSS and 
+[Google Javascript Style](https://google.github.io/styleguide/jsguide.html) for Javascript.
+These style guides evolve over time as additional conventions are identified 
+and past conventions are rendered obsolete by changes in the languages themselves. 
+Ensure to keep updated.
+
 
 ## Ground Rules
 The goal is to maintain a diverse community that's pleasant for everyone.
