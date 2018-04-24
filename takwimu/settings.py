@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'TAKWIMU.urls'
+ROOT_URLCONF = 'takwimu.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'TAKWIMU.wsgi.application'
+WSGI_APPLICATION = 'takwimu.wsgi.application'
 
 
 # Database
