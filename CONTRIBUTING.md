@@ -63,8 +63,8 @@ new feature.
 Unsure where to begin contributing to TAKWIMU? You can start by looking through 
 these `beginner` and `help-wanted` issues:
 
-* `Beginner issues` - issues which should only require a few lines of code, and a 
-    test or two.
+* `Good first issue` - issues which should only require a few lines of code, and a 
+    test or two. Good for newcomers
 * `Help wanted issues` - issues which should be a bit more involved than beginner 
     issues.
 
