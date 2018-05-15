@@ -1,4 +1,4 @@
-# Takwimu
+# TAKWIMU
 
 The TAKWIMU web platform powering insight from human development indicators. Helping to find the stories behind the data. Accessible at https://takwimu.africa/
 
@@ -50,7 +50,7 @@ TAKWIMU has been made possible thanks to:
 
 ---
 
-### License
+## License
 
 MIT License
 
@@ -73,3 +73,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+All content is released under a [Creative Commons 4 Attribution license](https://creativecommons.org/licenses/by/4.0/). If you use this software, please provide attribution to TAKWIMU, africapractice, Code for Africa, and iHub.
