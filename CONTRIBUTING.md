@@ -1,9 +1,9 @@
 # Introduction
 
-You are here to help on [TAKWIMU](https://takwimu.africa)? Awesome, feel welcome and read the following 
+You are here to help on [sensors.AFRICA](https://sensors.africa/)? Awesome, feel welcome and read the following 
 sections in order to know what and how to work on something. If you get stuck 
 at any point you can create a ticket on 
-[GitHub](https://github.com/TakwimuAfrica/TAKWIMU/issues).
+[GitHub](https://github.com/CodeForAfricaLabs/sensors.AFRICA/issues).
 
 All members of our community are expected to follow our 
 [Code of Conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct). Please make 
@@ -24,7 +24,7 @@ You can contribute in many ways. For example, you might:
 
 #### Bug Reports
 *If you find a security vulnerability, **DO NOT** open an issue. Email 
-[security@takwimu.africa](mailto:security@takwimu.africa) instead.*
+[security@sensors.africa](mailto:security@sensors.africa) instead.*
 
 If you're reporting a bug, please include:
 * Your operating system name and version
@@ -35,13 +35,13 @@ If you're reporting a bug, please include:
   are welcome.
 
 To ease the process of reporting bugs and issues, consider using our 
-[issue template](https://github.com/TakwimuAfrica/TAKWIMU/blob/master/.github/ISSUE_TEMPLATE.md) 
+[issue template](https://github.com/CodeForAfricaLabs/sensors.AFRICA/blob/master/.github/ISSUE_TEMPLATE.md) 
 and don't forget to add an appropriate 
 [label](https://help.github.com/articles/creating-a-label/) to the issue. 
 
 #### Writing Documentation
 Did you find a typo? Do you think that something should be clarified? Go ahead 
-and suggest a documentation patch. TAKWIMU could always use more documentation, 
+and suggest a documentation patch. sensors.AFRICA could always use more documentation, 
 whether as part of the official docs, in docstrings, or even on the web in blog 
 posts, wiki, articles, and such.
  
@@ -54,13 +54,13 @@ whoever wants to implement it.
 Before creating enhancement suggestions, please check the issues list as you 
 might find out that you don't need to create one. When you are creating an 
 enhancement suggestion fill out the 
-[issue template](https://github.com/TakwimuAfrica/TAKWIMU/blob/master/.github/ISSUE_TEMPLATE.md)
+[issue template](https://github.com/CodeForAfricaLabs/sensors.AFRICA/blob/master/.github/ISSUE_TEMPLATE.md)
 and [label](https://help.github.com/articles/creating-a-label/) the issue as a 
 new feature.
 
 ## Your first contribution
 
-Unsure where to begin contributing to TAKWIMU? You can start by looking through 
+Unsure where to begin contributing to sensors.AFRICA? You can start by looking through 
 these `beginner` and `help-wanted` issues:
 
 * `Good first issue` - issues which should only require a few lines of code, and a 
@@ -77,7 +77,7 @@ Once your changes and tests are ready to submit for review:
 
 2. Rebase your changes
 
-    Update your local repository with the most recent code from the main TAKWIMU 
+    Update your local repository with the most recent code from the main sensors.AFRICA 
     repository, and rebase your branch on top of the latest develop branch. 
 
 3. Submit a pull request
@@ -87,11 +87,11 @@ Once your changes and tests are ready to submit for review:
     that you have made, and in the body provide more details about what your 
     changes do. Also mention the number of the issue where discussion has taken 
     place. Preferably use our 
-    [PR template](https://github.com/TakwimuAfrica/TAKWIMU/blob/master/.github/PULL_REQUEST_TEMPLATE.md).
+    [PR template](https://github.com/CodeForAfricaLabs/sensors.AFRICA/blob/master/.github/PULL_REQUEST_TEMPLATE.md).
 
     Then sit back and wait. There will probably be discussion about the pull 
     request and, if any changes are needed, we would love to work with you to 
-    get your pull request merged into TAKWIMU.
+    get your pull request merged into sensors.AFRICA.
 
 ## Code Style
 

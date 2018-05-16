@@ -1,1 +1,0 @@
-web: gunicorn takwimu.wsgi

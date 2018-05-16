@@ -1,13 +1,13 @@
-title: TAKWIMU
-description: African Digital Service
-author: africapractice, Code for Africa, iHub
+title: sensors.AFRICA
+description: A citizen science-focused project by Code for Africa that seeks to address data gaps by providing low cost sensors, which people can use to measure and monitor the quality of the air in their communities.
+author: Code for Africa
 
-url: https://takwimu.africa
-enforce_ssl: takwimu.africa
+url: https://sensors.africa
+enforce_ssl: sensors.africa
 
-tw_url: https://twitter.com/TakwimuAfrica
-fb_url: https://facebook.com/TakwimuAfrica
-gh_url: https://github.com/TakwimuAfrica
+tw_url: https://twitter.com/sensorsAFRICA
+fb_url: https://facebook.com/sensorsAFRICA
+gh_url: https://github.com/CodeForAfricaLabs/sensors.AFRICA
 ig_url: \#
 
-google_analytics: UA-115543098-1
+google_analytics: UA-44795600-44
