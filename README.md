@@ -14,16 +14,19 @@ Catch-up with what we're up to at https://medium.com/code-for-africa
 
 TODO
 
-Run the following command to get started
+## Development
+
+This project is use yarn(https://yarnpkg.com/lang/en/) as a dependancy .See the documentation to set it up on your machine.
+
+Run the following command to get started 
 
 ```
+    git clone https://github.com/CodeForAfricaLabs/sensors.AFRICA.git
+    cd sensors.AFRICA
+    yarn
     yarn start
 ```
 ---
-
-## Development
-
-TODO
 
 ### Landing Page
 
