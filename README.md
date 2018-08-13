@@ -13,7 +13,9 @@ Catch-up with what we're up to at https://medium.com/code-for-africa
 ## Background
 
 TODO
+
 Run the following command to get started
+
 ```
     yarn start
 ```
