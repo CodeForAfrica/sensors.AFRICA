@@ -5,7 +5,7 @@ class App extends Component {
     return (
       <div>
         <h1>sensors.Africa!</h1>
-        <p>Welcome to the react set up for sensors.AFRICA</p>
+        <p>Welcome to the React setup for sensors.AFRICA</p>
         <p>Lets get started, shall we?</p>
       </div>
     );
