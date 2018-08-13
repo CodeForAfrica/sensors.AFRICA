@@ -16,7 +16,7 @@ TODO
 
 ## Development
 
-This project is use yarn(https://yarnpkg.com/lang/en/) as a dependancy .See the documentation to set it up on your machine.
+This project uses [yarn](https://yarnpkg.com/lang/en/) as a dependancy. See the documentation to set it up on your machine.
 
 Run the following command to get started 
 
