@@ -1,0 +1,20 @@
+{
+  "name": "sensors.AFRICA",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/CodeForAfricaLabs/sensors.AFRICA.git",
+  "author": "Code for Africa",
+  "license": "MIT"
+}
