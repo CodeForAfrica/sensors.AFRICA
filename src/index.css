@@ -1,13 +1,26 @@
  @import url('https://fonts.googleapis.com/css?family=Montserrat');
-html,
+html{
+height:100%;
+}
+
 body{
-    display:block;
+    position:absolute;
+    display:inline-block;
+    box-sizing:border-box;
     margin:0px;
-    min-height:100vh;
+    height:100vh;
+    min-width:100%;
     width:auto;
 }
 
 
 img {
     max-width:100%;
+    height:auto;
+
+}
+
+section{
+    width: 100%;
+    height:auto;
 }

@@ -5,10 +5,11 @@ import Footer from 'components/Footer/footer'
 class Home extends Component {
     render() { 
         return (  
-              <div>
+                <div>
                   <Jumbotron/> 
                   <Footer />
-              </div>
+                </div>
+              
         );
     }
 }
