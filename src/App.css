@@ -1,0 +1,7 @@
+.Image-section {
+    color: white;
+    background-image:url('../src/assets/landing/bgimage.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    height:100vh;
+}
