@@ -16,7 +16,7 @@ class Jumbotron extends Component {
                     <div style={{paddingTop:'2rem',textAlign:'center',paddingLeft:'25rem',paddingRight:'25rem'}}>
                         <h1>
                             We are here to give you actionable information about 
-                            the quality of your city air,waterand sound pollution
+                            the quality of your city air,water and sound pollution.
                         </h1>
                     </div>
                     <div>

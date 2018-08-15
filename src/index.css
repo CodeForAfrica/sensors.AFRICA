@@ -1,4 +1,7 @@
  @import url('https://fonts.googleapis.com/css?family=Montserrat');
+ @import url('https://fonts.googleapis.com/css?family=Anton');
+
+
 html{
 height:100%;
 }
@@ -8,11 +11,10 @@ body{
     display:inline-block;
     box-sizing:border-box;
     margin:0px;
-    height:100vh;
+    height:100%;
     min-width:100%;
     width:auto;
 }
-
 
 img {
     max-width:100%;
@@ -20,7 +22,23 @@ img {
 
 }
 
-section{
-    width: 100%;
-    height:auto;
+#root {
+  height:100vh;
+
 }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+     font-family: 'Anton', sans-serif;
+     font-weight:500;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size:14px;
+    
+}
+

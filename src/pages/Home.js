@@ -6,8 +6,9 @@ class Home extends Component {
     render() { 
         return (  
                 <div>
-                  <Jumbotron/> 
-                  <Footer />
+                 
+                    <Jumbotron/> 
+                    <Footer />
                 </div>
               
         );
