@@ -6,3 +6,20 @@ Author: Code for Africa
 img {
   max-width:100%;
 }
+
+body {
+  background-image: url("/images/bgimage.jpg");
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  color:white;
+}
+
+a:hover {
+  color:yellow;
+}
+
