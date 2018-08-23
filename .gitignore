@@ -2,7 +2,7 @@ _site/
 .sass-cache/
 .jekyll-metadata
 .DS_STORE
-
+node_modules/
 # Created by https://www.gitignore.io/api/django,pycharm
 
 ### Django ###
