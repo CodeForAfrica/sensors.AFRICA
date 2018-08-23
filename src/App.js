@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Home from 'pages/home';
+import Home from 'pages/Home';
 
 class App extends Component {
   render() {
