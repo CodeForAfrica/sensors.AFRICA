@@ -29,6 +29,10 @@ const styles = {
       backgroundColor:'green',
       color:'white',
       borderRadius:'0'
+    },
+    uploadButton:{
+      color:'green',
+      borderRadius:'0'
     }
 }
 
@@ -41,7 +45,7 @@ class Kickstart extends Component {
                         <Card className={classes.cardContent}>
                             <CardContent className={classes.titleContent}>
                                 <Typography variant="title" className={classes.typography}>SUPPORT EXISTING SENSORS NETWORKS</Typography>
-                                  <Button variant="outlined" color="Upload" style={{borderRadius:'0'}}>VIEW DATABASE</Button>
+                                  <Button variant="outlined" color="Upload" className={classes.uploadButton}>VIEW DATABASE</Button>
                             </CardContent>
                         </Card>
                     </Grid>
