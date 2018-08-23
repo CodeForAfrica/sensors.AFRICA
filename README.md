@@ -14,8 +14,6 @@ Catch-up with what we're up to at https://medium.com/code-for-africa
 
 TODO
 
----
-
 ## Development
 
 This project uses [yarn](https://yarnpkg.com/lang/en/) as a dependancy. See the documentation to set it up on your machine.
