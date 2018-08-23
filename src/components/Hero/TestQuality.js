@@ -29,7 +29,6 @@ class TestQuality extends Component {
                     <img src={sound} alt="sound" style={img}/>
                 </Grid>
             </Grid>
-           
          );
     }
 }
