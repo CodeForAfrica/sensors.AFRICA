@@ -1,0 +1,16 @@
+
+.Image-section {
+    background-image:url('../images/landing/bgimage.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    height:90vh;
+    max-width:100%;
+}
+
+.Jumbotron {
+    padding-top:2rem;
+    height:400px;
+    background-image:url('../images/landing/background.jpg');
+    background-size: cover;
+    overflow:hidden;
+}
