@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+
 import{ withStyles } from '@material-ui/core/styles';
 
 const styles = {
@@ -19,9 +19,7 @@ class Navbar extends Component {
         return ( 
             <div>
                 <AppBar position="static" className={classes.navbar}>
-                    <Toolbar >
-                        <Typography variant="headline" style={{color:'white'}}>sensors.AFRICA Navbar</Typography>
-                    </Toolbar>
+                    <Toolbar></Toolbar>
                 </AppBar>
             </div>
             
