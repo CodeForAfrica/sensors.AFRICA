@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
+//Import assets
 import logowhite from '../assets/images/logos/logowhite.png';
 
+//Import material components
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';

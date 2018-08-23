@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import  '../assets/css/App.css';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import '../assets/images/background/bgstories.jpg';
 
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     titleSection:{
@@ -20,8 +20,8 @@ const styles = {
     button:{
         paddingTop:'2rem'
     }
-
 }
+
 class Stories extends Component {
     render() { 
         const { classes } = this.props;

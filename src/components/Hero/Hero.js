@@ -1,10 +1,12 @@
 import React,{ Component } from 'react';
-import '../../assets/css/App.css';
+
+import TestQuality from './TestQuality';
 
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
+
+import '../../assets/css/App.css';
 import logowhite from '../../assets/images/logos/logowhite.png';
-import Quality from './Quality';
 
 
 const mainContainer = {
@@ -19,11 +21,11 @@ class Hero extends Component {
                 <Grid container justify="center" style={mainContainer}>
                     <img src={logowhite} alt="partners logo"/>
                     <Typography variant="headline" align="center" style={{color:'white'}}>
-                    <h3>We are here to give you actionable information
-                    about the quality of your city, water and sound</h3>
+                    We are here to give you actionable information
+                    about the quality of your air, water and sound.
                     </Typography>
                  </Grid>
-                 <Quality /> 
+                 <TestQuality /> 
             </Grid> 
          );
     }

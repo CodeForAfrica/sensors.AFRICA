@@ -1,30 +1,27 @@
 import React, { Component } from 'react';
 
-import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     kickstart:{
         paddingTop:'2rem',
         paddingBottom:'2rem',
         height:'300px'
-
     },
     card:{
         height:'150px',
         width:'150px',
-        margin:'2rem',
-       
+        margin:'2rem',  
     },
     cardContent:{
         backgroundColor:'#E8E8E8'
     },
-
 }
 
 class Kickstart extends Component {

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+//import components
 import Stories from '../components/Stories'
 import Navbar from '../components/Navbar';
 import Jumbotron from '../components/Jumbotron';

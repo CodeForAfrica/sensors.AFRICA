@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
+
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
+//Import asset images
 import business from '../assets/images/logos/business.png';
 import premium from '../assets/images/logos/premium.png';
 import guardian  from '../assets/images/logos/guardian.png';
@@ -13,7 +14,6 @@ import star from '../assets/images/logos/star.jpg';
 import womanng from '../assets/images/logos/womanng.png';
 import dailynation from '../assets/images/logos/dailynation.png';
 import cable from '../assets/images/logos/cable.png';
-
 import code from '../assets/images/logos/codeforafrica.png';
 import innovate from '../assets/images/logos/innovate.jpg';
 
