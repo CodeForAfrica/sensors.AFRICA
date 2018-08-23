@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 
-import air from '../../assets/images/landing/airbtn.png';
-import water from '../../assets/images/landing/waterbtn.png';
-import sound from '../../assets//images/landing/soundbtn.png';
+import air from '../../assets/images/button/airbtn.png';
+import water from '../../assets/images/button/waterbtn.png';
+import sound from '../../assets//images/button/soundbtn.png';
 
 const gridContainer = {
     paddingTop:'2rem',

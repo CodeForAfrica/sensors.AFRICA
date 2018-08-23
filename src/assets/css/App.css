@@ -1,6 +1,6 @@
 
 .Image-section {
-    background-image:url('../images/landing/bgimage.jpg');
+    background-image:url('../images/background/bglanding.jpg');
     background-repeat:no-repeat;
     background-size:cover;
     height:90vh;
@@ -10,7 +10,7 @@
 .Jumbotron {
     padding-top:2rem;
     height:400px;
-    background-image:url('../images/landing/background.jpg');
+    background-image:url('../images/background/bgstories.jpg');
     background-size: cover;
     overflow:hidden;
 }

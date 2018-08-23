@@ -3,7 +3,7 @@ import '../../assets/css/App.css';
 
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
-import logowhite from '../../assets/images/landing/logowhite.png';
+import logowhite from '../../assets/images/logos/logowhite.png';
 import Quality from './Quality';
 
 

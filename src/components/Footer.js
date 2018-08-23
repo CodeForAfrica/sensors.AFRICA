@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {Input } from '@material-ui/core';
 
-import partnerlogo from '../assets/images/landing/partnerslogoswhite.png';
+import partnerlogo from '../assets/images/logos/partners.png';
 
 const fa = {
   color:'white',

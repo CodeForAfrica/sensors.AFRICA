@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import logowhite from '../assets/images/landing/logowhite.png';
+import logowhite from '../assets/images/logos/logowhite.png';
 
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
