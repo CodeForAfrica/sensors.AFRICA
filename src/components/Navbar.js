@@ -20,7 +20,7 @@ class Navbar extends Component {
             <div>
                 <AppBar position="static" className={classes.navbar}>
                     <Toolbar >
-                        <Typography variant="headline" style={{color:'white'}}>sensors.AFRICA</Typography>
+                        <Typography variant="headline" style={{color:'white'}}>sensors.AFRICA Navbar</Typography>
                     </Toolbar>
                 </AppBar>
             </div>
