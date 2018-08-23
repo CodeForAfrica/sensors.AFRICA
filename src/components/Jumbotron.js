@@ -16,7 +16,6 @@ const styles = {
         height:'400px',
         borderRadius:'none'
     },
-
     titleSection:{
         textAlign:'center',
         paddingTop:'2rem',
