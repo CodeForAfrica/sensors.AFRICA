@@ -28,6 +28,7 @@ Run the following command to get started
 ```
 ---
 
+
 ### Landing Page
 
 The landing page for sensors.AFRICA currently lives in the `/docs` folder hosted on [Github Pages](https://pages.github.com/), powered by Jekyll. This will be fully replaced with actual platform documentation.
