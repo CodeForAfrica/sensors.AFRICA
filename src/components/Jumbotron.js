@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 
-//Import assets
+//import assets
 import logowhite from '../assets/images/logos/logowhite.png';
 
-//Import material components
+//import material components
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { IconButton } from '@material-ui/core';
-import MenuIcon from "@material-ui/core/Menu";
 
 const styles = {
     jumbotron:{
@@ -21,7 +19,6 @@ const styles = {
 
     titleSection:{
         textAlign:'center',
-        color:'white',
         paddingTop:'2rem',
         paddingRight:'25%',
         paddingLeft:'25%'
@@ -29,18 +26,15 @@ const styles = {
     menuButton:{
         color:'white'
     }
-
 }
 class Jumbotron extends Component {
     render() { 
         const { classes } = this.props;
         return ( 
             <Paper className={classes.jumbotron}>
-            <Grid container direction="row" justify="sapce-between" alignItems="flex-start">
+            <Grid container item xs={12} direction="row" justify="space-between" alignItems="flex-start">
                 <img src={logowhite} alt="Sensors Africa Logo" height="100px"/>
-                <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
+                <i class="material-icons" style={{paddingTop:'2rem',paddingRight:'2rem',color:'white'}}>reorder</i>
             </Grid>
                 <div className={classes.titleSection}>
                     <Typography variant="display2" style={{color:'white'}}>About sensors.AFRICA</Typography>
