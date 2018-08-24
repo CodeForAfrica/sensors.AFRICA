@@ -8,6 +8,7 @@ enforce_ssl: sensors.africa
 tw_url: https://twitter.com/sensorsAFRICA
 fb_url: https://facebook.com/sensorsAFRICA
 gh_url: https://github.com/CodeForAfricaLabs/sensors.AFRICA
+md_url: https://medium.com/code-for-africa/tagged/innovateafrica
 ig_url: \#
 
 google_analytics: UA-44795600-44
