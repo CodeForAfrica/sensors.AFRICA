@@ -13,6 +13,9 @@ const fa = {
   color:'white',
   padding:'0.5rem'
 }
+const title = {
+  color:'white'
+}
 
 class Footer extends Component {
     render() { 
@@ -20,7 +23,7 @@ class Footer extends Component {
               <Grid container item xs={12} style={{backgroundColor:'#424143',color:'white'}}>
               <Grid container spacing={0} direction="row" justify="center" alignItems="center" style={{paddingLeft:'10rem', paddingRight:'10rem',paddingTop:'2rem',paddingBottom:'2rem'}}>
                   <Grid item xs={4} align="center">
-                    <Typography variant="headline"><b>CONNECT WITH US</b></Typography>
+                    <Typography variant="title" style={title}>CONNECT WITH US</Typography>
                     <div container direction="row" justify="center" style={{paddingTop:'1rem'}}> 
                         <a href="/facebook"><i className="fab fa-facebook-f fa-lg" style={fa}></i></a>
                         <a href="/twitter"><i className="fab fa-twitter fa-lg" style={fa}></i></a>
@@ -32,7 +35,7 @@ class Footer extends Component {
                       </div>
                     </Grid>
                   <Grid item xs={4} style={{borderLeft:'1px solid white', borderRight:'1px solid white',padding:'2rem',textAlign:'center'}}>
-                    <Typography variant="headline"><b>ABOUT SENSORS.AFRICA</b></Typography>
+                    <Typography variant="title" style={title}>ABOUT SENSORS.AFRICA</Typography>
                     <p>sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water
                       and sound polution to give citizens actionable information about their cities.
                     </p>

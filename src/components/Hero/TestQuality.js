@@ -9,10 +9,6 @@ import air from '../../assets/images/button/airbtn.png';
 import water from '../../assets/images/button/waterbtn.png';
 import sound from '../../assets//images/button/soundbtn.png';
 
-const gridContainer = {
-    paddingTop:'3rem',
-    textTransform:'Uppercase'
-}
 const img = {
     height:'200px',
     width:'250px'
@@ -21,8 +17,8 @@ const img = {
 class TestQuality extends Component {
     render() { 
         return ( 
-            <Grid style={gridContainer}>
-              <Typography variant="subheading" gutterBottom align="center" style={{color:'white'}}>Test the quality of the city's</Typography>
+            <Grid container direction="column" justify="center" alignItems="center">
+              <Typography variant="title" gutterBottom align="center" style={{color:'white',textTransform:'uppercase'}}>Test the quality of the city's</Typography>
                 <Grid container direction="row" justify="center" alignItems="center" style={{paddingTop:'1rem'}}>
                     <img src={air} alt="Air" style={img}/>
                     <img src={water} alt="water" style={img}/>
