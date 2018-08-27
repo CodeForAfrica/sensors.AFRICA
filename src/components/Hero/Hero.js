@@ -17,7 +17,7 @@ const mainContainer = {
 class Hero extends Component { 
     render() { 
         return ( 
-            <Grid spacing={0} className="Image-section">
+            <Grid container spacing={0} className="Image-section">
                 <Grid container justify="center" style={mainContainer}>
                     <img src={logowhite} alt="partners logo"/>
                     <Typography variant="headline" align="center" style={{color:'white'}}>
