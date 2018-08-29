@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import '../assets/css/App.css';
 import partnerlogo from '../assets/images/logos/partners.png';
 
@@ -25,10 +27,22 @@ class Footer extends Component {
                   <Grid item xs={4} align="center">
                     <Typography variant="title" style={title}>CONNECT WITH US</Typography>
                     <div container direction="row" justify="center" style={{paddingTop:'1rem'}}> 
-                        <a href="/facebook"><i className="fab fa-facebook-f fa-lg" style={fa}></i></a>
-                        <a href="/twitter"><i className="fab fa-twitter fa-lg" style={fa}></i></a>
-                        <a href="/instagram"><i className="fab fa-instagram fa-lg" style={fa} ></i></a>
-                      </div>
+                      <FontAwesomeIcon 
+                        style={fa}
+                        icon={['fab', 'facebook-f']} 
+                        size="lg"
+                      />
+                      <FontAwesomeIcon 
+                        style={fa}
+                        icon={['fab', 'twitter']} 
+                        size="lg" 
+                      />
+                      <FontAwesomeIcon
+                        style={fa} 
+                        icon={['fab', 'instagram']} 
+                        size="lg"
+                      />
+                    </div>
                       <div style={{paddingTop:'2rem'}}>
                         <Input type="text" name="you@gmail.com" value="you@gmail.com" style={{border:'1px solid white',backgroundColor:'white',width:'190px'}}/> 
                         <p><Button variant="contained" style={{backgroundColor:'#2A2A2B', color:'white',borderRadius:'0'}}>SUBSCRIBE TO UPDATES</Button></p> 
