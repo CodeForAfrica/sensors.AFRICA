@@ -6,14 +6,14 @@ import Navbar from '../components/Navbar';
 import Jumbotron from '../components/Jumbotron';
 import Partners from '../components/Partners';
 import Staff from '../components/Staff';
-import Footer from '../components/Footer.js';
+import Footer from '../components/Footer';
 import Kickstart from '../components/Kickstart';
 
 class About extends Component {
 
     render() { 
         return (
-            <div>
+            <React.Fragment>
                 <Navbar />
                 <Jumbotron />
                 <Partners />
@@ -21,7 +21,7 @@ class About extends Component {
                 <Stories />
                 <Kickstart />
                 <Footer />
-           </div>
+            </React.Fragment>
           );
     }
 }

@@ -10,7 +10,7 @@ class Home extends Component {
         return (  
           <Grid>
              <Hero /> 
-              <Footer />
+             <Footer />
            </Grid>
         );
     }

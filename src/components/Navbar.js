@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
+import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -17,11 +18,11 @@ class Navbar extends Component {
     render() { 
         const { classes } = this.props;
         return ( 
-            <div>
+            <Grid>
                 <AppBar position="static" className={classes.navbar}>
                     <Toolbar></Toolbar>
                 </AppBar>
-            </div>
+            </Grid>
             
          );
     }
