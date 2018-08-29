@@ -25,6 +25,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+
 # Created by https://www.gitignore.io/api/django,pycharm
 
 ### Django ###
