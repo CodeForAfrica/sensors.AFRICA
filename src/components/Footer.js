@@ -43,7 +43,7 @@ class Footer extends Component {
                         size="lg"
                       />
                     </div>
-                      <div style={{paddingTop:'2rem'}}>
+                      <div style={{paddingTop:'1rem'}}>
                         <Input type="text" name="you@gmail.com" value="you@gmail.com" style={{border:'1px solid white',backgroundColor:'white',width:'190px'}}/> 
                         <p><Button variant="contained" style={{backgroundColor:'#2A2A2B', color:'white',borderRadius:'0'}}>SUBSCRIBE TO UPDATES</Button></p> 
                       </div>
