@@ -35,7 +35,7 @@ const styles = theme => ({
       backgroundColor:'#2FB56B'
     },
     uploadButton:{
-      color:'#2FB56B',
+      color:'#164B3E',
       borderRadius:'0'
     }
 })
