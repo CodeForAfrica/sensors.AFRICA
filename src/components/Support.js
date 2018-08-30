@@ -11,8 +11,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     root:{
-      height:'350px',
-      paddingTop:theme.spacing.unit * 3
+      paddingTop:theme.spacing.unit * 5,
+      paddingBottom:theme.spacing.unit * 5
     },
     card:{
         height:'200px',
