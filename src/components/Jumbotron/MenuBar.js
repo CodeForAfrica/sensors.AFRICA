@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import logowhite from '../../assets/Logo-White.png';
 
 import Grid from '@material-ui/core/Grid';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import ViewHeadline from '@material-ui/icons/ViewHeadline';
 
 const styles = {
   root:{
@@ -14,7 +14,7 @@ const styles = {
   },
   icon:{
     color:'white',
-    paddingTop:'4%'
+    paddingTop:'3%'
   }
 }
 
@@ -24,7 +24,7 @@ class MenuBar extends Component {
         return ( 
             <Grid container item xs={12} spacing={24} direction="row" justify="space-between" alignItems="flex-start" className={classes.root}>
               <img src={logowhite} alt="Sensors Africa Logo" height="100px"/>
-              <SkipPreviousIcon className={classes.icon}/>
+              <ViewHeadline className={classes.icon}/>
             </Grid>
          );
     }
