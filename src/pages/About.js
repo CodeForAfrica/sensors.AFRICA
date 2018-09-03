@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //import components
 import Stories from '../components/Stories'
 import Navbar from '../components/Navbar';
-import Jumbotron from '../components/Jumbotron';
+import Jumbotron from '../components/Jumbotron/index';
 import Partners from '../components/Partners';
 import Staff from '../components/Staff';
 import Footer from '../components/Footer';

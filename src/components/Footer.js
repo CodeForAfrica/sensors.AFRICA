@@ -66,7 +66,7 @@ class Footer extends Component {
     render() { 
       const { classes } = this.props;
         return ( 
-              <Grid container item xs={12} item lg={12} className={classes.root}>
+              <Grid container item xs={12} className={classes.root}>
                 <Grid container spacing={0} direction="row" justify="center" alignItems="center" className={classes.connectContainer}>
                   <Grid item xs={4} align="center">
                       <Typography variant="title" className={classes.titles}>CONNECT WITH US</Typography>
