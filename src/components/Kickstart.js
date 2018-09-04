@@ -49,7 +49,6 @@ class Kickstart extends Component {
                             </CardContent>
                         </Card>
                     </Grid>
-
                     <Grid item xs={3} className={classes.card}>
                         <Card className={classes.cardContent}>
                             <CardContent className={classes.titleContent}>
@@ -58,7 +57,6 @@ class Kickstart extends Component {
                             </CardContent>
                         </Card>
                     </Grid>
-
                     <Grid item xs={3} className={classes.card}>
                         <Card className={classes.cardContent}>
                             <CardContent className={classes.titleContent}>
