@@ -6,12 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import{ withStyles } from '@material-ui/core/styles';
 
-const styles = {
+const styles = theme => ({
     root:{
         flex:1,
         backgroundColor:'#2e2e2e'
@@ -21,48 +20,59 @@ const styles = {
       paddingLeft:'8%'
     },
     airText:{
-      color:'green'
+      color:'#2FB56B'
     },
     waterText:{
-      color:'blue'
+      color:'#4972B8'
     },
     soundText:{
-      color:'purple'
+      color:'#B64598'
     },
-    list:{
-
+    fa:{
+      padding:theme.spacing.unit * 1.5,
+      color:'#2FB56B'
+    },
+    searchFa:{
+      padding:theme.spacing.unit * 1.5,
+      color:'#454545'
     }
-}
+})
 
 class Navbar extends Component {
     render() { 
         const { classes } = this.props;
         return ( 
             <Grid>
-                <AppBar position="static" className={classes.root}>
-                    <Toolbar className={classes.toolbar} item xs={12}>
-                        <List>
-                          <MenuItem className={classes.airText}>AIR</MenuItem>
-                          <MenuItem className={classes.waterText}>WATER</MenuItem>
-                          <MenuItem className={classes.soundText}>SOUND</MenuItem>
-                        </List>
-                        <div>
+                <AppBar position="static" className={classes.root} item xs={12}>
+                    <Toolbar className={classes.toolbar}>
+                      <Grid container direction="row" justify="flex-start" alignItems="center">
+                        <MenuItem className={classes.airText}>AIR</MenuItem>
+                        <MenuItem className={classes.waterText}>WATER</MenuItem>
+                        <MenuItem className={classes.soundText}>SOUND</MenuItem>
+                      </Grid>
+
+                      <Grid container direction="row" justify="flex-end" alignItems="center"> 
+                      <FontAwesomeIcon 
+                            className={classes.searchFa}
+                            icon="search"
+                            size="lg"
+                            />
                         <FontAwesomeIcon 
-                             className={classes.fa}
-                              icon={['fab', 'facebook-f']} 
-                              size="lg"
+                            className={classes.fa}
+                            icon={['fab', 'facebook-f']} 
+                            size="lg"
                             />
-                            <FontAwesomeIcon 
-                              className={classes.fa}
-                              icon={['fab', 'twitter']} 
-                              size="lg" 
-                            />
-                            <FontAwesomeIcon
-                              className={classes.fa}
-                              icon={['fab', 'instagram']} 
-                              size="lg"
-                            />
-                        </div>
+                        <FontAwesomeIcon 
+                          className={classes.fa}
+                          icon={['fab', 'twitter']} 
+                          size="lg" 
+                        />
+                        <FontAwesomeIcon
+                          className={classes.fa}
+                          icon={['fab', 'instagram']} 
+                          size="lg"
+                        />
+                      </Grid>
                     </Toolbar>
                 </AppBar>
             </Grid>
