@@ -76,13 +76,12 @@ class Navbar extends Component {
                     </Toolbar>
                 </AppBar>
             </Grid>
-            
          );
     }
 }
- 
-Navbar.PropTypes ={
-    classes: PropTypes.object.isRequired
+
+Navbar.PropTypes = {
+    classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Navbar);
