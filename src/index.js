@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from 'pages/Home'
 import About from 'pages/About';
 import City from 'pages/City';
+import AirLanding from 'pages/air/AirLanding';
 
 import '../src/assets/css/index.css';
 import fontawesome from '@fortawesome/fontawesome';
@@ -21,6 +22,7 @@ ReactDOM.render(
           <Route exact path="/" component={Home}/>
           <Route path="/about" component={About}/>
           <Route path="/city" component={City}/>
+          <Route path="/air/home" component={AirLanding}/>
         </Switch>
       </div>
     </BrowserRouter>, 
