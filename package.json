@@ -1,6 +1,6 @@
 {
   "name": "sensors.AFRICA",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
