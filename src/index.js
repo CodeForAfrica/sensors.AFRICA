@@ -8,11 +8,11 @@ import City from 'pages/City';
 import AirLanding from 'pages/air/AirLanding';
 
 import '../src/assets/css/index.css';
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core';
-//import { } from '@fortawesome/fontawesome-free-solid'
+import fontawesome from '@fortawesome/fontawesome';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faSearch } from '@fortawesome/fontawesome-free-solid';
 
-library.add(fab);
+fontawesome.library.add(fab, faSearch);
 
 ReactDOM.render(
     <BrowserRouter>

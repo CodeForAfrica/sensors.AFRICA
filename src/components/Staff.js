@@ -18,7 +18,7 @@ const styles = theme =>({
         height:'200px',
         width:'300px',
         margin: theme.spacing.unit * 3,
-        backgroundColor: theme.palette.primary.light
+        backgroundColor:'#F3F3F3'
     },
     cardMedia:{
        height:'100%'
