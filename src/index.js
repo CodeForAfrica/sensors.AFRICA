@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from 'pages/Home'
 import About from 'pages/About';
 import City from 'pages/City';
-import AirLanding from 'pages/air/Home'
+import AirLanding from 'pages/air/AirLanding';
 
 import '../src/assets/css/index.css';
 import { fab } from '@fortawesome/free-brands-svg-icons'
