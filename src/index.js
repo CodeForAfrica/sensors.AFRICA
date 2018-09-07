@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from 'pages/Home'
 import About from 'pages/About';
 import City from 'pages/City';
-import Air from 'pages/air/index'
+import AirLanding from 'pages/air/Home'
 
 import '../src/assets/css/index.css';
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -22,7 +22,7 @@ ReactDOM.render(
           <Route exact path="/" component={Home}/>
           <Route path="/about" component={About}/>
           <Route path="/city" component={City}/>
-          <Route path="/air/home" component={Air}/>
+          <Route path="/air/home" component={AirLanding}/>
         </Switch>
       </div>
     </BrowserRouter>, 
