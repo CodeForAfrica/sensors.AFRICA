@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Typography, Button } from '@material-ui/core';
@@ -16,6 +18,7 @@ const styles = {
     paddingRight:'20%',
     paddingLeft:'20%',
     textAlign:'center'
+    
   },
   indoor:{
     height:'250px',
@@ -71,6 +74,10 @@ class IndoorOutdoor extends Component {
       </Grid>
     );
   }
+}
+
+IndoorOutdoor.Proptypes = {
+  classes:PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(IndoorOutdoor);
