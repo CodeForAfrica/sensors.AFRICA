@@ -9,7 +9,7 @@ class HowSensorsWork extends Component {
   render() { 
     return ( 
       <Grid>
-        <Typography variant="title" style={{textAlign:'center'}}>THE SCIENCE AND HARDWARE</Typography>
+        <Typography variant="subheading" style={{textAlign:'center',paddingTop:'2rem'}}>THE SCIENCE AND HARDWARE</Typography>
         <HardwareInfo />
       </Grid>
      );
