@@ -43,7 +43,7 @@ class JoinSupport extends Component {
     render() { 
         const { classes } = this.props;
         return ( 
-            <Grid container direction="row" justify="center" align="center" className={classes.root}>
+            <Grid container direction="row" justify="center" align="center" className="support">
                 <Card item xs={3} className={classes.card}>
                    <CardContent className={classes.cardContent}>
                       <Typography variant="title" className={classes.typography}>SUPPORT EXISTING SENSORS NETWORKS</Typography>
