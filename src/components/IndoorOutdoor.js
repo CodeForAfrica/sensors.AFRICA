@@ -9,11 +9,12 @@ import OutdoorIcon from '../assets/images/outdooricon.png';
 
 const styles = {
   indoor:{
-    height:'250px',
-    width:'350px',
+    height:'400px',
+    width:'400px',
     backgroundColor:'#164B3E',
     borderRadius:0,
-    color:'white'
+    color:'white',
+    margin:'2rem'
   },
   indoorButton:{
     borderRadius:0,
@@ -21,11 +22,12 @@ const styles = {
     borderColor:'white'
   },
   outdoor:{
-    height:'250px',
-    width:'350px',
+    height:'400px',
+    width:'400px',
     backgroundColor:'#2FB56B',
     borderRadius:0,
-    color:'white'
+    color:'white',
+    margin:'2rem'
   },
   outdoorButton:{
     borderRadius:0,
@@ -34,6 +36,11 @@ const styles = {
     paddingTop:'0.5rem',
     paddingBottom:'1rem', 
     color:'#F3F3F3'
+  },
+  cardContent:{
+    color:'white',
+    textAlign:'center',
+    paddingTop:'4rem'
   }
 }
 
@@ -41,10 +48,10 @@ class IndoorOutdoor extends Component {
   render() { 
     const { classes } = this.props;
     return (  
-      <Grid container item xs={12} direction="row" justify="space-around" alignItems="center">
+      <Grid container direction="row" justify="center" alignItems="center">
           <Card className={classes.indoor}>
-            <CardContent style={{color:'white'}}>
-              <img src={IndoorIcon} Alt="Housing" height="80px"/>
+            <CardContent className={classes.cardContent}>
+              <img src={IndoorIcon} Alt="Housing" height="100px"/>
              <Typography variant="title" style={{color:'white'}}>INDOOR POLLUTION</Typography>
               <Typography variant="caption" className={classes.caption}>Indoor pollution causes an estimated 4.3 million premature deaths each year</Typography>
               <Button variant="outlined" color="upload" className={classes.indoorButton}>READ MORE</Button>
@@ -52,8 +59,8 @@ class IndoorOutdoor extends Component {
           </Card>
       
           <Card className={classes.outdoor} >
-            <CardContent>
-              <img src={OutdoorIcon} Alt="Housing" height="80px"/>
+            <CardContent className={classes.cardContent}>
+              <img src={OutdoorIcon} Alt="Housing" height="100px"/>
               <Typography variant="title" style={{color:'white'}}>OUTDOOR POLLUTION</Typography>
               <Typography variant="caption" className={classes.caption}>Indoor pollution causes an estimated 3 million premature deaths each year</Typography>
              <Button variant="contained" color="upload" className={classes.outdoorButton}>READ MORE</Button>
