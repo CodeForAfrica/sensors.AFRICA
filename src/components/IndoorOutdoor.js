@@ -9,7 +9,7 @@ import OutdoorIcon from '../assets/images/outdooricon.png';
 
 const styles = {
   indoor:{
-    height:'400px',
+    height:'350px',
     width:'400px',
     backgroundColor:'#164B3E',
     borderRadius:0,
@@ -22,7 +22,7 @@ const styles = {
     borderColor:'white'
   },
   outdoor:{
-    height:'400px',
+    height:'350px',
     width:'400px',
     backgroundColor:'#2FB56B',
     borderRadius:0,
