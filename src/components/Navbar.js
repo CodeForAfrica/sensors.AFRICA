@@ -42,7 +42,7 @@ class Navbar extends Component {
     render() { 
         const { classes } = this.props;
         return ( 
-            <Grid>
+            <Grid container item xs={12}>
                 <AppBar position="static" className={classes.root} item xs={12}>
                     <Toolbar className={classes.toolbar}>
                       <Grid container direction="row" justify="flex-start" alignItems="center">
