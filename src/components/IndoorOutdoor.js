@@ -8,15 +8,6 @@ import OutdoorIcon from '../assets/images/outdooricon.png';
 
 
 const styles = {
-  root:{
-    position:'absolute',
-    display:'center',
-    paddingTop:'3rem',
-    paddingBotton:'3rem',
-    paddingRight:'20%',
-    paddingLeft:'20%',
-    textAlign:'center'
-  },
   indoor:{
     height:'250px',
     width:'350px',
@@ -50,7 +41,7 @@ class IndoorOutdoor extends Component {
   render() { 
     const { classes } = this.props;
     return (  
-      <Grid container item xs={12} direction="row" justify="space-around" alignItems="center" className={classes.root}>
+      <Grid container item xs={12} direction="row" justify="space-around" alignItems="center">
           <Card className={classes.indoor}>
             <CardContent style={{color:'white'}}>
               <img src={IndoorIcon} Alt="Housing" height="80px"/>

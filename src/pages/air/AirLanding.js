@@ -8,7 +8,7 @@ import IndoorOutdoor from '../../components/IndoorOutdoor';
 class AirLanding extends Component {
     render() { 
         return ( 
-            <Grid>
+            <Grid container item xs={12}>
                 <Issues />
                 <IndoorOutdoor />
             </Grid>
