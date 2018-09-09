@@ -7,11 +7,13 @@ import About from 'pages/About';
 import City from 'pages/City';
 import AirLanding from 'pages/air/AirLanding';
 import JoinNetwork from 'pages/air/JoinNetwork';
+import HowSensorsWork from './pages/air/HowSensorsWork';
 
 import '../src/assets/css/index.css';
 import fontawesome from '@fortawesome/fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSearch } from '@fortawesome/fontawesome-free-solid';
+
 
 fontawesome.library.add(fab, faSearch);
 
@@ -25,6 +27,7 @@ ReactDOM.render(
           <Route path="/city" component={City}/>
           <Route path="/air/home" component={AirLanding}/>
           <Route path="/air/join-network" component={JoinNetwork}/>
+          <Route path="/air/how-sensors-work" component={HowSensorsWork}/>
         </Switch>
       </div>
     </BrowserRouter>, 
