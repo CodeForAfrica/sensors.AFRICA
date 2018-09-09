@@ -1,22 +1,20 @@
 # sensors.AFRICA
 
-[sensors.AFRICA](https://sensors.africa/) is a citizen science-focused project by [Code for Africa](https://twitter.com/Code4Africa/) that seeks to address data gaps by providing low cost sensors, which people can use to measure and monitor the quality of the air in their communities.
+[sensors.AFRICA](https://sensors.africa/) is a citizen-science focused project by [Code for Africa](https://twitter.com/Code4Africa/) that seeks to address data gaps by providing low cost sensors, which people can use to measure and monitor the quality of the air, water, and sound in their communities.
 
 Are you interested in working with us, using our data, or learning more about what we do? Please fill in [this form](https://goo.gl/forms/4yc0iu2hUH8iSg4v2) and we'll get back to you ASAP.
 
-Learn more at https://sensors.africa/
-Follow us at https://twitter.com/Code4Africa/
-Catch-up with what we're up to at https://medium.com/code-for-africa
+## Goals
 
+The key goals for this site:
+- Provide an online platform to explore sensors.AFRICA data and initiatives (networks)
+- Provide information + contacts on how users can kickstart their own network
+- Provide an action path to petition local governments to do something about the quality of environment
 
-
-## Background
-
-TODO
 
 ## Development
 
-This project uses [yarn](https://yarnpkg.com/lang/en/) as a dependancy. See the documentation to set it up on your machine.
+This project uses [yarn](https://yarnpkg.com/lang/en/) as a dependancy. See [the documentation](https://yarnpkg.com/lang/en/)  to set it up on your machine.
 
 Run the following command to get started 
 
@@ -28,60 +26,54 @@ Run the following command to get started
 ```
 ---
 
-### Landing Page
-
-The landing page for sensors.AFRICA currently lives in the `/docs` folder hosted on [Github Pages](https://pages.github.com/), powered by [Jekyll](https://jekyllrb.com). This will be fully replaced with actual platform documentation.
-
-```
-cd docs/
-bundle install
-bundle exec jekyll serve
-```
-
-### Web Platform
-
-TODO
 
 ## Tests
 
-TODO
+[TODO](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
+
 
 ## Deployment
 
-TODO
+Following [Facebook's guide on deploying React App on GitHub Pages](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages), site deployment can be done by simple doing:
+
+```
+yarn deploy
+```
 
 ---
 
 ## Contributing
 
-If you'd like to contribute to sensors.AFRICA, check out the [CONTRIBUTING.md](./CONTRIBUTING.md) file on how to get started.
+If you'd like to contribute to sensors.AFRICA, check out the [CONTRIBUTING.md](./CONTRIBUTING.md) file on how to get started; or jump right into our [GitHub issues](issues).
 
 ## Attribution
 
-TODO
+> If we have seen further it is by standing on the shoulders of giants. - Isaac Newton
+
+### ✨ Contributors ✨
+
+[TODO](https://www.npmjs.com/package/all-contributors-cli)
+
 
 ---
 
 ## License
 
-MIT License
+GNU General Public License v3.0
 
-Copyright (c) 2018 Code for Africa
+sensors.AFRICA is a citizen-science focused project by Code for Africa that seeks to address data gaps by providing low cost sensors, which people can use to measure and monitor the quality of the air, water, and environment in their communities. This web app seeks to be the public portal through which most users would discover and explore the data and intiative.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Copyright (C) 2018  Code for Africa
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
