@@ -5,10 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
 //Import image assets
-import SDS011 from '../assets/images/sensors/sensor1.jpg';
-import DHT22 from '../assets/images/sensors/sensor2.jpg';
-import GSMSIM800L from '../assets/images/sensors/sensor3.jpg';
-import NODEMCU from '../assets/images/sensors/sensor4.jpg';
+import SDS011 from '../../assets/images/sensors/sensor1.jpg';
+import DHT22 from '../../assets/images/sensors/sensor2.jpg';
+import GSMSIM800L from '../../assets/images/sensors/sensor3.jpg';
+import NODEMCU from '../../assets/images/sensors/sensor4.jpg';
 
 const styles = {
   root:{
