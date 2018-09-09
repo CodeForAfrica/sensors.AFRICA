@@ -15,3 +15,10 @@
     background-size: cover;
     overflow:hidden;
 }
+.support{
+    height:40rem;
+    padding-top:12rem;
+    background-image:url('../images/background/bgsupport.jpg');
+    background-size: cover;
+
+}
