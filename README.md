@@ -27,6 +27,11 @@ Run the following command to get started
 ---
 
 
+## Style Guidelines
+
+This project will be primarily using [airbnb react](https://github.com/airbnb/javascript/tree/master/react) and [material-ui](https://material-ui.com/) as our main style guides when implementing components.This is to create code consistency and readability.
+
+
 ## Tests
 
 [TODO](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
