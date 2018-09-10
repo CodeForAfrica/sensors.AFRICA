@@ -29,7 +29,7 @@ Run the following command to get started
 
 ## Style Guidelines
 
-This project will be using primarily using [airbnb react](https://github.com/airbnb/javascript/tree/master/react) and (material-ui)[https://material-ui.com/] as our main style guide when implementing components.This is to create code consistency and readability.
+This project will be primarily using [airbnb react](https://github.com/airbnb/javascript/tree/master/react) and [material-ui](https://material-ui.com/) as our main style guide when implementing components.This is to create code consistency and readability.
 
 
 ## Tests
