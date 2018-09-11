@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 import Navbar from '../../components/Header/Navbar';
-import JoinHeader from '../../components/JoinNetwork/Index'
+import JoinHeader from '../../components/JoinNetwork/JoinHeader'
 import JoinSupport from '../../components/JoinNetwork/JoinSupport';
 import Footer from '../../components/Footer';
 

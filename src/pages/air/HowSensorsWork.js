@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import Navbar from '../../components/Header/Navbar';
-import HeaderIndex from '../../components/SensorsInfo/HeaderIndex';
+import HeaderIndex from '../../components/SensorsInfo/HardwareHeader';
 import Footer from '../../components/Footer';
 
 import HardwareInfo from '../../components/SensorsInfo/HardwareInfo';

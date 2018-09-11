@@ -6,31 +6,31 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 //import components
-import MenuBar from '../Header/MenuBar';
-import AirHeaderContent from '../Header/JumbotronContent/AirHeaderContent';
+import MenuBar from '../Header/MenuBar.js';
+import AboutHeaderContent from '../Header/JumbotronContent/AboutHeaderContent.js'
 
 const styles = {
     jumbotron: {
-        backgroundColor: '#2FB56B',
+        backgroundColor: '#454545',
         height: '400px',
         borderRadius: 'none'
     },
 }
 
-class HeaderIndex extends Component {
+class AboutHeader extends Component {
     render() {
         const { classes } = this.props;
         return (
             <Grid className={classes.jumbotron}>
                 <MenuBar />
-                <AirHeaderContent />
+                <AboutHeaderContent />
             </Grid>
         );
     }
 }
 
-HeaderIndex.PropTypes = {
+AboutHeader.PropTypes = {
     classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(HeaderIndex);
+export default withStyles(styles)(AboutHeader);

@@ -8,14 +8,14 @@ import Footer from '../../components/Footer';
 
 import Issues from '../../components/AirComponents/Issues';
 import IndoorOutdoor from '../../components/AirComponents/IndoorOutdoor';
-import HeaderIndex from '../../components/AirComponents/HeaderIndex';
+import AirHeader from '../../components/AirComponents/AirHeader';
 
-class AirLanding extends Component {
+class AirHome extends Component {
     render() {
         return (
             <Grid container item xs={12}>
                 <Navbar />
-                <HeaderIndex />
+                <AirHeader />
                 <Issues />
                 <IndoorOutdoor />
                 <Stories />
@@ -26,4 +26,4 @@ class AirLanding extends Component {
     }
 }
 
-export default AirLanding;
+export default AirHome;
