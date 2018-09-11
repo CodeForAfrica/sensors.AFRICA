@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 
 //import components
-import Stories from '../components/Stories'
-import Navbar from '../components/Navbar';
-import Jumbotron from '../components/Jumbotron/index';
-import Partners from '../components/Partners';
-import Staff from '../components/Staff';
+import Stories from '../components/About/Stories'
+import Navbar from '../components/Header/Navbar';
+import Jumbotron from '../components/Header/Jumbotron';
+import Partners from '../components/About/Partners';
+import Staff from '../components/About/Staff';
 import Footer from '../components/Footer';
 import Support from '../components/Support';
 
 class About extends Component {
 
-    render() { 
+    render() {
         return (
             <React.Fragment>
                 <Navbar />
@@ -22,8 +22,8 @@ class About extends Component {
                 <Support />
                 <Footer />
             </React.Fragment>
-          );
+        );
     }
 }
- 
+
 export default About;

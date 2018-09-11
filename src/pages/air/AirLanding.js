@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Navbar from '../../components/Navbar';
-import Stories from '../../components/Stories';
+import Navbar from '../../components/Header/Navbar';
+import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
 import Footer from '../../components/Footer';
 
-import Issues from '../../components/Issues';
-import IndoorOutdoor from '../../components/IndoorOutdoor';
-import HeaderIndex from '../../components/AirLandingComponent/HeaderIndex';
+import Issues from '../../components/AirComponents/Issues';
+import IndoorOutdoor from '../../components/AirComponents/IndoorOutdoor';
+import HeaderIndex from '../../components/AirComponents/HeaderIndex';
 
 class AirLanding extends Component {
-    render() { 
-        return ( 
+    render() {
+        return (
             <Grid container item xs={12}>
                 <Navbar />
                 <HeaderIndex />
@@ -22,8 +22,8 @@ class AirLanding extends Component {
                 <Support />
                 <Footer />
             </Grid>
-         );
+        );
     }
 }
- 
+
 export default AirLanding;

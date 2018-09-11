@@ -7,30 +7,30 @@ import { withStyles } from '@material-ui/core/styles';
 
 //import components
 import MenuBar from './MenuBar.js';
-import JumbotronContent from '../Jumbotron/JumbotronContent'
+import AboutHeaderContent from '../Header/JumbotronContent/AboutHeaderContent'
 
 const styles = {
-    jumbotron:{
-        backgroundColor:'#454545',
-        height:'400px',
-        borderRadius:'none'
+    jumbotron: {
+        backgroundColor: '#454545',
+        height: '400px',
+        borderRadius: 'none'
     },
 }
 
 class Jumbotron extends Component {
-    render() { 
+    render() {
         const { classes } = this.props;
-        return ( 
+        return (
             <Grid className={classes.jumbotron}>
-                <MenuBar/>
-                <JumbotronContent />
+                <MenuBar />
+                <AboutHeaderContent />
             </Grid>
-         );
+        );
     }
 }
- 
+
 Jumbotron.PropTypes = {
-    classes:PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Jumbotron);
