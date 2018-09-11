@@ -6,31 +6,31 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 //import components
-import MenuBar from '../Jumbotron/MenuBar';
-import JoinNetworkHeader from '../JoinNetwork/JoinNetworkHeader';
+import MenuBar from '../Header/MenuBar';
+import JoinNetworkContent from '../Header/JumbotronContent/JoinHeaderContent';
 
 const styles = {
-    jumbotron:{
-        backgroundColor:'#2FB56B',
-        height:'400px',
-        borderRadius:'none'
+    jumbotron: {
+        backgroundColor: '#2FB56B',
+        height: '400px',
+        borderRadius: 'none'
     },
 }
 
 class JoinHeader extends Component {
-    render() { 
+    render() {
         const { classes } = this.props;
-        return ( 
+        return (
             <Grid className={classes.jumbotron}>
-                <MenuBar/>
-                <JoinNetworkHeader />
+                <MenuBar />
+                <JoinNetworkContent />
             </Grid>
-         );
+        );
     }
 }
- 
+
 JoinHeader.PropTypes = {
-    classes:PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(JoinHeader);
