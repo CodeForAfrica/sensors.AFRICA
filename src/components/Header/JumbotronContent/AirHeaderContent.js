@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import SearchBar from "../../SearchBar";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
@@ -25,6 +26,7 @@ class AirHeaderContent extends Component {
         <Typography variant="display2" style={{ color: "white" }}>
           {this.props.title}
         </Typography>
+        <SearchBar />
       </Grid>
     );
   }
