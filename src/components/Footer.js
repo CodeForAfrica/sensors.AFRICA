@@ -9,7 +9,7 @@ import partnerlogo from "../assets/images/logos/partners.png";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Input } from "@material-ui/core";
+import { Input, FormControl } from "@material-ui/core";
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -70,6 +70,12 @@ const styles = theme => ({
 });
 
 class Footer extends Component {
+  state = {
+    value: "you@gmail.com"
+  };
+  handleChange = event => {
+    this.setState({ value: event.target.value });
+  };
   render() {
     const { classes } = this.props;
     return (
@@ -127,22 +133,25 @@ class Footer extends Component {
               alignItems="center"
               className={classes.footerMargin}
             >
-              <Input
-                type="text"
-                name="you@gmail.com"
-                value="you@gmail.com"
-                className={classes.footerInput}
-              />
-              <p>
-                <Button variant="contained" className={classes.footerButton}>
-                  <a
-                    href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
-                    className={classes.buttonLink}
-                  >
-                    SUBSCRIBE TO UPDATES
-                  </a>
-                </Button>
-              </p>
+              <FormControl>
+                <Input
+                  type="text"
+                  id="you@gmail.com"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                  className={classes.footerInput}
+                />
+                <p>
+                  <Button variant="contained" className={classes.footerButton}>
+                    <a
+                      href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
+                      className={classes.buttonLink}
+                    >
+                      SUBSCRIBE TO UPDATES
+                    </a>
+                  </Button>
+                </p>
+              </FormControl>
             </Grid>
           </Grid>
           <Grid item xs={4} className={classes.aboutContainer}>
