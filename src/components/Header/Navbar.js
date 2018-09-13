@@ -76,21 +76,27 @@ class Navbar extends Component {
                 icon="search"
                 size="lg"
               />
-              <FontAwesomeIcon
-                className={classes.fa}
-                icon={["fab", "facebook-f"]}
-                size="lg"
-              />
-              <FontAwesomeIcon
-                className={classes.fa}
-                icon={["fab", "twitter"]}
-                size="lg"
-              />
-              <FontAwesomeIcon
-                className={classes.fa}
-                icon={["fab", "instagram"]}
-                size="lg"
-              />
+              <a href="https://www.facebook.com/sensorsAFRICA">
+                <FontAwesomeIcon
+                  className={classes.fa}
+                  icon={["fab", "facebook-f"]}
+                  size="lg"
+                />
+              </a>
+              <a href="https://twitter.com/sensorsAFRICA">
+                <FontAwesomeIcon
+                  className={classes.fa}
+                  icon={["fab", "twitter"]}
+                  size="lg"
+                />
+              </a>
+              <a href="">
+                <FontAwesomeIcon
+                  className={classes.fa}
+                  icon={["fab", "instagram"]}
+                  size="lg"
+                />
+              </a>
             </Grid>
           </Toolbar>
         </AppBar>
