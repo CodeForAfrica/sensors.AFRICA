@@ -59,6 +59,13 @@ const styles = theme => ({
   logoItems: {
     textAlign: "center",
     paddingLeft: theme.spacing.unit * 3
+  },
+  links: {
+    color: "white"
+  },
+  buttonLink: {
+    textDecoration: "none",
+    color: "white"
   }
 });
 
@@ -86,21 +93,27 @@ class Footer extends Component {
               alignItems="center"
               className={classes.icons}
             >
-              <a href="https://www.facebook.com/sensorsAFRICA">
+              <a
+                href="https://www.facebook.com/sensorsAFRICA"
+                className={classes.links}
+              >
                 <FontAwesomeIcon
                   className={classes.fa}
                   icon={["fab", "facebook-f"]}
                   size="lg"
                 />
               </a>
-              <a href="https://twitter.com/sensorsAFRICA">
+              <a
+                href="https://twitter.com/sensorsAFRICA"
+                className={classes.links}
+              >
                 <FontAwesomeIcon
                   className={classes.fa}
                   icon={["fab", "twitter"]}
                   size="lg"
                 />
               </a>
-              <a href="">
+              <a href="" className={classes.links}>
                 <FontAwesomeIcon
                   className={classes.fa}
                   icon={["fab", "instagram"]}
@@ -122,7 +135,12 @@ class Footer extends Component {
               />
               <p>
                 <Button variant="contained" className={classes.footerButton}>
-                  SUBSCRIBE TO UPDATES
+                  <a
+                    href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
+                    className={classes.buttonLink}
+                  >
+                    SUBSCRIBE TO UPDATES
+                  </a>
                 </Button>
               </p>
             </Grid>
@@ -137,7 +155,12 @@ class Footer extends Component {
               citizens actionable information about their cities.
             </p>
             <Button variant="contained" className={classes.footerButton}>
-              READ MORE
+              <a
+                href="https://medium.com/code-for-africa/tagged/innovateafrica"
+                className={classes.buttonLink}
+              >
+                READ MORE
+              </a>
             </Button>
           </Grid>
           <Grid item xs={4}>
