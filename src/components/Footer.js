@@ -85,7 +85,7 @@ class Footer extends Component {
           spacing={0}
           direction="row"
           justify="center"
-          alignItems="center"
+          alignitems="center"
           className={classes.connectContainer}
         >
           <Grid item xs={4} align="center">
@@ -96,7 +96,7 @@ class Footer extends Component {
               container
               direction="row"
               justify="center"
-              alignItems="center"
+              alignitems="center"
               className={classes.icons}
             >
               <a
@@ -128,9 +128,10 @@ class Footer extends Component {
               </a>
             </div>
             <Grid
+              container
               direction="column"
               justify="space-around"
-              alignItems="center"
+              alignitems="center"
               className={classes.footerMargin}
             >
               <FormControl>
@@ -191,7 +192,7 @@ class Footer extends Component {
   }
 }
 
-Footer.PropTypes = {
+Footer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
