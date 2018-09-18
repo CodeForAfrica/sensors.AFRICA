@@ -20,13 +20,13 @@ class Api extends Component {
     const { sensors } = this.state;
     return (
       <div>
-        <h1>This is the city page </h1>
+        <h1>
+          This is the city page: All sensors.AFRICA information printed here{" "}
+        </h1>
         <ul>
           {sensors.map(sensor => (
             <li key={sensor.sensor.id}>
-              pin: {sensor.sensor.pin}
-              timestamp:
-              {sensor.timestamp}
+              {sensor.id},{sensor.timestamp},{sensor.sensor.pin}
             </li>
           ))}
         </ul>
