@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Navbar from "../../components/Header/Navbar";
 import Footer from "../../components/Footer";
 import CityHeader from "../../components/CityComponents/CityHeader";
+import CallToAction from "../../components/CityComponents/CallToAction";
 
 //import Api from "../../components/Api";
 //import Typography from "@material-ui/core/Typography";
@@ -13,6 +14,7 @@ class City extends Component {
       <Grid>
         <Navbar />
         <CityHeader />
+        <CallToAction />
         <Footer />
       </Grid>
     );
