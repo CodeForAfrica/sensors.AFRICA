@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Navbar from "../../components/Header/Navbar";
 import Footer from "../../components/Footer";
+import Neighbourhood from "../../components/CityComponents/Neighbourhood";
 import CityHeader from "../../components/CityComponents/CityHeader";
 import CallToAction from "../../components/CityComponents/CallToAction";
 
@@ -14,6 +15,7 @@ class City extends Component {
       <Grid>
         <Navbar />
         <CityHeader />
+        <Neighbourhood />
         <CallToAction />
         <Footer />
       </Grid>
