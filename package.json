@@ -13,6 +13,7 @@
     "@material-ui/core": "^3.0.0",
     "@material-ui/icons": "^3.0.0",
     "@storybook/cli": "^3.4.10",
+    "axios": "^0.18.0",
     "dokku-deploy": "^1.0.3",
     "getstorybook": "^1.7.0",
     "gh-pages": "^1.2.0",
