@@ -32,7 +32,7 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 4
   },
   headline: {
-    paddingTop: theme.spacing.unit * 4
+    paddingBottom: theme.spacing.unit * 4
   },
   offlineContent: {
     color: "grey",
