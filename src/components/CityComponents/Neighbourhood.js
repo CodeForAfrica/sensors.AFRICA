@@ -4,10 +4,10 @@ import { Card, CardContent } from "@material-ui/core/";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = {
+const styles = theme => ({
   root: {
-    paddingTop: "3rem",
-    paddingBottom: "3rem"
+    paddingTop: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4
   },
   offlineCard: {
     height: "220px",
@@ -29,10 +29,10 @@ const styles = {
     color: "#fff"
   },
   caption: {
-    paddingTop: "2.3rem"
+    paddingTop: theme.spacing.unit * 4
   },
   headline: {
-    paddingBottom: "2rem"
+    paddingBottom: theme.spacing.unit * 4
   },
   offlineContent: {
     color: "grey",
@@ -41,7 +41,7 @@ const styles = {
   onlineContent: {
     color: "#fff"
   }
-};
+});
 
 class Neighbourhood extends Component {
   render() {
