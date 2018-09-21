@@ -46,7 +46,7 @@ const styles = theme => ({
   placeholder: {
     position: "absolute",
     left: 2,
-    fontSize: 16,
+    fontSize: 18,
     color: "#164B3E",
     paddingLeft: "1rem"
   },
@@ -56,6 +56,10 @@ const styles = theme => ({
     marginTop: theme.spacing.unit,
     left: 0,
     right: 0
+  },
+  css1wy0on6: {
+    //visibility: "hidden",
+    width: "0"
   }
 });
 
