@@ -163,7 +163,8 @@ const components = {
   Option,
   Placeholder,
   SingleValue,
-  ValueContainer
+  ValueContainer,
+  DropdownIndicator: null
 };
 
 class CitySearchBar extends React.Component {

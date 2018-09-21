@@ -26,7 +26,7 @@ class AirHeaderContent extends Component {
         <Typography variant="display2" style={{ color: "white" }}>
           {this.props.title}
         </Typography>
-        <SearchBar />
+        <SearchBar item xs={12} />
       </Grid>
     );
   }

@@ -53,9 +53,9 @@ const styles = theme => ({
     position: "absolute",
     zIndex: 1,
     marginTop: theme.spacing.unit,
-    left: 0,
-    right: 0,
-    width: "300px"
+    left: "27%",
+    right: "25%",
+    width: 300
   },
   css1wy0on6: {
     //visibility: "hidden",
@@ -162,10 +162,11 @@ const components = {
   Option,
   Placeholder,
   SingleValue,
-  ValueContainer
+  ValueContainer,
+  DropdownIndicator: null
 };
 
-class SearchBar extends React.Component {
+class CitySearchBar extends React.Component {
   state = {
     single: null,
     multi: null
@@ -194,8 +195,8 @@ class SearchBar extends React.Component {
   }
 }
 
-SearchBar.propTypes = {
+CitySearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SearchBar);
+export default withStyles(styles)(CitySearchBar);
