@@ -6,7 +6,7 @@ class WaterHome extends Component {
   render() {
     return (
       <Grid>
-        <Typography variant="display2">WIP: Sound homepage</Typography>
+        <Typography variant="display2">WIP: Water homepage</Typography>
       </Grid>
     );
   }

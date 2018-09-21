@@ -23,7 +23,12 @@ const styles = theme => ({
     color: "white"
   },
   fa: {
-    padding: "0.5rem"
+    padding: "0.5rem",
+    transition: "all .5s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.1)",
+      color: "#f3f33"
+    }
   },
   connectContainer: {
     paddingTop: theme.spacing.unit * 5,
@@ -44,7 +49,10 @@ const styles = theme => ({
   footerButton: {
     color: "white",
     backgroundColor: "#2A2A2B",
-    borderRadius: "0"
+    borderRadius: "0",
+    "&:hover": {
+      color: "#424143"
+    }
   },
   footerInput: {
     width: "190px",
@@ -65,7 +73,10 @@ const styles = theme => ({
   },
   buttonLink: {
     textDecoration: "none",
-    color: "white"
+    color: "white",
+    "&:hover": {
+      color: "#424143"
+    }
   }
 });
 

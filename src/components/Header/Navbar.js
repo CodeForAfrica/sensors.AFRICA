@@ -21,25 +21,53 @@ const styles = theme => ({
     paddingLeft: "8%"
   },
   airText: {
-    color: "#2FB56B"
+    color: "#2FB56B",
+    transition: "all .5s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.1)",
+      color: "#f3f33"
+    }
   },
   waterText: {
-    color: "#4972B8"
+    color: "#4972B8",
+    transition: "all .5s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.1)",
+      color: "#f3f33"
+    }
   },
   soundText: {
-    color: "#B64598"
+    color: "#B64598",
+    transition: "all .5s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.1)",
+      color: "#f3f33"
+    }
   },
   fa: {
     padding: theme.spacing.unit * 1.5,
-    color: "#2FB56B"
+    color: "#2FB56B",
+    transition: "all .5s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.1)",
+      color: "#f3f33"
+    }
   },
   searchFa: {
     padding: theme.spacing.unit * 1.5,
     color: "#454545"
   },
-  link: {
+  airlink: {
     textDecoration: "none",
     color: "#2FB56B"
+  },
+  waterlink: {
+    textDecoration: "none",
+    color: "#4972B8"
+  },
+  soundlink: {
+    textDecoration: "none",
+    color: "#B64598"
   }
 });
 
@@ -57,12 +85,21 @@ class Navbar extends Component {
               alignItems="center"
             >
               <MenuItem className={classes.airText}>
-                <Link to="/air/home" className={classes.link}>
+                <Link to="/air/home" className={classes.airlink}>
                   AIR
                 </Link>
               </MenuItem>
-              <MenuItem className={classes.waterText}>WATER</MenuItem>
-              <MenuItem className={classes.soundText}>SOUND</MenuItem>
+
+              <MenuItem className={classes.waterText}>
+                <Link to="/water/home" className={classes.waterlink}>
+                  WATER
+                </Link>
+              </MenuItem>
+              <MenuItem className={classes.soundText}>
+                <Link to="/sound/home" className={classes.soundlink}>
+                  SOUND
+                </Link>
+              </MenuItem>
             </Grid>
 
             <Grid
