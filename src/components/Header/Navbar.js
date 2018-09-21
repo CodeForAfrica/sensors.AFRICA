@@ -49,7 +49,7 @@ const styles = theme => ({
     color: "#2FB56B",
     transition: "all .5s ease-in-out",
     "&:hover": {
-      transform: "scale(1.1)",
+      transform: "scale(1.3)",
       color: "#f3f33"
     }
   },

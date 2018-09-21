@@ -21,31 +21,19 @@ const styles = {
     backgroundColor: "#2FB56B",
     borderRadius: 0,
     height: 250,
-    width: 250,
-    transition: "all .3s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)"
-    }
+    width: 250
   },
   waterCard: {
     backgroundColor: "#4972B8",
     borderRadius: 0,
     height: 250,
-    width: 250,
-    transition: "all .1s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)"
-    }
+    width: 250
   },
   soundCard: {
     backgroundColor: "#B64598",
     borderRadius: 0,
     height: 250,
-    width: 250,
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)"
-    }
+    width: 250
   }
 };
 
