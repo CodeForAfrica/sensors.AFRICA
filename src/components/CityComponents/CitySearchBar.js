@@ -189,7 +189,7 @@ class CitySearchBar extends React.Component {
           components={components}
           value={this.state.single}
           onChange={this.handleChange("single")}
-          placeholder="Search a city ...."
+          placeholder="Search for your city ...."
         />
       </div>
     );
