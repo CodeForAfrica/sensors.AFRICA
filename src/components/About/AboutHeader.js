@@ -11,7 +11,7 @@ import AboutHeaderContent from "../Header/JumbotronContent/AboutHeaderContent.js
 
 const styles = {
   jumbotron: {
-    backgroundColor: "#454545",
+    backgroundColor: "#2FB56B",
     height: "400px",
     borderRadius: "none"
   }
