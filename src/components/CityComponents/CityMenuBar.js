@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import CitySearchBar from "../CityComponents/CitySearchBar";
+import HambugerMenu from "../Hambuger/HambugerMenu";
 
 //import assets
 import logowhite from "../../assets/Logo-White.png";
-
 import Grid from "@material-ui/core/Grid";
-import ViewHeadline from "@material-ui/icons/ViewHeadline";
 
 const styles = {
   icon: {
@@ -29,7 +28,7 @@ class MenuBar extends Component {
         </Grid>
 
         <Grid className={classes.iconContainer}>
-          <ViewHeadline className={classes.icon} />
+          <HambugerMenu />
         </Grid>
       </Grid>
     );

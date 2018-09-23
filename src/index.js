@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Home from "pages/Home";
-import About from "pages/About";
+import About from "pages/air/About";
 import City from "pages/air/City";
 import AirHome from "pages/air/AirHome";
 import SoundHome from "pages/sound/SoundHome";
@@ -24,7 +24,7 @@ ReactDOM.render(
     <div>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
+        <Route path="/air/about" component={About} />
         <Route path="/air/city" component={City} />
         <Route path="/air/home" component={AirHome} />
         <Route path="/air/join-network" component={JoinNetwork} />
