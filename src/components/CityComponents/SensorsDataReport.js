@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
   button: {
-    backgroundColor: "#2FB56B",
+    backgroundColor: "#164B3E",
     color: "#fff",
     height: "50px",
     width: "100px",
@@ -60,11 +60,11 @@ class SensorsDataReport extends Component {
             style={{ paddingTop: "2rem" }}
           >
             <Button variant="contained" className={classes.button}>
-              Jan
+              03 Jan
             </Button>
             <p className={classes.buttonConnectText}>to</p>
             <Button variant="contained" className={classes.button}>
-              Jan
+              07 Jan
             </Button>
           </Grid>
           <Grid className={classes.container}>
@@ -88,6 +88,15 @@ class SensorsDataReport extends Component {
         <Grid container item xs={8}>
           <DataTable />
         </Grid>
+
+        <Grid
+          container
+          item
+          xs={12}
+          direction="row"
+          justify="center"
+          alignItems="center"
+        />
       </Grid>
     );
   }

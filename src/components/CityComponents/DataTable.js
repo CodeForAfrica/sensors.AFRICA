@@ -74,7 +74,7 @@ function DataTable(props) {
                 className={classes.data}
               >
                 <Typography variant="display2" className={classes.display2}>
-                  22.4
+                  12.5
                 </Typography>
                 <small className={classes.small}>%</small>
               </Grid>
@@ -92,7 +92,7 @@ function DataTable(props) {
               </Grid>
               <Grid container direction="row" justify="center">
                 <Typography variant="display2" className={classes.display2}>
-                  22.4
+                  5.0
                 </Typography>
                 <small className={classes.small}>%</small>
               </Grid>
@@ -110,7 +110,7 @@ function DataTable(props) {
               </Grid>
               <Grid container direction="row" justify="center">
                 <Typography variant="display2" className={classes.display2}>
-                  22.4
+                  208.6
                 </Typography>
                 <small className={classes.small}>db</small>
               </Grid>
@@ -133,7 +133,7 @@ function DataTable(props) {
               </Grid>
               <Grid container direction="row" justify="center">
                 <Typography variant="display2" className={classes.display2}>
-                  22.4
+                  12.5
                 </Typography>
                 <small className={classes.small}>%</small>
               </Grid>
@@ -151,7 +151,7 @@ function DataTable(props) {
               </Grid>
               <Grid container direction="row" justify="center">
                 <Typography variant="display2" className={classes.display2}>
-                  22.4
+                  5.0
                 </Typography>
                 <small className={classes.small}>%</small>
               </Grid>
@@ -169,7 +169,7 @@ function DataTable(props) {
               </Grid>
               <Grid container direction="row" justify="center">
                 <Typography variant="display2" className={classes.display2}>
-                  22.4
+                  208.6
                 </Typography>
                 <small className={classes.small}>db</small>
               </Grid>
@@ -190,7 +190,7 @@ function DataTable(props) {
               </Grid>
               <Grid container direction="row" justify="center">
                 <Typography variant="display2" className={classes.display2}>
-                  22.4
+                  12.5
                 </Typography>
                 <small className={classes.small}>%</small>
               </Grid>
@@ -208,7 +208,7 @@ function DataTable(props) {
               </Grid>
               <Grid container direction="row" justify="center">
                 <Typography variant="display2" className={classes.display2}>
-                  22.4
+                  5.0
                 </Typography>
                 <small className={classes.small}>%</small>
               </Grid>
@@ -226,7 +226,7 @@ function DataTable(props) {
               </Grid>
               <Grid container direction="row" justify="center">
                 <Typography variant="display2" className={classes.display2}>
-                  22.4
+                  208.6
                 </Typography>
                 <small className={classes.small}>db</small>
               </Grid>
