@@ -6,6 +6,7 @@ import Neighbourhood from "../../components/CityComponents/Neighbourhood";
 import StatisticsReport from "../../components/CityComponents/StatisticsReport";
 import CityHeader from "../../components/CityComponents/CityHeader";
 import CallToAction from "../../components/CityComponents/CallToAction";
+import SensorsDataReport from "../../components/CityComponents/SensorsDataReport";
 
 //import Api from "../../components/Api";
 //import Typography from "@material-ui/core/Typography";
@@ -18,6 +19,7 @@ class City extends Component {
         <CityHeader />
         <StatisticsReport />
         <Neighbourhood />
+        <SensorsDataReport />
         <CallToAction />
         <Footer />
       </Grid>
