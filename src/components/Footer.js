@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../assets/css/App.css";
-import partnerlogo from "../assets/images/logos/partners.png";
+import codeforafrica from "../assets/images/logos/codeforafricafooter.png";
+import innovateafrica from "../assets/images/logos/innovateafrica.png";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -23,7 +24,12 @@ const styles = theme => ({
     color: "white"
   },
   fa: {
-    padding: "0.5rem"
+    padding: "0.5rem",
+    transition: "all .5s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.3)",
+      color: "#f3f33"
+    }
   },
   connectContainer: {
     paddingTop: theme.spacing.unit * 5,
@@ -44,7 +50,10 @@ const styles = theme => ({
   footerButton: {
     color: "white",
     backgroundColor: "#2A2A2B",
-    borderRadius: "0"
+    borderRadius: "0",
+    "&:hover": {
+      color: "#424143"
+    }
   },
   footerInput: {
     width: "190px",
@@ -65,7 +74,10 @@ const styles = theme => ({
   },
   buttonLink: {
     textDecoration: "none",
-    color: "white"
+    color: "white",
+    "&:hover": {
+      color: "#424143"
+    }
   }
 });
 
@@ -178,13 +190,19 @@ class Footer extends Component {
               This initiative was seed-funded by innovateAFRICA, and is being
               incubated by Code for Africa
             </p>
-            <p>
-              <img
-                src={partnerlogo}
-                alt="Partner Logos"
-                className={classes.logoText}
-              />
-            </p>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+              <a href="https://codeforafrica.org/">
+                <img src={codeforafrica} alt="Code For Africa" />
+              </a>
+              <a href="https://www.innoafrica.org/">
+                <img src={innovateafrica} alt="Innovate Africa" />
+              </a>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
