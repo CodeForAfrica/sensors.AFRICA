@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Navbar from "../../components/Header/Navbar";
 import Footer from "../../components/Footer";
+import KenyaMap from "../../components/Maps/KenyaMap";
+
 import Neighbourhood from "../../components/CityComponents/Neighbourhood";
 import StatisticsReport from "../../components/CityComponents/StatisticsReport";
 import CityHeader from "../../components/CityComponents/CityHeader";
@@ -19,6 +21,7 @@ class City extends Component {
         <CityHeader />
         <StatisticsReport />
         <Neighbourhood />
+        <KenyaMap />
         <SensorsDataReport />
         <CallToAction />
         <Footer />
