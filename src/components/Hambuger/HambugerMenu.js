@@ -82,7 +82,7 @@ class HambugerMenu extends React.Component {
               </MenuItem>
             </Link>
 
-            <Link to="/about" className={classes.link}>
+            <Link to="/air/about" className={classes.link}>
               <MenuItem>
                 <Typography className={classes.typography} variant="subheading">
                   ABOUT
