@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { Card, CardContent, Button } from "@material-ui/core/";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-
+import { Link } from "react-router-dom";
 const styles = {
   root: {
     height: "450px"
@@ -79,7 +79,12 @@ class CallToAction extends Component {
                 ize="large"
                 className={classes.learnMorebutton}
               >
-                LEARN MORE
+                <Link
+                  to="/air/how-sensors-work"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  LEARN MORE
+                </Link>
               </Button>
             </Grid>
           </CardContent>
@@ -90,13 +95,18 @@ class CallToAction extends Component {
               GET YOUR CITY ON BOARD
             </Typography>
             <Grid className={classes.buttonContainer}>
-              <Button
-                variant="contained"
-                size="large"
-                className={classes.joinNowbutton}
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+                style={{ textDecoration: "none" }}
               >
-                JOIN NOW
-              </Button>
+                <Button
+                  variant="contained"
+                  size="large"
+                  className={classes.joinNowbutton}
+                >
+                  JOIN NOW
+                </Button>
+              </a>
             </Grid>
           </CardContent>
         </Card>
