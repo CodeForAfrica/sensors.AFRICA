@@ -112,7 +112,7 @@ class Footer extends Component {
               className={classes.icons}
             >
               <a
-                href="https://www.facebook.com/sensorsAFRICA"
+                href="https://www.facebook.com/sensorsAFRICA/#sensorsAFRICA"
                 className={classes.links}
               >
                 <FontAwesomeIcon
@@ -122,7 +122,7 @@ class Footer extends Component {
                 />
               </a>
               <a
-                href="https://twitter.com/sensorsAFRICA"
+                href="https://twitter.com/sensorsAFRICA/#sensorsAFRICA"
                 className={classes.links}
               >
                 <FontAwesomeIcon
