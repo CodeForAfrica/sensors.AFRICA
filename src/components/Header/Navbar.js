@@ -108,11 +108,11 @@ class Navbar extends Component {
               justify="flex-end"
               alignItems="center"
             >
-              <FontAwesomeIcon
+              {/*<FontAwesomeIcon
                 className={classes.searchFa}
                 icon="search"
                 size="lg"
-              />
+              />*/}
               <a href="https://www.facebook.com/sensorsAFRICA">
                 <FontAwesomeIcon
                   className={classes.fa}
@@ -127,13 +127,13 @@ class Navbar extends Component {
                   size="lg"
                 />
               </a>
-              <a href="">
+              {/*<a href="">
                 <FontAwesomeIcon
                   className={classes.fa}
                   icon={["fab", "instagram"]}
                   size="lg"
                 />
-              </a>
+    </a>*/}
             </Grid>
           </Toolbar>
         </AppBar>
