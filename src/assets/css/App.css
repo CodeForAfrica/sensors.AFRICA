@@ -1,24 +1,86 @@
 /* App css */
 
 .Image-section {
-    background-image:url('../images/background/bglanding.jpg');
-    background-repeat:no-repeat;
-    background-size:cover;
-    height:90vh;
-    max-width:100%;
+  background-image: url("../images/background/bglanding.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
+  max-width: 100%;
 }
 
 .Jumbotron {
-    padding-top:2rem;
-    height:350px;
-    background-image:url('../images/background/bgstories.jpg');
-    background-size: cover;
-    overflow:hidden;
+  padding-top: 2rem;
+  height: 350px;
+  background-image: url("../images/background/bgstories.jpg");
+  background-size: cover;
+  overflow: hidden;
 }
-.support{
-    height:40rem;
-    padding-top:12rem;
-    background-image:url('../images/background/bgsupport.jpg');
-    background-size: cover;
+.support {
+  height: 40rem;
+  padding-top: 12rem;
+  background-image: url("../images/background/bgsupport.jpg");
+  background-size: cover;
+}
+.list-ic li {
+  position: relative;
+}
+.list-ic li span {
+  display: inline-block;
+  font-weight: 800;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  line-height: 3em;
+  border-radius: 50%;
+  background: #18bc9c;
+  color: white;
+  position: relative;
+}
+.list-ic li::before {
+  content: "";
+  position: absolute;
+  background: black;
+  z-index: -1;
+  opacity: 0.1;
+}
+.list-ic.vertical {
+  padding: 0;
+  margin: 0;
+}
+.list-ic.vertical li {
+  list-style-type: none;
+  text-align: left;
+}
+.list-ic.vertical li::before {
+  top: -60px;
+  left: 31px;
+  width: 0.1em;
+  height: 8em;
+}
 
+.card {
+  display: inline-block;
+  position: relative;
+  background: pink;
+  padding: 15px;
+  padding-left: 30px;
+  margin-left: 30px;
+  margin-left: 3rem;
+  height: 80px;
+  width: 300px;
+  border-radius: none;
+}
+.card:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  margin-top: -30px;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-right: 30px solid pink;
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid transparent;
 }

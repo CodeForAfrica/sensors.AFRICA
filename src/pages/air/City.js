@@ -9,6 +9,7 @@ import StatisticsReport from "../../components/CityComponents/StatisticsReport";
 import CityHeader from "../../components/CityComponents/CityHeader";
 import CallToAction from "../../components/CityComponents/CallToAction";
 import SensorsDataReport from "../../components/CityComponents/SensorsDataReport";
+import HostSensor from "../../components/CityComponents/HostSensor";
 
 //import Api from "../../components/Api";
 //import Typography from "@material-ui/core/Typography";
@@ -19,6 +20,7 @@ class City extends Component {
       <Grid>
         <Navbar />
         <CityHeader />
+        <HostSensor />
         <StatisticsReport />
         <Neighbourhood />
         <KenyaMap />
