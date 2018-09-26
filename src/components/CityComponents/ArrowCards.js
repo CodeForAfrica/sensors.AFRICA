@@ -13,20 +13,18 @@ import {
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
-  tweetGrid: {},
   findOutMore: {
     color: "#164B3E"
-  },
-  card: {
-    marginLeft: "3rem",
-    height: "100px",
-    width: "300px"
   },
   buttonContained: {
     backgroundColor: "#2FB56B",
     color: "#fff",
     borderRadius: 0,
     margin: theme.spacing.unit * 2
+  },
+  body2: {
+    color: "black",
+    opacity: "0.8"
   }
 });
 
@@ -53,7 +51,7 @@ class ArrowCards extends Component {
             <span />
 
             <Card
-              className={classes.card}
+              className="card"
               container
               direction="row"
               justify="center"
@@ -62,29 +60,11 @@ class ArrowCards extends Component {
               <CardContent
                 style={{ textDecoration: "underline", textAlign: "center" }}
               >
-                <Typography variant="body2">Local Government</Typography>
-                <Typography variant="body2">Environment Ministry</Typography>
-              </CardContent>
-            </Card>
-          </ListItem>
-
-          <ListItem>
-            <span />
-            <Card
-              className={classes.card}
-              constainer
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
-              <CardContent
-                style={{ textDecoration: "underline", textAlign: "center" }}
-              >
-                <Typography variant="body2">
-                  @david answered the question about
+                <Typography variant="body2" className={classes.body2}>
+                  Local Government
                 </Typography>
-                <Typography variant="body2">
-                  What reports have been sent
+                <Typography variant="body2" className={classes.body2}>
+                  Environment Ministry
                 </Typography>
               </CardContent>
             </Card>
@@ -93,20 +73,21 @@ class ArrowCards extends Component {
           <ListItem>
             <span />
             <Card
-              className={classes.card}
+              className="card"
               constainer
               direction="row"
               justify="center"
               alignItems="center"
             >
-              <CardContent
-                style={{ textDecoration: "underline", textAlign: "center" }}
-              >
-                <Typography variant="body2">
-                  @david answered the question about
+              <CardContent style={{ textAlign: "center" }}>
+                <Typography variant="body2" className={classes.body2}>
+                  <b>
+                    <u>@david</u>
+                  </b>{" "}
+                  answered the question about
                 </Typography>
-                <Typography variant="body2">
-                  What reports have been sent
+                <Typography variant="body2" className={classes.body2}>
+                  <u>What Reports have been sent</u>
                 </Typography>
               </CardContent>
             </Card>
@@ -115,20 +96,44 @@ class ArrowCards extends Component {
           <ListItem>
             <span />
             <Card
-              className={classes.card}
+              className="card"
               constainer
               direction="row"
               justify="center"
               alignItems="center"
             >
-              <CardContent
-                style={{ textDecoration: "underline", textAlign: "center" }}
-              >
-                <Typography variant="body2">
-                  @david answered the question about
+              <CardContent style={{ textAlign: "center" }}>
+                <Typography variant="body2" className={classes.body2}>
+                  <b>
+                    <u>@david</u>
+                  </b>{" "}
+                  answered the question about
                 </Typography>
-                <Typography variant="body2">
-                  What reports have been sent
+                <Typography variant="body2" className={classes.body2}>
+                  <u>What Reports have been sent</u>
+                </Typography>
+              </CardContent>
+            </Card>
+          </ListItem>
+
+          <ListItem>
+            <span />
+            <Card
+              className="card"
+              constainer
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+              <CardContent style={{ textAlign: "center" }}>
+                <Typography variant="body2" className={classes.body2}>
+                  <b>
+                    <u>@david</u>
+                  </b>{" "}
+                  answered the question about
+                </Typography>
+                <Typography variant="body2" className={classes.body2}>
+                  <u>What Reports have been sent</u>
                 </Typography>
               </CardContent>
             </Card>
