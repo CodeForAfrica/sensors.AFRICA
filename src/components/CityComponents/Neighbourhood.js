@@ -6,8 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
-    paddingTop: theme.spacing.unit * 4,
-    paddingBottom: theme.spacing.unit * 4
+    height: "400px"
   },
   offlineCard: {
     height: "220px",
@@ -54,130 +53,128 @@ class Neighbourhood extends Component {
         alignItems="center"
         className={classes.root}
       >
-        <Typography variant="headline" className={classes.headline}>
-          YOUR NEIGHBOURHOOD
-        </Typography>
-        <Grid
-          container
-          item
-          xs={12}
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
-          <Card className={classes.onlineCard}>
-            <CardContent className={classes.cardContent}>
-              <Typography variant="title" className={classes.onlineContent}>
-                ONLINE
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.onlineContent}
-              >
-                NEIGHBOURHOOD 1
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.caption}
-                style={{ color: "#fff" }}
-              >
-                This is a placeholder for text and more information
-              </Typography>
-            </CardContent>
-          </Card>
+        <Grid>
+          <Typography variant="headline" className={classes.headline}>
+            YOUR NEIGHBOURHOOD
+          </Typography>
+        </Grid>
 
-          <Card className={classes.offlineCard}>
-            <CardContent className={classes.cardContent}>
-              <Typography variant="title" className={classes.offlineContent}>
-                OFFLINE
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.offlineContent}
-              >
-                NEIGHBOURHOOD 1
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.caption}
-                style={{
-                  color: "grey",
-                  opacity: "0.4"
-                }}
-              >
-                This is a placeholder for text and more information
-              </Typography>
-            </CardContent>
-          </Card>
+        <Grid>
+          <Grid container direction="row" justify="center" alignItems="center">
+            <Card className={classes.onlineCard}>
+              <CardContent className={classes.cardContent}>
+                <Typography variant="title" className={classes.onlineContent}>
+                  ONLINE
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.onlineContent}
+                >
+                  NEIGHBOURHOOD 1
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.caption}
+                  style={{ color: "#fff" }}
+                >
+                  This is a placeholder for text and more information
+                </Typography>
+              </CardContent>
+            </Card>
 
-          <Card
-            className={classes.onlineCard}
-            style={{ backgroundColor: "#2FB56B" }}
-          >
-            <CardContent className={classes.cardContent}>
-              <Typography variant="title" className={classes.onlineContent}>
-                ONLINE
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.onlineContent}
-              >
-                NEIGHBOURHOOD 1
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.caption}
-                style={{ color: "#fff" }}
-              >
-                This is a placeholder for text and more information
-              </Typography>
-            </CardContent>
-          </Card>
+            <Card className={classes.offlineCard}>
+              <CardContent className={classes.cardContent}>
+                <Typography variant="title" className={classes.offlineContent}>
+                  OFFLINE
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.offlineContent}
+                >
+                  NEIGHBOURHOOD 1
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.caption}
+                  style={{
+                    color: "grey",
+                    opacity: "0.4"
+                  }}
+                >
+                  This is a placeholder for text and more information
+                </Typography>
+              </CardContent>
+            </Card>
 
-          <Card
-            className={classes.onlineCard}
-            style={{ backgroundColor: "#2FB56B" }}
-          >
-            <CardContent className={classes.cardContent}>
-              <Typography variant="title" className={classes.onlineContent}>
-                ONLINE
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.onlineContent}
-              >
-                NEIGHBOURHOOD 1
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.caption}
-                style={{ color: "#fff" }}
-              >
-                This is a placeholder for text and more information
-              </Typography>
-            </CardContent>
-          </Card>
+            <Card
+              className={classes.onlineCard}
+              style={{ backgroundColor: "#2FB56B" }}
+            >
+              <CardContent className={classes.cardContent}>
+                <Typography variant="title" className={classes.onlineContent}>
+                  ONLINE
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.onlineContent}
+                >
+                  NEIGHBOURHOOD 1
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.caption}
+                  style={{ color: "#fff" }}
+                >
+                  This is a placeholder for text and more information
+                </Typography>
+              </CardContent>
+            </Card>
 
-          <Card className={classes.offlineCard}>
-            <CardContent className={classes.cardContent}>
-              <Typography variant="title" className={classes.offlineContent}>
-                OFFLINE
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.offlineContent}
-              >
-                NEIGHBOURHOOD 1
-              </Typography>
-              <Typography
-                variant="subheading"
-                className={classes.caption}
-                style={{ color: "grey", opacity: "0.4" }}
-              >
-                This is a placeholder for text and more information
-              </Typography>
-            </CardContent>
-          </Card>
+            <Card
+              className={classes.onlineCard}
+              style={{ backgroundColor: "#2FB56B" }}
+            >
+              <CardContent className={classes.cardContent}>
+                <Typography variant="title" className={classes.onlineContent}>
+                  ONLINE
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.onlineContent}
+                >
+                  NEIGHBOURHOOD 1
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.caption}
+                  style={{ color: "#fff" }}
+                >
+                  This is a placeholder for text and more information
+                </Typography>
+              </CardContent>
+            </Card>
+
+            <Card className={classes.offlineCard}>
+              <CardContent className={classes.cardContent}>
+                <Typography variant="title" className={classes.offlineContent}>
+                  OFFLINE
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.offlineContent}
+                >
+                  NEIGHBOURHOOD 1
+                </Typography>
+                <Typography
+                  variant="subheading"
+                  className={classes.caption}
+                  style={{ color: "grey", opacity: "0.4" }}
+                >
+                  This is a placeholder for text and more information
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
       </Grid>
     );
