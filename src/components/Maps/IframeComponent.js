@@ -20,6 +20,7 @@ class KenyaMap extends Component {
         width={this.props.width}
         frameBorder={this.props.frameBorder}
         className={classes.fullheight}
+        scrollling={this.props.scrolling}
       />
     );
   }
