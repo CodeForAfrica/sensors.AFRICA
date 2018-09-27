@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Typography, Button } from "@material-ui/core";
-import DataTable from "./DataTable";
+import DataTable from "../../CityComponents/MeasureStats/DataTable";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = {

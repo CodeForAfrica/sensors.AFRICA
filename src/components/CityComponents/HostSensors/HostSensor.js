@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import ArrowCards from "./ArrowCards";
-import HostCard from "./HostCard";
-import HostSensorButtons from "../CityComponents/HostSensorButtons";
+import HostCard from "../HostSensors/HostCard";
+import HostSensorButtons from "../HostSensors/HostSensorButtons";
 
 const styles = theme => ({
   root: {

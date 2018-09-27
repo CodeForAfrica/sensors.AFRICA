@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 
 //import components
-import CityMenuBar from "../CityComponents/CityMenuBar";
+import CityMenuBar from "../../CityComponents/Header/CityMenuBar";
 
 const styles = {
   jumbotron: {

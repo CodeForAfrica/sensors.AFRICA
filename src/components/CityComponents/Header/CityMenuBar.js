@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import CitySearchBar from "../CityComponents/CitySearchBar";
-import HambugerMenu from "../Hambuger/HambugerMenu";
+import CitySearchBar from "../../CityComponents/Header/CitySearchBar";
+import HambugerMenu from "../../Hambuger/HambugerMenu";
 
 //import assets
-import logowhite from "../../assets/Logo-White.png";
+import logowhite from "../../../assets/Logo-White.png";
 import Grid from "@material-ui/core/Grid";
 
 const styles = {
