@@ -5,11 +5,11 @@ import Footer from "../../components/Footer";
 import KenyaMap from "../../components/Maps/KenyaMap";
 
 import Neighbourhood from "../../components/CityComponents/Neighbourhood";
-import StatisticsReport from "../../components/CityComponents/StatisticsReport";
-import CityHeader from "../../components/CityComponents/CityHeader";
+import CityHeader from "../../components/CityComponents/Header/CityHeader";
 import CallToAction from "../../components/CityComponents/CallToAction";
-import SensorsDataReport from "../../components/CityComponents/SensorsDataReport";
-import HostSensor from "../../components/CityComponents/HostSensor";
+import HostSensor from "../../components/CityComponents/HostSensors/HostSensor";
+import QualityStats from "../../components/CityComponents/SensorsQualityStats/QualityStats";
+import PollutionStats from "../../components/CityComponents/PollutionStats";
 
 //import Api from "../../components/Api";
 //import Typography from "@material-ui/core/Typography";
@@ -21,10 +21,10 @@ class City extends Component {
         <Navbar />
         <CityHeader />
         <HostSensor />
-        <StatisticsReport />
+        <PollutionStats />
         <Neighbourhood />
         <KenyaMap />
-        <SensorsDataReport />
+        <QualityStats />
         <CallToAction />
         <Footer />
       </Grid>
