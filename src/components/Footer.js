@@ -146,7 +146,7 @@ class Footer extends Component {
               alignitems="center"
               className={classes.footerMargin}
             >
-              <FormControl>
+              <FormControl style={{ margin: "0 auto" }}>
                 <Input
                   type="text"
                   id="you@gmail.com"
