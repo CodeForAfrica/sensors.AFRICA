@@ -56,7 +56,6 @@ const styles = theme => ({
     }
   },
   footerInput: {
-    width: "190px",
     backgroundColor: "white",
     border: "1px solid white"
   },
@@ -146,7 +145,7 @@ class Footer extends Component {
               alignitems="center"
               className={classes.footerMargin}
             >
-              <FormControl>
+              <FormControl style={{ width: "80%", margin: "0 auto" }}>
                 <Input
                   type="text"
                   id="you@gmail.com"
