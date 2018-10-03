@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Grid from '@material-ui/core/Grid';
 import Navbar from '../../components/Header/Navbar';
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
@@ -13,7 +12,7 @@ import AirHeader from '../../components/AirComponents/AirHeader';
 class AirHome extends Component {
     render() {
         return (
-            <Grid container item xs={12}>
+            <React.Fragment>
                 <Navbar />
                 <AirHeader />
                 <Issues />
@@ -21,7 +20,7 @@ class AirHome extends Component {
                 <Stories />
                 <Support />
                 <Footer />
-            </Grid>
+            </React.Fragment>
         );
     }
 }
