@@ -56,7 +56,6 @@ const styles = theme => ({
     }
   },
   footerInput: {
-    width: "190px",
     backgroundColor: "white",
     border: "1px solid white"
   },
