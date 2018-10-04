@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 //import components
 import CityMenuBar from "../../CityComponents/Header/CityMenuBar";
+import CityGauge from "../../CityComponents/Header/CityGauge";
 
 const styles = {
   jumbotron: {
@@ -22,6 +23,7 @@ class CityHeader extends Component {
     return (
       <Grid className={classes.jumbotron} container item={12}>
         <CityMenuBar />
+        <CityGauge />
       </Grid>
     );
   }
