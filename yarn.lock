@@ -8969,6 +8969,11 @@ react-fuzzy@^0.5.2:
     fuse.js "^3.0.1"
     prop-types "^15.5.9"
 
+react-gauge-capacity@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/react-gauge-capacity/-/react-gauge-capacity-1.9.0.tgz#f3eaad30bde2117258e058f95a9ea9eb3b0369e3"
+  integrity sha512-/ZkOm6/D4hAyQOr49vcacMgQ2+63znVoU1BTNC60icYX1FEpLAgjz+g71WG9yfuRcHcPyWrTiAUvGfbhC0G1cA==
+
 react-html-attributes@^1.4.2:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/react-html-attributes/-/react-html-attributes-1.4.3.tgz#8c36c35fce6b750938d286af428ed1da7625186e"
