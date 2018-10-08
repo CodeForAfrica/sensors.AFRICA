@@ -14,10 +14,7 @@ export default class CityGaugeContainer extends Component {
             NAIROBI, KENYA
           </Typography>
         </Grid>
-        <Grid container item xs={12} direction="column" justify="center"
-          alignItems="center"  style={{ paddingTop: "0.4rem", height: "308px" }}>
-          <CityGauge />
-        </Grid>
+        <CityGauge airPollMeasurement={32} />
       </Grid>
     );
   }
