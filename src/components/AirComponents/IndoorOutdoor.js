@@ -61,6 +61,7 @@ class IndoorOutdoor extends Component {
               Indoor pollution causes an estimated 4.3 million premature deaths
               each year.
             </Typography>
+<<<<<<< HEAD
             <a
               href="https://medium.com/code-for-africa/tagged/innovateafrica"
               className={classes.buttonLink}
@@ -75,6 +76,15 @@ class IndoorOutdoor extends Component {
                 READ MORE
               </Button>
             </a>
+=======
+            <Button
+              variant="outlined"
+              color="upload"
+              className={classes.indoorButton}
+            >
+              READ MORE
+            </Button>
+>>>>>>> ec8f8cb373519e97d52978a94877bdd2474f6fbc
           </CardContent>
         </Card>
 
@@ -88,6 +98,7 @@ class IndoorOutdoor extends Component {
               Outdoor pollution causes an estimated 4.2 million premature deaths
               each year.
             </Typography>
+<<<<<<< HEAD
             <a
               href="https://medium.com/code-for-africa/tagged/innovateafrica"
               className={classes.buttonLink}
@@ -102,6 +113,15 @@ class IndoorOutdoor extends Component {
                 READ MORE
               </Button>
             </a>
+=======
+            <Button
+              variant="contained"
+              color="upload"
+              className={classes.outdoorButton}
+            >
+              READ MORE
+            </Button>
+>>>>>>> ec8f8cb373519e97d52978a94877bdd2474f6fbc
           </CardContent>
         </Card>
       </Grid>
