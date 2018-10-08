@@ -4,6 +4,9 @@ import { Card, CardContent, Button } from "@material-ui/core/";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+
+const howToLink = props => <Link to="/air/how-sensors-work" {...props} />;
+
 const styles = {
   root: {
     height: "450px"
@@ -76,15 +79,11 @@ class CallToAction extends Component {
             <Grid className={classes.buttonContainer}>
               <Button
                 variant="contained"
-                ize="large"
+                size="large"
                 className={classes.learnMorebutton}
+                component={howToLink}
               >
-                <Link
-                  to="/air/how-sensors-work"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  LEARN MORE
-                </Link>
+                LEARN MORE
               </Button>
             </Grid>
           </CardContent>
@@ -98,6 +97,8 @@ class CallToAction extends Component {
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
                 style={{ textDecoration: "none" }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Button
                   variant="contained"

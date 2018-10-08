@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../assets/css/App.css";
-import codeforafrica from "../assets/images/logos/codeforafricafooter.png";
-import innovateafrica from "../assets/images/logos/innovateafrica.png";
+import codeforafrica from "../assets/images/logos/cfafrica_white.png";
+import innovateafrica from "../assets/images/logos/innovateafrica_white.png";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -114,6 +114,8 @@ class Footer extends Component {
               <a
                 href="https://www.facebook.com/sensorsAFRICA/#sensorsAFRICA"
                 className={classes.links}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FontAwesomeIcon
                   className={classes.fa}
@@ -124,6 +126,8 @@ class Footer extends Component {
               <a
                 href="https://twitter.com/sensorsAFRICA/#sensorsAFRICA"
                 className={classes.links}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FontAwesomeIcon
                   className={classes.fa}
@@ -155,14 +159,19 @@ class Footer extends Component {
                   className={classes.footerInput}
                 />
                 <p>
-                  <Button variant="contained" className={classes.footerButton}>
-                    <a
-                      href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
-                      className={classes.buttonLink}
+                  <a
+                    href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
+                    className={classes.buttonLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      variant="contained"
+                      className={classes.footerButton}
                     >
                       SUBSCRIBE TO UPDATES
-                    </a>
-                  </Button>
+                    </Button>
+                  </a>
                 </p>
               </FormControl>
             </Grid>
@@ -176,14 +185,16 @@ class Footer extends Component {
               uses sensors to monitor air, water and sound polution to give
               citizens actionable information about their cities.
             </p>
-            <Button variant="contained" className={classes.footerButton}>
-              <a
-                href="https://medium.com/code-for-africa/tagged/innovateafrica"
-                className={classes.buttonLink}
-              >
+            <a
+              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="contained" className={classes.footerButton}>
                 READ MORE
-              </a>
-            </Button>
+              </Button>
+            </a>
           </Grid>
           <Grid item xs={4}>
             <p className={classes.logoText}>
@@ -196,10 +207,18 @@ class Footer extends Component {
               justify="center"
               alignItems="center"
             >
-              <a href="https://codeforafrica.org/">
+              <a
+                href="https://codeforafrica.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={codeforafrica} alt="Code For Africa" />
               </a>
-              <a href="https://www.innoafrica.org/">
+              <a
+                href="https://www.innoafrica.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={innovateafrica} alt="Innovate Africa" />
               </a>
             </Grid>
