@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Grid, Typography } from "@material-ui/core";
+import React, { Component } from 'react';
+
+import { Grid, Typography } from '@material-ui/core';
 
 class WaterHome extends Component {
-  state = {};
   render() {
     return (
       <Grid>

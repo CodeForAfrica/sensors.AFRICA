@@ -1,19 +1,17 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-//import material components
-import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-//import components
-import MenuBar from "../Header/MenuBar.js";
-import AboutHeaderContent from "../Header/JumbotronContent/AboutHeaderContent.js";
+import MenuBar from '../Header/MenuBar';
+import AboutHeaderContent from '../Header/JumbotronContent/AboutHeaderContent';
 
 const styles = {
   jumbotron: {
-    backgroundColor: "#2FB56B",
-    height: "400px",
-    borderRadius: "none"
+    backgroundColor: '#2FB56B',
+    height: '400px',
+    borderRadius: 'none'
   }
 };
 
@@ -32,7 +30,7 @@ class AboutHeader extends Component {
   }
 }
 
-AboutHeader.PropTypes = {
+AboutHeader.propTypes = {
   classes: PropTypes.object.isRequired
 };
 

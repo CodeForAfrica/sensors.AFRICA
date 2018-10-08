@@ -1,73 +1,69 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AppBar, Grid, MenuItem, Toolbar } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import MenuItem from "@material-ui/core/MenuItem";
-
-import { withStyles } from "@material-ui/core/styles";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const styles = theme => ({
   root: {
     flex: 1,
-    backgroundColor: "#2e2e2e"
+    backgroundColor: '#2e2e2e'
   },
   toolbar: {
-    paddingRight: "8%",
-    paddingLeft: "8%"
+    paddingRight: '8%',
+    paddingLeft: '8%'
   },
   airText: {
-    color: "#2FB56B",
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)",
-      color: "#f3f33"
+    color: '#2FB56B',
+    transition: 'all .5s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      color: '#f3f33'
     }
   },
   waterText: {
-    color: "#4972B8",
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)",
-      color: "#f3f33"
+    color: '#4972B8',
+    transition: 'all .5s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      color: '#f3f33'
     }
   },
   soundText: {
-    color: "#B64598",
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)",
-      color: "#f3f33"
+    color: '#B64598',
+    transition: 'all .5s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      color: '#f3f33'
     }
   },
   fa: {
     padding: theme.spacing.unit * 1.5,
-    color: "#2FB56B",
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.3)",
-      color: "#f3f33"
+    color: '#2FB56B',
+    transition: 'all .5s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.3)',
+      color: '#f3f33'
     }
   },
   searchFa: {
     padding: theme.spacing.unit * 1.5,
-    color: "#454545"
+    color: '#454545'
   },
   airlink: {
-    textDecoration: "none",
-    color: "#2FB56B"
+    textDecoration: 'none',
+    color: '#2FB56B'
   },
   waterlink: {
-    textDecoration: "none",
-    color: "#4972B8"
+    textDecoration: 'none',
+    color: '#4972B8'
   },
   soundlink: {
-    textDecoration: "none",
-    color: "#B64598"
+    textDecoration: 'none',
+    color: '#B64598'
   }
 });
 
@@ -108,7 +104,7 @@ class Navbar extends Component {
               justify="flex-end"
               alignItems="center"
             >
-              {/*<FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 className={classes.searchFa}
                 icon="search"
                 size="lg"
@@ -120,7 +116,7 @@ class Navbar extends Component {
               >
                 <FontAwesomeIcon
                   className={classes.fa}
-                  icon={["fab", "facebook-f"]}
+                  icon={['fab', 'facebook-f']}
                   size="lg"
                 />
               </a>
@@ -131,11 +127,11 @@ class Navbar extends Component {
               >
                 <FontAwesomeIcon
                   className={classes.fa}
-                  icon={["fab", "twitter"]}
+                  icon={['fab', 'twitter']}
                   size="lg"
                 />
               </a>
-              {/*<a href="">
+              {/* <a href="">
                 <FontAwesomeIcon
                   className={classes.fa}
                   icon={["fab", "instagram"]}
@@ -150,7 +146,7 @@ class Navbar extends Component {
   }
 }
 
-Navbar.PropTypes = {
+Navbar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 

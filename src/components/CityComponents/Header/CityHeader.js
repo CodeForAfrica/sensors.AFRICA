@@ -1,18 +1,16 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-//import material components
-import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-//import components
-import CityMenuBar from "../../CityComponents/Header/CityMenuBar";
+import CityMenuBar from './CityMenuBar';
 
 const styles = {
   jumbotron: {
-    backgroundColor: "#2FB56B",
-    height: "400px",
-    borderRadius: "none"
+    backgroundColor: '#2FB56B',
+    height: '400px',
+    borderRadius: 'none'
   }
 };
 
@@ -27,7 +25,7 @@ class CityHeader extends Component {
   }
 }
 
-CityHeader.PropTypes = {
+CityHeader.propTypes = {
   classes: PropTypes.object.isRequired
 };
 

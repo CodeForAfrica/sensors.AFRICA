@@ -1,31 +1,31 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import { Card, CardContent } from "@material-ui/core/";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { Card, CardContent, Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    height: "400px"
+    height: '400px'
   },
   offlineCard: {
-    height: "220px",
-    width: "220px",
+    height: '220px',
+    width: '220px',
     borderRadius: 0,
     borderStyle: 0,
-    boxShadow: "none",
-    backgroundColor: "#f3f3fe"
+    boxShadow: 'none',
+    backgroundColor: '#f3f3fe'
   },
   onlineCard: {
-    height: "220px",
-    width: "220px",
+    height: '220px',
+    width: '220px',
     borderRadius: 0,
-    boxShadow: "none",
-    backgroundColor: "#2FB56B"
+    boxShadow: 'none',
+    backgroundColor: '#2FB56B'
   },
   cardContent: {
-    textAlign: "center",
-    color: "#fff"
+    textAlign: 'center',
+    color: '#fff'
   },
   caption: {
     paddingTop: theme.spacing.unit * 4
@@ -34,11 +34,11 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 4
   },
   offlineContent: {
-    color: "grey",
+    color: 'grey',
     opacity: 0.4
   },
   onlineContent: {
-    color: "#fff"
+    color: '#fff'
   }
 });
 
@@ -75,7 +75,7 @@ class Neighbourhood extends Component {
                 <Typography
                   variant="subheading"
                   className={classes.caption}
-                  style={{ color: "#fff" }}
+                  style={{ color: '#fff' }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
@@ -97,8 +97,8 @@ class Neighbourhood extends Component {
                   variant="subheading"
                   className={classes.caption}
                   style={{
-                    color: "grey",
-                    opacity: "0.4"
+                    color: 'grey',
+                    opacity: '0.4'
                   }}
                 >
                   This is a placeholder for text and more information
@@ -108,7 +108,7 @@ class Neighbourhood extends Component {
 
             <Card
               className={classes.onlineCard}
-              style={{ backgroundColor: "#2FB56B" }}
+              style={{ backgroundColor: '#2FB56B' }}
             >
               <CardContent className={classes.cardContent}>
                 <Typography variant="title" className={classes.onlineContent}>
@@ -123,7 +123,7 @@ class Neighbourhood extends Component {
                 <Typography
                   variant="subheading"
                   className={classes.caption}
-                  style={{ color: "#fff" }}
+                  style={{ color: '#fff' }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
@@ -132,7 +132,7 @@ class Neighbourhood extends Component {
 
             <Card
               className={classes.onlineCard}
-              style={{ backgroundColor: "#2FB56B" }}
+              style={{ backgroundColor: '#2FB56B' }}
             >
               <CardContent className={classes.cardContent}>
                 <Typography variant="title" className={classes.onlineContent}>
@@ -147,7 +147,7 @@ class Neighbourhood extends Component {
                 <Typography
                   variant="subheading"
                   className={classes.caption}
-                  style={{ color: "#fff" }}
+                  style={{ color: '#fff' }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
@@ -168,7 +168,7 @@ class Neighbourhood extends Component {
                 <Typography
                   variant="subheading"
                   className={classes.caption}
-                  style={{ color: "grey", opacity: "0.4" }}
+                  style={{ color: 'grey', opacity: '0.4' }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
@@ -181,4 +181,7 @@ class Neighbourhood extends Component {
   }
 }
 
+Neighbourhood.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(Neighbourhood);

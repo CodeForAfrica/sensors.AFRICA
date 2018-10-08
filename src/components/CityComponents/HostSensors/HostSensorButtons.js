@@ -1,21 +1,23 @@
-import React, { Component } from "react";
-import { Grid, Button } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { Grid, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   buttonContained: {
-    backgroundColor: "#2FB56B",
-    color: "#fff",
+    backgroundColor: '#2FB56B',
+    color: '#fff',
     borderRadius: 0,
     margin: theme.spacing.unit * 2
   },
   buttonOutlined: {
-    color: "#164B3E",
+    color: '#164B3E',
     borderRadius: 0,
     margin: theme.spacing.unit * 2
   },
   buttonLink: {
-    textDecoration: "none"
+    textDecoration: 'none'
   }
 });
 
@@ -78,4 +80,7 @@ class HostSensorButtons extends Component {
   }
 }
 
+HostSensorButtons.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(HostSensorButtons);

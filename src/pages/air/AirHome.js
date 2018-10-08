@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Navbar from "../../components/Header/Navbar";
-import Stories from "../../components/About/Stories";
-import Support from "../../components/Support";
-import Footer from "../../components/Footer";
-
-import Issues from "../../components/AirComponents/Issues";
-import IndoorOutdoor from "../../components/AirComponents/IndoorOutdoor";
-import AirHeader from "../../components/AirComponents/AirHeader";
+import Navbar from '../../components/Header/Navbar';
+import AirHeader from '../../components/AirComponents/AirHeader';
+import Footer from '../../components/Footer';
+import IndoorOutdoor from '../../components/AirComponents/IndoorOutdoor';
+import Issues from '../../components/AirComponents/Issues';
+import Stories from '../../components/About/Stories';
+import Support from '../../components/Support';
 
 class AirHome extends Component {
   render() {

@@ -1,17 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Select from "react-select";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import Paper from "@material-ui/core/Paper";
-import MenuItem from "@material-ui/core/MenuItem";
-import { withStyles } from "@material-ui/core/styles";
+import Select from 'react-select';
+
+import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const suggestions = [
-  { city: "Nairobi, Kenya" },
-  { city: "Lagos, Nigeria" },
-  { city: "Dar-es-Salaam, Tanzania" }
+  { city: 'Nairobi, Kenya' },
+  { city: 'Lagos, Nigeria' },
+  { city: 'Dar-es-Salaam, Tanzania' }
 ].map(suggestion => ({
   value: suggestion.city,
   label: suggestion.city
@@ -21,21 +19,21 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     height: 250,
-    paddingTop: "2.5rem",
-    width: "300px"
+    paddingTop: '2.5rem',
+    width: '300px'
   },
   input: {
-    display: "flex",
+    display: 'flex',
     padding: 0
   },
   valueContainer: {
-    display: "flex",
-    flexWrap: "wrap",
+    display: 'flex',
+    flexWrap: 'wrap',
     flex: 1,
-    alignItems: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,
-    width: "300px"
+    width: '300px'
   },
   noOptionsMessage: {
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
@@ -44,14 +42,14 @@ const styles = theme => ({
     fontSize: 16
   },
   placeholder: {
-    position: "absolute",
+    position: 'absolute',
     left: 2,
     fontSize: 18,
-    color: "#164B3E",
-    paddingLeft: "1rem"
+    color: '#164B3E',
+    paddingLeft: '1rem'
   },
   paper: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing.unit,
     left: 0,
@@ -59,7 +57,7 @@ const styles = theme => ({
   },
   css1wy0on6: {
     //visibility: "hidden",
-    width: "0"
+    width: '0'
   }
 });
 
@@ -146,7 +144,7 @@ function ValueContainer(props) {
 function Menu(props) {
   return (
     <Paper
-      style={{ width: "300px" }}
+      style={{ width: '300px' }}
       square
       className={props.selectProps.classes.paper}
       {...props.innerProps}
@@ -168,16 +166,18 @@ const components = {
 };
 
 class CitySearchBar extends React.Component {
-  state = {
-    single: null,
-    multi: null
-  };
+  constructor(props) {
+    super(props);
 
-  handleChange = name => value => {
-    this.setState({
-      [name]: value
-    });
-  };
+    this.state = {
+      single: null
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(value) {
+    this.setState({ single: value });
+  }
 
   render() {
     const { classes } = this.props;
@@ -188,7 +188,7 @@ class CitySearchBar extends React.Component {
           options={suggestions}
           components={components}
           value={this.state.single}
-          onChange={this.handleChange("single")}
+          onChange={this.handleChange}
           placeholder="Search for your city ...."
         />
       </div>

@@ -1,20 +1,19 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
   titleSection: {
-    textAlign: "center",
-    paddingTop: "2rem",
-    paddingRight: "25%",
-    paddingLeft: "25%"
+    textAlign: 'center',
+    paddingTop: '2rem',
+    paddingRight: '25%',
+    paddingLeft: '25%'
   },
   headerText: {
-    color: "white",
-    paddingBottom: "1rem"
+    color: 'white',
+    paddingBottom: '1rem'
   }
 };
 
@@ -34,7 +33,7 @@ class JoinNetworkContent extends Component {
   }
 }
 
-JoinNetworkContent.PropTypes = {
+JoinNetworkContent.propTypes = {
   classes: PropTypes.object.isRequired
 };
 

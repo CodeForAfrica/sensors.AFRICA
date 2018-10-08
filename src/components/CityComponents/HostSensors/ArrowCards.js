@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "../../../assets/css/App.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Card,
@@ -9,22 +9,24 @@ import {
   List,
   CardContent,
   Button
-} from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+import '../../../assets/css/App.css';
 
 const styles = theme => ({
   findOutMore: {
-    color: "#164B3E"
+    color: '#164B3E'
   },
   buttonContained: {
-    backgroundColor: "#2FB56B",
-    color: "#fff",
+    backgroundColor: '#2FB56B',
+    color: '#fff',
     borderRadius: 0,
     margin: theme.spacing.unit * 2
   },
   body2: {
-    color: "black",
-    opacity: "0.8"
+    color: 'black',
+    opacity: '0.8'
   }
 });
 
@@ -42,7 +44,7 @@ class ArrowCards extends Component {
       >
         <Typography
           variant="body2"
-          style={{ marginLeft: "4.5rem", color: "green" }}
+          style={{ marginLeft: '4.5rem', color: 'green' }}
         >
           WHO CAN I REPORT AIR SENSORS QUALITY TO?
         </Typography>
@@ -58,7 +60,7 @@ class ArrowCards extends Component {
               alignItems="center"
             >
               <CardContent
-                style={{ textDecoration: "underline", textAlign: "center" }}
+                style={{ textDecoration: 'underline', textAlign: 'center' }}
               >
                 <Typography variant="body2" className={classes.body2}>
                   Local Government
@@ -79,11 +81,11 @@ class ArrowCards extends Component {
               justify="center"
               alignItems="center"
             >
-              <CardContent style={{ textAlign: "center" }}>
+              <CardContent style={{ textAlign: 'center' }}>
                 <Typography variant="body2" className={classes.body2}>
                   <b>
                     <u>@david</u>
-                  </b>{" "}
+                  </b>{' '}
                   answered the question about
                 </Typography>
                 <Typography variant="body2" className={classes.body2}>
@@ -102,11 +104,11 @@ class ArrowCards extends Component {
               justify="center"
               alignItems="center"
             >
-              <CardContent style={{ textAlign: "center" }}>
+              <CardContent style={{ textAlign: 'center' }}>
                 <Typography variant="body2" className={classes.body2}>
                   <b>
                     <u>@david</u>
-                  </b>{" "}
+                  </b>{' '}
                   answered the question about
                 </Typography>
                 <Typography variant="body2" className={classes.body2}>
@@ -125,11 +127,11 @@ class ArrowCards extends Component {
               justify="center"
               alignItems="center"
             >
-              <CardContent style={{ textAlign: "center" }}>
+              <CardContent style={{ textAlign: 'center' }}>
                 <Typography variant="body2" className={classes.body2}>
                   <b>
                     <u>@david</u>
-                  </b>{" "}
+                  </b>{' '}
                   answered the question about
                 </Typography>
                 <Typography variant="body2" className={classes.body2}>
@@ -154,4 +156,7 @@ class ArrowCards extends Component {
   }
 }
 
+ArrowCards.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(ArrowCards);

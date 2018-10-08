@@ -1,38 +1,39 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { Grid, Card, CardContent, Typography, Button } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Grid, Card, CardContent, Typography, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {},
   card: {
-    height: "600px",
-    width: "450px",
-    backgroundColor: "#2FB56B",
+    height: '600px',
+    width: '450px',
+    backgroundColor: '#2FB56B',
     borderRadius: 0
   },
   cardContent: {
-    textAlign: "center",
-    paddingTop: "25%"
+    textAlign: 'center',
+    paddingTop: '25%'
   },
   display1: {
-    color: "#fff",
-    paddingTop: "2rem"
+    color: '#fff',
+    paddingTop: '2rem'
   },
   body2: {
-    color: "#fff",
+    color: '#fff',
     paddingTop: theme.spacing.unit * 4
   },
   caption: {
-    color: "#fff",
-    paddingTop: "2rem",
-    textDecoration: "underline"
+    color: '#fff',
+    paddingTop: '2rem',
+    textDecoration: 'underline'
   },
   cardButtonOutlined: {
     paddingTop: theme.spacing.unit * 3
   },
   buttonLink: {
-    textDecoration: "none"
+    textDecoration: 'none'
   }
 });
 
@@ -62,7 +63,7 @@ class HostCard extends Component {
             </Typography>
             <Typography
               variant="caption"
-              style={{ color: "#fff", textDecoration: "underline" }}
+              style={{ color: '#fff', textDecoration: 'underline' }}
             >
               Environment Ministry
             </Typography>
@@ -89,4 +90,7 @@ class HostCard extends Component {
   }
 }
 
+HostCard.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(HostCard);

@@ -1,16 +1,19 @@
-import React, { Component } from "react";
-import { Grid, Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import IframeComponent from "../Maps/IframeComponent";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+import IframeComponent from './IframeComponent';
 
 const styles = {
   root: {
-    height: "550px",
-    width: "100%",
-    paddingBottom: "1rem"
+    height: '550px',
+    width: '100%',
+    paddingBottom: '1rem'
   },
   subheading: {
-    margin: "3rem"
+    margin: '3rem'
   }
 };
 
@@ -37,4 +40,7 @@ class KenyaMap extends Component {
   }
 }
 
+KenyaMap.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(KenyaMap);

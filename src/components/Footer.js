@@ -1,34 +1,36 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  Button,
+  FormControl,
+  Grid,
+  Input,
+  Typography
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-import "../assets/css/App.css";
-import codeforafrica from "../assets/images/logos/cfafrica_white.png";
-import innovateafrica from "../assets/images/logos/innovateafrica_white.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import { Input, FormControl } from "@material-ui/core";
-
-import { withStyles } from "@material-ui/core/styles";
+import '../assets/css/App.css';
+import codeforafrica from '../assets/images/logos/cfafrica_white.png';
+import innovateafrica from '../assets/images/logos/innovateafrica_white.png';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    color: "white",
-    backgroundColor: "#424143"
+    color: 'white',
+    backgroundColor: '#424143'
   },
   titles: {
-    color: "white"
+    color: 'white'
   },
   fa: {
-    padding: "0.5rem",
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.3)",
-      color: "#f3f33"
+    padding: '0.5rem',
+    transition: 'all .5s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.3)',
+      color: '#f3f33'
     }
   },
   connectContainer: {
@@ -42,52 +44,57 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 2
   },
   aboutContainer: {
-    textAlign: "center",
+    textAlign: 'center',
     padding: theme.spacing.unit * 3,
-    borderLeft: "1px solid white",
-    borderRight: "1px solid white"
+    borderLeft: '1px solid white',
+    borderRight: '1px solid white'
   },
   footerButton: {
-    color: "white",
-    backgroundColor: "#2A2A2B",
-    borderRadius: "0",
-    "&:hover": {
-      color: "#424143"
+    color: 'white',
+    backgroundColor: '#2A2A2B',
+    borderRadius: '0',
+    '&:hover': {
+      color: '#424143'
     }
   },
   footerInput: {
-    width: "190px",
-    backgroundColor: "white",
-    border: "1px solid white"
+    width: '190px',
+    backgroundColor: 'white',
+    border: '1px solid white'
   },
   logoText: {
-    textAlign: "center",
+    textAlign: 'center',
     paddingTop: theme.spacing.unit * 4,
     paddingLeft: theme.spacing.unit * 3
   },
   logoItems: {
-    textAlign: "center",
+    textAlign: 'center',
     paddingLeft: theme.spacing.unit * 3
   },
   links: {
-    color: "white"
+    color: 'white'
   },
   buttonLink: {
-    textDecoration: "none",
-    color: "white",
-    "&:hover": {
-      color: "#424143"
+    textDecoration: 'none',
+    color: 'white',
+    '&:hover': {
+      color: '#424143'
     }
   }
 });
 
 class Footer extends Component {
-  state = {
-    value: "you@gmail.com"
-  };
-  handleChange = event => {
-    this.setState({ value: event.target.value });
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = { value: 'you@gmail.com' };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -119,7 +126,7 @@ class Footer extends Component {
               >
                 <FontAwesomeIcon
                   className={classes.fa}
-                  icon={["fab", "facebook-f"]}
+                  icon={['fab', 'facebook-f']}
                   size="lg"
                 />
               </a>
@@ -131,14 +138,14 @@ class Footer extends Component {
               >
                 <FontAwesomeIcon
                   className={classes.fa}
-                  icon={["fab", "twitter"]}
+                  icon={['fab', 'twitter']}
                   size="lg"
                 />
               </a>
               <a href="" className={classes.links}>
                 <FontAwesomeIcon
                   className={classes.fa}
-                  icon={["fab", "instagram"]}
+                  icon={['fab', 'instagram']}
                   size="lg"
                 />
               </a>
@@ -150,7 +157,7 @@ class Footer extends Component {
               alignitems="center"
               className={classes.footerMargin}
             >
-              <FormControl style={{ margin: "0 auto" }}>
+              <FormControl style={{ margin: '0 auto' }}>
                 <Input
                   type="text"
                   id="you@gmail.com"

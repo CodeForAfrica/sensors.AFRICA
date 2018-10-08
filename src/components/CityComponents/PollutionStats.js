@@ -1,39 +1,40 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
   root: {
-    height: "400px"
+    height: '400px'
   },
   centerGrid: {
-    borderRight: "1px solid  rgba(0, 0, 0, 0.2)",
-    borderLeft: "1px solid  rgba(0, 0, 0, 0.2)",
-    height: "250px",
-    paddingTop: "2rem",
-    paddingLeft: "2rem",
-    paddingRight: "2rem",
-    textAlign: "center"
+    borderRight: '1px solid  rgba(0, 0, 0, 0.2)',
+    borderLeft: '1px solid  rgba(0, 0, 0, 0.2)',
+    height: '250px',
+    paddingTop: '2rem',
+    paddingLeft: '2rem',
+    paddingRight: '2rem',
+    textAlign: 'center'
   },
   innnergrid: {
-    margin: "5rem",
-    borderTop: "1px solid  rgba(0, 0, 0, 0.2)"
+    margin: '5rem',
+    borderTop: '1px solid  rgba(0, 0, 0, 0.2)'
   },
   maingrid: {
-    margin: "3rem",
-    paddingTop: "4rem"
+    margin: '3rem',
+    paddingTop: '4rem'
   },
   grid: {
-    height: "250px",
-    textAlign: "center",
-    paddingRight: "2rem",
-    paddingLeft: "2rem",
-    paddingTop: "2rem"
+    height: '250px',
+    textAlign: 'center',
+    paddingRight: '2rem',
+    paddingLeft: '2rem',
+    paddingTop: '2rem'
   },
   highlight: {
-    color: "#2FB56B",
-    fontWeight: "500"
+    color: '#2FB56B',
+    fontWeight: '500'
   }
 };
 
@@ -76,7 +77,7 @@ class PollutionStats extends Component {
               <div>
                 <Typography
                   variant="subheading"
-                  style={{ paddingBottom: "1rem" }}
+                  style={{ paddingBottom: '1rem' }}
                 >
                   The top illness caused by air pollution in kenya is
                 </Typography>
@@ -87,20 +88,20 @@ class PollutionStats extends Component {
             </Grid>
 
             <Grid container item xs={4} className={classes.grid}>
-              <div style={{ paddingRight: "1rem", paddingLeft: "1rem" }}>
+              <div style={{ paddingRight: '1rem', paddingLeft: '1rem' }}>
                 <Typography variant="subheading">
                   <b>POLLUTION LEVELS IN NAIROBI</b>
                 </Typography>
                 <Typography
                   variant="subheading"
-                  style={{ paddingTop: "1rem", paddingBottom: "1rem" }}
+                  style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
                 >
                   The air in Nairobi has an annual average of
                 </Typography>
                 <Typography
                   variant="display1"
                   className={classes.highlight}
-                  style={{ paddingBottom: "1rem" }}
+                  style={{ paddingBottom: '1rem' }}
                 >
                   17 ug/m3
                 </Typography>
@@ -116,4 +117,7 @@ class PollutionStats extends Component {
   }
 }
 
+PollutionStats.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(PollutionStats);

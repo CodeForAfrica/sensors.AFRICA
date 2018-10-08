@@ -1,40 +1,43 @@
-import React, { Component } from "react";
-import { Grid, Typography, Button } from "@material-ui/core";
-import DataTable from "../../CityComponents/SensorsQualityStats/DataTable";
-import { withStyles } from "@material-ui/core/styles";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { Grid, Typography, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+import DataTable from './DataTable';
 
 const styles = {
   root: {
-    height: "100vh"
+    height: '100vh'
   },
   innergrid: {
-    margin: "4rem"
+    margin: '4rem'
   },
   button: {
-    backgroundColor: "#164B3E",
-    color: "#fff",
-    height: "50px",
-    width: "100px",
+    backgroundColor: '#164B3E',
+    color: '#fff',
+    height: '50px',
+    width: '100px',
     borderRadius: 0
   },
   container: {
-    textAlign: "center",
-    paddingTop: "0.4rem"
+    textAlign: 'center',
+    paddingTop: '0.4rem'
   },
   buttonConnectText: {
-    margin: "2rem"
+    margin: '2rem'
   },
   display2: {
-    color: "#2fb568"
+    color: '#2fb568'
   },
   caption: {
-    textAlign: "center",
-    margin: "2rem"
+    textAlign: 'center',
+    margin: '2rem'
   },
   small: {
-    paddingTop: "1rem",
-    color: "#2fb568",
-    fontSize: "1.5rem"
+    paddingTop: '1rem',
+    color: '#2fb568',
+    fontSize: '1.5rem'
   }
 };
 
@@ -52,13 +55,13 @@ class SensorsDataReport extends Component {
             justify="center"
             alignItems="center"
           >
-            {/*Start first row grid*/}
+            {/*Start first row grid */}
             <Grid
               container
               direction="row"
               justify="center"
               alignItems="center"
-              style={{ paddingTop: "2rem" }}
+              style={{ paddingTop: '2rem' }}
             >
               <Button variant="contained" className={classes.button}>
                 03 Jan
@@ -70,7 +73,7 @@ class SensorsDataReport extends Component {
             </Grid>
 
             <Grid className={classes.container}>
-              <Typography variant="subheading" style={{ margin: "1rem" }}>
+              <Typography variant="subheading" style={{ margin: '1rem' }}>
                 SUB HEADING
               </Typography>
               <Grid container direction="row" justify="center">
@@ -87,7 +90,7 @@ class SensorsDataReport extends Component {
             </Grid>
           </Grid>
 
-          {/*Start second row grid */}
+          {/* Start second row grid */}
           <Grid
             container
             item
@@ -104,4 +107,7 @@ class SensorsDataReport extends Component {
   }
 }
 
+SensorsDataReport.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(SensorsDataReport);

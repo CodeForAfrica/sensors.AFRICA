@@ -1,37 +1,38 @@
-import React from "react";
-import PropTypes from "prop-types";
-import MenuButton from "../Hambuger/MenuButton";
-import { withStyles } from "@material-ui/core/styles";
-import { List, MenuItem } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import Modal from "@material-ui/core/Modal";
-import { Typography } from "@material-ui/core";
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import { withStyles } from '@material-ui/core/styles';
+import { List, MenuItem, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import Modal from '@material-ui/core/Modal';
+
+import MenuButton from './MenuButton';
 
 const styles = theme => ({
   paper: {
-    position: "absolute",
+    position: 'absolute',
     width: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4
   },
   list: {
-    color: "white"
+    color: 'white'
   },
   modalContent: {
-    margin: "auto",
-    padding: "20px",
-    width: "40%",
-    height: "auto",
-    position: "fixed",
-    top: "15%",
-    left: "80%"
+    margin: 'auto',
+    padding: '20px',
+    width: '40%',
+    height: 'auto',
+    position: 'fixed',
+    top: '15%',
+    left: '80%'
   },
   typography: {
-    color: "#fff"
+    color: '#fff'
   },
   link: {
-    textDecoration: "none"
+    textDecoration: 'none'
   }
 });
 
@@ -41,14 +42,17 @@ class HambugerMenu extends React.Component {
     this.state = {
       menuOpen: false
     };
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
-  handleOpen = () => {
-    this.setState({ menuOpen: true });
-  };
 
-  handleClose = () => {
+  handleOpen() {
+    this.setState({ menuOpen: true });
+  }
+
+  handleClose() {
     this.setState({ menuOpen: false });
-  };
+  }
 
   render() {
     const { classes } = this.props;

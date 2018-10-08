@@ -1,11 +1,13 @@
-import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
   fullHeight: {
-    height: "90vh",
-    display: "inline-block",
-    margin: "0 auto"
+    height: '90vh',
+    display: 'inline-block',
+    margin: '0 auto'
   }
 };
 
@@ -26,4 +28,7 @@ class KenyaMap extends Component {
   }
 }
 
+KenyaMap.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(KenyaMap);

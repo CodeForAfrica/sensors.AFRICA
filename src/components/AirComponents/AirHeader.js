@@ -1,19 +1,17 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-//import material components
-import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-//import components
-import MenuBar from "../Header/MenuBar";
-import AirHeaderContent from "../Header/JumbotronContent/AirHeaderContent";
+import AirHeaderContent from '../Header/JumbotronContent/AirHeaderContent';
+import MenuBar from '../Header/MenuBar';
 
 const styles = {
   jumbotron: {
-    backgroundColor: "#2FB56B",
-    height: "400px",
-    borderRadius: "none"
+    backgroundColor: '#2FB56B',
+    height: '400px',
+    borderRadius: 'none'
   }
 };
 
@@ -29,7 +27,7 @@ class AirHeader extends Component {
   }
 }
 
-AirHeader.PropTypes = {
+AirHeader.propTypes = {
   classes: PropTypes.object.isRequired
 };
 

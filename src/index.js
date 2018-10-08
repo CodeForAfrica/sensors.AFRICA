@@ -1,26 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Home from "pages/Home";
-import About from "pages/air/About";
-import City from "pages/air/City";
-import AirHome from "pages/air/AirHome";
-import SoundHome from "pages/sound/SoundHome";
-import WaterHome from "pages/water/WaterHome";
-import JoinNetwork from "pages/air/JoinNetwork";
-import HowSensorsWork from "./pages/air/HowSensorsWork";
+import fontawesome from '@fortawesome/fontawesome';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faSearch } from '@fortawesome/fontawesome-free-solid';
 
-import "../src/assets/css/index.css";
-import fontawesome from "@fortawesome/fontawesome";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faSearch } from "@fortawesome/fontawesome-free-solid";
+import Home from './pages/Home';
+import About from './pages/air/About';
+import City from './pages/air/City';
+import AirHome from './pages/air/AirHome';
+import SoundHome from './pages/sound/SoundHome';
+import WaterHome from './pages/water/WaterHome';
+import JoinNetwork from './pages/air/JoinNetwork';
+import HowSensorsWork from './pages/air/HowSensorsWork';
+
+import './assets/css/index.css';
 
 fontawesome.library.add(fab, faSearch);
 
 ReactDOM.render(
   <BrowserRouter>
-    {/* Declare routes for the app*/}
     <div>
       <Switch>
         <Route exact path="/" component={Home} />
@@ -34,5 +34,5 @@ ReactDOM.render(
       </Switch>
     </div>
   </BrowserRouter>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

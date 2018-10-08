@@ -1,25 +1,23 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import "../../assets/css/App.css";
-import "../../assets/images/background/bgstories.jpg";
+import { Button, Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import '../../assets/css/App.css';
+import '../../assets/images/background/bgstories.jpg';
 
 const styles = {
   titleSection: {
-    textAlign: "center",
-    color: "white"
+    textAlign: 'center',
+    color: 'white'
   },
   button: {
-    paddingTop: "2rem"
+    paddingTop: '2rem'
   },
   buttonLink: {
-    textDecoration: "none",
-    color: "black"
+    textDecoration: 'none',
+    color: 'black'
   }
 };
 
@@ -37,7 +35,7 @@ class Stories extends Component {
         >
           <Typography
             variant="display2"
-            style={{ color: "white", textTrandform: "Uppercase" }}
+            style={{ color: 'white', textTrandform: 'Uppercase' }}
           >
             SENSORS STORIES
           </Typography>
@@ -57,7 +55,7 @@ class Stories extends Component {
   }
 }
 
-Stories.PropTypes = {
+Stories.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
