@@ -30,6 +30,9 @@ const styles = theme => ({
   },
   cardButtonOutlined: {
     paddingTop: theme.spacing.unit * 3
+  },
+  buttonLink: {
+    textDecoration: "none"
   }
 });
 
@@ -64,7 +67,12 @@ class HostCard extends Component {
               Environment Ministry
             </Typography>
             <p className={classes.cardButtonOutlined}>
-              <a href="">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+                className={classes.buttonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button
                   variant="contained"
                   size="large"
