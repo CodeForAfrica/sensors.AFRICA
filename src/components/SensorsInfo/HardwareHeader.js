@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -15,26 +15,23 @@ const styles = {
   }
 };
 
-class HardwareHeader extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.jumbotron}>
-        <MenuBar />
-        <HardwareHeaderContent
-          title="THE SENSORS & THEIR INNER WORKING"
-          subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur 
-                    turpis id ipsum volutpat laoreet. Nunc tempor tincidunt ex consequat rhoncus. 
-                    Aenean condimentum metus enim, et congue lorem ultricies vitae. Vestibulum nec 
+function HardwareHeader({ classes }) {
+  return (
+    <Grid className={classes.jumbotron}>
+      <MenuBar />
+      <HardwareHeaderContent
+        title="THE SENSORS & THEIR INNER WORKING"
+        subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur
+                    turpis id ipsum volutpat laoreet. Nunc tempor tincidunt ex consequat rhoncus.
+                    Aenean condimentum metus enim, et congue lorem ultricies vitae. Vestibulum nec
                     orci a nisl volutpat faucibus eget sit amet mauris"
-          secondsubheading="Suspendisse varius tortor augue, sit amet pulvinar leo mollis et. Morbi 
-                    cursus non urna a vulputate. Proin fermentum vitae ipsum sit amet viverra. Cras 
+        secondsubheading="Suspendisse varius tortor augue, sit amet pulvinar leo mollis et. Morbi
+                    cursus non urna a vulputate. Proin fermentum vitae ipsum sit amet viverra. Cras
                     ut libero rhoncus, pellentesque ipsum a, lobortis nisi. Etiam sed risus ultricies,
                     tempus dui a, accumsan quam. "
-        />
-      </Grid>
-    );
-  }
+      />
+    </Grid>
+  );
 }
 
 HardwareHeader.propTypes = {

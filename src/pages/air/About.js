@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // import components
 import Stories from '../../components/About/Stories';
@@ -9,20 +9,18 @@ import Staff from '../../components/About/Staff';
 import Footer from '../../components/Footer';
 import Support from '../../components/Support';
 
-class About extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Navbar />
-        <AboutHeader />
-        <Partners />
-        <Staff />
-        <Stories />
-        <Support />
-        <Footer />
-      </React.Fragment>
-    );
-  }
+function About() {
+  return (
+    <React.Fragment>
+      <Navbar />
+      <AboutHeader />
+      <Partners />
+      <Staff />
+      <Stories />
+      <Support />
+      <Footer />
+    </React.Fragment>
+  );
 }
 
 export default About;

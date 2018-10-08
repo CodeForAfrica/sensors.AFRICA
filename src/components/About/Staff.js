@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Card, CardMedia, Grid, Typography } from '@material-ui/core';
@@ -21,80 +21,77 @@ const styles = theme => ({
   }
 });
 
-class Staff extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <React.Fragment>
-        <Typography variant="heading" align="center">
-          COLLABORATION AND STAFF
-        </Typography>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          align="center"
-          className={classes.root}
-        >
-          <Grid item xs={4}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-            <Typography variant="title">Name.Surname</Typography>
-            <Typography variant="subheading">
-              Editor at codeforafrica.org
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-            <Typography variant="title">Name.Surname</Typography>
-            <Typography variant="subheading">
-              Editor at codeforafrica.org
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-            <Typography variant="title">Name.Surname</Typography>
-            <Typography variant="subheading">
-              Editor at codeforafrica.org
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-            <Typography variant="title">Name.Surname</Typography>
-            <Typography variant="subheading">
-              Editor at codeforafrica.org
-            </Typography>
-          </Grid>
-
-          <Grid item xs={4}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-            <Typography variant="title">Name.Surname</Typography>
-            <Typography variant="subheading">
-              Editor at codeforafrica.org
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-            <Typography variant="title">Name.Surname</Typography>
-            <Typography variant="subheading">
-              Editor at codeforafrica.org
-            </Typography>
-          </Grid>
+function Staff({ classes }) {
+  return (
+    <React.Fragment>
+      <Typography variant="heading" align="center">
+        COLLABORATION AND STAFF
+      </Typography>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        align="center"
+        className={classes.root}
+      >
+        <Grid item xs={4}>
+          <Card className={classes.card}>
+            <CardMedia className={classes.cardMedia} title="Team" />
+          </Card>
+          <Typography variant="title">Name.Surname</Typography>
+          <Typography variant="subheading">
+            Editor at codeforafrica.org
+          </Typography>
         </Grid>
-      </React.Fragment>
-    );
-  }
+        <Grid item xs={4}>
+          <Card className={classes.card}>
+            <CardMedia className={classes.cardMedia} title="Team" />
+          </Card>
+          <Typography variant="title">Name.Surname</Typography>
+          <Typography variant="subheading">
+            Editor at codeforafrica.org
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Card className={classes.card}>
+            <CardMedia className={classes.cardMedia} title="Team" />
+          </Card>
+          <Typography variant="title">Name.Surname</Typography>
+          <Typography variant="subheading">
+            Editor at codeforafrica.org
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Card className={classes.card}>
+            <CardMedia className={classes.cardMedia} title="Team" />
+          </Card>
+          <Typography variant="title">Name.Surname</Typography>
+          <Typography variant="subheading">
+            Editor at codeforafrica.org
+          </Typography>
+        </Grid>
+
+        <Grid item xs={4}>
+          <Card className={classes.card}>
+            <CardMedia className={classes.cardMedia} title="Team" />
+          </Card>
+          <Typography variant="title">Name.Surname</Typography>
+          <Typography variant="subheading">
+            Editor at codeforafrica.org
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Card className={classes.card}>
+            <CardMedia className={classes.cardMedia} title="Team" />
+          </Card>
+          <Typography variant="title">Name.Surname</Typography>
+          <Typography variant="subheading">
+            Editor at codeforafrica.org
+          </Typography>
+        </Grid>
+      </Grid>
+    </React.Fragment>
+  );
 }
 
 Staff.propTypes = {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Grid, Typography } from '@material-ui/core';
 
@@ -12,31 +12,29 @@ const mainContainer = {
   paddingRight: '33%'
 };
 
-class Hero extends Component {
-  render() {
-    return (
-      <Grid container item xs={12} className="Image-section">
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          style={mainContainer}
+function Hero() {
+  return (
+    <Grid container item xs={12} className="Image-section">
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        style={mainContainer}
+      >
+        <img src={logowhite} alt="partners logo" />
+        <Typography
+          variant="headline"
+          align="center"
+          style={{ color: 'white' }}
         >
-          <img src={logowhite} alt="partners logo" />
-          <Typography
-            variant="headline"
-            align="center"
-            style={{ color: 'white' }}
-          >
-            We are here to give you actionable information about the quality of
-            your air, water and sound.
-          </Typography>
-        </Grid>
-        <TestQuality />
+          We are here to give you actionable information about the quality of
+          your air, water and sound.
+        </Typography>
       </Grid>
-    );
-  }
+      <TestQuality />
+    </Grid>
+  );
 }
 
 export default Hero;

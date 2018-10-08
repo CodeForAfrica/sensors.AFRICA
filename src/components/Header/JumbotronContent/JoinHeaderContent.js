@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
@@ -17,24 +17,27 @@ const styles = {
   }
 };
 
-class JoinNetworkContent extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.titleSection}>
-        <Typography variant="display2" className={classes.headerText}>
-          {this.props.title}
-        </Typography>
-        <Typography variant="subheading" className={classes.headerText}>
-          {this.props.subheading}
-        </Typography>
-      </Grid>
-    );
-  }
+function JoinNetworkContent({ classes, title, subheading }) {
+  return (
+    <Grid className={classes.titleSection}>
+      <Typography variant="display2" className={classes.headerText}>
+        {title}
+      </Typography>
+      <Typography variant="subheading" className={classes.headerText}>
+        {subheading}
+      </Typography>
+    </Grid>
+  );
 }
 
 JoinNetworkContent.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string,
+  subheading: PropTypes.string
+};
+JoinNetworkContent.defaultProps = {
+  title: '',
+  subheading: ''
 };
 
 export default withStyles(styles)(JoinNetworkContent);

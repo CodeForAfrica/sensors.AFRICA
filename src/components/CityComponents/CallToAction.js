@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -65,61 +65,58 @@ const styles = {
   }
 };
 
-class CallToAction extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid
-        container
-        item
-        xs={12}
-        direction="row"
-        justify="center"
-        className={classes.root}
-      >
-        <Card container item xs={6} className={classes.sensorsWorkCard}>
-          <CardContent className={classes.cardContent}>
-            <Typography variant="display1" className={classes.typography}>
-              HOW DO SENSORS WORK?
-            </Typography>
-            <Grid className={classes.buttonContainer}>
+function CallToAction({ classes }) {
+  return (
+    <Grid
+      container
+      item
+      xs={12}
+      direction="row"
+      justify="center"
+      className={classes.root}
+    >
+      <Card container item xs={6} className={classes.sensorsWorkCard}>
+        <CardContent className={classes.cardContent}>
+          <Typography variant="display1" className={classes.typography}>
+            HOW DO SENSORS WORK?
+          </Typography>
+          <Grid className={classes.buttonContainer}>
+            <Button
+              variant="contained"
+              size="large"
+              className={classes.learnMorebutton}
+              component={howToLink}
+            >
+              LEARN MORE
+            </Button>
+          </Grid>
+        </CardContent>
+      </Card>
+      <Card container item xs={6} className={classes.joinNowCard}>
+        <CardContent className={classes.cardContent}>
+          <Typography variant="display1" className={classes.typography}>
+            GET YOUR CITY ON BOARD
+          </Typography>
+          <Grid className={classes.buttonContainer}>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+              style={{ textDecoration: 'none' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="contained"
                 size="large"
-                className={classes.learnMorebutton}
-                component={howToLink}
+                className={classes.joinNowbutton}
               >
-                LEARN MORE
+                JOIN NOW
               </Button>
-            </Grid>
-          </CardContent>
-        </Card>
-        <Card container item xs={6} className={classes.joinNowCard}>
-          <CardContent className={classes.cardContent}>
-            <Typography variant="display1" className={classes.typography}>
-              GET YOUR CITY ON BOARD
-            </Typography>
-            <Grid className={classes.buttonContainer}>
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-                style={{ textDecoration: 'none' }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="contained"
-                  size="large"
-                  className={classes.joinNowbutton}
-                >
-                  JOIN NOW
-                </Button>
-              </a>
-            </Grid>
-          </CardContent>
-        </Card>
-      </Grid>
-    );
-  }
+            </a>
+          </Grid>
+        </CardContent>
+      </Card>
+    </Grid>
+  );
 }
 
 CallToAction.propTypes = {

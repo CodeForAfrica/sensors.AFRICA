@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-// Import asset images
 import business from '../../assets/images/logos/business.png';
 import premium from '../../assets/images/logos/premium.png';
 import guardian from '../../assets/images/logos/guardian.png';
@@ -26,53 +25,50 @@ const styles = {
   }
 };
 
-class Partners extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid container>
-        <Grid container direction="row" justify="center">
-          <Typography
-            variant="subheading"
-            item
-            xs={3}
-            className={classes.typography}
-          >
-            Media partners
-          </Typography>
-          <Grid contianer direction="row" justify="center" align="center">
-            <img item xs={3} src={business} alt="Business Daily Logo" />
-            <img item xs={3} src={premium} alt="Premium Times Logo" />
-            <img item xs={3} src={guardian} alt="The guardian Logo" />
-            <img item xs={3} src={nation} alt="The nation Logo" />
-            <img item xs={3} src={star} alt="The Star Logo" />
-            <img item xs={3} src={womanng} alt="Woman NG Logo" />
-            <img item xs={3} src={dailynation} alt="Daily Nation Logo" />
-            <img item xs={3} src={cable} alt="The Cable Logo" />
-          </Grid>
-        </Grid>
-
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
+function Partners({ classes }) {
+  return (
+    <Grid container>
+      <Grid container direction="row" justify="center">
+        <Typography
+          variant="subheading"
+          item
+          xs={3}
+          className={classes.typography}
         >
-          <Grid item xs={12}>
-            <Typography variant="subheading" className={classes.typography}>
-              In partnership with
-            </Typography>
-          </Grid>
-          <Grid item>
-            <img src={code} alt="Code for Africa" />
-          </Grid>
-          <Grid item>
-            <img src={innovate} alt="innovateAFRICA" />
-          </Grid>
+          Media partners
+        </Typography>
+        <Grid contianer direction="row" justify="center" align="center">
+          <img item xs={3} src={business} alt="Business Daily Logo" />
+          <img item xs={3} src={premium} alt="Premium Times Logo" />
+          <img item xs={3} src={guardian} alt="The guardian Logo" />
+          <img item xs={3} src={nation} alt="The nation Logo" />
+          <img item xs={3} src={star} alt="The Star Logo" />
+          <img item xs={3} src={womanng} alt="Woman NG Logo" />
+          <img item xs={3} src={dailynation} alt="Daily Nation Logo" />
+          <img item xs={3} src={cable} alt="The Cable Logo" />
         </Grid>
       </Grid>
-    );
-  }
+
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
+      >
+        <Grid item xs={12}>
+          <Typography variant="subheading" className={classes.typography}>
+            In partnership with
+          </Typography>
+        </Grid>
+        <Grid item>
+          <img src={code} alt="Code for Africa" />
+        </Grid>
+        <Grid item>
+          <img src={innovate} alt="innovateAFRICA" />
+        </Grid>
+      </Grid>
+    </Grid>
+  );
 }
 
 Partners.propTypes = {

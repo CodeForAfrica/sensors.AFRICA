@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -67,83 +67,80 @@ const styles = theme => ({
   }
 });
 
-class Navbar extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid container item xs={12}>
-        <AppBar position="static" className={classes.root} item xs={12}>
-          <Toolbar className={classes.toolbar}>
-            <Grid
-              container
-              direction="row"
-              justify="flex-start"
-              alignItems="center"
-            >
-              <MenuItem className={classes.airText}>
-                <Link to="/air/home" className={classes.airlink}>
-                  AIR
-                </Link>
-              </MenuItem>
+function Navbar({ classes }) {
+  return (
+    <Grid container item xs={12}>
+      <AppBar position="static" className={classes.root} item xs={12}>
+        <Toolbar className={classes.toolbar}>
+          <Grid
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="center"
+          >
+            <MenuItem className={classes.airText}>
+              <Link to="/air/home" className={classes.airlink}>
+                AIR
+              </Link>
+            </MenuItem>
 
-              <MenuItem className={classes.waterText}>
-                <Link to="/water/home" className={classes.waterlink}>
-                  WATER
-                </Link>
-              </MenuItem>
-              <MenuItem className={classes.soundText}>
-                <Link to="/sound/home" className={classes.soundlink}>
-                  SOUND
-                </Link>
-              </MenuItem>
-            </Grid>
+            <MenuItem className={classes.waterText}>
+              <Link to="/water/home" className={classes.waterlink}>
+                WATER
+              </Link>
+            </MenuItem>
+            <MenuItem className={classes.soundText}>
+              <Link to="/sound/home" className={classes.soundlink}>
+                SOUND
+              </Link>
+            </MenuItem>
+          </Grid>
 
-            <Grid
-              container
-              direction="row"
-              justify="flex-end"
-              alignItems="center"
-            >
-              {/* <FontAwesomeIcon
+          <Grid
+            container
+            direction="row"
+            justify="flex-end"
+            alignItems="center"
+          >
+            {/* <FontAwesomeIcon
                 className={classes.searchFa}
                 icon="search"
                 size="lg"
-              />*/}
-              <a
-                href="https://www.facebook.com/sensorsAFRICA"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon
-                  className={classes.fa}
-                  icon={['fab', 'facebook-f']}
-                  size="lg"
-                />
-              </a>
-              <a
-                href="https://twitter.com/sensorsAFRICA"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon
-                  className={classes.fa}
-                  icon={['fab', 'twitter']}
-                  size="lg"
-                />
-              </a>
-              {/* <a href="">
+              /> */}
+            <a
+              href="https://www.facebook.com/sensorsAFRICA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon
+                className={classes.fa}
+                icon={['fab', 'facebook-f']}
+                size="lg"
+              />
+            </a>
+            <a
+              href="https://twitter.com/sensorsAFRICA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon
+                className={classes.fa}
+                icon={['fab', 'twitter']}
+                size="lg"
+              />
+            </a>
+            {/* <a href="">
                 <FontAwesomeIcon
                   className={classes.fa}
                   icon={["fab", "instagram"]}
                   size="lg"
                 />
-    </a>*/}
-            </Grid>
-          </Toolbar>
-        </AppBar>
-      </Grid>
-    );
-  }
+    </a> */}
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    </Grid>
+  );
 }
 
 Navbar.propTypes = {

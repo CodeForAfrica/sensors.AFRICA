@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -15,19 +15,16 @@ const styles = {
   }
 };
 
-class AboutHeader extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.jumbotron}>
-        <MenuBar />
-        <AboutHeaderContent
-          title="About Sensors.AFRICA"
-          subheading="sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities.The initiative was seed-funded by innovateAFRICA, and is being incubated by Code For Africa"
-        />
-      </Grid>
-    );
-  }
+function AboutHeader({ classes }) {
+  return (
+    <Grid className={classes.jumbotron}>
+      <MenuBar />
+      <AboutHeaderContent
+        title="About Sensors.AFRICA"
+        subheading="sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities.The initiative was seed-funded by innovateAFRICA, and is being incubated by Code For Africa"
+      />
+    </Grid>
+  );
 }
 
 AboutHeader.propTypes = {

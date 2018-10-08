@@ -1,16 +1,32 @@
-import React from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-class MenuButton extends React.Component {
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  container: {
+    height: '32px',
+    width: '32px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    cursor: 'pointer',
+    padding: '4px'
+  }
+};
+class MenuButton extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      open: this.props.open ? this.props.open : false,
-      color: this.props.color ? this.props.color : "white"
-    };
+
+    const { open } = props;
+    this.state = { open };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.open !== this.state.open) {
+    const { open } = this.state;
+    if (nextProps.open !== open) {
       this.setState({ open: nextProps.open });
     } else {
       this.setState({ open: true });
@@ -18,59 +34,58 @@ class MenuButton extends React.Component {
   }
 
   handleClick() {
-    this.setState({ open: !this.state.open });
+    this.setState(prevState => ({ open: !prevState.open }));
   }
 
   render() {
-    const styles = {
-      container: {
-        height: "32px",
-        width: "32px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        cursor: "pointer",
-        padding: "4px"
-      },
+    const { classes, color, onClick } = this.props;
+    const { open } = this.setState;
+    const dynamicStyles = {
       line: {
-        height: "2px",
-        width: "20px",
-        background: this.state.color,
-        transition: "all 0.2s ease"
+        height: '2px',
+        width: '20px',
+        background: color,
+        transition: 'all 0.2s ease'
       },
       lineTop: {
-        transform: this.state.open ? "rotate(45deg)" : "none",
-        transformOrigin: "top left",
-        marginBottom: "5px"
+        transform: open ? 'rotate(45deg)' : 'none',
+        transformOrigin: 'top left',
+        marginBottom: '5px'
       },
       lineMiddle: {
-        opacity: this.state.open ? 0 : 1,
-        transform: this.state.open ? "translateX(-16px)" : "none"
+        opacity: open ? 0 : 1,
+        transform: open ? 'translateX(-16px)' : 'none'
       },
       lineBottom: {
-        transform: this.state.open ? "translateX(-1px) rotate(-45deg)" : "none",
-        transformOrigin: "top left",
-        marginTop: "5px"
+        transform: open ? 'translateX(-1px) rotate(-45deg)' : 'none',
+        transformOrigin: 'top left',
+        marginTop: '5px'
       }
     };
     return (
       <div
-        style={styles.container}
-        onClick={
-          this.props.onClick
-            ? this.props.onClick
-            : () => {
-                this.handleClick();
-              }
-        }
+        className={classes.container}
+        onClick={onClick || this.handleClick()}
+        role="button"
+        tabIndex="0"
       >
-        <div style={{ ...styles.line, ...styles.lineTop }} />
-        <div style={{ ...styles.line, ...styles.lineMiddle }} />
-        <div style={{ ...styles.line, ...styles.lineBottom }} />
+        <div style={{ ...dynamicStyles.line, ...dynamicStyles.lineTop }} />
+        <div style={{ ...dynamicStyles.line, ...dynamicStyles.lineMiddle }} />
+        <div style={{ ...dynamicStyles.line, ...dynamicStyles.lineBottom }} />
       </div>
     );
   }
 }
 
-export default MenuButton;
+MenuButton.propTypes = {
+  classes: PropTypes.object.isRequired,
+  color: PropTypes.string,
+  onClick: PropTypes.func,
+  open: PropTypes.bool
+};
+MenuButton.defaultProps = {
+  color: 'white',
+  onClick: null,
+  open: false
+};
+export default withStyles(styles)(MenuButton);

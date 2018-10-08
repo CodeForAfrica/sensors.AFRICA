@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
@@ -20,27 +20,37 @@ const styles = {
   }
 };
 
-class HardwareInfoHeaderContent extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.titleSection}>
-        <Typography variant="display1" className={classes.headerText}>
-          {this.props.title}
-        </Typography>
-        <Typography variant="subheading" className={classes.headerText}>
-          {this.props.subheading}
-        </Typography>
-        <Typography variant="subheading" className={classes.headerText}>
-          {this.props.secondsubheading}
-        </Typography>
-      </Grid>
-    );
-  }
+function HardwareInfoHeaderContent({
+  classes,
+  title,
+  subheading,
+  secondsubheading
+}) {
+  return (
+    <Grid className={classes.titleSection}>
+      <Typography variant="display1" className={classes.headerText}>
+        {title}
+      </Typography>
+      <Typography variant="subheading" className={classes.headerText}>
+        {subheading}
+      </Typography>
+      <Typography variant="subheading" className={classes.headerText}>
+        {secondsubheading}
+      </Typography>
+    </Grid>
+  );
 }
 
 HardwareInfoHeaderContent.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string,
+  subheading: PropTypes.string,
+  secondsubheading: PropTypes.string
 };
 
+HardwareInfoHeaderContent.defaultProps = {
+  title: '',
+  subheading: '',
+  secondsubheading: ''
+};
 export default withStyles(styles)(HardwareInfoHeaderContent);

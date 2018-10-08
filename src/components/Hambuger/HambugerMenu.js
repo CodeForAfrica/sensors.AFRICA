@@ -56,19 +56,20 @@ class HambugerMenu extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { menuOpen } = this.state;
 
     return (
       <div>
         <MenuButton
-          open={this.state.menuOpen}
+          open={menuOpen}
           onClick={() => this.handleOpen()}
           onClose={this.handleClose}
         />
         <Modal
           className={classes.modalContent}
-          open={this.state.menuOpen}
+          open={menuOpen}
           onClose={this.handleClose}
-          disableAutoFocus={true}
+          disableAutoFocus
         >
           <List
             container

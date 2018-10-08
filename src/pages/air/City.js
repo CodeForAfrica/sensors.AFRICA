@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
 
@@ -12,22 +12,20 @@ import HostSensor from '../../components/CityComponents/HostSensors/HostSensor';
 import QualityStats from '../../components/CityComponents/SensorsQualityStats/QualityStats';
 import PollutionStats from '../../components/CityComponents/PollutionStats';
 
-class City extends Component {
-  render() {
-    return (
-      <Grid>
-        <Navbar />
-        <CityHeader />
-        <HostSensor />
-        <PollutionStats />
-        <Neighbourhood />
-        <KenyaMap />
-        <QualityStats />
-        <CallToAction />
-        <Footer />
-      </Grid>
-    );
-  }
+function City() {
+  return (
+    <Grid>
+      <Navbar />
+      <CityHeader />
+      <HostSensor />
+      <PollutionStats />
+      <Neighbourhood />
+      <KenyaMap />
+      <QualityStats />
+      <CallToAction />
+      <Footer />
+    </Grid>
+  );
 }
 
 export default City;

@@ -51,9 +51,7 @@ const styles = theme => ({
   }
 });
 
-function DataTable(props) {
-  const { classes } = props;
-
+function DataTable({ classes }) {
   return (
     <Grid className={classes.root}>
       <Table className={classes.table}>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Button, Grid, Typography } from '@material-ui/core';
@@ -21,38 +21,35 @@ const styles = {
   }
 };
 
-class Stories extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className="Jumbotron" container item xs={12}>
-        <Grid
-          className={classes.titleSection}
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
+function Stories({ classes }) {
+  return (
+    <Grid className="Jumbotron" container item xs={12}>
+      <Grid
+        className={classes.titleSection}
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        <Typography
+          variant="display2"
+          style={{ color: 'white', textTrandform: 'Uppercase' }}
         >
-          <Typography
-            variant="display2"
-            style={{ color: 'white', textTrandform: 'Uppercase' }}
+          SENSORS STORIES
+        </Typography>
+        <div className={classes.button}>
+          <a
+            href="https://medium.com/code-for-africa/tagged/innovateafrica"
+            className={classes.buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            SENSORS STORIES
-          </Typography>
-          <div className={classes.button}>
-            <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="contained">READ ON MEDIUM</Button>
-            </a>
-          </div>
-        </Grid>
+            <Button variant="contained">READ ON MEDIUM</Button>
+          </a>
+        </div>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
 Stories.propTypes = {

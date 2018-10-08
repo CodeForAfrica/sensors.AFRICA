@@ -56,19 +56,18 @@ const styles = theme => ({
     right: 0
   },
   css1wy0on6: {
-    //visibility: "hidden",
     width: '0'
   }
 });
 
-function NoOptionsMessage(props) {
+function NoOptionsMessage({ children, innerProps, selectProps }) {
   return (
     <Typography
       color="textSecondary"
-      className={props.selectProps.classes.noOptionsMessage}
-      {...props.innerProps}
+      className={selectProps.classes.noOptionsMessage}
+      {...innerProps}
     >
-      {props.children}
+      {children}
     </Typography>
   );
 }
@@ -77,83 +76,70 @@ function inputComponent({ inputRef, ...props }) {
   return <div ref={inputRef} {...props} />;
 }
 
-function Control(props) {
+function Control({ children, innerProps, innerRef, selectProps }) {
   return (
     <TextField
       InputProps={{
         inputComponent,
         inputProps: {
-          className: props.selectProps.classes.input,
-          inputRef: props.innerRef,
-          children: props.children,
-          ...props.innerProps
+          className: selectProps.classes.input,
+          inputRef: innerRef,
+          children,
+          ...innerProps
         }
       }}
-      {...props.selectProps.textFieldProps}
+      {...selectProps.textFieldProps}
     />
   );
 }
 
-function Option(props) {
+function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
   return (
     <MenuItem
-      buttonRef={props.innerRef}
-      selected={props.isFocused}
+      buttonRef={innerRef}
+      selected={isFocused}
       component="div"
       style={{
-        fontWeight: props.isSelected ? 500 : 400
+        fontWeight: isSelected ? 500 : 400
       }}
-      {...props.innerProps}
+      {...innerProps}
     >
-      {props.children}
+      {children}
     </MenuItem>
   );
 }
 
-function Placeholder(props) {
+function Placeholder({ children, innerProps, selectProps }) {
   return (
     <Typography
       color="textSecondary"
-      className={props.selectProps.classes.placeholder}
-      {...props.innerProps}
+      className={selectProps.classes.placeholder}
+      {...innerProps}
     >
-      {props.children}
+      {children}
     </Typography>
   );
 }
 
-function SingleValue(props) {
+function SingleValue({ children, innerProps, selectProps }) {
   return (
-    <Typography
-      className={props.selectProps.classes.singleValue}
-      {...props.innerProps}
-    >
-      {props.children}
+    <Typography className={selectProps.classes.singleValue} {...innerProps}>
+      {children}
     </Typography>
   );
 }
 
-function ValueContainer(props) {
-  return (
-    <div className={props.selectProps.classes.valueContainer}>
-      {props.children}
-    </div>
-  );
+function ValueContainer({ children, selectProps }) {
+  return <div className={selectProps.classes.valueContainer}>{children}</div>;
 }
 
-function Menu(props) {
+function Menu({ children, innerProps, selectProps }) {
   return (
-    <Paper
-      style={{ width: '300px' }}
-      square
-      className={props.selectProps.classes.paper}
-      {...props.innerProps}
-    >
-      {props.children}
+    <Paper square className={selectProps.classes.paper} {...innerProps}>
+      {children}
     </Paper>
   );
 }
-
 const components = {
   Control,
   Menu,
@@ -181,13 +167,14 @@ class CitySearchBar extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { single } = this.state;
     return (
       <div className={classes.root}>
         <Select
           classes={classes}
           options={suggestions}
           components={components}
-          value={this.state.single}
+          value={single}
           onChange={this.handleChange}
           placeholder="Search for your city ...."
         />

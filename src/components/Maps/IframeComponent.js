@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -11,24 +11,42 @@ const styles = {
   }
 };
 
-class KenyaMap extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <iframe
-        title={this.props.title}
-        src={this.props.src}
-        height={this.props.height}
-        width={this.props.width}
-        frameBorder={this.props.frameBorder}
-        className={classes.fullheight}
-        scrollling={this.props.scrolling}
-      />
-    );
-  }
+function KenyaMap({
+  classes,
+  title,
+  src,
+  height,
+  width,
+  frameBorder,
+  scrolling
+}) {
+  return (
+    <iframe
+      title={title}
+      src={src}
+      height={height}
+      width={width}
+      frameBorder={frameBorder}
+      className={classes.fullheight}
+      scrollling={scrolling}
+    />
+  );
 }
 
 KenyaMap.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  height: PropTypes.string,
+  width: PropTypes.string,
+  frameBorder: PropTypes.string,
+  scrolling: PropTypes.string
+};
+
+KenyaMap.defaultProps = {
+  height: '',
+  width: '',
+  frameBorder: '0',
+  scrolling: 'auto'
 };
 export default withStyles(styles)(KenyaMap);

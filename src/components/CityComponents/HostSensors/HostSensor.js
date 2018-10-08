@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -17,11 +17,19 @@ const styles = theme => ({
   }
 });
 
-class HostSensor extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid container item xs={12} direction="row" className={classes.root}>
+function HostSensor({ classes }) {
+  return (
+    <Grid container item xs={12} direction="row" className={classes.root}>
+      <Grid
+        container
+        item
+        xs={12}
+        direction="row"
+        justify="center"
+        alignItems="center"
+      >
+        <HostSensorButtons />
+
         <Grid
           container
           item
@@ -29,25 +37,14 @@ class HostSensor extends Component {
           direction="row"
           justify="center"
           alignItems="center"
+          style={{ marginRight: '8rem', marginLeft: '8rem' }}
         >
-          <HostSensorButtons />
-
-          <Grid
-            container
-            item
-            xs={12}
-            direction="row"
-            justify="center"
-            alignItems="center"
-            style={{ marginRight: '8rem', marginLeft: '8rem' }}
-          >
-            <ArrowCards />
-            <HostCard />
-          </Grid>
+          <ArrowCards />
+          <HostCard />
         </Grid>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
 HostSensor.propTypes = {

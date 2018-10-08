@@ -97,6 +97,8 @@ class Footer extends Component {
 
   render() {
     const { classes } = this.props;
+    const { value } = this.state;
+
     return (
       <Grid container item xs={12} className={classes.root}>
         <Grid
@@ -142,13 +144,13 @@ class Footer extends Component {
                   size="lg"
                 />
               </a>
-              <a href="" className={classes.links}>
+              {/* <a href="" className={classes.links}>
                 <FontAwesomeIcon
                   className={classes.fa}
                   icon={['fab', 'instagram']}
                   size="lg"
                 />
-              </a>
+              </a> */}
             </div>
             <Grid
               container
@@ -161,7 +163,7 @@ class Footer extends Component {
                 <Input
                   type="text"
                   id="you@gmail.com"
-                  value={this.state.value}
+                  value={value}
                   onChange={this.handleChange}
                   className={classes.footerInput}
                 />

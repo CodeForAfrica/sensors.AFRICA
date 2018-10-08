@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
@@ -38,76 +38,73 @@ const styles = theme => ({
   }
 });
 
-class JoinSupport extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        align="center"
-        className="support"
-      >
-        <Card item xs={3} className={classes.card}>
-          <CardContent className={classes.cardContent}>
-            <Typography variant="title" className={classes.typography}>
-              SUPPORT EXISTING SENSORS NETWORKS
-            </Typography>
-            <a
-              href="https://archive.sensors.africa/"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
+function JoinSupport({ classes }) {
+  return (
+    <Grid
+      container
+      direction="row"
+      justify="center"
+      align="center"
+      className="support"
+    >
+      <Card item xs={3} className={classes.card}>
+        <CardContent className={classes.cardContent}>
+          <Typography variant="title" className={classes.typography}>
+            SUPPORT EXISTING SENSORS NETWORKS
+          </Typography>
+          <a
+            href="https://archive.sensors.africa/"
+            className={classes.buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button
+              variant="outlined"
+              color="Upload"
+              className={classes.uploadButton}
             >
-              <Button
-                variant="outlined"
-                color="Upload"
-                className={classes.uploadButton}
-              >
-                VIEW DATABASE
-              </Button>
-            </a>
-          </CardContent>
-        </Card>
-        <Card item xs={3} className={classes.card}>
-          <CardContent className={classes.cardContent}>
-            <Typography variant="title" className={classes.typography}>
-              KICKSTART YOUR CITY'S OWN SENSOR PROGRAM
-            </Typography>
+              VIEW DATABASE
+            </Button>
+          </a>
+        </CardContent>
+      </Card>
+      <Card item xs={3} className={classes.card}>
+        <CardContent className={classes.cardContent}>
+          <Typography variant="title" className={classes.typography}>
+            KICKSTART YOUR CITY&apos;S OWN SENSOR PROGRAM
+          </Typography>
 
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="contained" className={classes.button}>
-                SIGN UP HERE
-              </Button>
-            </a>
-          </CardContent>
-        </Card>
-        <Card item xs={3} className={classes.card}>
-          <CardContent className={classes.cardContent}>
-            <Typography variant="title" className={classes.typography}>
-              LET YOUR CITY KNOW THAT CLEAN AIR MATTERS TO YOU
-            </Typography>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="contained" className={classes.button}>
-                SIGN UP HERE
-              </Button>
-            </a>
-          </CardContent>
-        </Card>
-      </Grid>
-    );
-  }
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+            className={classes.buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="contained" className={classes.button}>
+              SIGN UP HERE
+            </Button>
+          </a>
+        </CardContent>
+      </Card>
+      <Card item xs={3} className={classes.card}>
+        <CardContent className={classes.cardContent}>
+          <Typography variant="title" className={classes.typography}>
+            LET YOUR CITY KNOW THAT CLEAN AIR MATTERS TO YOU
+          </Typography>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+            className={classes.buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="contained" className={classes.button}>
+              SIGN UP HERE
+            </Button>
+          </a>
+        </CardContent>
+      </Card>
+    </Grid>
+  );
 }
 
 JoinSupport.propTypes = {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -20,24 +20,21 @@ const styles = {
   }
 };
 
-class MenuBar extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid container item xs={12} direction="row" justify="space-around">
-        <Grid container item xs={8}>
-          <Link to="/">
-            <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
-          </Link>
-          <CitySearchBar />
-        </Grid>
-
-        <Grid className={classes.iconContainer}>
-          <HambugerMenu />
-        </Grid>
+function MenuBar({ classes }) {
+  return (
+    <Grid container item xs={12} direction="row" justify="space-around">
+      <Grid container item xs={8}>
+        <Link to="/">
+          <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
+        </Link>
+        <CitySearchBar />
       </Grid>
-    );
-  }
+
+      <Grid className={classes.iconContainer}>
+        <HambugerMenu />
+      </Grid>
+    </Grid>
+  );
 }
 
 MenuBar.propTypes = {

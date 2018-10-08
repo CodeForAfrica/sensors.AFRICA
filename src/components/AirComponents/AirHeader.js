@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -15,16 +15,13 @@ const styles = {
   }
 };
 
-class AirHeader extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.jumbotron}>
-        <MenuBar />
-        <AirHeaderContent title="WE HAVE TESTED THE QUALITY OF YOUR CITY'S AIR" />
-      </Grid>
-    );
-  }
+function AirHeader({ classes }) {
+  return (
+    <Grid className={classes.jumbotron}>
+      <MenuBar />
+      <AirHeaderContent title="WE HAVE TESTED THE QUALITY OF YOUR CITY'S AIR" />
+    </Grid>
+  );
 }
 
 AirHeader.propTypes = {

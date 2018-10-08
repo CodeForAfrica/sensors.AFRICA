@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -14,15 +14,12 @@ const styles = {
   }
 };
 
-class CityHeader extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.jumbotron} container item={12}>
-        <CityMenuBar />
-      </Grid>
-    );
-  }
+function CityHeader({ classes }) {
+  return (
+    <Grid className={classes.jumbotron} container item={12}>
+      <CityMenuBar />
+    </Grid>
+  );
 }
 
 CityHeader.propTypes = {

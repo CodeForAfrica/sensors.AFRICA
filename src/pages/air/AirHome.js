@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Navbar from '../../components/Header/Navbar';
 import AirHeader from '../../components/AirComponents/AirHeader';
@@ -8,20 +8,18 @@ import Issues from '../../components/AirComponents/Issues';
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
 
-class AirHome extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Navbar />
-        <AirHeader />
-        <Issues />
-        <IndoorOutdoor />
-        <Stories />
-        <Support />
-        <Footer />
-      </React.Fragment>
-    );
-  }
+function AirHome() {
+  return (
+    <React.Fragment>
+      <Navbar />
+      <AirHeader />
+      <Issues />
+      <IndoorOutdoor />
+      <Stories />
+      <Support />
+      <Footer />
+    </React.Fragment>
+  );
 }
 
 export default AirHome;
