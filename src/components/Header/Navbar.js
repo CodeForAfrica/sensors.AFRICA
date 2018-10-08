@@ -113,14 +113,22 @@ class Navbar extends Component {
                 icon="search"
                 size="lg"
               />*/}
-              <a href="https://www.facebook.com/sensorsAFRICA">
+              <a
+                href="https://www.facebook.com/sensorsAFRICA"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FontAwesomeIcon
                   className={classes.fa}
                   icon={["fab", "facebook-f"]}
                   size="lg"
                 />
               </a>
-              <a href="https://twitter.com/sensorsAFRICA">
+              <a
+                href="https://twitter.com/sensorsAFRICA"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FontAwesomeIcon
                   className={classes.fa}
                   icon={["fab", "twitter"]}

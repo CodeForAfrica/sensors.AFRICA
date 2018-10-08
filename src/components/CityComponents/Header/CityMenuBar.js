@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import CitySearchBar from "../../CityComponents/Header/CitySearchBar";
 import HambugerMenu from "../../Hambuger/HambugerMenu";
@@ -23,7 +24,9 @@ class MenuBar extends Component {
     return (
       <Grid container item xs={12} direction="row" justify="space-around">
         <Grid container item xs={8}>
-          <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
+          <Link to="/">
+            <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
+          </Link>
           <CitySearchBar />
         </Grid>
 

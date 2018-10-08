@@ -61,6 +61,8 @@ class JoinSupport extends Component {
             <a
               href="https://archive.sensors.africa/"
               className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Button
                 variant="outlined"
@@ -81,6 +83,8 @@ class JoinSupport extends Component {
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
               className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Button variant="contained" className={classes.button}>
                 SIGN UP HERE
@@ -93,7 +97,12 @@ class JoinSupport extends Component {
             <Typography variant="title" className={classes.typography}>
               LET YOUR CITY KNOW THAT CLEAN AIR MATTERS TO YOU
             </Typography>
-            <a href="" className={classes.buttonLink}>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="contained" className={classes.button}>
                 SIGN UP HERE
               </Button>

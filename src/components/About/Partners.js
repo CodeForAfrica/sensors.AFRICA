@@ -14,8 +14,8 @@ import star from "../../assets/images/logos/star.jpg";
 import womanng from "../../assets/images/logos/womanng.png";
 import dailynation from "../../assets/images/logos/dailynation.png";
 import cable from "../../assets/images/logos/cable.png";
-import code from "../../assets/images/logos/codeforafricafooter.png";
-import innovate from "../../assets/images/logos/innovate.jpg";
+import code from "../../assets/images/logos/cfafrica_gray.png";
+import innovate from "../../assets/images/logos/innovateafrica_gray.jpg";
 
 const styles = {
   typography: {
@@ -55,17 +55,21 @@ class Partners extends Component {
 
         <Grid
           container
-          direction="column"
           justify="center"
+          alignItems="center"
           style={{ paddingTop: "1rem", paddingBottom: "1rem" }}
         >
-          <Typography variant="subheading" className={classes.typography}>
-            In partnership with
-          </Typography>
-          <div contianer direction="row" justify="center" align="center">
-            <img src={code} item xs={3} alt="Code For Africa Logo" />
-            <img src={innovate} item xs={3} alt="innovateAFRICA Logo" />
-          </div>
+          <Grid item xs={12}>
+            <Typography variant="subheading" className={classes.typography}>
+              In partnership with
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img src={code} alt="Code for Africa" />
+          </Grid>
+          <Grid item>
+            <img src={innovate} alt="innovateAFRICA" />
+          </Grid>
         </Grid>
       </Grid>
     );

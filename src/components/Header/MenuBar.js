@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 
 //import assets
@@ -35,7 +36,9 @@ class MenuBar extends Component {
         alignItems="flex-start"
         className={classes.root}
       >
-        <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
+        <Link to="/">
+          <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
+        </Link>
         <Grid className={classes.iconContainer}>
           <HambugerMenu />
         </Grid>
