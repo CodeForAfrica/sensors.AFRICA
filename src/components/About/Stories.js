@@ -42,14 +42,14 @@ class Stories extends Component {
             SENSORS STORIES
           </Typography>
           <div className={classes.button}>
-            <Button variant="contained">
-              <a
-                href="https://medium.com/code-for-africa/tagged/innovateafrica"
-                className={classes.buttonLink}
-              >
-                READ ON MEDIUM
-              </a>
-            </Button>
+            <a
+              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="contained">READ ON MEDIUM</Button>
+            </a>
           </div>
         </Grid>
       </Grid>
