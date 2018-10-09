@@ -29,8 +29,8 @@ ReactDOM.render(
       <Route path="/air/how-sensors-work" component={AirHowSensorsWork} />
       <Route path="/air/city" component={AirCity} />
       <Route path="/air/join-network" component={AirJoinNetwork} />
-      <Route path="/water/home" component={WaterHome} />
-      <Route path="/sound/home" component={SoundHome} />
+      <Route exact path="/water" component={WaterHome} />
+      <Route exact path="/sound" component={SoundHome} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')

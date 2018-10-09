@@ -1,28 +1,45 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import { Grid, Typography } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 
 import TestQuality from './TestQuality';
 
 import '../../assets/css/App.css';
+import bglanding from '../../assets/images/background/bglanding.jpg';
 import logowhite from '../../assets/images/logos/logowhite.png';
 
-const mainContainer = {
-  paddingLeft: '33%',
-  paddingRight: '33%'
-};
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    textAlign: 'center',
+    backgroundImage: `url(${bglanding})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    [theme.breakpoints.up('md')]: {
+      height: '90vh'
+    }
+  }
+});
 
-function Hero() {
+function Hero({ classes }) {
   return (
-    <Grid container item xs={12} className="Image-section">
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        style={mainContainer}
-      >
-        <img src={logowhite} alt="partners logo" />
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
+        <Link to="/">
+          <img src={logowhite} alt="partners logo" />
+        </Link>
+      </Grid>
+
+      <Grid item xs={12}>
         <Typography
           variant="headline"
           align="center"
@@ -32,9 +49,16 @@ function Hero() {
           your air, water and sound.
         </Typography>
       </Grid>
-      <TestQuality />
+
+      <Grid item xs={12}>
+        <TestQuality />
+      </Grid>
     </Grid>
   );
 }
 
-export default Hero;
+Hero.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Hero);
