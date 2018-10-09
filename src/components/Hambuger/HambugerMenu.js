@@ -22,11 +22,14 @@ const styles = theme => ({
   modalContent: {
     margin: 'auto',
     padding: '20px',
-    width: '40%',
     height: 'auto',
     position: 'fixed',
-    top: '15%',
-    left: '80%'
+    top: '20%',
+    left: '0%',
+    [theme.breakpoints.up('md')]: {
+      width: '20%',
+      left: '80%'
+    }
   },
   typography: {
     color: '#fff'
@@ -39,9 +42,8 @@ const styles = theme => ({
 class HambugerMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      menuOpen: false
-    };
+
+    this.state = { menuOpen: false };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }

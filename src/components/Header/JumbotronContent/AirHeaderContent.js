@@ -8,6 +8,7 @@ import SearchBar from '../../SearchBar';
 
 const styles = theme => ({
   titleSection: {
+    flexGrow: 1,
     textAlign: 'center',
     paddingTop: '2rem',
     [theme.breakpoints.up('md')]: {
@@ -15,16 +16,22 @@ const styles = theme => ({
       paddingLeft: '25%'
     }
   },
-  menuButton: {
-    color: 'white'
+  headerText: {
+    color: 'white',
+    paddingBottom: '1rem'
   }
 });
 
 function AirHeaderContent({ classes, title }) {
   return (
-    <Grid className={classes.titleSection}>
+    <Grid
+      container
+      className={classes.titleSection}
+      justify="center"
+      alignItems="center"
+    >
       <Grid item xs={12}>
-        <Typography variant="display2" style={{ color: 'white' }}>
+        <Typography variant="display2" className={classes.headerText}>
           {title}
         </Typography>
       </Grid>

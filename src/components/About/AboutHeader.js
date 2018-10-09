@@ -7,14 +7,16 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuBar from '../Header/MenuBar';
 import AboutHeaderContent from '../Header/JumbotronContent/AboutHeaderContent';
 
-const styles = {
+const styles = theme => ({
   jumbotron: {
     flexGrow: 1,
     backgroundColor: '#2FB56B',
-    height: 400,
-    borderRadius: 'none'
+    borderRadius: 'none',
+    [theme.breakpoints.up('md')]: {
+      height: 450
+    }
   }
-};
+});
 
 function AboutHeader({ classes }) {
   return (

@@ -39,7 +39,7 @@ class MenuButton extends Component {
 
   render() {
     const { classes, color, onClick } = this.props;
-    const { open } = this.setState;
+    const { open } = this.state;
     const dynamicStyles = {
       line: {
         height: '2px',
@@ -65,7 +65,7 @@ class MenuButton extends Component {
     return (
       <div
         className={classes.container}
-        onClick={onClick || this.handleClick()}
+        onClick={onClick || this.handleClick}
         role="button"
         tabIndex="0"
       >

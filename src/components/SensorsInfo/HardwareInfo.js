@@ -9,10 +9,13 @@ import DHT22 from '../../assets/images/sensors/sensor2.jpg';
 import GSMSIM800L from '../../assets/images/sensors/sensor3.jpg';
 import NODEMCU from '../../assets/images/sensors/sensor4.jpg';
 
-const styles = {
+const styles = theme => ({
   root: {
-    paddingRight: '10%',
-    paddingLeft: '10%'
+    flexGrow: 1,
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '10%',
+      paddingLeft: '10%'
+    }
   },
   titleSection: {
     paddingBottom: '1rem',
@@ -32,26 +35,25 @@ const styles = {
     paddingBottom: '2rem'
   },
   img: {
-    height: '300px',
-    width: 'auto'
+    maxWidth: '100%',
+    height: 'auto'
   }
-};
+});
 
 function HardwareInfo({ classes }) {
   return (
     <Grid
       container
       spacing={24}
-      diection="row"
-      direction="row"
       justify="space-around"
       alignItems="center"
       className={classes.root}
     >
       <Grid
-        container
         item
-        xs={6}
+        xs={12}
+        md={6}
+        container
         direction="column"
         justify="center"
         alignItems="center"
@@ -96,9 +98,10 @@ function HardwareInfo({ classes }) {
       </Grid>
 
       <Grid
-        container
         item
-        xs={6}
+        xs={12}
+        md={6}
+        container
         direction="column"
         justify="center"
         alignItems="center"
