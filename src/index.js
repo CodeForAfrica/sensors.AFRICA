@@ -6,7 +6,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSearch } from '@fortawesome/fontawesome-free-solid';
 
-import Home from './pages/Home';
+import Home from './pages';
 import Air, {
   About as AirAbout,
   HowSensorsWork as AirHowSensorsWork,
