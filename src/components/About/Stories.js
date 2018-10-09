@@ -9,6 +9,7 @@ import '../../assets/images/background/bgstories.jpg';
 
 const styles = {
   titleSection: {
+    flexGrow: 1,
     textAlign: 'center',
     color: 'white'
   },
@@ -23,32 +24,38 @@ const styles = {
 
 function Stories({ classes }) {
   return (
-    <Grid className="Jumbotron" container item xs={12}>
+    <div
+      className="Jumbotron"
+      style={{ display: 'flex', alignItems: 'center' }}
+    >
       <Grid
-        className={classes.titleSection}
         container
-        direction="column"
+        className={classes.titleSection}
         justify="center"
         alignItems="center"
       >
-        <Typography
-          variant="display2"
-          style={{ color: 'white', textTrandform: 'Uppercase' }}
-        >
-          SENSORS STORIES
-        </Typography>
-        <div className={classes.button}>
-          <a
-            href="https://medium.com/code-for-africa/tagged/innovateafrica"
-            className={classes.buttonLink}
-            target="_blank"
-            rel="noopener noreferrer"
+        <Grid item xs={12}>
+          <Typography
+            variant="display2"
+            style={{ color: 'white', textTrandform: 'Uppercase' }}
           >
-            <Button variant="contained">READ ON MEDIUM</Button>
-          </a>
-        </div>
+            SENSORS STORIES
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <div className={classes.button}>
+            <a
+              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="contained">READ ON MEDIUM</Button>
+            </a>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }
 

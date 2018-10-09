@@ -11,8 +11,8 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 3
   },
   card: {
-    height: '200px',
-    width: '300px',
+    height: 200,
+    width: 300,
     margin: theme.spacing.unit * 3,
     backgroundColor: '#F3F3F3'
   },
@@ -27,67 +27,96 @@ function Staff({ classes }) {
       <Typography variant="heading" align="center">
         COLLABORATION AND STAFF
       </Typography>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        align="center"
-        className={classes.root}
-      >
-        <Grid item xs={4}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.cardMedia} title="Team" />
-          </Card>
-          <Typography variant="title">Name.Surname</Typography>
-          <Typography variant="subheading">
-            Editor at codeforafrica.org
-          </Typography>
+      <Grid container justify="center" align="center" className={classes.root}>
+        <Grid item xs={12} sm={6} md={4} container>
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <CardMedia className={classes.cardMedia} title="Team" />
+            </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="title">Name.Surname</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subheading">
+              Editor at codeforafrica.org
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.cardMedia} title="Team" />
-          </Card>
-          <Typography variant="title">Name.Surname</Typography>
-          <Typography variant="subheading">
-            Editor at codeforafrica.org
-          </Typography>
+        <Grid item xs={12} sm={6} md={4} container>
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <CardMedia className={classes.cardMedia} title="Team" />
+            </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="title">Name.Surname</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subheading">
+              Editor at codeforafrica.org
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.cardMedia} title="Team" />
-          </Card>
-          <Typography variant="title">Name.Surname</Typography>
-          <Typography variant="subheading">
-            Editor at codeforafrica.org
-          </Typography>
+        <Grid item xs={12} sm={6} md={4} container>
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <CardMedia className={classes.cardMedia} title="Team" />
+            </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="title">Name.Surname</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subheading">
+              Editor at codeforafrica.org
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.cardMedia} title="Team" />
-          </Card>
-          <Typography variant="title">Name.Surname</Typography>
-          <Typography variant="subheading">
-            Editor at codeforafrica.org
-          </Typography>
+        <Grid item xs={12} sm={6} md={4} container>
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <CardMedia className={classes.cardMedia} title="Team" />
+            </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="title">Name.Surname</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subheading">
+              Editor at codeforafrica.org
+            </Typography>
+          </Grid>
         </Grid>
-
-        <Grid item xs={4}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.cardMedia} title="Team" />
-          </Card>
-          <Typography variant="title">Name.Surname</Typography>
-          <Typography variant="subheading">
-            Editor at codeforafrica.org
-          </Typography>
+        <Grid item xs={12} sm={6} md={4} container>
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <CardMedia className={classes.cardMedia} title="Team" />
+            </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="title">Name.Surname</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subheading">
+              Editor at codeforafrica.org
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.cardMedia} title="Team" />
-          </Card>
-          <Typography variant="title">Name.Surname</Typography>
-          <Typography variant="subheading">
-            Editor at codeforafrica.org
-          </Typography>
+        <Grid item xs={12} sm={6} md={4} container>
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <CardMedia className={classes.cardMedia} title="Team" />
+            </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="title">Name.Surname</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subheading">
+              Editor at codeforafrica.org
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
     </React.Fragment>

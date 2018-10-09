@@ -9,6 +9,7 @@ import AirHeaderContent from '../Header/JumbotronContent/AirHeaderContent';
 
 const styles = {
   jumbotron: {
+    flexGrow: 1,
     backgroundColor: '#2FB56B',
     height: 400,
     borderRadius: 'none'
@@ -17,7 +18,12 @@ const styles = {
 
 function AirHeader({ classes }) {
   return (
-    <Grid container className={classes.jumbotron}>
+    <Grid
+      container
+      className={classes.jumbotron}
+      justify="center"
+      alignItems="center"
+    >
       <Grid item xs={12}>
         <MenuBar />
       </Grid>

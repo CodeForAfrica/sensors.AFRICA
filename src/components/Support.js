@@ -6,12 +6,13 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
+    flexGrow: 1,
     paddingTop: theme.spacing.unit * 5,
     paddingBottom: theme.spacing.unit * 5
   },
   card: {
-    height: '200px',
-    width: '350px',
+    height: 200,
+    width: 350,
     borderRadius: 0,
     boxShadow: 'none',
     backgroundColor: '#F3F3F3',
@@ -40,68 +41,68 @@ const styles = theme => ({
 
 function Support({ classes }) {
   return (
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      align="center"
-      className={classes.root}
-    >
-      <Card item xs={3} className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <Typography variant="title" className={classes.typography}>
-            SUPPORT EXISTING SENSORS NETWORKS
-          </Typography>
-          <a
-            href="https://archive.sensors.africa/"
-            className={classes.buttonLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button
-              variant="outlined"
-              color="Upload"
-              className={classes.uploadButton}
+    <Grid container justify="center" align="center" className={classes.root}>
+      <Grid item>
+        <Card className={classes.card}>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="title" className={classes.typography}>
+              SUPPORT EXISTING SENSORS NETWORKS
+            </Typography>
+            <a
+              href="https://archive.sensors.africa/"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              VIEW DATABASE
-            </Button>
-          </a>
-        </CardContent>
-      </Card>
-      <Card item xs={3} className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <Typography variant="title" className={classes.typography}>
-            KICKSTART YOUR CITY&apos;S OWN SENSOR PROGRAM
-          </Typography>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-            className={classes.buttonLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="contained" className={classes.button}>
-              SIGN UP HERE
-            </Button>
-          </a>
-        </CardContent>
-      </Card>
-      <Card item xs={3} className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <Typography variant="title" className={classes.typography}>
-            LET YOUR CITY KNOW THAT CLEAN WATER MATTERS TO YOU
-          </Typography>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-            className={classes.buttonLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="contained" className={classes.button}>
-              SIGN UP HERE
-            </Button>
-          </a>
-        </CardContent>
-      </Card>
+              <Button
+                variant="outlined"
+                color="Upload"
+                className={classes.uploadButton}
+              >
+                VIEW DATABASE
+              </Button>
+            </a>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item>
+        <Card className={classes.card}>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="title" className={classes.typography}>
+              KICKSTART YOUR CITY&apos;S OWN SENSOR PROGRAM
+            </Typography>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="contained" className={classes.button}>
+                SIGN UP HERE
+              </Button>
+            </a>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item>
+        <Card className={classes.card}>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="title" className={classes.typography}>
+              LET YOUR CITY KNOW THAT CLEAN WATER MATTERS TO YOU
+            </Typography>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="contained" className={classes.button}>
+                SIGN UP HERE
+              </Button>
+            </a>
+          </CardContent>
+        </Card>
+      </Grid>
     </Grid>
   );
 }

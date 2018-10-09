@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import components
 import Stories from '../../components/About/Stories';
 import Navbar from '../../components/Header/Navbar';
 import AboutHeader from '../../components/About/AboutHeader';
