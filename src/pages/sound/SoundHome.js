@@ -1,15 +1,13 @@
-import React, { Component } from "react";
-import { Grid, Typography } from "@material-ui/core";
+import React from 'react';
 
-class SoundHome extends Component {
-  state = {};
-  render() {
-    return (
-      <Grid>
-        <Typography variant="display2">WIP: Sound homepage</Typography>
-      </Grid>
-    );
-  }
+import { Grid, Typography } from '@material-ui/core';
+
+function SoundHome() {
+  return (
+    <Grid>
+      <Typography variant="display2">WIP: Sound homepage</Typography>
+    </Grid>
+  );
 }
 
 export default SoundHome;

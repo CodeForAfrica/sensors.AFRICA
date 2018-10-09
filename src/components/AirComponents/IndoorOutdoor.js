@@ -1,60 +1,60 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
-import { Card, CardContent, Typography, Button } from "@material-ui/core";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import IndoorIcon from "../../assets/images/indooricon.png";
-import OutdoorIcon from "../../assets/images/outdooricon.png";
+import { Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+import IndoorIcon from '../../assets/images/indooricon.png';
+import OutdoorIcon from '../../assets/images/outdooricon.png';
 
 const styles = {
   indoor: {
-    height: "350px",
-    width: "400px",
-    backgroundColor: "#164B3E",
+    height: '350px',
+    width: '400px',
+    backgroundColor: '#164B3E',
     borderRadius: 0,
-    color: "white",
-    margin: "2rem"
+    color: 'white',
+    margin: '2rem'
   },
   indoorButton: {
     borderRadius: 0,
-    color: "#F3F3F3",
-    borderColor: "white"
+    color: '#F3F3F3',
+    borderColor: 'white'
   },
   outdoor: {
-    height: "350px",
-    width: "400px",
-    backgroundColor: "#2FB56B",
+    height: '350px',
+    width: '400px',
+    backgroundColor: '#2FB56B',
     borderRadius: 0,
-    color: "white",
-    margin: "2rem"
+    color: 'white',
+    margin: '2rem'
   },
   outdoorButton: {
     borderRadius: 0
   },
   buttonLink: {
-    textDecoration: "none"
+    textDecoration: 'none'
   },
   caption: {
-    paddingTop: "0.5rem",
-    paddingBottom: "1rem",
-    color: "#F3F3F3"
+    paddingTop: '0.5rem',
+    paddingBottom: '1rem',
+    color: '#F3F3F3'
   },
   cardContent: {
-    color: "white",
-    textAlign: "center",
-    paddingTop: "4rem"
+    color: 'white',
+    textAlign: 'center',
+    paddingTop: '4rem'
   }
 };
 
-class IndoorOutdoor extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid container direction="row" justify="center" alignItems="center">
+function IndoorOutdoor({ classes }) {
+  return (
+    <Grid container justify="center" alignItems="center">
+      <Grid item>
         <Card className={classes.indoor}>
           <CardContent className={classes.cardContent}>
             <img src={IndoorIcon} Alt="Housing" height="100px" />
-            <Typography variant="title" style={{ color: "white" }}>
+            <Typography variant="title" style={{ color: 'white' }}>
               INDOOR POLLUTION
             </Typography>
             <Typography variant="caption" className={classes.caption}>
@@ -77,11 +77,12 @@ class IndoorOutdoor extends Component {
             </a>
           </CardContent>
         </Card>
-
+      </Grid>
+      <Grid item>
         <Card className={classes.outdoor}>
           <CardContent className={classes.cardContent}>
             <img src={OutdoorIcon} Alt="Housing" height="100px" />
-            <Typography variant="title" style={{ color: "white" }}>
+            <Typography variant="title" style={{ color: 'white' }}>
               OUTDOOR POLLUTION
             </Typography>
             <Typography variant="caption" className={classes.caption}>
@@ -105,8 +106,12 @@ class IndoorOutdoor extends Component {
           </CardContent>
         </Card>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
+
+IndoorOutdoor.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(IndoorOutdoor);
