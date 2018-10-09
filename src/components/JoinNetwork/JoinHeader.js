@@ -9,24 +9,34 @@ import JoinNetworkContent from '../Header/JumbotronContent/JoinHeaderContent';
 
 const styles = {
   jumbotron: {
+    flexGrow: 1,
     backgroundColor: '#2FB56B',
-    height: '400px',
+    height: 400,
     borderRadius: 'none'
   }
 };
 
 function JoinHeader({ classes }) {
   return (
-    <Grid className={classes.jumbotron}>
-      <MenuBar />
-      <JoinNetworkContent
-        title="JOIN THE NETWORK"
-        subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <Grid
+      container
+      className={classes.jumbotron}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
+        <MenuBar />
+      </Grid>
+      <Grid item xs={12}>
+        <JoinNetworkContent
+          title="JOIN THE NETWORK"
+          subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                             Nam ut purus quis massa interdum egestas quis id velit.
                             Proin non nisi porta sem placerat blandit in eget turpis.
                             Quisque faucibus auctor ligula et posuere. Vestibulum ultrices lobortis
                             turpis eu vulputate"
-      />
+        />
+      </Grid>
     </Grid>
   );
 }

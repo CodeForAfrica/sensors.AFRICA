@@ -6,9 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    paddingTop: theme.spacing.unit * 5,
-    paddingBottom: theme.spacing.unit * 5
+    flexGrow: 1
   },
   card: {
     height: 200,
@@ -39,9 +37,10 @@ const styles = theme => ({
   }
 });
 
-function Support({ classes }) {
+function Support({ classes, classNames }) {
+  const className = classNames ? `${classes.root} ${classNames}` : classes.root;
   return (
-    <Grid container justify="center" align="center" className={classes.root}>
+    <Grid container justify="center" align="center" className={className}>
       <Grid item>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
@@ -108,7 +107,11 @@ function Support({ classes }) {
 }
 
 Support.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  classNames: PropTypes.string
+};
+Support.defaultProps = {
+  classNames: undefined
 };
 
 export default withStyles(styles)(Support);

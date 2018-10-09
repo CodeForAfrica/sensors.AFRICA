@@ -5,13 +5,8 @@ import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  jumbotron: {
-    flexGrow: 1,
-    backgroundColor: '#454545',
-    height: 400,
-    borderRadius: 'none'
-  },
   titleSection: {
+    flexGrow: 1,
     textAlign: 'center',
     paddingTop: '2rem',
     [theme.breakpoints.up('md')]: {
@@ -19,31 +14,36 @@ const styles = theme => ({
       paddingLeft: '25%'
     }
   },
-  menuButton: {
-    color: 'white'
+  headerText: {
+    color: 'white',
+    paddingBottom: '1rem'
   }
 });
 
-function AboutHeaderContent({ classes, subheading, title }) {
+function AboutHeaderContent({ classes, title, subheading }) {
   return (
-    <Grid className={classes.titleSection}>
-      <Typography variant="display2" style={{ color: 'white' }}>
-        {title}
-      </Typography>
-      <Typography variant="subheading" style={{ color: 'white' }}>
-        {subheading}
-      </Typography>
+    <Grid className={classes.titleSection} justify="center" alignItems="center">
+      <Grid item xs={12}>
+        <Typography variant="display2" className={classes.headerText}>
+          {title}
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="subheading" className={classes.headerText}>
+          {subheading}
+        </Typography>
+      </Grid>
     </Grid>
   );
 }
 
 AboutHeaderContent.propTypes = {
   classes: PropTypes.object.isRequired,
-  subheading: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  subheading: PropTypes.string
 };
 AboutHeaderContent.defaultProps = {
-  subheading: 'white',
-  title: ''
+  title: '',
+  subheading: ''
 };
 export default withStyles(styles)(AboutHeaderContent);

@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { withStyles } from '@material-ui/core/styles';
 
 import Stories from '../../components/About/Stories';
 import Navbar from '../../components/Header/Navbar';
@@ -8,7 +11,14 @@ import Staff from '../../components/About/Staff';
 import Footer from '../../components/Footer';
 import Support from '../../components/Support';
 
-function About() {
+const styles = theme => ({
+  aboutSupport: {
+    paddingTop: theme.spacing.unit * 5,
+    paddingBottom: theme.spacing.unit * 5
+  }
+});
+
+function About({ classes }) {
   return (
     <React.Fragment>
       <Navbar />
@@ -16,10 +26,14 @@ function About() {
       <Partners />
       <Staff />
       <Stories />
-      <Support />
+      <Support classNames={classes.aboutSupport} />
       <Footer />
     </React.Fragment>
   );
 }
 
-export default About;
+About.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(About);
