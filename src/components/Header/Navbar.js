@@ -10,14 +10,16 @@ import { withStyles } from '@material-ui/core/styles';
 
 import SocialMedia from '../SocialMedia';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     flex: 1,
     backgroundColor: '#2e2e2e'
   },
   toolbar: {
-    paddingRight: '8%',
-    paddingLeft: '8%'
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '8%',
+      paddingLeft: '8%'
+    }
   },
   airText: {
     color: '#2FB56B',
@@ -65,7 +67,7 @@ function Navbar({ classes }) {
   return (
     <Grid container item xs={12}>
       <AppBar position="static" className={classes.root} item xs={12}>
-        <Toolbar className={classes.toolbar}>
+        <Toolbar className={classes.toolbar} disableGutters>
           <Grid
             container
             direction="row"

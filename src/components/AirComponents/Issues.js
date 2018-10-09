@@ -13,36 +13,57 @@ const styles = {
   },
   subheading: {
     paddingTop: '1rem',
-    paddingBottom: '0.5rem'
+    paddingBottom: '0.5rem',
+    textAlign: 'center'
+  },
+  title: {
+    textAlign: 'center'
   },
   caption: {
-    paddingTop: '1rem'
+    paddingTop: '1rem',
+    textAlign: 'center'
+  },
+  graph: {
+    textAlign: 'center'
   }
 };
+
 function Issues({ classes }) {
   return (
     <Grid
       container
-      direction="column"
+      className={classes.root}
       justify="center"
       alignItems="center"
-      className={classes.root}
     >
-      <Typography variant="subheading" className={classes.subheading}>
-        THE ISSUES
-      </Typography>
-      <Typography variant="title">
-        Air polution causes 1 in 9 deaths.
-      </Typography>
-      <Typography variant="title">
-        It is the biggest environmental health crisis we face
-      </Typography>
-      <Typography variant="caption" className={classes.caption}>
-        We may not always see it, but air pollution is the cause of some of our
-        most common illnesses
-      </Typography>
-      <Grid>
-        <img src={graph} alt="Graphs" height="200px" />
+      <Grid item xs={12}>
+        <Typography variant="subheading" className={classes.subheading}>
+          THE ISSUES
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="title" className={classes.title}>
+          Air polution causes 1 in 9 deaths.
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="title" className={classes.title}>
+          It is the biggest environmental health crisis we face
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="caption" className={classes.caption}>
+          We may not always see it, but air pollution is the cause of some of
+          our most common illnesses
+        </Typography>
+      </Grid>
+      <Grid item xs={12} className={classes.graph}>
+        <img
+          src={graph}
+          alt="Graphs"
+          height="200"
+          style={{ maxWidth: '100%', height: 'auto' }}
+        />
       </Grid>
     </Grid>
   );
@@ -51,4 +72,5 @@ function Issues({ classes }) {
 Issues.propTypes = {
   classes: PropTypes.object.isRequired
 };
+
 export default withStyles(styles)(Issues);

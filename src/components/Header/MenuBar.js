@@ -9,10 +9,13 @@ import HamburgerMenu from '../Hambuger/HambugerMenu';
 
 import logowhite from '../../assets/Logo-White.png';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
-    paddingRight: '8%',
-    paddingLeft: '8%'
+    flexGrow: 1,
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '8%',
+      paddingLeft: '8%'
+    }
   },
   icon: {
     color: 'white',
