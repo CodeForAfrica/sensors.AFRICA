@@ -22,8 +22,8 @@ class CityHeader extends Component {
     const { classes } = this.props;
     return (
       <Grid className={classes.jumbotron} container item={12}>
-        <CityMenuBar />
-        <CityGaugeContainer />
+        <CityMenuBar history={this.props.history}/>
+        <CityGaugeContainer city={this.props.city} airPol={this.props.airPol} />
       </Grid>
     );
   }

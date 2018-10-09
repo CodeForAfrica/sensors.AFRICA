@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import ReactSpeedometer from "react-d3-speedometer";
-import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
 export default class CityGauge extends Component {
@@ -74,7 +73,6 @@ export default class CityGauge extends Component {
                   startColor="#5fbf82"
                   endColor="#b72025"
                   needleColor="#144a3d"
-                  textColor="#144a3d"
              />
              <svg style={{ width: "600px",height: "300px",
               top: "64px", left:"30%", position: "absolute"}}>
@@ -83,7 +81,7 @@ export default class CityGauge extends Component {
                d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
                fill="#144a3d" transform="rotate(-78.75)"
                stroke-linecap="round" stroke-width="3" stroke="#fefffd"
-               style={{cursor: "-webkit-grab", cursor: "grab"}}></path>
+               style={{ cursor: "grab"}}></path>
               </g>
              </svg>
              <svg style={{ width: "300px", height: "150px", top: "14rem",

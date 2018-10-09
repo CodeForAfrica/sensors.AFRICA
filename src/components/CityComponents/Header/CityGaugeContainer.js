@@ -11,10 +11,10 @@ export default class CityGaugeContainer extends Component {
             THE AIR POLLUTION IN{" "}
           </Typography>
           <Typography variant="display1" style={{ color: "white" }}>
-            NAIROBI, KENYA
+            {this.props.city.label.toUpperCase()}
           </Typography>
         </Grid>
-        <CityGauge airPollMeasurement={32} />
+        <CityGauge airPollMeasurement={this.props.airPol} />
       </Grid>
     );
   }

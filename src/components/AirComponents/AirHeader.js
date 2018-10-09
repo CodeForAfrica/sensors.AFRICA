@@ -23,7 +23,8 @@ class AirHeader extends Component {
     return (
       <Grid className={classes.jumbotron}>
         <MenuBar />
-        <AirHeaderContent title="WE HAVE TESTED THE QUALITY OF YOUR CITY'S AIR" />
+        <AirHeaderContent title="WE HAVE TESTED THE QUALITY OF YOUR CITY'S AIR"
+         history={this.props.history}/>
       </Grid>
     );
   }

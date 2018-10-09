@@ -14,7 +14,7 @@ class AirHome extends Component {
         return (
             <React.Fragment>
                 <Navbar />
-                <AirHeader />
+                <AirHeader history={this.props.history}/>
                 <Issues />
                 <IndoorOutdoor />
                 <Stories />

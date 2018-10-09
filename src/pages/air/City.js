@@ -16,10 +16,18 @@ import PollutionStats from "../../components/CityComponents/PollutionStats";
 
 class City extends Component {
   render() {
+    var cityObject = {value: "nairobi", label: "Nairobi, Kenya"}
+    var cityAirPol = 17
+
+    if(this.props.location.state) {
+      cityObject = this.props.location.state['cityObj'];
+      cityAirPol = this.props.location.state['cityAirPolLevel']
+    }
+
     return (
       <Grid>
         <Navbar />
-        <CityHeader />
+        <CityHeader city={cityObject} airPol={cityAirPol} history={this.props.history}/>
         <HostSensor />
         <PollutionStats />
         <Neighbourhood />

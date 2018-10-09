@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import CitySearchBar from "../../CityComponents/Header/CitySearchBar";
+import CitySearchBar from "../../SearchBar";
 import HambugerMenu from "../../Hambuger/HambugerMenu";
 
 //import assets
@@ -24,7 +24,8 @@ class MenuBar extends Component {
       <Grid container item xs={12} direction="row" justify="space-around">
         <Grid container item xs={8}>
           <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
-          <CitySearchBar />
+          <CitySearchBar history={this.props.history}
+          placeholder="Search for another location ..."/>
         </Grid>
 
         <Grid className={classes.iconContainer}>

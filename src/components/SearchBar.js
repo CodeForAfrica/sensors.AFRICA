@@ -9,13 +9,17 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
 
 const suggestions = [
-  { city: "Nairobi, Kenya" },
-  { city: "Lagos, Nigeria" },
-  { city: "Dar-es-Salaam, Tanzania" }
-].map(suggestion => ({
-  value: suggestion.city,
-  label: suggestion.city
-}));
+  { 'value':'nairobi', 'label': "Nairobi, Kenya" },
+  { 'value':'lagos', 'label': "Lagos, Nigeria" },
+  { 'value':'dar-es-salaam', 'label': "Dar-es-Salaam, Tanzania" }
+]
+
+//To Do: needs to be pulled from an api
+const airPollutionLevel = {
+  'nairobi': 17,
+  'lagos': 20,
+  'dar-es-salaam': 18
+}
 
 const styles = theme => ({
   root: {
@@ -172,14 +176,18 @@ class CitySearchBar extends React.Component {
     multi: null
   };
 
-  handleChange = name => value => {
-    this.setState({
-      [name]: value
-    });
-  };
+  handleChange = (city) => {
+    this.props.history.push({ pathname: "/air/city",
+                              state:
+                              {'cityObj': city,
+                               'cityAirPolLevel': airPollutionLevel[city.value]
+                              }
+                            });
+  }
 
   render() {
     const { classes } = this.props;
+
     return (
       <div className={classes.root}>
         <Select
@@ -187,8 +195,8 @@ class CitySearchBar extends React.Component {
           options={suggestions}
           components={components}
           value={this.state.single}
-          onChange={this.handleChange("single")}
-          placeholder="Search for your city ...."
+          onChange={this.handleChange}
+          placeholder={this.props.placeholder}
         />
       </div>
     );
