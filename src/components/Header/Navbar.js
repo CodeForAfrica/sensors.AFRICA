@@ -1,13 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import { AppBar, Grid, MenuItem, Toolbar } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SocialMedia from '../SocialMedia';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flex: 1,
     backgroundColor: '#2e2e2e'
@@ -40,19 +43,10 @@ const styles = theme => ({
       color: '#f3f33'
     }
   },
-  fa: {
-    padding: theme.spacing.unit * 1.5,
-    color: '#2FB56B',
-    transition: 'all .5s ease-in-out',
-    '&:hover': {
-      transform: 'scale(1.3)',
-      color: '#f3f33'
-    }
-  },
-  searchFa: {
-    padding: theme.spacing.unit * 1.5,
-    color: '#454545'
-  },
+  // searchFa: {
+  //   padding: theme.spacing.unit * 1.5,
+  //   color: '#454545'
+  // },
   airlink: {
     textDecoration: 'none',
     color: '#2FB56B'
@@ -79,18 +73,18 @@ function Navbar({ classes }) {
             alignItems="center"
           >
             <MenuItem className={classes.airText}>
-              <Link to="/air/home" className={classes.airlink}>
+              <Link to="/air" className={classes.airlink}>
                 AIR
               </Link>
             </MenuItem>
 
             <MenuItem className={classes.waterText}>
-              <Link to="/water/home" className={classes.waterlink}>
+              <Link to="/water" className={classes.waterlink}>
                 WATER
               </Link>
             </MenuItem>
             <MenuItem className={classes.soundText}>
-              <Link to="/sound/home" className={classes.soundlink}>
+              <Link to="/sound" className={classes.soundlink}>
                 SOUND
               </Link>
             </MenuItem>
@@ -102,40 +96,16 @@ function Navbar({ classes }) {
             justify="flex-end"
             alignItems="center"
           >
-            {/* <FontAwesomeIcon
+            {/* <Grid item>
+            <FontAwesomeIcon
                 className={classes.searchFa}
                 icon="search"
                 size="lg"
-              /> */}
-            <a
-              href="https://www.facebook.com/sensorsAFRICA"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon
-                className={classes.fa}
-                icon={['fab', 'facebook-f']}
-                size="lg"
               />
-            </a>
-            <a
-              href="https://twitter.com/sensorsAFRICA"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon
-                className={classes.fa}
-                icon={['fab', 'twitter']}
-                size="lg"
-              />
-            </a>
-            {/* <a href="">
-                <FontAwesomeIcon
-                  className={classes.fa}
-                  icon={["fab", "instagram"]}
-                  size="lg"
-                />
-    </a> */}
+            </Grid> */}
+            <Grid item>
+              <SocialMedia color="#2FB56B" />
+            </Grid>
           </Grid>
         </Toolbar>
       </AppBar>
