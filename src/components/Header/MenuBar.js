@@ -37,7 +37,7 @@ class MenuBar extends Component {
         className={classes.root}
       >
         <Link to="/">
-          <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
+          <img src={logowhite} alt="sensors.AFRICA logo" height="100px" />
         </Link>
         <Grid className={classes.iconContainer}>
           <HambugerMenu />

@@ -24,7 +24,7 @@ class AboutHeader extends Component {
       <Grid className={classes.jumbotron}>
         <MenuBar />
         <AboutHeaderContent
-          title="About Sensors.AFRICA"
+          title="About sensors.AFRICA"
           subheading="sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities.The initiative was seed-funded by innovateAFRICA, and is being incubated by Code For Africa"
         />
       </Grid>
