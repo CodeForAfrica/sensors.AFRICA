@@ -181,14 +181,14 @@ function Footer({ classes }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={codeforafrica} alt="Code For Africa" />
+                <img src={codeforafrica} alt="Code for Africa" />
               </a>
               <a
-                href="https://www.innoafrica.org/"
+                href="https://innovateafrica.fund/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={innovateafrica} alt="Innovate Africa" />
+                <img src={innovateafrica} alt="innovateAFRICA" />
               </a>
             </Grid>
           </Grid>
