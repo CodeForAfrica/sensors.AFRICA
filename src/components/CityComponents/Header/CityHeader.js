@@ -1,35 +1,33 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-//import material components
-import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-//import components
-import CityMenuBar from "../../CityComponents/Header/CityMenuBar";
-import CityGaugeContainer from "../../CityComponents/Header/CityGaugeContainer";
+import CityMenuBar from './CityMenuBar';
+import CityGaugeContainer from "./CityGaugeContainer";
 
-const styles = {
+const styles = theme => ({
   jumbotron: {
-    backgroundColor: "#2FB56B",
-    height: "500px",
-    borderRadius: "none"
+    flexGrow: 1,
+    backgroundColor: '#2FB56B',
+    borderRadius: 'none',
+    [theme.breakpoints.up('md')]: {
+      height: 450
+    }
   }
-};
+});
 
-class CityHeader extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.jumbotron} container item={12}>
-        <CityMenuBar />
+function CityHeader({ classes }) {
+  return (
+    <Grid className={classes.jumbotron} container item={12}>
+      <CityMenuBar />
         <CityGaugeContainer />
-      </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
-CityHeader.PropTypes = {
+CityHeader.propTypes = {
   classes: PropTypes.object.isRequired
 };
 

@@ -1,148 +1,121 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Grid from '@material-ui/core/Grid';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import MenuItem from '@material-ui/core/MenuItem';
+import { withStyles } from '@material-ui/core/styles';
 
-import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import MenuItem from "@material-ui/core/MenuItem";
-
-import { withStyles } from "@material-ui/core/styles";
+import SocialMedia from '../SocialMedia';
 
 const styles = theme => ({
   root: {
     flex: 1,
-    backgroundColor: "#2e2e2e"
+    backgroundColor: '#2e2e2e'
   },
   toolbar: {
-    paddingRight: "8%",
-    paddingLeft: "8%"
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '8%',
+      paddingLeft: '8%'
+    }
   },
   airText: {
-    color: "#2FB56B",
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)",
-      color: "#f3f33"
+    color: '#2FB56B',
+    transition: 'all .5s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      color: '#f3f33'
     }
   },
   waterText: {
-    color: "#4972B8",
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)",
-      color: "#f3f33"
+    color: '#4972B8',
+    transition: 'all .5s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      color: '#f3f33'
     }
   },
   soundText: {
-    color: "#B64598",
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)",
-      color: "#f3f33"
+    color: '#B64598',
+    transition: 'all .5s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      color: '#f3f33'
     }
   },
-  fa: {
-    padding: theme.spacing.unit * 1.5,
-    color: "#2FB56B",
-    transition: "all .5s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.3)",
-      color: "#f3f33"
-    }
-  },
-  searchFa: {
-    padding: theme.spacing.unit * 1.5,
-    color: "#454545"
-  },
+  // searchFa: {
+  //   padding: theme.spacing.unit * 1.5,
+  //   color: '#454545'
+  // },
   airlink: {
-    textDecoration: "none",
-    color: "#2FB56B"
+    textDecoration: 'none',
+    color: '#2FB56B'
   },
   waterlink: {
-    textDecoration: "none",
-    color: "#4972B8"
+    textDecoration: 'none',
+    color: '#4972B8'
   },
   soundlink: {
-    textDecoration: "none",
-    color: "#B64598"
+    textDecoration: 'none',
+    color: '#B64598'
   }
 });
 
-class Navbar extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid container item xs={12}>
-        <AppBar position="static" className={classes.root} item xs={12}>
-          <Toolbar className={classes.toolbar}>
-            <Grid
-              container
-              direction="row"
-              justify="flex-start"
-              alignItems="center"
-            >
-              <MenuItem className={classes.airText}>
-                <Link to="/air/home" className={classes.airlink}>
-                  AIR
-                </Link>
-              </MenuItem>
+function Navbar({ classes }) {
+  return (
+    <Grid container item xs={12}>
+      <AppBar position="static" className={classes.root} item xs={12}>
+        <Toolbar className={classes.toolbar} disableGutters>
+          <Grid
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="center"
+          >
+            <MenuItem className={classes.airText}>
+              <Link to="/air" className={classes.airlink}>
+                AIR
+              </Link>
+            </MenuItem>
 
-              <MenuItem className={classes.waterText}>
-                <Link to="/water/home" className={classes.waterlink}>
-                  WATER
-                </Link>
-              </MenuItem>
-              <MenuItem className={classes.soundText}>
-                <Link to="/sound/home" className={classes.soundlink}>
-                  SOUND
-                </Link>
-              </MenuItem>
-            </Grid>
+            <MenuItem className={classes.waterText}>
+              <Link to="/water" className={classes.waterlink}>
+                WATER
+              </Link>
+            </MenuItem>
+            <MenuItem className={classes.soundText}>
+              <Link to="/sound" className={classes.soundlink}>
+                SOUND
+              </Link>
+            </MenuItem>
+          </Grid>
 
-            <Grid
-              container
-              direction="row"
-              justify="flex-end"
-              alignItems="center"
-            >
-              {/*<FontAwesomeIcon
+          <Grid
+            container
+            direction="row"
+            justify="flex-end"
+            alignItems="center"
+          >
+            {/* <Grid item>
+            <FontAwesomeIcon
                 className={classes.searchFa}
                 icon="search"
                 size="lg"
-              />*/}
-              <a href="https://www.facebook.com/sensorsAFRICA">
-                <FontAwesomeIcon
-                  className={classes.fa}
-                  icon={["fab", "facebook-f"]}
-                  size="lg"
-                />
-              </a>
-              <a href="https://twitter.com/sensorsAFRICA">
-                <FontAwesomeIcon
-                  className={classes.fa}
-                  icon={["fab", "twitter"]}
-                  size="lg"
-                />
-              </a>
-              {/*<a href="">
-                <FontAwesomeIcon
-                  className={classes.fa}
-                  icon={["fab", "instagram"]}
-                  size="lg"
-                />
-    </a>*/}
+              />
+            </Grid> */}
+            <Grid item>
+              <SocialMedia color="#2FB56B" />
             </Grid>
-          </Toolbar>
-        </AppBar>
-      </Grid>
-    );
-  }
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    </Grid>
+  );
 }
 
-Navbar.PropTypes = {
+Navbar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 

@@ -1,41 +1,55 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
+const styles = theme => ({
   titleSection: {
-    textAlign: "center",
-    paddingTop: "2rem",
-    paddingRight: "25%",
-    paddingLeft: "25%"
+    flexGrow: 1,
+    textAlign: 'center',
+    paddingTop: '2rem',
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '25%',
+      paddingLeft: '25%'
+    }
   },
   headerText: {
-    color: "white",
-    paddingBottom: "1rem"
+    color: 'white',
+    paddingBottom: '1rem'
   }
-};
+});
 
-class JoinNetworkContent extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.titleSection}>
+function JoinNetworkContent({ classes, title, subheading }) {
+  return (
+    <Grid
+      container
+      className={classes.titleSection}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
         <Typography variant="display2" className={classes.headerText}>
-          {this.props.title}
-        </Typography>
-        <Typography variant="subheading" className={classes.headerText}>
-          {this.props.subheading}
+          {title}
         </Typography>
       </Grid>
-    );
-  }
+      <Grid item xs={12}>
+        <Typography variant="subheading" className={classes.headerText}>
+          {subheading}
+        </Typography>
+      </Grid>
+    </Grid>
+  );
 }
 
-JoinNetworkContent.PropTypes = {
-  classes: PropTypes.object.isRequired
+JoinNetworkContent.propTypes = {
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string,
+  subheading: PropTypes.string
+};
+JoinNetworkContent.defaultProps = {
+  title: '',
+  subheading: ''
 };
 
 export default withStyles(styles)(JoinNetworkContent);

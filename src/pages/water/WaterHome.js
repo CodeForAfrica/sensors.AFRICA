@@ -1,15 +1,13 @@
-import React, { Component } from "react";
-import { Grid, Typography } from "@material-ui/core";
+import React from 'react';
 
-class WaterHome extends Component {
-  state = {};
-  render() {
-    return (
-      <Grid>
-        <Typography variant="display2">WIP: Water homepage</Typography>
-      </Grid>
-    );
-  }
+import { Grid, Typography } from '@material-ui/core';
+
+function WaterHome() {
+  return (
+    <Grid>
+      <Typography variant="display2">WIP: Water homepage</Typography>
+    </Grid>
+  );
 }
 
 export default WaterHome;

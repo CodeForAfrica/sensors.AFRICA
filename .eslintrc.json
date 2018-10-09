@@ -1,0 +1,16 @@
+{
+  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "react/forbid-prop-types": false,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "jsx-a11y/click-events-have-key-events": "off"
+  }
+}

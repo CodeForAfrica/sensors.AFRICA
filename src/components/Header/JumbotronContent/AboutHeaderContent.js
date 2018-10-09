@@ -1,45 +1,49 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
-  jumbotron: {
-    backgroundColor: "#454545",
-    height: "400px",
-    borderRadius: "none"
-  },
+const styles = theme => ({
   titleSection: {
-    textAlign: "center",
-    paddingTop: "2rem",
-    paddingRight: "25%",
-    paddingLeft: "25%"
+    flexGrow: 1,
+    textAlign: 'center',
+    paddingTop: '2rem',
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '25%',
+      paddingLeft: '25%'
+    }
   },
-  menuButton: {
-    color: "white"
+  headerText: {
+    color: 'white',
+    paddingBottom: '1rem'
   }
-};
+});
 
-class JumbotronContent extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.titleSection}>
-        <Typography variant="display2" style={{ color: "white" }}>
-          {this.props.title}
-        </Typography>
-        <Typography variant="subheading" style={{ color: "white" }}>
-          {this.props.subheading}
+function AboutHeaderContent({ classes, title, subheading }) {
+  return (
+    <Grid className={classes.titleSection} justify="center" alignItems="center">
+      <Grid item xs={12}>
+        <Typography variant="display2" className={classes.headerText}>
+          {title}
         </Typography>
       </Grid>
-    );
-  }
+      <Grid item xs={12}>
+        <Typography variant="subheading" className={classes.headerText}>
+          {subheading}
+        </Typography>
+      </Grid>
+    </Grid>
+  );
 }
 
-JumbotronContent.PropTypes = {
-  classes: PropTypes.object.isRequired
+AboutHeaderContent.propTypes = {
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string,
+  subheading: PropTypes.string
 };
-
-export default withStyles(styles)(JumbotronContent);
+AboutHeaderContent.defaultProps = {
+  title: '',
+  subheading: ''
+};
+export default withStyles(styles)(AboutHeaderContent);

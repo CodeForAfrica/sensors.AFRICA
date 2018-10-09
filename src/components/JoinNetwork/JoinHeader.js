@@ -1,42 +1,49 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-//import material components
-import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-//import components
-import MenuBar from "../Header/MenuBar";
-import JoinNetworkContent from "../Header/JumbotronContent/JoinHeaderContent";
+import MenuBar from '../Header/MenuBar';
+import JoinNetworkContent from '../Header/JumbotronContent/JoinHeaderContent';
 
-const styles = {
+const styles = theme => ({
   jumbotron: {
-    backgroundColor: "#2FB56B",
-    height: "400px",
-    borderRadius: "none"
+    flexGrow: 1,
+    backgroundColor: '#2FB56B',
+    borderRadius: 'none',
+    [theme.breakpoints.up('md')]: {
+      height: 450
+    }
   }
-};
+});
 
-class JoinHeader extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.jumbotron}>
+function JoinHeader({ classes }) {
+  return (
+    <Grid
+      container
+      className={classes.jumbotron}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
         <MenuBar />
+      </Grid>
+      <Grid item xs={12}>
         <JoinNetworkContent
           title="JOIN THE NETWORK"
           subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Nam ut purus quis massa interdum egestas quis id velit. 
+                            Nam ut purus quis massa interdum egestas quis id velit.
                             Proin non nisi porta sem placerat blandit in eget turpis.
-                            Quisque faucibus auctor ligula et posuere. Vestibulum ultrices lobortis 
+                            Quisque faucibus auctor ligula et posuere. Vestibulum ultrices lobortis
                             turpis eu vulputate"
         />
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
-JoinHeader.PropTypes = {
+JoinHeader.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
