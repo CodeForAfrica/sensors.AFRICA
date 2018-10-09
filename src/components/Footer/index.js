@@ -139,14 +139,16 @@ function Footer({ classes }) {
             </p>
           </Grid>
           <Grid item xs={12}>
-            <Button variant="contained" className={classes.footerButton}>
-              <a
-                href="https://medium.com/code-for-africa/tagged/innovateafrica"
-                className={classes.buttonLink}
-              >
+            <a
+              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="contained" className={classes.footerButton}>
                 READ MORE
-              </a>
-            </Button>
+              </Button>
+            </a>
           </Grid>
         </Grid>
         <Grid
@@ -174,10 +176,18 @@ function Footer({ classes }) {
               justify="center"
               alignItems="center"
             >
-              <a href="https://codeforafrica.org/">
+              <a
+                href="https://codeforafrica.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={codeforafrica} alt="Code For Africa" />
               </a>
-              <a href="https://www.innoafrica.org/">
+              <a
+                href="https://www.innoafrica.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={innovateafrica} alt="Innovate Africa" />
               </a>
             </Grid>

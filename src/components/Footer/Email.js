@@ -69,14 +69,16 @@ class Email extends Component {
               className={classes.footerInput}
             />
             <p>
-              <Button variant="contained" className={classes.footerButton}>
-                <a
-                  href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
-                  className={classes.buttonLink}
-                >
+              <a
+                href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
+                className={classes.buttonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="contained" className={classes.footerButton}>
                   SUBSCRIBE TO UPDATES
-                </a>
-              </Button>
+                </Button>
+              </a>
             </p>
           </FormControl>
         </Grid>
