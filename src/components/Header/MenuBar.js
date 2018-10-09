@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -31,7 +32,9 @@ function MenuBar({ classes }) {
       alignItems="flex-start"
     >
       <Grid item>
-        <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
+        <Link to="/">
+          <img src={logowhite} alt="sensors.AFRICA logo" height="100" />
+        </Link>
       </Grid>
       <Grid item>
         <Grid className={classes.iconContainer}>
