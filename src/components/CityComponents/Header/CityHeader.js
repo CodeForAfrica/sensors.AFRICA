@@ -12,7 +12,7 @@ import CityGaugeContainer from "../../CityComponents/Header/CityGaugeContainer";
 const styles = theme => ({
   jumbotron: {
     [theme.breakpoints.down('sm')]: {
-      height: "600px"
+      height: "700px"
     },
     backgroundColor: "#2FB56B",
     height: "500px",
