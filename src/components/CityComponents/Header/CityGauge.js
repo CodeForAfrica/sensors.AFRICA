@@ -4,7 +4,50 @@ import ReactSpeedometer from "react-d3-speedometer";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
-export default class CityGauge extends Component {
+const styles = theme => ({
+  gaugeBox: {
+    [theme.breakpoints.down('md')]: {
+      width: "150px",
+      marginLeft: "15%", padding: "40px 10px",
+    },
+    color: "white", textAlign: "center", width: "250px",
+    marginLeft: "20%", padding: "40px 15px",
+    marginTop: "-30%", border: "1px white solid"
+  },
+  gaugeDesc: {
+    [theme.breakpoints.down('md')]: {
+      bottom: "0", width: "80%", padding: "40px 0px",
+    },
+    color: "white", textAlign: "center", width: "250px", padding: "40px 15px",
+    marginTop: "-30%"
+  },
+  gaugeWho: {
+    [theme.breakpoints.down('md')]: {
+      left: "7%",
+    },
+    color: "white", bottom: "10%",
+    left: "25%", position: "absolute"
+  },
+  gaugeNeedleItem: {
+    width: "600px",height: "300px",
+    top: "64px", position: "absolute"
+  },
+  gaugeArc: {
+    [theme.breakpoints.down('sm')]: {
+      width: "400px",
+      height: "200px",
+    },
+    width: "600px",
+    height: "300px",
+  },
+  gaugeWhiteItem: {
+    [theme.breakpoints.down('sm')]: {
+      display: "none"
+    },
+  }
+});
+
+class CityGauge extends Component {
 
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this);
@@ -35,6 +78,7 @@ export default class CityGauge extends Component {
     }
   }
   render() {
+    const classes = this.props.classes;
     const airStat = (this.props.airPollMeasurement/10 * 100).toFixed(1);
     var gaugeText = "";
     if (airStat > 100) {
@@ -48,23 +92,19 @@ export default class CityGauge extends Component {
     }
     return (
       <Grid container item xs={12} direction="row" justify="center"
-        alignItems="center"  style={{ paddingTop: "0.6rem", height: "308px" }}>
-        <Grid container item xs={4} direction="column">
-          <p style={{color: "white", textAlign: "center", width: "250px",
-          marginLeft: "20%", padding: "40px 15px",
-          marginTop: "-30%", border: "1px white solid"}}>
+        alignItems="center"  style={{ paddingTop: "0.45rem", height: "auto" }}>
+        <Grid container item xs={12} md={3} lg={3} direction="column">
+          <p className={classes.gaugeBox}>
            WHO Guideline (10) Lowest level at which premature
           mortality increases inresponse to long term exposure</p>
 
-          <p style={{color: "white", bottom: "14%",
-          left: "25%", position: "absolute"}}>
-          <strong>WHO GUIDELINE</strong></p>
         </Grid>
-        <Grid container item xs={4} direction="column">
+        <Grid container item xs={12} md={6} lg={6} alignItems="center" direction="column">
+        <p className={classes.gaugeWho}>
+        <strong>WHO GUIDELINE</strong></p>
+          <div className={classes.gaugeArc}>
             <ReactSpeedometer
-                  fluidWidth={false}
-                  width={600}
-                  height={300}
+                  fluidWidth={true}
                   ringWidth={60}
                   minValue={0}
                   maxValue={150}
@@ -76,8 +116,8 @@ export default class CityGauge extends Component {
                   needleColor="#144a3d"
                   textColor="#144a3d"
              />
-             <svg style={{ width: "600px",height: "300px",
-              top: "64px", left:"30%", position: "absolute"}}>
+             </div>
+             <svg className={classes.gaugeNeedleItem}>
               <g transform="translate(300,300)">
                <path
                d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
@@ -86,10 +126,16 @@ export default class CityGauge extends Component {
                style={{cursor: "-webkit-grab", cursor: "grab"}}></path>
               </g>
              </svg>
-             <svg style={{ width: "300px", height: "150px", top: "14rem",
-             right: "42%", justify:"center", position: "absolute" }}>
+             <svg style={{width: "300px", height: "150px", top: "14rem",
+             justify:"center", position: "absolute"}}>
                <circle
                  r="150"
+                 cx="150"
+                 cy="150"
+                 fill="white"
+               className={classes.gaugeWhiteItem} />
+               <circle
+                 r="75"
                  cx="150"
                  cy="150"
                  fill="white"
@@ -108,10 +154,8 @@ export default class CityGauge extends Component {
                </g>
              </svg>
         </Grid>
-        <Grid container item xs={4} direction="column">
-          <p style={{color: "white", textAlign: "center", width: "250px",
-          marginLeft: "30%", padding: "40px 15px",
-          marginTop: "-30%"}}>
+        <Grid container item xs={12} md={3} direction="column">
+          <p className={classes.gaugeDesc}>
            <strong>*PM<sub>2.5</sub> concentrations measured in microgrmas of particles
            per cubic meter of air <span>&#181;</span>g/m3</strong><br/><br/>
           <em>Data: WHO Global Platform on Air Quality & Health</em></p>
@@ -120,3 +164,5 @@ export default class CityGauge extends Component {
     )
   }
 }
+
+export default withStyles(styles)(CityGauge);

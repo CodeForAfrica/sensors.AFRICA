@@ -9,13 +9,16 @@ import { withStyles } from "@material-ui/core/styles";
 import CityMenuBar from "../../CityComponents/Header/CityMenuBar";
 import CityGaugeContainer from "../../CityComponents/Header/CityGaugeContainer";
 
-const styles = {
+const styles = theme => ({
   jumbotron: {
+    [theme.breakpoints.down('sm')]: {
+      height: "600px"
+    },
     backgroundColor: "#2FB56B",
     height: "500px",
     borderRadius: "none"
   }
-};
+});
 
 class CityHeader extends Component {
   render() {
