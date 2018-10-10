@@ -11,8 +11,7 @@ const styles = theme => ({
       marginLeft: "15%", padding: "40px 10px",
     },
     [theme.breakpoints.down('sm')]: {
-      marginTop: "0px",
-      marginLeft: "15%", padding: "15px 15px",
+      marginTop: "0px", padding: "10px 10px",
     },
     color: "white", textAlign: "center", width: "250px",
     marginLeft: "20%", padding: "40px 15px",
@@ -40,7 +39,7 @@ const styles = theme => ({
   },
   gaugeNeedleItem: {
     [theme.breakpoints.down('sm')]: {
-      top: "96px", left: "5%"
+      top: "90px"
     },
     width: "600px",height: "300px",
     top: "64px", position: "absolute"
@@ -60,7 +59,7 @@ const styles = theme => ({
   },
   gaugeCircle: {
     [theme.breakpoints.down('sm')]: {
-      top: "15.54rem",
+      top: "15rem",
     },
     width: "300px", height: "150px", top: "14rem",
     justify:"center", position: "absolute"

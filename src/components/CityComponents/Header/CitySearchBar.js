@@ -22,9 +22,13 @@ const airPollutionLevel = {
 
 const styles = theme => ({
   root: {
+    [theme.breakpoints.down('md')]: {
+      paddingTop: '0'
+    },
     flexGrow: 1,
     height: 250,
-    paddingTop: '2.5rem'
+    paddingTop: '2.5rem',
+    width: '300px'
   },
   input: {
     display: 'flex',
@@ -56,8 +60,8 @@ const styles = theme => ({
     position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing.unit,
-    left: '27%',
-    right: '25%',
+    left: 0,
+    right: 0,
     width: 300
   },
   css1wy0on6: {
