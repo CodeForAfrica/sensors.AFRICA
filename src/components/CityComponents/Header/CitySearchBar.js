@@ -182,7 +182,7 @@ class CitySearchBar extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
+      <div className={classes.root} >
         <Select
           classes={classes}
           options={suggestions}

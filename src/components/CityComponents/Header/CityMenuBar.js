@@ -22,9 +22,9 @@ class MenuBar extends Component {
     const { classes } = this.props;
     return (
       <Grid container item xs={12} direction="row" justify="space-around">
-        <Grid container item xs={8}>
+        <Grid container item xs={12}>
           <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
-          <CitySearchBar />
+          <CitySearchBar  />
         </Grid>
 
         <Grid className={classes.iconContainer}>

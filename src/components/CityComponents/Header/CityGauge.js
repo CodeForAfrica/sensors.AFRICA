@@ -6,22 +6,32 @@ import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
   gaugeBox: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.between('sm','md')]: {
       width: "150px",
       marginLeft: "15%", padding: "40px 10px",
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginTop: "0px",
+      marginLeft: "15%", padding: "15px 15px",
     },
     color: "white", textAlign: "center", width: "250px",
     marginLeft: "20%", padding: "40px 15px",
     marginTop: "-30%", border: "1px white solid"
   },
   gaugeDesc: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.between('sm','md')]: {
       bottom: "0", width: "80%", padding: "40px 0px",
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginTop: "0px", padding: "20px 15px", width: "300px"
     },
     color: "white", textAlign: "center", width: "250px", padding: "40px 15px",
     marginTop: "-30%"
   },
   gaugeWho: {
+    [theme.breakpoints.down('sm')]: {
+      bottom: "35%"
+    },
     [theme.breakpoints.down('md')]: {
       left: "7%",
     },
@@ -29,6 +39,9 @@ const styles = theme => ({
     left: "25%", position: "absolute"
   },
   gaugeNeedleItem: {
+    [theme.breakpoints.down('sm')]: {
+      top: "96px", left: "5%"
+    },
     width: "600px",height: "300px",
     top: "64px", position: "absolute"
   },
@@ -44,6 +57,13 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       display: "none"
     },
+  },
+  gaugeCircle: {
+    [theme.breakpoints.down('sm')]: {
+      top: "15.54rem",
+    },
+    width: "300px", height: "150px", top: "14rem",
+    justify:"center", position: "absolute"
   }
 });
 
@@ -59,6 +79,7 @@ class CityGauge extends Component {
           let newtrans = "rotate("+ deg + ") translate(0,-200)";
           deg += 22.5;
           valueLabel.setAttribute('transform', newtrans);
+          valueLabel.setAttribute('fill', "white");
         }
       }
 
@@ -110,7 +131,6 @@ class CityGauge extends Component {
                   maxValue={150}
                   value={this.props.airPollMeasurement}
                   segments={8}
-                  textColor="white"
                   startColor="#5fbf82"
                   endColor="#b72025"
                   needleColor="#144a3d"
@@ -123,11 +143,10 @@ class CityGauge extends Component {
                d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
                fill="#144a3d" transform="rotate(-78.75)"
                stroke-linecap="round" stroke-width="3" stroke="#fefffd"
-               style={{cursor: "-webkit-grab", cursor: "grab"}}></path>
+               style={{cursor: "grab"}}></path>
               </g>
              </svg>
-             <svg style={{width: "300px", height: "150px", top: "14rem",
-             justify:"center", position: "absolute"}}>
+             <svg className={classes.gaugeCircle}>
                <circle
                  r="150"
                  cx="150"

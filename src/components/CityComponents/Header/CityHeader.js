@@ -12,7 +12,7 @@ import CityGaugeContainer from "../../CityComponents/Header/CityGaugeContainer";
 const styles = theme => ({
   jumbotron: {
     [theme.breakpoints.down('sm')]: {
-      height: "600px"
+      height: "700px"
     },
     backgroundColor: "#2FB56B",
     height: "500px",
@@ -25,8 +25,8 @@ class CityHeader extends Component {
     const { classes } = this.props;
     return (
       <Grid className={classes.jumbotron} container item={12}>
-        <CityMenuBar />
-        <CityGaugeContainer />
+        <CityMenuBar history={this.props.history}/>
+        <CityGaugeContainer city={this.props.city} airPol={this.props.airPol} />
       </Grid>
     );
   }
