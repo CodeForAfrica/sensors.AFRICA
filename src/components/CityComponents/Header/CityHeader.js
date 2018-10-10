@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 import CityMenuBar from './CityMenuBar';
-import CityGaugeContainer from './CityGaugeContainer';
+import AirCityHeaderContent from '../../Header/JumbotronContent/AirCityHeaderContent';
 
 const styles = theme => ({
   jumbotron: {
@@ -22,7 +22,7 @@ function CityHeader({ classes }) {
   return (
     <Grid className={classes.jumbotron} container item={12}>
       <CityMenuBar />
-      <CityGaugeContainer />
+      <AirCityHeaderContent />
     </Grid>
   );
 }
