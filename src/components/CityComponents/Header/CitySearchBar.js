@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from "react-router";
 
 import Select from 'react-select';
 
@@ -7,16 +8,23 @@ import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const suggestions = [
-  { city: 'Nairobi, Kenya' },
-  { city: 'Lagos, Nigeria' },
-  { city: 'Dar-es-Salaam, Tanzania' }
-].map(suggestion => ({
-  value: suggestion.city,
-  label: suggestion.city
-}));
+  { 'value':'nairobi', 'label': "Nairobi, Kenya" },
+  { 'value':'lagos', 'label': "Lagos, Nigeria" },
+  { 'value':'dar-es-salaam', 'label': "Dar-es-Salaam, Tanzania" }
+]
+
+//To Do: needs to be pulled from an api
+const airPollutionLevel = {
+  'nairobi': 17,
+  'lagos': 20,
+  'dar-es-salaam': 18
+}
 
 const styles = theme => ({
   root: {
+    [theme.breakpoints.down('md')]: {
+      paddingTop: '0'
+    },
     flexGrow: 1,
     height: 250,
     paddingTop: '2.5rem',
@@ -53,7 +61,8 @@ const styles = theme => ({
     zIndex: 1,
     marginTop: theme.spacing.unit,
     left: 0,
-    right: 0
+    right: 0,
+    width: 300
   },
   css1wy0on6: {
     width: '0'
@@ -140,6 +149,7 @@ function Menu({ children, innerProps, selectProps }) {
     </Paper>
   );
 }
+
 const components = {
   Control,
   Menu,
@@ -155,19 +165,25 @@ class CitySearchBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      single: null
-    };
+    this.state = { single: null };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(value) {
-    this.setState({ single: value });
-  }
+
+  handleChange = (city) => {
+    this.setState({ single: city });
+    this.props.history.push(
+      { pathname: "/air/city",
+        state: {'cityObj': city,
+                'cityAirPolLevel': airPollutionLevel[city.value]
+               }
+      });
+    }
 
   render() {
     const { classes } = this.props;
     const { single } = this.state;
+
     return (
       <div className={classes.root}>
         <Select
@@ -176,7 +192,7 @@ class CitySearchBar extends React.Component {
           components={components}
           value={single}
           onChange={this.handleChange}
-          placeholder="Search for your city ...."
+          placeholder={this.props.placeholder}
         />
       </div>
     );
@@ -187,4 +203,4 @@ CitySearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(CitySearchBar);
+export default withRouter(withStyles(styles)(CitySearchBar));

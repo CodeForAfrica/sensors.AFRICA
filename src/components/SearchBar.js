@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from "react-router";
 
 import Select from 'react-select';
 
@@ -7,13 +8,17 @@ import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const suggestions = [
-  { city: 'Nairobi, Kenya' },
-  { city: 'Lagos, Nigeria' },
-  { city: 'Dar-es-Salaam, Tanzania' }
-].map(suggestion => ({
-  value: suggestion.city,
-  label: suggestion.city
-}));
+  { 'value':'nairobi', 'label': "Nairobi, Kenya" },
+  { 'value':'lagos', 'label': "Lagos, Nigeria" },
+  { 'value':'dar-es-salaam', 'label': "Dar-es-Salaam, Tanzania" }
+]
+
+//To Do: needs to be pulled from an api
+const airPollutionLevel = {
+  'nairobi': 17,
+  'lagos': 20,
+  'dar-es-salaam': 18
+}
 
 const styles = theme => ({
   root: {
@@ -160,9 +165,16 @@ class CitySearchBar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(value) {
-    this.setState({ single: value });
-  }
+
+  handleChange = (city) => {
+    this.setState({ single: city });
+    this.props.history.push(
+      { pathname: "/air/city",
+        state: {'cityObj': city,
+                'cityAirPolLevel': airPollutionLevel[city.value]
+               }
+      });
+    }
 
   render() {
     const { classes } = this.props;
@@ -176,7 +188,7 @@ class CitySearchBar extends React.Component {
           components={components}
           value={single}
           onChange={this.handleChange}
-          placeholder="Search for your city ...."
+          placeholder={this.props.placeholder}
         />
       </div>
     );
@@ -187,4 +199,4 @@ CitySearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(CitySearchBar);
+export default withRouter(withStyles(styles)(CitySearchBar));

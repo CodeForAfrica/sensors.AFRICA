@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from "react-router";
 
 import SearchBar from '../../SearchBar';
 
@@ -36,7 +37,8 @@ function AirHeaderContent({ classes, title }) {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <SearchBar item xs={12} />
+        <SearchBar item xs={12}
+        placeholder="Search for your city ..." />
       </Grid>
     </Grid>
   );
@@ -49,4 +51,4 @@ AirHeaderContent.propTypes = {
 AirHeaderContent.defaultProps = {
   title: ''
 };
-export default withStyles(styles)(AirHeaderContent);
+export default withRouter(withStyles(styles)(AirHeaderContent));

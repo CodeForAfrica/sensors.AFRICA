@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { withRouter } from "react-router";
 
 import About from './About';
 import HowSensorsWork from './HowSensorsWork';
@@ -28,4 +29,4 @@ function AirHome() {
   );
 }
 
-export default AirHome;
+export default withRouter(AirHome);

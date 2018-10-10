@@ -1,44 +1,54 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import CitySearchBar from "./CitySearchBar";
+import HamburgerMenu from "../../Hambuger/HambugerMenu";
 
-import CitySearchBar from './CitySearchBar';
-import HambugerMenu from '../../Hambuger/HambugerMenu';
+//import assets
+import logowhite from "../../../assets/Logo-White.png";
+import Grid from "@material-ui/core/Grid";
 
-import logowhite from '../../../assets/Logo-White.png';
-
-const styles = {
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '8%',
+      paddingLeft: '8%'
+    }
+  },
   icon: {
-    color: 'white',
-    paddingTop: '3%'
+    color: "white",
+    paddingTop: "3%"
   },
   iconContainer: {
-    paddingTop: '2rem'
+    paddingTop: "2rem"
   }
-};
+});
 
 function MenuBar({ classes }) {
-  return (
-    <Grid container item xs={12} direction="row" justify="space-around">
-      <Grid container item xs={8}>
-        <Link to="/">
-          <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
-        </Link>
-        <CitySearchBar />
+    return (
+      <Grid
+        container
+        className={classes.root}
+        justify="space-between"
+        alignItems="flex-start"
+      >
+        <Grid item>
+          <Link to="/">
+            <img src={logowhite} alt="sensors.AFRICA" height="100" />
+          </Link>
+          <CitySearchBar placeholder="Search for another location ..."/>
+        </Grid>
+        <Grid item>
+          <Grid className={classes.iconContainer}>
+            <HamburgerMenu />
+          </Grid>
+        </Grid>
       </Grid>
 
-      <Grid className={classes.iconContainer}>
-        <HambugerMenu />
-      </Grid>
-    </Grid>
-  );
+    );
 }
 
-MenuBar.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(MenuBar);
+export default withRouter(withStyles(styles)(MenuBar));
