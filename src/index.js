@@ -19,7 +19,7 @@ import { faSearch } from "@fortawesome/fontawesome-free-solid";
 fontawesome.library.add(fab, faSearch);
 
 ReactDOM.render(
-  <BrowserRouter history={browserHistory}>
+  <BrowserRouter>
     {/* Declare routes for the app*/}
     <div>
       <Switch>
