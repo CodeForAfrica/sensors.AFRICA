@@ -23,6 +23,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-autosuggest": "^9.4.2",
+    "react-d3-speedometer": "^0.4.1",
     "react-dom": "^16.4.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

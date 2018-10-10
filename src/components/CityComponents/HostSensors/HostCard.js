@@ -7,8 +7,8 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {},
   card: {
-    height: '600px',
-    width: '450px',
+    height: 600,
+    width: 450,
     backgroundColor: '#2FB56B',
     borderRadius: 0
   },
@@ -41,11 +41,9 @@ function HostCard({ classes }) {
   return (
     <Grid
       container
-      item
-      xs={6}
-      direction="row"
-      align="center"
       className={classes.root}
+      justify="center"
+      alignItems="center"
     >
       <Card className={classes.card}>
         <CardContent className={classes.cardContent}>

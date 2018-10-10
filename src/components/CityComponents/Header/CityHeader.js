@@ -5,19 +5,33 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 import CityMenuBar from './CityMenuBar';
+import AirCityHeaderContent from '../../Header/JumbotronContent/AirCityHeaderContent';
 
-const styles = {
+const styles = theme => ({
   jumbotron: {
+    flexGrow: 1,
     backgroundColor: '#2FB56B',
-    height: '400px',
-    borderRadius: 'none'
+    borderRadius: 'none',
+    [theme.breakpoints.up('md')]: {
+      height: 500
+    }
   }
-};
+});
 
 function CityHeader({ classes }) {
   return (
-    <Grid className={classes.jumbotron} container item={12}>
-      <CityMenuBar />
+    <Grid
+      container
+      className={classes.jumbotron}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
+        <CityMenuBar />
+      </Grid>
+      <Grid item xs={12}>
+        <AirCityHeaderContent />
+      </Grid>
     </Grid>
   );
 }
