@@ -1,7 +1,7 @@
 /* App css */
 
 .Image-section {
-  background-image: url("../images/background/bglanding.jpg");
+  background-image: url('../images/background/bglanding.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 90vh;
@@ -11,15 +11,9 @@
 .Jumbotron {
   padding-top: 2rem;
   height: 350px;
-  background-image: url("../images/background/bgstories.jpg");
+  background-image: url('../images/background/bgstories.jpg');
   background-size: cover;
   overflow: hidden;
-}
-.support {
-  height: 40rem;
-  padding-top: 12rem;
-  background-image: url("../images/background/bgsupport.jpg");
-  background-size: cover;
 }
 .list-ic li {
   position: relative;
@@ -37,7 +31,7 @@
   position: relative;
 }
 .list-ic li::before {
-  content: "";
+  content: '';
   position: absolute;
   background: black;
   z-index: -1;
@@ -71,7 +65,7 @@
   border-radius: none;
 }
 .card:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   right: 100%;

@@ -20,11 +20,11 @@
     "downshift": "^2.2.2",
     "getstorybook": "^1.7.0",
     "gh-pages": "^1.2.0",
+    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-autosuggest": "^9.4.2",
     "react-d3-speedometer": "^0.4.1",
     "react-dom": "^16.4.2",
-    "react-gauge-capacity": "^1.9.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
@@ -51,6 +51,15 @@
     "@storybook/addons": "^3.4.10",
     "@storybook/react": "^3.4.10",
     "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.14.3"
   }
 }

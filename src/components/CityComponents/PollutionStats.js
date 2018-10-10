@@ -1,119 +1,113 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const styles = {
+import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
   root: {
-    height: "400px"
+    flexGrow: 1,
+    marginTop: theme.spacing.unit * 8,
+    marginBottom: theme.spacing.unit * 4
   },
-  centerGrid: {
-    borderRight: "1px solid  rgba(0, 0, 0, 0.2)",
-    borderLeft: "1px solid  rgba(0, 0, 0, 0.2)",
-    height: "250px",
-    paddingTop: "2rem",
-    paddingLeft: "2rem",
-    paddingRight: "2rem",
-    textAlign: "center"
+  statGrid: {
+    textAlign: 'center',
+    borderTop: '1px solid  rgba(0, 0, 0, 0.2)',
+    borderBottom: '1px solid  rgba(0, 0, 0, 0.2)',
+    [theme.breakpoints.up('md')]: {
+      border: 'none',
+      borderRight: '1px solid  rgba(0, 0, 0, 0.2)'
+    }
   },
-  innnergrid: {
-    margin: "5rem",
-    borderTop: "1px solid  rgba(0, 0, 0, 0.2)"
+  stat: {
+    textAlign: 'center',
+    padding: '4rem',
+    [theme.breakpoints.up('md')]: {
+      height: 250,
+      padding: '0 4rem'
+    }
   },
-  maingrid: {
-    margin: "3rem",
-    paddingTop: "4rem"
-  },
-  grid: {
-    height: "250px",
-    textAlign: "center",
-    paddingRight: "2rem",
-    paddingLeft: "2rem",
-    paddingTop: "2rem"
-  },
-  highlight: {
-    color: "#2FB56B",
-    fontWeight: "500"
+  statHighlight: {
+    color: '#2FB56B',
+    fontWeight: '500'
   }
-};
+});
 
-class PollutionStats extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid container item xs={12} className={classes.root}>
-        <Grid container className={classes.innnergrid}>
-          <Grid
-            container
-            item
-            xs={12}
-            direction="row"
-            justify="center"
-            alignItems="center"
-            className={classes.maingrid}
-          >
-            <Grid container item xs={4} className={classes.grid}>
-              <div>
-                <Typography variant="subheading">
-                  Death by air pollution in kenya yearly
-                </Typography>
-                <Typography variant="display2" className={classes.highlight}>
-                  5,102
-                </Typography>
-              </div>
+function PollutionStats({ classes }) {
+  return (
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12} md={4} className={classes.statGrid}>
+        <div className={classes.stat}>
+          <div>
+            <Typography variant="subheading">
+              Death by air pollution in kenya yearly
+            </Typography>
+            <Typography variant="display2" className={classes.statHighlight}>
+              5,102
+            </Typography>
+          </div>
 
-              <div>
-                <Typography variant="subheading">
-                  Child Deaths caused by air pollution in kenya yearly
-                </Typography>
-                <Typography variant="display2" className={classes.highlight}>
-                  2,144
-                </Typography>
-              </div>
-            </Grid>
-
-            <Grid container item xs={4} className={classes.centerGrid}>
-              <div>
-                <Typography
-                  variant="subheading"
-                  style={{ paddingBottom: "1rem" }}
-                >
-                  The top illness caused by air pollution in kenya is
-                </Typography>
-                <Typography variant="display1" className={classes.highlight}>
-                  ACUTE LOWER RESPIRATORY INFECTION
-                </Typography>
-              </div>
-            </Grid>
-
-            <Grid container item xs={4} className={classes.grid}>
-              <div style={{ paddingRight: "1rem", paddingLeft: "1rem" }}>
-                <Typography variant="subheading">
-                  <b>POLLUTION LEVELS IN NAIROBI</b>
-                </Typography>
-                <Typography
-                  variant="subheading"
-                  style={{ paddingTop: "1rem", paddingBottom: "1rem" }}
-                >
-                  The air in Nairobi has an annual average of
-                </Typography>
-                <Typography
-                  variant="display1"
-                  className={classes.highlight}
-                  style={{ paddingBottom: "1rem" }}
-                >
-                  17 ug/m3
-                </Typography>
-                <Typography variant="subheading">
-                  of PM2.5 particles. That is 70% more than the WHO safe level.
-                </Typography>
-              </div>
-            </Grid>
-          </Grid>
-        </Grid>
+          <div style={{ marginTop: '2rem' }}>
+            <Typography variant="subheading">
+              Child Deaths caused by air pollution in kenya yearly
+            </Typography>
+            <Typography variant="display2" className={classes.statHighlight}>
+              2,144
+            </Typography>
+          </div>
+        </div>
       </Grid>
-    );
-  }
+
+      <Grid item xs={12} md={4} className={classes.statGrid}>
+        <div className={classes.stat}>
+          <Typography variant="subheading" style={{ paddingBottom: '1rem' }}>
+            The top illness caused by air pollution in kenya is
+          </Typography>
+          <Typography variant="display1" className={classes.statHighlight}>
+            ACUTE LOWER RESPIRATORY INFECTION
+          </Typography>
+        </div>
+      </Grid>
+
+      <Grid
+        item
+        xs={12}
+        md={4}
+        className={classes.statGrid}
+        style={{ borderRight: 'none' }}
+      >
+        <div className={classes.stat}>
+          <Typography variant="subheading">
+            <b>POLLUTION LEVELS IN NAIROBI</b>
+          </Typography>
+          <Typography
+            variant="subheading"
+            style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
+          >
+            The air in Nairobi has an annual average of
+          </Typography>
+          <Typography
+            variant="display1"
+            className={classes.statHighlight}
+            style={{ paddingBottom: '1rem' }}
+          >
+            17 ug/m3
+          </Typography>
+          <Typography variant="subheading">
+            of PM2.5 particles. That is 70% more than the WHO safe level.
+          </Typography>
+        </div>
+      </Grid>
+    </Grid>
+  );
 }
 
+PollutionStats.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(PollutionStats);

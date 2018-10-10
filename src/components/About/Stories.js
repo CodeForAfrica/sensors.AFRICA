@@ -1,63 +1,65 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import "../../assets/css/App.css";
-import "../../assets/images/background/bgstories.jpg";
+import { Button, Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import '../../assets/css/App.css';
+import '../../assets/images/background/bgstories.jpg';
 
 const styles = {
   titleSection: {
-    textAlign: "center",
-    color: "white"
+    flexGrow: 1,
+    textAlign: 'center',
+    color: 'white'
   },
   button: {
-    paddingTop: "2rem"
+    paddingTop: '2rem'
   },
   buttonLink: {
-    textDecoration: "none",
-    color: "black"
+    textDecoration: 'none',
+    color: 'black'
   }
 };
 
-class Stories extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className="Jumbotron" container item xs={12}>
-        <Grid
-          className={classes.titleSection}
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
+function Stories({ classes }) {
+  return (
+    <div
+      className="Jumbotron"
+      style={{ display: 'flex', alignItems: 'center' }}
+    >
+      <Grid
+        container
+        className={classes.titleSection}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={12}>
           <Typography
             variant="display2"
-            style={{ color: "white", textTrandform: "Uppercase" }}
+            style={{ color: 'white', textTrandform: 'Uppercase' }}
           >
             SENSORS STORIES
           </Typography>
+        </Grid>
+        <Grid item xs={12}>
           <div className={classes.button}>
-            <Button variant="contained">
-              <a
-                href="https://medium.com/code-for-africa/tagged/innovateafrica"
-                className={classes.buttonLink}
-              >
-                READ ON MEDIUM
-              </a>
-            </Button>
+            <a
+              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="contained">READ ON MEDIUM</Button>
+            </a>
           </div>
         </Grid>
       </Grid>
-    );
-  }
+    </div>
+  );
 }
 
-Stories.PropTypes = {
+Stories.propTypes = {
   classes: PropTypes.object.isRequired
 };
 

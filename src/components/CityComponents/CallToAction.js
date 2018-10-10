@@ -1,74 +1,73 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import { Card, CardContent, Button } from "@material-ui/core/";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-const styles = {
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import {
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Typography
+} from '@material-ui/core/';
+import { withStyles } from '@material-ui/core/styles';
+
+const howToLink = props => <Link to="/air/how-sensors-work" {...props} />;
+
+const styles = theme => ({
   root: {
-    height: "450px"
+    flexGrow: 1,
+    marginTop: theme.spacing.unit * 8,
+    marginBottom: theme.spacing.unit * 4
   },
   sensorsWorkCard: {
-    paddingTop: "2rem",
-    paddingBottom: "2rem",
-    height: "200px",
-    width: "400px",
-    margin: "4rem",
-    borderRadius: "0",
-    backgroundColor: "#164B3E"
+    paddingTop: '2rem',
+    paddingBottom: '2rem',
+    height: '200px',
+    borderRadius: '0',
+    backgroundColor: '#164B3E'
   },
   joinNowCard: {
-    paddingTop: "2rem",
-    paddingBottom: "2rem",
-    height: "200px",
-    width: "400px",
-    margin: "4rem",
-    borderRadius: "0",
-    backgroundColor: "#2FB56B"
+    paddingTop: '2rem',
+    paddingBottom: '2rem',
+    height: '200px',
+    borderRadius: '0',
+    backgroundColor: '#2FB56B'
   },
   cardContent: {
-    color: "#fff",
-    paddingTop: "3rem"
+    color: '#fff',
+    paddingTop: '3rem'
   },
   typography: {
-    textAlign: "center",
-    color: "#fff"
+    textAlign: 'center',
+    color: '#fff'
   },
   buttonContainer: {
-    paddingTop: "2rem",
-    textAlign: "center"
+    paddingTop: '2rem',
+    textAlign: 'center'
   },
   learnMorebutton: {
-    padding: "0.8rem",
-    backgroundColor: "#164B3E",
-    border: "1px solid",
-    borderColor: "#f3f3f3",
+    padding: '0.8rem',
+    backgroundColor: '#164B3E',
+    border: '1px solid',
+    borderColor: '#f3f3f3',
     borderRadius: 0,
-    color: "#fff"
+    color: '#fff'
   },
   joinNowbutton: {
-    padding: "0.8rem",
-    backgroundColor: "#f3f3f3",
-    border: "1px solid",
-    borderColor: "#f3f3f3",
+    padding: '0.8rem',
+    backgroundColor: '#f3f3f3',
+    border: '1px solid',
+    borderColor: '#f3f3f3',
     borderRadius: 0,
-    color: "#164B3E"
+    color: '#164B3E'
   }
-};
+});
 
-class CallToAction extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid
-        container
-        item
-        xs={12}
-        direction="row"
-        justify="center"
-        className={classes.root}
-      >
-        <Card container item xs={6} className={classes.sensorsWorkCard}>
+function CallToAction({ classes }) {
+  return (
+    <Grid container className={classes.root} justify="center" spacing={40}>
+      <Grid item sm>
+        <Card className={classes.sensorsWorkCard}>
           <CardContent className={classes.cardContent}>
             <Typography variant="display1" className={classes.typography}>
               HOW DO SENSORS WORK?
@@ -76,20 +75,18 @@ class CallToAction extends Component {
             <Grid className={classes.buttonContainer}>
               <Button
                 variant="contained"
-                ize="large"
+                size="large"
                 className={classes.learnMorebutton}
+                component={howToLink}
               >
-                <Link
-                  to="/air/how-sensors-work"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  LEARN MORE
-                </Link>
+                LEARN MORE
               </Button>
             </Grid>
           </CardContent>
         </Card>
-        <Card container item xs={6} className={classes.joinNowCard}>
+      </Grid>
+      <Grid item sm>
+        <Card className={classes.joinNowCard}>
           <CardContent className={classes.cardContent}>
             <Typography variant="display1" className={classes.typography}>
               GET YOUR CITY ON BOARD
@@ -97,7 +94,9 @@ class CallToAction extends Component {
             <Grid className={classes.buttonContainer}>
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: 'none' }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Button
                   variant="contained"
@@ -111,8 +110,11 @@ class CallToAction extends Component {
           </CardContent>
         </Card>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
+CallToAction.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(CallToAction);

@@ -1,38 +1,37 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Home from "pages/Home";
-import About from "pages/air/About";
-import City from "pages/air/City";
-import AirHome from "pages/air/AirHome";
-import SoundHome from "pages/sound/SoundHome";
-import WaterHome from "pages/water/WaterHome";
-import JoinNetwork from "pages/air/JoinNetwork";
-import HowSensorsWork from "./pages/air/HowSensorsWork";
+import fontawesome from '@fortawesome/fontawesome';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faSearch } from '@fortawesome/fontawesome-free-solid';
 
-import "../src/assets/css/index.css";
-import fontawesome from "@fortawesome/fontawesome";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faSearch } from "@fortawesome/fontawesome-free-solid";
+import Home from './pages';
+import Air, {
+  About as AirAbout,
+  HowSensorsWork as AirHowSensorsWork,
+  City as AirCity,
+  JoinNetwork as AirJoinNetwork
+} from './pages/air';
+import SoundHome from './pages/sound/SoundHome';
+import WaterHome from './pages/water/WaterHome';
+
+import './assets/css/index.css';
 
 fontawesome.library.add(fab, faSearch);
 
 ReactDOM.render(
   <BrowserRouter>
-    {/* Declare routes for the app*/}
-    <div>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/air/about" component={About} />
-        <Route path="/air/city" component={City} />
-        <Route path="/air/home" component={AirHome} />
-        <Route path="/air/join-network" component={JoinNetwork} />
-        <Route path="/air/how-sensors-work" component={HowSensorsWork} />
-        <Route path="/water/home" component={WaterHome} />
-        <Route path="/sound/home" component={SoundHome} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/air" component={Air} />
+      <Route path="/air/about" component={AirAbout} />
+      <Route path="/air/how-sensors-work" component={AirHowSensorsWork} />
+      <Route path="/air/city" component={AirCity} />
+      <Route path="/air/join-network" component={AirJoinNetwork} />
+      <Route exact path="/water" component={WaterHome} />
+      <Route exact path="/sound" component={SoundHome} />
+    </Switch>
   </BrowserRouter>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

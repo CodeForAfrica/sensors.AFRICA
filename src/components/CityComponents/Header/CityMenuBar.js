@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
+import { withRouter } from "react-router";
+
 import CitySearchBar from "../../SearchBar";
 import HambugerMenu from "../../Hambuger/HambugerMenu";
 
@@ -17,15 +19,13 @@ const styles = {
   }
 };
 
-class MenuBar extends Component {
-  render() {
-    const { classes } = this.props;
+function MenuBar({ classes }) {
     return (
       <Grid container item xs={12} direction="row" justify="space-around">
         <Grid container item xs={12}>
           <img src={logowhite} alt="Sensors Africa Logo" height="100px" />
-          <CitySearchBar history={this.props.history}
-          placeholder="Search for another location ..."/>
+          <CitySearchBar placeholder="Search for another location ..."
+          position="not center"/>
         </Grid>
 
         <Grid className={classes.iconContainer}>
@@ -33,7 +33,6 @@ class MenuBar extends Component {
         </Grid>
       </Grid>
     );
-  }
 }
 
-export default withStyles(styles)(MenuBar);
+export default withRouter(withStyles(styles)(MenuBar));

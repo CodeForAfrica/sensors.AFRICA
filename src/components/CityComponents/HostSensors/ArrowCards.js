@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "../../../assets/css/App.css";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Card,
@@ -9,43 +9,45 @@ import {
   List,
   CardContent,
   Button
-} from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+import '../../../assets/css/App.css';
 
 const styles = theme => ({
   findOutMore: {
-    color: "#164B3E"
+    color: '#164B3E'
   },
   buttonContained: {
-    backgroundColor: "#2FB56B",
-    color: "#fff",
+    backgroundColor: '#2FB56B',
+    color: '#fff',
     borderRadius: 0,
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing.unit * 2,
+    marginLeft: 80
   },
   body2: {
-    color: "black",
-    opacity: "0.8"
+    color: 'black',
+    opacity: '0.8'
   }
 });
 
-class ArrowCards extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid
-        container
-        item
-        xs={6}
-        direction="row"
-        justify="center"
-        className={classes.tweetGrid}
-      >
+function ArrowCards({ classes }) {
+  return (
+    <Grid
+      container
+      className={classes.tweetGrid}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12} container justify="center" alignItems="center">
         <Typography
           variant="body2"
-          style={{ marginLeft: "4.5rem", color: "green" }}
+          style={{ marginLeft: '4.5rem', color: 'green' }}
         >
           WHO CAN I REPORT AIR SENSORS QUALITY TO?
         </Typography>
+      </Grid>
+      <Grid item xs={12} container justify="center" alignItems="center">
         <List className="list-ic vertical">
           <ListItem className={classes.list}>
             <span />
@@ -58,7 +60,7 @@ class ArrowCards extends Component {
               alignItems="center"
             >
               <CardContent
-                style={{ textDecoration: "underline", textAlign: "center" }}
+                style={{ textDecoration: 'underline', textAlign: 'center' }}
               >
                 <Typography variant="body2" className={classes.body2}>
                   Local Government
@@ -79,11 +81,11 @@ class ArrowCards extends Component {
               justify="center"
               alignItems="center"
             >
-              <CardContent style={{ textAlign: "center" }}>
+              <CardContent style={{ textAlign: 'center' }}>
                 <Typography variant="body2" className={classes.body2}>
                   <b>
                     <u>@david</u>
-                  </b>{" "}
+                  </b>{' '}
                   answered the question about
                 </Typography>
                 <Typography variant="body2" className={classes.body2}>
@@ -102,11 +104,11 @@ class ArrowCards extends Component {
               justify="center"
               alignItems="center"
             >
-              <CardContent style={{ textAlign: "center" }}>
+              <CardContent style={{ textAlign: 'center' }}>
                 <Typography variant="body2" className={classes.body2}>
                   <b>
                     <u>@david</u>
-                  </b>{" "}
+                  </b>{' '}
                   answered the question about
                 </Typography>
                 <Typography variant="body2" className={classes.body2}>
@@ -125,11 +127,11 @@ class ArrowCards extends Component {
               justify="center"
               alignItems="center"
             >
-              <CardContent style={{ textAlign: "center" }}>
+              <CardContent style={{ textAlign: 'center' }}>
                 <Typography variant="body2" className={classes.body2}>
                   <b>
                     <u>@david</u>
-                  </b>{" "}
+                  </b>{' '}
                   answered the question about
                 </Typography>
                 <Typography variant="body2" className={classes.body2}>
@@ -139,19 +141,21 @@ class ArrowCards extends Component {
             </Card>
           </ListItem>
         </List>
-
-        <Grid container direction="row" justify="center">
-          <Button
-            variant="contained"
-            size="large"
-            className={classes.buttonContained}
-          >
-            BROWSE MORE
-          </Button>
-        </Grid>
       </Grid>
-    );
-  }
+      <Grid item xs={12} container justify="center" alignItems="center">
+        <Button
+          variant="contained"
+          size="large"
+          className={classes.buttonContained}
+        >
+          BROWSE MORE
+        </Button>
+      </Grid>
+    </Grid>
+  );
 }
 
+ArrowCards.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(ArrowCards);

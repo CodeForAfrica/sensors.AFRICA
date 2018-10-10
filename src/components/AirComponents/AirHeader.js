@@ -1,37 +1,44 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from "react-router";
 
-//import material components
-import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-//import components
-import MenuBar from "../Header/MenuBar";
-import AirHeaderContent from "../Header/JumbotronContent/AirHeaderContent";
+import MenuBar from '../Header/MenuBar';
+import AirHeaderContent from '../Header/JumbotronContent/AirHeaderContent';
 
-const styles = {
+const styles = theme => ({
   jumbotron: {
-    backgroundColor: "#2FB56B",
-    height: "400px",
-    borderRadius: "none"
+    flexGrow: 1,
+    backgroundColor: '#2FB56B',
+    borderRadius: 'none',
+    [theme.breakpoints.up('md')]: {
+      height: 450
+    }
   }
-};
+});
 
-class AirHeader extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.jumbotron}>
+function AirHeader({ classes }) {
+  return (
+    <Grid
+      container
+      className={classes.jumbotron}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
         <MenuBar />
-        <AirHeaderContent title="WE HAVE TESTED THE QUALITY OF YOUR CITY'S AIR"
-         history={this.props.history}/>
       </Grid>
-    );
-  }
+      <Grid item xs={12}>
+      <AirHeaderContent title="WE HAVE TESTED THE QUALITY OF YOUR CITY'S AIR"/>
+      </Grid>
+    </Grid>
+  );
 }
 
-AirHeader.PropTypes = {
+AirHeader.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AirHeader);
+export default withRouter(withStyles(styles)(AirHeader));

@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+import { withRouter } from "react-router";
 
-import Select from "react-select";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import Paper from "@material-ui/core/Paper";
-import MenuItem from "@material-ui/core/MenuItem";
-import { withStyles } from "@material-ui/core/styles";
+import Select from 'react-select';
+
+import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const suggestions = [
   { 'value':'nairobi', 'label': "Nairobi, Kenya" },
@@ -25,20 +25,20 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     height: 250,
-    paddingTop: "2.5rem"
+    paddingTop: '2.5rem'
   },
   input: {
-    display: "flex",
+    display: 'flex',
     padding: 0
   },
   valueContainer: {
-    display: "flex",
-    flexWrap: "wrap",
+    display: 'flex',
+    flexWrap: 'wrap',
     flex: 1,
-    alignItems: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,
-    width: "300px"
+    width: '300px'
   },
   noOptionsMessage: {
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
@@ -47,34 +47,79 @@ const styles = theme => ({
     fontSize: 16
   },
   placeholder: {
-    position: "absolute",
+    position: 'absolute',
     left: 2,
     fontSize: 18,
-    color: "#164B3E",
-    paddingLeft: "1rem"
+    color: '#164B3E',
+    paddingLeft: '1rem'
   },
   paper: {
-    position: "absolute",
+    position: 'relative',
     zIndex: 1,
     marginTop: theme.spacing.unit,
-    left: "27%",
-    right: "25%",
+    display: "block",
+    // left: '27%',
+    // right: '25%',
     width: 300
   },
   css1wy0on6: {
-    //visibility: "hidden",
-    width: "0"
+    width: '0'
   }
 });
 
-function NoOptionsMessage(props) {
+const cityStyles = theme => ({
+  root: {
+    flexGrow: 1,
+    height: 250,
+    paddingTop: '2.5rem',
+    width: '300px'
+  },
+  input: {
+    display: 'flex',
+    padding: 0
+  },
+  valueContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    paddingTop: theme.spacing.unit * 2,
+    width: '300px'
+  },
+  noOptionsMessage: {
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+  },
+  singleValue: {
+    fontSize: 16
+  },
+  placeholder: {
+    position: 'absolute',
+    left: 2,
+    fontSize: 18,
+    color: '#164B3E',
+    paddingLeft: '1rem'
+  },
+  paper: {
+    position: 'absolute',
+    zIndex: 1,
+    marginTop: theme.spacing.unit,
+    left: 0,
+    right: 0
+  },
+  css1wy0on6: {
+    width: '0'
+  }
+});
+
+function NoOptionsMessage({ children, innerProps, selectProps }) {
   return (
     <Typography
       color="textSecondary"
-      className={props.selectProps.classes.noOptionsMessage}
-      {...props.innerProps}
+      className={selectProps.classes.noOptionsMessage}
+      {...innerProps}
     >
-      {props.children}
+      {children}
     </Typography>
   );
 }
@@ -83,78 +128,67 @@ function inputComponent({ inputRef, ...props }) {
   return <div ref={inputRef} {...props} />;
 }
 
-function Control(props) {
+function Control({ children, innerProps, innerRef, selectProps }) {
   return (
     <TextField
       InputProps={{
         inputComponent,
         inputProps: {
-          className: props.selectProps.classes.input,
-          inputRef: props.innerRef,
-          children: props.children,
-          ...props.innerProps
+          className: selectProps.classes.input,
+          inputRef: innerRef,
+          children,
+          ...innerProps
         }
       }}
-      {...props.selectProps.textFieldProps}
+      {...selectProps.textFieldProps}
     />
   );
 }
 
-function Option(props) {
+function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
   return (
     <MenuItem
-      buttonRef={props.innerRef}
-      selected={props.isFocused}
+      buttonRef={innerRef}
+      selected={isFocused}
       component="div"
       style={{
-        fontWeight: props.isSelected ? 500 : 400
+        fontWeight: isSelected ? 500 : 400
       }}
-      {...props.innerProps}
+      {...innerProps}
     >
-      {props.children}
+      {children}
     </MenuItem>
   );
 }
 
-function Placeholder(props) {
+function Placeholder({ children, innerProps, selectProps }) {
   return (
     <Typography
       color="textSecondary"
-      className={props.selectProps.classes.placeholder}
-      {...props.innerProps}
+      className={selectProps.classes.placeholder}
+      {...innerProps}
     >
-      {props.children}
+      {children}
     </Typography>
   );
 }
 
-function SingleValue(props) {
+function SingleValue({ children, innerProps, selectProps }) {
   return (
-    <Typography
-      className={props.selectProps.classes.singleValue}
-      {...props.innerProps}
-    >
-      {props.children}
+    <Typography className={selectProps.classes.singleValue} {...innerProps}>
+      {children}
     </Typography>
   );
 }
 
-function ValueContainer(props) {
-  return (
-    <div className={props.selectProps.classes.valueContainer}>
-      {props.children}
-    </div>
-  );
+function ValueContainer({ children, selectProps }) {
+  return <div className={selectProps.classes.valueContainer}>{children}</div>;
 }
 
-function Menu(props) {
+function Menu({ children, innerProps, selectProps }) {
   return (
-    <Paper
-      square
-      className={props.selectProps.classes.paper}
-      {...props.innerProps}
-    >
-      {props.children}
+    <Paper square className={selectProps.classes.paper} {...innerProps}>
+      {children}
     </Paper>
   );
 }
@@ -171,22 +205,27 @@ const components = {
 };
 
 class CitySearchBar extends React.Component {
-  state = {
-    single: null,
-    multi: null
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = { single: null };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
 
   handleChange = (city) => {
-    this.props.history.push({ pathname: "/air/city",
-                              state:
-                              {'cityObj': city,
-                               'cityAirPolLevel': airPollutionLevel[city.value]
-                              }
-                            });
-  }
+    this.setState({ single: city });
+    this.props.history.push(
+      { pathname: "/air/city",
+        state: {'cityObj': city,
+                'cityAirPolLevel': airPollutionLevel[city.value]
+               }
+      });
+    }
 
   render() {
     const { classes } = this.props;
+    const { single } = this.state;
 
     return (
       <div className={classes.root}>
@@ -194,7 +233,7 @@ class CitySearchBar extends React.Component {
           classes={classes}
           options={suggestions}
           components={components}
-          value={this.state.single}
+          value={single}
           onChange={this.handleChange}
           placeholder={this.props.placeholder}
         />
@@ -207,4 +246,4 @@ CitySearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(CitySearchBar);
+export default withRouter(withStyles(styles)(CitySearchBar));

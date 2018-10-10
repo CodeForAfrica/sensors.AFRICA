@@ -1,40 +1,54 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import SearchBar from "../../SearchBar";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from "react-router";
 
-const styles = {
+import SearchBar from '../../SearchBar';
+
+const styles = theme => ({
   titleSection: {
-    textAlign: "center",
-    paddingTop: "2rem",
-    paddingRight: "25%",
-    paddingLeft: "25%"
+    flexGrow: 1,
+    textAlign: 'center',
+    paddingTop: '2rem',
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '25%',
+      paddingLeft: '25%'
+    }
   },
-  menuButton: {
-    color: "white"
+  headerText: {
+    color: 'white',
+    paddingBottom: '1rem'
   }
-};
+});
 
-class AirHeaderContent extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.titleSection}>
-        <Typography variant="display2" style={{ color: "white" }}>
-          {this.props.title}
+function AirHeaderContent({ classes, title }) {
+  return (
+    <Grid
+      container
+      className={classes.titleSection}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
+        <Typography variant="display2" className={classes.headerText}>
+          {title}
         </Typography>
-        <SearchBar item xs={12}  history={this.props.history}
+      </Grid>
+      <Grid item xs={12}>
+        <SearchBar item xs={12}
         placeholder="Search for your city ..." />
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
-AirHeaderContent.PropTypes = {
-  classes: PropTypes.object.isRequired
+AirHeaderContent.propTypes = {
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string
 };
-
-export default withStyles(styles)(AirHeaderContent);
+AirHeaderContent.defaultProps = {
+  title: ''
+};
+export default withRouter(withStyles(styles)(AirHeaderContent));

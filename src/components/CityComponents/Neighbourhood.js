@@ -1,66 +1,67 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import { Card, CardContent } from "@material-ui/core/";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import { Card, CardContent, Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    height: "400px"
+    flexGrow: 1,
+    marginTop: theme.spacing.unit * 8,
+    marginBottom: theme.spacing.unit * 4
   },
   offlineCard: {
-    height: "220px",
-    width: "220px",
+    height: 220,
+    width: '100%',
     borderRadius: 0,
     borderStyle: 0,
-    boxShadow: "none",
-    backgroundColor: "#f3f3fe"
+    boxShadow: 'none',
+    backgroundColor: '#f3f3fe'
   },
   onlineCard: {
-    height: "220px",
-    width: "220px",
+    height: 220,
+    width: '100%',
     borderRadius: 0,
-    boxShadow: "none",
-    backgroundColor: "#2FB56B"
+    boxShadow: 'none',
+    backgroundColor: '#2FB56B'
   },
   cardContent: {
-    textAlign: "center",
-    color: "#fff"
+    textAlign: 'center',
+    color: '#fff'
   },
   caption: {
     paddingTop: theme.spacing.unit * 4
   },
   headline: {
-    paddingBottom: theme.spacing.unit * 4
+    textAlign: 'center',
+    paddingBottom: theme.spacing.unit * 3
   },
   offlineContent: {
-    color: "grey",
+    color: 'grey',
     opacity: 0.4
   },
   onlineContent: {
-    color: "#fff"
+    color: '#fff'
   }
 });
 
-class Neighbourhood extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-        className={classes.root}
-      >
-        <Grid>
-          <Typography variant="headline" className={classes.headline}>
-            YOUR NEIGHBOURHOOD
-          </Typography>
-        </Grid>
+function Neighbourhood({ classes }) {
+  return (
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      className={classes.root}
+    >
+      <Grid item xs={12}>
+        <Typography variant="headline" className={classes.headline}>
+          YOUR NEIGHBOURHOOD
+        </Typography>
+      </Grid>
 
-        <Grid>
-          <Grid container direction="row" justify="center" alignItems="center">
+      <Grid item xs={12}>
+        <Grid container direction="row" justify="center" alignItems="center">
+          <Grid item xs={6} sm>
             <Card className={classes.onlineCard}>
               <CardContent className={classes.cardContent}>
                 <Typography variant="title" className={classes.onlineContent}>
@@ -75,13 +76,15 @@ class Neighbourhood extends Component {
                 <Typography
                   variant="subheading"
                   className={classes.caption}
-                  style={{ color: "#fff" }}
+                  style={{ color: '#fff' }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
               </CardContent>
             </Card>
+          </Grid>
 
+          <Grid item xs={6} sm>
             <Card className={classes.offlineCard}>
               <CardContent className={classes.cardContent}>
                 <Typography variant="title" className={classes.offlineContent}>
@@ -97,18 +100,20 @@ class Neighbourhood extends Component {
                   variant="subheading"
                   className={classes.caption}
                   style={{
-                    color: "grey",
-                    opacity: "0.4"
+                    color: 'grey',
+                    opacity: '0.4'
                   }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
               </CardContent>
             </Card>
+          </Grid>
 
+          <Grid item xs={6} sm>
             <Card
               className={classes.onlineCard}
-              style={{ backgroundColor: "#2FB56B" }}
+              style={{ backgroundColor: '#2FB56B' }}
             >
               <CardContent className={classes.cardContent}>
                 <Typography variant="title" className={classes.onlineContent}>
@@ -123,16 +128,18 @@ class Neighbourhood extends Component {
                 <Typography
                   variant="subheading"
                   className={classes.caption}
-                  style={{ color: "#fff" }}
+                  style={{ color: '#fff' }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
               </CardContent>
             </Card>
+          </Grid>
 
+          <Grid item xs={6} sm>
             <Card
               className={classes.onlineCard}
-              style={{ backgroundColor: "#2FB56B" }}
+              style={{ backgroundColor: '#2FB56B' }}
             >
               <CardContent className={classes.cardContent}>
                 <Typography variant="title" className={classes.onlineContent}>
@@ -147,13 +154,15 @@ class Neighbourhood extends Component {
                 <Typography
                   variant="subheading"
                   className={classes.caption}
-                  style={{ color: "#fff" }}
+                  style={{ color: '#fff' }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
               </CardContent>
             </Card>
+          </Grid>
 
+          <Grid item xs={6} sm>
             <Card className={classes.offlineCard}>
               <CardContent className={classes.cardContent}>
                 <Typography variant="title" className={classes.offlineContent}>
@@ -168,7 +177,7 @@ class Neighbourhood extends Component {
                 <Typography
                   variant="subheading"
                   className={classes.caption}
-                  style={{ color: "grey", opacity: "0.4" }}
+                  style={{ color: 'grey', opacity: '0.4' }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
@@ -177,8 +186,11 @@ class Neighbourhood extends Component {
           </Grid>
         </Grid>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
+Neighbourhood.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styles)(Neighbourhood);
