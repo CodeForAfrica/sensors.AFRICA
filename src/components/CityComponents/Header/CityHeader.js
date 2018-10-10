@@ -20,9 +20,18 @@ const styles = theme => ({
 
 function CityHeader({ classes }) {
   return (
-    <Grid className={classes.jumbotron} container item={12}>
-      <CityMenuBar />
-      <AirCityHeaderContent />
+    <Grid
+      container
+      className={classes.jumbotron}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
+        <CityMenuBar />
+      </Grid>
+      <Grid item xs={12}>
+        <AirCityHeaderContent />
+      </Grid>
     </Grid>
   );
 }

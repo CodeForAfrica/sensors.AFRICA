@@ -13,16 +13,16 @@ import { withStyles } from '@material-ui/core/styles';
 
 const howToLink = props => <Link to="/air/how-sensors-work" {...props} />;
 
-const styles = {
+const styles = theme => ({
   root: {
-    height: '450px'
+    flexGrow: 1,
+    marginTop: theme.spacing.unit * 8,
+    marginBottom: theme.spacing.unit * 4
   },
   sensorsWorkCard: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
     height: '200px',
-    width: '400px',
-    margin: '4rem',
     borderRadius: '0',
     backgroundColor: '#164B3E'
   },
@@ -30,8 +30,6 @@ const styles = {
     paddingTop: '2rem',
     paddingBottom: '2rem',
     height: '200px',
-    width: '400px',
-    margin: '4rem',
     borderRadius: '0',
     backgroundColor: '#2FB56B'
   },
@@ -63,58 +61,55 @@ const styles = {
     borderRadius: 0,
     color: '#164B3E'
   }
-};
+});
 
 function CallToAction({ classes }) {
   return (
-    <Grid
-      container
-      item
-      xs={12}
-      direction="row"
-      justify="center"
-      className={classes.root}
-    >
-      <Card container item xs={6} className={classes.sensorsWorkCard}>
-        <CardContent className={classes.cardContent}>
-          <Typography variant="display1" className={classes.typography}>
-            HOW DO SENSORS WORK?
-          </Typography>
-          <Grid className={classes.buttonContainer}>
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.learnMorebutton}
-              component={howToLink}
-            >
-              LEARN MORE
-            </Button>
-          </Grid>
-        </CardContent>
-      </Card>
-      <Card container item xs={6} className={classes.joinNowCard}>
-        <CardContent className={classes.cardContent}>
-          <Typography variant="display1" className={classes.typography}>
-            GET YOUR CITY ON BOARD
-          </Typography>
-          <Grid className={classes.buttonContainer}>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-              style={{ textDecoration: 'none' }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+    <Grid container className={classes.root} justify="center" spacing={40}>
+      <Grid item sm>
+        <Card className={classes.sensorsWorkCard}>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="display1" className={classes.typography}>
+              HOW DO SENSORS WORK?
+            </Typography>
+            <Grid className={classes.buttonContainer}>
               <Button
                 variant="contained"
                 size="large"
-                className={classes.joinNowbutton}
+                className={classes.learnMorebutton}
+                component={howToLink}
               >
-                JOIN NOW
+                LEARN MORE
               </Button>
-            </a>
-          </Grid>
-        </CardContent>
-      </Card>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item sm>
+        <Card className={classes.joinNowCard}>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="display1" className={classes.typography}>
+              GET YOUR CITY ON BOARD
+            </Typography>
+            <Grid className={classes.buttonContainer}>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+                style={{ textDecoration: 'none' }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="contained"
+                  size="large"
+                  className={classes.joinNowbutton}
+                >
+                  JOIN NOW
+                </Button>
+              </a>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
     </Grid>
   );
 }

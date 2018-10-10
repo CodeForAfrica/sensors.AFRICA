@@ -8,7 +8,7 @@ import KenyaMap from '../../components/Maps/KenyaMap';
 import Neighbourhood from '../../components/CityComponents/Neighbourhood';
 import CityHeader from '../../components/CityComponents/Header/CityHeader';
 import CallToAction from '../../components/CityComponents/CallToAction';
-import HostSensor from '../../components/CityComponents/HostSensors/HostSensor';
+import HostSensors from '../../components/CityComponents/HostSensors';
 import QualityStats from '../../components/CityComponents/SensorsQualityStats/QualityStats';
 import PollutionStats from '../../components/CityComponents/PollutionStats';
 
@@ -17,7 +17,7 @@ function City() {
     <Grid>
       <Navbar />
       <CityHeader />
-      <HostSensor />
+      <HostSensors />
       <PollutionStats />
       <Neighbourhood />
       <KenyaMap />

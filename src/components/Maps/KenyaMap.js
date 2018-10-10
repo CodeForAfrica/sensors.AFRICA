@@ -6,22 +6,23 @@ import { withStyles } from '@material-ui/core/styles';
 
 import IframeComponent from './IframeComponent';
 
-const styles = {
+const styles = theme => ({
   root: {
-    height: '550px',
+    height: 550,
     width: '100%',
     paddingBottom: '1rem'
   },
-  subheading: {
-    margin: '3rem'
+  headline: {
+    textAlign: 'center',
+    paddingBottom: theme.spacing.unit * 3
   }
-};
+});
 
 function KenyaMap({ classes }) {
   return (
     <Grid container item xs={12} direction="row" className={classes.root}>
       <Grid container direction="row" justify="center" alignItems="center">
-        <Typography variant="subheading" className={classes.subheading}>
+        <Typography variant="headline" className={classes.headline}>
           SENSORS IN YOUR AREA
         </Typography>
       </Grid>
