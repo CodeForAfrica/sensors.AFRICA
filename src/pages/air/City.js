@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
 
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
@@ -36,78 +35,109 @@ const styles = theme => ({
   }
 });
 
-function City({ classes, location }) {
-  // default city
-  let cityObject = { value: 'nairobi', label: 'Nairobi, Kenya' };
-  let cityAirPol = 17;
+const DEFAULT_CITY = { value: 'nairobi', label: 'Nairobi, Kenya' };
 
-  if (location.state) {
-    cityObject = location.state.cityObj;
-    cityAirPol = location.state.cityAirPolLevel;
+// TODO: needs to be pulled from an api
+const CITY_POLLUTION_LEVELS = {
+  nairobi: 17,
+  lagos: 20,
+  'dar-es-salaam': 18
+};
+
+class City extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { city: DEFAULT_CITY };
+    this.handleChange = this.handleChange.bind(this);
   }
-  let Map = KenyaMap;
-  if (cityObject.value === 'dar-es-salaam') {
-    Map = TanzaniaMap;
-  } else if (cityObject.value === 'lagos') {
-    Map = NigeriaMap;
+
+  componentDidMount() {
+    const { location } = this.props;
+    if (location.state && location.state.city) {
+      const { city } = location.state;
+      this.setState({ city });
+    }
   }
-  return (
-    <Grid
-      container
-      className={classes.root}
-      justify="center"
-      alignItems="center"
-    >
-      <Grid item xs={12}>
-        <Navbar />
-      </Grid>
-      <Grid item xs={12}>
-        <CityHeader city={cityObject} airPol={cityAirPol} />
-      </Grid>
-      <Grid item xs={12}>
-        <Grid
-          container
-          className={classes.contained}
-          justify="center"
-          alignItems="center"
-        >
-          <Grid item xs={12}>
-            <HostSensor />
-          </Grid>
-          <Grid item xs={12}>
-            <hr className={classes.separator} />
-          </Grid>
-          <Grid item xs={12}>
-            <PollutionStats />
-          </Grid>
-          <Grid item xs={12}>
-            <Neighbourhood />
-          </Grid>
+
+  handleChange(option) {
+    const city = option || DEFAULT_CITY;
+    this.setState({ city });
+  }
+
+  render() {
+    const { city } = this.state;
+    const airPol = CITY_POLLUTION_LEVELS[city.value];
+    const { classes } = this.props;
+
+    let Map = KenyaMap;
+    if (city.value === 'dar-es-salaam') {
+      Map = TanzaniaMap;
+    } else if (city.value === 'lagos') {
+      Map = NigeriaMap;
+    }
+    return (
+      <Grid
+        container
+        className={classes.root}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={12}>
+          <Navbar />
         </Grid>
-      </Grid>
-      <Grid item xs={12}>
-        <Map />
-      </Grid>
-      <Grid item xs={12}>
-        <Grid
-          container
-          className={classes.contained}
-          justify="center"
-          alignItems="center"
-        >
-          <Grid item xs={12}>
-            <QualityStats />
-          </Grid>
-          <Grid item xs={12}>
-            <CallToAction />
+        <Grid item xs={12}>
+          <CityHeader
+            city={city}
+            airPol={airPol}
+            handleChange={this.handleChange}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Grid
+            container
+            className={classes.contained}
+            justify="center"
+            alignItems="center"
+          >
+            <Grid item xs={12}>
+              <HostSensor />
+            </Grid>
+            <Grid item xs={12}>
+              <hr className={classes.separator} />
+            </Grid>
+            <Grid item xs={12}>
+              <PollutionStats />
+            </Grid>
+            <Grid item xs={12}>
+              <Neighbourhood />
+            </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <Footer />
+          <Map />
+        </Grid>
+        <Grid item xs={12}>
+          <Grid
+            container
+            className={classes.contained}
+            justify="center"
+            alignItems="center"
+          >
+            <Grid item xs={12}>
+              <QualityStats />
+            </Grid>
+            <Grid item xs={12}>
+              <CallToAction />
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Footer />
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 City.propTypes = {
@@ -115,4 +145,4 @@ City.propTypes = {
   location: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(styles)(City));
+export default withStyles(styles)(City);

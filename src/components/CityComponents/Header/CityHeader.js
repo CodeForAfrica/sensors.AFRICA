@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
 
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,23 +18,24 @@ const styles = theme => ({
   }
 });
 
-function CityHeader({ city, classes, airPol }) {
+function CityHeader({ airPol, city, classes, handleChange }) {
   return (
     <Grid className={classes.jumbotron} container item={12}>
-      <CityMenuBar />
+      <CityMenuBar handleChange={handleChange} />
       <AirCityHeaderContent city={city} airPol={airPol} />
     </Grid>
   );
 }
 
 CityHeader.propTypes = {
-  classes: PropTypes.object.isRequired,
+  airPol: PropTypes.number,
   city: PropTypes.object.isRequired,
-  airPol: PropTypes.number
+  classes: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired
 };
 
 CityHeader.defaultProps = {
   airPol: 0
 };
 
-export default withRouter(withStyles(styles)(CityHeader));
+export default withStyles(styles)(CityHeader);

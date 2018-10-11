@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -28,7 +27,7 @@ const styles = theme => ({
   }
 });
 
-function MenuBar({ classes }) {
+function CityMenuBar({ classes, handleChange }) {
   return (
     <Grid
       container
@@ -44,7 +43,10 @@ function MenuBar({ classes }) {
             </Link>
           </Grid>
           <Grid item>
-            <CitySearchBar placeholder="Search for another location ..." />
+            <CitySearchBar
+              placeholder="Search for another location ..."
+              handleChange={handleChange}
+            />
           </Grid>
         </Grid>
       </Grid>
@@ -56,8 +58,9 @@ function MenuBar({ classes }) {
   );
 }
 
-MenuBar.propTypes = {
-  classes: PropTypes.object.isRequired
+CityMenuBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired
 };
 
-export default withRouter(withStyles(styles)(MenuBar));
+export default withStyles(styles)(CityMenuBar);

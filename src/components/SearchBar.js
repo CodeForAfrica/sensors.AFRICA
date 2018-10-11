@@ -1,25 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
 
 import Select from 'react-select';
 
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { relative } from 'path';
-
-const suggestions = [
-  { value: 'nairobi', label: 'Nairobi, Kenya' },
-  { value: 'lagos', label: 'Lagos, Nigeria' },
-  { value: 'dar-es-salaam', label: 'Dar-es-Salaam, Tanzania' }
-];
-
-//To Do: needs to be pulled from an api
-const airPollutionLevel = {
-  nairobi: 17,
-  lagos: 20,
-  'dar-es-salaam': 18
-};
 
 const styles = theme => ({
   root: {
@@ -155,7 +141,13 @@ const components = {
   DropdownIndicator: null
 };
 
-class CitySearchBar extends React.Component {
+const DEFAULT_OPTIONS = [
+  { value: 'nairobi', label: 'Nairobi, Kenya' },
+  { value: 'lagos', label: 'Lagos, Nigeria' },
+  { value: 'dar-es-salaam', label: 'Dar-es-Salaam, Tanzania' }
+];
+
+class SearchBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -163,38 +155,45 @@ class CitySearchBar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(city) {
-    this.setState({ single: city });
-    this.props.history.push({
-      pathname: '/air/city',
-      state: {
-        cityObj: city,
-        cityAirPolLevel: airPollutionLevel[city.value]
-      }
-    });
+  handleChange(value) {
+    this.setState({ single: value });
+
+    const { handleChange } = this.props;
+    if (handleChange) {
+      handleChange(value);
+    }
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, options, placeholder } = this.props;
     const { single } = this.state;
 
     return (
       <div className={classes.root}>
         <Select
           classes={classes}
-          options={suggestions}
+          options={options}
           components={components}
           value={single}
           onChange={this.handleChange}
-          placeholder={this.props.placeholder}
+          placeholder={placeholder}
         />
       </div>
     );
   }
 }
 
-CitySearchBar.propTypes = {
-  classes: PropTypes.object.isRequired
+SearchBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+  handleChange: PropTypes.func,
+  options: PropTypes.array,
+  placeholder: PropTypes.string
 };
 
-export default withRouter(withStyles(styles)(CitySearchBar));
+SearchBar.defaultProps = {
+  handleChange: null,
+  options: DEFAULT_OPTIONS,
+  placeholder: ''
+};
+
+export default withStyles(styles)(SearchBar);

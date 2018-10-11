@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { withRouter } from "react-router";
 
 import SearchBar from '../../SearchBar';
 
@@ -23,7 +22,7 @@ const styles = theme => ({
   }
 });
 
-function AirHeaderContent({ classes, title }) {
+function AirHeaderContent({ classes, handleChange, title }) {
   return (
     <Grid
       container
@@ -37,8 +36,12 @@ function AirHeaderContent({ classes, title }) {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <SearchBar item xs={12}
-        placeholder="Search for your city ..." />
+        <SearchBar
+          item
+          xs={12}
+          placeholder="Search for your city ..."
+          handleChange={handleChange}
+        />
       </Grid>
     </Grid>
   );
@@ -46,9 +49,10 @@ function AirHeaderContent({ classes, title }) {
 
 AirHeaderContent.propTypes = {
   classes: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired,
   title: PropTypes.string
 };
 AirHeaderContent.defaultProps = {
   title: ''
 };
-export default withRouter(withStyles(styles)(AirHeaderContent));
+export default withStyles(styles)(AirHeaderContent);
