@@ -5,7 +5,7 @@ import { Grid, Typography } from '@material-ui/core';
 function WaterHome() {
   return (
     <Grid>
-      <Typography variant="display2">WIP: Water homepage</Typography>
+      <Typography variant="h3">WIP: Water homepage</Typography>
     </Grid>
   );
 }

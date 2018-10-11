@@ -60,10 +60,10 @@ function HardwareInfo({ classes }) {
       >
         <div className={classes.titleSection}>
           <img src={SDS011} alt="SDS011" className={classes.img} />
-          <Typography variant="title" className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             SDS011
           </Typography>
-          <Typography variant="subheading" className={classes.subheading}>
+          <Typography variant="subtitle1" className={classes.subheading}>
             Particulate matter Sensor
           </Typography>
         </div>
@@ -83,10 +83,10 @@ function HardwareInfo({ classes }) {
         </Typography>
         <div className={classes.titleSection}>
           <img src={DHT22} alt="DHT22" className={classes.img} />
-          <Typography variant="title" className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             DHT22
           </Typography>
-          <Typography variant="subheading" className={classes.subheading}>
+          <Typography variant="subtitle1" className={classes.subheading}>
             Temperature and Humidity Sensor
           </Typography>
         </div>
@@ -108,10 +108,10 @@ function HardwareInfo({ classes }) {
       >
         <div className={classes.titleSection}>
           <img src={NODEMCU} alt="SDSNODEMCU011" className={classes.img} />
-          <Typography variant="title" className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             NODE MCU
           </Typography>
-          <Typography variant="subheading" className={classes.subheading}>
+          <Typography variant="subtitle1" className={classes.subheading}>
             Microcontroller
           </Typography>
         </div>
@@ -124,10 +124,10 @@ function HardwareInfo({ classes }) {
         </Typography>
         <div className={classes.titleSection}>
           <img src={GSMSIM800L} alt="GSMSIM800L" className={classes.img} />
-          <Typography variant="title" className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             GSM SIM800L
           </Typography>
-          <Typography variant="subheading" className={classes.subheading}>
+          <Typography variant="subtitle1" className={classes.subheading}>
             Communication
           </Typography>
         </div>

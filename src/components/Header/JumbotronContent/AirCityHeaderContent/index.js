@@ -28,10 +28,10 @@ function AirCityHeaderContent({ airPol, city, classes }) {
         justify="center"
         alignItems="center"
       >
-        <Typography variant="subheading" style={{ color: 'white' }}>
+        <Typography variant="subtitle1" style={{ color: 'white' }}>
           THE AIR POLLUTION IN{' '}
         </Typography>
-        <Typography variant="display1" style={{ color: 'white' }}>
+        <Typography variant="h4" style={{ color: 'white' }}>
           {city.label.toUpperCase()}
         </Typography>
       </Grid>

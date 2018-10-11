@@ -54,7 +54,7 @@ function Neighbourhood({ classes }) {
       className={classes.root}
     >
       <Grid item xs={12}>
-        <Typography variant="headline" className={classes.headline}>
+        <Typography variant="h5" className={classes.headline}>
           YOUR NEIGHBOURHOOD
         </Typography>
       </Grid>
@@ -64,17 +64,17 @@ function Neighbourhood({ classes }) {
           <Grid item xs={6} sm>
             <Card className={classes.onlineCard}>
               <CardContent className={classes.cardContent}>
-                <Typography variant="title" className={classes.onlineContent}>
+                <Typography variant="h6" className={classes.onlineContent}>
                   ONLINE
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.onlineContent}
                 >
                   NEIGHBOURHOOD 1
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.caption}
                   style={{ color: '#fff' }}
                 >
@@ -87,17 +87,17 @@ function Neighbourhood({ classes }) {
           <Grid item xs={6} sm>
             <Card className={classes.offlineCard}>
               <CardContent className={classes.cardContent}>
-                <Typography variant="title" className={classes.offlineContent}>
+                <Typography variant="h6" className={classes.offlineContent}>
                   OFFLINE
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.offlineContent}
                 >
                   NEIGHBOURHOOD 1
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.caption}
                   style={{
                     color: 'grey',
@@ -116,17 +116,17 @@ function Neighbourhood({ classes }) {
               style={{ backgroundColor: '#2FB56B' }}
             >
               <CardContent className={classes.cardContent}>
-                <Typography variant="title" className={classes.onlineContent}>
+                <Typography variant="h6" className={classes.onlineContent}>
                   ONLINE
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.onlineContent}
                 >
                   NEIGHBOURHOOD 1
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.caption}
                   style={{ color: '#fff' }}
                 >
@@ -142,17 +142,17 @@ function Neighbourhood({ classes }) {
               style={{ backgroundColor: '#2FB56B' }}
             >
               <CardContent className={classes.cardContent}>
-                <Typography variant="title" className={classes.onlineContent}>
+                <Typography variant="h6" className={classes.onlineContent}>
                   ONLINE
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.onlineContent}
                 >
                   NEIGHBOURHOOD 1
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.caption}
                   style={{ color: '#fff' }}
                 >
@@ -165,17 +165,17 @@ function Neighbourhood({ classes }) {
           <Grid item xs={6} sm>
             <Card className={classes.offlineCard}>
               <CardContent className={classes.cardContent}>
-                <Typography variant="title" className={classes.offlineContent}>
+                <Typography variant="h6" className={classes.offlineContent}>
                   OFFLINE
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.offlineContent}
                 >
                   NEIGHBOURHOOD 1
                 </Typography>
                 <Typography
-                  variant="subheading"
+                  variant="subtitle1"
                   className={classes.caption}
                   style={{ color: 'grey', opacity: '0.4' }}
                 >

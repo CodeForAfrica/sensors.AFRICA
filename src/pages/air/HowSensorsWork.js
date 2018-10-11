@@ -13,7 +13,7 @@ function HowSensorsWork() {
       <Navbar />
       <HeaderIndex />
       <Typography
-        variant="subheading"
+        variant="subtitle1"
         style={{ textAlign: 'center', paddingTop: '2rem' }}
       >
         THE SCIENCE AND HARDWARE

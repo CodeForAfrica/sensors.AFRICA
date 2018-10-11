@@ -37,17 +37,17 @@ function Issues({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Typography variant="subheading" className={classes.subheading}>
+        <Typography variant="subtitle1" className={classes.subheading}>
           THE ISSUES
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="title" className={classes.title}>
+        <Typography variant="h6" className={classes.title}>
           Air polution causes 1 in 9 deaths.
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="title" className={classes.title}>
+        <Typography variant="h6" className={classes.title}>
           It is the biggest environmental health crisis we face
         </Typography>
       </Grid>
