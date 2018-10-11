@@ -1,20 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 import IframeComponent from './IframeComponent';
 
-function NigeriaMap() {
+const styles = theme => ({
+  root: {
+    height: 550,
+    width: '100%',
+    paddingBottom: '1rem'
+  },
+  headline: {
+    textAlign: 'center',
+    paddingBottom: theme.spacing.unit * 3
+  }
+});
+
+function NigeriaMap({ classes }) {
   return (
-    <Grid
-      container
-      item
-      xs={12}
-      direction="row"
-      style={{ height: '600px', width: '100%' }}
-    >
+    <Grid container item xs={12} direction="row" className={classes.root}>
       <Grid container direction="row" justify="center" alignItems="center">
-        <Typography variant="subheading" style={{ margin: '1rem' }}>
+        <Typography variant="headline" className={classes.headline}>
           SENSORS IN YOUR AREA
         </Typography>
       </Grid>
@@ -24,9 +32,13 @@ function NigeriaMap() {
         height="100%"
         width="100%"
         frameBorder="0"
+        scrollling="no"
       />
     </Grid>
   );
 }
 
-export default NigeriaMap;
+NigeriaMap.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+export default withStyles(styles)(NigeriaMap);
