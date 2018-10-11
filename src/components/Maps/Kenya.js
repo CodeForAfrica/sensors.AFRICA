@@ -28,7 +28,7 @@ function KenyaMap({ classes }) {
       </Grid>
       <IframeComponent
         title="Map section"
-        src="http://map.aq.sensors.africa/#9/-1.4272/36.8147"
+        src="//map.aq.sensors.africa/#9/-1.4272/36.8147"
         height="100%"
         width="100%"
         frameBorder="0"
