@@ -13,13 +13,6 @@ const suggestions = [
   { 'value':'dar-es-salaam', 'label': "Dar-es-Salaam, Tanzania" }
 ]
 
-//To Do: needs to be pulled from an api
-const airPollutionLevel = {
-  'nairobi': 17,
-  'lagos': 20,
-  'dar-es-salaam': 18
-}
-
 const styles = theme => ({
   root: {
     [theme.breakpoints.down('md')]: {
@@ -172,13 +165,8 @@ class CitySearchBar extends React.Component {
 
   handleChange = (city) => {
     this.setState({ single: city });
-    this.props.history.push(
-      { pathname: "/air/city",
-        state: {'cityObj': city,
-                'cityAirPolLevel': airPollutionLevel[city.value]
-               }
-      });
-    }
+    this.props.history.push({ pathname: "/air/city/"+city.value });
+  }
 
   render() {
     const { classes } = this.props;

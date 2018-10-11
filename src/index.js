@@ -27,7 +27,7 @@ ReactDOM.render(
       <Route exact path="/air" component={Air} />
       <Route path="/air/about" component={AirAbout} />
       <Route path="/air/how-sensors-work" component={AirHowSensorsWork} />
-      <Route path="/air/city" component={AirCity} />
+      <Route path="/air/city/:cityId(nairobi|dar-es-salaam|lagos)" component={AirCity} />
       <Route path="/air/join-network" component={AirJoinNetwork} />
       <Route exact path="/water" component={WaterHome} />
       <Route exact path="/sound" component={SoundHome} />
