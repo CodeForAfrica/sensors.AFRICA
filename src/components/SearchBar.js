@@ -1,30 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router';
 
 import Select from 'react-select';
 
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { relative } from 'path';
 
 const suggestions = [
-  { 'value':'nairobi', 'label': "Nairobi, Kenya" },
-  { 'value':'lagos', 'label': "Lagos, Nigeria" },
-  { 'value':'dar-es-salaam', 'label': "Dar-es-Salaam, Tanzania" }
-]
+  { value: 'nairobi', label: 'Nairobi, Kenya' },
+  { value: 'lagos', label: 'Lagos, Nigeria' },
+  { value: 'dar-es-salaam', label: 'Dar-es-Salaam, Tanzania' }
+];
 
 //To Do: needs to be pulled from an api
 const airPollutionLevel = {
-  'nairobi': 17,
-  'lagos': 20,
+  nairobi: 17,
+  lagos: 20,
   'dar-es-salaam': 18
-}
+};
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     height: 250,
-    paddingTop: '2.5rem'
+    paddingTop: '2.5rem',
+    position: relative
   },
   input: {
     display: 'flex',
@@ -37,7 +39,7 @@ const styles = theme => ({
     alignItems: 'center',
     backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,
-    width: '300px'
+    width: 300
   },
   noOptionsMessage: {
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
@@ -48,7 +50,7 @@ const styles = theme => ({
   placeholder: {
     position: 'absolute',
     left: 2,
-    fontSize: 18,
+    fontSize: 16,
     color: '#164B3E',
     paddingLeft: '1rem'
   },
@@ -56,12 +58,8 @@ const styles = theme => ({
     position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing.unit,
-    left: '27%',
-    right: '25%',
-    width: 300
-  },
-  css1wy0on6: {
-    width: '0'
+    left: 0,
+    right: 0
   }
 });
 
@@ -165,16 +163,16 @@ class CitySearchBar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-
-  handleChange = (city) => {
+  handleChange(city) {
     this.setState({ single: city });
-    this.props.history.push(
-      { pathname: "/air/city",
-        state: {'cityObj': city,
-                'cityAirPolLevel': airPollutionLevel[city.value]
-               }
-      });
-    }
+    this.props.history.push({
+      pathname: '/air/city',
+      state: {
+        cityObj: city,
+        cityAirPolLevel: airPollutionLevel[city.value]
+      }
+    });
+  }
 
   render() {
     const { classes } = this.props;
