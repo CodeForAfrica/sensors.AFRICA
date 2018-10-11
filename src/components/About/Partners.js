@@ -48,7 +48,7 @@ function Partners({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Typography variant="subheading" className={classes.typography}>
+        <Typography variant="subtitle1" className={classes.typography}>
           Media partners
         </Typography>
       </Grid>
@@ -96,7 +96,7 @@ function Partners({ classes }) {
         style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
       >
         <Grid item xs={12}>
-          <Typography variant="subheading" className={classes.typography}>
+          <Typography variant="subtitle1" className={classes.typography}>
             In partnership with
           </Typography>
         </Grid>

@@ -66,7 +66,7 @@ function DataTable({ classes }) {
               >
                 <Grid>
                   <Typography
-                    variant="subheading"
+                    variant="subtitle1"
                     className={classes.subheading}
                   >
                     AIR
@@ -78,7 +78,7 @@ function DataTable({ classes }) {
                   justify="center"
                   className={classes.data}
                 >
-                  <Typography variant="display2" className={classes.display2}>
+                  <Typography variant="h3" className={classes.display2}>
                     12.5
                   </Typography>
                   <small className={classes.small}>%</small>
@@ -92,14 +92,14 @@ function DataTable({ classes }) {
               >
                 <Grid>
                   <Typography
-                    variant="subheading"
+                    variant="subtitle1"
                     className={classes.subheading}
                   >
                     HUMIDITY
                   </Typography>
                 </Grid>
                 <Grid container direction="row" justify="center">
-                  <Typography variant="display2" className={classes.display2}>
+                  <Typography variant="h3" className={classes.display2}>
                     5.0
                   </Typography>
                   <small className={classes.small}>%</small>
@@ -113,14 +113,14 @@ function DataTable({ classes }) {
               >
                 <Grid>
                   <Typography
-                    variant="subheading"
+                    variant="subtitle1"
                     className={classes.subheading}
                   >
                     SOUND
                   </Typography>
                 </Grid>
                 <Grid container direction="row" justify="center">
-                  <Typography variant="display2" className={classes.display2}>
+                  <Typography variant="h3" className={classes.display2}>
                     208.6
                   </Typography>
                   <small className={classes.small}>db</small>
@@ -139,14 +139,14 @@ function DataTable({ classes }) {
               >
                 <Grid>
                   <Typography
-                    variant="subheading"
+                    variant="subtitle1"
                     className={classes.subheading}
                   >
                     AIR
                   </Typography>
                 </Grid>
                 <Grid container direction="row" justify="center">
-                  <Typography variant="display2" className={classes.display2}>
+                  <Typography variant="h3" className={classes.display2}>
                     12.5
                   </Typography>
                   <small className={classes.small}>%</small>
@@ -160,14 +160,14 @@ function DataTable({ classes }) {
               >
                 <Grid>
                   <Typography
-                    variant="subheading"
+                    variant="subtitle1"
                     className={classes.subheading}
                   >
                     HUMIDITY
                   </Typography>
                 </Grid>
                 <Grid container direction="row" justify="center">
-                  <Typography variant="display2" className={classes.display2}>
+                  <Typography variant="h3" className={classes.display2}>
                     5.0
                   </Typography>
                   <small className={classes.small}>%</small>
@@ -181,14 +181,14 @@ function DataTable({ classes }) {
               >
                 <Grid>
                   <Typography
-                    variant="subheading"
+                    variant="subtitle1"
                     className={classes.subheading}
                   >
                     SOUND
                   </Typography>
                 </Grid>
                 <Grid container direction="row" justify="center">
-                  <Typography variant="display2" className={classes.display2}>
+                  <Typography variant="h3" className={classes.display2}>
                     208.6
                   </Typography>
                   <small className={classes.small}>db</small>
@@ -205,14 +205,14 @@ function DataTable({ classes }) {
               >
                 <Grid>
                   <Typography
-                    variant="subheading"
+                    variant="subtitle1"
                     className={classes.subheading}
                   >
                     AIR
                   </Typography>
                 </Grid>
                 <Grid container direction="row" justify="center">
-                  <Typography variant="display2" className={classes.display2}>
+                  <Typography variant="h3" className={classes.display2}>
                     12.5
                   </Typography>
                   <small className={classes.small}>%</small>
@@ -226,14 +226,14 @@ function DataTable({ classes }) {
               >
                 <Grid>
                   <Typography
-                    variant="subheading"
+                    variant="subtitle1"
                     className={classes.subheading}
                   >
                     HUMIDITY
                   </Typography>
                 </Grid>
                 <Grid container direction="row" justify="center">
-                  <Typography variant="display2" className={classes.display2}>
+                  <Typography variant="h3" className={classes.display2}>
                     5.0
                   </Typography>
                   <small className={classes.small}>%</small>
@@ -247,14 +247,14 @@ function DataTable({ classes }) {
               >
                 <Grid>
                   <Typography
-                    variant="subheading"
+                    variant="subtitle1"
                     className={classes.subheading}
                   >
                     SOUND
                   </Typography>
                 </Grid>
                 <Grid container direction="row" justify="center">
-                  <Typography variant="display2" className={classes.display2}>
+                  <Typography variant="h3" className={classes.display2}>
                     208.6
                   </Typography>
                   <small className={classes.small}>db</small>

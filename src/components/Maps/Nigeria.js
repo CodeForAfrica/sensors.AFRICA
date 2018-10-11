@@ -22,7 +22,7 @@ function NigeriaMap({ classes }) {
   return (
     <Grid container item xs={12} direction="row" className={classes.root}>
       <Grid container direction="row" justify="center" alignItems="center">
-        <Typography variant="headline" className={classes.headline}>
+        <Typography variant="h5" className={classes.headline}>
           SENSORS IN YOUR AREA
         </Typography>
       </Grid>

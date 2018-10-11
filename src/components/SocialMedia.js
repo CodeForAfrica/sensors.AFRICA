@@ -48,12 +48,11 @@ function SocialMedia({ color, classes }) {
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'facebook-f']}
-            size="lg"
+            size="3x"
             style={{ color }}
           />
         </a>
-      </Grid>
-      <Grid item>
+
         <a
           href="https://twitter.com/sensorsAFRICA/"
           className={classes.links}
@@ -63,7 +62,7 @@ function SocialMedia({ color, classes }) {
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'twitter']}
-            size="lg"
+            size="3x"
             style={{ color }}
           />
         </a>
@@ -73,7 +72,7 @@ function SocialMedia({ color, classes }) {
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'instagram']}
-            size="lg"
+            size="3x"
             style={{ color }}
           />
         </a>

@@ -83,7 +83,7 @@ class HambugerMenu extends React.Component {
           >
             <Link to="/air" className={classes.link}>
               <MenuItem>
-                <Typography className={classes.typography} variant="subheading">
+                <Typography className={classes.typography} variant="subtitle1">
                   HOME
                 </Typography>
               </MenuItem>
@@ -91,7 +91,7 @@ class HambugerMenu extends React.Component {
 
             <Link to="/air/about" className={classes.link}>
               <MenuItem>
-                <Typography className={classes.typography} variant="subheading">
+                <Typography className={classes.typography} variant="subtitle1">
                   ABOUT
                 </Typography>
               </MenuItem>
@@ -99,7 +99,7 @@ class HambugerMenu extends React.Component {
 
             <Link to="/air/how-sensors-work" className={classes.link}>
               <MenuItem>
-                <Typography className={classes.typography} variant="subheading">
+                <Typography className={classes.typography} variant="subtitle1">
                   HOW SENSORS WORK
                 </Typography>
               </MenuItem>
@@ -107,7 +107,7 @@ class HambugerMenu extends React.Component {
 
             <Link to="/air/city" className={classes.link}>
               <MenuItem>
-                <Typography className={classes.typography} variant="subheading">
+                <Typography className={classes.typography} variant="subtitle1">
                   CITY
                 </Typography>
               </MenuItem>
@@ -115,7 +115,7 @@ class HambugerMenu extends React.Component {
 
             <Link to="/air/join-network" className={classes.link}>
               <MenuItem>
-                <Typography className={classes.typography} variant="subheading">
+                <Typography className={classes.typography} variant="subtitle1">
                   JOIN
                 </Typography>
               </MenuItem>

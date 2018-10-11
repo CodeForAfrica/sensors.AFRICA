@@ -5,7 +5,7 @@ import { Grid, Typography } from '@material-ui/core';
 function SoundHome() {
   return (
     <Grid>
-      <Typography variant="display2">WIP: Sound homepage</Typography>
+      <Typography variant="h3">WIP: Sound homepage</Typography>
     </Grid>
   );
 }
