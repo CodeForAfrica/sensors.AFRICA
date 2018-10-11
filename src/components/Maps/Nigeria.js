@@ -28,7 +28,7 @@ function NigeriaMap({ classes }) {
       </Grid>
       <IframeComponent
         title="Map section"
-        src="http://map.aq.sensors.africa/#6/3.162/7.976"
+        src="//map.aq.sensors.africa/#6/3.162/7.976"
         height="100%"
         width="100%"
         frameBorder="0"

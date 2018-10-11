@@ -28,7 +28,7 @@ function TanzaniaMap({ classes }) {
       </Grid>
       <IframeComponent
         title="Map section"
-        src="http://map.aq.sensors.africa/#7/-6.937/36.793"
+        src="//map.aq.sensors.africa/#7/-6.937/36.793"
         height="100%"
         width="100%"
         frameBorder="0"
