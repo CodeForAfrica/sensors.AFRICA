@@ -6,6 +6,7 @@ import Select from 'react-select';
 
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { relative } from 'path';
 
 const suggestions = [
   { value: 'nairobi', label: 'Nairobi, Kenya' },
@@ -24,7 +25,8 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     height: 250,
-    paddingTop: '2.5rem'
+    paddingTop: '2.5rem',
+    position: relative
   },
   input: {
     display: 'flex',
@@ -37,7 +39,7 @@ const styles = theme => ({
     alignItems: 'center',
     backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,
-    width: '300px'
+    width: 300
   },
   noOptionsMessage: {
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
@@ -48,7 +50,7 @@ const styles = theme => ({
   placeholder: {
     position: 'absolute',
     left: 2,
-    fontSize: 18,
+    fontSize: 16,
     color: '#164B3E',
     paddingLeft: '1rem'
   },
@@ -56,12 +58,8 @@ const styles = theme => ({
     position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing.unit,
-    left: '27%',
-    right: '25%',
-    width: 300
-  },
-  css1wy0on6: {
-    width: '0'
+    left: 0,
+    right: 0
   }
 });
 
