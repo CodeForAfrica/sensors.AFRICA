@@ -37,10 +37,14 @@ const styles = theme => ({
     textAlign: 'center',
     paddingTop: theme.spacing.unit * 5,
     [theme.breakpoints.up('md')]: {
-      paddingTop: 0,
-      paddingLeft: theme.spacing.unit * 5,
-      paddingRight: theme.spacing.unit * 5
+      paddingTop: 0
+      //paddingLeft: theme.spacing.unit * 5,
+      //paddingRight: theme.spacing.unit * 5
     }
+  },
+  supportText: {
+    paddingLeft: theme.spacing.unit * 5,
+    paddingRight: theme.spacing.unit * 5
   },
   footerAboutContainer: {
     textAlign: 'center',
@@ -151,6 +155,7 @@ function Footer({ classes }) {
             </a>
           </Grid>
         </Grid>
+
         <Grid
           item
           xs={12}
@@ -163,34 +168,34 @@ function Footer({ classes }) {
               SUPPORT
             </Typography>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.supportText}>
             <p>
               This initiative was seed-funded by innovateAFRICA, and is being
               incubated by Code for Africa
             </p>
           </Grid>
-          <Grid item xs={12}>
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
+          <Grid
+            item
+            xs={12}
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+          >
+            <a
+              href="https://codeforafrica.org/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <a
-                href="https://codeforafrica.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={codeforafrica} alt="Code for Africa" />
-              </a>
-              <a
-                href="https://innovateafrica.fund/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={innovateafrica} alt="innovateAFRICA" />
-              </a>
-            </Grid>
+              <img src={codeforafrica} alt="Code for Africa" />
+            </a>
+            <a
+              href="https://innovateafrica.fund/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={innovateafrica} alt="innovateAFRICA" />
+            </a>
           </Grid>
         </Grid>
       </Grid>
