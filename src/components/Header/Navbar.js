@@ -28,7 +28,8 @@ const styles = theme => ({
     '&:hover': {
       transform: 'scale(1.1)',
       color: '#f3f33'
-    }
+    },
+    fontFamily: 'Anton'
   },
   waterText: {
     color: '#4972B8',
@@ -36,7 +37,8 @@ const styles = theme => ({
     '&:hover': {
       transform: 'scale(1.1)',
       color: '#f3f33'
-    }
+    },
+    fontFamily: 'Anton'
   },
   soundText: {
     color: '#B64598',
@@ -44,7 +46,8 @@ const styles = theme => ({
     '&:hover': {
       transform: 'scale(1.1)',
       color: '#f3f33'
-    }
+    },
+    fontFamily: 'Anton'
   },
   // searchFa: {
   //   padding: theme.spacing.unit * 1.5,
