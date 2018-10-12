@@ -6,10 +6,12 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    paddingTop: '4rem',
+    paddingBottom: '4rem'
   },
   card: {
-    height: 200,
+    height: 250,
     width: 350,
     borderRadius: 0,
     boxShadow: 'none',
@@ -21,7 +23,7 @@ const styles = theme => ({
     backgroundColor: '#F3F3F3'
   },
   typography: {
-    margin: theme.spacing.unit * 3
+    margin: theme.spacing.unit * 2
   },
   button: {
     color: 'white',
