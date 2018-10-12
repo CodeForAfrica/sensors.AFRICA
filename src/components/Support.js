@@ -24,22 +24,34 @@ const styles = theme => ({
   },
   supporttypography: {
     margin: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
-    fontWeight: 700
+    paddingRight: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing.unit * 3,
+    fontFamily: '"Anton", sans-serif',
+    fontWeight: 500,
+    fontSize: '2rem',
+    lineHeight: '1.3',
+    color: '#424143'
   },
   typography: {
     margin: theme.spacing.unit * 2,
-    fontWeight: 700
+    fontFamily: '"Anton", sans-serif',
+    fontWeight: 500,
+    fontSize: '2rem',
+    lineHeight: '1.3',
+    color: '#424143'
   },
   button: {
     color: 'white',
     borderRadius: '0',
-    backgroundColor: '#2FB56B'
+    backgroundColor: '#2FB56B',
+    fontWeight: 'bolder',
+    lineHeight: '2px',
+    height: '45px'
   },
   uploadButton: {
     color: '#164B3E',
-    borderRadius: '0'
+    borderRadius: '0',
+    fontWeight: 'bolder'
   },
   buttonLink: {
     textDecoration: 'none'
