@@ -31,7 +31,7 @@ function AirHeader({ classes, handleChange }) {
       </Grid>
       <Grid item xs={12}>
         <AirHeaderContent
-          title="WE HAVE TESTED THE QUALITY OF YOUR CITY'S AIR"
+          title="WE'VE TESTED THE QUALITY OF YOUR CITY&apos;S AIR"
           handleChange={handleChange}
         />
       </Grid>

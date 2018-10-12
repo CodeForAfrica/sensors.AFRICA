@@ -12,6 +12,10 @@ const styles = theme => ({
     textAlign: 'center',
     paddingTop: '2rem',
     [theme.breakpoints.up('md')]: {
+      paddingRight: '20%',
+      paddingLeft: '20%'
+    },
+    [theme.breakpoints.up('lg')]: {
       paddingRight: '25%',
       paddingLeft: '25%'
     }
@@ -32,13 +36,16 @@ function AirHeaderContent({ classes, handleChange, title }) {
     >
       <Grid item xs={12}>
         <Typography variant="h3" className={classes.headerText}>
-          {title}
+          WE&apos;VE TESTED THE QUALITY
         </Typography>
       </Grid>
       <Grid item xs={12}>
+        <Typography variant="h3" className={classes.headerText}>
+          OF YOUR CITY&apos;S AIR.
+        </Typography>
+      </Grid>
+      <Grid item>
         <SearchBar
-          item
-          xs={12}
           placeholder="Search for your city ..."
           handleChange={handleChange}
         />

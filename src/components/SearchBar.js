@@ -5,14 +5,12 @@ import Select from 'react-select';
 
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { relative } from 'path';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     height: 250,
-    paddingTop: '2.5rem',
-    position: relative
+    paddingTop: '2.5rem'
   },
   input: {
     display: 'flex',
@@ -44,12 +42,12 @@ const styles = theme => ({
     paddingLeft: '1rem'
   },
   paper: {
-    position: 'absolute',
+    // position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing.unit,
-    left: 0,
     right: 0,
-    background: 'none'
+    background: theme.palette.primary.main
+    // width: 300
   }
 });
 
