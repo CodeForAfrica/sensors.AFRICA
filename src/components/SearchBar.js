@@ -27,6 +27,9 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     width: 300
   },
+  chip: {
+    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`
+  },
   noOptionsMessage: {
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
   },
@@ -45,7 +48,8 @@ const styles = theme => ({
     zIndex: 1,
     marginTop: theme.spacing.unit,
     left: 0,
-    right: 0
+    right: 0,
+    background: 'none'
   }
 });
 
@@ -89,6 +93,7 @@ function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
       selected={isFocused}
       component="div"
       style={{
+        color: '#fff',
         fontWeight: isSelected ? 500 : 400
       }}
       {...innerProps}

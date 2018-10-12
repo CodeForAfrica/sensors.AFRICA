@@ -12,7 +12,8 @@ const styles = theme => ({
     marginTop: theme.spacing.unit,
     left: 0,
     right: 0,
-    width: 300
+    width: 300,
+    background: theme.palette.background.paper
   },
   css1wy0on6: {
     width: '0'
