@@ -13,7 +13,8 @@ import SocialMedia from '../SocialMedia';
 const styles = theme => ({
   root: {
     flex: 1,
-    backgroundColor: '#2e2e2e'
+    backgroundColor: '#2e2e2e',
+    boxShadow: 'none'
   },
   toolbar: {
     [theme.breakpoints.up('md')]: {
