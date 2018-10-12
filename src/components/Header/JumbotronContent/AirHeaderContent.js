@@ -26,7 +26,7 @@ const styles = theme => ({
   }
 });
 
-function AirHeaderContent({ classes, handleChange, title }) {
+function AirHeaderContent({ classes, handleChange }) {
   return (
     <Grid
       container
@@ -56,10 +56,7 @@ function AirHeaderContent({ classes, handleChange, title }) {
 
 AirHeaderContent.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  title: PropTypes.string
+  handleChange: PropTypes.func.isRequired
 };
-AirHeaderContent.defaultProps = {
-  title: ''
-};
+
 export default withStyles(styles)(AirHeaderContent);
