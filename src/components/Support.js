@@ -44,7 +44,7 @@ function Support({ classes, classNames }) {
       <Grid item>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="title" className={classes.typography}>
+            <Typography variant="h6" className={classes.typography}>
               SUPPORT EXISTING SENSORS NETWORKS
             </Typography>
             <a
@@ -67,7 +67,7 @@ function Support({ classes, classNames }) {
       <Grid item>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="title" className={classes.typography}>
+            <Typography variant="h6" className={classes.typography}>
               KICKSTART YOUR CITY&apos;S OWN SENSOR PROGRAM
             </Typography>
             <a
@@ -86,7 +86,7 @@ function Support({ classes, classNames }) {
       <Grid item>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="title" className={classes.typography}>
+            <Typography variant="h6" className={classes.typography}>
               LET YOUR CITY KNOW THAT CLEAN WATER MATTERS TO YOU
             </Typography>
             <a

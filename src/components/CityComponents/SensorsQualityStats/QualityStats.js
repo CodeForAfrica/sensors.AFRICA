@@ -62,16 +62,16 @@ function SensorsDataReport({ classes }) {
         </Grid>
 
         <Grid item xs={12} container className={classes.container}>
-          <Typography variant="subheading" style={{ margin: '1em auto' }}>
+          <Typography variant="subtitle1" style={{ margin: '1em auto' }}>
             SUB HEADING
           </Typography>
           <Grid container direction="row" justify="center">
-            <Typography variant="display2" className={classes.display2}>
+            <Typography variant="h3" className={classes.display2}>
               1,234
             </Typography>
             <small className={classes.small}>Unit/H</small>
           </Grid>
-          <Typography variant="body2" className={classes.caption}>
+          <Typography variant="body1" className={classes.caption}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
             dapibus dui nec ligula semper eleifend. Quisque rhoncus tortor
             consectetur, vulputate ante sed, imperdiet orci.

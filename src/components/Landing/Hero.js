@@ -40,11 +40,7 @@ function Hero({ classes }) {
       </Grid>
 
       <Grid item xs={12}>
-        <Typography
-          variant="headline"
-          align="center"
-          style={{ color: 'white' }}
-        >
+        <Typography variant="h5" align="center" style={{ color: 'white' }}>
           We are here to give you actionable information about the quality of
           your air, water and sound.
         </Typography>

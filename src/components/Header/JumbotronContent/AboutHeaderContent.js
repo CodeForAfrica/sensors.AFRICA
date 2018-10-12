@@ -24,12 +24,12 @@ function AboutHeaderContent({ classes, title, subheading }) {
   return (
     <Grid className={classes.titleSection} justify="center" alignItems="center">
       <Grid item xs={12}>
-        <Typography variant="display2" className={classes.headerText}>
+        <Typography variant="h3" className={classes.headerText}>
           {title}
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="subheading" className={classes.headerText}>
+        <Typography variant="subtitle1" className={classes.headerText}>
           {subheading}
         </Typography>
       </Grid>

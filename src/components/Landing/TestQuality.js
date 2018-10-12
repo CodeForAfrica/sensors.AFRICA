@@ -16,9 +16,11 @@ const styles = theme => ({
     width: '100%'
   },
   img: {
-    height: 150,
+    height: 200,
     width: 'auto',
-    padding: '3rem'
+    padding: '3rem',
+    marginLeft: 'auto',
+    marginRight: 'auto'
   },
   airCard: {
     backgroundColor: '#2FB56B',
@@ -59,7 +61,7 @@ function TestQuality({ classes }) {
     >
       <Grid item xs={12}>
         <Typography
-          variant="title"
+          variant="h6"
           gutterBottom
           align="center"
           style={{ color: 'white', textTransform: 'uppercase' }}

@@ -44,19 +44,19 @@ function PollutionStats({ classes }) {
       <Grid item xs={12} md={4} className={classes.statGrid}>
         <div className={classes.stat}>
           <div>
-            <Typography variant="subheading">
+            <Typography variant="subtitle1">
               Death by air pollution in kenya yearly
             </Typography>
-            <Typography variant="display2" className={classes.statHighlight}>
+            <Typography variant="h3" className={classes.statHighlight}>
               5,102
             </Typography>
           </div>
 
           <div style={{ marginTop: '2rem' }}>
-            <Typography variant="subheading">
+            <Typography variant="subtitle1">
               Child Deaths caused by air pollution in kenya yearly
             </Typography>
-            <Typography variant="display2" className={classes.statHighlight}>
+            <Typography variant="h3" className={classes.statHighlight}>
               2,144
             </Typography>
           </div>
@@ -65,10 +65,10 @@ function PollutionStats({ classes }) {
 
       <Grid item xs={12} md={4} className={classes.statGrid}>
         <div className={classes.stat}>
-          <Typography variant="subheading" style={{ paddingBottom: '1rem' }}>
+          <Typography variant="subtitle1" style={{ paddingBottom: '1rem' }}>
             The top illness caused by air pollution in kenya is
           </Typography>
-          <Typography variant="display1" className={classes.statHighlight}>
+          <Typography variant="h4" className={classes.statHighlight}>
             ACUTE LOWER RESPIRATORY INFECTION
           </Typography>
         </div>
@@ -82,23 +82,23 @@ function PollutionStats({ classes }) {
         style={{ borderRight: 'none' }}
       >
         <div className={classes.stat}>
-          <Typography variant="subheading">
+          <Typography variant="subtitle1">
             <b>POLLUTION LEVELS IN NAIROBI</b>
           </Typography>
           <Typography
-            variant="subheading"
+            variant="subtitle1"
             style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
           >
             The air in Nairobi has an annual average of
           </Typography>
           <Typography
-            variant="display1"
+            variant="h4"
             className={classes.statHighlight}
             style={{ paddingBottom: '1rem' }}
           >
             17 ug/m3
           </Typography>
-          <Typography variant="subheading">
+          <Typography variant="subtitle1">
             of PM2.5 particles. That is 70% more than the WHO safe level.
           </Typography>
         </div>

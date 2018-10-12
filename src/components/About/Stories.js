@@ -36,7 +36,7 @@ function Stories({ classes }) {
       >
         <Grid item xs={12}>
           <Typography
-            variant="display2"
+            variant="h3"
             style={{ color: 'white', textTrandform: 'Uppercase' }}
           >
             SENSORS STORIES

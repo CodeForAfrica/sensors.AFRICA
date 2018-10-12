@@ -31,7 +31,7 @@ function AirHeaderContent({ classes, handleChange, title }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Typography variant="display2" className={classes.headerText}>
+        <Typography variant="h3" className={classes.headerText}>
           {title}
         </Typography>
       </Grid>
