@@ -22,8 +22,15 @@ const styles = theme => ({
     borderRadius: 0,
     backgroundColor: '#F3F3F3'
   },
+  supporttypography: {
+    margin: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 2,
+    fontWeight: 700
+  },
   typography: {
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing.unit * 2,
+    fontWeight: 700
   },
   button: {
     color: 'white',
@@ -46,7 +53,7 @@ function Support({ classes, classNames }) {
       <Grid item>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="h6" className={classes.typography}>
+            <Typography variant="h6" className={classes.supporttypography}>
               SUPPORT EXISTING SENSORS NETWORKS
             </Typography>
             <a
