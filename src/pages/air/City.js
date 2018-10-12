@@ -35,36 +35,41 @@ const styles = theme => ({
   }
 });
 
-const location = {
+const cities = {
   'nairobi': {
-    latitude: -1.2833,
-    longitude: 36.8167
+    latitude: "-1.",
+    longitude: "36.",
+    label: "Nairobi, Kenya"
   },
   'lagos': {
-    latitude: -1.2833,
-    longitude: 36.8167
+    latitude: "6.",
+    longitude: "3.",
+    label: "Lagos, Nigeria"
   },
   'dar-es-salaam': {
-    latitude: -6.8,
-    longitude: 39.283333
+    latitude: "-6.",
+    longitude: "39.",
+    label: "Dar-es-salaam, Tanzania"
   }
 }
 class City extends Component {
   constructor() {
     super();
     this.state = {
-      city: {value: 'nairobi', label: 'Nairobi, Kenya'}
+      cityId: 'nairobi',
+      cityAirPol: 0
     }
   }
 
   componentDidMount() {
+    this.setState((state) => { return { cityId: this.props.match.params.cityId }});
     let sensorsCityData = fetch('http://api.airquality.codeforafrica.org/v1/now/')
     .then(results => {
       return results.json();
     }).then(data => {
       let cells = data.filter((sensor) =>
-          sensor.location.latitude !== null &&
-          sensor.location.longitude !== null && (
+          sensor.location.latitude.startsWith(cities[this.state.cityId].latitude) &&
+          sensor.location.longitude.startsWith(cities[this.state.cityId].longitude) && (
           (sensor.sensor.sensor_type.name === "SDS021" && sensor.sensordatavalues.length >= 2) ||
           (sensor.sensor.sensor_type.name === 'SDS011' && sensor.sensordatavalues.length >= 2))
         ).reduce((sensorGroup, {sensor, sensordatavalues}) => {
@@ -77,24 +82,32 @@ class City extends Component {
             return sensorGroup
           }, {});
       return Promise.resolve(cells);
-     }).then((cells) => {
+    }).then((cells) => {
+          console.log(cells);
           for (const [key, value] of Object.entries(cells)) {
              cells[key] = ((cells[key].reduce((a,b) => a+b))/(cells[key]).length).toFixed(2);
            }
           return cells;
     });
+
+    let cityData = Promise.resolve(sensorsCityData);
+    cityData.then(function(value) {
+      console.log(value)
+      let valueList = Object.values(value);
+      
+      this.setState((state) => {
+        return { cityAirPol: ((valueList.reduce((a, b) => {
+          return parseFloat(a) + parseFloat(b) }))/valueList.lenght).toFixed(2)
+        }
+      });
+    });
   }
 
   render() {
     const classes = this.props.classes;
-    //default city
-    var cityObject = {value: "nairobi", label: "Nairobi, Kenya"}
-    var cityAirPol = 17
+    const cityId = this.state.cityId;
+    const cityLabel = cities[cityId].label;
 
-    if(this.props.location.state) {
-      cityObject = this.props.location.state['cityObj'];
-      cityAirPol = this.props.location.state['cityAirPolLevel']
-    }
     return (
       <Grid
         container
@@ -106,7 +119,7 @@ class City extends Component {
           <Navbar />
         </Grid>
         <Grid item xs={12}>
-          <CityHeader city={cityObject} airPol={cityAirPol}/>
+          <CityHeader cityLabel={cityLabel} airPol={17}/>
         </Grid>
         <Grid item xs={12}>
           <Grid

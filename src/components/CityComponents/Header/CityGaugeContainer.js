@@ -22,7 +22,7 @@ class CityGaugeContainer extends Component {
             THE AIR POLLUTION IN{" "}
           </Typography>
           <Typography variant="display1" style={{ color: "white" }}>
-            {this.props.city.label.toUpperCase()}
+            {this.props.cityLabel.toUpperCase()}
           </Typography>
         </Grid>
         <CityGauge airPollMeasurement={this.props.airPol} />
