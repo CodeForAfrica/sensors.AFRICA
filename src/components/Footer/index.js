@@ -38,13 +38,13 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 5,
     [theme.breakpoints.up('md')]: {
       paddingTop: 0
-      //paddingLeft: theme.spacing.unit * 5,
-      //paddingRight: theme.spacing.unit * 5
     }
   },
   supportText: {
-    paddingLeft: theme.spacing.unit * 5,
-    paddingRight: theme.spacing.unit * 5
+    [theme.breakpoints.up('md')]: {
+      paddingLeft: theme.spacing.unit * 5,
+      paddingRight: theme.spacing.unit * 5
+    }
   },
   footerAboutContainer: {
     textAlign: 'center',
