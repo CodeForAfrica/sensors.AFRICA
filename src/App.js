@@ -25,6 +25,13 @@ const THEME = createMuiTheme({
     fontFamily: FONT_FAMILY,
     fontSize: 16,
     useNextVariants: true
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: 0
+      }
+    }
   }
 });
 

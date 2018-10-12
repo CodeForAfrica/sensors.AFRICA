@@ -7,20 +7,24 @@ import { withStyles } from '@material-ui/core/styles';
 import '../../assets/css/App.css';
 import '../../assets/images/background/bgstories.jpg';
 
-const styles = {
+const styles = theme => ({
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
     color: 'white'
   },
-  button: {
+  buttonContainer: {
     paddingTop: '2rem'
   },
   buttonLink: {
-    textDecoration: 'none',
-    color: 'black'
+    textDecoration: 'none'
+  },
+  button: {
+    color: theme.palette.primary.main,
+    fontWeight: 700,
+    backgroundColor: '#fff'
   }
-};
+});
 
 function Stories({ classes }) {
   return (
@@ -43,14 +47,16 @@ function Stories({ classes }) {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <div className={classes.button}>
+          <div className={classes.buttonContainer}>
             <a
               href="https://medium.com/code-for-africa/tagged/innovateafrica"
               className={classes.buttonLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="contained">READ ON MEDIUM</Button>
+              <Button variant="contained" className={classes.button}>
+                READ ON MEDIUM
+              </Button>
             </a>
           </div>
         </Grid>
