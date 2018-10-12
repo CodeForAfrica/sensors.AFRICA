@@ -20,8 +20,8 @@ const styles = theme => ({
     textDecoration: 'none'
   },
   button: {
-    color: theme.palette.primary.main,
-    fontWeight: 700,
+    color: theme.palette.primary.dark,
+    fontWeight: 900,
     backgroundColor: '#fff'
   }
 });
