@@ -16,37 +16,37 @@ const styles = theme => ({
     width: '100%'
   },
   img: {
-    height: 200,
+    height: 250,
     width: 'auto',
-    padding: '2em',
+    padding: '3em',
     marginLeft: 'auto',
     marginRight: 'auto'
   },
   airCard: {
     backgroundColor: '#2FB56B',
     borderRadius: 0,
-    height: 200,
+    height: 250,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: 250
+      width: 300
     }
   },
   waterCard: {
     backgroundColor: '#4972B8',
     borderRadius: 0,
-    height: 200,
+    height: 250,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: 250
+      width: 300
     }
   },
   soundCard: {
     backgroundColor: '#B64598',
     borderRadius: 0,
-    height: 200,
+    height: 250,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: 250
+      width: 300
     }
   },
   testTitle: {
