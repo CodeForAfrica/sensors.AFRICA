@@ -18,14 +18,14 @@ const styles = theme => ({
   img: {
     height: 200,
     width: 'auto',
-    padding: '3rem',
+    padding: '2em',
     marginLeft: 'auto',
     marginRight: 'auto'
   },
   airCard: {
     backgroundColor: '#2FB56B',
     borderRadius: 0,
-    height: 250,
+    height: 200,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       width: 250
@@ -34,7 +34,7 @@ const styles = theme => ({
   waterCard: {
     backgroundColor: '#4972B8',
     borderRadius: 0,
-    height: 250,
+    height: 200,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       width: 250
@@ -43,11 +43,17 @@ const styles = theme => ({
   soundCard: {
     backgroundColor: '#B64598',
     borderRadius: 0,
-    height: 250,
+    height: 200,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       width: 250
     }
+  },
+  testTitle: {
+    fontSize: '1em',
+    fontWeight: 'bold',
+    color: 'white',
+    textTransform: 'uppercase'
   }
 });
 
@@ -64,7 +70,7 @@ function TestQuality({ classes }) {
           variant="h6"
           gutterBottom
           align="center"
-          style={{ color: 'white', textTransform: 'uppercase' }}
+          className={classes.testTitle}
         >
           Test the quality of the city&apos;s
         </Typography>

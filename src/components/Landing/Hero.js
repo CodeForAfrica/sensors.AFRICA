@@ -22,6 +22,11 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       height: '90vh'
     }
+  },
+  intro: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: '2.5em'
   }
 });
 
@@ -39,8 +44,8 @@ function Hero({ classes }) {
         </Link>
       </Grid>
 
-      <Grid item xs={12}>
-        <Typography variant="h5" align="center" style={{ color: 'white' }}>
+      <Grid item xs={6}>
+        <Typography variant="h5" align="center" className={classes.intro}>
           We are here to give you actionable information about the quality of
           your air, water and sound.
         </Typography>
