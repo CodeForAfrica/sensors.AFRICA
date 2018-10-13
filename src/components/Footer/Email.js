@@ -29,7 +29,10 @@ const styles = () => ({
     height: '50px',
     backgroundColor: 'white',
     border: '1px solid white',
-    textAlign: 'center'
+    textAlign: 'center',
+    '&::placeholder': {
+      color: 'red'
+    }
   },
   buttonLink: {
     textDecoration: 'none',

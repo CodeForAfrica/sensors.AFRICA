@@ -29,7 +29,6 @@ const styles = theme => ({
     color: 'white'
   },
   icons: {
-    paddingRight: '4rem',
     marginTop: '1rem',
     marginBottom: '1rem'
   }
@@ -39,7 +38,7 @@ function SocialMedia({ color, classes }) {
   return (
     <Grid
       container
-      justify="flex-end"
+      justify="center"
       alignitems="center"
       className={classes.icons}
     >

@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 import SocialMedia from '../SocialMedia';
 import Email from './Email';
@@ -33,12 +34,7 @@ const styles = theme => ({
     }
   },
   footerConnectContainer: {
-    textAlign: 'right',
-    paddingTop: theme.spacing.unit * 5,
-    [theme.breakpoints.up('md')]: {
-      paddingTop: 0,
-      paddingRight: '2rem'
-    }
+    textAlign: 'center'
   },
   footerContentContainer: {
     textAlign: 'center',
@@ -154,8 +150,8 @@ function Footer({ classes }) {
             </p>
           </Grid>
           <Grid item xs={12}>
-            <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+            <Link
+              to="/air/about"
               className={classes.buttonLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -163,7 +159,7 @@ function Footer({ classes }) {
               <Button variant="contained" className={classes.footerButton}>
                 READ MORE
               </Button>
-            </a>
+            </Link>
           </Grid>
         </Grid>
         <Grid
