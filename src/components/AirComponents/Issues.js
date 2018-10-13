@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import graph from '../../assets/images/Graphs.png';
+import Gauge from './GaugeChart';
 
 const styles = {
   root: {
@@ -57,13 +57,42 @@ function Issues({ classes }) {
           our most common illnesses
         </Typography>
       </Grid>
-      <Grid item xs={12} className={classes.graph}>
-        <img
-          src={graph}
-          alt="Graphs"
-          height="200"
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
+      <Grid
+        item
+        xs={6}
+        container
+        direction="row"
+        justify="center"
+        alignItems="stretch"
+      >
+        <Grid item xs={6} sm={3}>
+          <Gauge percentage={36} />
+
+          <Typography variant="caption" className={classes.caption}>
+            of lung cancer deaths
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Gauge percentage={34} />
+
+          <Typography variant="caption" className={classes.caption}>
+            of stroke deaths
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Gauge percentage={27} />
+
+          <Typography variant="caption" className={classes.caption}>
+            of heart disease deaths
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Gauge percentage={35} />
+
+          <Typography variant="caption" className={classes.caption}>
+            of COPD (pulmonary disease deaths)
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
   );
