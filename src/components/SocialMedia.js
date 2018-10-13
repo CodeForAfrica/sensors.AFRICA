@@ -27,6 +27,11 @@ const styles = theme => ({
 
   links: {
     color: 'white'
+  },
+  icons: {
+    paddingRight: '4rem',
+    marginTop: '1rem',
+    marginBottom: '1rem'
   }
 });
 
@@ -34,11 +39,24 @@ function SocialMedia({ color, classes }) {
   return (
     <Grid
       container
-      justify="center"
+      justify="flex-end"
       alignitems="center"
       className={classes.icons}
     >
       <Grid item>
+        <a
+          href="https://twitter.com/sensorsAFRICA/"
+          className={classes.links}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon
+            className={classes.fa}
+            icon={['fab', 'twitter']}
+            size="3x"
+            style={{ color }}
+          />
+        </a>
         <a
           href="https://www.facebook.com/sensorsAFRICA/"
           className={classes.links}
@@ -54,21 +72,9 @@ function SocialMedia({ color, classes }) {
         </a>
 
         <a
-          href="https://twitter.com/sensorsAFRICA/"
+          href="https://instagram.com/sensorsAFRICA/"
           className={classes.links}
-          target="_blank"
-          rel="noopener noreferrer"
         >
-          <FontAwesomeIcon
-            className={classes.fa}
-            icon={['fab', 'twitter']}
-            size="3x"
-            style={{ color }}
-          />
-        </a>
-      </Grid>
-      {/* <Grid item>
-        <a href="#" className={classes.links}>
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'instagram']}
@@ -76,7 +82,7 @@ function SocialMedia({ color, classes }) {
             style={{ color }}
           />
         </a>
-      </Grid> */}
+      </Grid>
     </Grid>
   );
 }

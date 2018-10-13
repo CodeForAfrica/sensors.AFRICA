@@ -20,48 +20,63 @@ const styles = theme => ({
     backgroundColor: '#424143'
   },
   titles: {
-    color: 'white'
+    color: 'white',
+    fontWeight: 700,
+    fontSize: '18px'
   },
   footerContainer: {
     [theme.breakpoints.up('md')]: {
-      paddingTop: theme.spacing.unit * 5,
-      paddingBottom: theme.spacing.unit * 5,
-      paddingLeft: theme.spacing.unit * 5,
-      paddingRight: theme.spacing.unit * 5
+      paddingTop: '4rem',
+      paddingBottom: '4rem',
+      paddingLeft: '8rem',
+      paddingRight: '8rem'
     }
   },
   footerConnectContainer: {
-    textAlign: 'center'
+    textAlign: 'right',
+    paddingTop: theme.spacing.unit * 5,
+    [theme.breakpoints.up('md')]: {
+      paddingTop: 0,
+      paddingRight: '2rem'
+    }
   },
   footerContentContainer: {
     textAlign: 'center',
     paddingTop: theme.spacing.unit * 5,
     [theme.breakpoints.up('md')]: {
-      paddingTop: 0,
-      paddingLeft: theme.spacing.unit * 5,
-      paddingRight: theme.spacing.unit * 5
+      paddingTop: 0
+    }
+  },
+  supportText: {
+    [theme.breakpoints.up('md')]: {
+      paddingLeft: theme.spacing.unit * 6,
+      paddingRight: theme.spacing.unit * 6
     }
   },
   footerAboutContainer: {
     textAlign: 'center',
+    height: '250px',
     paddingTop: theme.spacing.unit * 5,
     paddingBottom: theme.spacing.unit * 5,
     borderTop: '1px solid white',
     borderBottom: '1px solid white',
     [theme.breakpoints.up('md')]: {
       paddingTop: 0,
-      paddingLeft: theme.spacing.unit * 5,
       paddingBottom: 0,
-      paddingRight: theme.spacing.unit * 5,
       borderTop: 'none',
       borderLeft: '1px solid white',
       borderBottom: 'none',
       borderRight: '1px solid white'
     }
   },
+  aboutcontent: {
+    paddingRight: '1rem',
+    paddingLeft: '1rem'
+  },
   footerButton: {
     color: 'white',
     backgroundColor: '#2A2A2B',
+    fontWeight: 700,
     borderRadius: '0',
     '&:hover': {
       color: '#424143'
@@ -102,7 +117,7 @@ function Footer({ classes }) {
           xs={12}
           md={4}
           container
-          className={classes.footerContentContainer}
+          className={classes.footerConnectContainer}
         >
           {' '}
           <Grid item xs={12}>
@@ -131,7 +146,7 @@ function Footer({ classes }) {
               ABOUT SENSORS.AFRICA
             </Typography>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.aboutcontent}>
             <p>
               sensors.AFRICA is a pan-African citizen science initiative that
               uses sensors to monitor air, water and sound polution to give
@@ -160,10 +175,10 @@ function Footer({ classes }) {
         >
           <Grid item xs={12}>
             <Typography variant="h6" className={classes.titles}>
-              SUPPORT
+              FUNDED BY
             </Typography>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.supportText}>
             <p>
               This initiative was seed-funded by innovateAFRICA, and is being
               incubated by Code for Africa
@@ -181,14 +196,14 @@ function Footer({ classes }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={codeforafrica} alt="Code for Africa" />
+                <img src={codeforafrica} alt="Code for Africa" height="100px" />
               </a>
               <a
                 href="https://innovateafrica.fund/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={innovateafrica} alt="innovateAFRICA" />
+                <img src={innovateafrica} alt="innovateAFRICA" height="100px" />
               </a>
             </Grid>
           </Grid>

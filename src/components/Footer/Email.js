@@ -15,6 +15,9 @@ const styles = () => ({
   },
   footerButton: {
     color: 'white',
+    width: '250px',
+    height: '50px',
+    fontWeight: 700,
     backgroundColor: '#2A2A2B',
     borderRadius: '0',
     '&:hover': {
@@ -22,9 +25,11 @@ const styles = () => ({
     }
   },
   footerInput: {
-    width: '190px',
+    width: '250px',
+    height: '50px',
     backgroundColor: 'white',
-    border: '1px solid white'
+    border: '1px solid white',
+    textAlign: 'center'
   },
   buttonLink: {
     textDecoration: 'none',
@@ -36,22 +41,8 @@ const styles = () => ({
 });
 
 class Email extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: 'you@gmail.com'
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  }
-
   render() {
     const { classes } = this.props;
-    const { value } = this.state;
     return (
       <Grid
         container
@@ -64,7 +55,7 @@ class Email extends Component {
             <Input
               type="text"
               id="you@gmail.com"
-              value={value}
+              placeholder="you@gmail.com"
               onChange={this.handleChange}
               className={classes.footerInput}
             />
