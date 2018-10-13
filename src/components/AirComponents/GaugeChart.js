@@ -15,7 +15,7 @@ const styles = {
   circleBg: {
     fill: 'none',
     stroke: '#2FB56B',
-    strokeWidth: '4.8'
+    strokeWidth: '4.4'
   },
   percentage: {
     fill: '#666',
