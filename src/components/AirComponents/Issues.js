@@ -20,11 +20,15 @@ const styles = {
     textAlign: 'center'
   },
   caption: {
-    paddingTop: '1rem',
+    paddingTop: '0',
     textAlign: 'center'
   },
   graph: {
     textAlign: 'center'
+  },
+  svgContainer: {
+    paddingTop: '3rem',
+    paddingBottom: '2rem'
   }
 };
 
@@ -59,11 +63,13 @@ function Issues({ classes }) {
       </Grid>
       <Grid
         item
-        xs={6}
+        xs={8}
+        spacing={24}
         container
         direction="row"
         justify="center"
-        alignItems="stretch"
+        alignItems="strench"
+        className={classes.svgContainer}
       >
         <Grid item xs={6} sm={3}>
           <Gauge percentage={36} />
