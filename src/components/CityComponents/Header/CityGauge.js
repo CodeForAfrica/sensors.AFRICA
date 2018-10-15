@@ -114,17 +114,27 @@ class CityGauge extends Component {
   }
   render() {
     const classes = this.props.classes;
-    const airStat = (this.props.airPollMeasurement/10 * 100).toFixed(1);
-    var gaugeText = "";
-    if (airStat > 100) {
-      gaugeText = (airStat-100) + "% OVER THE"
+    let airPoll = this.props.airPollMeasurement;
+    let gaugeText = "";
+    var gaugeBigText = "SAFE LEVEL";
+    console.log(this.props.airPollMeasurement);
+    if (isNaN(airPoll)) {
+      gaugeText = "Measurements not";
+      gaugeBigText = "Recorded";
+      airPoll = 0;
+    } else {
+      let airStat = (parseFloat(airPoll)/10 * 100).toFixed(1);
+      if (airStat > 100) {
+        gaugeText = (airStat-100).toFixed(1) + "% OVER THE"
+      }
+      else if (airStat < 100) {
+        gaugeText = (100 - airStat).toFixed(1) + "% BELOW THE"
+      }
+      else {
+        gaugeText = "AT THE "
+      }
     }
-    else if (airStat < 100) {
-      gaugeText = (100 - airStat) + "% BELOW THE"
-    }
-    else {
-      gaugeText = "AT THE "
-    }
+
     return (
       <Grid container item xs={12} direction="row" justify="center"
         alignItems="center"  style={{ paddingTop: "0.45rem", height: "auto" }}>
@@ -143,7 +153,7 @@ class CityGauge extends Component {
                   ringWidth={60}
                   minValue={0}
                   maxValue={150}
-                  value={this.props.airPollMeasurement}
+                  value={airPoll}
                   segments={8}
                   startColor="#5fbf82"
                   endColor="#b72025"
@@ -176,7 +186,7 @@ class CityGauge extends Component {
                 <text transform="translate(0,10)" text-anchor="middle"
                   className={classes.gaugeBigText}>{gaugeText}</text>
                 <text transform="translate(0,40)" text-anchor="middle"
-                  className={classes.gaugeBigText}>SAFE LEVEL</text>
+                  className={classes.gaugeBigText}>{gaugeBigText}</text>
                 <text transform="translate(0,70)" text-anchor="middle"
                   className={classes.gaugeSmallText}>PM<tspan baseline-shift = "sub">2.5 </tspan>
                    ANNUAL EXPOSURE</text>

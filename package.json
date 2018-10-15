@@ -20,7 +20,6 @@
     "downshift": "^2.2.2",
     "getstorybook": "^1.7.0",
     "gh-pages": "^1.2.0",
-    "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-autosuggest": "^9.4.2",

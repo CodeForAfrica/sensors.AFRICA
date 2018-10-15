@@ -4,7 +4,6 @@ import { withRouter } from "react-router";
 
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import _ from 'lodash';
 
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
@@ -62,14 +61,14 @@ class City extends Component {
   }
 
   componentDidMount() {
-    this.setState((state) => { return { cityId: this.props.match.params.cityId }});
-    let sensorsCityData = fetch('http://api.airquality.codeforafrica.org/v1/now/')
+    let cityValue = this.props.match.params.cityId;
+    fetch('http://api.airquality.codeforafrica.org/v1/now/')
     .then(results => {
       return results.json();
     }).then(data => {
       let cells = data.filter((sensor) =>
-          sensor.location.latitude.startsWith(cities[this.state.cityId].latitude) &&
-          sensor.location.longitude.startsWith(cities[this.state.cityId].longitude) && (
+          sensor.location.latitude.startsWith(cities[cityValue].latitude) &&
+          sensor.location.longitude.startsWith(cities[cityValue].longitude) && (
           (sensor.sensor.sensor_type.name === "SDS021" && sensor.sensordatavalues.length >= 2) ||
           (sensor.sensor.sensor_type.name === 'SDS011' && sensor.sensordatavalues.length >= 2))
         ).reduce((sensorGroup, {sensor, sensordatavalues}) => {
@@ -88,24 +87,21 @@ class City extends Component {
              cells[key] = ((cells[key].reduce((a,b) => a+b))/(cells[key]).length).toFixed(2);
            }
           return cells;
-    });
-
-    let cityData = Promise.resolve(sensorsCityData);
-    cityData.then(function(value) {
-      console.log(value)
-      let valueList = Object.values(value);
-      
+    }).then(value => {
       this.setState((state) => {
-        return { cityAirPol: ((valueList.reduce((a, b) => {
-          return parseFloat(a) + parseFloat(b) }))/valueList.lenght).toFixed(2)
+        return { cityId: cityValue,
+                 cityAirPol: (((Object.values(value)).reduce((a, b) =>
+          { return parseFloat(a) + parseFloat(b) }, 0))/(Object.values(value)).length).toFixed(2)
         }
       });
     });
+
   }
 
   render() {
     const classes = this.props.classes;
     const cityId = this.state.cityId;
+    const airPol = this.state.cityAirPol;
     const cityLabel = cities[cityId].label;
 
     return (
@@ -119,7 +115,7 @@ class City extends Component {
           <Navbar />
         </Grid>
         <Grid item xs={12}>
-          <CityHeader cityLabel={cityLabel} airPol={17}/>
+          <CityHeader cityLabel={cityLabel} airPol={airPol}/>
         </Grid>
         <Grid item xs={12}>
           <Grid
