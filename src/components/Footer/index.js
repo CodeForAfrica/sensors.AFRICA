@@ -161,7 +161,7 @@ function Footer({ classes }) {
                 citizens actionable information about their cities.
               </p>
             </Grid>
-            <Grid item xs={12} style={{ paddingTop: '1.5rem' }}>
+            <Grid item xs={12} style={{ paddingTop: '1rem' }}>
               <Link
                 to="/air/about"
                 className={classes.buttonLink}
