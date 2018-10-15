@@ -5,14 +5,12 @@ import Select from 'react-select';
 
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { relative } from 'path';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     height: 250,
-    paddingTop: '2.5rem',
-    position: relative
+    paddingTop: '2.5rem'
   },
   input: {
     display: 'flex',
@@ -26,6 +24,9 @@ const styles = theme => ({
     backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,
     width: 300
+  },
+  chip: {
+    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`
   },
   noOptionsMessage: {
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
@@ -41,11 +42,12 @@ const styles = theme => ({
     paddingLeft: '1rem'
   },
   paper: {
-    position: 'absolute',
+    // position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing.unit,
-    left: 0,
-    right: 0
+    right: 0,
+    background: theme.palette.primary.main
+    // width: 300
   }
 });
 
@@ -89,6 +91,7 @@ function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
       selected={isFocused}
       component="div"
       style={{
+        color: '#fff',
         fontWeight: isSelected ? 500 : 400
       }}
       {...innerProps}

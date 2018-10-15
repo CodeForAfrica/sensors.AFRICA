@@ -40,8 +40,8 @@ class MenuButton extends Component {
     const { open } = this.state;
     const dynamicStyles = {
       line: {
-        height: '2px',
-        width: '20px',
+        height: 4,
+        width: 28,
         background: color,
         transition: 'all 0.2s ease'
       },
