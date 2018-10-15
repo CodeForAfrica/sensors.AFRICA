@@ -82,7 +82,6 @@ class City extends Component {
           }, {});
       return Promise.resolve(cells);
     }).then((cells) => {
-          console.log(cells);
           for (const [key, value] of Object.entries(cells)) {
              cells[key] = ((cells[key].reduce((a,b) => a+b))/(cells[key]).length).toFixed(2);
            }

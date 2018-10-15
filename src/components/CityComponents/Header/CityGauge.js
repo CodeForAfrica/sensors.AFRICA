@@ -117,7 +117,6 @@ class CityGauge extends Component {
     let airPoll = this.props.airPollMeasurement;
     let gaugeText = "";
     var gaugeBigText = "SAFE LEVEL";
-    console.log(this.props.airPollMeasurement);
     if (isNaN(airPoll)) {
       gaugeText = "Measurements not";
       gaugeBigText = "Recorded";

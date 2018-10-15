@@ -15,7 +15,6 @@ const styles = theme => ({
 class CityGaugeContainer extends Component {
   render() {
     const { classes } = this.props;
-    console.log(this.props);
     return (
       <Grid  container item xs={12} className={classes.gaugeContainer}>
         <Grid container item xs={12} direction="column" justify="center" alignItems="center" >
