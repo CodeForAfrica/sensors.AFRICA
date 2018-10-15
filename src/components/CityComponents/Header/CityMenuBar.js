@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
-import CitySearchBar from './CitySearchBar';
+import SearchBar from '../../SearchBar';
 import HamburgerMenu from '../../Hambuger/HambugerMenu';
 
 import logowhite from '../../../assets/Logo-White.png';
@@ -43,7 +43,7 @@ function CityMenuBar({ classes, handleChange }) {
             </Link>
           </Grid>
           <Grid item>
-            <CitySearchBar
+            <SearchBar
               placeholder="Search for another location ..."
               handleChange={handleChange}
             />
@@ -52,7 +52,9 @@ function CityMenuBar({ classes, handleChange }) {
       </Grid>
 
       <Grid item>
-        <HamburgerMenu />
+        <div style={{ paddingTop: '2em' }}>
+          <HamburgerMenu />
+        </div>
       </Grid>
     </Grid>
   );

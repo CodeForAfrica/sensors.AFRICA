@@ -15,15 +15,34 @@ import SoundHome from './pages/sound/SoundHome';
 import WaterHome from './pages/water/WaterHome';
 
 const FONT_FAMILY = '"Montserrat", "sans-serif"';
+const HEADINGS_FONT_FAMILY = '"Anton", "sans-serif"';
 
 const THEME = createMuiTheme({
   // Green palette
   palette: {
-    primary: { main: '#2FB56B', light: '#2FB56B', dark: '#164B3E' }
+    primary: { main: '#1a995b', light: '#2FB56B', dark: '#164B3E' }
   },
   typography: {
     fontFamily: FONT_FAMILY,
     fontSize: 16,
+    h1: {
+      fontFamily: HEADINGS_FONT_FAMILY
+    },
+    h2: {
+      fontFamily: HEADINGS_FONT_FAMILY
+    },
+    h3: {
+      fontFamily: HEADINGS_FONT_FAMILY
+    },
+    h4: {
+      fontFamily: HEADINGS_FONT_FAMILY
+    },
+    h5: {
+      fontFamily: HEADINGS_FONT_FAMILY
+    },
+    h6: {
+      fontFamily: HEADINGS_FONT_FAMILY
+    },
     useNextVariants: true
   }
 });
