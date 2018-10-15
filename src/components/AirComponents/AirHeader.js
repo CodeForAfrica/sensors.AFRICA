@@ -30,10 +30,7 @@ function AirHeader({ classes, handleChange }) {
         <MenuBar />
       </Grid>
       <Grid item xs={12}>
-        <AirHeaderContent
-          title="WE HAVE TESTED THE QUALITY OF YOUR CITY'S AIR"
-          handleChange={handleChange}
-        />
+        <AirHeaderContent handleChange={handleChange} />
       </Grid>
     </Grid>
   );
