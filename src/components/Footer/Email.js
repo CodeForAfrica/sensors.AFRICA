@@ -17,7 +17,9 @@ const styles = () => ({
     color: 'white',
     width: '250px',
     height: '50px',
-    fontWeight: 700,
+    fontWeight: 'bolder',
+    padding: '1rem',
+    fontFamily: '"Montserrat", sans-serif',
     backgroundColor: '#2A2A2B',
     borderRadius: '0',
     '&:hover': {
@@ -57,7 +59,6 @@ class Email extends Component {
           <FormControl style={{ margin: '0 auto' }}>
             <Input
               type="text"
-              id="you@gmail.com"
               placeholder="you@gmail.com"
               onChange={this.handleChange}
               className={classes.footerInput}
@@ -69,7 +70,11 @@ class Email extends Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="contained" className={classes.footerButton}>
+                <Button
+                  variant="contained"
+                  className={classes.footerButton}
+                  type="submit"
+                >
                   SUBSCRIBE TO UPDATES
                 </Button>
               </a>

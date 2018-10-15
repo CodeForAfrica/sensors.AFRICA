@@ -22,8 +22,9 @@ const styles = theme => ({
   },
   titles: {
     color: 'white',
-    fontWeight: 700,
-    fontSize: '18px'
+    fontWeight: 'bolder',
+    fontFamily: '"Montserrat", sans-serif',
+    fontSize: '16px'
   },
   footerContainer: {
     [theme.breakpoints.up('md')]: {
@@ -45,8 +46,12 @@ const styles = theme => ({
   },
   supportText: {
     [theme.breakpoints.up('md')]: {
-      paddingLeft: theme.spacing.unit * 6,
-      paddingRight: theme.spacing.unit * 6
+      marginLeft: theme.spacing.unit * 8,
+      marginRight: theme.spacing.unit * 8,
+      textalign: 'center',
+      textAlignLast: 'center',
+      fontWeight: 400,
+      fontSize: '14px'
     }
   },
   footerAboutContainer: {
@@ -66,13 +71,19 @@ const styles = theme => ({
     }
   },
   aboutcontent: {
-    paddingRight: '1rem',
-    paddingLeft: '1rem'
+    paddingRight: '1.2rem',
+    paddingLeft: '1.2rem',
+    fontWeight: 400,
+    fontSize: '14px',
+    textalign: 'justify',
+    textAlignLast: 'center'
   },
   footerButton: {
     color: 'white',
     backgroundColor: '#2A2A2B',
-    fontWeight: 700,
+    padding: '0.8rem',
+    fontWeight: 'bolder',
+    fontFamily: '"Montserrat", sans-serif',
     borderRadius: '0',
     '&:hover': {
       color: '#424143'
@@ -86,6 +97,8 @@ const styles = theme => ({
   buttonLink: {
     textDecoration: 'none',
     color: 'white',
+    fontWeight: 700,
+    fontFamily: '"Anton", sans-serif',
     '&:hover': {
       color: '#424143'
     }
@@ -141,25 +154,25 @@ function Footer({ classes }) {
             <Typography variant="h6" className={classes.titles}>
               ABOUT SENSORS.AFRICA
             </Typography>
-          </Grid>
-          <Grid item xs={12} className={classes.aboutcontent}>
-            <p>
-              sensors.AFRICA is a pan-African citizen science initiative that
-              uses sensors to monitor air, water and sound polution to give
-              citizens actionable information about their cities.
-            </p>
-          </Grid>
-          <Grid item xs={12}>
-            <Link
-              to="/air/about"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="contained" className={classes.footerButton}>
-                READ MORE
-              </Button>
-            </Link>
+            <Grid item xs={12} className={classes.aboutcontent}>
+              <p>
+                sensors.AFRICA is a pan-African citizen science initiative that
+                uses sensors to monitor air, water and sound polution to give
+                citizens actionable information about their cities.
+              </p>
+            </Grid>
+            <Grid item xs={12} style={{ paddingTop: '1.5rem' }}>
+              <Link
+                to="/air/about"
+                className={classes.buttonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="contained" className={classes.footerButton}>
+                  READ MORE
+                </Button>
+              </Link>
+            </Grid>
           </Grid>
         </Grid>
         <Grid
@@ -176,8 +189,8 @@ function Footer({ classes }) {
           </Grid>
           <Grid item xs={12} className={classes.supportText}>
             <p>
-              This initiative was seed-funded by innovateAFRICA, and is being
-              incubated by Code for Africa
+              This initiative was seed-funded <b />
+              by innovateAFRICA, and is being incubated by Code for Africa
             </p>
           </Grid>
           <Grid item xs={12}>
@@ -186,6 +199,7 @@ function Footer({ classes }) {
               direction="row"
               justify="center"
               alignItems="center"
+              style={{ paddingTop: '0.5rem' }}
             >
               <a
                 href="https://codeforafrica.org/"

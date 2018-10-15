@@ -17,7 +17,7 @@ const styles = theme => ({
   },
 
   fa: {
-    padding: theme.spacing.unit,
+    padding: theme.spacing.unit * 1,
     transition: 'all .5s ease-in-out',
     '&:hover': {
       transform: 'scale(1.3)',
@@ -29,8 +29,8 @@ const styles = theme => ({
     color: 'white'
   },
   icons: {
-    marginTop: '1rem',
-    marginBottom: '1rem'
+    marginTop: '0.5rem',
+    marginBottom: '0.5rem'
   }
 });
 
