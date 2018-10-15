@@ -45,6 +45,13 @@ const THEME = createMuiTheme({
       fontFamily: HEADINGS_FONT_FAMILY
     },
     useNextVariants: true
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: 0
+      }
+    }
   }
 });
 
