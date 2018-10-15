@@ -14,17 +14,15 @@ const styles = () => ({
     backgroundColor: '#424143'
   },
   footerButton: {
+    width: '100%',
     color: 'white',
     backgroundColor: '#2A2A2B',
-    borderRadius: '0',
     '&:hover': {
       color: '#424143'
     }
   },
   footerInput: {
-    width: '190px',
-    backgroundColor: 'white',
-    border: '1px solid white'
+    // Moved to `App.css` due to difficult of setting input `text-align` to `center`
   },
   buttonLink: {
     textDecoration: 'none',
@@ -52,6 +50,7 @@ class Email extends Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
+    const href = `https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541&MERGE0=${value}`;
     return (
       <Grid
         container
@@ -60,17 +59,17 @@ class Email extends Component {
         className={classes.root}
       >
         <Grid item xs={12}>
-          <FormControl style={{ margin: '0 auto' }}>
+          <FormControl>
             <Input
               type="text"
               id="you@gmail.com"
               value={value}
               onChange={this.handleChange}
-              className={classes.footerInput}
+              className="Email-footerInput"
             />
             <p>
               <a
-                href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
+                href={href}
                 className={classes.buttonLink}
                 target="_blank"
                 rel="noopener noreferrer"
