@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import CitySearchBar from './CitySearchBar';
 import HamburgerMenu from '../../Hambuger/HambugerMenu';
 
-import logowhite from '../../../assets/Logo-White.png';
+import logowhite from '../../../assets/images/logos/logowhite.png';
 
 const styles = theme => ({
   root: {
