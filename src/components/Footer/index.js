@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Button, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import SocialMedia from '../SocialMedia';
@@ -17,60 +15,56 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     color: 'white',
-    backgroundColor: '#424143'
-  },
-  titles: {
-    color: 'white'
-  },
-  footerContainer: {
+    backgroundColor: '#424143',
     [theme.breakpoints.up('md')]: {
-      paddingTop: theme.spacing.unit * 5,
-      paddingBottom: theme.spacing.unit * 5,
-      paddingLeft: theme.spacing.unit * 5,
-      paddingRight: theme.spacing.unit * 5
+      padding: '1rem 0'
     }
-  },
-  footerConnectContainer: {
-    textAlign: 'center'
   },
   footerContentContainer: {
     textAlign: 'center',
-    paddingTop: theme.spacing.unit * 5,
+    padding: '1rem',
     [theme.breakpoints.up('md')]: {
-      paddingTop: 0,
-      paddingLeft: theme.spacing.unit * 5,
-      paddingRight: theme.spacing.unit * 5
+      marginTop: '3rem',
+      width: '19rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '22rem'
     }
   },
   footerAboutContainer: {
     textAlign: 'center',
-    paddingTop: theme.spacing.unit * 5,
-    paddingBottom: theme.spacing.unit * 5,
+    padding: '1rem',
     borderTop: '1px solid white',
     borderBottom: '1px solid white',
     [theme.breakpoints.up('md')]: {
-      paddingTop: 0,
-      paddingLeft: theme.spacing.unit * 5,
-      paddingBottom: 0,
-      paddingRight: theme.spacing.unit * 5,
+      marginTop: '3rem',
+      paddingBottom: '3rem',
+      width: '19rem',
       borderTop: 'none',
       borderLeft: '1px solid white',
       borderBottom: 'none',
       borderRight: '1px solid white'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '22rem'
     }
+  },
+  titles: {
+    color: 'white',
+    textTransform: 'uppercase'
+  },
+  socialMediaContainer: {
+    paddingTop: '0.5rem',
+    paddingBottom: '1rem'
   },
   footerButton: {
     color: 'white',
     backgroundColor: '#2A2A2B',
-    borderRadius: '0',
     '&:hover': {
       color: '#424143'
-    }
-  },
-  footerInput: {
-    width: '190px',
-    backgroundColor: 'white',
-    border: '1px solid white'
+    },
+    textTransform: 'uppercase',
+    height: '3rem'
   },
   buttonLink: {
     textDecoration: 'none',
@@ -78,6 +72,10 @@ const styles = theme => ({
     '&:hover': {
       color: '#424143'
     }
+  },
+  img: {
+    maxWidth: '100%',
+    height: 'auto'
   }
 });
 
@@ -87,112 +85,79 @@ function Footer({ classes }) {
       container
       className={classes.root}
       justify="center"
-      alignItems="center"
+      alignItems="flex-start"
     >
-      <Grid
-        item
-        xs={12}
-        container
-        className={classes.footerContainer}
-        justify="center"
-        alignItems="flex-start"
-      >
-        <Grid
-          item
-          xs={12}
-          md={4}
-          container
-          className={classes.footerContentContainer}
-        >
-          {' '}
-          <Grid item xs={12}>
-            {' '}
-            <Typography variant="h6" className={classes.titles}>
-              {' '}
-              CONNECT WITH US
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
+      <Grid item>
+        <div className={classes.footerContentContainer}>
+          <Typography variant="h6" className={classes.titles}>
+            CONNECT WITH US
+          </Typography>
+          <div className={classes.socialMediaContainer}>
             <SocialMedia />
-          </Grid>
-          <Grid item xs={12}>
-            <Email />
-          </Grid>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={4}
-          container
-          className={classes.footerAboutContainer}
-        >
-          <Grid item xs={12}>
-            <Typography variant="h6" className={classes.titles}>
-              ABOUT SENSORS.AFRICA
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <p>
-              sensors.AFRICA is a pan-African citizen science initiative that
-              uses sensors to monitor air, water and sound polution to give
-              citizens actionable information about their cities.
-            </p>
-          </Grid>
-          <Grid item xs={12}>
-            <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="contained" className={classes.footerButton}>
-                READ MORE
-              </Button>
-            </a>
-          </Grid>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={4}
-          container
-          className={classes.footerContentContainer}
-        >
-          <Grid item xs={12}>
-            <Typography variant="h6" className={classes.titles}>
-              SUPPORT
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <p>
-              This initiative was seed-funded by innovateAFRICA, and is being
-              incubated by Code for Africa
-            </p>
-          </Grid>
-          <Grid item xs={12}>
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
+          </div>
+          <Email />
+        </div>
+      </Grid>
+      <Grid item>
+        <div className={classes.footerAboutContainer}>
+          <Typography variant="h6" className={classes.titles}>
+            ABOUT SENSORS.AFRICA
+          </Typography>
+          <p>
+            sensors.AFRICA is a pan-African citizen science initiative that uses
+            sensors to monitor air, water and sound polution to give citizens
+            actionable information about their cities.
+          </p>
+          <a
+            href="https://medium.com/code-for-africa/tagged/innovateafrica"
+            className={classes.buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="contained" className={classes.footerButton}>
+              READ MORE
+            </Button>
+          </a>
+        </div>
+      </Grid>
+      <Grid item>
+        <div className={classes.footerContentContainer}>
+          <Typography variant="h6" className={classes.titles}>
+            SUPPORT
+          </Typography>
+          <p>
+            This initiative was seed-funded by innovateAFRICA, and is being
+            incubated by Code for Africa
+          </p>
+          <Grid container justify="center" alignItems="center">
+            <Grid item xs>
               <a
                 href="https://codeforafrica.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={codeforafrica} alt="Code for Africa" />
+                <img
+                  src={codeforafrica}
+                  alt="Code for Africa"
+                  className={classes.img}
+                />
               </a>
+            </Grid>
+            <Grid item xs>
               <a
                 href="https://innovateafrica.fund/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={innovateafrica} alt="innovateAFRICA" />
+                <img
+                  src={innovateafrica}
+                  alt="innovateAFRICA"
+                  className={classes.img}
+                />
               </a>
             </Grid>
           </Grid>
-        </Grid>
+        </div>
       </Grid>
     </Grid>
   );

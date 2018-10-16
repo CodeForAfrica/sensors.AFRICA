@@ -78,3 +78,11 @@
   border-bottom: 30px solid transparent;
   border-left: 30px solid transparent;
 }
+
+.Email-footerInput input {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  text-align: center;
+  height: 2rem;
+}
