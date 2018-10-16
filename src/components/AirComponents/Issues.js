@@ -9,18 +9,22 @@ import Gauge from './GaugeChart';
 const styles = {
   root: {
     flexGrow: 1,
-    paddingBottom: '4rem'
+    paddingBottom: '2rem',
+    paddingTop: '2rem'
   },
   subheading: {
     paddingTop: '1rem',
-    paddingBottom: '0.5rem',
-    textAlign: 'center'
+    paddingBottom: '2rem',
+    textAlign: 'center',
+    fontWeight: 'bolder',
+    fontSize: '14px'
   },
   title: {
-    textAlign: 'center'
+    textAlign: 'center',
+    textTransform: 'none'
   },
   caption: {
-    paddingTop: '0',
+    paddingTop: '1rem',
     textAlign: 'center'
   },
   graph: {
