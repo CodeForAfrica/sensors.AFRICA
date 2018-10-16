@@ -41,7 +41,7 @@ function ArrowCards({ classes }) {
     >
       <Grid item xs={12} container justify="center" alignItems="center">
         <Typography
-          variant="body2"
+          variant="body1"
           style={{ marginLeft: '4.5rem', color: 'green' }}
         >
           WHO CAN I REPORT AIR SENSORS QUALITY TO?
@@ -62,10 +62,10 @@ function ArrowCards({ classes }) {
               <CardContent
                 style={{ textDecoration: 'underline', textAlign: 'center' }}
               >
-                <Typography variant="body2" className={classes.body2}>
+                <Typography variant="body1" className={classes.body2}>
                   Local Government
                 </Typography>
-                <Typography variant="body2" className={classes.body2}>
+                <Typography variant="body1" className={classes.body2}>
                   Environment Ministry
                 </Typography>
               </CardContent>
@@ -82,13 +82,13 @@ function ArrowCards({ classes }) {
               alignItems="center"
             >
               <CardContent style={{ textAlign: 'center' }}>
-                <Typography variant="body2" className={classes.body2}>
+                <Typography variant="body1" className={classes.body2}>
                   <b>
                     <u>@david</u>
                   </b>{' '}
                   answered the question about
                 </Typography>
-                <Typography variant="body2" className={classes.body2}>
+                <Typography variant="body1" className={classes.body2}>
                   <u>What Reports have been sent</u>
                 </Typography>
               </CardContent>
@@ -105,13 +105,13 @@ function ArrowCards({ classes }) {
               alignItems="center"
             >
               <CardContent style={{ textAlign: 'center' }}>
-                <Typography variant="body2" className={classes.body2}>
+                <Typography variant="body1" className={classes.body2}>
                   <b>
                     <u>@david</u>
                   </b>{' '}
                   answered the question about
                 </Typography>
-                <Typography variant="body2" className={classes.body2}>
+                <Typography variant="body1" className={classes.body2}>
                   <u>What Reports have been sent</u>
                 </Typography>
               </CardContent>
@@ -128,13 +128,13 @@ function ArrowCards({ classes }) {
               alignItems="center"
             >
               <CardContent style={{ textAlign: 'center' }}>
-                <Typography variant="body2" className={classes.body2}>
+                <Typography variant="body1" className={classes.body2}>
                   <b>
                     <u>@david</u>
                   </b>{' '}
                   answered the question about
                 </Typography>
-                <Typography variant="body2" className={classes.body2}>
+                <Typography variant="body1" className={classes.body2}>
                   <u>What Reports have been sent</u>
                 </Typography>
               </CardContent>

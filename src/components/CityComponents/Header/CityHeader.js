@@ -1,41 +1,41 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-//import material components
-import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-//import components
-import CityMenuBar from "../../CityComponents/Header/CityMenuBar";
-import CityGaugeContainer from "../../CityComponents/Header/CityGaugeContainer";
+import CityMenuBar from './CityMenuBar';
+import AirCityHeaderContent from '../../Header/JumbotronContent/AirCityHeaderContent';
 
 const styles = theme => ({
   jumbotron: {
-    [theme.breakpoints.down('sm')]: {
-      height: "700px"
-    },
-    backgroundColor: "#2FB56B",
-    height: "500px",
-    borderRadius: "none"
+    height: '700px',
+    backgroundColor: '#2FB56B',
+    borderRadius: 'none',
+    [theme.breakpoints.up('md')]: {
+      height: '510px'
+    }
   }
 });
 
-class CityHeader extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid className={classes.jumbotron} container item={12}>
-        <CityMenuBar />
-        <CityGaugeContainer cityLabel={this.props.cityLabel}
-         airPol={this.props.airPol} />
-      </Grid>
-    );
-  }
+function CityHeader({ airPol, city, classes, handleChange }) {
+  return (
+    <Grid className={classes.jumbotron} container item={12}>
+      <CityMenuBar handleChange={handleChange} />
+      <AirCityHeaderContent city={city} airPol={airPol} />
+    </Grid>
+  );
 }
 
-CityHeader.PropTypes = {
-  classes: PropTypes.object.isRequired
+CityHeader.propTypes = {
+  airPol: PropTypes.number,
+  city: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired
 };
 
-export default withRouter(withStyles(styles)(CityHeader));
+CityHeader.defaultProps = {
+  airPol: 0
+};
+
+export default withStyles(styles)(CityHeader);

@@ -1,17 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router';
 
 import Select from 'react-select';
 
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-
-const suggestions = [
-  { 'value':'nairobi', 'label': "Nairobi, Kenya" },
-  { 'value':'lagos', 'label': "Lagos, Nigeria" },
-  { 'value':'dar-es-salaam', 'label': "Dar-es-Salaam, Tanzania" }
-]
 
 const styles = theme => ({
   root: {
@@ -30,7 +24,10 @@ const styles = theme => ({
     alignItems: 'center',
     backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,
-    width: '300px'
+    width: 300
+  },
+  chip: {
+    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`
   },
   noOptionsMessage: {
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
@@ -41,20 +38,17 @@ const styles = theme => ({
   placeholder: {
     position: 'absolute',
     left: 2,
-    fontSize: 18,
+    fontSize: 16,
     color: '#164B3E',
     paddingLeft: '1rem'
   },
   paper: {
-    position: 'absolute',
+    // position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing.unit,
-    left: '27%',
-    right: '25%',
-    width: 300
-  },
-  css1wy0on6: {
-    width: '0'
+    right: 0,
+    background: theme.palette.primary.main
+    // width: 300
   }
 });
 
@@ -98,6 +92,7 @@ function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
       selected={isFocused}
       component="div"
       style={{
+        color: '#fff',
         fontWeight: isSelected ? 500 : 400
       }}
       {...innerProps}
@@ -150,7 +145,14 @@ const components = {
   DropdownIndicator: null
 };
 
-class CitySearchBar extends React.Component {
+const CITY_PATHNAME = '/air/city';
+const DEFAULT_OPTIONS = [
+  { value: 'nairobi', label: 'Nairobi, Kenya' },
+  { value: 'lagos', label: 'Lagos, Nigeria' },
+  { value: 'dar-es-salaam', label: 'Dar-es-Salaam, Tanzania' }
+];
+
+class SearchBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -158,33 +160,45 @@ class CitySearchBar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-
-  handleChange = (city) => {
+  handleChange(city) {
     this.setState({ single: city });
-    this.props.history.push({ pathname: "/air/city/"+city.value });
+
+    const { handleChange } = this.props;
+     if (handleChange) {
+       handleChange(city);
+     }
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, options, placeholder } = this.props;
     const { single } = this.state;
 
     return (
       <div className={classes.root}>
         <Select
           classes={classes}
-          options={suggestions}
+          options={options}
           components={components}
           value={single}
           onChange={this.handleChange}
-          placeholder={this.props.placeholder}
+          placeholder={placeholder}
         />
       </div>
     );
   }
 }
 
-CitySearchBar.propTypes = {
-  classes: PropTypes.object.isRequired
+SearchBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+  handleChange: PropTypes.func,
+  options: PropTypes.array,
+  placeholder: PropTypes.string
 };
 
-export default withRouter(withStyles(styles)(CitySearchBar));
+SearchBar.defaultProps = {
+  handleChange: null,
+  options: DEFAULT_OPTIONS,
+  placeholder: ''
+};
+
+export default withRouter(withStyles(styles)(SearchBar));

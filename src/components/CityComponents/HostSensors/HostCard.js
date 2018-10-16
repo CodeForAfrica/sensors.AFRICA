@@ -47,10 +47,10 @@ function HostCard({ classes }) {
     >
       <Card className={classes.card}>
         <CardContent className={classes.cardContent}>
-          <Typography variant="display1" className={classes.display1}>
+          <Typography variant="h4" className={classes.display1}>
             HOST A SENSORS CALL TO ACTION
           </Typography>
-          <Typography variant="body2" className={classes.body2}>
+          <Typography variant="body1" className={classes.body2}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel
             eros vehicula, feugiat nisl a, mollis tortor.
           </Typography>

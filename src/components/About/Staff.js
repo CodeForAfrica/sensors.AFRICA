@@ -35,10 +35,10 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="title">Name.Surname</Typography>
+            <Typography variant="h6">Name.Surname</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="subheading">
+            <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
           </Grid>
@@ -50,10 +50,10 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="title">Name.Surname</Typography>
+            <Typography variant="h6">Name.Surname</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="subheading">
+            <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
           </Grid>
@@ -65,10 +65,10 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="title">Name.Surname</Typography>
+            <Typography variant="h6">Name.Surname</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="subheading">
+            <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
           </Grid>
@@ -80,10 +80,10 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="title">Name.Surname</Typography>
+            <Typography variant="h6">Name.Surname</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="subheading">
+            <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
           </Grid>
@@ -95,10 +95,10 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="title">Name.Surname</Typography>
+            <Typography variant="h6">Name.Surname</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="subheading">
+            <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
           </Grid>
@@ -110,10 +110,10 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="title">Name.Surname</Typography>
+            <Typography variant="h6">Name.Surname</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="subheading">
+            <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
           </Grid>

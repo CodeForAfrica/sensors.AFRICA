@@ -69,7 +69,7 @@ function CallToAction({ classes }) {
       <Grid item sm>
         <Card className={classes.sensorsWorkCard}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="display1" className={classes.typography}>
+            <Typography variant="h4" className={classes.typography}>
               HOW DO SENSORS WORK?
             </Typography>
             <Grid className={classes.buttonContainer}>
@@ -88,7 +88,7 @@ function CallToAction({ classes }) {
       <Grid item sm>
         <Card className={classes.joinNowCard}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="display1" className={classes.typography}>
+            <Typography variant="h4" className={classes.typography}>
               GET YOUR CITY ON BOARD
             </Typography>
             <Grid className={classes.buttonContainer}>

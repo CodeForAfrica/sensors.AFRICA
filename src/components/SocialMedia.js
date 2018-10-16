@@ -17,8 +17,8 @@ const styles = theme => ({
   },
 
   fa: {
-    padding: theme.spacing.unit,
     transition: 'all .5s ease-in-out',
+    padding: theme.spacing.unit / 2,
     '&:hover': {
       transform: 'scale(1.3)',
       color: '#f3f33'
@@ -40,21 +40,6 @@ function SocialMedia({ color, classes }) {
     >
       <Grid item>
         <a
-          href="https://www.facebook.com/sensorsAFRICA/"
-          className={classes.links}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FontAwesomeIcon
-            className={classes.fa}
-            icon={['fab', 'facebook-f']}
-            size="lg"
-            style={{ color }}
-          />
-        </a>
-      </Grid>
-      <Grid item>
-        <a
           href="https://twitter.com/sensorsAFRICA/"
           className={classes.links}
           target="_blank"
@@ -63,21 +48,42 @@ function SocialMedia({ color, classes }) {
           <FontAwesomeIcon
             className={classes.fa}
             icon={['fab', 'twitter']}
-            size="lg"
+            size="2x"
+            fixedWidth
             style={{ color }}
           />
         </a>
       </Grid>
-      {/* <Grid item>
-        <a href="#" className={classes.links}>
+      <Grid item>
+        <a
+          href="https://www.facebook.com/sensorsAFRICA/"
+          className={classes.links}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={['fab', 'instagram']}
-            size="lg"
+            icon={['fab', 'facebook-f']}
+            size="2x"
+            fixedWidth
             style={{ color }}
           />
         </a>
-      </Grid> */}
+      </Grid>
+      <Grid item>
+        <a
+          href="https://www.instagram.com/sensorsAFRICA/"
+          className={classes.links}
+        >
+          <FontAwesomeIcon
+            className={classes.fa}
+            icon={['fab', 'instagram']}
+            size="2x"
+            fixedWidth
+            style={{ color }}
+          />
+        </a>
+      </Grid>
     </Grid>
   );
 }

@@ -1,5 +1,6 @@
-import React from "react";
-import { withRouter } from "react-router";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 
 import About from './About';
 import HowSensorsWork from './HowSensorsWork';
@@ -13,20 +14,38 @@ import Issues from '../../components/AirComponents/Issues';
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
 
-export { About, HowSensorsWork, City, JoinNetwork };
+const CITY_PATHNAME = '/air/city/';
+class AirHome extends React.Component {
+  constructor(props) {
+    super(props);
 
-function AirHome() {
-  return (
-    <React.Fragment>
-      <Navbar />
-      <AirHeader />
-      <Issues />
-      <IndoorOutdoor />
-      <Stories />
-      <Support />
-      <Footer />
-    </React.Fragment>
-  );
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(city) {
+    const { history } = this.props;
+
+    history.push(CITY_PATHNAME, {city} );
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Navbar />
+        <AirHeader handleChange={this.handleChange} />
+        <Issues />
+        <IndoorOutdoor />
+        <Stories />
+        <Support />
+        <Footer />
+      </React.Fragment>
+    );
+  }
 }
 
+AirHome.propTypes = {
+  history: PropTypes.object.isRequired
+};
+
+export { About, HowSensorsWork, City, JoinNetwork };
 export default withRouter(AirHome);

@@ -107,7 +107,7 @@ function Footer({ classes }) {
           {' '}
           <Grid item xs={12}>
             {' '}
-            <Typography variant="title" className={classes.titles}>
+            <Typography variant="h6" className={classes.titles}>
               {' '}
               CONNECT WITH US
             </Typography>
@@ -127,7 +127,7 @@ function Footer({ classes }) {
           className={classes.footerAboutContainer}
         >
           <Grid item xs={12}>
-            <Typography variant="title" className={classes.titles}>
+            <Typography variant="h6" className={classes.titles}>
               ABOUT SENSORS.AFRICA
             </Typography>
           </Grid>
@@ -159,7 +159,7 @@ function Footer({ classes }) {
           className={classes.footerContentContainer}
         >
           <Grid item xs={12}>
-            <Typography variant="title" className={classes.titles}>
+            <Typography variant="h6" className={classes.titles}>
               SUPPORT
             </Typography>
           </Grid>

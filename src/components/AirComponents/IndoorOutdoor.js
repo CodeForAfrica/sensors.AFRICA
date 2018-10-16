@@ -54,7 +54,7 @@ function IndoorOutdoor({ classes }) {
         <Card className={classes.indoor}>
           <CardContent className={classes.cardContent}>
             <img src={IndoorIcon} Alt="Housing" height="100px" />
-            <Typography variant="title" style={{ color: 'white' }}>
+            <Typography variant="h6" style={{ color: 'white' }}>
               INDOOR POLLUTION
             </Typography>
             <Typography variant="caption" className={classes.caption}>
@@ -82,7 +82,7 @@ function IndoorOutdoor({ classes }) {
         <Card className={classes.outdoor}>
           <CardContent className={classes.cardContent}>
             <img src={OutdoorIcon} Alt="Housing" height="100px" />
-            <Typography variant="title" style={{ color: 'white' }}>
+            <Typography variant="h6" style={{ color: 'white' }}>
               OUTDOOR POLLUTION
             </Typography>
             <Typography variant="caption" className={classes.caption}>

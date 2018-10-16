@@ -5,32 +5,30 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
   container: {
-    height: '32px',
-    width: '32px',
+    height: 32,
+    width: 32,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     cursor: 'pointer',
-    padding: '4px'
+    padding: 4
   }
 };
 class MenuButton extends Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.open !== prevState.open) {
+      return { open: nextProps.open };
+    }
+    return null;
+  }
+
   constructor(props) {
     super(props);
 
     const { open } = props;
     this.state = { open };
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { open } = this.state;
-    if (nextProps.open !== open) {
-      this.setState({ open: nextProps.open });
-    } else {
-      this.setState({ open: true });
-    }
   }
 
   handleClick() {
@@ -42,8 +40,8 @@ class MenuButton extends Component {
     const { open } = this.state;
     const dynamicStyles = {
       line: {
-        height: '2px',
-        width: '20px',
+        height: 4,
+        width: 28,
         background: color,
         transition: 'all 0.2s ease'
       },

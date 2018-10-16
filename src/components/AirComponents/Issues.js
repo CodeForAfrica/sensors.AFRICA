@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import graph from '../../assets/images/Graphs.png';
+import Gauge from './GaugeChart';
 
 const styles = {
   root: {
@@ -20,11 +20,15 @@ const styles = {
     textAlign: 'center'
   },
   caption: {
-    paddingTop: '1rem',
+    paddingTop: '0',
     textAlign: 'center'
   },
   graph: {
     textAlign: 'center'
+  },
+  svgContainer: {
+    paddingTop: '3rem',
+    paddingBottom: '2rem'
   }
 };
 
@@ -37,17 +41,17 @@ function Issues({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Typography variant="subheading" className={classes.subheading}>
+        <Typography variant="subtitle1" className={classes.subheading}>
           THE ISSUES
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="title" className={classes.title}>
+        <Typography variant="h6" className={classes.title}>
           Air polution causes 1 in 9 deaths.
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="title" className={classes.title}>
+        <Typography variant="h6" className={classes.title}>
           It is the biggest environmental health crisis we face
         </Typography>
       </Grid>
@@ -57,13 +61,44 @@ function Issues({ classes }) {
           our most common illnesses
         </Typography>
       </Grid>
-      <Grid item xs={12} className={classes.graph}>
-        <img
-          src={graph}
-          alt="Graphs"
-          height="200"
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
+      <Grid
+        item
+        xs={8}
+        spacing={24}
+        container
+        direction="row"
+        justify="center"
+        alignItems="strench"
+        className={classes.svgContainer}
+      >
+        <Grid item xs={6} sm={3}>
+          <Gauge percentage={36} />
+
+          <Typography variant="caption" className={classes.caption}>
+            of lung cancer deaths
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Gauge percentage={34} />
+
+          <Typography variant="caption" className={classes.caption}>
+            of stroke deaths
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Gauge percentage={27} />
+
+          <Typography variant="caption" className={classes.caption}>
+            of heart disease deaths
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Gauge percentage={35} />
+
+          <Typography variant="caption" className={classes.caption}>
+            of COPD (pulmonary disease deaths)
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
   );

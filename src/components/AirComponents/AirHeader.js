@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router'
 
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,7 +19,7 @@ const styles = theme => ({
   }
 });
 
-function AirHeader({ classes }) {
+function AirHeader({ classes, handleChange }) {
   return (
     <Grid
       container
@@ -31,14 +31,15 @@ function AirHeader({ classes }) {
         <MenuBar />
       </Grid>
       <Grid item xs={12}>
-      <AirHeaderContent title="WE HAVE TESTED THE QUALITY OF YOUR CITY'S AIR"/>
+        <AirHeaderContent handleChange={handleChange} />
       </Grid>
     </Grid>
   );
 }
 
 AirHeader.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired
 };
 
 export default withRouter(withStyles(styles)(AirHeader));
