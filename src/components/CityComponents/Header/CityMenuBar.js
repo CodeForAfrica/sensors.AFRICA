@@ -34,7 +34,6 @@ function CityMenuBar({ classes, handleChange }) {
       className={classes.root}
       justify="space-between"
       alignItems="flex-start"
-      style={{zIndex: 1}}
     >
       <Grid item>
         <Grid container alignItems="flex-start">
