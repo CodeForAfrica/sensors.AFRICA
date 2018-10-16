@@ -11,47 +11,30 @@ const styles = theme => ({
     paddingBottom: '4rem'
   },
   card: {
-    height: 250,
-    width: 350,
-    borderRadius: 0,
-    boxShadow: 'none',
-    backgroundColor: '#F3F3F3',
-    margin: theme.spacing.unit * 1
+    height: '15rem',
+    width: '22rem',
+    margin: '0.5rem'
   },
   cardContent: {
-    borderRadius: 0,
-    backgroundColor: '#F3F3F3'
-  },
-  supporttypography: {
-    margin: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 3,
-    paddingLeft: theme.spacing.unit * 3,
-    fontFamily: '"Anton", sans-serif',
-    fontWeight: 500,
-    fontSize: '2rem',
-    lineHeight: '1.3',
-    color: '#424143'
-  },
-  typography: {
-    margin: theme.spacing.unit * 2,
-    fontFamily: '"Anton", sans-serif',
-    fontWeight: 500,
-    fontSize: '2rem',
-    lineHeight: '1.3',
-    color: '#424143'
+    margin: '1rem auto'
   },
   button: {
     color: 'white',
-    borderRadius: '0',
     backgroundColor: '#2FB56B',
-    fontWeight: 'bolder',
-    lineHeight: '2px',
-    height: '45px'
+    textTransform: 'uppercase',
+    fontFamilty: theme.typography.h5.fontFamilty,
+    fontWeight: theme.typography.h5.fontWeight,
+    height: '3 rem',
+    margin: '1rem auto'
   },
-  uploadButton: {
-    color: '#164B3E',
-    borderRadius: '0',
-    fontWeight: 'bolder'
+  buttonOutlined: {
+    color: theme.palette.primary.dark,
+    textTransform: 'uppercase',
+    borderColor: theme.palette.primary.dark,
+    fontFamilty: theme.typography.h5.fontFamilty,
+    fontWeight: theme.typography.h5.fontWeight,
+    height: '3 rem',
+    margin: '1rem auto'
   },
   buttonLink: {
     textDecoration: 'none'
@@ -65,9 +48,9 @@ function Support({ classes, classNames }) {
       <Grid item>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="h6" className={classes.supporttypography}>
-              SUPPORT EXISTING SENSORS NETWORKS
-            </Typography>
+            <Typography variant="h5">SUPPORT</Typography>
+            <Typography variant="h5">EXISTING SENSORS</Typography>
+            <Typography variant="h5">NETWORKS</Typography>
             <a
               href="https://archive.sensors.africa/"
               className={classes.buttonLink}
@@ -76,8 +59,8 @@ function Support({ classes, classNames }) {
             >
               <Button
                 variant="outlined"
-                color="Upload"
-                className={classes.uploadButton}
+                color="primary"
+                className={classes.buttonOutlined}
               >
                 VIEW DATABASE
               </Button>
@@ -88,16 +71,20 @@ function Support({ classes, classNames }) {
       <Grid item>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="h6" className={classes.typography}>
-              KICKSTART YOUR CITY&apos;S OWN SENSOR PROGRAM
-            </Typography>
+            <Typography variant="h5">KICKSTART YOUR</Typography>
+            <Typography variant="h5">CITY&apos;S OWN</Typography>
+            <Typography variant="h5">SENSOR PROGRAM</Typography>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
               className={classes.buttonLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="contained" className={classes.button}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
                 SIGN UP HERE
               </Button>
             </a>
@@ -107,16 +94,20 @@ function Support({ classes, classNames }) {
       <Grid item>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="h6" className={classes.typography}>
-              LET YOUR CITY KNOW THAT CLEAN WATER MATTERS TO YOU
-            </Typography>
+            <Typography variant="h5">LET YOUR CITY KNOW</Typography>
+            <Typography variant="h5">THAT CLEAN WATER</Typography>
+            <Typography variant="h5">MATTERS TO YOU</Typography>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
               className={classes.buttonLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="contained" className={classes.button}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
                 SIGN UP HERE
               </Button>
             </a>
