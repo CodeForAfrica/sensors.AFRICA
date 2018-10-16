@@ -18,11 +18,11 @@ class ScrollToTop extends React.Component {
 
 ScrollToTop.propTypes = {
   location: PropTypes.object.isRequired,
-  children: PropTypes.array
+  children: PropTypes.object
 };
 
 ScrollToTop.defaultProps = {
-  children: []
+  children: null
 };
 
 export default withRouter(ScrollToTop);

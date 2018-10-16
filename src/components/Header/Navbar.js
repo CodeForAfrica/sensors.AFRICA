@@ -69,52 +69,54 @@ const styles = theme => ({
 
 function Navbar({ classes }) {
   return (
-    <Grid container item xs={12}>
-      <AppBar position="static" className={classes.root} item xs={12}>
-        <Toolbar className={classes.toolbar} disableGutters>
-          <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="center"
-          >
-            <MenuItem className={classes.airText}>
-              <Link to="/air" className={classes.airlink}>
-                AIR
-              </Link>
-            </MenuItem>
+    <Grid container>
+      <Grid item xs={12}>
+        <AppBar position="static" className={classes.root}>
+          <Toolbar className={classes.toolbar} disableGutters>
+            <Grid
+              container
+              direction="row"
+              justify="flex-start"
+              alignItems="center"
+            >
+              <MenuItem className={classes.airText}>
+                <Link to="/air" className={classes.airlink}>
+                  AIR
+                </Link>
+              </MenuItem>
 
-            <MenuItem className={classes.waterText}>
-              <Link to="/water" className={classes.waterlink}>
-                WATER
-              </Link>
-            </MenuItem>
-            <MenuItem className={classes.soundText}>
-              <Link to="/sound" className={classes.soundlink}>
-                SOUND
-              </Link>
-            </MenuItem>
-          </Grid>
+              <MenuItem className={classes.waterText}>
+                <Link to="/water" className={classes.waterlink}>
+                  WATER
+                </Link>
+              </MenuItem>
+              <MenuItem className={classes.soundText}>
+                <Link to="/sound" className={classes.soundlink}>
+                  SOUND
+                </Link>
+              </MenuItem>
+            </Grid>
 
-          <Grid
-            container
-            direction="row"
-            justify="flex-end"
-            alignItems="center"
-          >
-            {/* <Grid item>
+            <Grid
+              container
+              direction="row"
+              justify="flex-end"
+              alignItems="center"
+            >
+              {/* <Grid item>
             <FontAwesomeIcon
                 className={classes.searchFa}
                 icon="search"
                 size="lg"
               />
             </Grid> */}
-            <Grid item>
-              <SocialMedia color="#2FB56B" />
+              <Grid item>
+                <SocialMedia color="#2FB56B" />
+              </Grid>
             </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+          </Toolbar>
+        </AppBar>
+      </Grid>
     </Grid>
   );
 }
