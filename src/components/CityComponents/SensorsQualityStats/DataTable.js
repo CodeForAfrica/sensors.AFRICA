@@ -60,6 +60,7 @@ function DataTable({ classes }) {
             <TableRow className={classes.rowHeight}>
               <TableCell>
                 <Grid
+                  container
                   direction="column"
                   justify="center"
                   alignItems="center"
@@ -88,6 +89,7 @@ function DataTable({ classes }) {
               </TableCell>
               <TableCell>
                 <Grid
+                  container
                   direction="column"
                   justify="center"
                   alignItems="center"
@@ -111,6 +113,7 @@ function DataTable({ classes }) {
               </TableCell>
               <TableCell>
                 <Grid
+                  container
                   direction="column"
                   justify="center"
                   alignItems="center"
@@ -139,6 +142,7 @@ function DataTable({ classes }) {
             <TableRow className={classes.rowHeight}>
               <TableCell>
                 <Grid
+                  container
                   direction="column"
                   justify="center"
                   alignItems="center"
@@ -162,6 +166,7 @@ function DataTable({ classes }) {
               </TableCell>
               <TableCell>
                 <Grid
+                  container
                   direction="column"
                   justify="center"
                   alignItems="center"
@@ -185,6 +190,7 @@ function DataTable({ classes }) {
               </TableCell>
               <TableCell>
                 <Grid
+                  container
                   direction="column"
                   justify="center"
                   alignItems="center"
@@ -211,6 +217,7 @@ function DataTable({ classes }) {
             <TableRow className={classes.rowHeight}>
               <TableCell>
                 <Grid
+                  container
                   direction="column"
                   justify="center"
                   alignItems="center"
@@ -234,6 +241,7 @@ function DataTable({ classes }) {
               </TableCell>
               <TableCell>
                 <Grid
+                  container
                   direction="column"
                   justify="center"
                   alignItems="center"
@@ -257,6 +265,7 @@ function DataTable({ classes }) {
               </TableCell>
               <TableCell>
                 <Grid
+                  container
                   direction="column"
                   justify="center"
                   alignItems="center"
