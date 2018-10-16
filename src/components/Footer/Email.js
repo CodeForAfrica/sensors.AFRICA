@@ -19,7 +19,8 @@ const styles = () => ({
     backgroundColor: '#2A2A2B',
     '&:hover': {
       color: '#424143'
-    }
+    },
+    height: '3rem'
   },
   footerInput: {
     // Moved to `App.css` due to difficult of setting input `text-align` to `center`
