@@ -27,22 +27,40 @@ const THEME = createMuiTheme({
     fontFamily: FONT_FAMILY,
     fontSize: 16,
     h1: {
-      fontFamily: HEADINGS_FONT_FAMILY
+      color: '#424143',
+      fontFamily: HEADINGS_FONT_FAMILY,
+      fontWeight: 500,
+      textTransform: 'uppercase'
     },
     h2: {
-      fontFamily: HEADINGS_FONT_FAMILY
+      color: '#424143',
+      fontFamily: HEADINGS_FONT_FAMILY,
+      fontWeight: 500,
+      textTransform: 'uppercase'
     },
     h3: {
-      fontFamily: HEADINGS_FONT_FAMILY
+      color: '#424143',
+      fontFamily: HEADINGS_FONT_FAMILY,
+      fontWeight: 500,
+      textTransform: 'uppercase'
     },
     h4: {
-      fontFamily: HEADINGS_FONT_FAMILY
+      color: '#424143',
+      fontFamily: HEADINGS_FONT_FAMILY,
+      fontWeight: 500,
+      textTransform: 'uppercase'
     },
     h5: {
-      fontFamily: HEADINGS_FONT_FAMILY
+      color: '#424143',
+      fontFamily: HEADINGS_FONT_FAMILY,
+      fontWeight: 500,
+      textTransform: 'uppercase'
     },
     h6: {
-      fontFamily: HEADINGS_FONT_FAMILY
+      color: '#424143',
+      fontFamily: HEADINGS_FONT_FAMILY,
+      fontWeight: 500,
+      textTransform: 'uppercase'
     },
     useNextVariants: true
   },
@@ -50,6 +68,17 @@ const THEME = createMuiTheme({
     MuiButton: {
       root: {
         borderRadius: 0
+      }
+    },
+    MuiCard: {
+      root: {
+        borderRadius: 0,
+        boxShadow: 'none'
+      }
+    },
+    MuiPaper: {
+      root: {
+        backgroundColor: '#F3F3F3'
       }
     }
   }
