@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../../assets/css/App.css';
 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -31,10 +32,9 @@ const styles = () => ({
     height: '50px',
     backgroundColor: 'white',
     border: '1px solid white',
-    textAlign: 'center',
-    '&::placeholder': {
-      color: 'red'
-    }
+    fontSize: '15px',
+    paddingRight: '2rem',
+    paddingLeft: '4rem'
   },
   buttonLink: {
     textDecoration: 'none',
@@ -79,6 +79,7 @@ class Email extends Component {
               onChange={e => {
                 this.setState({ emailValue: e.target.value });
               }}
+              defaultValue="Naked input"
             />
             <Grid item xs={12} style={{ paddingTop: '0.5rem' }}>
               <Button
@@ -92,23 +93,6 @@ class Email extends Component {
                 SUBSCRIBE TO UPDATES
               </Button>
             </Grid>
-
-            {/*<p><a
-                href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
-                className={classes.buttonLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="contained"
-                  className={classes.footerButton}
-                  type="submit"
-                >
-                  SUBSCRIBE TO UPDATES
-                </Button>
-              </a>
-              </p>
-              */}
           </form>
         </Grid>
       </Grid>
