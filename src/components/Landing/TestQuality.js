@@ -16,7 +16,7 @@ const styles = theme => ({
     width: '100%'
   },
   img: {
-    height: 200,
+    height: 220,
     width: 'auto',
     padding: '3rem',
     marginLeft: 'auto',
@@ -25,7 +25,7 @@ const styles = theme => ({
   airCard: {
     backgroundColor: '#2FB56B',
     borderRadius: 0,
-    height: 250,
+    height: 200,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       width: 250
@@ -34,7 +34,7 @@ const styles = theme => ({
   waterCard: {
     backgroundColor: '#4972B8',
     borderRadius: 0,
-    height: 250,
+    height: 200,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       width: 250
@@ -43,11 +43,19 @@ const styles = theme => ({
   soundCard: {
     backgroundColor: '#B64598',
     borderRadius: 0,
-    height: 250,
+    height: 200,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       width: 250
     }
+  },
+  testTitle: {
+    fontWeight: 'bolder',
+    color: 'white',
+    fontSize: '1rem',
+    paddingTop: '2rem',
+    textTransform: 'uppercase',
+    fontFamily: '"Monsterrat", sans-serif'
   }
 });
 
@@ -64,7 +72,7 @@ function TestQuality({ classes }) {
           variant="h6"
           gutterBottom
           align="center"
-          style={{ color: 'white', textTransform: 'uppercase' }}
+          className={classes.testTitle}
         >
           Test the quality of the city&apos;s
         </Typography>
@@ -75,7 +83,7 @@ function TestQuality({ classes }) {
           direction="row"
           justify="center"
           alignItems="center"
-          style={{ paddingTop: '1rem' }}
+          style={{ paddingTop: '1rem', paddingBottom: '3rem' }}
         >
           <Grid item>
             <Link to="/air">
