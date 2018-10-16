@@ -16,7 +16,7 @@ const styles = theme => ({
     flexGrow: 1,
     color: 'white',
     backgroundColor: '#424143',
-    height: '450px',
+    height: '400px',
     [theme.breakpoints.up('md')]: {
       padding: '1rem 0'
     }
