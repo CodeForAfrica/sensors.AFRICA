@@ -17,6 +17,10 @@ const styles = () => ({
     width: '100%',
     color: 'white',
     backgroundColor: '#2A2A2B',
+    fontWeight: 'bolder',
+    padding: '1rem',
+    fontFamily: '"Montserrat", sans-serif',
+    borderRadius: '0',
     '&:hover': {
       color: '#424143'
     },
@@ -64,7 +68,8 @@ class Email extends Component {
             <Input
               type="text"
               id="you@gmail.com"
-              value={value}
+              //value={value}
+              placeholder="you@gmail.com"
               onChange={this.handleChange}
               className="Email-footerInput"
             />
