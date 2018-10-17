@@ -83,6 +83,18 @@ function SocialMedia({ color, classes }) {
             style={{ color }}
           />
         </a>
+        <a
+          href="https://medium.com/code-for-africa/tagged/innovateafrica"
+          className={classes.links}
+        >
+          <FontAwesomeIcon
+            className={classes.fa}
+            icon={['fab', 'medium-m']}
+            size="2x"
+            fixedWidth
+            style={{ color }}
+          />
+        </a>
       </Grid>
     </Grid>
   );
