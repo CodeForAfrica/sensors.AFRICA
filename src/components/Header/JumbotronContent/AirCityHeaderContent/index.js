@@ -18,7 +18,6 @@ const styles = theme => ({
 });
 
 function AirCityHeaderContent({ airPol, city, classes }) {
-  console.log(airPol);
   return (
     <Grid container className={classes.gaugeContainer}>
       <Grid
