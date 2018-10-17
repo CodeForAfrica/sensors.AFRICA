@@ -42,7 +42,7 @@ function CityMenuBar({ classes, handleChange }) {
               <img src={logowhite} alt="Sensors Africa Logo" height="100" />
             </Link>
           </Grid>
-          <Grid item style={{zIndex: 1}}>
+          <Grid item>
             <SearchBar
               placeholder="Search for another location ..."
               handleChange={handleChange}
