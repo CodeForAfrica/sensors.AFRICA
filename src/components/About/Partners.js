@@ -13,16 +13,23 @@ import womanng from '../../assets/images/logos/womanng.png';
 import dailynation from '../../assets/images/logos/dailynation.png';
 import cable from '../../assets/images/logos/cable.png';
 import code from '../../assets/images/logos/cfafrica_gray.png';
-import innovate from '../../assets/images/logos/innovateafrica_gray.jpg';
+import innovate from '../../assets/images/logos/innovateafrica_gray1.jpg';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: 'white'
   },
   typography: {
-    paddingTop: '5rem',
+    paddingTop: '3rem',
     textAlign: 'center',
-    textTransform: 'Uppercase'
+    textTransform: 'Uppercase',
+    fontWeight: 'bolder',
+    color: '#424143'
+  },
+  mainGrid: {
+    paddingLeft: '8rem',
+    paddingRight: '8rem'
   },
   imgContainer: {
     textAlign: 'center'
@@ -32,7 +39,7 @@ const styles = theme => ({
     height: 'auto'
   },
   partnersContainer: {
-    paddingTop: '1rem',
+    margin: '3rem',
     [theme.breakpoints.up('sm')]: {
       paddingTop: 0
     }
@@ -52,7 +59,14 @@ function Partners({ classes }) {
           Media partners
         </Typography>
       </Grid>
-      <Grid item xs={12} container justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        container
+        justify="center"
+        alignItems="center"
+        className={classes.mainGrid}
+      >
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
           <img
             src={business}
