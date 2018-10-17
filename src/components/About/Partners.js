@@ -13,7 +13,7 @@ import womanng from '../../assets/images/logos/womanng.png';
 import dailynation from '../../assets/images/logos/dailynation.png';
 import cable from '../../assets/images/logos/cable.png';
 import code from '../../assets/images/logos/cfafrica_gray.png';
-import innovate from '../../assets/images/logos/innovateafrica_gray1.jpg';
+import innovate from '../../assets/images/logos/innovateafrica_gray.jpg';
 
 const styles = theme => ({
   root: {
@@ -39,7 +39,7 @@ const styles = theme => ({
     height: 'auto'
   },
   partnersContainer: {
-    margin: '3rem',
+    margin: '2.5rem',
     [theme.breakpoints.up('sm')]: {
       paddingTop: 0
     }
@@ -116,17 +116,26 @@ function Partners({ classes }) {
         </Grid>
         <Grid
           item
-          xs={12}
+          xs={6}
           container
           className={classes.partnersContainer}
           justify="center"
           alignItems="center"
+          spacing={40}
         >
-          <Grid item className={classes.imgContainer}>
-            <img src={code} alt="Code for Africa" className={classes.img} />
+          <Grid item xs={3}>
+            <a href="https://codeforafrica.org/">
+              <img src={code} alt="Code for Africa" className={classes.img} />
+            </a>
           </Grid>
-          <Grid item className={classes.imgContainer}>
-            <img src={innovate} alt="innovateAFRICA" className={classes.img} />
+          <Grid item xs={3} style={{ paddingTop: '2.5rem' }}>
+            <a href="https://innovateafrica.fund/">
+              <img
+                src={innovate}
+                alt="innovateAFRICA"
+                className={classes.img}
+              />
+            </a>
           </Grid>
         </Grid>
       </Grid>
