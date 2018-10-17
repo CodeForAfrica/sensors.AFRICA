@@ -8,6 +8,9 @@ import IndoorIcon from '../../assets/images/indooricon.png';
 import OutdoorIcon from '../../assets/images/outdooricon.png';
 
 const styles = {
+  root: {
+    paddingBottom: '4rem'
+  },
   indoor: {
     height: '350px',
     width: '400px',
@@ -19,7 +22,8 @@ const styles = {
   indoorButton: {
     borderRadius: 0,
     color: '#F3F3F3',
-    borderColor: 'white'
+    borderColor: 'white',
+    fontWeight: 'bolder'
   },
   outdoor: {
     height: '350px',
@@ -30,7 +34,9 @@ const styles = {
     margin: '2rem'
   },
   outdoorButton: {
-    borderRadius: 0
+    borderRadius: 0,
+    fontWeight: 'bolder',
+    color: '#164B3E'
   },
   buttonLink: {
     textDecoration: 'none'
@@ -49,12 +55,20 @@ const styles = {
 
 function IndoorOutdoor({ classes }) {
   return (
-    <Grid container justify="center" alignItems="center">
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      className={classes.root}
+    >
       <Grid item>
         <Card className={classes.indoor}>
           <CardContent className={classes.cardContent}>
-            <img src={IndoorIcon} alt="House" height="100px" />
-            <Typography variant="h6" style={{ color: 'white' }}>
+            <img src={IndoorIcon} Alt="Housing" height="100px" />
+            <Typography
+              variant="h6"
+              style={{ color: 'white', fontSize: '32px' }}
+            >
               INDOOR POLLUTION
             </Typography>
             <Typography variant="caption" className={classes.caption}>
@@ -77,8 +91,11 @@ function IndoorOutdoor({ classes }) {
       <Grid item>
         <Card className={classes.outdoor}>
           <CardContent className={classes.cardContent}>
-            <img src={OutdoorIcon} alt="Factory" height="100px" />
-            <Typography variant="h6" style={{ color: 'white' }}>
+            <img src={OutdoorIcon} Alt="Housing" height="100px" />
+            <Typography
+              variant="h6"
+              style={{ color: 'white', fontSize: '32px' }}
+            >
               OUTDOOR POLLUTION
             </Typography>
             <Typography variant="caption" className={classes.caption}>
