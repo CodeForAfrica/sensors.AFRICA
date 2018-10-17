@@ -54,6 +54,9 @@ const CITIES_LOCATION = {
     label: 'Dar-es-salaam, Tanzania'
   }
 };
+const SENSOR_NAMES = ['sds021', 'sds011'];
+const SENSOR_READINGS_URL = 'http://api.airquality.codeforafrica.org/v1/now/';
+
 class City extends Component {
   constructor() {
     super();
@@ -75,55 +78,52 @@ class City extends Component {
   }
 
   fetchCityReadings(city) {
-    fetch('http://api.airquality.codeforafrica.org/v1/now/')
-      .then(results => {
-        return results.json();
-      })
-      .then(data => {
-        let cells = data
-          .filter(
-            sensor =>
-              sensor.location.latitude.startsWith(
-                CITIES_LOCATION[city.value].latitude
-              ) &&
-              sensor.location.longitude.startsWith(
-                CITIES_LOCATION[city.value].longitude
-              ) &&
-              ((sensor.sensor.sensor_type.name === 'SDS021' &&
-                sensor.sensordatavalues.length >= 2) ||
-                (sensor.sensor.sensor_type.name === 'SDS011' &&
-                  sensor.sensordatavalues.length >= 2))
-          )
-          .reduce((sensorGroup, { sensor, sensordatavalues }) => {
-            if (!sensorGroup[sensor.id]) sensorGroup[sensor.id] = [];
-            sensordatavalues.map(val => {
-              if (val.value_type === 'P2') {
-                sensorGroup[sensor.id].push(parseFloat(val.value));
-              }
-            });
-            return sensorGroup;
-          }, {});
+    const isInCity = reading => {
+      const { location } = reading;
+      return (
+        location.latitude.startsWith(CITIES_LOCATION[city.value].latitude) &&
+        location.longitude.startsWith(CITIES_LOCATION[city.value].longitude)
+      );
+    };
+    const isAirSensorWithReadings = ({ sensor, sensordatavalues }) => {
+      let { name = '' } = sensor.sensor_type;
+      name = name.toLowerCase();
+      return SENSOR_NAMES.indexOf(name) !== -1 && sensordatavalues.length >= 2;
+    };
+    const averageP2ValuesPerSensor = (
+      accumulator,
+      { sensor, sensordatavalues }
+    ) => {
+      const { id } = sensor;
+      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
+      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
+        if (valueType.toLowerCase() === 'p2') {
+          const reading = accumulator[id];
+          const { average, length } = reading;
+          reading.length = length + 1;
+          reading.average = (average + parseFloat(value)) / reading.length;
+        }
+      });
+      return accumulator;
+    };
+    const averageP2ValuesForCity = accumulator => {
+      const readings = Object.values(accumulator);
+      const cityAverage =
+        readings.reduce((a, b) => a + b.average, 0) / readings.length;
+      return cityAverage;
+    };
+
+    fetch(SENSOR_READINGS_URL)
+      .then(data => data.json())
+      .then(readings => {
+        const cells = readings
+          .filter(data => isInCity(data) && isAirSensorWithReadings(data))
+          .reduce(averageP2ValuesPerSensor, {});
         return Promise.resolve(cells);
       })
-      .then(cells => {
-        for (const [key, value] of Object.entries(cells)) {
-          cells[key] = (
-            cells[key].reduce((a, b) => a + b) / cells[key].length
-          ).toFixed(2);
-        }
-        return cells;
-      })
-      .then(value => {
-        this.setState(state => {
-          return {
-            city: city,
-            cityAirPol: (
-              Object.values(value).reduce((a, b) => {
-                return parseFloat(a) + parseFloat(b);
-              }, 0) / Object.values(value).length
-            ).toFixed(2)
-          };
-        });
+      .then(averageP2ValuesForCity)
+      .then(reading => {
+        this.setState({ city, cityAirPol: reading.toFixed(2) });
       });
   }
 
