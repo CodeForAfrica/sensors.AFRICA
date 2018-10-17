@@ -43,12 +43,11 @@ const styles = theme => ({
     paddingLeft: '1rem'
   },
   paper: {
-    // position: 'absolute',
+    position: 'relative',
     zIndex: 1,
     marginTop: theme.spacing.unit,
     right: 0,
     background: theme.palette.primary.main
-    // width: 300
   }
 });
 

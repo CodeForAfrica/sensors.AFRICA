@@ -20,7 +20,7 @@ const styles = theme => ({
 
 function CityHeader({ airPol, city, classes, handleChange }) {
   return (
-    <Grid className={classes.jumbotron} container item={12}>
+    <Grid className={classes.jumbotron} container item xs={12}>
       <CityMenuBar handleChange={handleChange} />
       <AirCityHeaderContent city={city} airPol={airPol} />
     </Grid>

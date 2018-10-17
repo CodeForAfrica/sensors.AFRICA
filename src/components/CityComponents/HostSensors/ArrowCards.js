@@ -52,13 +52,7 @@ function ArrowCards({ classes }) {
           <ListItem className={classes.list}>
             <span />
 
-            <Card
-              className="card"
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
+            <Card className="card">
               <CardContent
                 style={{ textDecoration: 'underline', textAlign: 'center' }}
               >
@@ -74,13 +68,7 @@ function ArrowCards({ classes }) {
 
           <ListItem>
             <span />
-            <Card
-              className="card"
-              constainer
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
+            <Card className="card">
               <CardContent style={{ textAlign: 'center' }}>
                 <Typography variant="body1" className={classes.body2}>
                   <b>
@@ -97,13 +85,7 @@ function ArrowCards({ classes }) {
 
           <ListItem>
             <span />
-            <Card
-              className="card"
-              constainer
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
+            <Card className="card">
               <CardContent style={{ textAlign: 'center' }}>
                 <Typography variant="body1" className={classes.body2}>
                   <b>
@@ -120,13 +102,7 @@ function ArrowCards({ classes }) {
 
           <ListItem>
             <span />
-            <Card
-              className="card"
-              constainer
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
+            <Card className="card">
               <CardContent style={{ textAlign: 'center' }}>
                 <Typography variant="body1" className={classes.body2}>
                   <b>
