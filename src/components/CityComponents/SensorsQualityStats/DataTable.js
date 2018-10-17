@@ -58,72 +58,81 @@ function DataTable({ classes }) {
         <Table className={classes.table}>
           <TableHead>
             <TableRow className={classes.rowHeight}>
-              <TableCell
-                direction="column"
-                justify="center"
-                alignItem="center"
-                className={classes.typography}
-              >
-                <Grid>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subheading}
-                  >
-                    AIR
-                  </Typography>
-                </Grid>
+              <TableCell>
                 <Grid
                   container
-                  direction="row"
+                  direction="column"
                   justify="center"
-                  className={classes.data}
+                  alignItems="center"
+                  className={classes.typography}
                 >
-                  <Typography variant="h3" className={classes.display2}>
-                    12.5
-                  </Typography>
-                  <small className={classes.small}>%</small>
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      AIR
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    className={classes.data}
+                  >
+                    <Typography variant="h3" className={classes.display2}>
+                      12.5
+                    </Typography>
+                    <small className={classes.small}>%</small>
+                  </Grid>
                 </Grid>
               </TableCell>
-              <TableCell
-                direction="column"
-                justify="center"
-                alignItem="center"
-                className={classes.typography}
-              >
-                <Grid>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subheading}
-                  >
-                    HUMIDITY
-                  </Typography>
-                </Grid>
-                <Grid container direction="row" justify="center">
-                  <Typography variant="h3" className={classes.display2}>
-                    5.0
-                  </Typography>
-                  <small className={classes.small}>%</small>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      HUMIDITY
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      5.0
+                    </Typography>
+                    <small className={classes.small}>%</small>
+                  </Grid>
                 </Grid>
               </TableCell>
-              <TableCell
-                direction="column"
-                justify="center"
-                alignItem="center"
-                className={classes.typography}
-              >
-                <Grid>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subheading}
-                  >
-                    SOUND
-                  </Typography>
-                </Grid>
-                <Grid container direction="row" justify="center">
-                  <Typography variant="h3" className={classes.display2}>
-                    208.6
-                  </Typography>
-                  <small className={classes.small}>db</small>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      SOUND
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      208.6
+                    </Typography>
+                    <small className={classes.small}>db</small>
+                  </Grid>
                 </Grid>
               </TableCell>
             </TableRow>
@@ -131,133 +140,151 @@ function DataTable({ classes }) {
 
           <TableBody>
             <TableRow className={classes.rowHeight}>
-              <TableCell
-                direction="column"
-                justify="center"
-                alignItem="center"
-                className={classes.typography}
-              >
-                <Grid>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subheading}
-                  >
-                    AIR
-                  </Typography>
-                </Grid>
-                <Grid container direction="row" justify="center">
-                  <Typography variant="h3" className={classes.display2}>
-                    12.5
-                  </Typography>
-                  <small className={classes.small}>%</small>
-                </Grid>
-              </TableCell>
-              <TableCell
-                direction="column"
-                justify="center"
-                alignItem="center"
-                className={classes.typography}
-              >
-                <Grid>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subheading}
-                  >
-                    HUMIDITY
-                  </Typography>
-                </Grid>
-                <Grid container direction="row" justify="center">
-                  <Typography variant="h3" className={classes.display2}>
-                    5.0
-                  </Typography>
-                  <small className={classes.small}>%</small>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      AIR
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      12.5
+                    </Typography>
+                    <small className={classes.small}>%</small>
+                  </Grid>
                 </Grid>
               </TableCell>
-              <TableCell
-                direction="column"
-                justify="center"
-                alignItem="center"
-                className={classes.typography}
-              >
-                <Grid>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subheading}
-                  >
-                    SOUND
-                  </Typography>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      HUMIDITY
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      5.0
+                    </Typography>
+                    <small className={classes.small}>%</small>
+                  </Grid>
                 </Grid>
-                <Grid container direction="row" justify="center">
-                  <Typography variant="h3" className={classes.display2}>
-                    208.6
-                  </Typography>
-                  <small className={classes.small}>db</small>
+              </TableCell>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      SOUND
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      208.6
+                    </Typography>
+                    <small className={classes.small}>db</small>
+                  </Grid>
                 </Grid>
               </TableCell>
             </TableRow>
 
             <TableRow className={classes.rowHeight}>
-              <TableCell
-                direction="column"
-                justify="center"
-                alignItem="center"
-                className={classes.lastRow}
-              >
-                <Grid>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subheading}
-                  >
-                    AIR
-                  </Typography>
-                </Grid>
-                <Grid container direction="row" justify="center">
-                  <Typography variant="h3" className={classes.display2}>
-                    12.5
-                  </Typography>
-                  <small className={classes.small}>%</small>
-                </Grid>
-              </TableCell>
-              <TableCell
-                direction="column"
-                justify="center"
-                alignItem="center"
-                className={classes.lastRow}
-              >
-                <Grid>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subheading}
-                  >
-                    HUMIDITY
-                  </Typography>
-                </Grid>
-                <Grid container direction="row" justify="center">
-                  <Typography variant="h3" className={classes.display2}>
-                    5.0
-                  </Typography>
-                  <small className={classes.small}>%</small>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.lastRow}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      AIR
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      12.5
+                    </Typography>
+                    <small className={classes.small}>%</small>
+                  </Grid>
                 </Grid>
               </TableCell>
-              <TableCell
-                direction="column"
-                justify="center"
-                alignItem="center"
-                className={classes.lastRow}
-              >
-                <Grid>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subheading}
-                  >
-                    SOUND
-                  </Typography>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.lastRow}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      HUMIDITY
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      5.0
+                    </Typography>
+                    <small className={classes.small}>%</small>
+                  </Grid>
                 </Grid>
-                <Grid container direction="row" justify="center">
-                  <Typography variant="h3" className={classes.display2}>
-                    208.6
-                  </Typography>
-                  <small className={classes.small}>db</small>
+              </TableCell>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.lastRow}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      SOUND
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      208.6
+                    </Typography>
+                    <small className={classes.small}>db</small>
+                  </Grid>
                 </Grid>
               </TableCell>
             </TableRow>

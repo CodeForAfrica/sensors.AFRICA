@@ -81,11 +81,7 @@ function IndoorOutdoor({ classes }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button
-                variant="outlined"
-                color="upload"
-                className={classes.indoorButton}
-              >
+              <Button variant="outlined" className={classes.indoorButton}>
                 READ MORE
               </Button>
             </a>
@@ -100,6 +96,7 @@ function IndoorOutdoor({ classes }) {
               variant="h6"
               style={{ color: 'white', fontSize: '32px' }}
             >
+
               OUTDOOR POLLUTION
             </Typography>
             <Typography variant="caption" className={classes.caption}>
@@ -112,11 +109,7 @@ function IndoorOutdoor({ classes }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button
-                variant="contained"
-                color="upload"
-                className={classes.outdoorButton}
-              >
+              <Button variant="contained" className={classes.outdoorButton}>
                 READ MORE
               </Button>
             </a>

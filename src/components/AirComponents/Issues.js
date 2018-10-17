@@ -72,7 +72,7 @@ function Issues({ classes }) {
         container
         direction="row"
         justify="center"
-        alignItems="strench"
+        alignItems="stretch"
         className={classes.svgContainer}
       >
         <Grid item xs={6} sm={3}>
