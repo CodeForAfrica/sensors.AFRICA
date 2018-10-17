@@ -28,8 +28,9 @@ const styles = theme => ({
     height: '100%'
   },
   title: {
-    fontWeight: 'bold',
-    color: '#424143'
+    fontWeight: 'bolder',
+    color: '#424143',
+    fontFamily: '"Montserrat", sans-serif'
   },
   h6: {
     fontFamily: '"Montserrat", sans-serif',
