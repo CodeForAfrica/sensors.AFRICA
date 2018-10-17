@@ -15,8 +15,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     color: 'white',
-    backgroundColor: '#424143',
-    height: '400px',
+    backgroundColor: theme.palette.secondary.main,
     [theme.breakpoints.up('md')]: {
       padding: '1rem 0'
     }
@@ -56,52 +55,39 @@ const styles = theme => ({
       width: '22rem'
     }
   },
-  supportText: {
-    [theme.breakpoints.up('md')]: {
-      marginLeft: theme.spacing.unit * 6,
-      marginRight: theme.spacing.unit * 6,
-      textalign: 'center',
-      textAlignLast: 'center',
-      fontWeight: 400,
-      fontSize: '14px'
-    }
+  titles: {
+    color: 'white',
+    fontWeight: 800
   },
-  aboutcontent: {
-    paddingRight: '1.2rem',
-    paddingLeft: '1.2rem',
-    fontWeight: 400,
-    fontSize: '14px',
+  socialMediaContainer: {
+    paddingTop: '1rem',
+    paddingBottom: '1rem'
+  },
+  aboutContent: {
+    color: 'white',
+    padding: '1rem',
     textalign: 'justify',
     textAlignLast: 'center'
   },
-  titles: {
-    color: 'white',
-    textTransform: 'uppercase',
-    fontWeight: 'bolder',
-    fontFamily: '"Montserrat", sans-serif',
-    fontSize: '16px'
-  },
-  socialMediaContainer: {
-    paddingTop: '0.5rem',
-    paddingBottom: '1rem'
-  },
   footerButton: {
     color: 'white',
-    backgroundColor: '#2A2A2B',
-    fontWeight: 'bolder',
-    fontFamily: '"Montserrat", sans-serif',
-    borderRadius: '0',
+    backgroundColor: theme.palette.secondary.dark,
+    fontWeight: 800,
     '&:hover': {
-      color: '#424143'
+      color: theme.palette.secondary.main
     },
-    textTransform: 'uppercase',
     height: '3rem'
   },
   buttonLink: {
-    textDecoration: 'none',
+    textDecoration: 'none'
+  },
+  supportText: {
     color: 'white',
-    '&:hover': {
-      color: '#424143'
+    padding: '1.2rem',
+    [theme.breakpoints.up('md')]: {
+      marginLeft: '1.5rem',
+      marginRight: '1.5rem',
+      textalign: 'center'
     }
   },
   img: {
@@ -114,6 +100,7 @@ function Footer({ classes }) {
   return (
     <Grid
       container
+      color="secondary"
       className={classes.root}
       justify="center"
       alignItems="center"
@@ -126,77 +113,71 @@ function Footer({ classes }) {
         justify="center"
         alignItems="flex-start"
       >
-        <Grid item>
-          <div className={classes.footerContentContainer}>
-            <Typography variant="h6" className={classes.titles}>
-              CONNECT WITH US
-            </Typography>
-            <div className={classes.socialMediaContainer}>
-              <SocialMedia />
-            </div>
-            <Email />
+        <Grid item className={classes.footerContentContainer}>
+          <Typography variant="button" className={classes.titles}>
+            CONNECT WITH US
+          </Typography>
+          <div className={classes.socialMediaContainer}>
+            <SocialMedia />
           </div>
+          <Email />
         </Grid>
-        <Grid item>
-          <div className={classes.footerAboutContainer}>
-            <Typography variant="h6" className={classes.titles}>
-              ABOUT SENSORS.AFRICA
-            </Typography>
-            <p className={classes.aboutcontent}>
-              sensors.AFRICA is a pan-African citizen science initiative that
-              uses sensors to monitor air, water and sound polution to give
-              citizens actionable information about their cities.
-            </p>
-            <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="contained" className={classes.footerButton}>
-                READ MORE
-              </Button>
-            </a>
-          </div>
+        <Grid item className={classes.footerAboutContainer}>
+          <Typography variant="button" className={classes.titles}>
+            ABOUT SENSORS.AFRICA
+          </Typography>
+          <Typography variant="caption" className={classes.aboutContent}>
+            sensors.AFRICA is a pan-African citizen science initiative that uses
+            sensors to monitor air, water and sound polution to give citizens
+            actionable information about their cities.
+          </Typography>
+          <a
+            href="https://medium.com/code-for-africa/tagged/innovateafrica"
+            className={classes.buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="contained" className={classes.footerButton}>
+              READ MORE
+            </Button>
+          </a>
         </Grid>
-        <Grid item>
-          <div className={classes.footerContentContainer}>
-            <Typography variant="h6" className={classes.titles}>
-              FUNDED BY
-            </Typography>
-            <p className={classes.supportText}>
-              This initiative was seed-funded by innovateAFRICA, and is being
-              incubated by Code for Africa
-            </p>
-            <Grid container justify="center" alignItems="center">
-              <Grid item xs>
-                <a
-                  href="https://codeforafrica.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={codeforafrica}
-                    alt="Code for Africa"
-                    className={classes.img}
-                  />
-                </a>
-              </Grid>
-              <Grid item xs>
-                <a
-                  href="https://innovateafrica.fund/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={innovateafrica}
-                    alt="innovateAFRICA"
-                    className={classes.img}
-                  />
-                </a>
-              </Grid>
+        <Grid item className={classes.footerContentContainer}>
+          <Typography variant="button" className={classes.titles}>
+            FUNDED BY
+          </Typography>
+          <Typography variant="caption" className={classes.supportText}>
+            This initiative was seed-funded by innovateAFRICA, and is being
+            incubated by Code for Africa
+          </Typography>
+          <Grid container justify="center" alignItems="center">
+            <Grid item xs>
+              <a
+                href="https://codeforafrica.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={codeforafrica}
+                  alt="Code for Africa"
+                  className={classes.img}
+                />
+              </a>
             </Grid>
-          </div>
+            <Grid item xs>
+              <a
+                href="https://innovateafrica.fund/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={innovateafrica}
+                  alt="innovateAFRICA"
+                  className={classes.img}
+                />
+              </a>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

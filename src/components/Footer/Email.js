@@ -7,22 +7,19 @@ import { Input, FormControl } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
     color: 'white',
-    backgroundColor: '#424143'
+    backgroundColor: theme.palette.secondary.main
   },
   footerButton: {
     width: '100%',
     color: 'white',
-    backgroundColor: '#2A2A2B',
-    fontWeight: 'bolder',
-    padding: '1rem',
-    fontFamily: '"Montserrat", sans-serif',
-    borderRadius: '0',
+    backgroundColor: theme.palette.secondary.dark,
+    fontWeight: 800,
     '&:hover': {
-      color: '#424143'
+      color: theme.palette.secondary.main
     },
     height: '3rem'
   },
@@ -30,11 +27,7 @@ const styles = () => ({
     // Moved to `App.css` due to difficult of setting input `text-align` to `center`
   },
   buttonLink: {
-    textDecoration: 'none',
-    color: 'white',
-    '&:hover': {
-      color: '#424143'
-    }
+    textDecoration: 'none'
   }
 });
 
@@ -68,7 +61,6 @@ class Email extends Component {
             <Input
               type="text"
               id="you@gmail.com"
-              //value={value}
               placeholder="you@gmail.com"
               onChange={this.handleChange}
               className="Email-footerInput"
