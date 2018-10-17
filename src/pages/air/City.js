@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
-import Grid from '@material-ui/core/Grid';
+import { Grid, LinearProgress } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Navbar from '../../components/Header/Navbar';
@@ -61,17 +61,19 @@ class City extends Component {
   constructor() {
     super();
     this.state = {
-      city: DEFAULT_CITY
+      city: DEFAULT_CITY,
+      isLoading: false,
+      cityAirPol: 0
     };
     this.fetchCityReadings = this.fetchCityReadings.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    let city = DEFAULT_CITY;
+    let { city } = this.state;
     const { location } = this.props;
     if (location.state && location.state.city) {
-      city = location.state;
+      ({ city } = location.state);
     }
 
     this.fetchCityReadings(city);
@@ -113,6 +115,13 @@ class City extends Component {
       return cityAverage;
     };
 
+    this.setState(state => {
+      return {
+        city: state.city,
+        cityAirPol: state.cityAirPol,
+        isLoading: true
+      };
+    });
     fetch(SENSOR_READINGS_URL)
       .then(data => data.json())
       .then(readings => {
@@ -123,7 +132,11 @@ class City extends Component {
       })
       .then(averageP2ValuesForCity)
       .then(reading => {
-        this.setState({ city, cityAirPol: reading.toFixed(2) });
+        this.setState({
+          city,
+          cityAirPol: reading.toFixed(2),
+          isLoading: false
+        });
       });
   }
 
@@ -134,8 +147,7 @@ class City extends Component {
 
   render() {
     const { classes } = this.props;
-    const { city } = this.state;
-    const airPol = this.state.cityAirPol;
+    const { city, cityAirPol: airPol, isLoading } = this.state;
     let Map = KenyaMap;
     if (city.value === 'dar-es-salaam') {
       Map = TanzaniaMap;
@@ -153,6 +165,7 @@ class City extends Component {
           <Navbar />
         </Grid>
         <Grid item xs={12}>
+          {isLoading && <LinearProgress />}
           <CityHeader
             city={city}
             airPol={airPol}
@@ -208,8 +221,7 @@ class City extends Component {
 
 City.propTypes = {
   classes: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired
 };
 
 export default withRouter(withStyles(styles)(City));

@@ -28,14 +28,14 @@ function CityHeader({ airPol, city, classes, handleChange }) {
 }
 
 CityHeader.propTypes = {
-  airPol: PropTypes.number,
+  airPol: PropTypes.string,
   city: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired
 };
 
-// CityHeader.defaultProps = {
-//   airPol: 0
-// };
+CityHeader.defaultProps = {
+  airPol: '0'
+};
 
 export default withStyles(styles)(CityHeader);

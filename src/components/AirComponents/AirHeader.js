@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router'
 
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
@@ -42,4 +41,4 @@ AirHeader.propTypes = {
   handleChange: PropTypes.func.isRequired
 };
 
-export default withRouter(withStyles(styles)(AirHeader));
+export default withStyles(styles)(AirHeader);

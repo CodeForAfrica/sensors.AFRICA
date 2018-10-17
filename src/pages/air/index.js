@@ -14,7 +14,7 @@ import Issues from '../../components/AirComponents/Issues';
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
 
-const CITY_PATHNAME = '/air/city/';
+const CITY_PATHNAME = '/air/city';
 class AirHome extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ class AirHome extends React.Component {
   handleChange(city) {
     const { history } = this.props;
 
-    history.push(CITY_PATHNAME, {city} );
+    history.push(CITY_PATHNAME, { city });
   }
 
   render() {

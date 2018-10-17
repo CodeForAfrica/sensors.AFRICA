@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
 
 import Select from 'react-select';
 
@@ -162,9 +161,9 @@ class SearchBar extends React.Component {
     this.setState({ single: city });
 
     const { handleChange } = this.props;
-     if (handleChange) {
-       handleChange(city);
-     }
+    if (handleChange) {
+      handleChange(city);
+    }
   }
 
   render() {
@@ -199,4 +198,4 @@ SearchBar.defaultProps = {
   placeholder: ''
 };
 
-export default withRouter(withStyles(styles)(SearchBar));
+export default withStyles(styles)(SearchBar);
