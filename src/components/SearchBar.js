@@ -145,7 +145,6 @@ const components = {
   DropdownIndicator: null
 };
 
-const CITY_PATHNAME = '/air/city';
 const DEFAULT_OPTIONS = [
   { value: 'nairobi', label: 'Nairobi, Kenya' },
   { value: 'lagos', label: 'Lagos, Nigeria' },

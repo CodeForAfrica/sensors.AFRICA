@@ -36,7 +36,6 @@ const styles = theme => ({
   }
 });
 
-const CITY_PATHNAME = '/air/city/';
 const DEFAULT_CITY = { value: 'nairobi', label: 'Nairobi, Kenya' };
 const CITIES_LOCATION = {
   'nairobi': {

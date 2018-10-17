@@ -34,8 +34,8 @@ CityHeader.propTypes = {
   handleChange: PropTypes.func.isRequired
 };
 
-CityHeader.defaultProps = {
-  airPol: 0
-};
+// CityHeader.defaultProps = {
+//   airPol: 0
+// };
 
 export default withStyles(styles)(CityHeader);

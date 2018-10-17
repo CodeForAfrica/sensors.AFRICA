@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import ReactDOM from 'react-dom';
+
 import ReactSpeedometer from 'react-d3-speedometer';
 
 import Grid from '@material-ui/core/Grid';
@@ -107,9 +109,16 @@ const styles = theme => ({
 });
 
 class CityGauge extends Component {
-  componentDidMount() {
-    if (this.node instanceof HTMLElement) {
-      const gaugeLabels = this.node.querySelectorAll('.label > text');
+
+  render() {
+    const { classes } = this.props;
+    let airPollMeasurement = this.props.airPollMeasurement;
+    const node = ReactDOM.findDOMNode(this);
+    if (node instanceof HTMLElement) {
+      //gaugeLabels customisations
+      //transform + rotate at different measures from origin speedometer
+      //change color fill white
+      const gaugeLabels = node.querySelectorAll('.label > text');
       let deg = -90;
       for (let i = 0; i < gaugeLabels.length; i += 1) {
         const valueLabel = gaugeLabels[i];
@@ -117,33 +126,32 @@ class CityGauge extends Component {
           const newtrans = `rotate(${deg}) translate(0,-200)`;
           deg += 22.5;
           valueLabel.setAttribute('transform', newtrans);
-          valueLabel.setAttribute('fill', 'white');
+          valueLabel.setAttribute('style', "fill: white");
         }
       }
 
+      //Gauge value customisations
+      //set value outside the arc
       let transform = 0;
-      const currentVal = this.node.querySelector('.current-value');
-      const { airPollMeasurement } = this.props;
+      const currentVal = node.querySelector('.current-value');
       if (currentVal) {
-        transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
+        transform = ((parseFloat(airPollMeasurement) / 160) * 180).toFixed(2) - 90;
         currentVal.setAttribute(
           'transform',
-          `rotate(${transform}) translate(0,-315)`
+          `rotate(${transform}) translate(0,-310)`
         );
       }
 
-      const pointer = this.node.querySelector('.pointer > path');
+      //pointer customisations
+      //edit thickness, color, transform depending on airPollMeasurement
+      const pointer = node.querySelector('.pointer > path');
       pointer.setAttribute('stroke-width', '10');
       pointer.setAttribute('stroke', '#144a3d');
       if (pointer.hasAttribute('transform')) {
         pointer.setAttribute('transform', `rotate(${transform})`);
       }
     }
-  }
-
-  render() {
-    const { classes } = this.props;
-    let airPollMeasurement = this.props.airPollMeasurement;
+    //Texts on top of the gauge
     var gaugeText = "";
     var gaugeBigText = "SAFE LEVEL";
     if (isNaN(airPollMeasurement)) {
