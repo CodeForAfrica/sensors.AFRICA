@@ -64,6 +64,12 @@ class City extends Component {
   }
 
   componentDidMount() {
+    let city = DEFAULT_CITY;
+    const { location } = this.props;
+    if (location.state && location.state.city) {
+      city = location.state;
+    }
+
     fetch('http://api.airquality.codeforafrica.org/v1/now/')
       .then(results => {
         return results.json();
