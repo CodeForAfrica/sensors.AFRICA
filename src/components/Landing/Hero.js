@@ -20,8 +20,19 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     [theme.breakpoints.up('md')]: {
-      height: '90vh'
+      height: '100vh'
     }
+  },
+  intro: {
+    color: 'white',
+    fontSize: '2.2rem',
+    fontFamily: '"Anton", sans-serif',
+    textTransform: 'none',
+    paddingTop: '1rem'
+  },
+  img: {
+    height: '8rem',
+    maxWidth: '100%'
   }
 });
 
@@ -35,12 +46,12 @@ function Hero({ classes }) {
     >
       <Grid item xs={12}>
         <Link to="/">
-          <img src={logowhite} alt="partners logo" />
+          <img src={logowhite} alt="partners logo" className={classes.img} />
         </Link>
       </Grid>
 
-      <Grid item xs={12}>
-        <Typography variant="h5" align="center" style={{ color: 'white' }}>
+      <Grid item xs={6}>
+        <Typography variant="h6" align="center" className={classes.intro}>
           We are here to give you actionable information about the quality of
           your air, water and sound.
         </Typography>
