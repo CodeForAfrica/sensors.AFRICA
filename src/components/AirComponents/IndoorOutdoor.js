@@ -7,14 +7,16 @@ import { withStyles } from '@material-ui/core/styles';
 import IndoorIcon from '../../assets/images/indooricon.png';
 import OutdoorIcon from '../../assets/images/outdooricon.png';
 
-const styles = {
+const styles = theme => ({
   root: {
     paddingBottom: '4rem'
   },
+  mainGrid: {
+    paddingRight: '8rem',
+    paddingLeft: '8rem'
+  },
   indoor: {
-    height: '350px',
-    width: '400px',
-    backgroundColor: '#164B3E',
+    backgroundColor: theme.palette.primary.dark,
     borderRadius: 0,
     color: 'white',
     margin: '2rem'
@@ -26,9 +28,7 @@ const styles = {
     fontWeight: 'bolder'
   },
   outdoor: {
-    height: '350px',
-    width: '400px',
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 0,
     color: 'white',
     margin: '2rem'
@@ -36,7 +36,7 @@ const styles = {
   outdoorButton: {
     borderRadius: 0,
     fontWeight: 'bolder',
-    color: '#164B3E'
+    color: theme.palette.primary.dark
   },
   buttonLink: {
     textDecoration: 'none'
@@ -50,70 +50,72 @@ const styles = {
     color: 'white',
     textAlign: 'center',
     paddingTop: '4rem'
+  },
+  img: {
+    height: '100%',
+    width: 'auto'
   }
-};
+});
 
 function IndoorOutdoor({ classes }) {
   return (
-    <Grid
-      container
-      justify="center"
-      alignItems="center"
-      className={classes.root}
-    >
-      <Grid item>
-        <Card className={classes.indoor}>
-          <CardContent className={classes.cardContent}>
-            <img src={IndoorIcon} Alt="Housing" height="100px" />
-            <Typography
-              variant="h6"
-              style={{ color: 'white', fontSize: '32px' }}
-            >
-              INDOOR POLLUTION
-            </Typography>
-            <Typography variant="caption" className={classes.caption}>
-              Indoor pollution causes an estimated 4.3 million premature deaths
-              each year.
-            </Typography>
-            <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outlined" className={classes.indoorButton}>
-                READ MORE
-              </Button>
-            </a>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item>
-        <Card className={classes.outdoor}>
-          <CardContent className={classes.cardContent}>
-            <img src={OutdoorIcon} Alt="Housing" height="100px" />
-            <Typography
-              variant="h6"
-              style={{ color: 'white', fontSize: '32px' }}
-            >
-              OUTDOOR POLLUTION
-            </Typography>
-            <Typography variant="caption" className={classes.caption}>
-              Outdoor pollution causes an estimated 4.2 million premature deaths
-              each year.
-            </Typography>
-            <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="contained" className={classes.outdoorButton}>
-                READ MORE
-              </Button>
-            </a>
-          </CardContent>
-        </Card>
+    <Grid item xs={12} className={classes.root}>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.mainGrid}
+      >
+        <Grid item xs={6}>
+          <Card className={classes.indoor}>
+            <CardContent className={classes.cardContent}>
+              <img src={IndoorIcon} Alt="Housing" className={classes.img} />
+              <Typography variant="h5" style={{ color: 'white' }}>
+                INDOOR POLLUTION
+              </Typography>
+              <Typography variant="caption" className={classes.caption}>
+                Indoor pollution causes an estimated 4.3 million premature
+                deaths each year.
+              </Typography>
+              <a
+                href="https://medium.com/code-for-africa/tagged/innovateafrica"
+                className={classes.buttonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outlined" className={classes.indoorButton}>
+                  READ MORE
+                </Button>
+              </a>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={6}>
+          <Card className={classes.outdoor}>
+            <CardContent className={classes.cardContent}>
+              <img src={OutdoorIcon} Alt="Housing" className={classes.img} />
+              <Typography variant="h5" style={{ color: 'white' }}>
+                OUTDOOR POLLUTION
+              </Typography>
+              <Typography variant="caption" className={classes.caption}>
+                Outdoor pollution causes an estimated 4.2 million premature
+                deaths each year.
+              </Typography>
+              <a
+                href="https://medium.com/code-for-africa/tagged/innovateafrica"
+                className={classes.buttonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="contained" className={classes.outdoorButton}>
+                  READ MORE
+                </Button>
+              </a>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
     </Grid>
   );

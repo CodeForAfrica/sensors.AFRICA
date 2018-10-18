@@ -16,8 +16,8 @@ const styles = {
     paddingTop: '1rem',
     paddingBottom: '2rem',
     textAlign: 'center',
-    fontWeight: 'bolder',
-    fontSize: '14px'
+    fontWeight: 'bold',
+    fontSize: 14
   },
   title: {
     textAlign: 'center',
@@ -45,17 +45,17 @@ function Issues({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Typography variant="subtitle1" className={classes.subheading}>
+        <Typography variant="h6" className={classes.subheading}>
           THE ISSUES
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h6" className={classes.title}>
+        <Typography variant="h5" className={classes.title}>
           Air polution causes 1 in 9 deaths.
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h6" className={classes.title}>
+        <Typography variant="h5" className={classes.title}>
           It is the biggest environmental health crisis we face
         </Typography>
       </Grid>
