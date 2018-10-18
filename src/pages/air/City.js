@@ -94,47 +94,48 @@ class City extends React.Component {
             handleChange={this.handleChange}
           />
         </Grid>
-        <Grid item xs={12}>
-          <Grid
-            container
-            className={classes.contained}
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item xs={12}>
-              <HostSensor />
-            </Grid>
-            <Grid item xs={12}>
-              <hr className={classes.separator} />
-            </Grid>
-            <Grid item xs={12}>
-              <PollutionStats />
-            </Grid>
-            <Grid item xs={12}>
-              <Neighbourhood />
-            </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          className={classes.contained}
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item xs={12}>
+            <HostSensor />
+          </Grid>
+          <Grid item xs={12}>
+            <hr className={classes.separator} />
+          </Grid>
+          <Grid item xs={12}>
+            <PollutionStats />
+          </Grid>
+          <Grid item xs={12}>
+            <Neighbourhood />
           </Grid>
         </Grid>
+
         <Grid item xs={12}>
           <Map />
         </Grid>
-        <Grid item xs={12}>
-          <Grid
-            container
-            className={classes.contained}
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item xs={12}>
-              <QualityStats />
-            </Grid>
-            <Grid item xs={12}>
-              <CallToAction />
-            </Grid>
+
+        <Grid
+          container
+          className={classes.contained}
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item xs={12}>
+            <QualityStats />
           </Grid>
           <Grid item xs={12}>
-            <Footer />
+            <CallToAction />
           </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Footer />
         </Grid>
       </Grid>
     );
