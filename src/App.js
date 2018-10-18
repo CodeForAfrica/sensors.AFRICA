@@ -12,8 +12,6 @@ import Air, {
   City as AirCity,
   JoinNetwork as AirJoinNetwork
 } from './pages/air';
-import SoundHome from './pages/sound/SoundHome';
-import WaterHome from './pages/water/WaterHome';
 
 const FONT_FAMILY = '"Montserrat", "sans-serif"';
 const HEADINGS_FONT_FAMILY = '"Anton", "sans-serif"';
@@ -97,8 +95,8 @@ function App() {
             <Route path="/air/how-sensors-work" component={AirHowSensorsWork} />
             <Route path="/air/city" component={AirCity} />
             <Route path="/air/join-network" component={AirJoinNetwork} />
-            <Route exact path="/water" component={WaterHome} />
-            <Route exact path="/sound" component={SoundHome} />
+            {/* <Route exact path="/water" component={WaterHome} />
+            <Route exact path="/sound" component={SoundHome} /> */}
           </Switch>
         </ScrollToTop>
       </BrowserRouter>

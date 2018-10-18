@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 import SocialMedia from '../SocialMedia';
 
@@ -64,61 +65,135 @@ const styles = theme => ({
   soundlink: {
     textDecoration: 'none',
     color: '#B64598'
+  },
+  popup: {
+    position: 'fixed',
+    left: '0',
+    top: '0',
+    width: '100%',
+    height: '100%',
+    zIndex: '2',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    opacity: '0',
+    visibility: 'hidden',
+    transform: 'scale(1.1)',
+    transition: 'visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s',
+  },
+  popupcontent: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    color: 'black',
+    backgroundColor: 'white',
+    padding: '1rem 1.5rem',
+    width: '24rem',
+  },
+  closeButton: {
+    float: 'right',
+    width: '1.5rem',
+    lineHeight: '1.5rem',
+    textAlign: 'center',
+    cursor: 'pointer',
+    borderRadius: '0.25rem',
+    backgroundColor: 'lightgray',
+
+    '&:hover': {
+      backgroundColor: 'darkgray'
+    }
+ },
+  showpopup: {
+    opacity: '1',
+    visibility: 'visible',
+    transform: 'scale(1.0)',
+    transition: 'visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s'
   }
 });
 
-function Navbar({ classes }) {
-  return (
-    <Grid container>
-      <Grid item xs={12}>
-        <AppBar position="static" className={classes.root}>
-          <Toolbar className={classes.toolbar} disableGutters>
-            <Grid
-              container
-              direction="row"
-              justify="flex-start"
-              alignItems="center"
-            >
-              <MenuItem className={classes.airText}>
-                <Link to="/air" className={classes.airlink}>
-                  AIR
-                </Link>
-              </MenuItem>
+class Navbar extends React.Component {
 
-              <MenuItem className={classes.waterText}>
-                <Link to="/water" className={classes.waterlink}>
-                  WATER
-                </Link>
-              </MenuItem>
-              <MenuItem className={classes.soundText}>
-                <Link to="/sound" className={classes.soundlink}>
-                  SOUND
-                </Link>
-              </MenuItem>
-            </Grid>
+  constructor(props) {
+    super(props);
+    this.state = {show: false};
 
-            <Grid
-              container
-              direction="row"
-              justify="flex-end"
-              alignItems="center"
-            >
-              {/* <Grid item>
-            <FontAwesomeIcon
-                className={classes.searchFa}
-                icon="search"
-                size="lg"
-              />
-            </Grid> */}
-              <Grid item>
-                <SocialMedia color="#2FB56B" />
+    this.showAlert = this.showAlert.bind(this);
+    this.closeAlert = this.closeAlert.bind(this);
+  }
+
+  showAlert() {
+    this.setState(state => ({
+      show: true
+    }));
+  }
+
+  closeAlert() {
+    this.setState(state => ({
+      show: false
+    }));
+  }
+
+  render () {
+    const { classes} =  this.props;
+
+    return(
+      <Grid container>
+        <Grid item xs={12}>
+          <AppBar position="static" className={classes.root}>
+            <Toolbar className={classes.toolbar} disableGutters>
+              <Grid
+                container
+                direction="row"
+                justify="flex-start"
+                alignItems="center"
+              >
+                <MenuItem className={classes.airText}>
+                  <Link to="/air" className={classes.airlink}>
+                    AIR
+                  </Link>
+                </MenuItem>
+
+                <MenuItem className={classes.waterText}>
+                  <a onClick={this.showAlert} className={classes.waterlink}>
+                    WATER
+                  </a>
+                </MenuItem>
+                <MenuItem className={classes.soundText}>
+                  <a onClick={this.showAlert} className={classes.soundlink}>
+                    SOUND
+                  </a>
+                </MenuItem>
               </Grid>
+
+              <Grid
+                container
+                direction="row"
+                justify="flex-end"
+                alignItems="center"
+              >
+                {/* <Grid item>
+              <FontAwesomeIcon
+                  className={classes.searchFa}
+                  icon="search"
+                  size="lg"
+                />
+              </Grid> */}
+                <Grid item>
+                  <SocialMedia color="#2FB56B" />
+                </Grid>
+              </Grid>
+            </Toolbar>
+            <Grid id='popupbox' className={classNames(classes.popup, {
+            [classes.showpopup]: this.state.show,  })}>
+                <div className={classes.popupcontent}>
+                    <span onClick={this.closeAlert} className={classes.closeButton}>&times;</span>
+                    <h1>Coming Soon</h1>
+                </div>
             </Grid>
-          </Toolbar>
-        </AppBar>
+          </AppBar>
+        </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 Navbar.propTypes = {
