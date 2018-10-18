@@ -26,7 +26,8 @@ const styles = theme => ({
   intro: {
     color: 'white',
     textTransform: 'none',
-    paddingTop: '1rem'
+    paddingTop: '1rem',
+    lineHeight: '3.5rem'
   },
   img: {
     height: '8rem',

@@ -13,7 +13,8 @@ import sound from '../../assets/images/button/soundbtn.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    width: '100%'
+    width: '100%',
+    paddingTop: '2rem'
   },
   img: {
     height: 220,
@@ -52,7 +53,9 @@ const styles = theme => ({
   testTitle: {
     color: 'white',
     paddingTop: '2rem',
-    fontSize: '1.2rem'
+    fontSize: '1rem',
+    fontFamily: '"Montserrat",sans-serif',
+    fontWeight: 900
   }
 });
 
@@ -71,7 +74,7 @@ function TestQuality({ classes }) {
           align="center"
           className={classes.testTitle}
         >
-          Test the quality of the city&apos;s
+          Test the quality of the city&apos;s :
         </Typography>
       </Grid>
       <Grid item xs={12}>
