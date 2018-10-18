@@ -19,7 +19,8 @@ const HEADINGS_FONT_FAMILY = '"Anton", "sans-serif"';
 const THEME = createMuiTheme({
   // Green palette
   palette: {
-    primary: { main: '#1a995b', light: '#2FB56B', dark: '#164B3E' }
+    primary: { main: '#1a995b', light: '#2FB56B', dark: '#164B3E' },
+    secondary: { main: '#424143', dark: '#2A2A2B' }
   },
   typography: {
     fontFamily: FONT_FAMILY,
@@ -59,6 +60,9 @@ const THEME = createMuiTheme({
       fontFamily: HEADINGS_FONT_FAMILY,
       fontWeight: 500,
       textTransform: 'uppercase'
+    },
+    buttonNext: {
+      fontWeight: 700
     },
     useNextVariants: true
   },
