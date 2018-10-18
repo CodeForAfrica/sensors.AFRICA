@@ -24,7 +24,7 @@ const styles = theme => ({
     marginRight: 'auto'
   },
   airCard: {
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 0,
     height: 200,
     width: '100%',
@@ -54,7 +54,7 @@ const styles = theme => ({
     color: 'white',
     paddingTop: '2rem',
     fontSize: '1rem',
-    fontFamily: '"Montserrat",sans-serif',
+    fontFamily: theme.typography.h6.fontFamily,
     fontWeight: 900
   }
 });
