@@ -18,7 +18,8 @@ import PollutionStats from '../../components/CityComponents/PollutionStats';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: 'white'
   },
   contained: {
     width: 'auto',
