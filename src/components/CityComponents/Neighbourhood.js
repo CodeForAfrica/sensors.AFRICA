@@ -13,7 +13,7 @@ const styles = theme => ({
   mainGrid: {
     paddingRight: '7rem',
     paddingLeft: '7rem',
-    paddingTop: theme.spacing.unit * 6,
+    //paddingTop: theme.spacing.unit * 6,
     paddingBottom: theme.spacing.unit * 6
   },
   offlineCard: {
@@ -37,8 +37,12 @@ const styles = theme => ({
   },
   headline: {
     textAlign: 'center',
-    paddingTop: theme.spacing.unit * 3,
-    paddingBottom: theme.spacing.unit * 3
+    fontWeight: 'bolder',
+    color: theme.typography.h6.color,
+    fontSize: theme.typography.fontSize,
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 3,
+    fontFamily: theme.typography.h6.fontFamily
   },
   neighbourhood: {
     fontWeight: 'bold',
@@ -70,7 +74,7 @@ function Neighbourhood({ classes }) {
       className={classes.root}
     >
       <Grid item xs={12}>
-        <Typography variant="h5" className={classes.headline}>
+        <Typography variant="h6" className={classes.headline}>
           YOUR NEIGHBOURHOOD
         </Typography>
       </Grid>
