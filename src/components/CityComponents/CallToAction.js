@@ -22,19 +22,19 @@ const styles = theme => ({
   sensorsWorkCard: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
-    height: '250px',
-    width: '400px',
+    height: '100%',
+    width: '26rem',
     borderRadius: '0',
-    backgroundColor: '#164B3E',
+    backgroundColor: theme.palette.primary.dark,
     margin: '3rem'
   },
   joinNowCard: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
-    height: '250px',
-    width: '400px',
+    height: '100%',
+    width: '26rem',
     borderRadius: '0',
-    backgroundColor: '#2FB56B'
+    backgroundColor: theme.palette.primary.light
   },
   cardContent: {
     color: '#fff',
@@ -53,7 +53,7 @@ const styles = theme => ({
   },
   learnMorebutton: {
     padding: '0.8rem',
-    backgroundColor: '#164B3E',
+    backgroundColor: theme.palette.primary.dark,
     border: '1px solid',
     borderColor: '#f3f3f3',
     borderRadius: 0,
@@ -66,7 +66,7 @@ const styles = theme => ({
     border: '1px solid',
     borderColor: '#f3f3f3',
     borderRadius: 0,
-    color: '#164B3E',
+    color: theme.palette.primary.dark,
     fontWeight: 'bold'
   }
 });
