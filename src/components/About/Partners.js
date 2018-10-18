@@ -21,11 +21,9 @@ const styles = theme => ({
     backgroundColor: 'white'
   },
   typography: {
-    paddingTop: '3rem',
+    paddingTop: theme.spacing.unit * 6,
     textAlign: 'center',
-    textTransform: 'Uppercase',
-    fontWeight: 'bolder',
-    color: '#424143'
+    fontWeight: 'bold'
   },
   mainGrid: {
     paddingLeft: '8rem',
@@ -39,7 +37,7 @@ const styles = theme => ({
     height: 'auto'
   },
   partnersContainer: {
-    margin: '2.5rem',
+    margin: theme.spacing.unit * 6,
     [theme.breakpoints.up('sm')]: {
       paddingTop: 0
     }
@@ -55,7 +53,7 @@ function Partners({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Typography variant="subtitle1" className={classes.typography}>
+        <Typography variant="h6" className={classes.typography}>
           Media partners
         </Typography>
       </Grid>
@@ -110,7 +108,7 @@ function Partners({ classes }) {
         style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
       >
         <Grid item xs={12}>
-          <Typography variant="subtitle1" className={classes.typography}>
+          <Typography variant="h6" className={classes.typography}>
             In partnership with
           </Typography>
         </Grid>
