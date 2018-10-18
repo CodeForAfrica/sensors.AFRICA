@@ -10,7 +10,8 @@ const styles = {
   root: {
     flexGrow: 1,
     paddingBottom: '2rem',
-    paddingTop: '2rem'
+    paddingTop: '2rem',
+    backgroundColor: 'white'
   },
   subheading: {
     paddingTop: '1rem',

@@ -9,7 +9,8 @@ import OutdoorIcon from '../../assets/images/outdooricon.png';
 
 const styles = theme => ({
   root: {
-    paddingBottom: '4rem'
+    paddingBottom: '4rem',
+    backgroundColor: 'white'
   },
   mainGrid: {
     paddingRight: '8rem',
