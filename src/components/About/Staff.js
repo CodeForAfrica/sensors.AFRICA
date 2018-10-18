@@ -29,15 +29,12 @@ const styles = theme => ({
   },
   title: {
     fontWeight: 'bolder',
-    color: '#424143',
-    fontFamily: '"Montserrat", sans-serif'
+    fontFamily: theme.typography.h6.fontFamily,
+    color: theme.typography.h6.color
   },
   h6: {
-    fontFamily: '"Montserrat", sans-serif',
-    fontWeight: 'bolder',
-    fontSize: '20px',
     textTransform: 'Uppercase',
-    color: '#424143'
+    fontWeight: 'bolder'
   }
 });
 
