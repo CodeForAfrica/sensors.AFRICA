@@ -27,7 +27,7 @@ const styles = theme => ({
     paddingTop: '2rem'
   },
   subheading: {
-    color: '#424143',
+    color: theme.palette.secondary.main,
     fontWeight: 'bold'
   },
   caption: {
@@ -50,7 +50,7 @@ const styles = theme => ({
     textAlign: 'center',
     paddingTop: '2.5rem',
     backgroundColor: 'white',
-    color: '#424143',
+    color: theme.palette.secondary.main,
     fontWeight: 'bold'
   }
 });
