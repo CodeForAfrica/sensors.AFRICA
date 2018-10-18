@@ -50,12 +50,9 @@ const styles = theme => ({
     }
   },
   testTitle: {
-    fontWeight: 'bolder',
     color: 'white',
-    fontSize: '1rem',
     paddingTop: '2rem',
-    textTransform: 'uppercase',
-    fontFamily: '"Monsterrat", sans-serif'
+    fontSize: '1.2rem'
   }
 });
 
@@ -69,7 +66,7 @@ function TestQuality({ classes }) {
     >
       <Grid item xs={12}>
         <Typography
-          variant="h6"
+          variant="h5"
           gutterBottom
           align="center"
           className={classes.testTitle}

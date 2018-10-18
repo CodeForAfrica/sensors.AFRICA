@@ -25,8 +25,6 @@ const styles = theme => ({
   },
   intro: {
     color: 'white',
-    fontSize: '2.2rem',
-    fontFamily: '"Anton", sans-serif',
     textTransform: 'none',
     paddingTop: '1rem'
   },
@@ -51,9 +49,9 @@ function Hero({ classes }) {
       </Grid>
 
       <Grid item xs={6}>
-        <Typography variant="h6" align="center" className={classes.intro}>
+        <Typography variant="h4" align="center" className={classes.intro}>
           We are here to give you actionable information about the quality of
-          your air, water and sound.
+          your city's air, water and sound.
         </Typography>
       </Grid>
 
