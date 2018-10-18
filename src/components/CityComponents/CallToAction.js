@@ -22,24 +22,30 @@ const styles = theme => ({
   sensorsWorkCard: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
-    height: '200px',
+    height: '250px',
+    width: '400px',
     borderRadius: '0',
-    backgroundColor: '#164B3E'
+    backgroundColor: '#164B3E',
+    margin: '3rem'
   },
   joinNowCard: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
-    height: '200px',
+    height: '250px',
+    width: '400px',
     borderRadius: '0',
     backgroundColor: '#2FB56B'
   },
   cardContent: {
     color: '#fff',
-    paddingTop: '3rem'
+    paddingTop: '1rem',
+    paddingBottom: '1rem'
   },
   typography: {
     textAlign: 'center',
-    color: '#fff'
+    color: '#fff',
+    paddingRight: '1em',
+    paddingLeft: '1em'
   },
   buttonContainer: {
     paddingTop: '2rem',
@@ -51,7 +57,8 @@ const styles = theme => ({
     border: '1px solid',
     borderColor: '#f3f3f3',
     borderRadius: 0,
-    color: '#fff'
+    color: '#fff',
+    fontWeight: 'bold'
   },
   joinNowbutton: {
     padding: '0.8rem',
@@ -59,57 +66,63 @@ const styles = theme => ({
     border: '1px solid',
     borderColor: '#f3f3f3',
     borderRadius: 0,
-    color: '#164B3E'
+    color: '#164B3E',
+    fontWeight: 'bold'
   }
 });
 
 function CallToAction({ classes }) {
   return (
-    <Grid container className={classes.root} justify="center" spacing={40}>
-      <Grid item sm>
-        <Card className={classes.sensorsWorkCard}>
-          <CardContent className={classes.cardContent}>
-            <Typography variant="h4" className={classes.typography}>
-              HOW DO SENSORS WORK?
-            </Typography>
-            <Grid className={classes.buttonContainer}>
+    <Grid
+      container
+      item
+      xs={12}
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+      spacing={40}
+    >
+      <Card item xs={6} className={classes.sensorsWorkCard}>
+        <CardContent className={classes.cardContent}>
+          <Typography variant="h4" className={classes.typography}>
+            HOW DO SENSORS WORK?
+          </Typography>
+          <Grid className={classes.buttonContainer}>
+            <Button
+              variant="contained"
+              size="large"
+              className={classes.learnMorebutton}
+              component={howToLink}
+            >
+              LEARN MORE
+            </Button>
+          </Grid>
+        </CardContent>
+      </Card>
+
+      <Card item xs={6} className={classes.joinNowCard}>
+        <CardContent className={classes.cardContent}>
+          <Typography variant="h4" className={classes.typography}>
+            GET YOUR CITY ON BOARD
+          </Typography>
+          <Grid className={classes.buttonContainer}>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+              style={{ textDecoration: 'none' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="contained"
                 size="large"
-                className={classes.learnMorebutton}
-                component={howToLink}
+                className={classes.joinNowbutton}
               >
-                LEARN MORE
+                JOIN NOW
               </Button>
-            </Grid>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item sm>
-        <Card className={classes.joinNowCard}>
-          <CardContent className={classes.cardContent}>
-            <Typography variant="h4" className={classes.typography}>
-              GET YOUR CITY ON BOARD
-            </Typography>
-            <Grid className={classes.buttonContainer}>
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-                style={{ textDecoration: 'none' }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="contained"
-                  size="large"
-                  className={classes.joinNowbutton}
-                >
-                  JOIN NOW
-                </Button>
-              </a>
-            </Grid>
-          </CardContent>
-        </Card>
-      </Grid>
+            </a>
+          </Grid>
+        </CardContent>
+      </Card>
     </Grid>
   );
 }
