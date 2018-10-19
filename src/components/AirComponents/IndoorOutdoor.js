@@ -16,10 +16,6 @@ const styles = theme => ({
     paddingRight: '8rem',
     paddingLeft: '8rem'
   },
-  mainGrid: {
-    paddingRight: '8rem',
-    paddingLeft: '8rem'
-  },
   indoor: {
     backgroundColor: theme.palette.primary.dark,
     borderRadius: 0,
