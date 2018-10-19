@@ -61,7 +61,8 @@ const THEME = createMuiTheme({
       color: '#424143',
       fontFamily: FONT_FAMILY,
       fontWeight: 500,
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      fontSize: 20
     },
     buttonNext: {
       fontWeight: 700

@@ -17,12 +17,17 @@ import innovate from '../../assets/images/logos/innovateafrica_gray.jpg';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: 'white'
   },
   typography: {
-    paddingTop: '5rem',
+    paddingTop: theme.spacing.unit * 6,
     textAlign: 'center',
-    textTransform: 'Uppercase'
+    fontWeight: 'bold'
+  },
+  mainGrid: {
+    paddingLeft: '8rem',
+    paddingRight: '8rem'
   },
   imgContainer: {
     textAlign: 'center'
@@ -32,7 +37,7 @@ const styles = theme => ({
     height: 'auto'
   },
   partnersContainer: {
-    paddingTop: '1rem',
+    margin: theme.spacing.unit * 6,
     [theme.breakpoints.up('sm')]: {
       paddingTop: 0
     }
@@ -48,11 +53,18 @@ function Partners({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Typography variant="subtitle1" className={classes.typography}>
+        <Typography variant="h6" className={classes.typography}>
           Media partners
         </Typography>
       </Grid>
-      <Grid item xs={12} container justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        container
+        justify="center"
+        alignItems="center"
+        className={classes.mainGrid}
+      >
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
           <img
             src={business}
@@ -96,23 +108,40 @@ function Partners({ classes }) {
         style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
       >
         <Grid item xs={12}>
-          <Typography variant="subtitle1" className={classes.typography}>
+          <Typography variant="h6" className={classes.typography}>
             In partnership with
           </Typography>
         </Grid>
         <Grid
           item
-          xs={12}
+          xs={6}
           container
           className={classes.partnersContainer}
           justify="center"
           alignItems="center"
+          spacing={40}
         >
-          <Grid item className={classes.imgContainer}>
-            <img src={code} alt="Code for Africa" className={classes.img} />
+          <Grid item xs={3}>
+            <a
+              href="https://codeforafrica.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={code} alt="Code for Africa" className={classes.img} />
+            </a>
           </Grid>
-          <Grid item className={classes.imgContainer}>
-            <img src={innovate} alt="innovateAFRICA" className={classes.img} />
+          <Grid item xs={3} style={{ paddingTop: '2.5rem' }}>
+            <a
+              href="https://innovateafrica.fund/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={innovate}
+                alt="innovateAFRICA"
+                className={classes.img}
+              />
+            </a>
           </Grid>
         </Grid>
       </Grid>
