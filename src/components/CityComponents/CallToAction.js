@@ -16,30 +16,33 @@ const howToLink = props => <Link to="/air/how-sensors-work" {...props} />;
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    marginTop: theme.spacing.unit * 8,
-    marginBottom: theme.spacing.unit * 4
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   },
   sensorsWorkCard: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
-    height: '200px',
-    borderRadius: '0',
-    backgroundColor: '#164B3E'
+    height: '100%',
+    width: '26rem',
+    backgroundColor: theme.palette.primary.dark
   },
   joinNowCard: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
-    height: '200px',
-    borderRadius: '0',
-    backgroundColor: '#2FB56B'
+    height: '100%',
+    width: '26rem',
+    backgroundColor: theme.palette.primary.light
   },
   cardContent: {
     color: '#fff',
-    paddingTop: '3rem'
+    paddingTop: '1rem',
+    paddingBottom: '1rem'
   },
   typography: {
     textAlign: 'center',
-    color: '#fff'
+    color: '#fff',
+    paddingRight: '1em',
+    paddingLeft: '1em'
   },
   buttonContainer: {
     paddingTop: '2rem',
@@ -47,11 +50,12 @@ const styles = theme => ({
   },
   learnMorebutton: {
     padding: '0.8rem',
-    backgroundColor: '#164B3E',
+    backgroundColor: theme.palette.primary.dark,
     border: '1px solid',
     borderColor: '#f3f3f3',
     borderRadius: 0,
-    color: '#fff'
+    color: '#fff',
+    fontWeight: 'bold'
   },
   joinNowbutton: {
     padding: '0.8rem',
@@ -59,18 +63,28 @@ const styles = theme => ({
     border: '1px solid',
     borderColor: '#f3f3f3',
     borderRadius: 0,
-    color: '#164B3E'
+    color: theme.palette.primary.dark,
+    fontWeight: 'bold'
   }
 });
 
 function CallToAction({ classes }) {
   return (
-    <Grid container className={classes.root} justify="center" spacing={40}>
-      <Grid item sm>
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+      spacing={40}
+    >
+      <Grid item>
         <Card className={classes.sensorsWorkCard}>
           <CardContent className={classes.cardContent}>
             <Typography variant="h4" className={classes.typography}>
-              HOW DO SENSORS WORK?
+              HOW DO
+            </Typography>
+            <Typography variant="h4" className={classes.typography}>
+              SENSORS WORK?
             </Typography>
             <Grid className={classes.buttonContainer}>
               <Button
@@ -85,11 +99,14 @@ function CallToAction({ classes }) {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item sm>
+      <Grid item>
         <Card className={classes.joinNowCard}>
           <CardContent className={classes.cardContent}>
             <Typography variant="h4" className={classes.typography}>
-              GET YOUR CITY ON BOARD
+              GET YOUR
+            </Typography>
+            <Typography variant="h4" className={classes.typography}>
+              CITY ON BOARD
             </Typography>
             <Grid className={classes.buttonContainer}>
               <a
