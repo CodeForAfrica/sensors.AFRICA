@@ -17,37 +17,40 @@ const styles = theme => ({
     paddingTop: '2rem'
   },
   img: {
-    height: 220,
+    height: '5.5rem',
     width: 'auto',
-    padding: '3rem',
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    margin: '3rem auto',
+    [theme.breakpoints.up('md')]: {
+      height: '12.5rem',
+      margin: '0 auto',
+      padding: '3rem'
+    }
   },
   airCard: {
     backgroundColor: theme.palette.primary.light,
-    borderRadius: 0,
-    height: 200,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 250
+    height: '12.5rem',
+    width: '10.5rem',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    textAlign: 'center',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
     }
   },
   waterCard: {
     backgroundColor: '#4972B8',
-    borderRadius: 0,
-    height: 200,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 250
+    height: '12.5rem',
+    width: '10.5rem',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
     }
   },
   soundCard: {
     backgroundColor: '#B64598',
-    borderRadius: 0,
-    height: 200,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 250
+    height: '12.5rem',
+    width: '10.5rem',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
     }
   },
   testTitle: {
