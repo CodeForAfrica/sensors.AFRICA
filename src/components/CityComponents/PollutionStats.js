@@ -34,15 +34,16 @@ const styles = theme => ({
   },
   stat: {
     textAlign: 'center'
-    //padding: '4rem',
-    //[theme.breakpoints.up('md')]: {
-    //height: 250,
-    //padding: '0 4rem'
-    //}
+  },
+  centerStat: {
+    textAlign: 'center',
+    [theme.breakpoints.up('md')]: {
+      paddingtop: '0.5rem'
+    }
   },
   statHighlight: {
-    color: '#2FB56B',
-    fontWeight: '500'
+    color: theme.palette.primary.light,
+    fontWeight: theme.typography.h6.fontWeight
   },
   subtitle1: {
     fontWeight: theme.typography.h6.fontWeight
@@ -82,7 +83,7 @@ function PollutionStats({ classes }) {
               </Typography>
             </Grid>
 
-            <Grid style={{ marginTop: '2rem' }}>
+            <Grid style={{ marginTop: '2rem', paddingBottom: '2rem' }}>
               <Typography variant="subtitle1" className={classes.subtitle1}>
                 Child Deaths caused by air pollution in kenya yearly
               </Typography>
@@ -102,7 +103,7 @@ function PollutionStats({ classes }) {
           alignItems="center"
           className={classes.statGrid}
         >
-          <Grid item xs={8} className={classes.stat}>
+          <Grid item xs={8} className={classes.centerStat}>
             <Grid
               style={{
                 paddingTop: 0,
