@@ -14,8 +14,8 @@ const styles = theme => ({
     flexGrow: 1,
     marginTop: theme.spacing.unit * 8,
     marginBottom: theme.spacing.unit * 4,
-    paddingRight: '4rem',
-    paddingLeft: '4rem'
+    paddingRight: '8rem',
+    paddingLeft: '8rem'
   },
   separator: {
     color: 'rgba(0, 0, 0, 0.2)',
@@ -74,7 +74,7 @@ function PollutionStats({ classes }) {
           alignItems="center"
         >
           <Grid item xs={8} className={classes.stat}>
-            <Grid>
+            <Grid style={{ paddingTop: '2rem' }}>
               <Typography variant="subtitle1" className={classes.subtitle1}>
                 Death by air pollution in Kenya yearly
               </Typography>
@@ -107,9 +107,9 @@ function PollutionStats({ classes }) {
             <Grid
               style={{
                 paddingTop: 0,
-                paddingLeft: '1.5rem',
-                paddingRight: '1.5rem',
-                paddingBottom: '1.5rem'
+                paddingLeft: '0.5rem',
+                paddingRight: '0.5rem',
+                paddingBottom: '2rem'
               }}
             >
               <Typography variant="subtitle1" className={classes.subtitle1}>
