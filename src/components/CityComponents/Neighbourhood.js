@@ -24,7 +24,7 @@ const styles = theme => ({
   onlineCard: {
     borderRadius: 0,
     boxShadow: 'none',
-    backgroundColor: '#2FB56B'
+    backgroundColor: theme.palette.primary.light
   },
   cardContent: {
     textAlign: 'center',
@@ -51,11 +51,11 @@ const styles = theme => ({
   offlineContent: {
     color: 'grey',
     opacity: 0.4,
-    fontSize: 14
+    fontSize: theme.typography.fontSmallDefault.fontSize
   },
   onlineContent: {
     color: '#fff',
-    fontSize: 14
+    fontSize: theme.typography.fontSmallDefault.fontSize
   },
   offlineCaption: {
     paddingTop: theme.spacing.unit * 3,
