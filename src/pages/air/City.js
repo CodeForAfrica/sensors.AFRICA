@@ -110,9 +110,6 @@ class City extends React.Component {
             <Grid item xs={12}>
               <PollutionStats />
             </Grid>
-            <Grid item xs={12}>
-              <Neighbourhood />
-            </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12}>
