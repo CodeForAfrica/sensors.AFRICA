@@ -16,24 +16,21 @@ const howToLink = props => <Link to="/air/how-sensors-work" {...props} />;
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    marginTop: theme.spacing.unit * 8,
-    marginBottom: theme.spacing.unit * 4
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   },
   sensorsWorkCard: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
     height: '100%',
     width: '26rem',
-    borderRadius: '0',
-    backgroundColor: theme.palette.primary.dark,
-    margin: '3rem'
+    backgroundColor: theme.palette.primary.dark
   },
   joinNowCard: {
     paddingTop: '2rem',
     paddingBottom: '2rem',
     height: '100%',
     width: '26rem',
-    borderRadius: '0',
     backgroundColor: theme.palette.primary.light
   },
   cardContent: {
@@ -75,54 +72,61 @@ function CallToAction({ classes }) {
   return (
     <Grid
       container
-      item
-      xs={12}
       className={classes.root}
       justify="center"
       alignItems="center"
       spacing={40}
     >
-      <Card item xs={6} className={classes.sensorsWorkCard}>
-        <CardContent className={classes.cardContent}>
-          <Typography variant="h4" className={classes.typography}>
-            HOW DO SENSORS WORK?
-          </Typography>
-          <Grid className={classes.buttonContainer}>
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.learnMorebutton}
-              component={howToLink}
-            >
-              LEARN MORE
-            </Button>
-          </Grid>
-        </CardContent>
-      </Card>
-
-      <Card item xs={6} className={classes.joinNowCard}>
-        <CardContent className={classes.cardContent}>
-          <Typography variant="h4" className={classes.typography}>
-            GET YOUR CITY ON BOARD
-          </Typography>
-          <Grid className={classes.buttonContainer}>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-              style={{ textDecoration: 'none' }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+      <Grid item>
+        <Card className={classes.sensorsWorkCard}>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="h4" className={classes.typography}>
+              HOW DO
+            </Typography>
+            <Typography variant="h4" className={classes.typography}>
+              SENSORS WORK?
+            </Typography>
+            <Grid className={classes.buttonContainer}>
               <Button
                 variant="contained"
                 size="large"
-                className={classes.joinNowbutton}
+                className={classes.learnMorebutton}
+                component={howToLink}
               >
-                JOIN NOW
+                LEARN MORE
               </Button>
-            </a>
-          </Grid>
-        </CardContent>
-      </Card>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item>
+        <Card className={classes.joinNowCard}>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="h4" className={classes.typography}>
+              GET YOUR
+            </Typography>
+            <Typography variant="h4" className={classes.typography}>
+              CITY ON BOARD
+            </Typography>
+            <Grid className={classes.buttonContainer}>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+                style={{ textDecoration: 'none' }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="contained"
+                  size="large"
+                  className={classes.joinNowbutton}
+                >
+                  JOIN NOW
+                </Button>
+              </a>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
     </Grid>
   );
 }
