@@ -13,7 +13,6 @@ const styles = theme => ({
   mainGrid: {
     paddingRight: '7rem',
     paddingLeft: '7rem',
-    //paddingTop: theme.spacing.unit * 6,
     paddingBottom: theme.spacing.unit * 6
   },
   offlineCard: {
