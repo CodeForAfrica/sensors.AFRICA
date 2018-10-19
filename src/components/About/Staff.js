@@ -7,8 +7,13 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    paddingBottom: theme.spacing.unit * 3,
-    paddingTop: theme.spacing.unit * 3
+    paddingTop: '2.5rem',
+    paddingBottom: '2.5rem',
+    backgroundColor: 'white'
+  },
+  staffRoot: {
+    flexGrow: 1,
+    padding: '1.5rem 8rem'
   },
   card: {
     height: 200,
@@ -18,16 +23,29 @@ const styles = theme => ({
   },
   cardMedia: {
     height: '100%'
+  },
+  title: {
+    fontWeight: 800,
+    fontSize: '1rem'
+  },
+  h6: {
+    textTransform: 'Uppercase',
+    fontWeight: 'bolder'
   }
 });
 
 function Staff({ classes }) {
   return (
-    <React.Fragment>
-      <Typography variant="heading" align="center">
-        COLLABORATION AND STAFF
+    <Grid item xs={12} className={classes.root}>
+      <Typography variant="h6" align="center" className={classes.title}>
+        CONTRIBUTORS AND STAFF
       </Typography>
-      <Grid container justify="center" align="center" className={classes.root}>
+      <Grid
+        container
+        justify="center"
+        align="center"
+        className={classes.staffRoot}
+      >
         <Grid item xs={12} sm={6} md={4} container>
           <Grid item xs={12}>
             <Card className={classes.card}>
@@ -35,12 +53,15 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h6">Name.Surname</Typography>
+            <Typography variant="h6" className={classes.h6}>
+              Name.Surname
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
+            <Typography variant="subtitle1">@namesurname</Typography>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={4} container>
@@ -50,12 +71,15 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h6">Name.Surname</Typography>
+            <Typography variant="h6" className={classes.h6}>
+              Name.Surname
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
+            <Typography variant="subtitle1">@namesurname</Typography>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={4} container>
@@ -65,12 +89,15 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h6">Name.Surname</Typography>
+            <Typography variant="h6" className={classes.h6}>
+              Name.Surname
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
+            <Typography variant="subtitle1">@namesurname</Typography>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={4} container>
@@ -80,12 +107,15 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h6">Name.Surname</Typography>
+            <Typography variant="h6" className={classes.h6}>
+              Name.Surname
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
+            <Typography variant="subtitle1">@namesurname</Typography>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={4} container>
@@ -95,12 +125,15 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h6">Name.Surname</Typography>
+            <Typography variant="h6" className={classes.h6}>
+              Name.Surname
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
+            <Typography variant="subtitle1">@namesurname</Typography>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={4} container>
@@ -110,16 +143,19 @@ function Staff({ classes }) {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h6">Name.Surname</Typography>
+            <Typography variant="h6" className={classes.h6}>
+              Name.Surname
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1">
               Editor at codeforafrica.org
             </Typography>
+            <Typography variant="subtitle1">@namesurname</Typography>
           </Grid>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Grid>
   );
 }
 
