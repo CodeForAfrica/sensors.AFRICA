@@ -122,12 +122,20 @@ function Partners({ classes }) {
           spacing={40}
         >
           <Grid item xs={3}>
-            <a href="https://codeforafrica.org/">
+            <a
+              href="https://codeforafrica.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={code} alt="Code for Africa" className={classes.img} />
             </a>
           </Grid>
           <Grid item xs={3} style={{ paddingTop: '2.5rem' }}>
-            <a href="https://innovateafrica.fund/">
+            <a
+              href="https://innovateafrica.fund/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={innovate}
                 alt="innovateAFRICA"
