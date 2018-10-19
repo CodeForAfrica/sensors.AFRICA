@@ -13,41 +13,52 @@ import sound from '../../assets/images/button/soundbtn.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    width: '100%'
+    width: '100%',
+    paddingTop: '2rem'
   },
   img: {
-    height: 200,
+    height: '5.5rem',
     width: 'auto',
-    padding: '3rem',
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    margin: '3rem auto',
+    [theme.breakpoints.up('md')]: {
+      height: '12.5rem',
+      margin: '0 auto',
+      padding: '3rem'
+    }
   },
   airCard: {
-    backgroundColor: '#2FB56B',
-    borderRadius: 0,
-    height: 250,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 250
+    backgroundColor: theme.palette.primary.light,
+    height: '12.5rem',
+    width: '10.5rem',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    textAlign: 'center',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
     }
   },
   waterCard: {
     backgroundColor: '#4972B8',
-    borderRadius: 0,
-    height: 250,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 250
+    height: '12.5rem',
+    width: '10.5rem',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
     }
   },
   soundCard: {
     backgroundColor: '#B64598',
-    borderRadius: 0,
-    height: 250,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 250
+    height: '12.5rem',
+    width: '10.5rem',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
     }
+  },
+  testTitle: {
+    color: 'white',
+    paddingTop: '2rem',
+    fontSize: '1rem',
+    fontFamily: theme.typography.h6.fontFamily,
+    fontWeight: 900
   }
 });
 
@@ -61,12 +72,12 @@ function TestQuality({ classes }) {
     >
       <Grid item xs={12}>
         <Typography
-          variant="h6"
+          variant="h5"
           gutterBottom
           align="center"
-          style={{ color: 'white', textTransform: 'uppercase' }}
+          className={classes.testTitle}
         >
-          Test the quality of the city&apos;s
+          Test the quality of the city&apos;s :
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -75,7 +86,7 @@ function TestQuality({ classes }) {
           direction="row"
           justify="center"
           alignItems="center"
-          style={{ paddingTop: '1rem' }}
+          style={{ paddingTop: '1rem', paddingBottom: '3rem' }}
         >
           <Grid item>
             <Link to="/air">
