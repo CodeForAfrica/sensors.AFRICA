@@ -18,6 +18,15 @@ const styles = theme => ({
       paddingLeft: '10%'
     }
   },
+  column: {
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '23rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '31rem'
+    }
+  },
   titleSection: {
     paddingBottom: '1rem',
     textAlign: 'center'
@@ -32,9 +41,10 @@ const styles = theme => ({
   },
   caption: {
     textAlign: 'center',
-    paddingLeft: '20%',
-    paddingRight: '20%',
+    // paddingLeft: '20%',
+    // paddingRight: '20%',
     paddingBottom: '2rem'
+    // textAlign: 'justify'
   },
   captionGrid: {
     marginRight: '3.5rem',
@@ -57,29 +67,36 @@ const styles = theme => ({
 
 function HardwareInfo({ classes }) {
   return (
-    <Grid item>
-      <Typography className={classes.subtitle1}>
-        THE SCIENCE AND HARDWARE
-      </Typography>
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      className={classes.root}
+    >
+      <Grid item xs={12}>
+        <Typography variant="h6" className={classes.subtitle1}>
+          THE SCIENCE AND HARDWARE
+        </Typography>
+      </Grid>
       <Grid
+        item
+        xs={12}
         container
         spacing={24}
         justify="space-around"
         alignItems="center"
-        className={classes.root}
       >
         {/* First Column */}
         <Grid
           item
-          xs={12}
-          md={6}
+          className={classes.column}
           container
           direction="column"
           justify="center"
           alignItems="center"
         >
           {/* Content Grid */}
-          <Grid className={classes.titleSection}>
+          <Grid item xs={12} className={classes.titleSection}>
             <img src={SDS011} alt="SDS011" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               SDS011
@@ -89,7 +106,7 @@ function HardwareInfo({ classes }) {
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
-            <Typography variant="caption">
+            <Typography variant="caption" className={classes.caption}>
               The sensors is used to measure PM10 and PM2.5 particles for
               concentration ranes between 0-999ug/m3.It usess laser scattering
               principle to get particles concentration between0.3 to 10ug in the
@@ -104,7 +121,7 @@ function HardwareInfo({ classes }) {
               change of scene, making data collectiction near real time.
             </Typography>
           </Grid>
-          <Grid className={classes.titleSection}>
+          <Grid item xs={12} className={classes.titleSection}>
             <img
               src={DHT22}
               alt="DHT22"
@@ -119,7 +136,7 @@ function HardwareInfo({ classes }) {
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
-            <Typography variant="caption">
+            <Typography variant="caption" className={classes.caption}>
               The sensors is used to measure temperator and the humidity.It uses
               a capacitative humidity sensor and a themostat to measure the
               surrounding air, and spits out a digital signal on the data pin.
@@ -130,14 +147,13 @@ function HardwareInfo({ classes }) {
         {/* Second column  */}
         <Grid
           item
-          xs={12}
-          md={6}
+          className={classes.column}
           container
           direction="column"
           justify="center"
           alignItems="center"
         >
-          <Grid className={classes.titleSection}>
+          <Grid item xs={12} className={classes.titleSection}>
             <img src={NODEMCU} alt="SDSNODEMCU011" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               NODE MCU
@@ -147,7 +163,7 @@ function HardwareInfo({ classes }) {
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
-            <Typography variant="caption">
+            <Typography variant="caption" className={classes.caption}>
               The NodeMCU is an open source software and hardware development
               environment. This is the mini computer that reads data from and
               controls the sensors. Unlike other microcontrollers, it has a wifi
@@ -156,7 +172,7 @@ function HardwareInfo({ classes }) {
             </Typography>
           </Grid>
 
-          <Grid className={classes.titleSection}>
+          <Grid item xs={12} className={classes.titleSection}>
             <img src={GSMSIM800L} alt="GSMSIM800L" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               GSM SIM800L
@@ -166,7 +182,7 @@ function HardwareInfo({ classes }) {
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
-            <Typography variant="caption">
+            <Typography variant="caption" className={classes.caption}>
               The SIM800L is a low cost cell-pone module. It supports quad-band
               GSM/GPRRS network and is available for GPRS and SMS message data
               remote transmission. The board features compact size and low
