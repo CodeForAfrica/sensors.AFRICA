@@ -13,10 +13,7 @@ const styles = theme => ({
   },
   staffRoot: {
     flexGrow: 1,
-    paddingBottom: theme.spacing.unit * 3,
-    paddingTop: theme.spacing.unit * 3,
-    paddingLeft: '8rem',
-    paddingRight: '8rem'
+    padding: '1.5rem 8rem'
   },
   card: {
     height: 200,
@@ -28,9 +25,8 @@ const styles = theme => ({
     height: '100%'
   },
   title: {
-    fontWeight: 'bolder',
-    fontFamily: theme.typography.h6.fontFamily,
-    color: theme.typography.h6.color
+    fontWeight: 800,
+    fontSize: '1rem'
   },
   h6: {
     textTransform: 'Uppercase',
@@ -41,7 +37,7 @@ const styles = theme => ({
 function Staff({ classes }) {
   return (
     <Grid item xs={12} className={classes.root}>
-      <Typography variant="heading" align="center" className={classes.title}>
+      <Typography variant="h6" align="center" className={classes.title}>
         CONTRIBUTORS AND STAFF
       </Typography>
       <Grid
