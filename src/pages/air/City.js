@@ -9,10 +9,8 @@ import Footer from '../../components/Footer';
 import KenyaMap from '../../components/Maps/Kenya';
 import NigeriaMap from '../../components/Maps/Nigeria';
 import TanzaniaMap from '../../components/Maps/Tanzania';
-import Neighbourhood from '../../components/CityComponents/Neighbourhood';
 import CityHeader from '../../components/CityComponents/Header/CityHeader';
 import CallToAction from '../../components/CityComponents/CallToAction';
-import HostSensor from '../../components/CityComponents/HostSensors';
 import QualityStats from '../../components/CityComponents/SensorsQualityStats/QualityStats';
 import PollutionStats from '../../components/CityComponents/PollutionStats';
 
@@ -95,22 +93,7 @@ class City extends React.Component {
           />
         </Grid>
         <Grid item xs={12}>
-          <Grid
-            container
-            className={classes.contained}
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item xs={12}>
-              <HostSensor />
-            </Grid>
-            <Grid item xs={12}>
-              <hr className={classes.separator} />
-            </Grid>
-            <Grid item xs={12}>
-              <PollutionStats />
-            </Grid>
-          </Grid>
+          <PollutionStats />
         </Grid>
         <Grid item xs={12}>
           <Map />
