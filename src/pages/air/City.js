@@ -30,9 +30,6 @@ const styles = theme => ({
     [theme.breakpoints.up('lg')]: {
       width: '1170px'
     }
-  },
-  separator: {
-    color: 'rgba(0, 0, 0, 0.2)'
   }
 });
 
@@ -105,9 +102,6 @@ class City extends React.Component {
         >
           <Grid item xs={12}>
             <HostSensor />
-          </Grid>
-          <Grid item xs={12}>
-            <hr className={classes.separator} />
           </Grid>
           <Grid item xs={12}>
             <PollutionStats />

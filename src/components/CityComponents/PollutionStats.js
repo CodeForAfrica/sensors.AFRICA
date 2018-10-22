@@ -7,14 +7,14 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    paddingTop: '5rem',
-    paddingBottom: '5rem'
+    paddingTop: '5rem'
   },
   mainGrid: {
     flexGrow: 1,
     marginBottom: theme.spacing.unit * 4,
     paddingRight: '8rem',
-    paddingLeft: '8rem'
+    paddingLeft: '8rem',
+    paddingTop: '1.5rem'
   },
   separator: {
     color: 'rgba(0, 0, 0, 0.2)',
@@ -32,8 +32,7 @@ const styles = theme => ({
     }
   },
   stat: {
-    textAlign: 'center',
-    paddingTop: '1rem'
+    textAlign: 'center'
   },
   centerStat: {
     textAlign: 'center',
@@ -57,8 +56,36 @@ const styles = theme => ({
     fontWeight: theme.typography.h6.fontWeight
   },
   title: {
-    color: theme.typography.h6.color,
+    color: theme.typography.h6.color
+  },
+  deathTitle: {
+    paddingTop: '2rem'
+  },
+  childDeathTitle: {
+    paddingTop: '1rem',
+    paddingBottom: '2rem'
+  },
+  topIllnessTitle: {
+    marginRight: '2rem',
+    marginLeft: '2rem'
+  },
+  secondColumnHeading: {
+    paddingBottom: '2rem',
     paddingTop: '3rem'
+  },
+  thirdColumnFirstSubtitle: {
+    paddingTop: '1rem',
+    fontWeight: theme.typography.h6.fontWeight
+  },
+  thirdColumnLastSubtitle: {
+    paddingRight: '2rem',
+    paddingLeft: '2rem'
+  },
+  sup: {
+    fontSize: theme.typography.fontSize
+  },
+  p: {
+    margin: 0
   }
 });
 
@@ -86,7 +113,7 @@ function PollutionStats({ classes }) {
           alignItems="center"
         >
           <Grid item xs={10} className={classes.stat}>
-            <Grid style={{ paddingTop: '4rem' }}>
+            <Grid className={classes.deathTitle}>
               <Typography variant="subtitle1" className={classes.subtitle1}>
                 Death by air pollution in Kenya yearly
               </Typography>
@@ -95,17 +122,12 @@ function PollutionStats({ classes }) {
               </Typography>
             </Grid>
 
-            <Grid style={{ paddingTop: '1rem', paddingBottom: '2rem' }}>
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontWight: 500,
-                  paddingRight: '2.5rem',
-                  paddingLeft: '2.5rem'
-                }}
-              >
+            <Grid className={classes.childDeathTitle}>
+              <Typography variant="subtitle1" className={classes.subtitle1}>
                 Child Deaths
-                <b /> caused by air pollution in Kenya yearly
+                <p className={classes.p}>
+                  caused by air pollution in Kenya yearly
+                </p>
               </Typography>
               <Typography variant="h3" className={classes.statHighlight}>
                 2,144
@@ -124,18 +146,12 @@ function PollutionStats({ classes }) {
           className={classes.statGrid}
         >
           <Grid item xs={10} className={classes.centerStat}>
-            <Grid
-              style={{
-                paddingLeft: '0.5rem',
-                paddingRight: '0.5rem',
-                paddingBottom: '2rem'
-              }}
-            >
+            <Grid className={classes.topIllnessTitle}>
               <Typography variant="subtitle1" className={classes.subtitle1}>
                 The top illness caused by air pollution in kenya is
               </Typography>
             </Grid>
-            <Grid style={{ paddingBottom: '2rem' }}>
+            <Grid className={classes.secondColumnHeading}>
               <Typography variant="h4" className={classes.statHighlight}>
                 ACUTE LOWER RESPIRATORY INFECTION
               </Typography>
@@ -158,19 +174,22 @@ function PollutionStats({ classes }) {
             <Grid>
               <Typography
                 variant="subtitle1"
-                style={{ paddingTop: '1rem', fontWeight: 500 }}
+                className={classes.thirdColumnFirstSubtitle}
               >
                 The air in Nairobi has an annual average of
               </Typography>
             </Grid>
             <Grid style={{ margin: '1rem' }}>
-              <Typography variant="h4" className={classes.statHighlight}>
-                17 <sup style={{ fontSize: '16px' }}>ug/m3</sup>
+              <Typography variant="h3" className={classes.statHighlight}>
+                17 <sup className={classes.sup}>ug/m3</sup>
               </Typography>
             </Grid>
-            <Grid style={{ paddingRight: '2.5rem', paddingLeft: '2.5rem' }}>
+            <Grid className={classes.thirdColumnLastSubtitle}>
               <Typography variant="subtitle1" className={classes.subtitle1}>
-                of PM2.5 particles. That is 70% more than the WHO safe level.
+                of PM2.5 particles.{' '}
+                <p className={classes.p}>
+                  That is 70% more than the WHO safe level.
+                </p>
               </Typography>
             </Grid>
           </Grid>
