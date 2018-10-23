@@ -16,12 +16,22 @@ const styles = theme => ({
   footerButton: {
     width: '100%',
     color: 'white',
-    backgroundColor: theme.palette.secondary.dark,
-    fontWeight: 800,
     '&:hover': {
       color: theme.palette.secondary.main
     },
-    height: '3rem'
+    backgroundColor: theme.palette.secondary.dark,
+    fontWeight: 800,
+    fontSize: theme.typography.subtitle2.fontSize,
+    height: '3rem',
+    [theme.breakpoints.up('lg')]: {
+      fontSize: theme.typography.subtitle1.fontSize,
+      height: '3.5rem',
+      paddingLeft: '2rem',
+      paddingRight: '2rem'
+    }
+  },
+  buttonContainer: {
+    paddingTop: '1rem'
   },
   footerInput: {
     // Moved to `App.css` due to difficult of setting input `text-align` to `center`
@@ -65,7 +75,7 @@ class Email extends Component {
               onChange={this.handleChange}
               className="Email-footerInput"
             />
-            <p>
+            <div className={classes.buttonContainer}>
               <a
                 href={href}
                 className={classes.buttonLink}
@@ -76,7 +86,7 @@ class Email extends Component {
                   SUBSCRIBE TO UPDATES
                 </Button>
               </a>
-            </p>
+            </div>
           </FormControl>
         </Grid>
       </Grid>
