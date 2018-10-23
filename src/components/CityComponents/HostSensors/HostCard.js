@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Card, CardContent, Typography, Button } from '@material-ui/core';
+import { Grid, Card, CardContent, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
+  findOutMore: {
+    color: theme.palette.primary.dark,
+    fontSize: theme.typography.fontSize,
+    fontWeight: 'bold'
+  },
   card: {
+    height: '38rem',
     width: '100%',
     backgroundColor: theme.palette.primary.light,
     borderRadius: 0
   },
   cardContent: {
     textAlign: 'center',
-    margin: '4rem'
+    marginTop: '1rem'
   },
   display1: {
     color: '#fff',
@@ -44,15 +50,23 @@ function HostCard({ classes }) {
           <br />
           CALL TO ACTION
         </Typography>
-        <Typography variant="body1" className={classes.body2}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel
-          eros vehicula, feugiat nisl a, mollis tortor.
-        </Typography>
-        <Typography varaiant="caption" className={classes.caption}>
-          Local Government
-        </Typography>
+        <Grid>
+          <Typography variant="body1" className={classes.body2}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in
+            ultrices ex. Duis aliquet sapien nec dui laoreet mattis
+          </Typography>
+        </Grid>
+        <Grid style={{ paddingTop: '3rem', color: 'white' }}>
+          <Typography
+            varaiant="body1"
+            style={{ color: '#fff', textDecoration: 'underline' }}
+          >
+            Local Government
+          </Typography>
+        </Grid>
+
         <Typography
-          variant="caption"
+          variant="body1"
           style={{ color: '#fff', textDecoration: 'underline' }}
         >
           Environment Ministry

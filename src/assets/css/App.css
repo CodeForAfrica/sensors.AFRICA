@@ -32,9 +32,7 @@
 .list-ic li::before {
   content: '';
   position: absolute;
-  background: black;
-  z-index: -1;
-  opacity: 0.1;
+  background: rgba(192, 192, 192, 0.9);
 }
 .list-ic.vertical {
   padding: 0;
@@ -45,10 +43,11 @@
   text-align: left;
 }
 .list-ic.vertical li::before {
-  top: -60px;
+  top: -25px;
   left: 31px;
   width: 0.1em;
-  height: 8em;
+  height: 10em;
+  visibility: visible;
 }
 
 .card {
