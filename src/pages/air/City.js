@@ -65,10 +65,7 @@ class City extends Component {
     this.state = {
       city: DEFAULT_CITY,
       isLoading: false,
-      cityAirPol: 0,
-      cityP1Stats: {},
-      cityP2Stats: {},
-      cityHumidityStats: {}
+      cityAirPol: 0
     };
     this.fetchCityReadings = this.fetchCityReadings.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -163,9 +160,9 @@ class City extends Component {
         city: state.city,
         cityAirPol: state.cityAirPol,
         isLoading: true,
-        cityP1Stats: state.cityP1Stats,
-        cityP2Stats: state.cityP2Stats,
-        cityHumidityStats: state.cityHumidityStats
+        // cityP1Stats: state.cityP1Stats,
+        // cityP2Stats: state.cityP2Stats,
+        // cityHumidityStats: state.cityHumidityStats
       };
     });
 
@@ -200,9 +197,9 @@ class City extends Component {
           city,
           cityAirPol: reading.toFixed(2),
           isLoading: false,
-          cityP1Stats: cityP1Stats,
-          cityP2Stats: cityP2Stats,
-          cityHumidityStats: cityHumidityStats
+          // cityP1Stats: cityP1Stats,
+          // cityP2Stats: cityP2Stats,
+          // cityHumidityStats: cityHumidityStats
         });
       });
   }
@@ -214,7 +211,7 @@ class City extends Component {
 
   render() {
     const { classes } = this.props;
-    const { city, cityAirPol: airPol, isLoading, cityP1Stats, cityP2Stats, cityHumidityStats } = this.state;
+    const { city, cityAirPol: airPol, isLoading } = this.state;
     let Map = KenyaMap;
     if (city.value === 'dar-es-salaam') {
       Map = TanzaniaMap;
@@ -269,11 +266,8 @@ class City extends Component {
             className={classes.contained}
             justify="center"
             alignItems="center"
+            style={{marginTop: "50px"}}
           >
-            <Grid item xs={12}>
-              <QualityStats cityP1Stats={cityP1Stats}
-              cityP2Stats={cityP2Stats} cityHumidityStats={cityHumidityStats}/>
-            </Grid>
             <Grid item xs={12}>
               <CallToAction />
             </Grid>
