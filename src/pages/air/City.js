@@ -219,64 +219,37 @@ class City extends Component {
       Map = NigeriaMap;
     }
     return (
-      <Grid
-        container
-        className={classes.root}
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item xs={12}>
-          <Navbar />
-        </Grid>
-        <Grid item xs={12}>
-          {isLoading && <LinearProgress />}
-          <CityHeader
-            city={city}
-            airPol={airPol}
-            handleChange={this.handleChange}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Grid
-            container
-            className={classes.contained}
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item xs={12}>
-              <HostSensor />
-            </Grid>
-            <Grid item xs={12}>
-              <hr className={classes.separator} />
-            </Grid>
-            <Grid item xs={12}>
-              <PollutionStats />
-            </Grid>
-            <Grid item xs={12}>
-              <Neighbourhood />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Map />
-        </Grid>
-        <Grid item xs={12}>
-          <Grid
-            container
-            className={classes.contained}
-            justify="center"
-            alignItems="center"
-            style={{marginTop: "50px"}}
-          >
-            <Grid item xs={12}>
-              <CallToAction />
-            </Grid>
+      <React.Fragment>
+        <Navbar />
+        {isLoading && <LinearProgress />}
+        <CityHeader
+          city={city}
+          airPol={airPol}
+          handleChange={this.handleChange}
+        />
+        <Grid
+          container
+          className={classes.contained}
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item xs={12}>
+            <HostSensor />
           </Grid>
           <Grid item xs={12}>
-            <Footer />
+            <hr className={classes.separator} />
+          </Grid>
+          <Grid item xs={12}>
+            <PollutionStats />
+          </Grid>
+          <Grid item xs={12}>
+            <Neighbourhood />
           </Grid>
         </Grid>
-      </Grid>
+        <Map />
+        <CallToAction />
+        <Footer />
+      </React.Fragment>
     );
   }
 }
