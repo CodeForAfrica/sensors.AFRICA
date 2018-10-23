@@ -15,44 +15,40 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     color: 'white',
-    backgroundColor: theme.palette.secondary.main,
-    [theme.breakpoints.up('md')]: {
-      padding: '1rem 0'
-    }
+    backgroundColor: theme.palette.secondary.main
   },
   footerContainer: {
     [theme.breakpoints.up('md')]: {
-      paddingTop: '2rem',
-      paddingBottom: '3rem'
+      paddingBottom: '5rem'
     }
   },
   footerContentContainer: {
     textAlign: 'center',
-    padding: '1rem',
+    paddingTop: '2rem',
+    paddingBottom: '1rem',
     [theme.breakpoints.up('md')]: {
       marginTop: '3rem',
-      width: '19rem'
+      width: '19.875rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '22rem'
+      width: '26.5rem'
     }
   },
   footerAboutContainer: {
     textAlign: 'center',
-    padding: '1rem',
+    paddingTop: '2rem',
+    paddingBottom: '1rem',
     borderTop: '1px solid white',
     borderBottom: '1px solid white',
     [theme.breakpoints.up('md')]: {
       marginTop: '3rem',
-      paddingBottom: '3rem',
-      width: '19rem',
+      width: '19.875rem',
+      border: '1px solid white',
       borderTop: 'none',
-      borderLeft: '1px solid white',
-      borderBottom: 'none',
-      borderRight: '1px solid white'
+      borderBottom: 'none'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '22rem'
+      width: '26.5rem'
     }
   },
   titles: {
@@ -71,12 +67,20 @@ const styles = theme => ({
   },
   footerButton: {
     color: 'white',
-    backgroundColor: theme.palette.secondary.dark,
-    fontWeight: 800,
     '&:hover': {
       color: theme.palette.secondary.main
     },
-    height: '3rem'
+    backgroundColor: theme.palette.secondary.dark,
+    fontWeight: 800,
+    fontSize: theme.typography.subtitle2.fontSize,
+    height: '3rem',
+    [theme.breakpoints.up('lg')]: {
+      fontSize: theme.typography.subtitle1.fontSize,
+      height: '3.5rem',
+      marginTop: '1rem',
+      paddingLeft: '2rem',
+      paddingRight: '2rem'
+    }
   },
   buttonLink: {
     textDecoration: 'none'
@@ -87,7 +91,7 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       marginLeft: '1.5rem',
       marginRight: '1.5rem',
-      textalign: 'center'
+      textAlign: 'center'
     }
   },
   img: {
@@ -114,7 +118,7 @@ function Footer({ classes }) {
         alignItems="flex-start"
       >
         <Grid item className={classes.footerContentContainer}>
-          <Typography variant="button" className={classes.titles}>
+          <Typography variant="h6" className={classes.titles}>
             CONNECT WITH US
           </Typography>
           <div className={classes.socialMediaContainer}>
@@ -123,7 +127,7 @@ function Footer({ classes }) {
           <Email />
         </Grid>
         <Grid item className={classes.footerAboutContainer}>
-          <Typography variant="button" className={classes.titles}>
+          <Typography variant="h6" className={classes.titles}>
             ABOUT SENSORS.AFRICA
           </Typography>
           <Typography variant="caption" className={classes.aboutContent}>
@@ -143,7 +147,7 @@ function Footer({ classes }) {
           </a>
         </Grid>
         <Grid item className={classes.footerContentContainer}>
-          <Typography variant="button" className={classes.titles}>
+          <Typography variant="h6" className={classes.titles}>
             FUNDED BY
           </Typography>
           <Typography variant="caption" className={classes.supportText}>

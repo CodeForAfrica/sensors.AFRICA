@@ -9,14 +9,15 @@ import OutdoorIcon from '../../assets/images/outdooricon.png';
 
 const styles = theme => ({
   root: {
+    flexGrow: 1,
     backgroundColor: 'white',
     [theme.breakpoints.up('md')]: {
       paddingBottom: '3rem'
     }
   },
   indoor: {
-    backgroundColor: theme.palette.primary.dark,
     color: 'white',
+    backgroundColor: theme.palette.primary.dark,
     width: '100vw',
     [theme.breakpoints.up('md')]: {
       width: '25rem',
@@ -42,8 +43,8 @@ const styles = theme => ({
     }
   },
   outdoor: {
-    backgroundColor: theme.palette.primary.light,
     color: 'white',
+    backgroundColor: theme.palette.primary.light,
     width: '100vw',
     [theme.breakpoints.up('md')]: {
       width: '25rem',
