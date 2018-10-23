@@ -55,7 +55,7 @@ const CITIES_LOCATION = {
     label: 'Dar-es-salaam, Tanzania'
   }
 };
-const SENSOR_NAMES = ['sds021', 'sds011'];
+const SENSOR_NAMES = ['sds021', 'sds011', 'ppd42ns', 'dht22', 'dht11'];
 const SENSOR_READINGS_URL = 'http://api.airquality.codeforafrica.org/v1/now/';
 
 class City extends Component {
@@ -93,6 +93,38 @@ class City extends Component {
       name = name.toLowerCase();
       return SENSOR_NAMES.indexOf(name) !== -1 && sensordatavalues.length >= 2;
     };
+    const averageP1ValuesPerSensor = (
+      accumulator,
+      { sensor, sensordatavalues }
+    ) => {
+      const { id } = sensor;
+      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
+      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
+        if (valueType.toLowerCase() === 'p1') {
+          const reading = accumulator[id];
+          const { average, length } = reading;
+          reading.length = length + 1;
+          reading.average = (average + parseFloat(value)) / reading.length;
+        }
+      });
+      return accumulator;
+    }
+    const averageHumidityValuesPerSensor = (
+      accumulator,
+      { sensor, sensordatavalues }
+    ) => {
+      const { id } = sensor;
+      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
+      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
+        if (valueType.toLowerCase() === 'humidity') {
+          const reading = accumulator[id];
+          const { average, length } = reading;
+          reading.length = length + 1;
+          reading.average = (average + parseFloat(value)) / reading.length;
+        }
+      });
+      return accumulator;
+    }
     const averageP2ValuesPerSensor = (
       accumulator,
       { sensor, sensordatavalues }
@@ -126,10 +158,23 @@ class City extends Component {
     fetch(SENSOR_READINGS_URL)
       .then(data => data.json())
       .then(readings => {
-        const cells = readings
+        const p2cells = readings
           .filter(data => isInCity(data) && isAirSensorWithReadings(data))
           .reduce(averageP2ValuesPerSensor, {});
-        return Promise.resolve(cells);
+
+        const p1cells = readings
+          .filter(data => isInCity(data) && isAirSensorWithReadings(data))
+          .reduce(averageP1ValuesPerSensor, {});
+
+        const humiditycells = readings
+          .filter(data => isInCity(data) && isAirSensorWithReadings(data))
+          .reduce(averageHumidityValuesPerSensor, {});
+
+
+        console.log(p1cells);
+        console.log(humiditycells);
+
+        return Promise.resolve(p2cells);
       })
       .then(averageP2ValuesForCity)
       .then(reading => {
@@ -139,6 +184,58 @@ class City extends Component {
           isLoading: false
         });
       });
+  }
+
+  fetchCityAirQuality(city) {
+    const averageP1ValuesPerSensor = (
+      accumulator,
+      { sensor, sensordatavalues }
+    ) => {
+      const { id } = sensor;
+      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
+      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
+        if (valueType.toLowerCase() === 'p1') {
+          const reading = accumulator[id];
+          const { average, length } = reading;
+          reading.length = length + 1;
+          reading.average = (average + parseFloat(value)) / reading.length;
+        }
+      });
+      return accumulator;
+    }
+    const averageHumidityValuesPerSensor = (
+      accumulator,
+      { sensor, sensordatavalues }
+    ) => {
+      const { id } = sensor;
+      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
+      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
+        if (valueType.toLowerCase() === 'humidity') {
+          const reading = accumulator[id];
+          const { average, length } = reading;
+          reading.length = length + 1;
+          reading.average = (average + parseFloat(value)) / reading.length;
+        }
+      });
+      return accumulator;
+    }
+    const averageP2ValuesPerSensor = (
+      accumulator,
+      { sensor, sensordatavalues }
+    ) => {
+      const { id } = sensor;
+      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
+      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
+        if (valueType.toLowerCase() === 'p2') {
+          const reading = accumulator[id];
+          const { average, length } = reading;
+          reading.length = length + 1;
+          reading.average = (average + parseFloat(value)) / reading.length;
+        }
+      });
+      return accumulator;
+    };
+
   }
 
   handleChange(option) {
