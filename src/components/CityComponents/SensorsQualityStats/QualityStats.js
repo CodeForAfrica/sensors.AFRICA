@@ -40,52 +40,57 @@ const styles = theme => ({
   }
 });
 
-function SensorsDataReport({ classes }) {
-  return (
-    <Grid container className={classes.root}>
-      <Grid item xs={12} md={4}>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="center"
-          alignItems="center"
-          style={{ paddingTop: '2rem' }}
-        >
-          <Button variant="contained" className={classes.button}>
-            03 Jan
-          </Button>
-          <p className={classes.buttonConnectText}>to</p>
-          <Button variant="contained" className={classes.button}>
-            07 Jan
-          </Button>
-        </Grid>
+class SensorsDataReport extends React.Component {
+  render () {
+    const { classes, cityHumidityStats, cityP1Stats, cityP2Stats } = this.props;
 
-        <Grid item xs={12} container className={classes.container}>
-          <Typography variant="subtitle1" style={{ margin: '1em auto' }}>
-            SUB HEADING
-          </Typography>
-          <Grid container direction="row" justify="center">
-            <Typography variant="h3" className={classes.display2}>
-              1,234
-            </Typography>
-            <small className={classes.small}>Unit/H</small>
+    return (
+      <Grid container className={classes.root}>
+        <Grid item xs={12} md={4}>
+          <Grid
+            item
+            xs={12}
+            container
+            justify="center"
+            alignItems="center"
+            style={{ paddingTop: '2rem' }}
+          >
+            <Button variant="contained" className={classes.button}>
+              03 Jan
+            </Button>
+            <p className={classes.buttonConnectText}>to</p>
+            <Button variant="contained" className={classes.button}>
+              07 Jan
+            </Button>
           </Grid>
-          <Typography variant="body1" className={classes.caption}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-            dapibus dui nec ligula semper eleifend. Quisque rhoncus tortor
-            consectetur, vulputate ante sed, imperdiet orci.
-          </Typography>
-        </Grid>
-      </Grid>
 
-      <Grid item xs={12} md={8}>
-        <Grid container justify="center" alignItems="center">
-          <DataTable />
+          <Grid item xs={12} container className={classes.container}>
+            <Typography variant="subtitle1" style={{ margin: '1em auto' }}>
+              SUB HEADING
+            </Typography>
+            <Grid container direction="row" justify="center">
+              <Typography variant="h3" className={classes.display2}>
+                1,234
+              </Typography>
+              <small className={classes.small}>Unit/H</small>
+            </Grid>
+            <Typography variant="body1" className={classes.caption}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              dapibus dui nec ligula semper eleifend. Quisque rhoncus tortor
+              consectetur, vulputate ante sed, imperdiet orci.
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid item xs={12} md={8}>
+          <Grid container justify="center" alignItems="center">
+            <DataTable cityP1Stats={cityP1Stats}
+            cityP2Stats={cityP2Stats} cityHumidityStats={cityHumidityStats} />
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 SensorsDataReport.propTypes = {
