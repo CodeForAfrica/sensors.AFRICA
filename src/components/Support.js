@@ -34,7 +34,6 @@ const styles = theme => ({
     fontWeight: 'bolder',
     borderColor: theme.palette.primary.dark,
     fontFamily: theme.typography.h6.fontFamily,
-
     height: '3 rem',
     margin: '1rem auto'
   },
