@@ -12,7 +12,6 @@ import NigeriaMap from '../../components/Maps/Nigeria';
 import TanzaniaMap from '../../components/Maps/Tanzania';
 import CityHeader from '../../components/CityComponents/Header/CityHeader';
 import CallToAction from '../../components/CityComponents/CallToAction';
-import QualityStats from '../../components/CityComponents/SensorsQualityStats/QualityStats';
 import PollutionStats from '../../components/CityComponents/PollutionStats';
 
 const styles = theme => ({
@@ -163,7 +162,6 @@ class City extends Component {
         />
         <PollutionStats />
         <Map />
-        <QualityStats />
         <CallToAction />
         <Footer />
       </React.Fragment>

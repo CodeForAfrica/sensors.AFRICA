@@ -13,7 +13,7 @@ const styles = theme => ({
     backgroundColor: '#2FB56B',
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
-      height: '510px'
+      height: 513
     }
   }
 });
