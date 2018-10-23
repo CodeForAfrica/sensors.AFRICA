@@ -54,11 +54,10 @@
 .card {
   position: relative;
   background: white;
-  padding: 15px;
   margin-left: 30px;
   margin-left: 3rem;
-  height: 100px;
-  width: 350px;
+  height: 6.5rem;
+  width: 28rem;
   border-radius: none;
   border: 1px solid black;
 }
