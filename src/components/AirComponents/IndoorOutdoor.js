@@ -111,7 +111,7 @@ function IndoorOutdoor({ classes }) {
       <Grid item>
         <Card className={classes.indoor}>
           <CardContent className={classes.cardContent}>
-            <img src={IndoorIcon} Alt="Housing" className={classes.img} />
+            <img src={IndoorIcon} alt="Housing" className={classes.img} />
             <Typography variant="h5" className={classes.title}>
               INDOOR POLLUTION
             </Typography>
