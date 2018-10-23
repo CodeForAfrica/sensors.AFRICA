@@ -1,15 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Card,
-  Grid,
-  Typography,
-  ListItem,
-  List,
-  CardContent,
-  Button
-} from '@material-ui/core';
+import { Grid, Typography, ListItem, List, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import '../../../assets/css/App.css';
@@ -52,8 +44,8 @@ function ArrowCards({ classes }) {
           <ListItem className={classes.list}>
             <span />
 
-            <Card className="card">
-              <CardContent
+            <Grid className="card">
+              <Grid
                 style={{ textDecoration: 'underline', textAlign: 'center' }}
               >
                 <Typography variant="body1" className={classes.body2}>
@@ -62,14 +54,14 @@ function ArrowCards({ classes }) {
                 <Typography variant="body1" className={classes.body2}>
                   Environment Ministry
                 </Typography>
-              </CardContent>
-            </Card>
+              </Grid>
+            </Grid>
           </ListItem>
 
           <ListItem>
             <span />
-            <Card className="card">
-              <CardContent style={{ textAlign: 'center' }}>
+            <Grid className="card">
+              <Grid style={{ textAlign: 'center' }}>
                 <Typography variant="body1" className={classes.body2}>
                   <b>
                     <u>@david</u>
@@ -79,14 +71,14 @@ function ArrowCards({ classes }) {
                 <Typography variant="body1" className={classes.body2}>
                   <u>What Reports have been sent</u>
                 </Typography>
-              </CardContent>
-            </Card>
+              </Grid>
+            </Grid>
           </ListItem>
 
           <ListItem>
             <span />
-            <Card className="card">
-              <CardContent style={{ textAlign: 'center' }}>
+            <Grid className="card">
+              <Grid style={{ textAlign: 'center' }}>
                 <Typography variant="body1" className={classes.body2}>
                   <b>
                     <u>@david</u>
@@ -96,14 +88,14 @@ function ArrowCards({ classes }) {
                 <Typography variant="body1" className={classes.body2}>
                   <u>What Reports have been sent</u>
                 </Typography>
-              </CardContent>
-            </Card>
+              </Grid>
+            </Grid>
           </ListItem>
 
           <ListItem>
             <span />
-            <Card className="card">
-              <CardContent style={{ textAlign: 'center' }}>
+            <Grid className="card">
+              <Grid style={{ textAlign: 'center' }}>
                 <Typography variant="body1" className={classes.body2}>
                   <b>
                     <u>@david</u>
@@ -113,8 +105,8 @@ function ArrowCards({ classes }) {
                 <Typography variant="body1" className={classes.body2}>
                   <u>What Reports have been sent</u>
                 </Typography>
-              </CardContent>
-            </Card>
+              </Grid>
+            </Grid>
           </ListItem>
         </List>
       </Grid>

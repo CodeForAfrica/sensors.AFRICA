@@ -52,30 +52,38 @@
 }
 
 .card {
-  display: inline-block;
   position: relative;
-  background: pink;
+  background: white;
   padding: 15px;
-  padding-left: 30px;
   margin-left: 30px;
   margin-left: 3rem;
-  height: 80px;
-  width: 300px;
+  height: 100px;
+  width: 350px;
   border-radius: none;
+  border: 1px solid black;
 }
-.card:after {
+.card:after,
+.card:before {
   content: '';
-  display: block;
   position: absolute;
   right: 100%;
   top: 50%;
-  margin-top: -30px;
   width: 0;
   height: 0;
-  border-top: 30px solid transparent;
-  border-right: 30px solid pink;
-  border-bottom: 30px solid transparent;
-  border-left: 30px solid transparent;
+}
+.card:after {
+  border-top: 20px solid transparent;
+  border-right: 20px solid white;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid transparent;
+  margin-top: -20px;
+}
+.card:before {
+  border-top: 21px solid transparent;
+  border-right: 21px solid black;
+  border-bottom: 21px solid transparent;
+  border-left: 21px solid transparent;
+  margin-top: -21px;
 }
 
 .Email-footerInput input {
