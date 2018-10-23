@@ -7,57 +7,115 @@ import { withStyles } from '@material-ui/core/styles';
 import IndoorIcon from '../../assets/images/indooricon.png';
 import OutdoorIcon from '../../assets/images/outdooricon.png';
 
-const styles = {
+const styles = theme => ({
+  root: {
+    backgroundColor: 'white',
+    [theme.breakpoints.up('md')]: {
+      paddingBottom: '3rem'
+    }
+  },
   indoor: {
-    height: '350px',
-    width: '400px',
-    backgroundColor: '#164B3E',
-    borderRadius: 0,
+    backgroundColor: theme.palette.primary.dark,
     color: 'white',
-    margin: '2rem'
+    width: '100vw',
+    [theme.breakpoints.up('md')]: {
+      width: '25rem',
+      height: '18.125rem',
+      marginRight: '4.8125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '37.875rem',
+      height: '29.75rem',
+      marginRight: '1.875rem',
+      padding: '3rem'
+    }
   },
   indoorButton: {
-    borderRadius: 0,
     color: '#F3F3F3',
-    borderColor: 'white'
+    borderColor: 'white',
+    fontWeight: 800,
+    fontSize: theme.typography.subtitle1.fontSize,
+    [theme.breakpoints.up('lg')]: {
+      height: '3.5rem',
+      paddingLeft: '2rem',
+      paddingRight: '2rem'
+    }
   },
   outdoor: {
-    height: '350px',
-    width: '400px',
-    backgroundColor: '#2FB56B',
-    borderRadius: 0,
+    backgroundColor: theme.palette.primary.light,
     color: 'white',
-    margin: '2rem'
+    width: '100vw',
+    [theme.breakpoints.up('md')]: {
+      width: '25rem',
+      height: '18.125rem',
+      marginLeft: '4.8125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '37.875rem',
+      height: '29.75rem',
+      marginLeft: '1.875rem',
+      padding: '3rem'
+    }
   },
   outdoorButton: {
-    borderRadius: 0
+    fontWeight: 800,
+    fontSize: theme.typography.subtitle1.fontSize,
+    color: theme.palette.primary.dark,
+    [theme.breakpoints.up('lg')]: {
+      height: '3.5rem',
+      paddingLeft: '2rem',
+      paddingRight: '2rem'
+    }
   },
   buttonLink: {
     textDecoration: 'none'
   },
+  title: {
+    color: 'white',
+    [theme.breakpoints.up('lg')]: {
+      paddingTop: '1.5rem',
+      fontSize: theme.typography.h4.fontSize,
+      fontWeight: theme.typography.h4.fontWeight
+    }
+  },
   caption: {
-    paddingTop: '0.5rem',
+    color: '#F3F3F3',
     paddingBottom: '1rem',
-    color: '#F3F3F3'
+    [theme.breakpoints.up('lg')]: {
+      fontSize: theme.typography.subtitle1.fontSize,
+      fontWeight: theme.typography.subtitle1.fontWeight,
+      paddingTop: '2rem'
+    }
   },
   cardContent: {
     color: 'white',
-    textAlign: 'center',
-    paddingTop: '4rem'
+    textAlign: 'center'
+  },
+  img: {
+    height: '5rem',
+    width: 'auto',
+    [theme.breakpoints.up('lg')]: {
+      height: '100%'
+    }
   }
-};
+});
 
 function IndoorOutdoor({ classes }) {
   return (
-    <Grid container justify="center" alignItems="center">
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
       <Grid item>
         <Card className={classes.indoor}>
           <CardContent className={classes.cardContent}>
-            <img src={IndoorIcon} alt="House" height="100px" />
-            <Typography variant="h6" style={{ color: 'white' }}>
+            <img src={IndoorIcon} alt="Housing" className={classes.img} />
+            <Typography variant="h5" className={classes.title}>
               INDOOR POLLUTION
             </Typography>
-            <Typography variant="caption" className={classes.caption}>
+            <Typography variant="subtitle2" className={classes.caption}>
               Indoor pollution causes an estimated 4.3 million premature deaths
               each year.
             </Typography>
@@ -74,14 +132,15 @@ function IndoorOutdoor({ classes }) {
           </CardContent>
         </Card>
       </Grid>
+
       <Grid item>
         <Card className={classes.outdoor}>
           <CardContent className={classes.cardContent}>
-            <img src={OutdoorIcon} alt="Factory" height="100px" />
-            <Typography variant="h6" style={{ color: 'white' }}>
+            <img src={OutdoorIcon} alt="Housing" className={classes.img} />
+            <Typography variant="h5" className={classes.title}>
               OUTDOOR POLLUTION
             </Typography>
-            <Typography variant="caption" className={classes.caption}>
+            <Typography variant="subtitle2" className={classes.caption}>
               Outdoor pollution causes an estimated 4.2 million premature deaths
               each year.
             </Typography>
