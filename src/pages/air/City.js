@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
-import { Grid, LinearProgress } from '@material-ui/core';
+import { LinearProgress } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Navbar from '../../components/Header/Navbar';
@@ -10,11 +10,8 @@ import Footer from '../../components/Footer';
 import KenyaMap from '../../components/Maps/Kenya';
 import NigeriaMap from '../../components/Maps/Nigeria';
 import TanzaniaMap from '../../components/Maps/Tanzania';
-import Neighbourhood from '../../components/CityComponents/Neighbourhood';
 import CityHeader from '../../components/CityComponents/Header/CityHeader';
 import CallToAction from '../../components/CityComponents/CallToAction';
-import HostSensor from '../../components/CityComponents/HostSensors';
-import QualityStats from '../../components/CityComponents/SensorsQualityStats/QualityStats';
 import PollutionStats from '../../components/CityComponents/PollutionStats';
 
 const styles = theme => ({
@@ -147,7 +144,6 @@ class City extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     const { city, cityAirPol: airPol, isLoading } = this.state;
     let Map = KenyaMap;
     if (city.value === 'dar-es-salaam') {
@@ -164,27 +160,8 @@ class City extends Component {
           airPol={airPol}
           handleChange={this.handleChange}
         />
-        <Grid
-          container
-          className={classes.contained}
-          justify="center"
-          alignItems="center"
-        >
-          <Grid item xs={12}>
-            <HostSensor />
-          </Grid>
-          <Grid item xs={12}>
-            <hr className={classes.separator} />
-          </Grid>
-          <Grid item xs={12}>
-            <PollutionStats />
-          </Grid>
-          <Grid item xs={12}>
-            <Neighbourhood />
-          </Grid>
-        </Grid>
+        <PollutionStats />
         <Map />
-        <QualityStats />
         <CallToAction />
         <Footer />
       </React.Fragment>
@@ -193,7 +170,6 @@ class City extends Component {
 }
 
 City.propTypes = {
-  classes: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 };
 
