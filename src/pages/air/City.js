@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
-import { Grid, LinearProgress } from '@material-ui/core';
+import { LinearProgress } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Navbar from '../../components/Header/Navbar';
@@ -145,7 +145,6 @@ class City extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     const { city, cityAirPol: airPol, isLoading } = this.state;
     let Map = KenyaMap;
     if (city.value === 'dar-es-salaam') {
@@ -154,54 +153,25 @@ class City extends Component {
       Map = NigeriaMap;
     }
     return (
-      <Grid
-        container
-        className={classes.root}
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item xs={12}>
-          <Navbar />
-        </Grid>
-        <Grid item xs={12}>
-          {isLoading && <LinearProgress />}
-          <CityHeader
-            city={city}
-            airPol={airPol}
-            handleChange={this.handleChange}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <PollutionStats />
-        </Grid>
-        <Grid item xs={12}>
-          <Map />
-        </Grid>
-        <Grid item xs={12}>
-          <Grid
-            container
-            className={classes.contained}
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item xs={12}>
-              <QualityStats />
-            </Grid>
-            <Grid item xs={12}>
-              <CallToAction />
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Footer />
-          </Grid>
-        </Grid>
-      </Grid>
+      <React.Fragment>
+        <Navbar />
+        {isLoading && <LinearProgress />}
+        <CityHeader
+          city={city}
+          airPol={airPol}
+          handleChange={this.handleChange}
+        />
+        <PollutionStats />
+        <Map />
+        <QualityStats />
+        <CallToAction />
+        <Footer />
+      </React.Fragment>
     );
   }
 }
 
 City.propTypes = {
-  classes: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 };
 
