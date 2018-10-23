@@ -56,7 +56,7 @@ const CITIES_LOCATION = {
   }
 };
 const SENSOR_NAMES = ['sds021', 'sds011'];
-const SENSOR_READINGS_URL = 'http://api.airquality.codeforafrica.org/v1/now/';
+const SENSOR_READINGS_URL = 'https://api.airquality.codeforafrica.org/v1/now/';
 
 class City extends Component {
   constructor() {
