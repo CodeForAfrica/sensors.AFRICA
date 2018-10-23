@@ -8,7 +8,8 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     paddingTop: '4rem',
-    paddingBottom: '4rem'
+    paddingBottom: '4rem',
+    backgroundColor: 'white'
   },
   card: {
     height: '15rem',
@@ -22,17 +23,17 @@ const styles = theme => ({
     color: 'white',
     backgroundColor: '#2FB56B',
     textTransform: 'uppercase',
-    fontFamilty: theme.typography.h5.fontFamilty,
-    fontWeight: theme.typography.h5.fontWeight,
+    fontWeight: 'bolder',
+    fontFamily: theme.typography.h6.fontFamily,
     height: '3 rem',
     margin: '1rem auto'
   },
   buttonOutlined: {
     color: theme.palette.primary.dark,
     textTransform: 'uppercase',
+    fontWeight: 'bolder',
     borderColor: theme.palette.primary.dark,
-    fontFamilty: theme.typography.h5.fontFamilty,
-    fontWeight: theme.typography.h5.fontWeight,
+    fontFamily: theme.typography.h6.fontFamily,
     height: '3 rem',
     margin: '1rem auto'
   },
