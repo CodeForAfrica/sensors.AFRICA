@@ -16,10 +16,10 @@ import '../../../assets/css/App.css';
 
 const styles = theme => ({
   findOutMore: {
-    color: '#164B3E'
+    color: theme.palette.primary.dark
   },
   buttonContained: {
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     color: '#fff',
     borderRadius: 0,
     margin: theme.spacing.unit * 2,
@@ -40,12 +40,12 @@ function ArrowCards({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12} container justify="center" alignItems="center">
-        <Typography
+        {/* <Typography
           variant="body1"
           style={{ marginLeft: '4.5rem', color: 'green' }}
         >
           WHO CAN I REPORT AIR SENSORS QUALITY TO?
-        </Typography>
+        </Typography> */}
       </Grid>
       <Grid item xs={12} container justify="center" alignItems="center">
         <List className="list-ic vertical">

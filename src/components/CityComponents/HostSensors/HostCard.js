@@ -8,13 +8,13 @@ const styles = theme => ({
   root: {},
   card: {
     height: 600,
-    width: 450,
-    backgroundColor: '#2FB56B',
+    width: '100%',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 0
   },
   cardContent: {
     textAlign: 'center',
-    paddingTop: '25%'
+    margin: '4rem'
   },
   display1: {
     color: '#fff',
@@ -48,7 +48,9 @@ function HostCard({ classes }) {
       <Card className={classes.card}>
         <CardContent className={classes.cardContent}>
           <Typography variant="h4" className={classes.display1}>
-            HOST A SENSORS CALL TO ACTION
+            HOST A SENSORS
+            <br />
+            CALL TO ACTION
           </Typography>
           <Typography variant="body1" className={classes.body2}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel

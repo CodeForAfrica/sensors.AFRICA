@@ -27,7 +27,6 @@
   line-height: 3em;
   border-radius: 50%;
   background: #18bc9c;
-  color: white;
   position: relative;
 }
 .list-ic li::before {
