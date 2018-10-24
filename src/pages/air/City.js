@@ -14,23 +14,6 @@ import CityHeader from '../../components/CityComponents/Header/CityHeader';
 import CallToAction from '../../components/CityComponents/CallToAction';
 import PollutionStats from '../../components/CityComponents/PollutionStats';
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: 'white'
-  },
-  contained: {
-    width: 'auto',
-    margin: '0 auto',
-    [theme.breakpoints.up('md')]: {
-      width: '970px'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '1170px'
-    }
-  }
-});
-
 const DEFAULT_CITY = { value: 'nairobi', label: 'Nairobi, Kenya' };
 const CITIES_LOCATION = {
   nairobi: {
@@ -170,4 +153,4 @@ City.propTypes = {
   location: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(styles)(City));
+export default withRouter(City);
