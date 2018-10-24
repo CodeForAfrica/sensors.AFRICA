@@ -30,7 +30,7 @@ function JoinNetworkContent({ classes, title, subheading }) {
         </Typography>
       </Grid>
       <Grid item xs={12} container justify="center" alignItems="center">
-        <Grid item xs={8}>
+        <Grid item md={8}>
           <Typography className={classes.headerText}>{subheading}</Typography>
         </Grid>
       </Grid>
