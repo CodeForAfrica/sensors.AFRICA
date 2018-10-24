@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
 import { LinearProgress } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
@@ -13,26 +12,6 @@ import TanzaniaMap from '../../components/Maps/Tanzania';
 import CityHeader from '../../components/CityComponents/Header/CityHeader';
 import CallToAction from '../../components/CityComponents/CallToAction';
 import PollutionStats from '../../components/CityComponents/PollutionStats';
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: 'white'
-  },
-  contained: {
-    width: 'auto',
-    margin: '0 auto',
-    [theme.breakpoints.up('md')]: {
-      width: '970px'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '1170px'
-    }
-  },
-  separator: {
-    color: 'rgba(0, 0, 0, 0.2)'
-  }
-});
 
 const DEFAULT_CITY = { value: 'nairobi', label: 'Nairobi, Kenya' };
 const CITIES_LOCATION = {
@@ -55,7 +34,7 @@ const CITIES_LOCATION = {
 const SENSOR_NAMES = ['sds021', 'sds011'];
 const SENSOR_READINGS_URL = 'https://api.airquality.codeforafrica.org/v1/now/';
 
-class City extends Component {
+class City extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -113,13 +92,11 @@ class City extends Component {
       return cityAverage;
     };
 
-    this.setState(state => {
-      return {
-        city: state.city,
-        cityAirPol: state.cityAirPol,
-        isLoading: true
-      };
-    });
+    this.setState(state => ({
+      city: state.city,
+      cityAirPol: state.cityAirPol,
+      isLoading: true
+    }));
     fetch(SENSOR_READINGS_URL)
       .then(data => data.json())
       .then(readings => {
@@ -173,4 +150,4 @@ City.propTypes = {
   location: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(styles)(City));
+export default withRouter(City);
