@@ -94,7 +94,7 @@ class HambugerMenu extends React.Component {
             direction="column"
             className={classes.list}
           >
-            <Link to="/air" className={classes.link}>
+            <Link to="/" className={classes.link}>
               <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   STORIES
@@ -102,7 +102,7 @@ class HambugerMenu extends React.Component {
               </MenuItem>
             </Link>
 
-            <Link to="/air/about" className={classes.link}>
+            <Link to="/" className={classes.link}>
               <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   RESOURCES
@@ -110,7 +110,7 @@ class HambugerMenu extends React.Component {
               </MenuItem>
             </Link>
 
-            <Link to="/air/how-sensors-work" className={classes.link}>
+            <Link to="/" className={classes.link}>
               <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   DATA
@@ -126,7 +126,7 @@ class HambugerMenu extends React.Component {
               </MenuItem>
             </Link>
 
-            <Link to="/air/join-network" className={classes.link}>
+            <Link to="/air/about" className={classes.link}>
               <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   ABOUT
