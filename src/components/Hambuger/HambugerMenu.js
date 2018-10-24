@@ -18,26 +18,35 @@ const styles = theme => ({
   },
   list: {
     color: 'white',
+    textAlign: 'right',
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '45%'
+    }
   },
   listItem: {
     color: 'white',
-    textAlign: 'right',
+    display: 'block',
+    height: '18px',
   },
 
   modalContent: {
     margin: 'auto',
     padding: '20px',
     height: 'auto',
-    top: '13%',
+    top: '6%',
     left: '0%',
     [theme.breakpoints.up('md')]: {
-      width: '20%',
-      left: '80%'
+      width: '25%',
+      left: '75%',
+    },
+    [theme.breakpoints.up('xl')]: {
+      top: '4%',
     }
   },
   typography: {
     color: '#fff',
-    textAlign: 'right'
+    textAlign: 'right',
+    fontWeight: '700'
   },
   link: {
     textDecoration: 'none',
@@ -83,6 +92,7 @@ class HambugerMenu extends React.Component {
             item
             xs={3}
             direction="column"
+            className={classes.list}
           >
             <Link to="/air" className={classes.link}>
               <MenuItem className={classes.listItem}>
