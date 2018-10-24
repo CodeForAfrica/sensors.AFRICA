@@ -54,7 +54,7 @@ class HambugerMenu extends React.Component {
   }
 
   handleOpen() {
-    this.setState({ menuOpen: true });
+    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
   }
 
   handleClose() {
