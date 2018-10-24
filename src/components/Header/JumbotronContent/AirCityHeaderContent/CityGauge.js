@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import ReactSpeedometer from 'react-d3-speedometer';
 
-import Grid from '@material-ui/core/Grid';
+import { Grid, Hidden } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -163,25 +163,24 @@ class CityGauge extends Component {
     return (
       <Grid
         container
-        item
-        xs={12}
-        direction="row"
         justify="center"
         alignItems="center"
         style={{ paddingTop: '0.45rem', height: 'auto' }}
       >
-        <Grid container item xs={12} md={3} lg={3} direction="column">
-          <p className={classes.gaugeBox}>
-            WHO Guideline (10) Lowest level at which premature mortality
-            increases inresponse to long term exposure
-          </p>
-        </Grid>
+        <Hidden smDown>
+          <Grid container item xs={12} md={3} lg={3} direction="column">
+            <p className={classes.gaugeBox}>
+              WHO Guideline (10) Lowest level at which premature mortality
+              increases inresponse to long term exposure
+            </p>
+          </Grid>
+        </Hidden>
         <Grid
-          container
           item
           xs={12}
           md={6}
           lg={6}
+          container
           alignItems="center"
           direction="column"
         >
@@ -250,19 +249,21 @@ class CityGauge extends Component {
             </g>
           </svg>
         </Grid>
-        <Grid container item xs={12} md={3} direction="column">
-          <p className={classes.gaugeDesc}>
-            <strong>
-              *PM
-              <sub>2.5</sub> concentrations measured in microgrmas of particles
-              per cubic meter of air <span>&#181;</span>
-              g/m3
-            </strong>
-            <br />
-            <br />
-            <em>Data: WHO Global Platform on Air Quality & Health</em>
-          </p>
-        </Grid>
+        <Hidden smDown>
+          <Grid container item xs={12} md={3} direction="column">
+            <p className={classes.gaugeDesc}>
+              <strong>
+                *PM
+                <sub>2.5</sub> concentrations measured in microgrmas of
+                particles per cubic meter of air <span>&#181;</span>
+                g/m3
+              </strong>
+              <br />
+              <br />
+              <em>Data: WHO Global Platform on Air Quality & Health</em>
+            </p>
+          </Grid>
+        </Hidden>
       </Grid>
     );
   }

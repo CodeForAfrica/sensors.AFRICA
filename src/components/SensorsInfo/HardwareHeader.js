@@ -32,7 +32,7 @@ function HardwareHeader({ classes }) {
       </Grid>
       <Grid item xs={12}>
         <HardwareHeaderContent
-          title="THE SENSORS & THEIR INNER WORKING"
+          title="THE SENSORS &amp; THEIR INNER WORKING"
           subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur
                     turpis id ipsum volutpat laoreet. Nunc tempor tincidunt ex consequat rhoncus.
                     Aenean condimentum metus enim, et congue lorem ultricies vitae. Vestibulum nec

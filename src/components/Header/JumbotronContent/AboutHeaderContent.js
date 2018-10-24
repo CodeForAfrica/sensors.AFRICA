@@ -4,19 +4,16 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = () => ({
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
-    paddingTop: '2rem',
-    [theme.breakpoints.up('md')]: {
-      paddingRight: '25%',
-      paddingLeft: '25%'
-    }
+    paddingTop: '2rem'
   },
   headerText: {
     color: 'white',
-    paddingBottom: '1rem'
+    paddingBottom: '1rem',
+    textTransform: 'none'
   }
 });
 
@@ -28,10 +25,10 @@ function AboutHeaderContent({ classes, title, subheading }) {
           {title}
         </Typography>
       </Grid>
-      <Grid item xs={12}>
-        <Typography variant="subtitle1" className={classes.headerText}>
-          {subheading}
-        </Typography>
+      <Grid item xs={12} container justify="center" alignItems="center">
+        <Grid item md={8}>
+          <Typography className={classes.headerText}>{subheading}</Typography>
+        </Grid>
       </Grid>
     </Grid>
   );

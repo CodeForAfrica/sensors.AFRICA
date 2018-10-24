@@ -35,7 +35,9 @@ function AirCityHeaderContent({ airPol, city, classes }) {
           {city.label.toUpperCase()}
         </Typography>
       </Grid>
-      <CityGauge airPollMeasurement={airPol} />
+      <Grid item xs={12}>
+        <CityGauge airPollMeasurement={airPol} />
+      </Grid>
     </Grid>
   );
 }

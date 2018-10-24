@@ -9,9 +9,9 @@ import AirCityHeaderContent from '../../Header/JumbotronContent/AirCityHeaderCon
 
 const styles = theme => ({
   jumbotron: {
-    height: '700px',
     backgroundColor: '#2FB56B',
     borderRadius: 'none',
+    height: 566,
     [theme.breakpoints.up('md')]: {
       height: 513
     }
