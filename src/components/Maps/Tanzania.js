@@ -10,7 +10,8 @@ const styles = theme => ({
   root: {
     height: 610,
     width: '100%',
-    marginBottom: '3rem'
+    marginBottom: '3rem',
+    backgroundColor: 'white'
   },
   headline: {
     textAlign: 'center',

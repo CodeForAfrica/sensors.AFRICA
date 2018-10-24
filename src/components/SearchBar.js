@@ -19,7 +19,7 @@ const styles = theme => ({
   valueContainer: {
     display: 'flex',
     flexWrap: 'wrap',
-    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,

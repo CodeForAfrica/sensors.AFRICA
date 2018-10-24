@@ -14,6 +14,7 @@ import innovateafrica from '../../assets/images/logos/innovateafrica_white.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    width: '100vw',
     color: 'white',
     backgroundColor: theme.palette.secondary.main
   },

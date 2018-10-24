@@ -7,98 +7,171 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    paddingTop: '5rem'
+    backgroundColor: 'white'
   },
-  mainGrid: {
-    flexGrow: 1,
-    marginBottom: theme.spacing.unit * 4,
-    paddingRight: '8rem',
-    paddingLeft: '8rem',
-    paddingTop: '1.5rem'
+
+  statContainer: {
+    [theme.breakpoints.up('md')]: {
+      paddingBottom: '3rem'
+    }
   },
-  separator: {
-    color: 'rgba(0, 0, 0, 0.2)',
-    marginRight: '7rem',
-    marginLeft: '7rem'
-  },
-  statGrid: {
+  statContentContainer: {
+    width: '100vw',
     textAlign: 'center',
+    paddingTop: '2rem',
+    paddingBottom: '1rem',
+    [theme.breakpoints.up('md')]: {
+      marginTop: '3rem',
+      width: '19.875rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '26.5rem'
+    }
+  },
+  statMiddleContentContainer: {
+    width: '100vw',
+    textAlign: 'center',
+    paddingTop: '2rem',
+    paddingBottom: '1rem',
     borderTop: '1px solid  rgba(0, 0, 0, 0.2)',
     borderBottom: '1px solid  rgba(0, 0, 0, 0.2)',
     [theme.breakpoints.up('md')]: {
-      border: 'none',
-      borderRight: '1px solid  rgba(0, 0, 0, 0.2)',
-      borderLeft: '1px solid  rgba(0, 0, 0, 0.2)'
+      marginTop: '3rem',
+      width: '19.875rem',
+      border: '1px solid  rgba(0, 0, 0, 0.2)',
+      borderTop: 'none',
+      borderBottom: 'none'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '26.5rem'
     }
   },
-  stat: {
-    textAlign: 'center'
+  subtitle: {
+    fontWeight: theme.typography.h6.fontWeight
   },
-  centerStat: {
-    textAlign: 'center',
-    paddingTop: '1rem',
-    [theme.breakpoints.up('md')]: {
-      paddingtop: '0.5rem'
-    }
+  subtitleContinue: {
+    fontWeight: theme.typography.h6.fontWeight,
+    lineHeight: 1
   },
-  centerStatInnerGrid: {
-    paddingTop: 0,
-    paddingLeft: '0.5rem',
-    paddingRight: '0.5rem',
-    paddingBottom: '2rem'
+  subtitleLast: {
+    fontWeight: theme.typography.h6.fontWeight,
+    paddingBottom: '0.75rem'
   },
   statHighlight: {
     color: theme.palette.primary.light,
-    fontWeight: theme.typography.h6.fontWeight,
     paddingBottom: '1rem'
   },
-  subtitle1: {
-    fontWeight: theme.typography.h6.fontWeight
+  nameHighlight: {
+    color: theme.palette.primary.light,
+    paddingTop: '1.5rem'
   },
-  title: {
-    color: theme.typography.h6.color
+  nameHighlightContinue: {
+    color: theme.palette.primary.light
   },
-  deathTitle: {
-    paddingTop: '2rem'
+  nameHighlightLast: {
+    color: theme.palette.primary.light,
+    paddingBottom: '3rem'
   },
-  childDeathTitle: {
-    paddingTop: '1rem',
-    paddingBottom: '2rem'
-  },
-  topIllnessTitle: {
-    marginRight: '2rem',
-    marginLeft: '2rem'
-  },
-  secondColumnHeading: {
-    paddingBottom: '2rem',
-    paddingTop: '3rem'
-  },
-  thirdColumnFirstSubtitle: {
-    paddingTop: '1rem',
-    fontWeight: theme.typography.h6.fontWeight
-  },
-  thirdColumnLastSubtitle: {
-    paddingRight: '2rem',
-    paddingLeft: '2rem'
+  statTitle: {
+    fontWeight: 700,
+    textTransform: 'uppercase'
   },
   sup: {
     fontSize: theme.typography.fontSize
-  },
-  p: {
-    margin: 0
   }
 });
 
 function PollutionStats({ classes }) {
   return (
-    <Grid item xs={12} className={classes.root}>
-      <Grid item xs={12}>
-        <hr className={classes.separator} />
-      </Grid>
-
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
       <Grid
+        item
+        xs={12}
         container
-        direction="row"
+        className={classes.statContainer}
+        justify="center"
+        alignItems="flex-start"
+      >
+        <Grid item className={classes.statContentContainer}>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            Death by air pollution
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            in Kenya yearly
+          </Typography>
+          <Typography variant="h3" className={classes.statHighlight}>
+            5,102
+          </Typography>
+
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            Child Deaths
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleContinue}>
+            caused by air pollution
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            in Kenya yearly
+          </Typography>
+          <Typography variant="h3" className={classes.statHighlight}>
+            2,144
+          </Typography>
+        </Grid>
+        <Grid item className={classes.statMiddleContentContainer}>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            The top illness caused
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleContinue}>
+            by air pollution
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            in Kenya is
+          </Typography>
+          <Typography variant="h4" className={classes.nameHighlight}>
+            ACUTE LOWER
+          </Typography>
+          <Typography variant="h4" className={classes.nameHighlightContinue}>
+            RESPIRATORY
+          </Typography>
+          <Typography variant="h4" className={classes.nameHighlightLast}>
+            INFECTION
+          </Typography>
+        </Grid>
+        <Grid item className={classes.statContentContainer}>
+          <Typography variant="subtitle2" className={classes.statTitle}>
+            POLLUTION LEVELS IN NAIROBI
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            The air in Nairobi has an
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            annual average of
+          </Typography>
+          <Typography variant="h3" className={classes.statHighlight}>
+            17 <sup className={classes.sup}>ug/m3</sup>
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            of PM2.5 particles.
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleContinue}>
+            That&apos;s 70% more than the
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            WHO safe level.
+          </Typography>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+
+  /* <Grid
+        item
+        xs={12}
+        container
         className={classes.mainGrid}
         justify="center"
         alignItems="center"
@@ -195,8 +268,7 @@ function PollutionStats({ classes }) {
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  );
+       */
 }
 
 PollutionStats.propTypes = {
