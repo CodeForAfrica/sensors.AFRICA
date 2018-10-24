@@ -12,7 +12,8 @@ import SocialMedia from '../SocialMedia';
 
 const styles = theme => ({
   root: {
-    flex: 1,
+    flexGrow: 1,
+    width: '100vw',
     backgroundColor: '#2e2e2e',
     boxShadow: 'none'
   },

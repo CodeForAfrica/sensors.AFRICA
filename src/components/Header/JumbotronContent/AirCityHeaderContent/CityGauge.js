@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import ReactDOM from 'react-dom';
 import ReactSpeedometer from 'react-d3-speedometer';
 
 import Grid from '@material-ui/core/Grid';
@@ -61,7 +61,7 @@ const styles = theme => ({
     },
     width: '600px',
     height: '300px',
-    top: '64px',
+    top: '80px',
     position: 'absolute'
   },
   gaugeArc: {
@@ -83,7 +83,7 @@ const styles = theme => ({
     },
     width: '300px',
     height: '150px',
-    top: '14rem',
+    top: '15rem',
     justify: 'center',
     position: 'absolute'
   },
@@ -107,7 +107,10 @@ const styles = theme => ({
 });
 
 class CityGauge extends Component {
-  componentDidMount() {
+  render() {
+    const { classes } = this.props;
+    let { airPollMeasurement } = this.props;
+    this.node = ReactDOM.findDOMNode(this);
     if (this.node instanceof HTMLElement) {
       const gaugeLabels = this.node.querySelectorAll('.label > text');
       let deg = -90;
@@ -117,21 +120,23 @@ class CityGauge extends Component {
           const newtrans = `rotate(${deg}) translate(0,-200)`;
           deg += 22.5;
           valueLabel.setAttribute('transform', newtrans);
-          valueLabel.setAttribute('fill', 'white');
+          valueLabel.setAttribute('style', 'fill: white');
         }
       }
 
-      let transform = 0;
+      // Set value outside the arc
       const currentVal = this.node.querySelector('.current-value');
-      const { airPollMeasurement } = this.props;
+      let transform = 0;
       if (currentVal) {
-        transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
+        transform =
+          ((parseFloat(airPollMeasurement) / 160) * 180).toFixed(2) - 90;
         currentVal.setAttribute(
           'transform',
-          `rotate(${transform}) translate(0,-315)`
+          `rotate(${transform}) translate(0,-310)`
         );
       }
 
+      // Customise pointer
       const pointer = this.node.querySelector('.pointer > path');
       pointer.setAttribute('stroke-width', '10');
       pointer.setAttribute('stroke', '#144a3d');
@@ -139,18 +144,21 @@ class CityGauge extends Component {
         pointer.setAttribute('transform', `rotate(${transform})`);
       }
     }
-  }
 
-  render() {
-    const { airPollMeasurement, classes } = this.props;
-    const airStat = ((airPollMeasurement / 10) * 100).toFixed(1);
-    let gaugeText = '';
-    if (airStat > 100) {
-      gaugeText = `${airStat - 100}% OVER THE`;
-    } else if (airStat < 100) {
-      gaugeText = `${100 - airStat}% BELOW THE`;
+    // Texts on top of the gauge
+    let gaugeText = 'AT THE';
+    let gaugeBigText = 'SAFE LEVEL';
+    if (isNaN(airPollMeasurement)) {
+      gaugeText = 'Measurements not';
+      gaugeBigText = 'Recorded';
+      airPollMeasurement = 0;
     } else {
-      gaugeText = 'AT THE ';
+      const airStat = ((parseFloat(airPollMeasurement) / 10) * 100).toFixed(1);
+      if (airStat > 100) {
+        gaugeText = `${(airStat - 100).toFixed(1)}% OVER THE`;
+      } else if (airStat < 100) {
+        gaugeText = `${(100 - airStat).toFixed(1)}% BELOW THE`;
+      }
     }
     return (
       <Grid
@@ -161,9 +169,6 @@ class CityGauge extends Component {
         justify="center"
         alignItems="center"
         style={{ paddingTop: '0.45rem', height: 'auto' }}
-        ref={node => {
-          this.node = node;
-        }}
       >
         <Grid container item xs={12} md={3} lg={3} direction="column">
           <p className={classes.gaugeBox}>
@@ -189,7 +194,7 @@ class CityGauge extends Component {
               ringWidth={60}
               minValue={0}
               maxValue={150}
-              value={airPollMeasurement}
+              value={parseFloat(airPollMeasurement)}
               segments={8}
               startColor="#5fbf82"
               endColor="#b72025"
@@ -231,7 +236,7 @@ class CityGauge extends Component {
                 textAnchor="middle"
                 className={classes.gaugeBigText}
               >
-                SAFE LEVEL
+                {gaugeBigText}
               </text>
               <text
                 transform="translate(0,70)"
@@ -265,7 +270,7 @@ class CityGauge extends Component {
 
 CityGauge.propTypes = {
   classes: PropTypes.object.isRequired,
-  airPollMeasurement: PropTypes.number.isRequired
+  airPollMeasurement: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(CityGauge);
