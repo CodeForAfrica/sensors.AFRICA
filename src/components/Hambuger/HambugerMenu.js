@@ -26,7 +26,7 @@ const styles = theme => ({
   listItem: {
     color: 'white',
     display: 'block',
-    height: '18px',
+    height: '18px'
   },
 
   modalContent: {
@@ -37,10 +37,10 @@ const styles = theme => ({
     left: '0%',
     [theme.breakpoints.up('md')]: {
       width: '25%',
-      left: '75%',
+      left: '75%'
     },
     [theme.breakpoints.up('xl')]: {
-      top: '4%',
+      top: '4%'
     }
   },
   typography: {
@@ -49,7 +49,7 @@ const styles = theme => ({
     fontWeight: '700'
   },
   link: {
-    textDecoration: 'none',
+    textDecoration: 'none'
   }
 });
 
@@ -94,15 +94,20 @@ class HambugerMenu extends React.Component {
             direction="column"
             className={classes.list}
           >
-            <Link to="/" className={classes.link}>
+            <a
+              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              className={classes.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   STORIES
                 </Typography>
               </MenuItem>
-            </Link>
+            </a>
 
-            <Link to="/" className={classes.link}>
+            <Link to="/air/how-sensors-work" className={classes.link}>
               <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   RESOURCES
@@ -110,13 +115,18 @@ class HambugerMenu extends React.Component {
               </MenuItem>
             </Link>
 
-            <Link to="/" className={classes.link}>
+            <a
+              href="https://archive.sensors.africa/"
+              className={classes.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   DATA
                 </Typography>
               </MenuItem>
-            </Link>
+            </a>
 
             <Link to="/air/join-network" className={classes.link}>
               <MenuItem className={classes.listItem}>

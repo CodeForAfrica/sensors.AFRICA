@@ -47,18 +47,17 @@ class MenuButton extends Component {
         marginBottom: open ? '0' : '4px'
       },
       lineMiddle: {
-         opacity: open ? 0 : 1,
-         transform: open ? 'none' : 'none'
+        opacity: open ? 0 : 1
       },
       lineBottom: {
         transform: open ? 'rotate(-45deg)' : 'none',
-        marginTop: open ? '-8px': '4px'
+        marginTop: open ? '-8px' : '4px'
       }
     };
     return (
       <div
         className={classes.container}
-        onClick={ onClick }
+        onClick={onClick}
         role="button"
         tabIndex="0"
       >
