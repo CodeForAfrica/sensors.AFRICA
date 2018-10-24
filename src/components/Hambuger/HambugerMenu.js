@@ -17,14 +17,18 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4
   },
   list: {
-    color: 'white'
+    color: 'white',
   },
+  listItem: {
+    color: 'white',
+    textAlign: 'right',
+  },
+
   modalContent: {
     margin: 'auto',
     padding: '20px',
     height: 'auto',
-    position: 'fixed',
-    top: '20%',
+    top: '13%',
     left: '0%',
     [theme.breakpoints.up('md')]: {
       width: '20%',
@@ -32,10 +36,11 @@ const styles = theme => ({
     }
   },
   typography: {
-    color: '#fff'
+    color: '#fff',
+    textAlign: 'right'
   },
   link: {
-    textDecoration: 'none'
+    textDecoration: 'none',
   }
 });
 
@@ -78,45 +83,50 @@ class HambugerMenu extends React.Component {
             item
             xs={3}
             direction="column"
-            justify="center"
-            alignItems="flex-end"
           >
             <Link to="/air" className={classes.link}>
-              <MenuItem>
+              <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
-                  HOME
+                  STORIES
                 </Typography>
               </MenuItem>
             </Link>
 
             <Link to="/air/about" className={classes.link}>
-              <MenuItem>
+              <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
-                  ABOUT
+                  RESOURCES
                 </Typography>
               </MenuItem>
             </Link>
 
             <Link to="/air/how-sensors-work" className={classes.link}>
-              <MenuItem>
+              <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
-                  HOW SENSORS WORK
-                </Typography>
-              </MenuItem>
-            </Link>
-
-            <Link to="/air/city" className={classes.link}>
-              <MenuItem>
-                <Typography className={classes.typography} variant="subtitle1">
-                  CITY
+                  DATA
                 </Typography>
               </MenuItem>
             </Link>
 
             <Link to="/air/join-network" className={classes.link}>
-              <MenuItem>
+              <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   JOIN
+                </Typography>
+              </MenuItem>
+            </Link>
+
+            <Link to="/air/join-network" className={classes.link}>
+              <MenuItem className={classes.listItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  ABOUT
+                </Typography>
+              </MenuItem>
+            </Link>
+            <Link to="/air/join-network" className={classes.link}>
+              <MenuItem className={classes.listItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  CONTACT
                 </Typography>
               </MenuItem>
             </Link>

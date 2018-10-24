@@ -12,7 +12,9 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     cursor: 'pointer',
-    padding: 4
+    padding: 4,
+    zIndex: '1301',
+    position: 'relative'
   }
 };
 class MenuButton extends Component {
@@ -27,7 +29,7 @@ class MenuButton extends Component {
     super(props);
 
     const { open } = props;
-    this.state = { open };
+    this.state = { open: false };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -38,6 +40,7 @@ class MenuButton extends Component {
   render() {
     const { classes, color, onClick } = this.props;
     const { open } = this.state;
+    console.log(this.state)
     const dynamicStyles = {
       line: {
         height: 4,
@@ -47,17 +50,15 @@ class MenuButton extends Component {
       },
       lineTop: {
         transform: open ? 'rotate(45deg)' : 'none',
-        transformOrigin: 'top left',
-        marginBottom: '5px'
+        marginBottom: open ? '0' : '4px'
       },
       lineMiddle: {
-        opacity: open ? 0 : 1,
-        transform: open ? 'translateX(-16px)' : 'none'
+         opacity: open ? 0 : 1,
+         transform: open ? 'none' : 'none'
       },
       lineBottom: {
-        transform: open ? 'translateX(-1px) rotate(-45deg)' : 'none',
-        transformOrigin: 'top left',
-        marginTop: '5px'
+        transform: open ? 'rotate(-45deg)' : 'none',
+        marginTop: open ? '-8px': '4px'
       }
     };
     return (
