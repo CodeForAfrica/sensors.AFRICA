@@ -40,7 +40,12 @@ function MenuBar({ classes }) {
     >
       <Grid item>
         <Link to="/">
-          <img src={logowhite} className={classes.logo} alt="sensors.AFRICA" height="100" />
+          <img
+            src={logowhite}
+            className={classes.logo}
+            alt="sensors.AFRICA"
+            height="100"
+          />
         </Link>
       </Grid>
       <Grid item>

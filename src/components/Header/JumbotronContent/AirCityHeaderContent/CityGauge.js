@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   gaugeBox: {
     [theme.breakpoints.between('sm', 'md')]: {
-      width: '150px',
+      width: '10rem',
       marginLeft: '15%',
       padding: '40px 10px'
     },
@@ -18,12 +18,16 @@ const styles = theme => ({
       padding: '10px 10px'
     },
     color: 'white',
+    fontStyle: 'italic',
     textAlign: 'center',
     width: '250px',
     marginLeft: '20%',
     padding: '40px 15px',
     marginTop: '-30%',
     border: '1px white solid'
+  },
+  gaugeBoxWhoTitle: {
+    display: 'block'
   },
   gaugeDesc: {
     [theme.breakpoints.between('sm', 'md')]: {
@@ -88,20 +92,16 @@ const styles = theme => ({
     position: 'absolute'
   },
   gaugeBigText: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '13px'
-    },
-    fontSize: '24px',
-    fontWeight: 'bold',
+    fontFamily: theme.typography.h6.fontFamily,
+    fontSize: theme.typography.h6.fontSize,
+    fontWeight: 700,
     fill: '#164a3e'
   },
 
   gaugeSmallText: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '10px;'
-    },
-    fontSize: '14px',
-    fontWeight: 'bold',
+    fontSize: theme.typography.caption.fontSize,
+    fontFamily: theme.typography.caption.fontFamily,
+    fontWeight: theme.typography.caption.fontWeight,
     fill: '#164a3e'
   }
 });
@@ -170,8 +170,11 @@ class CityGauge extends Component {
         <Hidden smDown>
           <Grid container item xs={12} md={3} lg={3} direction="column">
             <p className={classes.gaugeBox}>
-              WHO Guideline (10) Lowest level at which premature mortality
-              increases inresponse to long term exposure
+              <span className={classes.gaugeBoxWhoTitle}>
+                WHO Guideline (10)
+              </span>
+              Lowest level at which premature mortality increases inresponse to
+              long term exposure
             </p>
           </Grid>
         </Hidden>
@@ -254,13 +257,12 @@ class CityGauge extends Component {
             <p className={classes.gaugeDesc}>
               <strong>
                 *PM
-                <sub>2.5</sub> concentrations measured in microgrmas of
-                particles per cubic meter of air <span>&#181;</span>
-                g/m3
+                <sub>2.5</sub> concentrations measured in micrograms of
+                particles per cubic meter of air (µg/m <sup>3</sup>)
               </strong>
               <br />
               <br />
-              <em>Data: WHO Global Platform on Air Quality & Health</em>
+              <em>Data: WHO Global Platform on Air Quality &amp; Health</em>
             </p>
           </Grid>
         </Hidden>

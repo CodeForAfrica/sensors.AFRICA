@@ -107,18 +107,19 @@ function HardwareInfo({ classes }) {
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
             <Typography variant="caption" className={classes.caption}>
-              The sensors is used to measure PM10 and PM2.5 particles for
-              concentration ranes between 0-999ug/m3.It usess laser scattering
-              principle to get particles concentration between0.3 to 10ug in the
-              air. Air gets inthrough the pitot inlet, then it passes through
-              the detection area before being ejected from the senors through
-              the built fan. Laser scattering can be induced when particles go
-              through the the detection area.The scattered light is transformed
-              into electrical signals and these signals will be amplified and
-              processed. The number and diameteer of particles can be obtained
-              by analysis because the signal waveform has certain relations with
-              the partice diameter. It has a response time of 10 seconds with a
-              change of scene, making data collectiction near real time.
+              This sensors is used to measure PM10 and PM2.5 particles for
+              concentration ranges between 0-999µg/m3. It uses laser scattering
+              principle to get particles concentration between 0.3 to 10ug in
+              the air. Air gets in through the pitot inlet, then it passes
+              through the detection area before being ejected from the sensors
+              through the built fan. Laser scattering can be induced when
+              particles go through the the detection area.The scattered light is
+              transformed into electrical signals and these signals will be
+              amplified and processed. The number and diameter of particles can
+              be obtained by analysis because the signal waveform has certain
+              relations with the particle diameter. It has a response time of 10
+              seconds with a change of scene, making data collectiction near
+              real time.
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.titleSection}>
@@ -137,9 +138,9 @@ function HardwareInfo({ classes }) {
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
             <Typography variant="caption" className={classes.caption}>
-              The sensors is used to measure temperator and the humidity.It uses
-              a capacitative humidity sensor and a themostat to measure the
-              surrounding air, and spits out a digital signal on the data pin.
+              The sensors is used to measure temperature and the humidity. It
+              uses a capacitive humidity sensor and a thermostat to measure the
+              surrounding air, and spits out a digital signal on the data pin
             </Typography>
           </Grid>
         </Grid>
@@ -168,7 +169,7 @@ function HardwareInfo({ classes }) {
               environment. This is the mini computer that reads data from and
               controls the sensors. Unlike other microcontrollers, it has a wifi
               module onboard making communication of IoT projects a breeze. With
-              4mb of RAM it rates highter than other boards in its class.
+              4mb of RAM it rates higher than other boards in its class
             </Typography>
           </Grid>
 
@@ -183,11 +184,11 @@ function HardwareInfo({ classes }) {
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
             <Typography variant="caption" className={classes.caption}>
-              The SIM800L is a low cost cell-pone module. It supports quad-band
-              GSM/GPRRS network and is available for GPRS and SMS message data
+              The SIM800L is a low cost cell-phone module. It supports quad-band
+              GSM/GPRS network and is available for GPRS and SMS message data
               remote transmission. The board features compact size and low
               current consumption. With power saving technique,the current
-              consumption is as low as 1mA mode.
+              consumption is as low as 1mA mode
             </Typography>
           </Grid>
         </Grid>

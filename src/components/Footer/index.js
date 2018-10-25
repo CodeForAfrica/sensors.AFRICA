@@ -54,7 +54,8 @@ const styles = theme => ({
   },
   titles: {
     color: 'white',
-    fontWeight: 800
+    fontWeight: 800,
+    textTransform: 'none'
   },
   socialMediaContainer: {
     paddingTop: '1rem',
@@ -129,7 +130,7 @@ function Footer({ classes }) {
         </Grid>
         <Grid item className={classes.footerAboutContainer}>
           <Typography variant="h6" className={classes.titles}>
-            ABOUT SENSORS.AFRICA
+            ABOUT sensors.AFRICA
           </Typography>
           <Typography variant="caption" className={classes.aboutContent}>
             sensors.AFRICA is a pan-African citizen science initiative that uses

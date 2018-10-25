@@ -77,7 +77,8 @@ const styles = theme => ({
     textTransform: 'uppercase'
   },
   sup: {
-    fontSize: theme.typography.fontSize
+    fontSize: theme.typography.fontSize,
+    textTransform: 'none'
   }
 });
 
@@ -152,10 +153,15 @@ function PollutionStats({ classes }) {
             annual average of
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            17 <sup className={classes.sup}>ug/m3</sup>
+            17{' '}
+            <sup className={classes.sup}>
+              µg/m
+              <sup>3</sup>
+            </sup>
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitle}>
-            of PM2.5 particles.
+            of PM
+            <sub>2.5</sub> particles.
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleContinue}>
             That&apos;s 70% more than the
@@ -167,108 +173,6 @@ function PollutionStats({ classes }) {
       </Grid>
     </Grid>
   );
-
-  /* <Grid
-        item
-        xs={12}
-        container
-        className={classes.mainGrid}
-        justify="center"
-        alignItems="center"
-      >
-        <Grid
-          item
-          xs={12}
-          md={4}
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-          <Grid item xs={10} className={classes.stat}>
-            <Grid className={classes.deathTitle}>
-              <Typography variant="subtitle1" className={classes.subtitle1}>
-                Death by air pollution in Kenya yearly
-              </Typography>
-              <Typography variant="h3" className={classes.statHighlight}>
-                5,102
-              </Typography>
-            </Grid>
-
-            <Grid className={classes.childDeathTitle}>
-              <Typography variant="subtitle1" className={classes.subtitle1}>
-                Child Deaths
-                <p className={classes.p}>
-                  caused by air pollution in Kenya yearly
-                </p>
-              </Typography>
-              <Typography variant="h3" className={classes.statHighlight}>
-                2,144
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={4}
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-          className={classes.statGrid}
-        >
-          <Grid item xs={10} className={classes.centerStat}>
-            <Grid className={classes.topIllnessTitle}>
-              <Typography variant="subtitle1" className={classes.subtitle1}>
-                The top illness caused by air pollution in kenya is
-              </Typography>
-            </Grid>
-            <Grid className={classes.secondColumnHeading}>
-              <Typography variant="h4" className={classes.statHighlight}>
-                ACUTE LOWER RESPIRATORY INFECTION
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={4}
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-          <Grid item xs={10} className={classes.stat}>
-            <Typography variant="heading" className={classes.title}>
-              <b>POLLUTION LEVELS IN NAIROBI</b>
-            </Typography>
-            <Grid>
-              <Typography
-                variant="subtitle1"
-                className={classes.thirdColumnFirstSubtitle}
-              >
-                The air in Nairobi has an annual average of
-              </Typography>
-            </Grid>
-            <Grid style={{ margin: '1rem' }}>
-              <Typography variant="h3" className={classes.statHighlight}>
-                17 <sup className={classes.sup}>ug/m3</sup>
-              </Typography>
-            </Grid>
-            <Grid className={classes.thirdColumnLastSubtitle}>
-              <Typography variant="subtitle1" className={classes.subtitle1}>
-                of PM2.5 particles.{' '}
-                <p className={classes.p}>
-                  That is 70% more than the WHO safe level.
-                </p>
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-       */
 }
 
 PollutionStats.propTypes = {
