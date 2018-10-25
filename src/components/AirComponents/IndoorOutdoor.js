@@ -88,6 +88,11 @@ const styles = theme => ({
       paddingTop: '2rem'
     }
   },
+  cite: {
+    color: '#F3F3F3',
+    fontStyle: 'normal',
+    textDecoration: 'underline dotted'
+  },
   cardContent: {
     color: 'white',
     textAlign: 'center'
@@ -117,8 +122,18 @@ function IndoorOutdoor({ classes }) {
               INDOOR POLLUTION
             </Typography>
             <Typography variant="subtitle2" className={classes.caption}>
-              Indoor pollution causes an estimated 4.3 million premature deaths
-              each year.
+              Indoor pollution causes an estimated{' '}
+              <cite>
+                <a
+                  href="https://www.who.int/airpollution/"
+                  className={classes.cite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  3.8
+                </a>
+              </cite>{' '}
+              million premature deaths each year.
             </Typography>
             <a
               href="https://medium.com/code-for-africa/tagged/innovateafrica"
@@ -142,8 +157,18 @@ function IndoorOutdoor({ classes }) {
               OUTDOOR POLLUTION
             </Typography>
             <Typography variant="subtitle2" className={classes.caption}>
-              Outdoor pollution causes an estimated 4.2 million premature deaths
-              each year.
+              Outdoor pollution causes an estimated{' '}
+              <cite>
+                <a
+                  href="https://www.who.int/airpollution/"
+                  className={classes.cite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  4.2
+                </a>
+              </cite>{' '}
+              million premature deaths each year.
             </Typography>
             <a
               href="https://medium.com/code-for-africa/tagged/innovateafrica"
