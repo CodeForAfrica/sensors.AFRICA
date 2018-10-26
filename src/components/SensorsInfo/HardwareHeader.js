@@ -32,15 +32,8 @@ function HardwareHeader({ classes }) {
       </Grid>
       <Grid item xs={12}>
         <HardwareHeaderContent
-          title="THE SENSORS & THEIR INNER WORKING"
-          subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur
-                    turpis id ipsum volutpat laoreet. Nunc tempor tincidunt ex consequat rhoncus.
-                    Aenean condimentum metus enim, et congue lorem ultricies vitae. Vestibulum nec
-                    orci a nisl volutpat faucibus eget sit amet mauris"
-          secondsubheading="Suspendisse varius tortor augue, sit amet pulvinar leo mollis et. Morbi
-                    cursus non urna a vulputate. Proin fermentum vitae ipsum sit amet viverra. Cras
-                    ut libero rhoncus, pellentesque ipsum a, lobortis nisi. Etiam sed risus ultricies,
-                    tempus dui a, accumsan quam. "
+          title="THE SENSORS &amp; THEIR INNER WORKING"
+          subheading="The sensors units are modular and use off-the shelf sensors and microprocessor components to create a low cost and durable package that can be setup at any location using either Wifi or GSM connectivity"
         />
       </Grid>
     </Grid>

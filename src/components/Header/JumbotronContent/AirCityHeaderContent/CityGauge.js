@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import ReactDOM from 'react-dom';
 import ReactSpeedometer from 'react-d3-speedometer';
 
-import Grid from '@material-ui/core/Grid';
+import { Grid, Hidden } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   gaugeBox: {
     [theme.breakpoints.between('sm', 'md')]: {
-      width: '150px',
+      width: '10rem',
       marginLeft: '15%',
       padding: '40px 10px'
     },
@@ -18,12 +18,16 @@ const styles = theme => ({
       padding: '10px 10px'
     },
     color: 'white',
+    fontStyle: 'italic',
     textAlign: 'center',
     width: '250px',
     marginLeft: '20%',
     padding: '40px 15px',
     marginTop: '-30%',
     border: '1px white solid'
+  },
+  gaugeBoxWhoTitle: {
+    display: 'block'
   },
   gaugeDesc: {
     [theme.breakpoints.between('sm', 'md')]: {
@@ -61,7 +65,7 @@ const styles = theme => ({
     },
     width: '600px',
     height: '300px',
-    top: '64px',
+    top: '80px',
     position: 'absolute'
   },
   gaugeArc: {
@@ -83,31 +87,30 @@ const styles = theme => ({
     },
     width: '300px',
     height: '150px',
-    top: '14rem',
+    top: '15rem',
     justify: 'center',
     position: 'absolute'
   },
   gaugeBigText: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '13px'
-    },
-    fontSize: '24px',
-    fontWeight: 'bold',
+    fontFamily: theme.typography.h6.fontFamily,
+    fontSize: theme.typography.h6.fontSize,
+    fontWeight: 700,
     fill: '#164a3e'
   },
 
   gaugeSmallText: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '10px;'
-    },
-    fontSize: '14px',
-    fontWeight: 'bold',
+    fontSize: theme.typography.caption.fontSize,
+    fontFamily: theme.typography.caption.fontFamily,
+    fontWeight: theme.typography.caption.fontWeight,
     fill: '#164a3e'
   }
 });
 
 class CityGauge extends Component {
-  componentDidMount() {
+  render() {
+    const { classes } = this.props;
+    let { airPollMeasurement } = this.props;
+    this.node = ReactDOM.findDOMNode(this);
     if (this.node instanceof HTMLElement) {
       const gaugeLabels = this.node.querySelectorAll('.label > text');
       let deg = -90;
@@ -117,21 +120,23 @@ class CityGauge extends Component {
           const newtrans = `rotate(${deg}) translate(0,-200)`;
           deg += 22.5;
           valueLabel.setAttribute('transform', newtrans);
-          valueLabel.setAttribute('fill', 'white');
+          valueLabel.setAttribute('style', 'fill: white');
         }
       }
 
-      let transform = 0;
+      // Set value outside the arc
       const currentVal = this.node.querySelector('.current-value');
-      const { airPollMeasurement } = this.props;
+      let transform = 0;
       if (currentVal) {
-        transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
+        transform =
+          ((parseFloat(airPollMeasurement) / 160) * 180).toFixed(2) - 90;
         currentVal.setAttribute(
           'transform',
-          `rotate(${transform}) translate(0,-315)`
+          `rotate(${transform}) translate(0,-310)`
         );
       }
 
+      // Customise pointer
       const pointer = this.node.querySelector('.pointer > path');
       pointer.setAttribute('stroke-width', '10');
       pointer.setAttribute('stroke', '#144a3d');
@@ -139,44 +144,46 @@ class CityGauge extends Component {
         pointer.setAttribute('transform', `rotate(${transform})`);
       }
     }
-  }
 
-  render() {
-    const { airPollMeasurement, classes } = this.props;
-    const airStat = ((airPollMeasurement / 10) * 100).toFixed(1);
-    let gaugeText = '';
-    if (airStat > 100) {
-      gaugeText = `${airStat - 100}% OVER THE`;
-    } else if (airStat < 100) {
-      gaugeText = `${100 - airStat}% BELOW THE`;
+    // Texts on top of the gauge
+    let gaugeText = 'AT THE';
+    let gaugeBigText = 'SAFE LEVEL';
+    if (isNaN(airPollMeasurement)) {
+      gaugeText = 'Measurements not';
+      gaugeBigText = 'Recorded';
+      airPollMeasurement = 0;
     } else {
-      gaugeText = 'AT THE ';
+      const airStat = ((parseFloat(airPollMeasurement) / 10) * 100).toFixed(1);
+      if (airStat > 100) {
+        gaugeText = `${(airStat - 100).toFixed(1)}% OVER THE`;
+      } else if (airStat < 100) {
+        gaugeText = `${(100 - airStat).toFixed(1)}% BELOW THE`;
+      }
     }
     return (
       <Grid
         container
-        item
-        xs={12}
-        direction="row"
         justify="center"
         alignItems="center"
         style={{ paddingTop: '0.45rem', height: 'auto' }}
-        ref={node => {
-          this.node = node;
-        }}
       >
-        <Grid container item xs={12} md={3} lg={3} direction="column">
-          <p className={classes.gaugeBox}>
-            WHO Guideline (10) Lowest level at which premature mortality
-            increases inresponse to long term exposure
-          </p>
-        </Grid>
+        <Hidden smDown>
+          <Grid container item xs={12} md={3} lg={3} direction="column">
+            <p className={classes.gaugeBox}>
+              <span className={classes.gaugeBoxWhoTitle}>
+                WHO Guideline (10)
+              </span>
+              Lowest level at which premature mortality increases inresponse to
+              long term exposure
+            </p>
+          </Grid>
+        </Hidden>
         <Grid
-          container
           item
           xs={12}
           md={6}
           lg={6}
+          container
           alignItems="center"
           direction="column"
         >
@@ -189,7 +196,7 @@ class CityGauge extends Component {
               ringWidth={60}
               minValue={0}
               maxValue={150}
-              value={airPollMeasurement}
+              value={parseFloat(airPollMeasurement)}
               segments={8}
               startColor="#5fbf82"
               endColor="#b72025"
@@ -231,7 +238,7 @@ class CityGauge extends Component {
                 textAnchor="middle"
                 className={classes.gaugeBigText}
               >
-                SAFE LEVEL
+                {gaugeBigText}
               </text>
               <text
                 transform="translate(0,70)"
@@ -245,19 +252,20 @@ class CityGauge extends Component {
             </g>
           </svg>
         </Grid>
-        <Grid container item xs={12} md={3} direction="column">
-          <p className={classes.gaugeDesc}>
-            <strong>
-              *PM
-              <sub>2.5</sub> concentrations measured in microgrmas of particles
-              per cubic meter of air <span>&#181;</span>
-              g/m3
-            </strong>
-            <br />
-            <br />
-            <em>Data: WHO Global Platform on Air Quality & Health</em>
-          </p>
-        </Grid>
+        <Hidden smDown>
+          <Grid container item xs={12} md={3} direction="column">
+            <p className={classes.gaugeDesc}>
+              <strong>
+                *PM
+                <sub>2.5</sub> concentrations measured in micrograms of
+                particles per cubic meter of air (µg/m <sup>3</sup>)
+              </strong>
+              <br />
+              <br />
+              <em>Data: WHO Global Platform on Air Quality &amp; Health</em>
+            </p>
+          </Grid>
+        </Hidden>
       </Grid>
     );
   }
@@ -265,7 +273,7 @@ class CityGauge extends Component {
 
 CityGauge.propTypes = {
   classes: PropTypes.object.isRequired,
-  airPollMeasurement: PropTypes.number.isRequired
+  airPollMeasurement: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(CityGauge);

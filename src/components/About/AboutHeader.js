@@ -31,8 +31,8 @@ function AboutHeader({ classes }) {
       </Grid>
       <Grid item xs={12}>
         <AboutHeaderContent
-          title="About sensors.AFRICA"
-          subheading="sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities.The initiative was seed-funded by innovateAFRICA, and is being incubated by Code For Africa"
+          title="ABOUT sensors.AFRICA"
+          subheading="sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities. The initiative was seed-funded by innovateAFRICA, and is being incubated by Code for Africa"
         />
       </Grid>
     </Grid>

@@ -66,36 +66,28 @@ function Partners({ classes }) {
         className={classes.mainGrid}
       >
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img
-            src={business}
-            alt="Business Daily Logo"
-            className={classes.img}
-          />
+          <img src={business} alt="Business Daily" className={classes.img} />
         </Grid>
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={premium} alt="Premium Times Logo" className={classes.img} />
+          <img src={premium} alt="Premium Times" className={classes.img} />
         </Grid>
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={guardian} alt="The guardian Logo" className={classes.img} />
+          <img src={guardian} alt="The Guardian" className={classes.img} />
         </Grid>
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={nation} alt="The nation Logo" className={classes.img} />
+          <img src={nation} alt="The Nation" className={classes.img} />
         </Grid>
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={star} alt="The Star Logo" className={classes.img} />
+          <img src={star} alt="The Star" className={classes.img} />
         </Grid>
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={womanng} alt="Woman NG Logo" className={classes.img} />
+          <img src={womanng} alt="Woman NG" className={classes.img} />
         </Grid>
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img
-            src={dailynation}
-            alt="Daily Nation Logo"
-            className={classes.img}
-          />
+          <img src={dailynation} alt="Daily Nation" className={classes.img} />
         </Grid>
         <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={cable} alt="The Cable Logo" className={classes.img} />
+          <img src={cable} alt="The Cable" className={classes.img} />
         </Grid>
       </Grid>
 

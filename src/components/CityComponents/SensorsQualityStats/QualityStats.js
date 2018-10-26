@@ -10,10 +10,12 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     marginTop: theme.spacing.unit * 8,
-    marginBottom: theme.spacing.unit * 4
+    marginBottom: theme.spacing.unit * 4,
+    paddingRight: '7rem',
+    paddingLeft: '7rem'
   },
   button: {
-    backgroundColor: '#164B3E',
+    backgroundColor: theme.palette.primary.dark,
     color: '#fff',
     height: 50,
     width: 100,
@@ -27,22 +29,19 @@ const styles = theme => ({
     margin: '2rem'
   },
   display2: {
-    color: '#2fb568'
+    color: theme.palette.primary.light
   },
   caption: {
-    textAlign: 'center',
-    margin: '2rem'
+    textAlign: 'center'
   },
   small: {
-    paddingTop: '1rem',
-    color: '#2fb568',
     fontSize: '1.5rem'
   }
 });
 
 function SensorsDataReport({ classes }) {
   return (
-    <Grid container className={classes.root}>
+    <Grid container className={classes.root} spacing={40}>
       <Grid item xs={12} md={4}>
         <Grid
           item
@@ -62,19 +61,26 @@ function SensorsDataReport({ classes }) {
         </Grid>
 
         <Grid item xs={12} container className={classes.container}>
-          <Typography variant="subtitle1" style={{ margin: '1em auto' }}>
+          <Typography
+            variant="h6"
+            style={{ margin: '1em auto', fontSize: '16px', fontWeight: 'bold' }}
+          >
             SUB HEADING
           </Typography>
-          <Grid container direction="row" justify="center">
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            style={{ margin: '1rem' }}
+          >
             <Typography variant="h3" className={classes.display2}>
               1,234
+              <sup className={classes.small}>Unit/H</sup>
             </Typography>
-            <small className={classes.small}>Unit/H</small>
           </Grid>
           <Typography variant="body1" className={classes.caption}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
             dapibus dui nec ligula semper eleifend. Quisque rhoncus tortor
-            consectetur, vulputate ante sed, imperdiet orci.
           </Typography>
         </Grid>
       </Grid>

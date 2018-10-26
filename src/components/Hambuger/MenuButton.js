@@ -12,7 +12,9 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     cursor: 'pointer',
-    padding: 4
+    padding: 4,
+    zIndex: '1301',
+    position: 'relative'
   }
 };
 class MenuButton extends Component {
@@ -28,11 +30,6 @@ class MenuButton extends Component {
 
     const { open } = props;
     this.state = { open };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState(prevState => ({ open: !prevState.open }));
   }
 
   render() {
@@ -47,23 +44,20 @@ class MenuButton extends Component {
       },
       lineTop: {
         transform: open ? 'rotate(45deg)' : 'none',
-        transformOrigin: 'top left',
-        marginBottom: '5px'
+        marginBottom: open ? '0' : '4px'
       },
       lineMiddle: {
-        opacity: open ? 0 : 1,
-        transform: open ? 'translateX(-16px)' : 'none'
+        opacity: open ? 0 : 1
       },
       lineBottom: {
-        transform: open ? 'translateX(-1px) rotate(-45deg)' : 'none',
-        transformOrigin: 'top left',
-        marginTop: '5px'
+        transform: open ? 'rotate(-45deg)' : 'none',
+        marginTop: open ? '-8px' : '4px'
       }
     };
     return (
       <div
         className={classes.container}
-        onClick={onClick || this.handleClick}
+        onClick={onClick}
         role="button"
         tabIndex="0"
       >

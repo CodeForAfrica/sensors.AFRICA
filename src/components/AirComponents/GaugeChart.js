@@ -10,6 +10,7 @@ const styles = {
     margin: 'auto'
   },
   circularChartWhiteCircle: {
+    display: 'block',
     stroke: '#fff'
   },
   circleBg: {
@@ -42,7 +43,7 @@ function GaugeChart(props) {
   const { classes, percentage } = props;
   return (
     <svg
-      viewBox="0 0 45 45"
+      viewBox="0 0 37 37"
       className={(classes.circularChart, classes.circularChartWhiteCircle)}
     >
       <path

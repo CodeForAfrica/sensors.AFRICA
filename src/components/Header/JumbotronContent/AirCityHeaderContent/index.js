@@ -35,7 +35,9 @@ function AirCityHeaderContent({ airPol, city, classes }) {
           {city.label.toUpperCase()}
         </Typography>
       </Grid>
-      <CityGauge airPollMeasurement={airPol} />
+      <Grid item xs={12}>
+        <CityGauge airPollMeasurement={airPol} />
+      </Grid>
     </Grid>
   );
 }
@@ -43,7 +45,7 @@ function AirCityHeaderContent({ airPol, city, classes }) {
 AirCityHeaderContent.propTypes = {
   city: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  airPol: PropTypes.number.isRequired
+  airPol: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(AirCityHeaderContent);

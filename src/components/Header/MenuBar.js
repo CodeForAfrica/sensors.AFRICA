@@ -23,6 +23,10 @@ const styles = theme => ({
   },
   iconContainer: {
     paddingTop: '2rem'
+  },
+  logo: {
+    zIndex: '1301',
+    position: 'relative'
   }
 });
 
@@ -36,7 +40,12 @@ function MenuBar({ classes }) {
     >
       <Grid item>
         <Link to="/">
-          <img src={logowhite} alt="sensors.AFRICA" height="100" />
+          <img
+            src={logowhite}
+            className={classes.logo}
+            alt="sensors.AFRICA"
+            height="100"
+          />
         </Link>
       </Grid>
       <Grid item>
