@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import ReactSpeedometer from 'react-d3-speedometer';
 
 import { Grid, Hidden } from '@material-ui/core';
@@ -107,12 +106,17 @@ const styles = theme => ({
 });
 
 class CityGauge extends Component {
-  render() {
-    const { classes } = this.props;
-    let { airPollMeasurement } = this.props;
-    this.node = ReactDOM.findDOMNode(this);
-    if (this.node instanceof HTMLElement) {
-      const gaugeLabels = this.node.querySelectorAll('.label > text');
+  constructor(props) {
+    super(props);
+
+    this.nodeRef = React.createRef();
+  }
+
+  componentDidMount() {
+    const { airPollMeasurement } = this.props;
+    const node = this.nodeRef.current;
+    if (node instanceof HTMLElement) {
+      const gaugeLabels = node.querySelectorAll('.label > text');
       let deg = -90;
       for (let i = 0; i < gaugeLabels.length; i += 1) {
         const valueLabel = gaugeLabels[i];
@@ -125,7 +129,7 @@ class CityGauge extends Component {
       }
 
       // Set value outside the arc
-      const currentVal = this.node.querySelector('.current-value');
+      const currentVal = node.querySelector('.current-value');
       let transform = 0;
       if (currentVal) {
         transform =
@@ -137,13 +141,18 @@ class CityGauge extends Component {
       }
 
       // Customise pointer
-      const pointer = this.node.querySelector('.pointer > path');
+      const pointer = node.querySelector('.pointer > path');
       pointer.setAttribute('stroke-width', '10');
       pointer.setAttribute('stroke', '#144a3d');
       if (pointer.hasAttribute('transform')) {
         pointer.setAttribute('transform', `rotate(${transform})`);
       }
     }
+  }
+
+  render() {
+    const { classes } = this.props;
+    let { airPollMeasurement } = this.props;
 
     // Texts on top of the gauge
     let gaugeText = 'AT THE';
@@ -166,6 +175,7 @@ class CityGauge extends Component {
         justify="center"
         alignItems="center"
         style={{ paddingTop: '0.45rem', height: 'auto' }}
+        ref={this.nodeRef}
       >
         <Hidden smDown>
           <Grid container item xs={12} md={3} lg={3} direction="column">

@@ -12,8 +12,9 @@ import SocialMedia from '../SocialMedia';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    width: '100vw',
+    flexGrow: 1
+  },
+  appBar: {
     backgroundColor: '#2e2e2e',
     boxShadow: 'none'
   },
@@ -70,9 +71,14 @@ const styles = theme => ({
 
 function Navbar({ classes }) {
   return (
-    <Grid container>
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
       <Grid item xs={12}>
-        <AppBar position="static" className={classes.root}>
+        <AppBar position="static" className={classes.appBar}>
           <Toolbar className={classes.toolbar} disableGutters>
             <Grid
               container

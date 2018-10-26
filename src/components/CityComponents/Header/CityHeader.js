@@ -9,6 +9,7 @@ import AirCityHeaderContent from '../../Header/JumbotronContent/AirCityHeaderCon
 
 const styles = theme => ({
   jumbotron: {
+    flexGrow: 1,
     backgroundColor: '#2FB56B',
     borderRadius: 'none',
     height: 566,
@@ -20,9 +21,11 @@ const styles = theme => ({
 
 function CityHeader({ airPol, city, classes, handleChange }) {
   return (
-    <Grid className={classes.jumbotron} container item xs={12}>
-      <CityMenuBar handleChange={handleChange} />
-      <AirCityHeaderContent city={city} airPol={airPol} />
+    <Grid container className={classes.jumbotron}>
+      <Grid item xs={12}>
+        <CityMenuBar handleChange={handleChange} />
+        <AirCityHeaderContent city={city} airPol={airPol} />
+      </Grid>
     </Grid>
   );
 }

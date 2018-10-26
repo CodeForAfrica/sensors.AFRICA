@@ -8,6 +8,7 @@ import IframeComponent from './IframeComponent';
 
 const styles = theme => ({
   root: {
+    flexGrow: 1,
     height: 610,
     width: '100%',
     marginBottom: '3rem',
@@ -26,9 +27,9 @@ function TanzaniaMap({ classes }) {
   return (
     <Grid
       container
+      className={classes.root}
       justify="center"
       alignItems="center"
-      className={classes.root}
     >
       <Grid item xs={12}>
         <Typography variant="h5" className={classes.headline}>
