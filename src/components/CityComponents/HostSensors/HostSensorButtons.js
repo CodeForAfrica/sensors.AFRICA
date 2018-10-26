@@ -9,13 +9,13 @@ const styles = theme => ({
     flexGrow: 1
   },
   buttonContained: {
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     color: '#fff',
     borderRadius: 0,
     margin: theme.spacing.unit * 2
   },
   buttonOutlined: {
-    color: '#164B3E',
+    color: theme.palette.primary.dark,
     borderRadius: 0,
     margin: theme.spacing.unit * 2
   },

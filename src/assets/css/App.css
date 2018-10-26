@@ -27,15 +27,12 @@
   line-height: 3em;
   border-radius: 50%;
   background: #18bc9c;
-  color: white;
   position: relative;
 }
 .list-ic li::before {
   content: '';
   position: absolute;
-  background: black;
-  z-index: -1;
-  opacity: 0.1;
+  background: rgba(192, 192, 192, 0.9);
 }
 .list-ic.vertical {
   padding: 0;
@@ -46,37 +43,45 @@
   text-align: left;
 }
 .list-ic.vertical li::before {
-  top: -60px;
+  top: -25px;
   left: 31px;
   width: 0.1em;
-  height: 8em;
+  height: 10em;
+  visibility: visible;
 }
 
 .card {
-  display: inline-block;
   position: relative;
-  background: pink;
-  padding: 15px;
-  padding-left: 30px;
+  background: white;
   margin-left: 30px;
   margin-left: 3rem;
-  height: 80px;
-  width: 300px;
+  height: 6.5rem;
+  width: 28rem;
   border-radius: none;
+  border: 1px solid black;
 }
-.card:after {
+.card:after,
+.card:before {
   content: '';
-  display: block;
   position: absolute;
   right: 100%;
   top: 50%;
-  margin-top: -30px;
   width: 0;
   height: 0;
-  border-top: 30px solid transparent;
-  border-right: 30px solid pink;
-  border-bottom: 30px solid transparent;
-  border-left: 30px solid transparent;
+}
+.card:after {
+  border-top: 20px solid transparent;
+  border-right: 20px solid white;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid transparent;
+  margin-top: -20px;
+}
+.card:before {
+  border-top: 21px solid transparent;
+  border-right: 21px solid black;
+  border-bottom: 21px solid transparent;
+  border-left: 21px solid transparent;
+  margin-top: -21px;
 }
 
 .Email-footerInput input {

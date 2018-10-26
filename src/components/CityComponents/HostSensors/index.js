@@ -27,6 +27,10 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       marginTop: theme.spacing.unit * 8
     }
+  },
+  mainGrid: {
+    paddingRight: '4rem',
+    paddingLeft: '4rem'
   }
 });
 
@@ -42,12 +46,13 @@ function HostSensor({ classes }) {
         <HostSensorButtons />
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item xs={12} className={classes.mainGrid}>
         <Grid
           container
           className={classes.description}
           justify="center"
           alignItems="center"
+          spacing={40}
         >
           <Grid item xs={12} md={6} className={classes.arrowDescription}>
             <ArrowCards />

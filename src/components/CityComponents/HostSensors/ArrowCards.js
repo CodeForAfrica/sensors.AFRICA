@@ -1,33 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Card,
-  Grid,
-  Typography,
-  ListItem,
-  List,
-  CardContent,
-  Button
-} from '@material-ui/core';
+import { Grid, Typography, ListItem, List, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import '../../../assets/css/App.css';
 
 const styles = theme => ({
   findOutMore: {
-    color: '#164B3E'
+    color: theme.palette.primary.dark
   },
   buttonContained: {
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     color: '#fff',
     borderRadius: 0,
     margin: theme.spacing.unit * 2,
     marginLeft: 80
   },
-  body2: {
-    color: 'black',
-    opacity: '0.8'
+  body1: {
+    fontSize: '14px',
+    fontWeight: 'bold',
+    textDecoration: 'underline'
+  },
+  gridContent: {
+    textAlign: 'center',
+    padding: '1.5rem'
+  },
+  tweetContent: {
+    fontSize: theme.typography.fontSize
+  },
+  titleText: {
+    marginLeft: '4.5rem',
+    color: theme.palette.primary.light,
+    fontSize: theme.typography.fontSize
   }
 });
 
@@ -35,15 +40,12 @@ function ArrowCards({ classes }) {
   return (
     <Grid
       container
-      className={classes.tweetGrid}
       justify="center"
       alignItems="center"
+      style={{ paddingTop: '1rem' }}
     >
       <Grid item xs={12} container justify="center" alignItems="center">
-        <Typography
-          variant="body1"
-          style={{ marginLeft: '4.5rem', color: 'green' }}
-        >
+        <Typography variant="h6" className={classes.titleText}>
           WHO CAN I REPORT AIR SENSORS QUALITY TO?
         </Typography>
       </Grid>
@@ -52,72 +54,87 @@ function ArrowCards({ classes }) {
           <ListItem className={classes.list}>
             <span />
 
-            <Card className="card">
-              <CardContent
-                style={{ textDecoration: 'underline', textAlign: 'center' }}
-              >
-                <Typography variant="body1" className={classes.body2}>
+            <Grid className="card">
+              <Grid className={classes.gridContent}>
+                <Typography variant="h6" className={classes.body1}>
                   Local Government
                 </Typography>
-                <Typography variant="body1" className={classes.body2}>
+                <Typography variant="h6" className={classes.body1}>
                   Environment Ministry
                 </Typography>
-              </CardContent>
-            </Card>
+              </Grid>
+            </Grid>
           </ListItem>
+
+          <Grid container direction="row" justify="center" alignItems="center">
+            <Typography variant="h6" className={classes.titleText}>
+              WHO REPORTS HAVE BEEN SENT?
+            </Typography>
+          </Grid>
 
           <ListItem>
             <span />
-            <Card className="card">
-              <CardContent style={{ textAlign: 'center' }}>
-                <Typography variant="body1" className={classes.body2}>
+            <Grid className="card">
+              <Grid className={classes.gridContent}>
+                <Typography variant="body1" className={classes.tweetContent}>
                   <b>
                     <u>@david</u>
                   </b>{' '}
                   answered the question about
                 </Typography>
-                <Typography variant="body1" className={classes.body2}>
+                <Typography variant="body1" className={classes.tweetContent}>
                   <u>What Reports have been sent</u>
                 </Typography>
-              </CardContent>
-            </Card>
+                <Typography variant="body1" className={classes.tweetContent}>
+                  30mins ago
+                </Typography>
+              </Grid>
+            </Grid>
           </ListItem>
 
           <ListItem>
             <span />
-            <Card className="card">
-              <CardContent style={{ textAlign: 'center' }}>
-                <Typography variant="body1" className={classes.body2}>
+            <Grid className="card">
+              <Grid className={classes.gridContent}>
+                <Typography variant="body1" className={classes.tweetContent}>
                   <b>
                     <u>@david</u>
                   </b>{' '}
                   answered the question about
                 </Typography>
-                <Typography variant="body1" className={classes.body2}>
+                <Typography variant="body1" className={classes.tweetContent}>
                   <u>What Reports have been sent</u>
                 </Typography>
-              </CardContent>
-            </Card>
+                <Typography variant="body1" className={classes.tweetContent}>
+                  30mins ago
+                </Typography>
+              </Grid>
+            </Grid>
           </ListItem>
 
           <ListItem>
             <span />
-            <Card className="card">
-              <CardContent style={{ textAlign: 'center' }}>
-                <Typography variant="body1" className={classes.body2}>
+            <Grid className="card">
+              <Grid className={classes.gridContent}>
+                <Typography variant="body1" className={classes.tweetContent}>
                   <b>
                     <u>@david</u>
                   </b>{' '}
                   answered the question about
                 </Typography>
-                <Typography variant="body1" className={classes.body2}>
+                <Typography variant="body1" className={classes.tweetContent}>
                   <u>What Reports have been sent</u>
+                  <b />
                 </Typography>
-              </CardContent>
-            </Card>
+                <Typography variant="body1" className={classes.tweetContent}>
+                  30mins ago
+                </Typography>
+              </Grid>
+            </Grid>
           </ListItem>
         </List>
       </Grid>
+
       <Grid item xs={12} container justify="center" alignItems="center">
         <Button
           variant="contained"
