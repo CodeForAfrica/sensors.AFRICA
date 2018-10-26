@@ -19,7 +19,12 @@ const styles = () => ({
 
 function AboutHeaderContent({ classes, title, subheading }) {
   return (
-    <Grid className={classes.titleSection} justify="center" alignItems="center">
+    <Grid
+      container
+      className={classes.titleSection}
+      justify="center"
+      alignItems="center"
+    >
       <Grid item xs={12}>
         <Typography variant="h3" className={classes.headerText}>
           {title}

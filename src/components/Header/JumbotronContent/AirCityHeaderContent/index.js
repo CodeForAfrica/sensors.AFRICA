@@ -19,7 +19,12 @@ const styles = theme => ({
 
 function AirCityHeaderContent({ airPol, city, classes }) {
   return (
-    <Grid container className={classes.gaugeContainer}>
+    <Grid
+      container
+      className={classes.gaugeContainer}
+      justify="center"
+      alignItems="center"
+    >
       <Grid
         item
         xs={12}

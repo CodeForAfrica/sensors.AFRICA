@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
-import { LinearProgress } from '@material-ui/core';
+import { Grid, LinearProgress } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
@@ -33,6 +34,12 @@ const CITIES_LOCATION = {
 };
 const SENSOR_NAMES = ['sds021', 'sds011'];
 const SENSOR_READINGS_URL = 'https://api.airquality.codeforafrica.org/v1/now/';
+
+const styles = () => ({
+  root: {
+    flexGrow: 1
+  }
+});
 
 class City extends React.Component {
   constructor() {
@@ -121,6 +128,7 @@ class City extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     const { city, cityAirPol: airPol, isLoading } = this.state;
     let Map = KenyaMap;
     if (city.value === 'dar-es-salaam') {
@@ -129,25 +137,36 @@ class City extends React.Component {
       Map = NigeriaMap;
     }
     return (
-      <React.Fragment>
-        <Navbar />
-        {isLoading && <LinearProgress />}
-        <CityHeader
-          city={city}
-          airPol={airPol}
-          handleChange={this.handleChange}
-        />
-        <PollutionStats />
-        <Map />
-        <CallToAction />
-        <Footer />
-      </React.Fragment>
+      <Grid
+        container
+        className={classes.root}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={12}>
+          <Navbar />
+        </Grid>
+        <Grid item xs={12}>
+          {isLoading && <LinearProgress />}
+
+          <CityHeader
+            city={city}
+            airPol={airPol}
+            handleChange={this.handleChange}
+          />
+          <PollutionStats />
+          <Map />
+          <CallToAction />
+          <Footer />
+        </Grid>
+      </Grid>
     );
   }
 }
 
 City.propTypes = {
+  classes: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 };
 
-export default withRouter(City);
+export default withRouter(withStyles(styles)(City));
