@@ -181,20 +181,26 @@ dokku tags:deploy chronograf 1.4.3.0
 ### Grafana installation
 
 ```
-sudo docker pull grafana/grafana:5.2.2
-sudo docker tag grafana/grafana:5.2.2 dokku/grafana:5.2.2
+sudo docker pull grafana/grafana:5.3.2
+sudo docker tag grafana/grafana:5.3.2 dokku/sensors-aq-grafana:5.3.2
 
-dokku apps:create grafana
+dokku apps:create sensors-aq-grafana
 
-# Link with InfluxDB
-dokku docker-options:add grafana run,deploy --link influxdb.web.1:influxdb
+dokku config:set sensors-aq-grafana GF_SERVER_ROOT_URL=http://grafana.example.com \
+GF_SECURITY_ADMIN_PASSWORD=secret
 
-dokku config:set grafana INFLUXDB_URL=http://influxdb:8086 \
-GF_AUTH_ANONYMOUS_ENABLED=true
+dokku proxy:ports-add sensors-aq-grafana http:80:3000
 
-dokku proxy:ports-add grafana http:3000:3000
+dokku tags:deploy sensors-aq-grafana 5.3.2
 
-dokku tags:deploy grafana 5.2.2
+# Letsecnrypt coz HTTPS
+
+dokku domains:add sensors-aq-grafana grafana.aq.sensors.africa
+
+dokku config:set --no-restart sensors-aq-grafana DOKKU_LETSENCRYPT_EMAIL=support@codeforafrica.org
+dokku letsencrypt sensors-aq-grafana
+
+dokku config:set sensors-aq-grafana GF_SERVER_ROOT_URL=https://grafana.example.com
 
 ```
 
