@@ -102,8 +102,6 @@ function App() {
             <Route path="/air/how-sensors-work" component={AirHowSensorsWork} />
             <Route path="/air/city" component={AirCity} />
             <Route path="/air/join-network" component={AirJoinNetwork} />
-            {/* <Route exact path="/water" component={WaterHome} />
-            <Route exact path="/sound" component={SoundHome} /> */}
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
