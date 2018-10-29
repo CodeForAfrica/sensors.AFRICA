@@ -79,7 +79,9 @@ class Navbar extends React.Component {
   }
 
   toggleShowAlert(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     this.setState(prevState => ({ show: !prevState.show }));
   }
 
@@ -120,7 +122,7 @@ class Navbar extends React.Component {
                 </MenuItem>
                 <MenuItem className={classes.soundText}>
                   <a
-                    href="/water"
+                    href="/sound"
                     className={classes.soundlink}
                     onClick={this.toggleShowAlert}
                   >

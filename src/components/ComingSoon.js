@@ -117,6 +117,7 @@ class Email extends Component {
 
   handleSubmit() {
     const { onClose } = this.props;
+
     onClose();
   }
 
