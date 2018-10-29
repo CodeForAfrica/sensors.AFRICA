@@ -11,7 +11,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     color: 'white',
-    backgroundColor: theme.palette.secondary.main
+    background: 'none'
   },
   footerButton: {
     width: '100%',
@@ -49,16 +49,25 @@ class Email extends Component {
       value: 'you@gmail.com'
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
 
+  handleSubmit() {
+    const { onSubmit } = this.props;
+
+    if (onSubmit) {
+      onSubmit();
+    }
+  }
+
   render() {
     const { classes } = this.props;
     const { value } = this.state;
-    const href = `https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541&MERGE0=${value}`;
+    const href = `https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541&EMAIL=${value}`;
     return (
       <Grid
         container
@@ -71,9 +80,9 @@ class Email extends Component {
             <Input
               type="text"
               id="you@gmail.com"
-              placeholder="you@gmail.com"
+              placeholder={value}
               onChange={this.handleChange}
-              className="Email-footerInput"
+              className="Email-input"
             />
             <div className={classes.buttonContainer}>
               <a
@@ -82,7 +91,11 @@ class Email extends Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="contained" className={classes.footerButton}>
+                <Button
+                  variant="contained"
+                  className={classes.footerButton}
+                  onClick={this.handleSubmit}
+                >
                   SUBSCRIBE TO UPDATES
                 </Button>
               </a>
@@ -95,7 +108,8 @@ class Email extends Component {
 }
 
 Email.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Email);

@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import { Input, FormControl } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+
+import Email from './Email';
 
 import bglanding from '../assets/images/background/bglanding.jpg';
 
@@ -37,31 +38,24 @@ const styles = theme => ({
     left: '50%',
     transform: 'translate(-50%, -50%)',
     color: 'black',
-    // backgroundColor: 'white',
     padding: '1rem 1.5rem',
     width: '100vw',
     [theme.breakpoints.up('md')]: {
-      width: '25rem',
-      height: '18.125rem',
-      marginRight: '4.8125rem'
+      width: '25rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '37.875rem',
-      height: '29.75rem',
-      marginRight: '1.875rem',
-      padding: '3rem'
+      width: '37.875rem'
     }
   },
   closeButton: {
     color: 'white',
+    background: 'none',
     float: 'right',
-    width: '1.5rem',
     fontWeight: 800,
-    fontSize: theme.typography.h6.fontSize,
-    lineHeight: '1.5rem',
+    fontFamily: theme.typography.h6.fontFamily,
+    fontSize: theme.typography.h3.fontSize,
     textAlign: 'center',
-    cursor: 'pointer',
-    borderRadius: '0.25rem'
+    cursor: 'pointer'
   },
   showpopup: {
     opacity: '1',
@@ -69,117 +63,53 @@ const styles = theme => ({
     transform: 'scale(1.0)',
     transition: 'visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s'
   },
-  footerButton: {
-    width: '100%',
+  subtitle: {
+    margin: '1rem ',
     color: 'white',
-    '&:hover': {
-      color: theme.palette.secondary.main
-    },
-    backgroundColor: theme.palette.secondary.dark,
-    fontWeight: 800,
-    fontSize: theme.typography.subtitle2.fontSize,
-    height: '3rem',
-    [theme.breakpoints.up('lg')]: {
-      fontSize: theme.typography.subtitle1.fontSize,
-      height: '3.5rem',
-      paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+    // fontSize: theme.typography.h6.fontSize,
+    textAlign: 'justify'
   },
-  buttonContainer: {
-    paddingTop: '1rem'
-  },
-  footerInput: {
-    // Moved to `App.css` due to difficult of setting input `text-align` to `center`
-  },
-  buttonLink: {
-    textDecoration: 'none'
+  form: {
+    textAlign: 'center'
   }
 });
 
-const FORM_URL =
-  'https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541';
+function ComingSoon({ classes, show, onClose }) {
+  const containerClassName = classNames(classes.root, classes.popup, {
+    [classes.showpopup]: show
+  });
 
-class Email extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: 'you@gmail.com'
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  }
-
-  handleSubmit() {
-    const { onClose } = this.props;
-
-    onClose();
-  }
-
-  render() {
-    const { classes, show, onClose } = this.props;
-    const { value } = this.state;
-    const href = `${FORM_URL}&MERGE0=${value}`;
-    const containerClassName = classNames(classes.root, classes.popup, {
-      [classes.showpopup]: show
-    });
-
-    return (
-      <Grid
-        container
-        justify="space-around"
-        alignitems="center"
-        className={containerClassName}
-      >
-        <Grid item xs={12} className={classes.popupcontent}>
-          <button
-            type="button"
-            onClick={onClose}
-            className={classes.closeButton}
-          >
+  return (
+    <Grid
+      container
+      justify="space-around"
+      alignitems="center"
+      className={containerClassName}
+    >
+      <Grid item xs={12} className={classes.popupcontent} container>
+        <Grid item xs={12}>
+          <Button onClick={onClose} className={classes.closeButton}>
             &times;
-          </button>
-
-          <FormControl>
-            <Input
-              type="text"
-              id="you@gmail.com"
-              placeholder={value}
-              onChange={this.handleChange}
-              className="Email-footerInput"
-            />
-            <div className={classes.buttonContainer}>
-              <a
-                href={href}
-                className={classes.buttonLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="contained"
-                  className={classes.footerButton}
-                  onClick={this.handleSubmit}
-                >
-                  SUBSCRIBE TO UPDATES
-                </Button>
-              </a>
-            </div>
-          </FormControl>
+          </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            We will be launching soon. Sign up to receive updates as we build a
+            transnational and pan-African network of citizen sensors:
+          </Typography>
+        </Grid>
+        <Grid item xs={12} className={classes.form}>
+          <Email onSubmit={onClose} />
         </Grid>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
-Email.propTypes = {
+ComingSoon.propTypes = {
   classes: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired
 };
 
-export default withStyles(styles)(Email);
+export default withStyles(styles)(ComingSoon);

@@ -5,7 +5,7 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import SocialMedia from '../SocialMedia';
-import Email from './Email';
+import Email from '../Email';
 
 import '../../assets/css/App.css';
 import codeforafrica from '../../assets/images/logos/cfafrica_white.png';
