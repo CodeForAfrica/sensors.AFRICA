@@ -103,14 +103,21 @@ const FORM_URL =
 class Email extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       value: 'you@gmail.com'
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
+  }
+
+  handleSubmit() {
+    const { onClose } = this.props;
+    onClose();
   }
 
   render() {
@@ -129,15 +136,19 @@ class Email extends Component {
         className={containerClassName}
       >
         <Grid item xs={12} className={classes.popupcontent}>
-          <span onClick={onClose} className={classes.closeButton}>
+          <button
+            type="button"
+            onClick={onClose}
+            className={classes.closeButton}
+          >
             &times;
-          </span>
+          </button>
 
           <FormControl>
             <Input
               type="text"
               id="you@gmail.com"
-              placeholder="you@gmail.com"
+              placeholder={value}
               onChange={this.handleChange}
               className="Email-footerInput"
             />
@@ -148,7 +159,11 @@ class Email extends Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="contained" className={classes.footerButton}>
+                <Button
+                  variant="contained"
+                  className={classes.footerButton}
+                  onClick={this.handleSubmit}
+                >
                   SUBSCRIBE TO UPDATES
                 </Button>
               </a>
@@ -161,7 +176,9 @@ class Email extends Component {
 }
 
 Email.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  onClose: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(Email);
