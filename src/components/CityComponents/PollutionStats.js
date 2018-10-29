@@ -7,29 +7,78 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    marginTop: theme.spacing.unit * 8,
-    marginBottom: theme.spacing.unit * 4
+    backgroundColor: 'white'
   },
-  statGrid: {
+
+  statContainer: {
+    [theme.breakpoints.up('md')]: {
+      paddingBottom: '3rem'
+    }
+  },
+  statContentContainer: {
+    width: '100vw',
     textAlign: 'center',
+    paddingTop: '2rem',
+    paddingBottom: '1rem',
+    [theme.breakpoints.up('md')]: {
+      marginTop: '3rem',
+      width: '19.875rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '26.5rem'
+    }
+  },
+  statMiddleContentContainer: {
+    width: '100vw',
+    textAlign: 'center',
+    paddingTop: '2rem',
+    paddingBottom: '1rem',
     borderTop: '1px solid  rgba(0, 0, 0, 0.2)',
     borderBottom: '1px solid  rgba(0, 0, 0, 0.2)',
     [theme.breakpoints.up('md')]: {
-      border: 'none',
-      borderRight: '1px solid  rgba(0, 0, 0, 0.2)'
+      marginTop: '3rem',
+      width: '19.875rem',
+      border: '1px solid  rgba(0, 0, 0, 0.2)',
+      borderTop: 'none',
+      borderBottom: 'none'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '26.5rem'
     }
   },
-  stat: {
-    textAlign: 'center',
-    padding: '4rem',
-    [theme.breakpoints.up('md')]: {
-      height: 250,
-      padding: '0 4rem'
-    }
+  subtitle: {
+    fontWeight: theme.typography.h6.fontWeight
+  },
+  subtitleContinue: {
+    fontWeight: theme.typography.h6.fontWeight,
+    lineHeight: 1
+  },
+  subtitleLast: {
+    fontWeight: theme.typography.h6.fontWeight,
+    paddingBottom: '0.75rem'
   },
   statHighlight: {
-    color: '#2FB56B',
-    fontWeight: '500'
+    color: theme.palette.primary.light,
+    paddingBottom: '1rem'
+  },
+  nameHighlight: {
+    color: theme.palette.primary.light,
+    paddingTop: '1.5rem'
+  },
+  nameHighlightContinue: {
+    color: theme.palette.primary.light
+  },
+  nameHighlightLast: {
+    color: theme.palette.primary.light,
+    paddingBottom: '3rem'
+  },
+  statTitle: {
+    fontWeight: 700,
+    textTransform: 'uppercase'
+  },
+  sup: {
+    fontSize: theme.typography.fontSize,
+    textTransform: 'none'
   }
 });
 
@@ -41,67 +90,86 @@ function PollutionStats({ classes }) {
       justify="center"
       alignItems="center"
     >
-      <Grid item xs={12} md={4} className={classes.statGrid}>
-        <div className={classes.stat}>
-          <div>
-            <Typography variant="subtitle1">
-              Death by air pollution in kenya yearly
-            </Typography>
-            <Typography variant="h3" className={classes.statHighlight}>
-              5,102
-            </Typography>
-          </div>
-
-          <div style={{ marginTop: '2rem' }}>
-            <Typography variant="subtitle1">
-              Child Deaths caused by air pollution in kenya yearly
-            </Typography>
-            <Typography variant="h3" className={classes.statHighlight}>
-              2,144
-            </Typography>
-          </div>
-        </div>
-      </Grid>
-
-      <Grid item xs={12} md={4} className={classes.statGrid}>
-        <div className={classes.stat}>
-          <Typography variant="subtitle1" style={{ paddingBottom: '1rem' }}>
-            The top illness caused by air pollution in kenya is
-          </Typography>
-          <Typography variant="h4" className={classes.statHighlight}>
-            ACUTE LOWER RESPIRATORY INFECTION
-          </Typography>
-        </div>
-      </Grid>
-
       <Grid
         item
         xs={12}
-        md={4}
-        className={classes.statGrid}
-        style={{ borderRight: 'none' }}
+        container
+        className={classes.statContainer}
+        justify="center"
+        alignItems="flex-start"
       >
-        <div className={classes.stat}>
-          <Typography variant="subtitle1">
-            <b>POLLUTION LEVELS IN NAIROBI</b>
+        <Grid item className={classes.statContentContainer}>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            Death by air pollution
           </Typography>
-          <Typography
-            variant="subtitle1"
-            style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
-          >
-            The air in Nairobi has an annual average of
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            in Kenya yearly
           </Typography>
-          <Typography
-            variant="h4"
-            className={classes.statHighlight}
-            style={{ paddingBottom: '1rem' }}
-          >
-            17 ug/m3
+          <Typography variant="h3" className={classes.statHighlight}>
+            5,102
           </Typography>
-          <Typography variant="subtitle1">
-            of PM2.5 particles. That is 70% more than the WHO safe level.
+
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            Child Deaths
           </Typography>
-        </div>
+          <Typography variant="subtitle1" className={classes.subtitleContinue}>
+            caused by air pollution
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            in Kenya yearly
+          </Typography>
+          <Typography variant="h3" className={classes.statHighlight}>
+            2,144
+          </Typography>
+        </Grid>
+        <Grid item className={classes.statMiddleContentContainer}>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            The top illness caused
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleContinue}>
+            by air pollution
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            in Kenya is
+          </Typography>
+          <Typography variant="h4" className={classes.nameHighlight}>
+            ACUTE LOWER
+          </Typography>
+          <Typography variant="h4" className={classes.nameHighlightContinue}>
+            RESPIRATORY
+          </Typography>
+          <Typography variant="h4" className={classes.nameHighlightLast}>
+            INFECTION
+          </Typography>
+        </Grid>
+        <Grid item className={classes.statContentContainer}>
+          <Typography variant="subtitle2" className={classes.statTitle}>
+            POLLUTION LEVELS IN NAIROBI
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            The air in Nairobi has an
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            annual average of
+          </Typography>
+          <Typography variant="h3" className={classes.statHighlight}>
+            17{' '}
+            <sup className={classes.sup}>
+              µg/m
+              <sup>3</sup>
+            </sup>
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            of PM
+            <sub>2.5</sub> particles.
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleContinue}>
+            That&apos;s 70% more than the
+          </Typography>
+          <Typography variant="subtitle1" className={classes.subtitleLast}>
+            WHO safe level.
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
   );

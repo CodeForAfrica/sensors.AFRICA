@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Typography from '@material-ui/core/Typography';
-import { Grid, Card, CardMedia } from '@material-ui/core';
+import { Grid, Card, CardActionArea, CardMedia } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+
+import ComingSoon from '../ComingSoon';
 
 import air from '../../assets/images/button/airbtn.png';
 import water from '../../assets/images/button/waterbtn.png';
@@ -14,40 +15,44 @@ import sound from '../../assets/images/button/soundbtn.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    width: '100%'
+    width: '100%',
+    paddingTop: '2rem'
   },
   img: {
-    height: 200,
+    height: '5.5rem',
     width: 'auto',
-    padding: '3rem',
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    margin: '3rem auto',
+    [theme.breakpoints.up('md')]: {
+      height: '12.5rem',
+      margin: '0 auto',
+      padding: '3rem'
+    }
   },
   airCard: {
-    backgroundColor: '#2FB56B',
-    borderRadius: 0,
-    height: 250,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 250
+    backgroundColor: theme.palette.primary.light,
+    height: '12.5rem',
+    width: '10.5rem',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    textAlign: 'center',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
     }
   },
   waterCard: {
     backgroundColor: '#4972B8',
-    borderRadius: 0,
-    height: 250,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 250
+    height: '12.5rem',
+    width: '10.5rem',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
     }
   },
   soundCard: {
     backgroundColor: '#B64598',
-    borderRadius: 0,
-    height: 250,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 250
+    height: '12.5rem',
+    width: '10.5rem',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
     }
   },
   popup: {
@@ -61,7 +66,7 @@ const styles = theme => ({
     opacity: '0',
     visibility: 'hidden',
     transform: 'scale(1.1)',
-    transition: 'visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s',
+    transition: 'visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s'
   },
   popupcontent: {
     position: 'absolute',
@@ -71,7 +76,7 @@ const styles = theme => ({
     color: 'black',
     backgroundColor: 'white',
     padding: '1rem 1.5rem',
-    width: '24rem',
+    width: '24rem'
   },
   closeButton: {
     float: 'right',
@@ -85,40 +90,38 @@ const styles = theme => ({
     '&:hover': {
       backgroundColor: 'darkgray'
     }
- },
+  },
   showpopup: {
     opacity: '1',
     visibility: 'visible',
     transform: 'scale(1.0)',
     transition: 'visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s'
+  },
+  testTitle: {
+    color: 'white',
+    paddingTop: '2rem',
+    fontSize: '1rem',
+    fontFamily: theme.typography.h6.fontFamily,
+    fontWeight: 900
   }
 });
 
 class TestQuality extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {show: false};
+    this.state = { show: false };
 
-    this.showAlert = this.showAlert.bind(this);
-    this.closeAlert = this.closeAlert.bind(this);
+    this.toggleShowAlert = this.toggleShowAlert.bind(this);
   }
 
-  showAlert() {
-    this.setState(state => ({
-      show: true
-    }));
-  }
-
-  closeAlert() {
-    this.setState(state => ({
-      show: false
-    }));
+  toggleShowAlert() {
+    this.setState(prevState => ({ show: !prevState.show }));
   }
 
   render() {
-
     const { classes } = this.props;
+    const { show } = this.state;
+
     return (
       <Grid
         container
@@ -128,10 +131,10 @@ class TestQuality extends React.Component {
       >
         <Grid item xs={12}>
           <Typography
-            variant="h6"
+            variant="h5"
             gutterBottom
             align="center"
-            style={{ color: 'white', textTransform: 'uppercase' }}
+            className={classes.testTitle}
           >
             Test the quality of the city&apos;s
           </Typography>
@@ -142,15 +145,25 @@ class TestQuality extends React.Component {
             direction="row"
             justify="center"
             alignItems="center"
-            style={{ paddingTop: '1rem' }}
+            style={{ paddingTop: '1rem', paddingBottom: '3rem' }}
           >
-            <Grid id='popupbox' className={classNames(classes.popup, {
-            [classes.showpopup]: this.state.show,  })}>
-                <div className={classes.popupcontent}>
-                    <span onClick={this.closeAlert} className={classes.closeButton}>&times;</span>
-                    <h1>Coming Soon</h1>
-                </div>
-            </Grid>
+            <ComingSoon show={show} onClose={this.toggleShowAlert} />
+            {/* <Grid
+              id="popupbox"
+              className={classNames(classes.popup, {
+                [classes.showpopup]: show
+              })}
+            >
+              <div className={classes.popupcontent}>
+                <span
+                  onClick={this.toggleShowAlert}
+                  className={classes.closeButton}
+                >
+                  &times;
+                </span>
+                <h1>Coming Soon</h1>
+              </div>
+            </Grid> */}
             <Grid item>
               <Link to="/air">
                 <Card className={classes.airCard}>
@@ -164,28 +177,28 @@ class TestQuality extends React.Component {
               </Link>
             </Grid>
             <Grid item>
-              <a onClick={this.showAlert}>
-                <Card className={classes.waterCard}>
+              <Card className={classes.waterCard}>
+                <CardActionArea onClick={this.toggleShowAlert}>
                   <CardMedia
                     component="img"
                     className={classes.img}
                     image={water}
                     title="water"
                   />
-                </Card>
-              </a>
+                </CardActionArea>
+              </Card>
             </Grid>
             <Grid item>
-              <a onClick={this.showAlert}>
-                <Card className={classes.soundCard}>
+              <Card className={classes.soundCard}>
+                <CardActionArea onClick={this.toggleShowAlert}>
                   <CardMedia
                     component="img"
                     className={classes.img}
                     image={sound}
                     title="sound"
                   />
-                </Card>
-              </a>
+                </CardActionArea>
+              </Card>
             </Grid>
           </Grid>
         </Grid>

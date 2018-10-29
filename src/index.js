@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faSearch } from '@fortawesome/fontawesome-free-solid';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import App from './App';
 
 import './assets/css/index.css';
 
-fontawesome.library.add(fab, faSearch);
+library.add(fab, faSearch);
 
 ReactDOM.render(<App />, document.getElementById('root'));

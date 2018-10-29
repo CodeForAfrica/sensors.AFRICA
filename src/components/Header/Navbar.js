@@ -7,13 +7,15 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
 
+import ComingSoon from '../ComingSoon';
 import SocialMedia from '../SocialMedia';
 
 const styles = theme => ({
   root: {
-    flex: 1,
+    flexGrow: 1
+  },
+  appBar: {
     backgroundColor: '#2e2e2e',
     boxShadow: 'none'
   },
@@ -77,7 +79,7 @@ const styles = theme => ({
     opacity: '0',
     visibility: 'hidden',
     transform: 'scale(1.1)',
-    transition: 'visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s',
+    transition: 'visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s'
   },
   popupcontent: {
     position: 'absolute',
@@ -87,7 +89,7 @@ const styles = theme => ({
     color: 'black',
     backgroundColor: 'white',
     padding: '1rem 1.5rem',
-    width: '24rem',
+    width: '24rem'
   },
   closeButton: {
     float: 'right',
@@ -101,7 +103,7 @@ const styles = theme => ({
     '&:hover': {
       backgroundColor: 'darkgray'
     }
- },
+  },
   showpopup: {
     opacity: '1',
     visibility: 'visible',
@@ -111,34 +113,31 @@ const styles = theme => ({
 });
 
 class Navbar extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {show: false};
+    this.state = { show: false };
 
-    this.showAlert = this.showAlert.bind(this);
-    this.closeAlert = this.closeAlert.bind(this);
+    this.toggleShowAlert = this.toggleShowAlert.bind(this);
   }
 
-  showAlert() {
-    this.setState(state => ({
-      show: true
-    }));
+  toggleShowAlert(e) {
+    e.preventDefault();
+    this.setState(prevState => ({ show: !prevState.show }));
   }
 
-  closeAlert() {
-    this.setState(state => ({
-      show: false
-    }));
-  }
+  render() {
+    const { classes } = this.props;
+    const { show } = this.state;
 
-  render () {
-    const { classes} =  this.props;
-
-    return(
-      <Grid container>
+    return (
+      <Grid
+        container
+        className={classes.root}
+        justify="center"
+        alignItems="center"
+      >
         <Grid item xs={12}>
-          <AppBar position="static" className={classes.root}>
+          <AppBar position="static" className={classes.appBar}>
             <Toolbar className={classes.toolbar} disableGutters>
               <Grid
                 container
@@ -153,12 +152,20 @@ class Navbar extends React.Component {
                 </MenuItem>
 
                 <MenuItem className={classes.waterText}>
-                  <a onClick={this.showAlert} className={classes.waterlink}>
+                  <a
+                    href="/water"
+                    className={classes.waterlink}
+                    onClick={this.toggleShowAlert}
+                  >
                     WATER
                   </a>
                 </MenuItem>
                 <MenuItem className={classes.soundText}>
-                  <a onClick={this.showAlert} className={classes.soundlink}>
+                  <a
+                    href="/water"
+                    className={classes.soundlink}
+                    onClick={this.toggleShowAlert}
+                  >
                     SOUND
                   </a>
                 </MenuItem>
@@ -182,13 +189,7 @@ class Navbar extends React.Component {
                 </Grid>
               </Grid>
             </Toolbar>
-            <Grid id='popupbox' className={classNames(classes.popup, {
-            [classes.showpopup]: this.state.show,  })}>
-                <div className={classes.popupcontent}>
-                    <span onClick={this.closeAlert} className={classes.closeButton}>&times;</span>
-                    <h1>Coming Soon</h1>
-                </div>
-            </Grid>
+            <ComingSoon show={show} onClose={this.toggleShowAlert} />
           </AppBar>
         </Grid>
       </Grid>

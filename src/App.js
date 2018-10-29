@@ -57,9 +57,12 @@ const THEME = createMuiTheme({
     },
     h6: {
       color: '#424143',
-      fontFamily: HEADINGS_FONT_FAMILY,
+      fontFamily: FONT_FAMILY,
       fontWeight: 500,
       textTransform: 'uppercase'
+    },
+    fontSmallDefault: {
+      fontSize: 14
     },
     buttonNext: {
       fontWeight: 700

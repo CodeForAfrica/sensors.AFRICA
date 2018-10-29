@@ -7,7 +7,8 @@ const styles = {
   fullHeight: {
     height: '90vh',
     display: 'inline-block',
-    margin: '0 auto'
+    margin: '0 auto',
+    backgroundColor: 'white'
   }
 };
 

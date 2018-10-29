@@ -45,6 +45,15 @@ yarn deploy
 
 ---
 
+sensors.AFRICA Stack
+--------------------
+
+Map - https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-map
+API - https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-api
+Grafana and TICK Stack - [./contrib/grafana-and-tick](./contrib/grafana-and-tick)
+
+---
+
 ## Contributing
 
 If you'd like to contribute to sensors.AFRICA, check out the [CONTRIBUTING.md](./CONTRIBUTING.md) file on how to get started; or jump right into our [GitHub issues](issues).

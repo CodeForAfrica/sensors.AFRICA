@@ -6,12 +6,68 @@ import Button from '@material-ui/core/Button';
 import { Input, FormControl } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
+
+import bglanding from '../assets/images/background/bglanding.jpg';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     color: 'white',
-    backgroundColor: theme.palette.secondary.main
+    backgroundImage: `url(${bglanding})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  },
+  popup: {
+    position: 'fixed',
+    left: '0',
+    top: '0',
+    width: '100%',
+    height: '100%',
+    zIndex: '2000',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    opacity: '0',
+    visibility: 'hidden',
+    transform: 'scale(1.1)',
+    transition: 'visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s'
+  },
+  popupcontent: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    color: 'black',
+    // backgroundColor: 'white',
+    padding: '1rem 1.5rem',
+    width: '100vw',
+    [theme.breakpoints.up('md')]: {
+      width: '25rem',
+      height: '18.125rem',
+      marginRight: '4.8125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '37.875rem',
+      height: '29.75rem',
+      marginRight: '1.875rem',
+      padding: '3rem'
+    }
+  },
+  closeButton: {
+    color: 'white',
+    float: 'right',
+    width: '1.5rem',
+    fontWeight: 800,
+    fontSize: theme.typography.h6.fontSize,
+    lineHeight: '1.5rem',
+    textAlign: 'center',
+    cursor: 'pointer',
+    borderRadius: '0.25rem'
+  },
+  showpopup: {
+    opacity: '1',
+    visibility: 'visible',
+    transform: 'scale(1.0)',
+    transition: 'visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s'
   },
   footerButton: {
     width: '100%',
@@ -41,10 +97,12 @@ const styles = theme => ({
   }
 });
 
+const FORM_URL =
+  'https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541';
+
 class Email extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       value: 'you@gmail.com'
     };
@@ -56,17 +114,25 @@ class Email extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, show, onClose } = this.props;
     const { value } = this.state;
-    const href = `https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541&MERGE0=${value}`;
+    const href = `${FORM_URL}&MERGE0=${value}`;
+    const containerClassName = classNames(classes.root, classes.popup, {
+      [classes.showpopup]: show
+    });
+
     return (
       <Grid
         container
         justify="space-around"
         alignitems="center"
-        className={classes.root}
+        className={containerClassName}
       >
-        <Grid item xs={12}>
+        <Grid item xs={12} className={classes.popupcontent}>
+          <span onClick={onClose} className={classes.closeButton}>
+            &times;
+          </span>
+
           <FormControl>
             <Input
               type="text"

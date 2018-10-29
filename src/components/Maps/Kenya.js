@@ -8,32 +8,47 @@ import IframeComponent from './IframeComponent';
 
 const styles = theme => ({
   root: {
-    height: 550,
+    flexGrow: 1,
+    height: 610,
     width: '100%',
-    paddingBottom: '1rem'
+    marginBottom: '3rem',
+    backgroundColor: 'white'
   },
   headline: {
     textAlign: 'center',
     paddingBottom: theme.spacing.unit * 3
+  },
+  caption: {
+    textTransform: 'none'
   }
 });
 
 function KenyaMap({ classes }) {
   return (
-    <Grid container item xs={12} direction="row" className={classes.root}>
-      <Grid container direction="row" justify="center" alignItems="center">
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
         <Typography variant="h5" className={classes.headline}>
           SENSORS IN YOUR AREA
+          <Typography variant="caption" className={classes.caption}>
+            * Click a sensor to view latest readings.
+          </Typography>
         </Typography>
       </Grid>
-      <IframeComponent
-        title="Map section"
-        src="//map.aq.sensors.africa/#9/-1.4272/36.8147"
-        height="100%"
-        width="100%"
-        frameBorder="0"
-        scrollling="no"
-      />
+      <Grid item xs={12}>
+        <IframeComponent
+          title="Map section"
+          src="//map.aq.sensors.africa/#9/-1.4272/36.8147"
+          height="500"
+          width="100%"
+          frameBorder="0"
+          scrollling="no"
+        />
+      </Grid>
     </Grid>
   );
 }

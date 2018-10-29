@@ -5,16 +5,20 @@ import { Grid, Card, CardContent, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  root: {},
+  findOutMore: {
+    color: theme.palette.primary.dark,
+    fontSize: theme.typography.fontSize,
+    fontWeight: 'bold'
+  },
   card: {
-    height: 600,
-    width: 450,
-    backgroundColor: '#2FB56B',
+    height: '38rem',
+    width: '100%',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 0
   },
   cardContent: {
     textAlign: 'center',
-    paddingTop: '25%'
+    marginTop: '1rem'
   },
   display1: {
     color: '#fff',
@@ -39,49 +43,52 @@ const styles = theme => ({
 
 function HostCard({ classes }) {
   return (
-    <Grid
-      container
-      className={classes.root}
-      justify="center"
-      alignItems="center"
-    >
-      <Card className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <Typography variant="h4" className={classes.display1}>
-            HOST A SENSORS CALL TO ACTION
-          </Typography>
+    <Card className={classes.card}>
+      <CardContent className={classes.cardContent}>
+        <Typography variant="h4" className={classes.display1}>
+          HOST A SENSORS
+          <br />
+          CALL TO ACTION
+        </Typography>
+        <Grid>
           <Typography variant="body1" className={classes.body2}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel
-            eros vehicula, feugiat nisl a, mollis tortor.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in
+            ultrices ex. Duis aliquet sapien nec dui laoreet mattis
           </Typography>
-          <Typography varaiant="caption" className={classes.caption}>
-            Local Government
-          </Typography>
+        </Grid>
+        <Grid style={{ paddingTop: '3rem', color: 'white' }}>
           <Typography
-            variant="caption"
+            varaiant="body1"
             style={{ color: '#fff', textDecoration: 'underline' }}
           >
-            Environment Ministry
+            Local Government
           </Typography>
-          <p className={classes.cardButtonOutlined}>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
+        </Grid>
+
+        <Typography
+          variant="body1"
+          style={{ color: '#fff', textDecoration: 'underline' }}
+        >
+          Environment Ministry
+        </Typography>
+        <p className={classes.cardButtonOutlined}>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+            className={classes.buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button
+              variant="contained"
+              size="large"
+              className={classes.findOutMore}
             >
-              <Button
-                variant="contained"
-                size="large"
-                className={classes.findOutMore}
-              >
-                FIND OUT MORE
-              </Button>
-            </a>
-          </p>
-        </CardContent>
-      </Card>
-    </Grid>
+              FIND OUT MORE
+            </Button>
+          </a>
+        </p>
+      </CardContent>
+    </Card>
   );
 }
 

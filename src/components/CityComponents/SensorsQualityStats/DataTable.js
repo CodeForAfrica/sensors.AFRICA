@@ -26,8 +26,11 @@ const styles = theme => ({
   rowHeight: {
     height: 80
   },
+  tableCell: {
+    height: 80,
+    borderBottom: '0px transparent'
+  },
   lastRow: {
-    borderBottom: '0px transparent',
     textAlign: 'center'
   },
   typography: {
@@ -36,15 +39,18 @@ const styles = theme => ({
     paddingBottom: '1.5rem'
   },
   subheading: {
-    color: '#424143'
+    color: '#424143',
+    fontWeight: 'bold',
+    fontSize: theme.typography.fontSize
   },
   display2: {
-    color: '#164B3E'
+    color: theme.palette.primary.dark
   },
   small: {
     fontSize: '1rem',
-    color: '#2FB56B',
-    marginTop: '1rem'
+    color: theme.palette.primary.light,
+    marginTop: '1rem',
+    fontWeight: 'bold'
   },
   data: {
     marginBottom: '0.6rem'
@@ -67,10 +73,7 @@ function DataTable({ classes }) {
                   className={classes.typography}
                 >
                   <Grid>
-                    <Typography
-                      variant="subtitle1"
-                      className={classes.subheading}
-                    >
+                    <Typography variant="h6" className={classes.subheading}>
                       AIR
                     </Typography>
                   </Grid>
@@ -214,14 +217,16 @@ function DataTable({ classes }) {
               </TableCell>
             </TableRow>
 
+            {/* Last row of the table */}
+
             <TableRow className={classes.rowHeight}>
-              <TableCell>
+              <TableCell className={classes.tableCell}>
                 <Grid
                   container
                   direction="column"
                   justify="center"
                   alignItems="center"
-                  className={classes.lastRow}
+                  className={classes.typography}
                 >
                   <Grid>
                     <Typography
@@ -239,13 +244,13 @@ function DataTable({ classes }) {
                   </Grid>
                 </Grid>
               </TableCell>
-              <TableCell>
+              <TableCell className={classes.tableCell}>
                 <Grid
                   container
                   direction="column"
                   justify="center"
                   alignItems="center"
-                  className={classes.lastRow}
+                  className={classes.typography}
                 >
                   <Grid>
                     <Typography
@@ -263,13 +268,13 @@ function DataTable({ classes }) {
                   </Grid>
                 </Grid>
               </TableCell>
-              <TableCell>
+              <TableCell className={classes.tableCell}>
                 <Grid
                   container
                   direction="column"
                   justify="center"
                   alignItems="center"
-                  className={classes.lastRow}
+                  className={classes.typography}
                 >
                   <Grid>
                     <Typography

@@ -17,22 +17,36 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4
   },
   list: {
-    color: 'white'
+    color: 'white',
+    textAlign: 'right',
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '45%'
+    }
   },
+  listItem: {
+    color: 'white',
+    display: 'block',
+    height: '18px'
+  },
+
   modalContent: {
     margin: 'auto',
     padding: '20px',
     height: 'auto',
-    position: 'fixed',
-    top: '20%',
+    top: '6%',
     left: '0%',
     [theme.breakpoints.up('md')]: {
-      width: '20%',
-      left: '80%'
+      width: '25%',
+      left: '75%'
+    },
+    [theme.breakpoints.up('xl')]: {
+      top: '4%'
     }
   },
   typography: {
-    color: '#fff'
+    color: '#fff',
+    textAlign: 'right',
+    fontWeight: '700'
   },
   link: {
     textDecoration: 'none'
@@ -49,7 +63,7 @@ class HambugerMenu extends React.Component {
   }
 
   handleOpen() {
-    this.setState({ menuOpen: true });
+    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
   }
 
   handleClose() {
@@ -78,45 +92,61 @@ class HambugerMenu extends React.Component {
             item
             xs={3}
             direction="column"
-            justify="center"
-            alignItems="flex-end"
+            className={classes.list}
           >
-            <Link to="/air" className={classes.link}>
-              <MenuItem>
+            <a
+              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              className={classes.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
-                  HOME
+                  STORIES
+                </Typography>
+              </MenuItem>
+            </a>
+
+            <Link to="/air/how-sensors-work" className={classes.link}>
+              <MenuItem className={classes.listItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  RESOURCES
+                </Typography>
+              </MenuItem>
+            </Link>
+
+            <a
+              href="https://archive.sensors.africa/"
+              className={classes.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MenuItem className={classes.listItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  DATA
+                </Typography>
+              </MenuItem>
+            </a>
+
+            <Link to="/air/join-network" className={classes.link}>
+              <MenuItem className={classes.listItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  JOIN
                 </Typography>
               </MenuItem>
             </Link>
 
             <Link to="/air/about" className={classes.link}>
-              <MenuItem>
+              <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   ABOUT
                 </Typography>
               </MenuItem>
             </Link>
-
-            <Link to="/air/how-sensors-work" className={classes.link}>
-              <MenuItem>
-                <Typography className={classes.typography} variant="subtitle1">
-                  HOW SENSORS WORK
-                </Typography>
-              </MenuItem>
-            </Link>
-
-            <Link to="/air/city" className={classes.link}>
-              <MenuItem>
-                <Typography className={classes.typography} variant="subtitle1">
-                  CITY
-                </Typography>
-              </MenuItem>
-            </Link>
-
             <Link to="/air/join-network" className={classes.link}>
-              <MenuItem>
+              <MenuItem className={classes.listItem}>
                 <Typography className={classes.typography} variant="subtitle1">
-                  JOIN
+                  CONTACT
                 </Typography>
               </MenuItem>
             </Link>

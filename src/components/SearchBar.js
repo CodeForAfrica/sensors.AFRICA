@@ -19,7 +19,7 @@ const styles = theme => ({
   valueContainer: {
     display: 'flex',
     flexWrap: 'wrap',
-    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,
@@ -157,12 +157,12 @@ class SearchBar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(value) {
-    this.setState({ single: value });
+  handleChange(city) {
+    this.setState({ single: city });
 
     const { handleChange } = this.props;
     if (handleChange) {
-      handleChange(value);
+      handleChange(city);
     }
   }
 
