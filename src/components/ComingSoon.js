@@ -64,9 +64,9 @@ const styles = theme => ({
     transition: 'visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s'
   },
   subtitle: {
-    margin: '1rem ',
+    marginTop: '1rem',
+    marginBottom: '1.5rem',
     color: 'white',
-    // fontSize: theme.typography.h6.fontSize,
     textAlign: 'justify'
   },
   form: {

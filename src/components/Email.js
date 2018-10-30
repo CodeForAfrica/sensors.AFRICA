@@ -45,9 +45,7 @@ class Email extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      value: 'you@gmail.com'
-    };
+    this.state = { value: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -80,7 +78,7 @@ class Email extends Component {
             <Input
               type="text"
               id="you@gmail.com"
-              placeholder={value}
+              placeholder="you@gmail.com"
               onChange={this.handleChange}
               className="Email-input"
             />
