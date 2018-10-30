@@ -37,7 +37,13 @@ const SENSOR_READINGS_URL = 'https://api.airquality.codeforafrica.org/v1/now/';
 
 const styles = () => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+
+    // TODO(kilemensi): This is hack to force the page to be 100% wide w/o
+    //                  horizontal scrollbars.
+    position: 'absolute',
+    top: 0,
+    left: 0
   }
 });
 
@@ -154,10 +160,18 @@ class City extends React.Component {
             airPol={airPol}
             handleChange={this.handleChange}
           />
-          <PollutionStats />
-          <Map />
-          <CallToAction />
-          <Footer />
+          <Grid item xs={12}>
+            <PollutionStats />
+          </Grid>
+          <Grid item xs={12}>
+            <Map />
+          </Grid>
+          <Grid item xs={12}>
+            <CallToAction />
+          </Grid>
+          <Grid item xs={12}>
+            <Footer />
+          </Grid>
         </Grid>
       </Grid>
     );

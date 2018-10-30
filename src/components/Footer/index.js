@@ -5,7 +5,7 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import SocialMedia from '../SocialMedia';
-import Email from './Email';
+import Email from '../Email';
 
 import '../../assets/css/App.css';
 import codeforafrica from '../../assets/images/logos/cfafrica_white.png';
@@ -14,7 +14,6 @@ import innovateafrica from '../../assets/images/logos/innovateafrica_white.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    // width: '100vw',
     color: 'white',
     backgroundColor: theme.palette.secondary.main
   },

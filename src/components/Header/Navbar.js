@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
+import ComingSoon from '../ComingSoon';
 import SocialMedia from '../SocialMedia';
 
 const styles = theme => ({
@@ -69,63 +70,91 @@ const styles = theme => ({
   }
 });
 
-function Navbar({ classes }) {
-  return (
-    <Grid
-      container
-      className={classes.root}
-      justify="center"
-      alignItems="center"
-    >
-      <Grid item xs={12}>
-        <AppBar position="static" className={classes.appBar}>
-          <Toolbar className={classes.toolbar} disableGutters>
-            <Grid
-              container
-              direction="row"
-              justify="flex-start"
-              alignItems="center"
-            >
-              <MenuItem className={classes.airText}>
-                <Link to="/air" className={classes.airlink}>
-                  AIR
-                </Link>
-              </MenuItem>
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { show: false };
 
-              <MenuItem className={classes.waterText}>
-                <Link to="/water" className={classes.waterlink}>
-                  WATER
-                </Link>
-              </MenuItem>
-              <MenuItem className={classes.soundText}>
-                <Link to="/sound" className={classes.soundlink}>
-                  SOUND
-                </Link>
-              </MenuItem>
-            </Grid>
+    this.toggleShowAlert = this.toggleShowAlert.bind(this);
+  }
 
-            <Grid
-              container
-              direction="row"
-              justify="flex-end"
-              alignItems="center"
-            >
-              {/* <Grid item>
-            <FontAwesomeIcon
-                className={classes.searchFa}
-                icon="search"
-                size="lg"
-              />
-            </Grid> */}
-              <Grid item>
-                <SocialMedia color="#2FB56B" />
+  toggleShowAlert(e) {
+    if (e) {
+      e.preventDefault();
+    }
+    this.setState(prevState => ({ show: !prevState.show }));
+  }
+
+  render() {
+    const { classes } = this.props;
+    const { show } = this.state;
+
+    return (
+      <Grid
+        container
+        className={classes.root}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={12}>
+          <AppBar position="static" className={classes.appBar}>
+            <Toolbar className={classes.toolbar} disableGutters>
+              <Grid
+                container
+                direction="row"
+                justify="flex-start"
+                alignItems="center"
+              >
+                <MenuItem className={classes.airText}>
+                  <Link to="/air" className={classes.airlink}>
+                    AIR
+                  </Link>
+                </MenuItem>
+
+                <MenuItem className={classes.waterText}>
+                  <a
+                    href="/water"
+                    className={classes.waterlink}
+                    onClick={this.toggleShowAlert}
+                  >
+                    WATER
+                  </a>
+                </MenuItem>
+                <MenuItem className={classes.soundText}>
+                  <a
+                    href="/sound"
+                    className={classes.soundlink}
+                    onClick={this.toggleShowAlert}
+                  >
+                    SOUND
+                  </a>
+                </MenuItem>
               </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
+
+              <Grid
+                container
+                direction="row"
+                justify="flex-end"
+                alignItems="center"
+              >
+                {/* <Grid item>
+              <FontAwesomeIcon
+                  className={classes.searchFa}
+                  icon="search"
+                  size="lg"
+                />
+              </Grid> */}
+                <Grid item>
+                  <SocialMedia color="#2FB56B" />
+                </Grid>
+              </Grid>
+            </Toolbar>
+            <ComingSoon show={show} onClose={this.toggleShowAlert} />
+          </AppBar>
+        </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 Navbar.propTypes = {

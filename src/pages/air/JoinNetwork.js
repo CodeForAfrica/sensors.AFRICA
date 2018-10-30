@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Navbar from '../../components/Header/Navbar';
@@ -24,12 +25,25 @@ const styles = theme => ({
 
 function JoinNetwork({ classes }) {
   return (
-    <React.Fragment>
-      <Navbar />
-      <JoinHeader />
-      <Support classNames={classes.joinNetworkSupport} />
-      <Footer />
-    </React.Fragment>
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
+        <Navbar />
+      </Grid>
+      <Grid item xs={12}>
+        <JoinHeader />
+      </Grid>
+      <Grid item xs={12}>
+        <Support classNames={classes.joinNetworkSupport} />
+      </Grid>
+      <Grid item xs={12}>
+        <Footer />
+      </Grid>
+    </Grid>
   );
 }
 
