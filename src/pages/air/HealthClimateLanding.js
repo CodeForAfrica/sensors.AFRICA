@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 //Third party imports
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
-import SourcesInfo from '../../components/HealthClimateImpact/SourcesInfo';
+import SourcesInfo from '../../components/HealthClimateComponents/SourcesInfo';
 
 class HealthClimateLanding extends Component {
   state = {};
