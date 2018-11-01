@@ -6,6 +6,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import ScrollToTop from './ScrollToTop';
 import Home from './pages';
+import HealthClimateLanding from './pages/air/HealthClimateLanding';
 import Air, {
   About as AirAbout,
   HowSensorsWork as AirHowSensorsWork,
@@ -102,6 +103,10 @@ function App() {
             <Route path="/air/how-sensors-work" component={AirHowSensorsWork} />
             <Route path="/air/city" component={AirCity} />
             <Route path="/air/join-network" component={AirJoinNetwork} />
+            <Route
+              path="/air/health-and-climate-impact"
+              component={HealthClimateLanding}
+            />
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
