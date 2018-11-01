@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import HamburgerMenu from '../Hambuger/HambugerMenu';
 
-import logowhite from '../../assets/images/logos/logowhite.png';
+import Logo from '../Logo';
 
 const styles = theme => ({
   root: {
@@ -23,10 +23,6 @@ const styles = theme => ({
   },
   iconContainer: {
     paddingTop: '2rem'
-  },
-  logo: {
-    zIndex: '1301',
-    position: 'relative'
   }
 });
 
@@ -40,12 +36,7 @@ function MenuBar({ classes }) {
     >
       <Grid item>
         <Link to="/">
-          <img
-            src={logowhite}
-            className={classes.logo}
-            alt="sensors.AFRICA"
-            height="100"
-          />
+          <Logo />
         </Link>
       </Grid>
       <Grid item>

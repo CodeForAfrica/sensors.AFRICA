@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import SearchBar from '../../SearchBar';
 import HamburgerMenu from '../../Hambuger/HambugerMenu';
 
-import logowhite from '../../../assets/images/logos/logowhite.png';
+import Logo from '../../Logo';
 
 const styles = theme => ({
   root: {
@@ -39,7 +39,7 @@ function CityMenuBar({ classes, handleChange }) {
         <Grid container alignItems="flex-start">
           <Grid item>
             <Link to="/">
-              <img src={logowhite} alt="Sensors Africa Logo" height="100" />
+              <Logo />
             </Link>
           </Grid>
           <Grid item>
