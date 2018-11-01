@@ -46,7 +46,7 @@ function Hero({ classes }) {
     >
       <Grid item xs={12}>
         <Link to="/">
-          <Logo classes={{ img: classes.img }} />
+          <Logo badge="landing" classes={{ img: classes.img }} />
         </Link>
       </Grid>
 
