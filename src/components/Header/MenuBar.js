@@ -41,25 +41,21 @@ class MenuBar extends React.Component {
   render() {
     const { children, classes } = this.props;
     const { menuOpen } = this.state;
-    let leftComponent;
-    if (children && children.length) {
-      leftComponent = (
-        <Grid container alignItems="flex-start">
-          <Grid item>
-            <Link to="/">
-              <Logo />
-              {children}
-            </Link>
-          </Grid>
-          <Grid item>{{ children }}</Grid>
-        </Grid>
-      );
-    } else {
+    const logo = (
+      <Grid item>
+        <Link to="/">
+          <Logo active={menuOpen} />
+        </Link>
+      </Grid>
+    );
+    let leftComponent = logo;
+    if (children) {
       leftComponent = (
         <Grid item>
-          <Link to="/">
-            <Logo active={menuOpen} />
-          </Link>
+          <Grid container alignItems="flex-start">
+            {logo}
+            <Grid item>{children}</Grid>
+          </Grid>
         </Grid>
       );
     }
@@ -85,8 +81,12 @@ class MenuBar extends React.Component {
 }
 
 MenuBar.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   classes: PropTypes.object.isRequired
+};
+
+MenuBar.defaultProps = {
+  children: null
 };
 
 export default withStyles(styles)(MenuBar);

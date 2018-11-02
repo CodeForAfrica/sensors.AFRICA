@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import MenuBar from '../../Header/MenuBar';
 import SearchBar from '../../SearchBar';
 
-function CityMenuBar({ handleChange }) {
+function CityMenuBar({ handleSearch }) {
   return (
     <MenuBar>
       <SearchBar
         placeholder="Search for another location ..."
-        handleChange={handleChange}
+        handleSearch={handleSearch}
       />
     </MenuBar>
   );
 }
 
 CityMenuBar.propTypes = {
-  handleChange: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired
 };
 
 export default CityMenuBar;
