@@ -24,6 +24,10 @@ const styles = theme => ({
   },
   iconContainer: {
     paddingTop: '2rem'
+  },
+  logo: {
+    zIndex: '1301',
+    position: 'relative'
   }
 });
 
