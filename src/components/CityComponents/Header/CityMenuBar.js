@@ -24,6 +24,10 @@ const styles = theme => ({
   },
   iconContainer: {
     paddingTop: '2rem'
+  },
+  logo: {
+    zIndex: '1301',
+    position: 'relative'
   }
 });
 
@@ -39,7 +43,9 @@ function CityMenuBar({ classes, handleChange }) {
         <Grid container alignItems="flex-start">
           <Grid item>
             <Link to="/">
-              <img src={logowhite} alt="Sensors Africa Logo" height="100" />
+              <img src={logowhite}
+                className={classes.logo}
+                alt="Sensors Africa Logo" height="100" />
             </Link>
           </Grid>
           <Grid item>
