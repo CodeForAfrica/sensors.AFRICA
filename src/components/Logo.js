@@ -35,7 +35,7 @@ const styles = theme => ({
 });
 
 function Logo({ badge, active, classes }) {
-  const activeStatus = active && badge == 'default' ? 'Active' : '';
+  const activeStatus = active && badge === 'default' ? 'Active' : '';
   const imgClassName = classNames(classes.logo, classes.img);
   return (
     <Badge
