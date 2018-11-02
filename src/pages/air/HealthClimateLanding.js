@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid } from '@material-ui/core';
-
-//Third party imports
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
 import SourcesInfo from '../../components/HealthClimateComponents/SourcesInfo';
 
-class HealthClimateLanding extends Component {
-  state = {};
-  render() {
-    return (
-      <Grid>
-        <Navbar />
-        <SourcesInfo />
-        <Footer />
-      </Grid>
-    );
-  }
+function HealthClimateLanding() {
+  return (
+    <Grid>
+      <Navbar />
+      <SourcesInfo />
+      <Footer />
+    </Grid>
+  );
 }
 
 export default HealthClimateLanding;
