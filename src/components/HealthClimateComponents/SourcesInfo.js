@@ -8,7 +8,8 @@ import Methane from './Methane';
 
 const styles = theme => ({
   root: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    height: '130vh'
   },
   grid: {
     paddingTop: theme.spacing.unit * 2,
@@ -27,7 +28,9 @@ function SourcesInfo({ classes }) {
     <Grid className={classes.root}>
       <Grid
         item
+        lg={12}
         xs={12}
+        md={12}
         container
         justify="center"
         alignItems="center"
@@ -44,7 +47,9 @@ function SourcesInfo({ classes }) {
 
       <Grid
         item
+        lg={12}
         xs={12}
+        md={12}
         spacing={24}
         container
         direction="row"

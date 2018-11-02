@@ -22,7 +22,9 @@ function BlackCarbonComponent({ classes }) {
   return (
     <Grid
       item
-      xs={3}
+      lg={3}
+      md={3}
+      xs={8}
       direction="columnn"
       alignItems="center"
       justify="center"
