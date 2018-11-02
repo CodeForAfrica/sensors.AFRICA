@@ -4,26 +4,35 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
+  grid: {
+    height: '45rem'
+  },
   mainTitle: {
     color: theme.palette.primary.light,
     textAlign: 'center',
     fontWeight: 'bolder',
     textDecoration: 'Upppercase',
-    fontSize: '14px'
+    fontSize: theme.typography.fontSize
   },
   textGrid: { paddingBottom: '3rem' },
-  bodyCopy: { textAlign: 'center' }
+  bodyCopy: { textAlign: 'center', marginRight: '0.5rem', marginLeft: '0.5rem' }
 });
 
 function BlackCarbonComponent({ classes }) {
   return (
-    <Grid item xs={3} direction="columnn" alignItems="center" justify="center">
-      <Grid style={{ padding: '1.5rem' }}>
+    <Grid
+      item
+      xs={3}
+      direction="columnn"
+      alignItems="center"
+      justify="center"
+      className={classes.grid}
+    >
+      <Grid style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
         <Typography variant="h6" className={classes.mainTitle}>
           Black Carbon
         </Typography>
       </Grid>
-
       <Grid container item xs={12} justify="center" alignItems="center">
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Sources:
@@ -36,14 +45,13 @@ function BlackCarbonComponent({ classes }) {
           as wood or animal waste).
         </Typography>
       </Grid>
-
       <Grid
         container
         item
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '2rem' }}
+        style={{ paddingTop: '1.5rem' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Impact:
@@ -56,14 +64,13 @@ function BlackCarbonComponent({ classes }) {
           other long term health effects
         </Typography>
       </Grid>
-
       <Grid
         container
         item
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '2rem' }}
+        style={{ paddingTop: '1.5rem' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Reduction:
@@ -74,7 +81,7 @@ function BlackCarbonComponent({ classes }) {
           Fortunately its life span is only up to ten days, so if emmison of
           black carbon and other short lived climates polutants were
           dramatically reduced in the next few years, global warming by 2050
-          would slow by as much as 5c
+          would slow by as much as 5˚C.
         </Typography>
       </Grid>
     </Grid>

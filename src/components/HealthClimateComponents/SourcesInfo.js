@@ -11,16 +11,14 @@ const styles = theme => ({
     backgroundColor: 'white'
   },
   grid: {
-    paddingTop: '2rem',
-    paddingBottom: '2rem'
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2
   },
-
   mainTitle: {
-    color: theme.palette.primary.light,
     textAlign: 'center',
     fontWeight: 'bolder',
     textDecoration: 'Upppercase',
-    fontSize: '14px'
+    fontSize: theme.typography.fontSmallDefault.fontSize
   },
   mainGrid: { height: '50rem' }
 });
@@ -35,8 +33,12 @@ function SourcesInfo({ classes }) {
         alignItems="center"
         className={classes.grid}
       >
-        <Typography variant="h6" alignItems="center">
-          Sources of Polution
+        <Typography
+          variant="h6"
+          alignItems="center"
+          className={classes.mainTitle}
+        >
+          Sources of Pollution
         </Typography>
       </Grid>
 
@@ -48,7 +50,7 @@ function SourcesInfo({ classes }) {
         direction="row"
         alignItems="center"
         justify="center"
-        className={classes.mainGrid}
+        style={{ paddingTop: '2rem', paddingBottom: '2rem', height: '50rem' }}
       >
         <GroundLevel />
         <BlackCarbon />

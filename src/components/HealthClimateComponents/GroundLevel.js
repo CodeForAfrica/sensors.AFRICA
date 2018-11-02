@@ -4,16 +4,19 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
+  grid: {
+    backgroundColor: '#F3F3F3',
+    height: '45rem'
+  },
   mainTitle: {
     color: theme.palette.primary.light,
     textAlign: 'center',
     fontWeight: 'bolder',
     textDecoration: 'Upppercase',
-    fontSize: '14px'
+    fontSize: theme.typography.fontSize
   },
   textGrid: { paddingBottom: '3rem' },
-  caption: {},
-  bodyCopy: { textAlign: 'center' }
+  bodyCopy: { textAlign: 'center', marginRight: '0.5rem', marginLeft: '0.5rem' }
 });
 
 function GroundLevelComponent({ classes }) {
@@ -24,9 +27,9 @@ function GroundLevelComponent({ classes }) {
       direction="columnn"
       alignItems="center"
       justify="center"
-      style={{ backgroundColor: '#F3F3F3' }}
+      className={classes.grid}
     >
-      <Grid style={{ padding: '1.5rem' }}>
+      <Grid style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
         <Typography variant="h6" className={classes.mainTitle}>
           Ground Level Ozone
         </Typography>
@@ -51,7 +54,7 @@ function GroundLevelComponent({ classes }) {
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '2rem' }}
+        style={{ paddingTop: '1.5rem' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Impact:
@@ -70,7 +73,7 @@ function GroundLevelComponent({ classes }) {
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '2rem' }}
+        style={{ paddingTop: '1.5rem' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Reduction:
