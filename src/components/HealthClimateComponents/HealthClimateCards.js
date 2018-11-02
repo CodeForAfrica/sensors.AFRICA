@@ -82,10 +82,9 @@ function HealthClimateCards({ classes }) {
   return (
     <Grid container className={classes.root}>
       <Grid
-        container
         item
-        spacing={24}
         xs={12}
+        container
         direction="row"
         justify="center"
         alignItems="center"
