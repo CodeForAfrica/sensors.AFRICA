@@ -54,12 +54,12 @@ function Staff({ classes }) {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h6" className={classes.h6}>
-              Name.Surname
+              JAMES CHEGE
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1">
-              Editor at codeforafrica.org
+              Chege at codeforafrica.org
             </Typography>
             <Typography variant="subtitle1">@namesurname</Typography>
           </Grid>
@@ -72,12 +72,12 @@ function Staff({ classes }) {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h6" className={classes.h6}>
-              Name.Surname
+              WARUKIRA THEURI
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1">
-              Editor at codeforafrica.org
+              Kira at codeforafrica.org
             </Typography>
             <Typography variant="subtitle1">@namesurname</Typography>
           </Grid>
