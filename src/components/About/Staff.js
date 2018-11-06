@@ -78,7 +78,11 @@ function Staff({ classes }) {
             <Typography variant="subtitle1">
               Chege at codeforafrica.org
             </Typography>
-            {/* <Typography variant="subtitle1">@namesurname</Typography> */}
+            <Typography variant="subtitle1">
+              <a className={classes.a} href="https://twitter.com/sensorsAFRICA">
+                @sensorsAFRICA
+              </a>
+            </Typography>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={4} container>
@@ -107,78 +111,6 @@ function Staff({ classes }) {
                 @warukira_m
               </a>
             </Typography>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} container>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h6" className={classes.h6}>
-              Name.Surname
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="subtitle1">
-              Editor at codeforafrica.org
-            </Typography>
-            <Typography variant="subtitle1">@namesurname</Typography>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} container>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h6" className={classes.h6}>
-              Name.Surname
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="subtitle1">
-              Editor at codeforafrica.org
-            </Typography>
-            <Typography variant="subtitle1">@namesurname</Typography>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} container>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h6" className={classes.h6}>
-              Name.Surname
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="subtitle1">
-              Editor at codeforafrica.org
-            </Typography>
-            <Typography variant="subtitle1">@namesurname</Typography>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} container>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h6" className={classes.h6}>
-              Name.Surname
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="subtitle1">
-              Editor at codeforafrica.org
-            </Typography>
-            <Typography variant="subtitle1">@namesurname</Typography>
           </Grid>
         </Grid>
       </Grid>
