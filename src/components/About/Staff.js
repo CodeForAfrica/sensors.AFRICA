@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { Card, CardMedia, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import chege from '../../assets/images/team/chege.png';
+import kirah from '../../assets/images/team/kirah.jpeg';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -22,7 +25,8 @@ const styles = theme => ({
     backgroundColor: '#F3F3F3'
   },
   cardMedia: {
-    height: '100%'
+    height: '100%',
+    objectFit: 'cover'
   },
   title: {
     fontWeight: 800,
@@ -31,6 +35,13 @@ const styles = theme => ({
   h6: {
     textTransform: 'Uppercase',
     fontWeight: 'bolder'
+  },
+  a: {
+    textDecoration: 'none',
+    color: 'rgba(0, 0, 0, 0.87)',
+    '&:hover': {
+      color: theme.palette.primary.light
+    }
   }
 });
 
@@ -49,7 +60,13 @@ function Staff({ classes }) {
         <Grid item xs={12} sm={6} md={4} container>
           <Grid item xs={12}>
             <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
+              <CardMedia
+                component="img"
+                alt="Chege"
+                className={classes.cardMedia}
+                src={chege}
+                title="Chege"
+              />
             </Card>
           </Grid>
           <Grid item xs={12}>
@@ -61,13 +78,19 @@ function Staff({ classes }) {
             <Typography variant="subtitle1">
               Chege at codeforafrica.org
             </Typography>
-            <Typography variant="subtitle1">@namesurname</Typography>
+            {/* <Typography variant="subtitle1">@namesurname</Typography> */}
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={4} container>
           <Grid item xs={12}>
             <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} title="Team" />
+              <CardMedia
+                title="kirah"
+                component="img"
+                alt="Chege"
+                className={classes.cardMedia}
+                src={kirah}
+              />
             </Card>
           </Grid>
           <Grid item xs={12}>
@@ -79,7 +102,11 @@ function Staff({ classes }) {
             <Typography variant="subtitle1">
               Kira at codeforafrica.org
             </Typography>
-            <Typography variant="subtitle1">@namesurname</Typography>
+            <Typography variant="subtitle1">
+              <a className={classes.a} href="https://twitter.com/warukira_m">
+                @warukira_m
+              </a>
+            </Typography>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={4} container>
