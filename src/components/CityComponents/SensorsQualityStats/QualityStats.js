@@ -39,7 +39,7 @@ const styles = theme => ({
   }
 });
 
-function SensorsDataReport({ classes }) {
+function SensorsDataReport({ classes, cityHumidityStats, cityTemperatureStats, cityP2Stats }) {
   return (
     <Grid container className={classes.root} spacing={40}>
       <Grid item xs={12} md={4}>
@@ -87,7 +87,10 @@ function SensorsDataReport({ classes }) {
 
       <Grid item xs={12} md={8}>
         <Grid container justify="center" alignItems="center">
-          <DataTable />
+          <DataTable
+            cityTemperatureStats={cityTemperatureStats}
+            cityP2Stats={cityP2Stats}
+            cityHumidityStats={cityHumidityStats} />
         </Grid>
       </Grid>
     </Grid>

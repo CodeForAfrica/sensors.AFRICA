@@ -33,7 +33,9 @@ const CITIES_LOCATION = {
     label: 'Dar-es-salaam, Tanzania'
   }
 };
-const SENSOR_NAMES = ['sds021', 'sds011'];
+const POLLUTION_SENSOR_NAMES = ['sds021', 'sds011', 'ppd42ns']
+const HUMIDITY_SENSOR_NAMES= [ 'dht22', 'dht11'];
+const TEMPERATURE_SENSOR_NAMES = ['dht22']
 const SENSOR_READINGS_URL = 'https://api.airquality.codeforafrica.org/v1/now/';
 
 const styles = () => ({
@@ -78,10 +80,23 @@ class City extends React.Component {
         location.longitude.startsWith(CITIES_LOCATION[city.value].longitude)
       );
     };
-    const isAirSensorWithReadings = ({ sensor, sensordatavalues }) => {
+    //filter for sensors with pollution readings
+    const isAirSensorWithPollutionReadings = ({ sensor, sensordatavalues }) => {
       let { name = '' } = sensor.sensor_type;
       name = name.toLowerCase();
-      return SENSOR_NAMES.indexOf(name) !== -1 && sensordatavalues.length >= 2;
+      return POLLUTION_SENSOR_NAMES.indexOf(name) !== -1 && sensordatavalues.length >= 2;
+    };
+    //filter for sensors with humidity readings
+    const isAirSensorWithHumidityReadings = ({ sensor, sensordatavalues }) => {
+      let { name = '' } = sensor.sensor_type;
+      name = name.toLowerCase();
+      return HUMIDITY_SENSOR_NAMES.indexOf(name) !== -1 && sensordatavalues.length >= 2;
+    };
+    //filter for sensors with temperature readings
+    const isAirSensorWithTemperatureReadings = ({ sensor, sensordatavalues }) => {
+      let { name = '' } = sensor.sensor_type;
+      name = name.toLowerCase();
+      return TEMPERATURE_SENSOR_NAMES.indexOf(name) !== -1 && sensordatavalues.length >= 2;
     };
     const averageP2ValuesPerSensor = (
       accumulator,
@@ -105,26 +120,82 @@ class City extends React.Component {
         readings.reduce((a, b) => a + b.average, 0) / readings.length;
       return cityAverage;
     };
+    const averageTemperatureValuesPerSensor = (
+      accumulator,
+      { sensor, sensordatavalues }
+    ) => {
+      const { id } = sensor;
+      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
+      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
+        if (valueType.toLowerCase() === 'temperature') {
+          const reading = accumulator[id];
+          const { average, length } = reading;
+          reading.length = length + 1;
+          reading.average = (average + parseFloat(value)) / reading.length;
+        }
+      });
+      return accumulator;
+    }
+    const averageHumidityValuesPerSensor = (
+      accumulator,
+      { sensor, sensordatavalues }
+    ) => {
+      const { id } = sensor;
+      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
+      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
+        if (valueType.toLowerCase() === 'humidity') {
+          const reading = accumulator[id];
+          const { average, length } = reading;
+          reading.length = length + 1;
+          reading.average = (average + parseFloat(value)) / reading.length;
+        }
+      });
+      return accumulator;
+    }
 
     this.setState(state => ({
       city: state.city,
       cityAirPol: state.cityAirPol,
-      isLoading: true
+      isLoading: true,
+      cityP2Stats: state.cityP2Stats,
+      cityTemperatureStats: state.cityTemperatureStats,
+      cityHumidityStats: state.cityHumidityStats
     }));
+
+    let cityP2Stats = {}
+    let cityTemperatureStats = {}
+    let cityHumidityStats = {}
+
     fetch(SENSOR_READINGS_URL)
       .then(data => data.json())
       .then(readings => {
-        const cells = readings
-          .filter(data => isInCity(data) && isAirSensorWithReadings(data))
+        const p2cells = readings
+          .filter(data => isInCity(data) && isAirSensorWithPollutionReadings(data))
           .reduce(averageP2ValuesPerSensor, {});
-        return Promise.resolve(cells);
+
+        const temperaturecells = readings
+          .filter(data => isInCity(data) && isAirSensorWithTemperatureReadings(data))
+          .reduce(averageTemperatureValuesPerSensor, {});
+
+        const humiditycells = readings
+          .filter(data => isInCity(data) && isAirSensorWithHumidityReadings(data))
+          .reduce(averageHumidityValuesPerSensor, {});
+
+        cityP2Stats = p2cells;
+        cityTemperatureStats = temperaturecells;
+        cityHumidityStats = humiditycells;
+
+        return Promise.resolve(p2cells);
       })
       .then(averageP2ValuesForCity)
       .then(reading => {
         this.setState({
           city,
           cityAirPol: parseFloat(reading.toFixed(2)),
-          isLoading: false
+          isLoading: false,
+          cityP2Stats: cityP2Stats,
+          cityTemperatureStats: cityTemperatureStats,
+          cityHumidityStats: cityHumidityStats
         });
       });
   }
@@ -136,7 +207,7 @@ class City extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { city, cityAirPol: airPol, isLoading } = this.state;
+    const { city, cityAirPol: airPol, isLoading, cityP2Stats, cityHumidityStats, cityTemperatureStats } = this.state;
     let Map = KenyaMap;
     if (city.value === 'dar-es-salaam') {
       Map = TanzaniaMap;
@@ -168,7 +239,11 @@ class City extends React.Component {
             <Map />
           </Grid>
           <Grid item xs={12}>
-            <QualityStats />
+            <QualityStats
+              cityHumidityStats={cityHumidityStats}
+              cityP2Stats = {cityP2Stats}
+              cityTemperatureStats = {cityTemperatureStats}
+             />
           </Grid>
           <Grid item xs={12}>
             <CallToAction />
