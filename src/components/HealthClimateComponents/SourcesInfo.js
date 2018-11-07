@@ -8,8 +8,7 @@ import Methane from './Methane';
 
 const styles = theme => ({
   root: {
-    backgroundColor: 'white',
-    height: '130vh'
+    backgroundColor: 'white'
   },
   grid: {
     paddingTop: theme.spacing.unit * 2,
@@ -18,10 +17,9 @@ const styles = theme => ({
   mainTitle: {
     textAlign: 'center',
     fontWeight: 'bolder',
-    textDecoration: 'Upppercase',
     fontSize: theme.typography.fontSmallDefault.fontSize
   },
-  mainGrid: { height: '50rem' }
+  mainGrid: { paddingTop: '2rem', paddingBottom: '2rem' }
 });
 function SourcesInfo({ classes }) {
   return (
@@ -55,7 +53,7 @@ function SourcesInfo({ classes }) {
         direction="row"
         alignItems="center"
         justify="center"
-        style={{ paddingTop: '2rem', paddingBottom: '2rem', height: '50rem' }}
+        className={classes.mainGrid}
       >
         <GroundLevel />
         <BlackCarbon />
