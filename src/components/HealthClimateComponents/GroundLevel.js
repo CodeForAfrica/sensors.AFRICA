@@ -90,7 +90,7 @@ function GroundLevelComponent({ classes }) {
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingBottom: '5rem' }}
+        style={{ paddingBottom: '5.5rem' }}
       >
         <Typography variant="body2" className={classes.bodyCopy}>
           Forms when emissions of methane,nitogen oxides and other 'precursor'
