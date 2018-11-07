@@ -6,13 +6,12 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   grid: {
     backgroundColor: '#F3F3F3',
-    height: '45rem'
+    height: 'auto'
   },
   mainTitle: {
     color: theme.palette.primary.light,
     textAlign: 'center',
     fontWeight: 'bolder',
-    textDecoration: 'Upppercase',
     fontSize: theme.typography.fontSize
   },
   textGrid: { paddingBottom: '3rem' },
@@ -37,12 +36,18 @@ function GroundLevelComponent({ classes }) {
         </Typography>
       </Grid>
 
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        justify="center"
+        alignItems="center"
+        style={{ textAlign: 'center' }}
+      >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Sources:
         </Typography>
       </Grid>
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid item xs={12} justify="center" alignItems="center">
         <Typography variant="body2" className={classes.bodyCopy}>
           Forms when emissions of methane,nitogen oxides and other 'precursor'
           pollutants from industry, traffic, waste and energy production
@@ -51,18 +56,17 @@ function GroundLevelComponent({ classes }) {
       </Grid>
 
       <Grid
-        container
         item
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '1.5rem' }}
+        style={{ paddingTop: '1.5rem', textAlign: 'center' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Impact:
         </Typography>
       </Grid>
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid item xs={12} justify="center" alignItems="center">
         <Typography variant="body2" className={classes.bodyCopy}>
           A major factor in respiratory illness has been shown to decrease crop
           yields,spurring food security challenges and security.
@@ -70,19 +74,24 @@ function GroundLevelComponent({ classes }) {
       </Grid>
 
       <Grid
-        container
         item
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '1.5rem' }}
+        style={{ paddingTop: '1.5rem', textAlign: 'center' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Reduction:
         </Typography>
       </Grid>
 
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        justify="center"
+        alignItems="center"
+        style={{ paddingBottom: '5.5rem' }}
+      >
         <Typography variant="body2" className={classes.bodyCopy}>
           Forms when emissions of methane,nitogen oxides and other 'precursor'
           pollutants from industry, traffic, waste and energy production

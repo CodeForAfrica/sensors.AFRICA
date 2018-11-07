@@ -4,14 +4,11 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  grid: {
-    height: '45rem'
-  },
+  grid: { height: 'auto' },
   mainTitle: {
     color: theme.palette.primary.light,
     textAlign: 'center',
     fontWeight: 'bolder',
-    textDecoration: 'Upppercase',
     fontSize: theme.typography.fontSize
   },
   textGrid: { paddingBottom: '3rem' },
@@ -35,12 +32,18 @@ function BlackCarbonComponent({ classes }) {
           Black Carbon
         </Typography>
       </Grid>
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        justify="center"
+        alignItems="center"
+        style={{ textAlign: 'center' }}
+      >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Sources:
         </Typography>
       </Grid>
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid item xs={12} justify="center" alignItems="center">
         <Typography variant="body2" className={classes.bodyCopy}>
           Produced most often by diesel engines,burning trash,and cooking or
           heating stoves that burn coal, kerosine or biomass(organic matter such
@@ -48,18 +51,17 @@ function BlackCarbonComponent({ classes }) {
         </Typography>
       </Grid>
       <Grid
-        container
         item
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '1.5rem' }}
+        style={{ paddingTop: '1.5rem', textAlign: 'center' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Impact:
         </Typography>
       </Grid>
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid item xs={12} justify="center" alignItems="center">
         <Typography variant="body2" className={classes.bodyCopy}>
           Black carbon particles are fine enough to penetrate deep into the
           lungs ,bloodstream, heart and brain causing inflamatory responses and
@@ -67,18 +69,23 @@ function BlackCarbonComponent({ classes }) {
         </Typography>
       </Grid>
       <Grid
-        container
         item
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '1.5rem' }}
+        style={{ paddingTop: '1.5rem', textAlign: 'center' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Reduction:
         </Typography>
       </Grid>
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        justify="center"
+        alignItems="center"
+        style={{ paddingBottom: '1.5rem' }}
+      >
         <Typography variant="body2" className={classes.bodyCopy}>
           Fortunately its life span is only up to ten days, so if emmison of
           black carbon and other short lived climates polutants were
