@@ -1,10 +1,11 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
 import SourcesInfo from '../../components/HealthClimateComponents/SourcesInfo';
 
-function HealthClimateLanding() {
+function HealthClimate() {
   return (
     <Grid>
       <Navbar />
@@ -14,4 +15,4 @@ function HealthClimateLanding() {
   );
 }
 
-export default HealthClimateLanding;
+export default HealthClimate;

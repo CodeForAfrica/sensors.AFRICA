@@ -6,13 +6,13 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   grid: {
     backgroundColor: '#F3F3F3',
-    height: '45rem'
+    height: '45rem',
+    width: '100vw'
   },
   mainTitle: {
     color: theme.palette.primary.light,
     textAlign: 'center',
     fontWeight: 'bolder',
-    textDecoration: 'Upppercase',
     fontSize: theme.typography.fontSize
   },
   bodyCopy: { textAlign: 'center', marginRight: '0.5rem', marginLeft: '0.5rem' }

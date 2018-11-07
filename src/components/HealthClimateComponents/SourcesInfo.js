@@ -31,7 +31,6 @@ function SourcesInfo({ classes }) {
         lg={12}
         xs={12}
         md={12}
-        container
         justify="center"
         alignItems="center"
         className={classes.grid}

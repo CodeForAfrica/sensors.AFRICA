@@ -5,13 +5,13 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   grid: {
-    height: '45rem'
+    height: '45rem',
+    width: '100vw'
   },
   mainTitle: {
     color: theme.palette.primary.light,
     textAlign: 'center',
     fontWeight: 'bolder',
-    textDecoration: 'Upppercase',
     fontSize: theme.typography.fontSize
   },
   textGrid: { paddingBottom: '3rem' },
