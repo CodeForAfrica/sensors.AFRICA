@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   grid: {
     backgroundColor: '#F3F3F3',
-    height: '45rem'
+    height: 'auto'
   },
   mainTitle: {
     color: theme.palette.primary.light,
@@ -85,7 +85,13 @@ function GroundLevelComponent({ classes }) {
         </Typography>
       </Grid>
 
-      <Grid item xs={12} justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        justify="center"
+        alignItems="center"
+        style={{ paddingBottom: '5rem' }}
+      >
         <Typography variant="body2" className={classes.bodyCopy}>
           Forms when emissions of methane,nitogen oxides and other 'precursor'
           pollutants from industry, traffic, waste and energy production

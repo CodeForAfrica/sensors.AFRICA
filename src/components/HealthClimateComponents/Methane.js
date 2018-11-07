@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   grid: {
     backgroundColor: '#F3F3F3',
-    height: '45rem'
+    height: 'auto'
   },
   methaneGrid: {
     paddingTop: '2rem',
@@ -89,7 +89,13 @@ function MethaneComponent({ classes }) {
           Reduction:
         </Typography>
       </Grid>
-      <Grid item xs={12} justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        justify="center"
+        alignItems="center"
+        style={{ paddingBottom: '1.5rem' }}
+      >
         <Typography variant="body2" className={classes.bodyCopy}>
           Methane persist for a decade,but improved waste management methods,
           including capture and combustion of methane as a clean energy

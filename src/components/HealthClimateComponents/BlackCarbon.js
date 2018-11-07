@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  grid: {
-    height: '45rem'
-  },
+  grid: { height: 'auto' },
   mainTitle: {
     color: theme.palette.primary.light,
     textAlign: 'center',
@@ -82,7 +80,13 @@ function BlackCarbonComponent({ classes }) {
           Reduction:
         </Typography>
       </Grid>
-      <Grid item xs={12} justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        justify="center"
+        alignItems="center"
+        style={{ paddingBottom: '2rem' }}
+      >
         <Typography variant="body2" className={classes.bodyCopy}>
           Fortunately its life span is only up to ten days, so if emmison of
           black carbon and other short lived climates polutants were
