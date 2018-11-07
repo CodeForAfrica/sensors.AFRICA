@@ -65,7 +65,6 @@ function HealthBurdenComponent({ classes }) {
         xs={12}
         container
         justify="center"
-        direction="column"
         alignItems="center"
         className={classes.grid}
       >
