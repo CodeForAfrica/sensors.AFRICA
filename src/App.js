@@ -6,12 +6,12 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import ScrollToTop from './ScrollToTop';
 import Home from './pages';
-import HealthClimateLanding from './pages/air/HealthClimateLanding';
 import Air, {
   About as AirAbout,
   HowSensorsWork as AirHowSensorsWork,
   City as AirCity,
-  JoinNetwork as AirJoinNetwork
+  JoinNetwork as AirJoinNetwork,
+  HealthClimate as AirHealthClimate
 } from './pages/air';
 
 const FONT_FAMILY = '"Montserrat", "sans-serif"';
@@ -105,7 +105,7 @@ function App() {
             <Route path="/air/join-network" component={AirJoinNetwork} />
             <Route
               path="/air/health-and-climate-impact"
-              component={HealthClimateLanding}
+              component={AirHealthClimate}
             />
           </Switch>
         </ScrollToTop>

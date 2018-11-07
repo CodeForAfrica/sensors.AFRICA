@@ -6,14 +6,18 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   grid: {
     backgroundColor: '#F3F3F3',
-    height: '45rem'
+    height: 'auto'
   },
   mainTitle: {
     color: theme.palette.primary.light,
     textAlign: 'center',
     fontWeight: 'bolder',
-    textDecoration: 'Upppercase',
     fontSize: theme.typography.fontSize
+  },
+  methaneGrid: {
+    paddingTop: '2rem',
+    paddingBottom: '1rem',
+    margin: '0 auto'
   },
   bodyCopy: { textAlign: 'center', marginRight: '0.5rem', marginLeft: '0.5rem' }
 });
@@ -29,7 +33,7 @@ function MethaneComponent({ classes }) {
       alignItems="center"
       className={classes.grid}
     >
-      <Grid style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
+      <Grid className={classes.methaneGrid}>
         <Typography variant="h6" className={classes.mainTitle}>
           Methane
         </Typography>
@@ -40,7 +44,7 @@ function MethaneComponent({ classes }) {
           Sources:
         </Typography>
       </Grid>
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid item xs={12} justify="center" alignItems="center">
         <Typography variant="body2" className={classes.bodyCopy}>
           40 %of generated methane emissons come from agriculture,primary rice,
           paddies and livestock production.This is followed by emissions from
@@ -49,18 +53,17 @@ function MethaneComponent({ classes }) {
       </Grid>
 
       <Grid
-        container
         item
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '1rem' }}
+        style={{ paddingTop: '1rem', textAlign: 'center' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Impact:
         </Typography>
       </Grid>
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid item xs={12} justify="center" alignItems="center">
         <Typography variant="body2" className={classes.bodyCopy}>
           Methane emissions contribute significantly to the development of
           ground level ozone;chronic exposure to ozone is a factor of asthma and
@@ -70,18 +73,23 @@ function MethaneComponent({ classes }) {
       </Grid>
 
       <Grid
-        container
         item
         xs={12}
         justify="center"
         alignItems="center"
-        style={{ paddingTop: '1rem' }}
+        style={{ paddingTop: '1rem', textAlign: 'center' }}
       >
         <Typography variant="body2" style={{ fontWeight: 'bold' }}>
           Reduction:
         </Typography>
       </Grid>
-      <Grid container item xs={12} justify="center" alignItems="center">
+      <Grid
+        item
+        xs={12}
+        justify="center"
+        alignItems="center"
+        style={{ paddingBottom: '1.5rem' }}
+      >
         <Typography variant="body2" className={classes.bodyCopy}>
           Methane persist for a decade,but improved waste management methods,
           including capture and combustion of methane as a clean energy
