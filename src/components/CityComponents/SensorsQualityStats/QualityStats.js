@@ -9,7 +9,7 @@ import DataTable from './DataTable';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    marginTop: theme.spacing.unit * 8,
+    marginTop: theme.spacing.unit * 0,
     marginBottom: theme.spacing.unit * 4,
     paddingRight: '7rem',
     paddingLeft: '7rem'

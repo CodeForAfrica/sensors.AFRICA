@@ -13,6 +13,7 @@ import TanzaniaMap from '../../components/Maps/Tanzania';
 import CityHeader from '../../components/CityComponents/Header/CityHeader';
 import CallToAction from '../../components/CityComponents/CallToAction';
 import PollutionStats from '../../components/CityComponents/PollutionStats';
+import QualityStats from '../../components/CityComponents/SensorsQualityStats/QualityStats';
 
 const DEFAULT_CITY = { value: 'nairobi', label: 'Nairobi, Kenya' };
 const CITIES_LOCATION = {
@@ -165,6 +166,9 @@ class City extends React.Component {
           </Grid>
           <Grid item xs={12}>
             <Map />
+          </Grid>
+          <Grid item xs={12}>
+            <QualityStats />
           </Grid>
           <Grid item xs={12}>
             <CallToAction />

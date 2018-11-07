@@ -127,7 +127,7 @@ function DataTable({ classes }) {
                       variant="subtitle1"
                       className={classes.subheading}
                     >
-                      SOUND
+                      TEMPERATURE
                     </Typography>
                   </Grid>
                   <Grid container direction="row" justify="center">
@@ -204,7 +204,7 @@ function DataTable({ classes }) {
                       variant="subtitle1"
                       className={classes.subheading}
                     >
-                      SOUND
+                      TEMPERATURE
                     </Typography>
                   </Grid>
                   <Grid container direction="row" justify="center">
@@ -281,7 +281,7 @@ function DataTable({ classes }) {
                       variant="subtitle1"
                       className={classes.subheading}
                     >
-                      SOUND
+                      TEMPERATURE
                     </Typography>
                   </Grid>
                   <Grid container direction="row" justify="center">
