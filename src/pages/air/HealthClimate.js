@@ -3,15 +3,15 @@ import { Grid } from '@material-ui/core';
 
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
-import SourcesInfo from '../../components/HealthClimateComponents/SourcesInfo';
-import HealthBurdenComponent from '../../components/HealthClimateComponents/HealthBurdenComponent';
+import Sources from '../../components/HealthClimateComponents/Sources';
+import HealthAndBurden from '../../components/HealthClimateComponents/HealthAndBurden';
 
 function HealthClimateLanding() {
   return (
     <Grid>
       <Navbar />
-      <SourcesInfo />
-      <HealthBurdenComponent />
+      <Sources />
+      <HealthAndBurden />
       <Footer />
     </Grid>
   );
