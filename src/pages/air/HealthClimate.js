@@ -3,8 +3,8 @@ import { Grid } from '@material-ui/core';
 
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
-import Sources from '../../components/HealthClimateComponents/Sources';
-import HealthAndBurden from '../../components/HealthClimateComponents/HealthAndBurden';
+import Sources from '../../components/HealthClimate/Sources';
+import HealthAndBurden from '../../components/HealthClimate/HealthAndBurden';
 
 function HealthClimateLanding() {
   return (

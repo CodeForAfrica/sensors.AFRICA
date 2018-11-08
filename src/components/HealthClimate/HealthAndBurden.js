@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import Gauge from '../AirComponents/Gauge';
+import Gauge from '../Air/Gauge';
 import Burden from './Burden';
 
 const styles = theme => ({
