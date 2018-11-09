@@ -21,7 +21,7 @@ const styles = theme => ({
     paddingTop: '1.5rem'
   },
   bodyCopy: {
-    textAlign: 'justify'
+    textAlign: 'center'
   }
 });
 

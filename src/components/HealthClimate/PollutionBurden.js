@@ -26,7 +26,7 @@ const styles = theme => ({
   },
   bodyCopy: {
     color: '#fff',
-    textAlign: 'justify'
+    textAlign: 'center'
   }
 });
 

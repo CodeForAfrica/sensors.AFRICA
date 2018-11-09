@@ -68,7 +68,7 @@ function Burden({ classes }) {
               icon={risingtemperature}
               title="Rising Temperature"
               burden="
-              Global warming increses the intensity of storms,droughts and
+              Global warming increases the intensity of storms,droughts and
               heat waves,and expands the zones of transmission for many
               vector-bourne diseases transmitted by mosquitoes(e.g malaria)
               or other insects and pests."
