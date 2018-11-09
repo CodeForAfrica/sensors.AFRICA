@@ -19,11 +19,11 @@ const styles = theme => ({
   }
 });
 
-function CityHeader({ airPol, city, classes, handleChange }) {
+function CityHeader({ airPol, city, classes, handleSearch }) {
   return (
     <Grid container className={classes.jumbotron}>
       <Grid item xs={12}>
-        <CityMenuBar handleChange={handleChange} />
+        <CityMenuBar handleSearch={handleSearch} />
         <AirCityHeaderContent city={city} airPol={airPol} />
       </Grid>
     </Grid>
@@ -31,14 +31,14 @@ function CityHeader({ airPol, city, classes, handleChange }) {
 }
 
 CityHeader.propTypes = {
-  airPol: PropTypes.string,
+  airPol: PropTypes.number,
   city: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired
 };
 
 CityHeader.defaultProps = {
-  airPol: '0'
+  airPol: 0.0
 };
 
 export default withStyles(styles)(CityHeader);

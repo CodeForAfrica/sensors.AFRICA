@@ -71,6 +71,15 @@ const THEME = createMuiTheme({
     useNextVariants: true
   },
   overrides: {
+    MuiBadge: {
+      badge: {
+        color: '#bbb',
+        fontFamily: HEADINGS_FONT_FAMILY,
+        fontWeight: 500,
+        textTransform: 'uppercase',
+        borderRadius: 0
+      }
+    },
     MuiButton: {
       root: {
         borderRadius: 0

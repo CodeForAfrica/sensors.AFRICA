@@ -20,10 +20,10 @@ class AirHome extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleChange(city) {
+  handleSearch(city) {
     const { history } = this.props;
 
     history.push(CITY_PATHNAME, { city });
@@ -33,7 +33,7 @@ class AirHome extends React.Component {
     return (
       <React.Fragment>
         <Navbar />
-        <AirHeader handleChange={this.handleChange} />
+        <AirHeader handleSearch={this.handleSearch} />
         <Issues />
         <IndoorOutdoor />
         <Stories />

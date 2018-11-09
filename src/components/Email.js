@@ -107,7 +107,11 @@ class Email extends Component {
 
 Email.propTypes = {
   classes: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func
+};
+
+Email.defaultProps = {
+  onSubmit: null
 };
 
 export default withStyles(styles)(Email);

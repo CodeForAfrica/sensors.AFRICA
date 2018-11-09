@@ -53,112 +53,87 @@ const styles = theme => ({
   }
 });
 
-class HambugerMenu extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { menuOpen: false };
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-  }
-
-  handleOpen() {
-    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
-  }
-
-  handleClose() {
-    this.setState({ menuOpen: false });
-  }
-
-  render() {
-    const { classes } = this.props;
-    const { menuOpen } = this.state;
-
-    return (
-      <div>
-        <MenuButton
-          open={menuOpen}
-          onClick={() => this.handleOpen()}
-          onClose={this.handleClose}
-        />
-        <Modal
-          className={classes.modalContent}
-          open={menuOpen}
-          onClose={this.handleClose}
-          disableAutoFocus
-        >
-          <List
-            container
-            item
-            xs={3}
-            direction="column"
-            className={classes.list}
+function HambugerMenu({ classes, handleToggle, menuOpen }) {
+  return (
+    <div>
+      <MenuButton
+        open={menuOpen}
+        onClick={handleToggle}
+        onClose={handleToggle}
+      />
+      <Modal
+        className={classes.modalContent}
+        open={menuOpen}
+        onClose={handleToggle}
+        disableAutoFocus
+      >
+        <List container item xs={3} direction="column" className={classes.list}>
+          <a
+            href="https://medium.com/code-for-africa/tagged/innovateafrica"
+            className={classes.link}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
-              className={classes.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MenuItem className={classes.listItem}>
-                <Typography className={classes.typography} variant="subtitle1">
-                  STORIES
-                </Typography>
-              </MenuItem>
-            </a>
+            <MenuItem className={classes.listItem}>
+              <Typography className={classes.typography} variant="subtitle1">
+                STORIES
+              </Typography>
+            </MenuItem>
+          </a>
 
-            <Link to="/air/how-sensors-work" className={classes.link}>
-              <MenuItem className={classes.listItem}>
-                <Typography className={classes.typography} variant="subtitle1">
-                  RESOURCES
-                </Typography>
-              </MenuItem>
-            </Link>
+          <Link to="/air/how-sensors-work" className={classes.link}>
+            <MenuItem className={classes.listItem}>
+              <Typography className={classes.typography} variant="subtitle1">
+                RESOURCES
+              </Typography>
+            </MenuItem>
+          </Link>
 
-            <a
-              href="https://archive.sensors.africa/"
-              className={classes.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MenuItem className={classes.listItem}>
-                <Typography className={classes.typography} variant="subtitle1">
-                  DATA
-                </Typography>
-              </MenuItem>
-            </a>
+          <a
+            href="https://archive.sensors.africa/"
+            className={classes.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <MenuItem className={classes.listItem}>
+              <Typography className={classes.typography} variant="subtitle1">
+                DATA
+              </Typography>
+            </MenuItem>
+          </a>
 
-            <Link to="/air/join-network" className={classes.link}>
-              <MenuItem className={classes.listItem}>
-                <Typography className={classes.typography} variant="subtitle1">
-                  JOIN
-                </Typography>
-              </MenuItem>
-            </Link>
+          <Link to="/air/join-network" className={classes.link}>
+            <MenuItem className={classes.listItem}>
+              <Typography className={classes.typography} variant="subtitle1">
+                JOIN
+              </Typography>
+            </MenuItem>
+          </Link>
 
-            <Link to="/air/about" className={classes.link}>
-              <MenuItem className={classes.listItem}>
-                <Typography className={classes.typography} variant="subtitle1">
-                  ABOUT
-                </Typography>
-              </MenuItem>
-            </Link>
-            <Link to="/air/join-network" className={classes.link}>
-              <MenuItem className={classes.listItem}>
-                <Typography className={classes.typography} variant="subtitle1">
-                  CONTACT
-                </Typography>
-              </MenuItem>
-            </Link>
-          </List>
-        </Modal>
-      </div>
-    );
-  }
+          <Link to="/air/about" className={classes.link}>
+            <MenuItem className={classes.listItem}>
+              <Typography className={classes.typography} variant="subtitle1">
+                ABOUT
+              </Typography>
+            </MenuItem>
+          </Link>
+          <Link to="/air/join-network" className={classes.link}>
+            <MenuItem className={classes.listItem}>
+              <Typography className={classes.typography} variant="subtitle1">
+                CONTACT
+              </Typography>
+            </MenuItem>
+          </Link>
+        </List>
+      </Modal>
+    </div>
+  );
 }
 
 HambugerMenu.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+  menuOpen: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(HambugerMenu);
