@@ -82,7 +82,7 @@ const styles = theme => ({
   }
 });
 
-function PollutionStats({ classes }) {
+function PollutionStats({ pollutionstats, classes, city}) {
   return (
     <Grid
       container
@@ -103,10 +103,10 @@ function PollutionStats({ classes }) {
             Death by air pollution
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
-            in Kenya yearly
+            in {pollutionstats.country} yearly
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            5,102
+            {pollutionstats.no_death}
           </Typography>
 
           <Typography variant="subtitle1" className={classes.subtitle}>
@@ -116,10 +116,10 @@ function PollutionStats({ classes }) {
             caused by air pollution
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
-            in Kenya yearly
+            in {pollutionstats.country} yearly
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            2,144
+          {pollutionstats.child_death}
           </Typography>
         </Grid>
         <Grid item className={classes.statMiddleContentContainer}>
@@ -130,10 +130,10 @@ function PollutionStats({ classes }) {
             by air pollution
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
-            in Kenya is
+            in {pollutionstats.country} is
           </Typography>
           <Typography variant="h4" className={classes.nameHighlight}>
-            ACUTE LOWER
+            {pollutionstats.top_illness}
           </Typography>
           <Typography variant="h4" className={classes.nameHighlightContinue}>
             RESPIRATORY
@@ -144,16 +144,16 @@ function PollutionStats({ classes }) {
         </Grid>
         <Grid item className={classes.statContentContainer}>
           <Typography variant="subtitle2" className={classes.statTitle}>
-            POLLUTION LEVELS IN NAIROBI
+            POLLUTION LEVELS IN {city.value}
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitle}>
-            The air in Nairobi has an
+            The air in {city.value} has an
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
             annual average of
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            17{' '}
+            {pollutionstats.annual_avg}{' '}
             <sup className={classes.sup}>
               µg/m
               <sup>3</sup>
@@ -164,7 +164,7 @@ function PollutionStats({ classes }) {
             <sub>2.5</sub> particles.
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleContinue}>
-            That&apos;s 70% more than the
+            That&apos;s {pollutionstats.percent} than the
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
             WHO safe level.

@@ -32,6 +32,32 @@ const CITIES_LOCATION = {
     label: 'Dar-es-salaam, Tanzania'
   }
 };
+const CITIES_POLLUTION_STATS = {
+  nairobi: {
+    no_death: '43,862',
+    child_death: '10,628',
+    top_illness: 'Acute Lower',
+    annual_avg: '17',
+    percent: '70% more',
+    country: 'Kenya'
+  },
+  lagos: {
+    no_death: '242,657',
+    child_death: '140,520',
+    top_illness: 'Lower',
+    annual_avg: '27',
+    percent: '170% more',
+    country: 'Nigeria'
+  },
+  'dar-es-salaam': {
+    no_death: '89,021',
+    child_death: '17,624',
+    top_illness: 'Lower',
+    annual_avg: '23',
+    percent: '130% more',
+    country: 'Tanzania'
+  }
+}
 const SENSOR_NAMES = ['sds021', 'sds011'];
 const SENSOR_READINGS_URL = 'https://api.airquality.codeforafrica.org/v1/now/';
 
@@ -136,6 +162,8 @@ class City extends React.Component {
   render() {
     const { classes } = this.props;
     const { city, cityAirPol: airPol, isLoading } = this.state;
+    const pollutionstats = CITIES_POLLUTION_STATS[city.value];
+
     let Map = KenyaMap;
     if (city.value === 'dar-es-salaam') {
       Map = TanzaniaMap;
@@ -161,7 +189,9 @@ class City extends React.Component {
             handleSearch={this.handleSearch}
           />
           <Grid item xs={12}>
-            <PollutionStats />
+            <PollutionStats
+              pollutionstats={pollutionstats}
+              city={city} />
           </Grid>
           <Grid item xs={12}>
             <Map />
