@@ -82,6 +82,7 @@ function Issues({ classes }) {
           our most common illnesses
         </Typography>
       </Grid>
+
       <Grid item xs={12}>
         <Grid
           container

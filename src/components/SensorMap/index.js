@@ -23,7 +23,8 @@ const styles = theme => ({
   }
 });
 
-function KenyaMap({ classes }) {
+function Map({ classes, mapLocation }) {
+  const src = `//map.aq.sensors.africa/#${mapLocation}`;
   return (
     <Grid
       container
@@ -42,7 +43,7 @@ function KenyaMap({ classes }) {
       <Grid item xs={12}>
         <IframeComponent
           title="Map section"
-          src="//map.aq.sensors.africa/#9/-1.4272/36.8147"
+          src={src}
           height="500"
           width="100%"
           frameBorder="0"
@@ -53,7 +54,8 @@ function KenyaMap({ classes }) {
   );
 }
 
-KenyaMap.propTypes = {
-  classes: PropTypes.object.isRequired
+Map.propTypes = {
+  classes: PropTypes.object.isRequired,
+  mapLocation: PropTypes.string.isRequired
 };
-export default withStyles(styles)(KenyaMap);
+export default withStyles(styles)(Map);
