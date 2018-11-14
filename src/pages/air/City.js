@@ -10,9 +10,9 @@ import Footer from '../../components/Footer';
 import KenyaMap from '../../components/Maps/Kenya';
 import NigeriaMap from '../../components/Maps/Nigeria';
 import TanzaniaMap from '../../components/Maps/Tanzania';
-import CityHeader from '../../components/CityComponents/Header/CityHeader';
-import CallToAction from '../../components/CityComponents/CallToAction';
-import PollutionStats from '../../components/CityComponents/PollutionStats';
+import CityHeader from '../../components/City/Header/CityHeader';
+import CallToAction from '../../components/City/CallToAction';
+import PollutionStats from '../../components/City/PollutionStats';
 
 const DEFAULT_CITY = { value: 'nairobi', label: 'Nairobi, Kenya' };
 const CITIES_LOCATION = {

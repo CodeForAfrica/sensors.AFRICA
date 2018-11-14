@@ -10,7 +10,8 @@ import Air, {
   About as AirAbout,
   HowSensorsWork as AirHowSensorsWork,
   City as AirCity,
-  JoinNetwork as AirJoinNetwork
+  JoinNetwork as AirJoinNetwork,
+  HealthAndClimateImpacts as AirHealthAndClimateImpacts
 } from './pages/air';
 
 const FONT_FAMILY = '"Montserrat", "sans-serif"';
@@ -111,6 +112,10 @@ function App() {
             <Route path="/air/how-sensors-work" component={AirHowSensorsWork} />
             <Route path="/air/city" component={AirCity} />
             <Route path="/air/join-network" component={AirJoinNetwork} />
+            <Route
+              path="/air/health-and-climate-impact"
+              component={AirHealthAndClimateImpacts}
+            />
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
