@@ -41,24 +41,24 @@ const CITIES_LOCATION = {
 };
 const CITIES_POLLUTION_STATS = {
   nairobi: {
-    no_death: '43,862',
-    child_death: '10,628',
-    top_illness: 'Acute Lower',
-    annual_avg: '17',
+    deathCount: '43,862',
+    childDeathCount: '10,628',
+    topIllness: 'Acute Lower',
+    annualAverage: '17',
     percent: '70% more'
   },
   lagos: {
-    no_death: '242,657',
-    child_death: '140,520',
-    top_illness: 'Lower',
-    annual_avg: '27',
+    deathCount: '242,657',
+    childDeathCount: '140,520',
+    topIllness: 'Lower',
+    annualAverage: '27',
     percent: '170% more'
   },
   'dar-es-salaam': {
-    no_death: '89,021',
-    child_death: '17,624',
-    top_illness: 'Lower',
-    annual_avg: '23',
+    deathCount: '89,021',
+    childDeathCount: '17,624',
+    topIllness: 'Lower',
+    annualAverage: '23',
     percent: '130% more'
   }
 };

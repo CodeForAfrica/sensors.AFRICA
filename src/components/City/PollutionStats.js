@@ -106,7 +106,7 @@ function PollutionStats({ classes, pollutionStats, city }) {
             in {city.country} yearly
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            {pollutionStats.no_death}
+            {pollutionStats.deathCount}
           </Typography>
 
           <Typography variant="subtitle1" className={classes.subtitle}>
@@ -119,7 +119,7 @@ function PollutionStats({ classes, pollutionStats, city }) {
             in {city.country} yearly
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            {pollutionStats.child_death}
+            {pollutionStats.childDeathCount}
           </Typography>
         </Grid>
         <Grid item className={classes.statMiddleContentContainer}>
@@ -133,7 +133,7 @@ function PollutionStats({ classes, pollutionStats, city }) {
             in {city.country} is
           </Typography>
           <Typography variant="h4" className={classes.nameHighlight}>
-            {pollutionStats.top_illness}
+            {pollutionStats.topIllness}
           </Typography>
           <Typography variant="h4" className={classes.nameHighlightContinue}>
             RESPIRATORY
@@ -153,7 +153,7 @@ function PollutionStats({ classes, pollutionStats, city }) {
             annual average of
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            {pollutionStats.annual_avg}{' '}
+            {pollutionStats.annualAverage}{' '}
             <sup className={classes.sup}>
               µg/m
               <sup>3</sup>
