@@ -13,7 +13,7 @@ import IndoorOutdoor from '../../components/Air/IndoorOutdoor';
 import Issues from '../../components/Air/Issues';
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
-import HealthClimate from './HealthClimate';
+import HealthAndClimateImpacts from './HealthAndClimateImpacts';
 
 const CITY_PATHNAME = '/air/city';
 class AirHome extends React.Component {
@@ -48,5 +48,5 @@ AirHome.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-export { About, HowSensorsWork, City, JoinNetwork, HealthClimate };
+export { About, HowSensorsWork, City, JoinNetwork, HealthAndClimateImpacts };
 export default withRouter(AirHome);

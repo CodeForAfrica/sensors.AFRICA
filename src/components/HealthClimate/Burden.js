@@ -25,24 +25,37 @@ const styles = theme => ({
     textAlign: 'center',
     textTransform: 'none'
   },
-  firstLastCard: {
+
+  // For temparate, snowAndIce, and crops cards, include margins in width since
+  // we want the same background color
+  temperature: {
     width: '100vw',
     backgroundColor: theme.palette.primary.light,
     [theme.breakpoints.up('md')]: {
-      width: '18.75rem'
+      width: '19.875rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '25.375rem'
+      width: '26.5rem'
     }
   },
-  middleCard: {
+  snowAndIce: {
     width: '100vw',
     backgroundColor: theme.palette.primary.dark,
     [theme.breakpoints.up('md')]: {
-      width: '18.75rem'
+      width: '19.875rem'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '25.375rem'
+      width: '26.5rem'
+    }
+  },
+  crops: {
+    width: '100vw',
+    backgroundColor: theme.palette.primary.light,
+    [theme.breakpoints.up('md')]: {
+      width: '19.875rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '26.5rem'
     }
   }
 });
@@ -63,7 +76,7 @@ function Burden({ classes }) {
       </Grid>
       <Grid item xs={12}>
         <Grid container direction="row" justify="center" alignItems="strech">
-          <div className={classes.firstLastCard}>
+          <div className={classes.temperature}>
             <PollutionBurden
               icon={risingtemperature}
               title="Rising Temperature"
@@ -75,7 +88,7 @@ function Burden({ classes }) {
             />
           </div>
 
-          <div className={classes.middleCard}>
+          <div className={classes.snowAndIce}>
             <PollutionBurden
               icon={snowmelt}
               title="Snow and ice melt"
@@ -88,7 +101,7 @@ function Burden({ classes }) {
             />
           </div>
 
-          <div className={classes.firstLastCard}>
+          <div className={classes.crops}>
             <PollutionBurden
               icon={cropdamage}
               title="Crop Damage"
