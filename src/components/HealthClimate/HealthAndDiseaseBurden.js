@@ -70,7 +70,7 @@ function HealthAndBurden({ classes }) {
           alignItems="center"
           className={classes.mainTitle}
         >
-          Health and Burden
+          Health and Disease Burden
         </Typography>
       </Grid>
 

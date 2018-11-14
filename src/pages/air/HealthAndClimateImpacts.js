@@ -5,11 +5,10 @@ import Navbar from '../../components/Header/Navbar';
 import Header from '../../components/HealthClimate/HealthAndClimateHeader';
 import Impact from '../../components/HealthClimate/HealthAndClimateImpact';
 import Sources from '../../components/HealthClimate/Sources';
-import HealthAndBurden from '../../components/HealthClimate/HealthAndBurden';
-import Support from '../../components/Support';
+import HealthAndDiseaseBurden from '../../components/HealthClimate/HealthAndDiseaseBurden';
 import Stories from '../../components/About/Stories';
+import Support from '../../components/Support';
 import Footer from '../../components/Footer';
-
 
 function HealthAndClimateImpacts() {
   return (
@@ -18,7 +17,7 @@ function HealthAndClimateImpacts() {
       <Header />
       <Impact />
       <Sources />
-      <HealthAndBurden />
+      <HealthAndDiseaseBurden />
       <Stories />
       <Support />
       <Footer />
