@@ -12,7 +12,7 @@ import SensorMap from '../../components/SensorMap';
 import CityHeader from '../../components/City/Header/CityHeader';
 import CallToAction from '../../components/City/CallToAction';
 import PollutionStats from '../../components/City/PollutionStats';
-import QualityStats from '../../components/City/SensorsQualityStats/QualityStats';
+import QualityStats from '../../components/City/SensorsQualityStats';
 
 const DEFAULT_CITY = 'nairobi';
 const CITIES_LOCATION = {
@@ -77,7 +77,8 @@ const styles = () => ({
     //                  horizontal scrollbars.
     position: 'absolute',
     top: 0,
-    left: 0
+    left: 0,
+    backgroundColor: '#fff'
   }
 });
 
@@ -212,29 +213,25 @@ class City extends React.Component {
     fetch(SENSOR_READINGS_URL)
       .then(data => data.json())
       .then(readings => {
-        const p2cells = readings
+        cityP2Stats = readings
           .filter(
             data => isInCity(data) && isAirSensorWithPollutionReadings(data)
           )
           .reduce(averageP2ValuesPerSensor, {});
 
-        const temperaturecells = readings
+        cityTemperatureStats = readings
           .filter(
             data => isInCity(data) && isAirSensorWithTemperatureReadings(data)
           )
           .reduce(averageTemperatureValuesPerSensor, {});
 
-        const humiditycells = readings
+        cityHumidityStats = readings
           .filter(
             data => isInCity(data) && isAirSensorWithHumidityReadings(data)
           )
           .reduce(averageHumidityValuesPerSensor, {});
 
-        cityP2Stats = p2cells;
-        cityTemperatureStats = temperaturecells;
-        cityHumidityStats = humiditycells;
-
-        return Promise.resolve(p2cells);
+        return Promise.resolve(cityP2Stats);
       })
       .then(averageP2ValuesForCity)
       .then(reading => {

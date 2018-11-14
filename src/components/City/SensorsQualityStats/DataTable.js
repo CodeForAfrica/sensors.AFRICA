@@ -14,7 +14,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    marginTop: theme.spacing.unit * 3,
     [theme.breakpoints.up('md')]: {
       borderRight: '1px solid rgba(0,0,0,0.1)',
       borderLeft: '1px solid rgba(0,0,0,0.1)'
@@ -57,285 +56,323 @@ const styles = theme => ({
   }
 });
 
-class DataTable extends React.Component {
-
-  renderMaximum(readingsObject) {
-    var cityMaximum = 0
-    if(readingsObject) {
-      const readings = Object.values(readingsObject);
-      cityMaximum =
-        readings.reduce((min, p) => p.average > min ? p.average : min, readings[0].average);
+function renderMaximum(readingsObject) {
+  if (readingsObject) {
+    const readings = Object.values(readingsObject);
+    if (readings[0]) {
+      const cityMaximum = readings.reduce(
+        (min, p) => (p.average > min ? p.average : min),
+        readings[0].average
+      );
+      return cityMaximum.toFixed(1);
     }
-    return cityMaximum.toFixed(1)
   }
+  return 0;
+}
 
-  renderMinimum(readingsObject) {
-    var cityMinimum = 0;
-    if(readingsObject) {
-      const readings = Object.values(readingsObject);
-      cityMinimum =
-        readings.reduce((min, p) => p.average < min ? p.average : min, readings[0].average);
-      }
-    return cityMinimum.toFixed(1)
+function renderMinimum(readingsObject) {
+  if (readingsObject) {
+    const readings = Object.values(readingsObject);
+    if (readings[0]) {
+      const cityMinimum = readings.reduce(
+        (min, p) => (p.average < min ? p.average : min),
+        readings[0].average
+      );
+      return cityMinimum.toFixed(1);
+    }
   }
+  return 0;
+}
 
-  renderAverage(readingsObject) {
-    var cityAverage = 0;
-    if(readingsObject) {
-      const readings = Object.values(readingsObject);
-      cityAverage =
+function renderAverage(readingsObject) {
+  if (readingsObject) {
+    const readings = Object.values(readingsObject);
+    if (readings[0]) {
+      const cityAverage =
         readings.reduce((a, b) => a + b.average, 0) / readings.length;
+      return cityAverage.toFixed(1);
     }
-    return cityAverage.toFixed(1);
   }
+  return 0;
+}
 
-  render() {
-    const { classes } = this.props;
-    return (
-      <Grid container className={classes.root}>
-        <Grid item xs={12}>
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow className={classes.rowHeight}>
-                <TableCell>
+function DataTable({
+  classes,
+  cityHumidityStats,
+  cityP2Stats,
+  cityTemperatureStats
+}) {
+  return (
+    <Grid container className={classes.root}>
+      <Grid item xs={12}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow className={classes.rowHeight}>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography variant="h6" className={classes.subheading}>
+                      AIR
+                    </Typography>
+                  </Grid>
                   <Grid
                     container
-                    direction="column"
+                    direction="row"
                     justify="center"
-                    alignItems="center"
-                    className={classes.typography}
+                    className={classes.data}
                   >
-                    <Grid>
-                      <Typography variant="h6" className={classes.subheading}>
-                        AIR
-                      </Typography>
-                    </Grid>
-                    <Grid
-                      container
-                      direction="row"
-                      justify="center"
-                      className={classes.data}
+                    <Typography variant="h3" className={classes.display2}>
+                      {renderMaximum(cityP2Stats)}
+                    </Typography>
+                    <small className={classes.small}>
+                      PM
+                      <sub>2.5</sub>
+                    </small>
+                  </Grid>
+                </Grid>
+              </TableCell>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
                     >
-                      <Typography variant="h3" className={classes.display2}>
-                        {this.renderMaximum(this.props.cityP2Stats)}
-                      </Typography>
-                      <small className={classes.small}>PM<sub>2.5</sub></small>
-                    </Grid>
+                      HUMIDITY
+                    </Typography>
                   </Grid>
-                </TableCell>
-                <TableCell>
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    className={classes.typography}
-                  >
-                    <Grid>
-                      <Typography
-                        variant="subtitle1"
-                        className={classes.subheading}
-                      >
-                        HUMIDITY
-                      </Typography>
-                    </Grid>
-                    <Grid container direction="row" justify="center">
-                      <Typography variant="h3" className={classes.display2}>
-                        {this.renderMaximum(this.props.cityHumidityStats)}
-                      </Typography>
-                      <small className={classes.small}>g/m<sup>3</sup></small>
-                    </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      {renderMaximum(cityHumidityStats)}
+                    </Typography>
+                    <small className={classes.small}>
+                      g/m
+                      <sup>3</sup>
+                    </small>
                   </Grid>
-                </TableCell>
-                <TableCell>
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    className={classes.typography}
-                  >
-                    <Grid>
-                      <Typography
-                        variant="subtitle1"
-                        className={classes.subheading}
-                      >
-                        TEMPERATURE
-                      </Typography>
-                    </Grid>
-                    <Grid container direction="row" justify="center">
-                      <Typography variant="h3" className={classes.display2}>
-                        {this.renderMaximum(this.props.cityTemperatureStats)}
-                      </Typography>
-                      <small className={classes.small}><sup>o</sup>C</small>
-                    </Grid>
+                </Grid>
+              </TableCell>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      TEMPERATURE
+                    </Typography>
                   </Grid>
-                </TableCell>
-              </TableRow>
-            </TableHead>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      {renderMaximum(cityTemperatureStats)}
+                    </Typography>
+                    <small className={classes.small}>
+                      <sup>o</sup>C
+                    </small>
+                  </Grid>
+                </Grid>
+              </TableCell>
+            </TableRow>
+          </TableHead>
 
-            <TableBody>
-              <TableRow className={classes.rowHeight}>
-                <TableCell>
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    className={classes.typography}
-                  >
-                    <Grid>
-                      <Typography
-                        variant="subtitle1"
-                        className={classes.subheading}
-                      >
-                        AIR
-                      </Typography>
-                    </Grid>
-                    <Grid container direction="row" justify="center">
-                      <Typography variant="h3" className={classes.display2}>
-                        {this.renderAverage(this.props.cityP2Stats)}
-                      </Typography>
-                      <small className={classes.small}>PM<sub>2.5</sub></small>
-                    </Grid>
+          <TableBody>
+            <TableRow className={classes.rowHeight}>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      AIR
+                    </Typography>
                   </Grid>
-                </TableCell>
-                <TableCell>
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    className={classes.typography}
-                  >
-                    <Grid>
-                      <Typography
-                        variant="subtitle1"
-                        className={classes.subheading}
-                      >
-                        HUMIDITY
-                      </Typography>
-                    </Grid>
-                    <Grid container direction="row" justify="center">
-                      <Typography variant="h3" className={classes.display2}>
-                        {this.renderAverage(this.props.cityHumidityStats)}
-                      </Typography>
-                      <small className={classes.small}>g/m<sup>3</sup></small>
-                    </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      {renderAverage(cityP2Stats)}
+                    </Typography>
+                    <small className={classes.small}>
+                      PM
+                      <sub>2.5</sub>
+                    </small>
                   </Grid>
-                </TableCell>
-                <TableCell>
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    className={classes.typography}
-                  >
-                    <Grid>
-                      <Typography
-                        variant="subtitle1"
-                        className={classes.subheading}
-                      >
-                        TEMPERATURE
-                      </Typography>
-                    </Grid>
-                    <Grid container direction="row" justify="center">
-                      <Typography variant="h3" className={classes.display2}>
-                        {this.renderAverage(this.props.cityTemperatureStats)}
-                      </Typography>
-                      <small className={classes.small}><sup>o</sup>C</small>
-                    </Grid>
+                </Grid>
+              </TableCell>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      HUMIDITY
+                    </Typography>
                   </Grid>
-                </TableCell>
-              </TableRow>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      {renderAverage(cityHumidityStats)}
+                    </Typography>
+                    <small className={classes.small}>
+                      g/m
+                      <sup>3</sup>
+                    </small>
+                  </Grid>
+                </Grid>
+              </TableCell>
+              <TableCell>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      TEMPERATURE
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      {renderAverage(cityTemperatureStats)}
+                    </Typography>
+                    <small className={classes.small}>
+                      <sup>o</sup>C
+                    </small>
+                  </Grid>
+                </Grid>
+              </TableCell>
+            </TableRow>
 
-              {/* Last row of the table */}
+            {/* Last row of the table */}
 
-              <TableRow className={classes.rowHeight}>
-                <TableCell className={classes.tableCell}>
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    className={classes.typography}
-                  >
-                    <Grid>
-                      <Typography
-                        variant="subtitle1"
-                        className={classes.subheading}
-                      >
-                        AIR
-                      </Typography>
-                    </Grid>
-                    <Grid container direction="row" justify="center">
-                      <Typography variant="h3" className={classes.display2}>
-                        {this.renderMinimum(this.props.cityP2Stats)}
-                      </Typography>
-                      <small className={classes.small}>PM<sub>2.5</sub></small>
-                    </Grid>
+            <TableRow className={classes.rowHeight}>
+              <TableCell className={classes.tableCell}>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      AIR
+                    </Typography>
                   </Grid>
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    className={classes.typography}
-                  >
-                    <Grid>
-                      <Typography
-                        variant="subtitle1"
-                        className={classes.subheading}
-                      >
-                        HUMIDITY
-                      </Typography>
-                    </Grid>
-                    <Grid container direction="row" justify="center">
-                      <Typography variant="h3" className={classes.display2}>
-                        {this.renderMinimum(this.props.cityHumidityStats)}
-                      </Typography>
-                      <small className={classes.small}>g/m<sup>3</sup></small>
-                    </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      {renderMinimum(cityP2Stats)}
+                    </Typography>
+                    <small className={classes.small}>
+                      PM
+                      <sub>2.5</sub>
+                    </small>
                   </Grid>
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    className={classes.typography}
-                  >
-                    <Grid>
-                      <Typography
-                        variant="subtitle1"
-                        className={classes.subheading}
-                      >
-                        TEMPERATURE
-                      </Typography>
-                    </Grid>
-                    <Grid container direction="row" justify="center">
-                      <Typography variant="h3" className={classes.display2}>
-                        {this.renderMinimum(this.props.cityTemperatureStats)}
-                      </Typography>
-                      <small className={classes.small}><sup>o</sup>C</small>
-                    </Grid>
+                </Grid>
+              </TableCell>
+              <TableCell className={classes.tableCell}>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      HUMIDITY
+                    </Typography>
                   </Grid>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      {renderMinimum(cityHumidityStats)}
+                    </Typography>
+                    <small className={classes.small}>
+                      g/m
+                      <sup>3</sup>
+                    </small>
+                  </Grid>
+                </Grid>
+              </TableCell>
+              <TableCell className={classes.tableCell}>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.typography}
+                >
+                  <Grid>
+                    <Typography
+                      variant="subtitle1"
+                      className={classes.subheading}
+                    >
+                      TEMPERATURE
+                    </Typography>
+                  </Grid>
+                  <Grid container direction="row" justify="center">
+                    <Typography variant="h3" className={classes.display2}>
+                      {renderMinimum(cityTemperatureStats)}
+                    </Typography>
+                    <small className={classes.small}>
+                      <sup>o</sup>C
+                    </small>
+                  </Grid>
+                </Grid>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
 DataTable.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  cityHumidityStats: PropTypes.object.isRequired,
+  cityTemperatureStats: PropTypes.object.isRequired,
+  cityP2Stats: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(DataTable);
