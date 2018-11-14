@@ -82,7 +82,7 @@ const styles = theme => ({
   }
 });
 
-function PollutionStats({ classes }) {
+function PollutionStats({ classes, pollutionStats, city }) {
   return (
     <Grid
       container
@@ -103,10 +103,10 @@ function PollutionStats({ classes }) {
             Death by air pollution
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
-            in Kenya yearly
+            in {city.country} yearly
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            5,102
+            {pollutionStats.deathCount}
           </Typography>
 
           <Typography variant="subtitle1" className={classes.subtitle}>
@@ -116,10 +116,10 @@ function PollutionStats({ classes }) {
             caused by air pollution
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
-            in Kenya yearly
+            in {city.country} yearly
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            2,144
+            {pollutionStats.childDeathCount}
           </Typography>
         </Grid>
         <Grid item className={classes.statMiddleContentContainer}>
@@ -130,10 +130,10 @@ function PollutionStats({ classes }) {
             by air pollution
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
-            in Kenya is
+            in {city.country} is
           </Typography>
           <Typography variant="h4" className={classes.nameHighlight}>
-            ACUTE LOWER
+            {pollutionStats.topIllness}
           </Typography>
           <Typography variant="h4" className={classes.nameHighlightContinue}>
             RESPIRATORY
@@ -144,16 +144,16 @@ function PollutionStats({ classes }) {
         </Grid>
         <Grid item className={classes.statContentContainer}>
           <Typography variant="subtitle2" className={classes.statTitle}>
-            POLLUTION LEVELS IN NAIROBI
+            POLLUTION LEVELS IN {city.name}
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitle}>
-            The air in Nairobi has an
+            The air in {city.name} has an
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
             annual average of
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            17{' '}
+            {pollutionStats.annualAverage}{' '}
             <sup className={classes.sup}>
               µg/m
               <sup>3</sup>
@@ -164,7 +164,7 @@ function PollutionStats({ classes }) {
             <sub>2.5</sub> particles.
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleContinue}>
-            That&apos;s 70% more than the
+            That&apos;s {pollutionStats.percent} than the
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitleLast}>
             WHO safe level.
@@ -176,6 +176,8 @@ function PollutionStats({ classes }) {
 }
 
 PollutionStats.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  pollutionStats: PropTypes.object.isRequired,
+  city: PropTypes.string.isRequired
 };
 export default withStyles(styles)(PollutionStats);

@@ -26,7 +26,7 @@ class AirHome extends React.Component {
   handleSearch(city) {
     const { history } = this.props;
 
-    history.push(CITY_PATHNAME, { city });
+    history.push(CITY_PATHNAME, { city: city.value });
   }
 
   render() {
