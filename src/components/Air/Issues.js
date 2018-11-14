@@ -68,7 +68,7 @@ function Issues({ classes }) {
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h5" className={classes.title}>
-          Air polution causes 1 in 9 deaths
+          Air pollution causes 1 in 9 deaths
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -79,7 +79,7 @@ function Issues({ classes }) {
       <Grid item xs={12}>
         <Typography variant="caption" className={classes.caption}>
           While it’s not always visible, air pollution is the cause of some of
-          our most common illnesses
+          our most common illnesses.
         </Typography>
       </Grid>
 

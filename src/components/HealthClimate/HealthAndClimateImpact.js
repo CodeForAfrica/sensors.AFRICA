@@ -52,11 +52,11 @@ function HealthClimateCards({ classes }) {
             impact="
                 Tiny, invisible particles of pollution penetrate deep into our
                 lungs, bloodstream and bodies. These pollutants are responsible
-                for about one third of deaths from strokes, chronic respiratory
-                diseases and lung canceras well as one quater of deaths from
+                for about one-third  of deaths from strokes, chronic respiratory
+                diseases, and lung cancer as well as one-quarter of deaths from
                 heart attacks. Ground Level ozone that produced from the
                 interaction of many different pollutants in sunlight is also a
-                cause of asthma and chronic respiratory diseses.
+                cause of asthma and chronic respiratory diseases.
               "
             dark
           />
