@@ -26,7 +26,7 @@ const styles = theme => ({
   }
 });
 
-function AirHeaderContent({ classes, handleChange }) {
+function AirHeaderContent({ classes, handleSearch }) {
   return (
     <Grid
       container
@@ -47,7 +47,7 @@ function AirHeaderContent({ classes, handleChange }) {
       <Grid item>
         <SearchBar
           placeholder="Search for your city ..."
-          handleChange={handleChange}
+          handleSearch={handleSearch}
         />
       </Grid>
     </Grid>
@@ -56,7 +56,7 @@ function AirHeaderContent({ classes, handleChange }) {
 
 AirHeaderContent.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(AirHeaderContent);

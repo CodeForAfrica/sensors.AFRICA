@@ -50,7 +50,7 @@ function AirCityHeaderContent({ airPol, city, classes }) {
 AirCityHeaderContent.propTypes = {
   city: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  airPol: PropTypes.string.isRequired
+  airPol: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(AirCityHeaderContent);

@@ -6,11 +6,11 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
+import Logo from '../Logo';
 import TestQuality from './TestQuality';
 
 import '../../assets/css/App.css';
 import bglanding from '../../assets/images/background/bglanding.jpg';
-import logowhite from '../../assets/images/logos/logowhite.png';
 
 const styles = theme => ({
   root: {
@@ -46,7 +46,7 @@ function Hero({ classes }) {
     >
       <Grid item xs={12}>
         <Link to="/">
-          <img src={logowhite} alt="partners logo" className={classes.img} />
+          <Logo badge="landing" classes={{ img: classes.img }} />
         </Link>
       </Grid>
 

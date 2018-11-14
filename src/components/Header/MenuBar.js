@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import HamburgerMenu from '../Hambuger/HambugerMenu';
 
-import logowhite from '../../assets/images/logos/logowhite.png';
+import Logo from '../Logo';
 
 const styles = theme => ({
   root: {
@@ -23,42 +23,70 @@ const styles = theme => ({
   },
   iconContainer: {
     paddingTop: '2rem'
-  },
-  logo: {
-    zIndex: '1301',
-    position: 'relative'
   }
 });
 
-function MenuBar({ classes }) {
-  return (
-    <Grid
-      container
-      className={classes.root}
-      justify="space-between"
-      alignItems="flex-start"
-    >
+class MenuBar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { menuOpen: false };
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+
+  handleToggle() {
+    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
+  }
+
+  render() {
+    const { children, classes } = this.props;
+    const { menuOpen } = this.state;
+    const logo = (
       <Grid item>
         <Link to="/">
-          <img
-            src={logowhite}
-            className={classes.logo}
-            alt="sensors.AFRICA"
-            height="100"
-          />
+          <Logo active={menuOpen} />
         </Link>
       </Grid>
-      <Grid item>
-        <Grid className={classes.iconContainer}>
-          <HamburgerMenu />
+    );
+    let leftComponent = logo;
+    if (children) {
+      leftComponent = (
+        <Grid item>
+          <Grid container alignItems="flex-start">
+            {logo}
+            <Grid item>{children}</Grid>
+          </Grid>
+        </Grid>
+      );
+    }
+    return (
+      <Grid
+        container
+        className={classes.root}
+        justify="space-between"
+        alignItems="flex-start"
+      >
+        {leftComponent}
+        <Grid item>
+          <Grid className={classes.iconContainer}>
+            <HamburgerMenu
+              handleToggle={this.handleToggle}
+              menuOpen={menuOpen}
+            />
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 MenuBar.propTypes = {
+  children: PropTypes.node,
   classes: PropTypes.object.isRequired
+};
+
+MenuBar.defaultProps = {
+  children: null
 };
 
 export default withStyles(styles)(MenuBar);

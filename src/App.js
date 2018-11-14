@@ -11,7 +11,7 @@ import Air, {
   HowSensorsWork as AirHowSensorsWork,
   City as AirCity,
   JoinNetwork as AirJoinNetwork,
-  HealthClimate as AirHealthClimate
+  HealthAndClimateImpacts as AirHealthAndClimateImpacts
 } from './pages/air';
 
 const FONT_FAMILY = '"Montserrat", "sans-serif"';
@@ -71,6 +71,15 @@ const THEME = createMuiTheme({
     useNextVariants: true
   },
   overrides: {
+    MuiBadge: {
+      badge: {
+        color: '#bbb',
+        fontFamily: HEADINGS_FONT_FAMILY,
+        fontWeight: 500,
+        textTransform: 'uppercase',
+        borderRadius: 0
+      }
+    },
     MuiButton: {
       root: {
         borderRadius: 0
@@ -105,7 +114,7 @@ function App() {
             <Route path="/air/join-network" component={AirJoinNetwork} />
             <Route
               path="/air/health-and-climate-impact"
-              component={AirHealthClimate}
+              component={AirHealthAndClimateImpacts}
             />
           </Switch>
         </ScrollToTop>

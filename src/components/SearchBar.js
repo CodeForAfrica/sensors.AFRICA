@@ -160,9 +160,9 @@ class SearchBar extends React.Component {
   handleChange(city) {
     this.setState({ single: city });
 
-    const { handleChange } = this.props;
-    if (handleChange) {
-      handleChange(city);
+    const { handleSearch } = this.props;
+    if (handleSearch) {
+      handleSearch(city);
     }
   }
 
@@ -187,13 +187,13 @@ class SearchBar extends React.Component {
 
 SearchBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleChange: PropTypes.func,
+  handleSearch: PropTypes.func,
   options: PropTypes.array,
   placeholder: PropTypes.string
 };
 
 SearchBar.defaultProps = {
-  handleChange: null,
+  handleSearch: null,
   options: DEFAULT_OPTIONS,
   placeholder: ''
 };

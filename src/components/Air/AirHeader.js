@@ -18,7 +18,7 @@ const styles = theme => ({
   }
 });
 
-function AirHeader({ classes, handleChange }) {
+function AirHeader({ classes, handleSearch }) {
   return (
     <Grid
       container
@@ -30,7 +30,7 @@ function AirHeader({ classes, handleChange }) {
         <MenuBar />
       </Grid>
       <Grid item xs={12}>
-        <AirHeaderContent handleChange={handleChange} />
+        <AirHeaderContent handleSearch={handleSearch} />
       </Grid>
     </Grid>
   );
@@ -38,7 +38,7 @@ function AirHeader({ classes, handleChange }) {
 
 AirHeader.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(AirHeader);
