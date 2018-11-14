@@ -2,18 +2,20 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import Navbar from '../../components/Header/Navbar';
-import Footer from '../../components/Footer';
-import HealthAndClimateImpact from '../../components/HealthClimate/HealthAndClimateImpact';
+import Header from '../../components/HealthClimate/HealthAndClimateHeader';
+import Impact from '../../components/HealthClimate/HealthAndClimateImpact';
 import Sources from '../../components/HealthClimate/Sources';
-import HealthAndBurden from '../../components/HealthClimate/HealthAndBurden';
+import Burden from '../../components/HealthClimate/HealthAndBurden';
+import Footer from '../../components/Footer';
 
 function HealthAndClimateImpacts() {
   return (
     <Grid>
       <Navbar />
-      <HealthAndClimateImpact />
+      <Header />
+      <Impact />
       <Sources />
-      <HealthAndBurden />
+      <Burden />
       <Footer />
     </Grid>
   );
