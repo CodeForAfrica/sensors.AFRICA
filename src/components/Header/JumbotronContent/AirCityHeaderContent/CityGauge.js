@@ -132,8 +132,7 @@ class CityGauge extends Component {
       const currentVal = node.querySelector('.current-value');
       let transform = 0;
       if (currentVal) {
-        transform =
-          ((parseFloat(airPollMeasurement) / 160) * 180).toFixed(2) - 90;
+        transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
         currentVal.setAttribute(
           'transform',
           `rotate(${transform}) translate(0,-310)`
@@ -283,7 +282,7 @@ class CityGauge extends Component {
 
 CityGauge.propTypes = {
   classes: PropTypes.object.isRequired,
-  airPollMeasurement: PropTypes.string.isRequired
+  airPollMeasurement: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(CityGauge);

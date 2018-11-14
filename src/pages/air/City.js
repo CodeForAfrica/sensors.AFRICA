@@ -10,9 +10,9 @@ import Footer from '../../components/Footer';
 import KenyaMap from '../../components/Maps/Kenya';
 import NigeriaMap from '../../components/Maps/Nigeria';
 import TanzaniaMap from '../../components/Maps/Tanzania';
-import CityHeader from '../../components/CityComponents/Header/CityHeader';
-import CallToAction from '../../components/CityComponents/CallToAction';
-import PollutionStats from '../../components/CityComponents/PollutionStats';
+import CityHeader from '../../components/City/Header/CityHeader';
+import CallToAction from '../../components/City/CallToAction';
+import PollutionStats from '../../components/City/PollutionStats';
 
 const DEFAULT_CITY = { value: 'nairobi', label: 'Nairobi, Kenya' };
 const CITIES_LOCATION = {
@@ -56,7 +56,7 @@ class City extends React.Component {
       cityAirPol: 0
     };
     this.fetchCityReadings = this.fetchCityReadings.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
@@ -122,13 +122,13 @@ class City extends React.Component {
       .then(reading => {
         this.setState({
           city,
-          cityAirPol: reading.toFixed(2),
+          cityAirPol: parseFloat(reading.toFixed(2)),
           isLoading: false
         });
       });
   }
 
-  handleChange(option) {
+  handleSearch(option) {
     const city = option || DEFAULT_CITY;
     this.fetchCityReadings(city);
   }
@@ -158,7 +158,7 @@ class City extends React.Component {
           <CityHeader
             city={city}
             airPol={airPol}
-            handleChange={this.handleChange}
+            handleSearch={this.handleSearch}
           />
           <Grid item xs={12}>
             <PollutionStats />
