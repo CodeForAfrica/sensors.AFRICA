@@ -7,29 +7,36 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
-import KenyaMap from '../../components/Maps/Kenya';
-import NigeriaMap from '../../components/Maps/Nigeria';
-import TanzaniaMap from '../../components/Maps/Tanzania';
+import SensorMap from '../../components/SensorMap';
 import CityHeader from '../../components/City/Header/CityHeader';
 import CallToAction from '../../components/City/CallToAction';
 import PollutionStats from '../../components/City/PollutionStats';
 
-const DEFAULT_CITY = { value: 'nairobi', label: 'Nairobi, Kenya' };
+const DEFAULT_CITY = 'nairobi';
 const CITIES_LOCATION = {
   nairobi: {
     latitude: '-1.',
     longitude: '36.',
-    label: 'Nairobi, Kenya'
+    name: 'Nairobi',
+    country: 'Kenya',
+    label: 'Nairobi, Kenya',
+    location: '9/-1.4272/36.8147'
   },
   lagos: {
     latitude: '6.',
     longitude: '3.',
-    label: 'Lagos, Nigeria'
+    name: 'Lagos',
+    country: 'Nigeria',
+    label: 'Lagos, Nigeria',
+    location: '6/3.162/7.976'
   },
   'dar-es-salaam': {
     latitude: '-6.',
     longitude: '39.',
-    label: 'Dar-es-salaam, Tanzania'
+    name: 'Dar es Salaam',
+    country: 'Tanzania',
+    label: 'Dar-es-salaam, Tanzania',
+    location: '7/-6.937/36.793'
   }
 };
 const CITIES_POLLUTION_STATS = {
@@ -38,26 +45,23 @@ const CITIES_POLLUTION_STATS = {
     child_death: '10,628',
     top_illness: 'Acute Lower',
     annual_avg: '17',
-    percent: '70% more',
-    country: 'Kenya'
+    percent: '70% more'
   },
   lagos: {
     no_death: '242,657',
     child_death: '140,520',
     top_illness: 'Lower',
     annual_avg: '27',
-    percent: '170% more',
-    country: 'Nigeria'
+    percent: '170% more'
   },
   'dar-es-salaam': {
     no_death: '89,021',
     child_death: '17,624',
     top_illness: 'Lower',
     annual_avg: '23',
-    percent: '130% more',
-    country: 'Tanzania'
+    percent: '130% more'
   }
-}
+};
 const SENSOR_NAMES = ['sds021', 'sds011'];
 const SENSOR_READINGS_URL = 'https://api.airquality.codeforafrica.org/v1/now/';
 
@@ -99,8 +103,8 @@ class City extends React.Component {
     const isInCity = reading => {
       const { location } = reading;
       return (
-        location.latitude.startsWith(CITIES_LOCATION[city.value].latitude) &&
-        location.longitude.startsWith(CITIES_LOCATION[city.value].longitude)
+        location.latitude.startsWith(CITIES_LOCATION[city].latitude) &&
+        location.longitude.startsWith(CITIES_LOCATION[city].longitude)
       );
     };
     const isAirSensorWithReadings = ({ sensor, sensordatavalues }) => {
@@ -155,21 +159,14 @@ class City extends React.Component {
   }
 
   handleSearch(option) {
-    const city = option || DEFAULT_CITY;
+    const city = (option && option.value) || DEFAULT_CITY;
     this.fetchCityReadings(city);
   }
 
   render() {
     const { classes } = this.props;
     const { city, cityAirPol: airPol, isLoading } = this.state;
-    const pollutionstats = CITIES_POLLUTION_STATS[city.value];
 
-    let Map = KenyaMap;
-    if (city.value === 'dar-es-salaam') {
-      Map = TanzaniaMap;
-    } else if (city.value === 'lagos') {
-      Map = NigeriaMap;
-    }
     return (
       <Grid
         container
@@ -184,17 +181,18 @@ class City extends React.Component {
           {isLoading && <LinearProgress />}
 
           <CityHeader
-            city={city}
+            city={CITIES_LOCATION[city]}
             airPol={airPol}
             handleSearch={this.handleSearch}
           />
           <Grid item xs={12}>
             <PollutionStats
-              pollutionstats={pollutionstats}
-              city={city} />
+              pollutionStats={CITIES_POLLUTION_STATS[city]}
+              city={CITIES_LOCATION[city]}
+            />
           </Grid>
           <Grid item xs={12}>
-            <Map />
+            <SensorMap mapLocation={CITIES_LOCATION[city].location} />
           </Grid>
           <Grid item xs={12}>
             <CallToAction />
