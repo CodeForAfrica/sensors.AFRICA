@@ -79,14 +79,14 @@ function Sources({ classes }) {
             <PollutionSource
               title="Ground Level Ozone"
               sources="
-              Forms when emissions of methane, nitogen oxides and other
+              Forms when emissions of methane, nitrogen oxides and other
               'precursor' pollutants from industry, traffic, waste and energy
               production interact with the presence of sunlight."
               impact="
               A major factor in respiratory illness has been shown to decrease
               crop yields,spurring food security challenges and security."
               reduction="
-              Forms when emissions of methane,nitogen oxides and other
+              Forms when emissions of methane, nitrogen oxides and other
               'precursor' pollutants from industry, traffic, waste and energy
               production interact with the presence of sunlight."
             />
@@ -95,16 +95,16 @@ function Sources({ classes }) {
             <PollutionSource
               title="Black Carbon"
               sources="
-              Produced most often by diesel engines,burning trash,and cooking
+              Produced most often by diesel engines, burning trash, and cooking
               or heating stoves that burn coal, kerosine or biomass (organic
               matter such as wood or animal waste)."
               impact="
               Black carbon particles are fine enough to penetrate deep into the
-              lungs ,bloodstream, heart and brain causing inflamatory responses
-              and other long term health effects."
+              lungs, bloodstream, heart and brain causing inflammatory responses
+              and other long-term health effects."
               reduction="
-              Fortunately its life span is only up to ten days, so if emmison
-              of black carbon and other short lived climates polutants were
+              Fortunately,  its lifespan is only up to ten days, so if the emission
+              of black carbon and other short-lived climates pollutants were
               dramatically reduced in the next few years, global warming by
               2050 would slow by as much as 5˚C."
               backgroundColor="#fff"
@@ -114,19 +114,19 @@ function Sources({ classes }) {
             <PollutionSource
               title="Methane"
               sources="
-              40 %of generated methane emissons come from agriculture, primary
-              rice, paddies and livestock production.This is followed by
+              40 %of generated methane emissions come from agriculture, primary
+              rice, paddies and livestock production. Thisis followed by
               emissions from sewage and solid waste and oil and gas
               production."
               impact="
               Methane emissions contribute significantly to the development of
-              ground level ozone;chronic exposure to ozone is a factor of
+              ground-level ozone; chronic  exposure to ozone is a factor of
               asthma and other chronic respiratory illness and can harm
               childhood lung development."
               reduction="
-              Methane persist for a decade,but improved waste management
+              Methane persists for a decade, but improved waste management
               methods, including capture and combustion of methane as a
-              clean energy source,would rapidily begin depleting emissions."
+              clean energy source, would rapidly begin depleting emissions."
             />
           </div>
         </Grid>

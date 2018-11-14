@@ -71,7 +71,7 @@ function Burden({ classes }) {
       <Grid item xs={12} className={classes.titleContainer}>
         <Typography variant="h5" className={classes.title}>
           Many sources of air pollution also are heavy emitters of C02,
-          contributing to a vicious cycle that threatens out health and climate.
+          contributing to a vicious cycle that threatens our health and climate.
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -81,9 +81,9 @@ function Burden({ classes }) {
               icon={risingtemperature}
               title="Rising Temperature"
               burden="
-              Global warming increases the intensity of storms,droughts and
-              heat waves,and expands the zones of transmission for many
-              vector-bourne diseases transmitted by mosquitoes(e.g malaria)
+              Global warming increases the intensity of storms, droughts and
+              heat waves, and expands the zones of transmission for many
+              vector-borne diseases transmitted by mosquitoes(e.g malaria)
               or other insects and pests."
             />
           </div>
