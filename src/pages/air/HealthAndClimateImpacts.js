@@ -6,6 +6,8 @@ import Footer from '../../components/Footer';
 import HealthAndClimateImpact from '../../components/HealthClimate/HealthAndClimateImpact';
 import Sources from '../../components/HealthClimate/Sources';
 import HealthAndBurden from '../../components/HealthClimate/HealthAndBurden';
+import Support from '../../components/Support';
+import Stories from '../../components/About/Stories';
 
 function HealthAndClimateImpacts() {
   return (
@@ -14,6 +16,8 @@ function HealthAndClimateImpacts() {
       <HealthAndClimateImpact />
       <Sources />
       <HealthAndBurden />
+      <Stories />
+      <Support />
       <Footer />
     </Grid>
   );
