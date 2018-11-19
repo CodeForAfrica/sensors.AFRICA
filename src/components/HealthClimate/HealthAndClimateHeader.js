@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 import MenuBar from '../Header/MenuBar';
-import JoinNetworkContent from '../Header/JumbotronContent/JoinHeaderContent';
+import HealthClimateContent from '../Header/JumbotronContent/HealthClimateContent';
 
 const styles = theme => ({
   jumbotron: {
@@ -18,7 +18,7 @@ const styles = theme => ({
   }
 });
 
-function JoinHeader({ classes }) {
+function HealthClimateHeader({ classes }) {
   return (
     <Grid
       container
@@ -30,17 +30,14 @@ function JoinHeader({ classes }) {
         <MenuBar />
       </Grid>
       <Grid item xs={12}>
-        <JoinNetworkContent
-          title="JOIN THE NETWORK"
-          subheading="Are you interested in hosting a sensor, using our data or championing air quality? Contact us using the links below to get started."
-        />
+        <HealthClimateContent title="HEALTH AND CLIMATE IMPACTS" />
       </Grid>
     </Grid>
   );
 }
 
-JoinHeader.propTypes = {
+HealthClimateHeader.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(JoinHeader);
+export default withStyles(styles)(HealthClimateHeader);

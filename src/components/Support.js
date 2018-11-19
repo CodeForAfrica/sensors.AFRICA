@@ -147,7 +147,7 @@ function Support({ classes, classNames }) {
         <Card className={classes.cleanWaterCard}>
           <CardContent className={classes.cardContent}>
             <Typography variant="h5">LET YOUR CITY KNOW</Typography>
-            <Typography variant="h5">THAT CLEAN WATER</Typography>
+            <Typography variant="h5">THAT CLEAN AIR</Typography>
             <Typography variant="h5">MATTERS TO YOU</Typography>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
