@@ -100,13 +100,11 @@ const styles = theme => ({
       transform: 'scale(1.3)',
       color: '#f3f33'
     }
-  },
+  }
 });
 
 function Support({ classes, classNames }) {
   const className = classNames ? `${classes.root} ${classNames}` : classes.root;
-  const url = 'https://sensors.AFRICA'
-  const text = "Did you know #AirQuality wadawada..."
   return (
     <Grid container justify="center" align="center" className={className}>
       <Grid item>
@@ -162,10 +160,11 @@ function Support({ classes, classNames }) {
             <Typography variant="h5">THAT CLEAN WATER</Typography>
             <Typography variant="h5">MATTERS TO YOU</Typography>
             <TwitterShareButton
-              url={url}
-              title={text}
+              url="https://sensors.AFRICA"
+              title="Did you know #AirQuality wadawada..."
               via="sensorsAFRICA"
-              hashtags={["sensorsAFRICA"]}>
+              hashtags={['sensorsAFRICA']}
+            >
               <Button
                 variant="contained"
                 color="primary"
@@ -176,9 +175,9 @@ function Support({ classes, classNames }) {
                   icon={['fab', 'twitter']}
                   size="2x"
                   fixedWidth
-                  style={{ color: 'white' }}
-                /> TWEET
-                </Button>
+                />{' '}
+                TWEET
+              </Button>
             </TwitterShareButton>
           </CardContent>
         </Card>
