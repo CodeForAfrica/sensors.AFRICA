@@ -4,6 +4,8 @@ import { withRouter } from 'react-router';
 
 import { Grid, LinearProgress } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import Seo from '../../components/MetaTags/Seo';
+import GreenFavicon from '../../components/Favicons/GreenFavicon';
 
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
@@ -149,6 +151,8 @@ class City extends React.Component {
         justify="center"
         alignItems="center"
       >
+        <Seo url="air/city" />
+        <GreenFavicon />
         <Grid item xs={12}>
           <Navbar />
         </Grid>

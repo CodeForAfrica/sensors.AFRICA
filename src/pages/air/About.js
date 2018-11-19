@@ -10,6 +10,8 @@ import Partners from '../../components/About/Partners';
 import Staff from '../../components/About/Staff';
 import Footer from '../../components/Footer';
 import Support from '../../components/Support';
+import GreenFavicon from '../../components/Favicons/GreenFavicon';
+import Seo from '../../components/MetaTags/Seo';
 
 const styles = theme => ({
   aboutSupport: {
@@ -21,6 +23,8 @@ const styles = theme => ({
 function About({ classes }) {
   return (
     <React.Fragment>
+      <Seo url="air/about" />
+      <GreenFavicon />
       <Navbar />
       <AboutHeader />
       <Partners />

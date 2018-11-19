@@ -13,6 +13,8 @@ import IndoorOutdoor from '../../components/AirComponents/IndoorOutdoor';
 import Issues from '../../components/AirComponents/Issues';
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
+import Seo from '../../components/MetaTags/Seo';
+import GreenFavicon from '../../components/Favicons/GreenFavicon';
 
 const CITY_PATHNAME = '/air/city';
 class AirHome extends React.Component {
@@ -31,6 +33,8 @@ class AirHome extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <Seo url="air/home" />
+        <GreenFavicon />
         <Navbar />
         <AirHeader handleSearch={this.handleSearch} />
         <Issues />
