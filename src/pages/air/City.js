@@ -22,7 +22,7 @@ const CITIES_LOCATION = {
     name: 'Nairobi',
     country: 'Kenya',
     label: 'Nairobi, Kenya',
-    location: '9/-1.4272/36.8147'
+    location: '12/-1.2709/36.8169'
   },
   lagos: {
     latitude: '6.',
@@ -30,7 +30,7 @@ const CITIES_LOCATION = {
     name: 'Lagos',
     country: 'Nigeria',
     label: 'Lagos, Nigeria',
-    location: '6/3.162/7.976'
+    location: '12/6.4552/3.4198'
   },
   'dar-es-salaam': {
     latitude: '-6.',
@@ -38,7 +38,7 @@ const CITIES_LOCATION = {
     name: 'Dar es Salaam',
     country: 'Tanzania',
     label: 'Dar-es-salaam, Tanzania',
-    location: '7/-6.937/36.793'
+    location: '12/-6.8555/39.1518'
   }
 };
 const CITIES_POLLUTION_STATS = {
