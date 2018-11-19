@@ -9,11 +9,15 @@ import HealthAndDiseaseBurden from '../../components/HealthClimate/HealthAndDise
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
 import Footer from '../../components/Footer';
+import Seo from '../../components/MetaTags/Seo';
+import GreenFavicon from '../../components/Favicons/GreenFavicon';
 
 function HealthAndClimateImpacts() {
   return (
     <Grid>
       <Navbar />
+      <Seo url="air/health-and-climate-impact" />
+      <GreenFavicon />
       <Header />
       <Impact />
       <Sources />
