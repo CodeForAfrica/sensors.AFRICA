@@ -26,7 +26,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.0.5",
     "react-select": "^2.0.0",
-    "reactjs-percentage-circle": "^1.0.0"
+    "reactjs-percentage-circle": "^1.0.0",
+    "storybook-addon-material-ui": "^0.9.0-alpha.16"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,8 +44,13 @@
   "author": "Code for Africa",
   "license": "GNU GPLv3",
   "devDependencies": {
+    "@sambego/storybook-styles": "^1.0.0",
     "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-info": "^4.0.7",
+    "@storybook/addon-knobs": "^4.0.7",
     "@storybook/addon-links": "^3.4.10",
+    "@storybook/addon-options": "^4.0.7",
+    "@storybook/addon-viewport": "^4.0.7",
     "@storybook/addons": "^3.4.10",
     "@storybook/react": "^3.4.10",
     "babel-core": "^6.26.3",
@@ -56,7 +62,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.14.3"
+    "prettier": "^1.14.3",
+    "storybook-readme": "^4.0.2"
   },
   "browserslist": [
     ">0.2%",
