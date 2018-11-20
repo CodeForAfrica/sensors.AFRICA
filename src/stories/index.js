@@ -31,6 +31,8 @@ storiesOf('API', module)
   .addDecorator(muiTheme())
   .add('API introduction', () => <Card />);
 
+//Define MATERIAL  theme
+
 /*const THEME = createMuiTheme({
   palette: {
     primary: { main: '#1a995b', light: '#2FB56B', dark: '#164B3E' },
