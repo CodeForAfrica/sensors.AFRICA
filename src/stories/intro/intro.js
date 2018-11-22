@@ -28,18 +28,32 @@ function Intro({ classes }) {
           direction="row"
           justify="center"
           alignItems="center"
-          style={{ paddingRight: '25%', paddingLeft: '25%' }}
+          style={{
+            paddingRight: '25%',
+            paddingLeft: '25%',
+            paddingBottom: '4rem'
+          }}
         >
-          <Typography variant="body1">
-            Lorem ipsum dolor sit amet, eos id ridens expetenda evertitur. Vix
-            magna zril bonorum ei, quando utroque offendit sea in. Eripuit
-            percipit assentior ea cum, dolores ocurreret concludaturque ad eam.
-            An vim consul bonorum eligendi. Eam ea unum liberavisse, in stet
-            dicam tincidunt ius. Ea quo homero consulatu sententiae, in duis
-            adipiscing inciderint sit, eos autem perpetua ei. An dictas ornatus
-            deserunt usu, at labore commune suavitate usu. Sit congue legere ad.
-            Maiorum appareat mel ne, qui no justo ornatus interpretaris. Cetero
-            complectitur ad mel.
+          <Typography
+            variant="body1"
+            style={{ textAlign: 'center', margin: '1rem' }}
+          >
+            The sensors.AFRICA brand is unfussy, approachable and simple with a
+            strong color scheme. It makes use of a strong icon to communicate
+            the idea of information/data being detected, measured and recorded.
+          </Typography>
+          <Typography
+            variant="body1"
+            style={{ textAlign: 'center', margin: '1rem' }}
+          >
+            The sensors.ARICA aesthetic feels activist yet mature. It always
+            aims to display information in a way that the ordinary citizen will
+            find easy-to-understand and engage with.
+          </Typography>
+
+          <Typography variant="body1" style={{ textAlign: 'center' }}>
+            There are currently three colorways that explore the various sensors
+            programs: Green (Air), Blue (Water), Purple (Sound).
           </Typography>
         </div>
       </Grid>
