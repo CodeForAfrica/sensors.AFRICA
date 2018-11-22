@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
+import DocumentHead from '../../components/DocumentHead';
 import Stories from '../../components/About/Stories';
 import Navbar from '../../components/Header/Navbar';
 import AboutHeader from '../../components/About/AboutHeader';
@@ -18,9 +19,10 @@ const styles = theme => ({
   }
 });
 
-function About({ classes }) {
+function About({ classes, url }) {
   return (
     <React.Fragment>
+      <DocumentHead url={url} />
       <Navbar />
       <AboutHeader />
       <Partners />
@@ -33,7 +35,8 @@ function About({ classes }) {
 }
 
 About.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(About);

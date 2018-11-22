@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
+import DocumentHead from '../../components/DocumentHead';
 import About from './About';
 import HowSensorsWork from './HowSensorsWork';
 import City from './City';
@@ -30,8 +31,10 @@ class AirHome extends React.Component {
   }
 
   render() {
+    const { url } = this.props;
     return (
       <React.Fragment>
+        <DocumentHead url={url} />
         <Navbar />
         <AirHeader handleSearch={this.handleSearch} />
         <Issues />
@@ -45,7 +48,8 @@ class AirHome extends React.Component {
 }
 
 AirHome.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export { About, HowSensorsWork, City, JoinNetwork, HealthAndClimateImpacts };

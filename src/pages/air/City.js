@@ -5,9 +5,9 @@ import { withRouter } from 'react-router';
 import { Grid, LinearProgress } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import DocumentHead from '../../components/DocumentHead';
 import Navbar from '../../components/Header/Navbar';
 import Footer from '../../components/Footer';
-
 import SensorMap from '../../components/SensorMap';
 import CityHeader from '../../components/City/Header/CityHeader';
 import CallToAction from '../../components/City/CallToAction';
@@ -252,7 +252,7 @@ class City extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, url } = this.props;
     const {
       city,
       cityAirPol: airPol,
@@ -269,6 +269,7 @@ class City extends React.Component {
         justify="center"
         alignItems="center"
       >
+        <DocumentHead url={url} />
         <Grid item xs={12}>
           <Navbar />
         </Grid>
@@ -310,7 +311,8 @@ class City extends React.Component {
 
 City.propTypes = {
   classes: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default withRouter(withStyles(styles)(City));

@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Grid } from '@material-ui/core';
 
+import DocumentHead from '../../components/DocumentHead';
 import Navbar from '../../components/Header/Navbar';
 import Header from '../../components/HealthClimate/HealthAndClimateHeader';
 import Impact from '../../components/HealthClimate/HealthAndClimateImpact';
@@ -10,9 +13,10 @@ import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
 import Footer from '../../components/Footer';
 
-function HealthAndClimateImpacts() {
+function HealthAndClimateImpacts({ url }) {
   return (
     <Grid>
+      <DocumentHead url={url} />
       <Navbar />
       <Header />
       <Impact />
@@ -25,4 +29,7 @@ function HealthAndClimateImpacts() {
   );
 }
 
+HealthAndClimateImpacts.propTypes = {
+  url: PropTypes.string.isRequired
+};
 export default HealthAndClimateImpacts;
