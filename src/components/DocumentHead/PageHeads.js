@@ -1,0 +1,58 @@
+const URLS = {
+  HOME: '/',
+  AIR: {
+    ABOUT: '/air/about',
+    CITY: '/air/city',
+    HOME: '/air',
+    HOW_SENSORS_WORK: '/air/how-sensors-work',
+    IMPACT: '/air/health-and-climate-impact',
+    JOIN: '/air/join-network'
+  },
+  WATER: {
+    HOME: '/water'
+  },
+  SOUND: {
+    HOME: '/sound'
+  }
+};
+
+export { URLS };
+
+export default [
+  {
+    url: URLS.HOME,
+    title: 'sensors.AFRICA | Home'
+  },
+  {
+    url: URLS.AIR.HOME,
+    title: 'sensors.AFRICA | Air | Home'
+  },
+  {
+    url: URLS.AIR.ABOUT,
+    title: 'sensors.AFRICA | Air | About'
+  },
+  {
+    url: URLS.AIR.JOIN,
+    title: 'sensors.AFRICA | Air | Join Network'
+  },
+  {
+    url: URLS.AIR.HOW_SENSORS_WORK,
+    title: 'sensors.AFRICA | Air | How Sensors Work'
+  },
+  {
+    url: URLS.AIR.IMPACT,
+    title: 'sensors.AFRICA | Air | Health and Climate Impacts'
+  },
+  {
+    url: URLS.AIR.CITY,
+    title: 'sensors.AFRICA | Air | City'
+  },
+  {
+    url: URLS.WATER.HOME,
+    title: 'sensors.AFRICA | Water | Coming Soon'
+  },
+  {
+    url: URLS.SOUND.HOME,
+    title: 'sensors.AFRICA | Sound | Coming Soon'
+  }
+];

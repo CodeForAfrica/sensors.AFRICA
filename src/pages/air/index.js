@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
+import GreenFavicon from '../../components/Favicons/GreenFavicon';
+import DocumentHead from '../../components/DocumentHead';
 import About from './About';
 import HowSensorsWork from './HowSensorsWork';
 import City from './City';
@@ -13,10 +15,7 @@ import IndoorOutdoor from '../../components/Air/IndoorOutdoor';
 import Issues from '../../components/Air/Issues';
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
-import Seo from '../../components/MetaTags/Seo';
-import GreenFavicon from '../../components/Favicons/GreenFavicon';
 import HealthAndClimateImpacts from './HealthAndClimateImpacts';
-
 
 const CITY_PATHNAME = '/air/city';
 class AirHome extends React.Component {
@@ -33,10 +32,11 @@ class AirHome extends React.Component {
   }
 
   render() {
+    const { url } = this.props;
     return (
       <React.Fragment>
-        <Seo url="air/home" />
         <GreenFavicon />
+        <DocumentHead url={url} />
         <Navbar />
         <AirHeader handleSearch={this.handleSearch} />
         <Issues />
@@ -50,7 +50,8 @@ class AirHome extends React.Component {
 }
 
 AirHome.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export { About, HowSensorsWork, City, JoinNetwork, HealthAndClimateImpacts };

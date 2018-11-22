@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import ScrollToTop from './ScrollToTop';
+import { URLS } from './components/DocumentHead/PageHeads';
 import Home from './pages';
 import Air, {
   About as AirAbout,
@@ -106,15 +107,38 @@ function App() {
       <BrowserRouter>
         <ScrollToTop>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/air" component={Air} />
-            <Route path="/air/about" component={AirAbout} />
-            <Route path="/air/how-sensors-work" component={AirHowSensorsWork} />
-            <Route path="/air/city" component={AirCity} />
-            <Route path="/air/join-network" component={AirJoinNetwork} />
+            <Route exact path={URLS.HOME} component={Home} />
             <Route
-              path="/air/health-and-climate-impact"
-              component={AirHealthAndClimateImpacts}
+              exact
+              path={URLS.AIR.HOME}
+              render={props => <Air {...props} url={URLS.AIR.HOME} />}
+            />
+            <Route
+              path={URLS.AIR.ABOUT}
+              render={props => <AirAbout {...props} url={URLS.AIR.ABOUT} />}
+            />
+            <Route
+              path={URLS.AIR.HOW_SENSORS_WORK}
+              render={props => (
+                <AirHowSensorsWork {...props} url={URLS.AIR.HOW_SENSORS_WORK} />
+              )}
+            />
+
+            <Route
+              path={URLS.AIR.CITY}
+              render={props => <AirCity {...props} url={URLS.AIR.CITY} />}
+            />
+            <Route
+              path={URLS.AIR.JOIN}
+              render={props => (
+                <AirJoinNetwork {...props} url={URLS.AIR.JOIN} />
+              )}
+            />
+            <Route
+              path={URLS.AIR.IMPACT}
+              render={props => (
+                <AirHealthAndClimateImpacts {...props} url={URLS.AIR.IMPACT} />
+              )}
             />
           </Switch>
         </ScrollToTop>

@@ -1,17 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Hero from '../components/Landing/Hero';
 import Footer from '../components/Footer';
-import Seo from '../components/MetaTags/Seo';
+import DocumentHead from '../components/DocumentHead';
 import BlackFavicon from '../components/Favicons/BlackFavicon';
 
-export default function Home() {
+function Home({ url }) {
   return (
     <React.Fragment>
-      <Seo url="landing" />
+      <DocumentHead url={url} />
       <BlackFavicon />
       <Hero />
       <Footer />
     </React.Fragment>
   );
 }
+
+Home.propTypes = {
+  url: PropTypes.string
+};
+
+Home.defaultProps = {
+  url: null
+};
+
+export default Home;

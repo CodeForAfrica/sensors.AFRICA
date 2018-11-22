@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Grid } from '@material-ui/core';
 
+import DocumentHead from '../../components/DocumentHead';
 import Navbar from '../../components/Header/Navbar';
 import Header from '../../components/HealthClimate/HealthAndClimateHeader';
 import Impact from '../../components/HealthClimate/HealthAndClimateImpact';
@@ -9,15 +12,14 @@ import HealthAndDiseaseBurden from '../../components/HealthClimate/HealthAndDise
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
 import Footer from '../../components/Footer';
-import Seo from '../../components/MetaTags/Seo';
 import GreenFavicon from '../../components/Favicons/GreenFavicon';
 
-function HealthAndClimateImpacts() {
+function HealthAndClimateImpacts({ url }) {
   return (
     <Grid>
-      <Navbar />
-      <Seo url="air/health-and-climate-impact" />
       <GreenFavicon />
+      <DocumentHead url={url} />
+      <Navbar />
       <Header />
       <Impact />
       <Sources />
@@ -29,4 +31,7 @@ function HealthAndClimateImpacts() {
   );
 }
 
+HealthAndClimateImpacts.propTypes = {
+  url: PropTypes.string.isRequired
+};
 export default HealthAndClimateImpacts;

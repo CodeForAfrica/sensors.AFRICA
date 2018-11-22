@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import Seo from '../../components/MetaTags/Seo';
+
 import GreenFavicon from '../../components/Favicons/GreenFavicon';
+import DocumentHead from '../../components/DocumentHead';
 import Navbar from '../../components/Header/Navbar';
 import JoinHeader from '../../components/JoinNetwork/JoinHeader';
 import Support from '../../components/Support';
@@ -24,7 +25,7 @@ const styles = theme => ({
   }
 });
 
-function JoinNetwork({ classes }) {
+function JoinNetwork({ classes, url }) {
   return (
     <Grid
       container
@@ -32,8 +33,8 @@ function JoinNetwork({ classes }) {
       justify="center"
       alignItems="center"
     >
-      <Seo url="air/join" />
       <GreenFavicon />
+      <DocumentHead url={url} />
       <Grid item xs={12}>
         <Navbar />
       </Grid>
@@ -51,7 +52,8 @@ function JoinNetwork({ classes }) {
 }
 
 JoinNetwork.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(JoinNetwork);
