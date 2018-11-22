@@ -1,13 +1,15 @@
 import React from 'react';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { muiTheme } from 'storybook-addon-material-ui';
+import ReadMe from '../../';
 
 //Example material ui
 import Card from '@material-ui/core/Card';
+import Intro from './intro/intro';
 
 storiesOf('sensors.AFRICA', module)
   .addDecorator(muiTheme())
-  .add('Introduction', () => <Card />)
+  .add('Introduction', () => <Intro />)
   .add('ReadMe', () => <Card />);
 
 storiesOf('UI.all', module)
