@@ -21,7 +21,15 @@ function Intro({ classes }) {
     <Grid container item xs={12} className={classes.root}>
       <Grid item xs={12} direction="row" justify="center" alignItems="center">
         <SensorsLogo />
-        <Grid item xs={12} direction="row" justify="center" alignItems="center">
+        <div
+          container
+          item
+          xs={8}
+          direction="row"
+          justify="center"
+          alignItems="center"
+          style={{ paddingRight: '25%', paddingLeft: '25%' }}
+        >
           <Typography variant="body1">
             Lorem ipsum dolor sit amet, eos id ridens expetenda evertitur. Vix
             magna zril bonorum ei, quando utroque offendit sea in. Eripuit
@@ -33,7 +41,7 @@ function Intro({ classes }) {
             Maiorum appareat mel ne, qui no justo ornatus interpretaris. Cetero
             complectitur ad mel.
           </Typography>
-        </Grid>
+        </div>
       </Grid>
     </Grid>
   );
