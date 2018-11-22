@@ -6,6 +6,8 @@ import SensorsReadme from '../../README.md';
 
 import Card from '@material-ui/core/Card';
 import Intro from './intro/intro';
+import Theme from './ui.all/theme';
+import TypograpySensors from './ui.all/TypographySensors';
 
 storiesOf('sensors.AFRICA', module)
   .addDecorator(muiTheme())
@@ -14,8 +16,8 @@ storiesOf('sensors.AFRICA', module)
 
 storiesOf('UI.all', module)
   .addDecorator(muiTheme())
-  .add('Theme', () => <Card />)
-  .add('Typography', () => <Card />);
+  .add('Theme', () => <Theme />)
+  .add('Typography', () => <TypograpySensors />);
 
 storiesOf('Components', module)
   .addDecorator(muiTheme())
@@ -32,15 +34,3 @@ storiesOf('Components', module)
 storiesOf('API', module)
   .addDecorator(muiTheme())
   .add('API introduction', () => <Card />);
-
-//Define MATERIAL  theme
-
-/*const THEME = createMuiTheme({
-  palette: {
-    primary: { main: '#1a995b', light: '#2FB56B', dark: '#164B3E' },
-    secondary: { main: '#424143', dark: '#2A2A2B' }
-  },
-  themeName: 'Custom Light Theme'
-});
-
-storiesOf('Material Custom Theme', module).addDecorator(muiTheme([THEME]));*/

@@ -6,7 +6,6 @@ import SensorsLogo from './sensorsLogo';
 
 const styles = theme => ({
   root: {
-    color: 'blue',
     height: '100%',
     padding: 0
   },
