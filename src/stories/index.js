@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { muiTheme } from 'storybook-addon-material-ui';
-import ReadMe from '../../';
 
 //Example material ui
 import Card from '@material-ui/core/Card';
