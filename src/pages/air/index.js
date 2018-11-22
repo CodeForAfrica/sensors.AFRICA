@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
-import GreenFavicon from '../../components/Favicons/GreenFavicon';
 import DocumentHead from '../../components/DocumentHead';
 import About from './About';
 import HowSensorsWork from './HowSensorsWork';
@@ -35,7 +34,6 @@ class AirHome extends React.Component {
     const { url } = this.props;
     return (
       <React.Fragment>
-        <GreenFavicon />
         <DocumentHead url={url} />
         <Navbar />
         <AirHeader handleSearch={this.handleSearch} />

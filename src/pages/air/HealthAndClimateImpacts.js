@@ -12,12 +12,10 @@ import HealthAndDiseaseBurden from '../../components/HealthClimate/HealthAndDise
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
 import Footer from '../../components/Footer';
-import GreenFavicon from '../../components/Favicons/GreenFavicon';
 
 function HealthAndClimateImpacts({ url }) {
   return (
     <Grid>
-      <GreenFavicon />
       <DocumentHead url={url} />
       <Navbar />
       <Header />

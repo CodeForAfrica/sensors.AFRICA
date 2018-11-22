@@ -11,7 +11,6 @@ import Partners from '../../components/About/Partners';
 import Staff from '../../components/About/Staff';
 import Footer from '../../components/Footer';
 import Support from '../../components/Support';
-import GreenFavicon from '../../components/Favicons/GreenFavicon';
 
 const styles = theme => ({
   aboutSupport: {
@@ -23,7 +22,6 @@ const styles = theme => ({
 function About({ classes, url }) {
   return (
     <React.Fragment>
-      <GreenFavicon />
       <DocumentHead url={url} />
       <Navbar />
       <AboutHeader />

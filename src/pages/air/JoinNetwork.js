@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import GreenFavicon from '../../components/Favicons/GreenFavicon';
 import DocumentHead from '../../components/DocumentHead';
 import Navbar from '../../components/Header/Navbar';
 import JoinHeader from '../../components/JoinNetwork/JoinHeader';
@@ -33,7 +32,6 @@ function JoinNetwork({ classes, url }) {
       justify="center"
       alignItems="center"
     >
-      <GreenFavicon />
       <DocumentHead url={url} />
       <Grid item xs={12}>
         <Navbar />

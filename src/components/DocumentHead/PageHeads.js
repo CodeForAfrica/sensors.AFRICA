@@ -21,38 +21,47 @@ export { URLS };
 export default [
   {
     url: URLS.HOME,
-    title: 'sensors.AFRICA | Home'
+    title: 'sensors.AFRICA | Home',
+    color: 'black'
   },
   {
     url: URLS.AIR.HOME,
-    title: 'sensors.AFRICA | Air | Home'
+    title: 'sensors.AFRICA | Air | Home',
+    color: 'green'
   },
   {
     url: URLS.AIR.ABOUT,
-    title: 'sensors.AFRICA | Air | About'
+    title: 'sensors.AFRICA | Air | About',
+    color: 'green'
   },
   {
     url: URLS.AIR.JOIN,
-    title: 'sensors.AFRICA | Air | Join Network'
+    title: 'sensors.AFRICA | Air | Join Network',
+    color: 'green'
   },
   {
     url: URLS.AIR.HOW_SENSORS_WORK,
-    title: 'sensors.AFRICA | Air | How Sensors Work'
+    title: 'sensors.AFRICA | Air | How Sensors Work',
+    color: 'green'
   },
   {
     url: URLS.AIR.IMPACT,
-    title: 'sensors.AFRICA | Air | Health and Climate Impacts'
+    title: 'sensors.AFRICA | Air | Health and Climate Impacts',
+    color: 'green'
   },
   {
     url: URLS.AIR.CITY,
-    title: 'sensors.AFRICA | Air | City'
+    title: 'sensors.AFRICA | Air | City',
+    color: 'green'
   },
   {
     url: URLS.WATER.HOME,
-    title: 'sensors.AFRICA | Water | Coming Soon'
+    title: 'sensors.AFRICA | Water | Coming Soon',
+    color: 'blue'
   },
   {
     url: URLS.SOUND.HOME,
-    title: 'sensors.AFRICA | Sound | Coming Soon'
+    title: 'sensors.AFRICA | Sound | Coming Soon',
+    color: 'purple'
   }
 ];
