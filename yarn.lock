@@ -837,10 +837,6 @@
     "@babel/runtime" "7.0.0"
     recompose "^0.29.0"
 
-"@sambego/storybook-styles@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@sambego/storybook-styles/-/storybook-styles-1.0.0.tgz#4f840ee26dd0b25dcb803a75caa42e16071dcaae"
-
 "@storybook/addon-actions@3.4.11", "@storybook/addon-actions@^3.4.10":
   version "3.4.11"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.4.11.tgz#a51418c5b684fd3df2788c19ef266845d6068baf"
@@ -919,11 +915,11 @@
     prop-types "^15.6.2"
     util-deprecate "^1.0.2"
 
-"@storybook/addons@3.4.11", "@storybook/addons@^3.4.10":
+"@storybook/addons@3.4.11":
   version "3.4.11"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.4.11.tgz#f3e27c46d80ad1f171888c4aad0a19a8a032d072"
 
-"@storybook/addons@4.0.7":
+"@storybook/addons@4.0.7", "@storybook/addons@^4.0.7":
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-4.0.7.tgz#52a98ebfa862b34ed47368590564a9638b86d211"
   dependencies:
