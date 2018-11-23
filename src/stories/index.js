@@ -1,9 +1,13 @@
 import React from 'react';
+import { doc } from 'storybook-readme';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { muiTheme } from 'storybook-addon-material-ui';
+import SensorsReadme from '../../README.md';
 
-//Example material ui
 import Card from '@material-ui/core/Card';
+import Intro from './intro/intro';
+import Theme from './ui.all/theme';
+import TypograpySensors from './ui.all/TypographySensors';
 
 const Theme = {
   themeName: 'Sensors.Africa theme',
@@ -43,15 +47,3 @@ storiesOf('Components', module)
 storiesOf('API', module)
   .addDecorator(muiTheme([Theme]))
   .add('API introduction', () => <Card />);
-
-//Define MATERIAL  theme
-
-/*const THEME = createMuiTheme({
-  palette: {
-    primary: { main: '#1a995b', light: '#2FB56B', dark: '#164B3E' },
-    secondary: { main: '#424143', dark: '#2A2A2B' }
-  },
-  themeName: 'Custom Light Theme'
-});
-
-storiesOf('Material Custom Theme', module).addDecorator(muiTheme([THEME]));*/
