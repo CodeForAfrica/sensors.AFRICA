@@ -5,19 +5,19 @@ import { Helmet } from 'react-helmet';
 const CONTENT = {
   black: {
     hex: '#424143',
-    version: 'M4mLgJ32PJ'
+    version: 'Ewqar9pC28'
   },
   blue: {
     hex: '#4972b8',
-    version: '7koK7WaNmA'
+    version: '8wB2COTulV'
   },
   green: {
     hex: '#2fb56b',
-    version: 'rMqL8kY7kj'
+    version: '78bppvKdQd'
   },
   purple: {
     hex: '#b64598',
-    version: 'ng9qR2KowR'
+    version: 'WxbPiUQG57'
   }
 };
 
@@ -29,7 +29,6 @@ const CONTENT = {
 function Favicon({ color, version }) {
   const { hex, version: defaultVersion } = CONTENT[color];
   const v = version || defaultVersion;
-  console.log(`${color} ${hex} ${v}`);
 
   return (
     <Helmet
