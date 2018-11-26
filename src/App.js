@@ -7,6 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import ScrollToTop from './ScrollToTop';
 import { URLS } from './components/DocumentHead/PageHeads';
 import Home from './pages';
+import ErrorPage from './pages/ErrorPage';
 import Air, {
   About as AirAbout,
   HowSensorsWork as AirHowSensorsWork,
@@ -140,6 +141,7 @@ function App() {
                 <AirHealthAndClimateImpacts {...props} url={URLS.AIR.IMPACT} />
               )}
             />
+            <Route component={ErrorPage} />
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
