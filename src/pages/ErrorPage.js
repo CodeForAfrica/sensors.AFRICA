@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 
 import Navbar from '../components/Header/Navbar';
 import Footer from '../components/Footer/index';
@@ -15,36 +16,47 @@ const styles = theme => ({
     textAlign: 'center'
   },
   link: {
-    color: theme.typography.h6.color
+    color: theme.typography.h6.color,
+    margin: '1rem'
   }
 });
 
-function ErrorPage({ classes }) {
-  return (
-    <Grid container item xs={12} className={classes.root}>
-      <Navbar />
-      <Grid
-        container
-        item
-        xs={12}
-        direction="column"
-        justify="center"
-        alignItem="center"
-        className={classes.bodyCopy}
-      >
-        <Typography variant="h4" syle={{ textAlign: 'center' }}>
-          404 Error: Oops! That Page couldn't be found!
-        </Typography>
-        <Typography variant="subtitle1" className={classes.link}>
-          Go back
-        </Typography>
+class ErrorPage extends Component {
+  handleBack = () => {
+    this.props.history.goBack();
+  };
+  render() {
+    const { classes } = this.props;
+    return (
+      <Grid container item xs={12} className={classes.root}>
+        <Navbar />
+        <Grid
+          container
+          item
+          xs={12}
+          direction="column"
+          justify="center"
+          alignItem="center"
+          className={classes.bodyCopy}
+        >
+          <Typography variant="h4">
+            404 Error: Oops! That Page could not be found!
+          </Typography>
+          <Typography variant="h5" className={classes.link}>
+            <Button variant="outlined" onClick={this.handleBack}>
+              {' '}
+              Go Back
+            </Button>
+          </Typography>
+        </Grid>
+        <Footer />
       </Grid>
-      <Footer />
-    </Grid>
-  );
+    );
+  }
 }
+
 ErrorPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ErrorPage);
+export default withRouter(withStyles(styles)(ErrorPage));
