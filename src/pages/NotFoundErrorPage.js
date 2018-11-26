@@ -9,7 +9,8 @@ import Footer from '../components/Footer/index';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: 'white'
   },
   bodyCopy: {
     margin: '10rem',
@@ -21,7 +22,7 @@ const styles = theme => ({
   }
 });
 
-class ErrorPage extends Component {
+class NotFoundErrorPage extends Component {
   handleBack = () => {
     this.props.history.goBack();
   };
@@ -55,8 +56,8 @@ class ErrorPage extends Component {
   }
 }
 
-ErrorPage.propTypes = {
+NotFoundErrorPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(styles)(ErrorPage));
+export default withRouter(withStyles(styles)(NotFoundErrorPage));
