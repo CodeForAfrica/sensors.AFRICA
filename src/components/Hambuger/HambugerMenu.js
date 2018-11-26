@@ -6,6 +6,8 @@ import { List, MenuItem, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Modal from '@material-ui/core/Modal';
 
+import { URLS } from '../DocumentHead/PageHeads';
+
 import MenuButton from './MenuButton';
 
 const styles = theme => ({
@@ -81,14 +83,6 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
             </MenuItem>
           </a>
 
-          <Link to="/air/how-sensors-work" className={classes.link}>
-            <MenuItem className={classes.listItem}>
-              <Typography className={classes.typography} variant="subtitle1">
-                RESOURCES
-              </Typography>
-            </MenuItem>
-          </Link>
-
           <a
             href="https://archive.sensors.africa/"
             className={classes.link}
@@ -102,7 +96,7 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
             </MenuItem>
           </a>
 
-          <Link to="/air/join-network" className={classes.link}>
+          <Link to={URLS.AIR.JOIN} className={classes.link}>
             <MenuItem className={classes.listItem}>
               <Typography className={classes.typography} variant="subtitle1">
                 JOIN
@@ -110,14 +104,23 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
             </MenuItem>
           </Link>
 
-          <Link to="/air/about" className={classes.link}>
+          <Link to={URLS.AIR.ABOUT} className={classes.link}>
             <MenuItem className={classes.listItem}>
               <Typography className={classes.typography} variant="subtitle1">
                 ABOUT
               </Typography>
             </MenuItem>
           </Link>
-          <Link to="/air/join-network" className={classes.link}>
+
+          <Link to={URLS.AIR.IMPACT} className={classes.link}>
+            <MenuItem className={classes.listItem}>
+              <Typography className={classes.typography} variant="subtitle1">
+                RESOURCES
+              </Typography>
+            </MenuItem>
+          </Link>
+
+          <Link to={URLS.AIR.JOIN} className={classes.link}>
             <MenuItem className={classes.listItem}>
               <Typography className={classes.typography} variant="subtitle1">
                 CONTACT
