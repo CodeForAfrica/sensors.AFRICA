@@ -52,7 +52,7 @@ class NotFoundErrorPage extends Component {
             OPPS! wE CANT SEEM TO FIND THE PAGE YOU ARE LOOKING FOR.
           </Typography>
 
-          {/*<Typography variant="h5">
+          <Typography variant="h5">
             <Button
               variant="outlined"
               onClick={this.handleBack}
@@ -61,7 +61,7 @@ class NotFoundErrorPage extends Component {
               {' '}
               GO BACK
             </Button>
-    </Typography>*/}
+          </Typography>
         </Grid>
         <Footer />
       </Grid>
