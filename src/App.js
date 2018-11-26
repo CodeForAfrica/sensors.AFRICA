@@ -7,7 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import ScrollToTop from './ScrollToTop';
 import { URLS } from './components/DocumentHead/PageHeads';
 import Home from './pages';
-import NotFoundErrorPage from './pages/NotFoundErrorPage';
+import NotFound from './pages/NotFound';
 import Air, {
   About as AirAbout,
   HowSensorsWork as AirHowSensorsWork,
@@ -141,7 +141,7 @@ function App() {
                 <AirHealthAndClimateImpacts {...props} url={URLS.AIR.IMPACT} />
               )}
             />
-            <Route component={NotFoundErrorPage} />
+            <Route component={NotFound} />
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
