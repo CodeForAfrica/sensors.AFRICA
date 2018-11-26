@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+
 import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { withRouter } from 'react-router-dom';
 
 import Navbar from '../components/Header/Navbar';
 import Footer from '../components/Footer/index';
 import backgroundImage from '../assets/images/background/bgsupport.jpg';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white',
@@ -27,14 +28,22 @@ const styles = theme => ({
   }
 });
 
-class NotFoundErrorPage extends Component {
-  handleBack = () => {
-    this.props.history.goBack();
-  };
+class NotFound extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleBack = this.handleBack.bind(this);
+  }
+
+  handleBack() {
+    const { history } = this.props;
+    history.goBack();
+  }
+
   render() {
     const { classes } = this.props;
     return (
-      <Grid container item xs={12} className={classes.root}>
+      <Grid container className={classes.root}>
         <Navbar />
         <Grid
           item
@@ -49,7 +58,7 @@ class NotFoundErrorPage extends Component {
             404
           </Typography>
           <Typography variant="h5" className={classes.typography}>
-            OPPS! wE CANT SEEM TO FIND THE PAGE YOU ARE LOOKING FOR.
+            OPPS! WE CAN&apos;T SEEM TO FIND THE PAGE YOU ARE LOOKING FOR.
           </Typography>
 
           <Typography variant="h5">
@@ -58,7 +67,6 @@ class NotFoundErrorPage extends Component {
               onClick={this.handleBack}
               className={classes.button}
             >
-              {' '}
               GO BACK
             </Button>
           </Typography>
@@ -69,8 +77,9 @@ class NotFoundErrorPage extends Component {
   }
 }
 
-NotFoundErrorPage.propTypes = {
-  classes: PropTypes.object.isRequired
+NotFound.propTypes = {
+  classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(styles)(NotFoundErrorPage));
+export default withRouter(withStyles(styles)(NotFound));
