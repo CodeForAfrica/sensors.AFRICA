@@ -61,7 +61,7 @@ class NotFound extends Component {
             404
           </Typography>
           <Typography variant="h5" className={classes.typography}>
-            OPPS! WE CAN&apos;T SEEM TO FIND THE PAGE YOU ARE LOOKING FOR.
+            OOPS! WE CAN&apos;T SEEM TO FIND THE PAGE YOU ARE LOOKING FOR.
           </Typography>
 
           <Typography variant="h5">
