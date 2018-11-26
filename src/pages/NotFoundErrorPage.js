@@ -32,9 +32,9 @@ class NotFoundErrorPage extends Component {
       <Grid container item xs={12} className={classes.root}>
         <Navbar />
         <Grid
-          container
           item
           xs={12}
+          container
           direction="column"
           justify="center"
           alignItem="center"
