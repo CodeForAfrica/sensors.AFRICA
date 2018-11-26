@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import DocumentHead from '../components/DocumentHead';
 import Navbar from '../components/Header/Navbar';
 import Footer from '../components/Footer/index';
 import backgroundImage from '../assets/images/background/bgsupport.jpg';
@@ -41,9 +42,11 @@ class NotFound extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, url } = this.props;
+
     return (
       <Grid container className={classes.root}>
+        <DocumentHead url={url} />
         <Navbar />
         <Grid
           item
@@ -79,7 +82,12 @@ class NotFound extends Component {
 
 NotFound.propTypes = {
   classes: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  url: PropTypes.string
+};
+
+NotFound.defaultProps = {
+  url: null
 };
 
 export default withRouter(withStyles(styles)(NotFound));

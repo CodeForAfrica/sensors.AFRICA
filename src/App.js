@@ -141,7 +141,9 @@ function App() {
                 <AirHealthAndClimateImpacts {...props} url={URLS.AIR.IMPACT} />
               )}
             />
-            <Route component={NotFound} />
+            <Route
+              render={props => <NotFound {...props} url={URLS.NOT_FOUND} />}
+            />
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
