@@ -6,19 +6,24 @@ import { withRouter } from 'react-router-dom';
 
 import Navbar from '../components/Header/Navbar';
 import Footer from '../components/Footer/index';
+import backgroundImage from '../assets/images/background/bgsupport.jpg';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    backgroundImage: `url(${backgroundImage})`
   },
   bodyCopy: {
-    margin: '10rem',
+    margin: '8rem',
     textAlign: 'center'
   },
-  link: {
-    color: theme.typography.h6.color,
+  button: {
+    color: 'white',
     margin: '1rem'
+  },
+  typography: {
+    color: 'white'
   }
 });
 
@@ -40,13 +45,21 @@ class NotFoundErrorPage extends Component {
           alignItem="center"
           className={classes.bodyCopy}
         >
-          <Typography variant="h4">
-            404 Error: Oops! That Page could not be found!
+          <Typography variant="h1" className={classes.typography}>
+            404
           </Typography>
-          <Typography variant="h5" className={classes.link}>
-            <Button variant="outlined" onClick={this.handleBack}>
+          <Typography variant="h5" className={classes.typography}>
+            OPPS! wE CANT SEEM TO FIND THE PAGE YOU ARE LOOKING FOR
+          </Typography>
+
+          <Typography variant="h5">
+            <Button
+              variant="outlined"
+              onClick={this.handleBack}
+              className={classes.button}
+            >
               {' '}
-              Go Back
+              GO BACK
             </Button>
           </Typography>
         </Grid>
