@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Typography, Button } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 
@@ -49,10 +49,10 @@ class NotFoundErrorPage extends Component {
             404
           </Typography>
           <Typography variant="h5" className={classes.typography}>
-            OPPS! wE CANT SEEM TO FIND THE PAGE YOU ARE LOOKING FOR
+            OPPS! wE CANT SEEM TO FIND THE PAGE YOU ARE LOOKING FOR.
           </Typography>
 
-          <Typography variant="h5">
+          {/*<Typography variant="h5">
             <Button
               variant="outlined"
               onClick={this.handleBack}
@@ -61,7 +61,7 @@ class NotFoundErrorPage extends Component {
               {' '}
               GO BACK
             </Button>
-          </Typography>
+    </Typography>*/}
         </Grid>
         <Footer />
       </Grid>
