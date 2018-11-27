@@ -114,7 +114,7 @@ function Support({ classes, classNames }) {
                 color="primary"
                 className={classes.buttonOutlined}
               >
-                Contribute
+                ACT NOW
               </Button>
             </a>
           </CardContent>
