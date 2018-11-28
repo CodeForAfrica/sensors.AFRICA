@@ -14,7 +14,7 @@ const URLS = {
   SOUND: {
     HOME: '/sound'
   },
-  NOT_FOUND: '*',
+  NOT_FOUND: '*'
 };
 
 export { URLS };
