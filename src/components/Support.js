@@ -114,7 +114,7 @@ function Support({ classes, classNames }) {
             <Typography variant="h5">EXISTING SENSORS</Typography>
             <Typography variant="h5">NETWORKS</Typography>
             <a
-              href="https://archive.sensors.africa/"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
               className={classes.buttonLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -124,7 +124,7 @@ function Support({ classes, classNames }) {
                 color="primary"
                 className={classes.buttonOutlined}
               >
-                VIEW DATABASE
+                Get started
               </Button>
             </a>
           </CardContent>
