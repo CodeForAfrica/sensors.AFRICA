@@ -54,7 +54,7 @@ class NotFound extends Component {
           container
           direction="column"
           justify="center"
-          alignItem="center"
+          alignItems="center"
           className={classes.bodyCopy}
         >
           <Typography variant="h1" className={classes.typography}>
