@@ -105,7 +105,7 @@ function App() {
   return (
     <MuiThemeProvider theme={THEME}>
       <CssBaseline />
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <ScrollToTop>
           <Switch>
             <Route exact path={URLS.HOME} component={Home} />
