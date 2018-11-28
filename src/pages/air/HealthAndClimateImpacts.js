@@ -19,9 +19,9 @@ function HealthAndClimateImpacts({ url }) {
       <DocumentHead url={url} />
       <Navbar />
       <Header />
-      <Impact />
-      <Sources />
       <HealthAndDiseaseBurden />
+      <Sources />
+      <Impact />
       <Stories />
       <Support />
       <Footer />
