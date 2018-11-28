@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
+import DocumentHead from '../../components/DocumentHead';
 import About from './About';
 import HowSensorsWork from './HowSensorsWork';
 import City from './City';
 import JoinNetwork from './JoinNetwork';
 import Navbar from '../../components/Header/Navbar';
-import AirHeader from '../../components/AirComponents/AirHeader';
+import AirHeader from '../../components/Air/AirHeader';
 import Footer from '../../components/Footer';
-import IndoorOutdoor from '../../components/AirComponents/IndoorOutdoor';
-import Issues from '../../components/AirComponents/Issues';
+import IndoorOutdoor from '../../components/Air/IndoorOutdoor';
+import Issues from '../../components/Air/Issues';
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
+import HealthAndClimateImpacts from './HealthAndClimateImpacts';
 
 const CITY_PATHNAME = '/air/city';
 class AirHome extends React.Component {
@@ -25,12 +27,14 @@ class AirHome extends React.Component {
   handleSearch(city) {
     const { history } = this.props;
 
-    history.push(CITY_PATHNAME, { city });
+    history.push(CITY_PATHNAME, { city: city.value });
   }
 
   render() {
+    const { url } = this.props;
     return (
       <React.Fragment>
+        <DocumentHead url={url} />
         <Navbar />
         <AirHeader handleSearch={this.handleSearch} />
         <Issues />
@@ -44,8 +48,9 @@ class AirHome extends React.Component {
 }
 
 AirHome.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired
 };
 
-export { About, HowSensorsWork, City, JoinNetwork };
+export { About, HowSensorsWork, City, JoinNetwork, HealthAndClimateImpacts };
 export default withRouter(AirHome);

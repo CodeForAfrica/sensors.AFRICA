@@ -182,8 +182,8 @@ class CityGauge extends Component {
               <span className={classes.gaugeBoxWhoTitle}>
                 WHO Guideline (10)
               </span>
-              Lowest level at which premature mortality increases inresponse to
-              long term exposure
+              Lowest level at which premature mortality increases in response to
+              long-term exposure
             </p>
           </Grid>
         </Hidden>

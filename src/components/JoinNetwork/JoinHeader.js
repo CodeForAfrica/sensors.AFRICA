@@ -32,7 +32,7 @@ function JoinHeader({ classes }) {
       <Grid item xs={12}>
         <JoinNetworkContent
           title="JOIN THE NETWORK"
-          subheading="Are you interested in hosting a sensor, using our data or championing air quality? Contact us using the links below to get started"
+          subheading="Are you interested in hosting a sensor, using our data or championing air quality? Contact us using the links below to get started."
         />
       </Grid>
     </Grid>

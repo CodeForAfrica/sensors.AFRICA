@@ -37,7 +37,7 @@ function AirCityHeaderContent({ airPol, city, classes }) {
           THE AIR POLLUTION IN{' '}
         </Typography>
         <Typography variant="h4" style={{ color: 'white' }}>
-          {city.label.toUpperCase()}
+          {city.label}
         </Typography>
       </Grid>
       <Grid item xs={12}>

@@ -14,7 +14,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    marginTop: theme.spacing.unit * 3,
     [theme.breakpoints.up('md')]: {
       borderRight: '1px solid rgba(0,0,0,0.1)',
       borderLeft: '1px solid rgba(0,0,0,0.1)'
@@ -57,7 +56,52 @@ const styles = theme => ({
   }
 });
 
-function DataTable({ classes }) {
+function renderMaximum(readingsObject) {
+  if (readingsObject) {
+    const readings = Object.values(readingsObject);
+    if (readings[0]) {
+      const cityMaximum = readings.reduce(
+        (min, p) => (p.average > min ? p.average : min),
+        readings[0].average
+      );
+      return cityMaximum.toFixed(1);
+    }
+  }
+  return 0;
+}
+
+function renderMinimum(readingsObject) {
+  if (readingsObject) {
+    const readings = Object.values(readingsObject);
+    if (readings[0]) {
+      const cityMinimum = readings.reduce(
+        (min, p) => (p.average < min ? p.average : min),
+        readings[0].average
+      );
+      return cityMinimum.toFixed(1);
+    }
+  }
+  return 0;
+}
+
+function renderAverage(readingsObject) {
+  if (readingsObject) {
+    const readings = Object.values(readingsObject);
+    if (readings[0]) {
+      const cityAverage =
+        readings.reduce((a, b) => a + b.average, 0) / readings.length;
+      return cityAverage.toFixed(1);
+    }
+  }
+  return 0;
+}
+
+function DataTable({
+  classes,
+  cityHumidityStats,
+  cityP2Stats,
+  cityTemperatureStats
+}) {
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12}>
@@ -84,9 +128,12 @@ function DataTable({ classes }) {
                     className={classes.data}
                   >
                     <Typography variant="h3" className={classes.display2}>
-                      12.5
+                      {renderMaximum(cityP2Stats)}
                     </Typography>
-                    <small className={classes.small}>%</small>
+                    <small className={classes.small}>
+                      PM
+                      <sub>2.5</sub>
+                    </small>
                   </Grid>
                 </Grid>
               </TableCell>
@@ -108,9 +155,12 @@ function DataTable({ classes }) {
                   </Grid>
                   <Grid container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
-                      5.0
+                      {renderMaximum(cityHumidityStats)}
                     </Typography>
-                    <small className={classes.small}>%</small>
+                    <small className={classes.small}>
+                      g/m
+                      <sup>3</sup>
+                    </small>
                   </Grid>
                 </Grid>
               </TableCell>
@@ -127,14 +177,16 @@ function DataTable({ classes }) {
                       variant="subtitle1"
                       className={classes.subheading}
                     >
-                      SOUND
+                      TEMPERATURE
                     </Typography>
                   </Grid>
                   <Grid container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
-                      208.6
+                      {renderMaximum(cityTemperatureStats)}
                     </Typography>
-                    <small className={classes.small}>db</small>
+                    <small className={classes.small}>
+                      <sup>o</sup>C
+                    </small>
                   </Grid>
                 </Grid>
               </TableCell>
@@ -161,9 +213,12 @@ function DataTable({ classes }) {
                   </Grid>
                   <Grid container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
-                      12.5
+                      {renderAverage(cityP2Stats)}
                     </Typography>
-                    <small className={classes.small}>%</small>
+                    <small className={classes.small}>
+                      PM
+                      <sub>2.5</sub>
+                    </small>
                   </Grid>
                 </Grid>
               </TableCell>
@@ -185,9 +240,12 @@ function DataTable({ classes }) {
                   </Grid>
                   <Grid container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
-                      5.0
+                      {renderAverage(cityHumidityStats)}
                     </Typography>
-                    <small className={classes.small}>%</small>
+                    <small className={classes.small}>
+                      g/m
+                      <sup>3</sup>
+                    </small>
                   </Grid>
                 </Grid>
               </TableCell>
@@ -204,14 +262,16 @@ function DataTable({ classes }) {
                       variant="subtitle1"
                       className={classes.subheading}
                     >
-                      SOUND
+                      TEMPERATURE
                     </Typography>
                   </Grid>
                   <Grid container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
-                      208.6
+                      {renderAverage(cityTemperatureStats)}
                     </Typography>
-                    <small className={classes.small}>db</small>
+                    <small className={classes.small}>
+                      <sup>o</sup>C
+                    </small>
                   </Grid>
                 </Grid>
               </TableCell>
@@ -238,9 +298,12 @@ function DataTable({ classes }) {
                   </Grid>
                   <Grid container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
-                      12.5
+                      {renderMinimum(cityP2Stats)}
                     </Typography>
-                    <small className={classes.small}>%</small>
+                    <small className={classes.small}>
+                      PM
+                      <sub>2.5</sub>
+                    </small>
                   </Grid>
                 </Grid>
               </TableCell>
@@ -262,9 +325,12 @@ function DataTable({ classes }) {
                   </Grid>
                   <Grid container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
-                      5.0
+                      {renderMinimum(cityHumidityStats)}
                     </Typography>
-                    <small className={classes.small}>%</small>
+                    <small className={classes.small}>
+                      g/m
+                      <sup>3</sup>
+                    </small>
                   </Grid>
                 </Grid>
               </TableCell>
@@ -281,14 +347,16 @@ function DataTable({ classes }) {
                       variant="subtitle1"
                       className={classes.subheading}
                     >
-                      SOUND
+                      TEMPERATURE
                     </Typography>
                   </Grid>
                   <Grid container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
-                      208.6
+                      {renderMinimum(cityTemperatureStats)}
                     </Typography>
-                    <small className={classes.small}>db</small>
+                    <small className={classes.small}>
+                      <sup>o</sup>C
+                    </small>
                   </Grid>
                 </Grid>
               </TableCell>
@@ -301,7 +369,10 @@ function DataTable({ classes }) {
 }
 
 DataTable.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  cityHumidityStats: PropTypes.object.isRequired,
+  cityTemperatureStats: PropTypes.object.isRequired,
+  cityP2Stats: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(DataTable);
