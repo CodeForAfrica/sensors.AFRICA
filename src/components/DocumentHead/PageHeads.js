@@ -13,7 +13,8 @@ const URLS = {
   },
   SOUND: {
     HOME: '/sound'
-  }
+  },
+  NOT_FOUND: '*'
 };
 
 export { URLS };
@@ -63,5 +64,10 @@ export default [
     url: URLS.SOUND.HOME,
     title: 'sensors.AFRICA | Sound | Coming Soon',
     color: 'purple'
+  },
+  {
+    url: URLS.NOT_FOUND,
+    title: 'sensors.AFRICA | Page Not Found',
+    color: 'black'
   }
 ];

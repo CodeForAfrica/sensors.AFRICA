@@ -7,6 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import ScrollToTop from './ScrollToTop';
 import { URLS } from './components/DocumentHead/PageHeads';
 import Home from './pages';
+import NotFound from './pages/NotFound';
 import Air, {
   About as AirAbout,
   HowSensorsWork as AirHowSensorsWork,
@@ -139,6 +140,9 @@ function App() {
               render={props => (
                 <AirHealthAndClimateImpacts {...props} url={URLS.AIR.IMPACT} />
               )}
+            />
+            <Route
+              render={props => <NotFound {...props} url={URLS.NOT_FOUND} />}
             />
           </Switch>
         </ScrollToTop>
