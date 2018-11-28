@@ -157,11 +157,11 @@ function Support({ classes, classNames }) {
         <Card className={classes.cleanWaterCard}>
           <CardContent className={classes.cardContent}>
             <Typography variant="h5">LET YOUR CITY KNOW</Typography>
-            <Typography variant="h5">THAT CLEAN WATER</Typography>
+            <Typography variant="h5">THAT CLEAN AIR</Typography>
             <Typography variant="h5">MATTERS TO YOU</Typography>
             <TwitterShareButton
-              url="https://sensors.AFRICA"
-              title="Did you know #AirQuality wadawada..."
+              url="https://sensors.AFRICA/air"
+              title="Did you know the #AirQuality in our city directly affects my health? Check our city’s pollution levels on"
               via="sensorsAFRICA"
               hashtags={['sensorsAFRICA']}
             >
