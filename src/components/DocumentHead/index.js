@@ -8,7 +8,8 @@ import Favicon from '../Favicon';
 function DocumentHead({ url }) {
   const matchUrl = obj => obj.url === url;
   const matchDefault = obj => obj.url === '/';
-  const head = PageHeads.find(matchUrl) || PageHeads.find(matchDefault);
+  const head =
+    (url && PageHeads.find(matchUrl)) || PageHeads.find(matchDefault);
 
   return (
     <React.Fragment>
@@ -21,7 +22,11 @@ function DocumentHead({ url }) {
 }
 
 DocumentHead.propTypes = {
-  url: PropTypes.string.isRequired
+  url: PropTypes.string
+};
+
+DocumentHead.defaultProps = {
+  url: null
 };
 
 export default DocumentHead;
