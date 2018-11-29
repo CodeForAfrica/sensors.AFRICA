@@ -53,7 +53,7 @@ const CITIES_POLLUTION_STATS = {
     deathCount: '290,456',
     childDeathCount: '98,001',
     topIllness: 'Lower',
-    annualAverage: '27',
+    annualAverage: '122',
     percent: '170% more'
   },
   'dar-es-salaam': {
