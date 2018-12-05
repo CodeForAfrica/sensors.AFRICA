@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Grid,
-  Typography,
-  Card,
-  CardMedia,
-  CardContent
-} from '@material-ui/core';
+import { Typography, Card, CardMedia, CardContent } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import '../../assets/css/App.css';
 
 const styles = theme => ({
-  classRoot: { maxWidth: '300px', height: '100%', backgroundColor: '#eee' },
+  classRoot: { backgroundColor: '#eee' },
   media: {
     height: 0,
     paddingTop: '56.25%' // 16:9
@@ -22,9 +17,9 @@ function StoryCard({ property, classes }) {
   const { index, picture, date, title, body } = property;
 
   return (
-    <Grid style={{ maxWidth: '400px' }}>
+    <div className="Slides">
       <Card id={`card-${index}`} className={classes.classRoot}>
-        <CardMedia className={classes.media} image={picture} title=" First" />
+        <CardMedia className={classes.media} image={picture} title=" Story" />
         <CardContent>
           <Typography variant="caption">{date}</Typography>
           <div style={{ paddingTop: '2rem' }}>
@@ -33,11 +28,12 @@ function StoryCard({ property, classes }) {
           </div>
         </CardContent>
       </Card>
-    </Grid>
+    </div>
   );
 }
 
 StoryCard.propTypes = {
+  classes: PropTypes.object.isRequired,
   property: PropTypes.object.isRequired
 };
 
