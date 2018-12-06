@@ -38,7 +38,7 @@ const styles = theme => ({
   }
 });
 
-function HostSensorButtons({ classes }) {
+function HostSensorButtons({ city, classes }) {
   return (
     <Grid
       container
@@ -79,11 +79,15 @@ function HostSensorButtons({ classes }) {
         </a>
       </Grid>
       <Grid item>
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-          className={classes.buttonLink}
-          target="_blank"
-          rel="noopener noreferrer"
+        <TwitterShareButton
+          url="https://sensors.AFRICA/air"
+          title={`Did you know the #AirQuality in ${
+            city.name
+          } directly affects my health ${
+            city.twitterHandle
+          }? Check our city’s pollution levels on `}
+          via="sensorsAFRICA"
+          hashtags={['sensorsAFRICA']}
         >
           <Button
             variant="contained"
@@ -92,7 +96,7 @@ function HostSensorButtons({ classes }) {
           >
             ACT
           </Button>
-        </a>
+        </TwitterShareButton>
       </Grid>
       <Grid item>
         <TwitterShareButton
@@ -115,6 +119,7 @@ function HostSensorButtons({ classes }) {
 }
 
 HostSensorButtons.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  city: PropTypes.shape({}).isRequired
 };
 export default withStyles(styles)(HostSensorButtons);
