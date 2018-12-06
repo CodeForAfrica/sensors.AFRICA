@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import Gauge from './GaugeChart';
+import HealthEffects from './HealthEffects';
 
 const styles = theme => ({
   root: {
@@ -37,18 +37,6 @@ const styles = theme => ({
     },
     [theme.breakpoints.up('lg')]: {
       width: '15rem'
-    }
-  },
-  svgContainer: {
-    paddingTop: '3rem',
-    paddingBottom: '2rem',
-    width: '100vw',
-    margin: '0 auto',
-    [theme.breakpoints.up('md')]: {
-      width: '59.625rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
     }
   }
 });
@@ -84,50 +72,7 @@ function Issues({ classes }) {
       </Grid>
 
       <Grid item xs={12}>
-        <Grid
-          container
-          justify="center"
-          alignItems="flex-start"
-          className={classes.svgContainer}
-          spacing={24}
-        >
-          <Grid item>
-            <div className={classes.graph}>
-              <Gauge percentage={36} />
-
-              <Typography variant="caption" className={classes.caption}>
-                of lung cancer deaths
-              </Typography>
-            </div>
-          </Grid>
-          <Grid item>
-            <div className={classes.graph}>
-              <Gauge percentage={34} />
-
-              <Typography variant="caption" className={classes.caption}>
-                of stroke deaths
-              </Typography>
-            </div>
-          </Grid>
-          <Grid item>
-            <div className={classes.graph}>
-              <Gauge percentage={27} />
-
-              <Typography variant="caption" className={classes.caption}>
-                of heart disease deaths
-              </Typography>
-            </div>
-          </Grid>
-          <Grid item>
-            <div className={classes.graph}>
-              <Gauge percentage={35} />
-
-              <Typography variant="caption" className={classes.caption}>
-                of COPD (pulmonary disease deaths)
-              </Typography>
-            </div>
-          </Grid>
-        </Grid>
+        <HealthEffects />
       </Grid>
     </Grid>
   );
