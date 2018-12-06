@@ -14,7 +14,7 @@ const styles = theme => ({
     color: '#fff',
     borderRadius: 0,
     margin: theme.spacing.unit * 2,
-    fontWeight: 600,
+    fontWeight: 700,
     border: '1px solid transparent',
     '&:hover': {
       color: theme.palette.primary.dark,
@@ -26,7 +26,7 @@ const styles = theme => ({
     color: theme.palette.primary.dark,
     borderRadius: 0,
     margin: theme.spacing.unit * 2,
-    fontWeight: 600
+    fontWeight: 700
   },
   buttonLink: {
     textDecoration: 'none'
