@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Grid, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { TwitterShareButton } from 'react-share';
 
 const styles = theme => ({
   root: {
@@ -17,8 +18,7 @@ const styles = theme => ({
     fontWeight: 700,
     border: '1px solid transparent',
     '&:hover': {
-      color: theme.palette.primary.dark,
-      backgroundColor: '#eee',
+      backgroundColor: theme.palette.primary.dark,
       border: '1px solid rgba(0, 0, 0, 0.23)'
     }
   },
@@ -26,7 +26,12 @@ const styles = theme => ({
     color: theme.palette.primary.dark,
     borderRadius: 0,
     margin: theme.spacing.unit * 2,
-    fontWeight: 700
+    fontWeight: 700,
+    '&:hover': {
+      color: 'white',
+      backgroundColor: theme.palette.primary.dark,
+      border: '1px solid rgba(0, 0, 0, 0.23)'
+    }
   },
   buttonLink: {
     textDecoration: 'none'
@@ -89,15 +94,22 @@ function HostSensorButtons({ classes }) {
           </Button>
         </a>
       </Grid>
-      {/*<Grid item>
-        <Button
-          variant="contained"
-          size="large"
-          className={classes.buttonContained}
+      <Grid item>
+        <TwitterShareButton
+          url="https://sensors.AFRICA/air"
+          title="Did you know the #AirQuality in our city directly affects my health? Check our city’s pollution levels on"
+          via="sensorsAFRICA"
+          hashtags={['sensorsAFRICA']}
         >
-          SHARE
-        </Button>
-      </Grid>*/}
+          <Button
+            variant="contained"
+            size="large"
+            className={classes.buttonContained}
+          >
+            SHARE
+          </Button>
+        </TwitterShareButton>
+      </Grid>
     </Grid>
   );
 }
