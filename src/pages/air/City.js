@@ -13,6 +13,7 @@ import CityHeader from '../../components/City/Header/CityHeader';
 import CallToAction from '../../components/City/CallToAction';
 import PollutionStats from '../../components/City/PollutionStats';
 import QualityStats from '../../components/City/SensorsQualityStats';
+import HostSensorsButton from '../../components/City/HostSensors/HostSensorButtons';
 
 const DEFAULT_CITY = 'nairobi';
 const CITIES_LOCATION = {
@@ -22,7 +23,8 @@ const CITIES_LOCATION = {
     name: 'Nairobi',
     country: 'Kenya',
     label: 'Nairobi, Kenya',
-    location: '12/-1.2709/36.8169'
+    location: '12/-1.2709/36.8169',
+    twitterHandle: '@nairobicitygov'
   },
   lagos: {
     latitude: '6.',
@@ -30,7 +32,8 @@ const CITIES_LOCATION = {
     name: 'Lagos',
     country: 'Nigeria',
     label: 'Lagos, Nigeria',
-    location: '12/6.4552/3.4198'
+    location: '12/6.4552/3.4198',
+    twitterHandle: '@followlasg'
   },
   'dar-es-salaam': {
     latitude: '-6.',
@@ -38,7 +41,8 @@ const CITIES_LOCATION = {
     name: 'Dar es Salaam',
     country: 'Tanzania',
     label: 'Dar-es-salaam, Tanzania',
-    location: '12/-6.8555/39.1518'
+    location: '12/-6.8555/39.1518',
+    twitterHandle: '#DarEsSalaam'
   }
 };
 const CITIES_POLLUTION_STATS = {
@@ -281,6 +285,9 @@ class City extends React.Component {
             airPol={airPol}
             handleSearch={this.handleSearch}
           />
+          <Grid item xs={12}>
+            <HostSensorsButton city={CITIES_LOCATION[city]} />
+          </Grid>
           <Grid item xs={12}>
             <PollutionStats
               pollutionStats={CITIES_POLLUTION_STATS[city]}
