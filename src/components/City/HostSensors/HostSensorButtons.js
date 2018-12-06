@@ -98,7 +98,7 @@ function HostSensorButtons({ city, classes }) {
           </Button>
         </TwitterShareButton>
       </Grid>
-      <Grid item>
+      {/*<Grid item>
         <TwitterShareButton
           url="https://sensors.AFRICA/air"
           title="Did you know the #AirQuality in our city directly affects my health? Check our city’s pollution levels on"
@@ -113,7 +113,7 @@ function HostSensorButtons({ city, classes }) {
             SHARE
           </Button>
         </TwitterShareButton>
-      </Grid>
+      </Grid>*/}
     </Grid>
   );
 }
