@@ -6,18 +6,27 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    paddingTop: '2rem'
   },
   buttonContained: {
     backgroundColor: theme.palette.primary.light,
     color: '#fff',
     borderRadius: 0,
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing.unit * 2,
+    fontWeight: 600,
+    border: '1px solid transparent',
+    '&:hover': {
+      color: theme.palette.primary.dark,
+      backgroundColor: '#eee',
+      border: '1px solid rgba(0, 0, 0, 0.23)'
+    }
   },
   buttonOutlined: {
     color: theme.palette.primary.dark,
     borderRadius: 0,
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing.unit * 2,
+    fontWeight: 600
   },
   buttonLink: {
     textDecoration: 'none'
@@ -80,7 +89,7 @@ function HostSensorButtons({ classes }) {
           </Button>
         </a>
       </Grid>
-      <Grid item>
+      {/*<Grid item>
         <Button
           variant="contained"
           size="large"
@@ -88,7 +97,7 @@ function HostSensorButtons({ classes }) {
         >
           SHARE
         </Button>
-      </Grid>
+      </Grid>*/}
     </Grid>
   );
 }

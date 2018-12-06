@@ -13,7 +13,7 @@ import CityHeader from '../../components/City/Header/CityHeader';
 import CallToAction from '../../components/City/CallToAction';
 import PollutionStats from '../../components/City/PollutionStats';
 import QualityStats from '../../components/City/SensorsQualityStats';
-import Support from '../../components/Support';
+import HostSensorsButton from '../../components/City/HostSensors/HostSensorButtons';
 
 const DEFAULT_CITY = 'nairobi';
 const CITIES_LOCATION = {
@@ -283,6 +283,9 @@ class City extends React.Component {
             handleSearch={this.handleSearch}
           />
           <Grid item xs={12}>
+            <HostSensorsButton />
+          </Grid>
+          <Grid item xs={12}>
             <PollutionStats
               pollutionStats={CITIES_POLLUTION_STATS[city]}
               city={CITIES_LOCATION[city]}
@@ -300,9 +303,6 @@ class City extends React.Component {
           </Grid>
           <Grid item xs={12}>
             <CallToAction />
-          </Grid>
-          <Grid item xs={12}>
-            <Support />
           </Grid>
           <Grid item xs={12}>
             <Footer />
