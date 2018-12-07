@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
+const styles = theme => ({
   circularChart: {
     display: 'block',
     maxWidth: '100%',
@@ -22,7 +22,8 @@ const styles = {
     fill: '#666',
     stroke: '#666',
     strokeWidth: '0.25',
-    fontFamily: 'sans-serif',
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: 500,
     fontSize: '0.35em',
     textAnchor: 'middle'
   },
@@ -37,7 +38,7 @@ const styles = {
       strokeDasharray: '0 100'
     }
   }
-};
+});
 
 function GaugeChart(props) {
   const { classes, percentage } = props;

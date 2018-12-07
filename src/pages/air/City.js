@@ -15,6 +15,8 @@ import PollutionStats from '../../components/City/PollutionStats';
 import QualityStats from '../../components/City/SensorsQualityStats';
 import HostSensorsButton from '../../components/City/HostSensors/HostSensorButtons';
 
+import '../../assets/css/App.css';
+
 const DEFAULT_CITY = 'nairobi';
 const CITIES_LOCATION = {
   nairobi: {

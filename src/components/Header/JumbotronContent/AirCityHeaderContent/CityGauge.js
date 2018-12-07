@@ -207,6 +207,7 @@ class CityGauge extends Component {
               maxValue={150}
               value={parseFloat(airPollMeasurement)}
               segments={8}
+              textColor="#fff"
               startColor="#5fbf82"
               endColor="#b72025"
               needleColor="#144a3d"
