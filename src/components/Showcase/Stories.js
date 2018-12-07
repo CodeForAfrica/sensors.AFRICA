@@ -2,78 +2,116 @@ const data = {
   properties: [
     {
       index: 0,
-      picture:
+      image:
         'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1844003.jpg?itok=bR8u_WoP',
       date: '21 Nov 2019',
       title: 'Mukuru fumes put 60 asthma patients a month in hospital',
       body:
-        'As we wait to be let into Maendeleo Learning Centre, smoke drifts over from the chimney of a factory next door'
+        'As we wait to be let into Maendeleo Learning Centre, smoke drifts over from the chimney of a factory next door...',
+      link:
+        'https://www.the-star.co.ke/news/2018/11/07/mukuru-fumes-put-60-asthma-patients-a-month-in-hospital_c1843071'
     },
     {
       index: 1,
-      picture:
+      image:
         'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1601063.jpg?itok=n4FtkFhm',
       date: '21 Nov 2019',
       title: 'We emit no smoke and have Nema approval — factory director',
       body:
-        'Mukuru kwa Reuben slum residents have long complained of chest pains and asthma.'
+        'Mukuru kwa Reuben slum residents have long complained of chest pains and asthma....',
+      link:
+        'https://www.the-star.co.ke/news/2018/11/07/we-emit-no-smoke-and-have-nema-approval-factory-director_c1846413'
     },
     {
       index: 2,
-      picture:
-        'https://ihatetomatoes.net/demos/_rw/01-real-estate/tn_property01.jpg',
-      date: '21 Nov 2019',
+      image:
+        'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1601063.jpg?itok=n4FtkFhm',
+      date: '9 May 2018',
       title:
         'Measuring Nairobi’s air quality using locally assembled low-cost sensors',
       body:
-        'How low cost sensors are tracking air quality in East Africa’s largest city.'
+        'How low cost sensors are tracking air quality in East Africa’s largest city....',
+      link:
+        'https://medium.com/code-for-africa/measuring-nairobis-air-quality-using-locally-assembled-low-cost-sensors-94a356885120'
     },
     {
       index: 3,
-      picture:
+      image:
         'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/06/07/1768335.jpg?itok=DjfwMOdN',
       date: 'Jun. 07, 2018',
       title: 'Fumes pupils inhale akin to smoking two cigarettes in a day',
       body:
-        'As we wait to be let into Maendeleo Learning Centre, smoke drifts over from the chimney of a factory next door'
+        'As we wait to be let into Maendeleo Learning Centre, smoke drifts over from the chimney of a factory next door....',
+      link:
+        'https://www.the-star.co.ke/news/2018/06/07/fumes-pupils-inhale-akin-to-smoking-two-cigarettes-in-a-day_c1768330'
     },
     {
       index: 4,
-      picture:
+      image:
         'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1601063.jpg?itok=n4FtkFhm',
-      date: '21 Nov 2019',
-      title: 'We emit no smoke and have Nema approval — factory director',
+      date: 'Jun 3, 2015',
+      title: 'Opening Air Quality Data',
       body:
-        'Mukuru kwa Reuben slum residents have long complained of chest pains and asthma.'
+        'Air pollution is a leading cause of death across the globe, and contributes to stroke, heart disease, lung cancer, and other respiratory illness....',
+      link:
+        'https://medium.com/devseed/opening-up-air-quality-data-ab56fc2099af'
     },
     {
       index: 5,
-      picture:
-        'https://ihatetomatoes.net/demos/_rw/01-real-estate/tn_property01.jpg',
-      date: '21 Nov 2019',
+      image:
+        'https://i.guim.co.uk/img/media/c1aedf11fb47d24670fc865804e49e96d1c124f4/143_257_2319_1392/master/2319.jpg?width=300&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=2cf83b1b3d5c5dfeabffed87455c4621',
+      date: '9 Jun 2016 ',
       title:
-        'Measuring Nairobi’s air quality using locally assembled low-cost sensors',
+        'Air pollution now major contributor to stroke, global study finds',
       body:
-        'How low cost sensors are tracking air quality in East Africa’s largest city.'
+        'Scientists say finding is alarming, and shows that harm caused by air pollution to the lungs, heart and brain has been underestimated....',
+      link:
+        'https://www.theguardian.com/science/2016/jun/09/air-pollution-now-major-contributor-to-stroke?CMP=Share_iOSApp_Other'
     },
     {
       index: 6,
-      picture:
-        'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1601063.jpg?itok=n4FtkFhm',
+      image:
+        'http://www.designindaba.com/sites/default/files/styles/large/public/node/news/22257/gallery/buggyairkit11.jpg?itok=XepjELQt',
       date: '21 Nov 2019',
-      title: 'We emit no smoke and have Nema approval — factory director',
+      title: 'BuggyAir: A mobile air pollution tracker',
       body:
-        'Mukuru kwa Reuben slum residents have long complained of chest pains and asthma.'
+        'This air pollution testing kit helps parents make informed decisions about the type of environments they expose their children to....',
+      link:
+        'http://www.designindaba.com/articles/creative-work/buggyair-mobile-air-pollution-tracker'
     },
     {
       index: 7,
-      picture:
-        'https://ihatetomatoes.net/demos/_rw/01-real-estate/tn_property01.jpg',
-      date: '21 Nov 2019',
+      image:
+        'http://www.niemanlab.org/images/Hindustan-Times-air-quality-map-990x595.png',
+      date: 'May 18, 2016',
       title:
-        'Measuring Nairobi’s air quality using locally assembled low-cost sensors',
+        'The Hindustan Times is working to build the definitive online source of real-time air quality in all of India',
       body:
-        'How low cost sensors are tracking air quality in East Africa’s largest city.'
+        'In addition to pulling in data from government stations for its map, the organization is deploying and testing its own air quality sensors across the country...',
+      link:
+        'http://www.niemanlab.org/2016/05/the-hindustan-times-is-working-to-build-the-definitive-online-source-of-real-time-air-quality-in-all-of-india/'
+    },
+    {
+      index: 8,
+      image:
+        'https://media.licdn.com/media/gcrc/dms/image/C5612AQH-x4y2xokNPg/article-cover_image-shrink_423_752/0?e=1549497600&amp;v=beta&amp;t=O5S1NibLzooTfOtGwXlRt-UCh7XTv48ZKa7ULdGYso8',
+      date: 'September 7, 2016',
+      title: 'How important is air quality in cities?',
+      body:
+        'What is a smart city? Clearly describing a smart city can prove somewhat technical, but its goal is clear: improving the quality of life for its residents through technology...',
+      link:
+        'https://www.linkedin.com/pulse/how-important-air-quality-cities-ziv-lautman'
+    },
+    {
+      index: 9,
+      image:
+        'http://media.bizj.us/view/img/3196721/durhamlabsmobileairsensorcreditannielangan.jpg',
+      date: 'Jul 15, 2014',
+      title: 'City partners with local engineers on air-quality initiative',
+      body:
+        'When Louisville-Jefferson County Metro Government officials wanted to monitor the air quality across Louisville, it needed a product...',
+      link:
+        'https://www.the-star.co.ke/news/2018/11/07/mukuru-fumes-put-60-asthma-patients-a-month-in-hospital_c1843071'
     }
   ]
 };

@@ -11,11 +11,14 @@ import StoryCard from './StoryCard';
 import data from './Stories';
 
 const styles = theme => ({
-  root: { paddingTop: '4rem', backgroundColor: 'white', paddingBottom: '4rem' },
-  headline: { paddingLeft: '8rem', textAlign: 'left', marginBottom: '3rem' },
+  root: {
+    paddingTop: '4rem',
+    backgroundColor: 'white',
+    paddingBottom: '4rem'
+  },
+  headline: { paddingLeft: '9rem', textAlign: 'left', marginBottom: '3rem' },
   showcaseRoot: {
     paddingLeft: '8rem',
-
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
@@ -27,7 +30,6 @@ const styles = theme => ({
     marginLeft: '10rem',
     paddingBottom: '3rem',
     flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)'
   }
 });
@@ -54,9 +56,11 @@ class Carousel extends Component {
           </Typography>
         </Grid>
         <Grid className={classes.showcaseRoot}>
-          <GridList className={classes.gridList}>
+          <GridList className={classes.gridList} col={2.5}>
             {properties.map(property => (
-              <GridListTile style={{ height: '50%' }}>
+              <GridListTile
+                style={{ height: '50%', maxWidth: '20%', margin: '1rem' }}
+              >
                 <StoryCard key={property.index} property={property} />
               </GridListTile>
             ))}
