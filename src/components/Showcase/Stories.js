@@ -31,9 +31,9 @@ const data = {
     {
       index: 3,
       picture:
-        'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1844003.jpg?itok=bR8u_WoP',
-      date: '21 Nov 2019',
-      title: 'Mukuru fumes put 60 asthma patients a month in hospital',
+        'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/06/07/1768335.jpg?itok=DjfwMOdN',
+      date: 'Jun. 07, 2018',
+      title: 'Fumes pupils inhale akin to smoking two cigarettes in a day',
       body:
         'As we wait to be let into Maendeleo Learning Centre, smoke drifts over from the chimney of a factory next door'
     },
