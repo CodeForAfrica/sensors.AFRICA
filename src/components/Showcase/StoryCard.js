@@ -7,51 +7,61 @@ import '../../assets/css/App.css';
 
 const styles = theme => ({
   classRoot: {
-    //maxWidth: '45%',
     height: '100%',
-    backgroundColor: 'white',
-    border: '0px solid'
-    //border: '1px solid',
-    //boxShadow:
-    //'0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)'
+    backgroundColor: '#fafafa',
+    border: '1px solid #eeeeee',
+    opacity: 0.9,
+    '&:hover': {
+      opacity: 1,
+      backgroundColor: '#fff'
+    }
   },
   media: {
     height: 0,
-    paddingTop: '56.25%' // 16:9
+    paddingTop: '56.25%'
   },
   cardLink: {
     textDecoration: 'none',
-    transition: 'all .5s ease-in-out',
-    boxShadow:
-      '0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)',
+    transition: 'all .2s ease-in-out',
     '&:hover': {
       border: '1px solid',
       transform: 'scale(1.1)',
       color: '#f3f33'
     }
   },
+  overline: {
+    color: '#c7c7c7',
+    opacity: '0.5',
+    fontSize: '14px',
+    paddingTop: '1rem'
+  },
   body: {
     color: theme.typography.h5.color
-  }
+  },
+  bodyArea: { paddingTop: '2rem' }
 });
 
 function StoryCard({ property, classes }) {
   const { index, image, date, title, body, link } = property;
 
   return (
-    //<a id={`card-${index}`} href={link} className={classes.cardLink}>
-    <Card id={`card-${index}`} className={classes.classRoot}>
-      <CardMedia className={classes.media} image={image} title=" Story" />
-      <CardContent>
-        <Typography variant="caption">{date}</Typography>
-        <div style={{ paddingTop: '2rem' }}>
-          <Typography variant="h5">{title}</Typography>
-          <Typography variant="subtitle2" className={classes.body}>
-            {body}
+    <div className={classes.mainCard}>
+      {/*<a id={`card-${index}`} href={link} className={classes.cardLink}>*/}
+      <Card id={`card-${index}`} className={classes.classRoot}>
+        <CardMedia className={classes.media} image={image} title=" Story" />
+        <CardContent>
+          <Typography variant="h5" className={classes.overline}>
+            {date}
           </Typography>
-        </div>
-      </CardContent>
-    </Card>
+          <div className={classes.bodyArea}>
+            <Typography variant="h5">{title}</Typography>
+            <Typography variant="subtitle2" className={classes.body}>
+              {body}{' '}
+            </Typography>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
     //</a>
   );
 }

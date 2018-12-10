@@ -12,6 +12,7 @@ import data from './Stories';
 
 const styles = theme => ({
   root: {
+    maxWidth: '100%',
     paddingTop: '4rem',
     backgroundColor: 'white',
     paddingBottom: '4rem'
@@ -22,7 +23,7 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    overflow: 'hidden',
+    overflowX: 'hidden',
     backgroundColor: theme.palette.background.paper
   },
   gridList: {
@@ -48,18 +49,22 @@ class Carousel extends Component {
     const { classes } = this.props;
 
     return (
-      <Grid className={classes.root}>
-        <Grid item xs={12} className={classes.headline}>
+      <Grid item xs={12} className={classes.root}>
+        <Grid className={classes.headline}>
           <Typography variant="display1">SHOWCASE</Typography>
           <Typography variant="body2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </Typography>
         </Grid>
         <Grid className={classes.showcaseRoot}>
-          <GridList className={classes.gridList} col={2.5}>
+          <GridList className={classes.gridList}>
             {properties.map(property => (
               <GridListTile
-                style={{ height: '50%', maxWidth: '20%', margin: '1rem' }}
+                style={{
+                  height: '50%',
+                  maxWidth: '20%',
+                  margin: '1rem'
+                }}
               >
                 <StoryCard key={property.index} property={property} />
               </GridListTile>

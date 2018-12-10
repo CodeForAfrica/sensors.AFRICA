@@ -11,6 +11,7 @@ body {
   min-height: 100%;
   display: inline-block;
   background-color: white;
+  /**overflow-x: hidden;**/
 }
 
 h1,
