@@ -92,3 +92,7 @@
   height: 3rem;
   font-size: 15px;
 }
+
+.segment-value {
+  font-family: 'Montserrat', 'sans-serif';
+}
