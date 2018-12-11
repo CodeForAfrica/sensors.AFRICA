@@ -1,3 +1,8 @@
+import airPollution from '../../assets/images/Showcase/airpollution.jpg';
+import sensors from '../../assets/images/Showcase/sensor.png';
+import airquality from '../../assets/images/Showcase/airquality.png';
+import mediumStory from '../../assets/images/Showcase/sensorMedium.png';
+
 const data = {
   properties: [
     {
@@ -24,8 +29,7 @@ const data = {
     },
     {
       index: 2,
-      image:
-        'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1601063.jpg?itok=n4FtkFhm',
+      image: mediumStory,
       date: '9 May 2018',
       title:
         'Measuring Nairobi’s air quality using locally assembled low-cost sensors',
@@ -47,8 +51,7 @@ const data = {
     },
     {
       index: 4,
-      image:
-        'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1601063.jpg?itok=n4FtkFhm',
+      image: sensors,
       date: 'Jun 3, 2015',
       title: 'Opening Air Quality Data',
       body:
@@ -58,8 +61,7 @@ const data = {
     },
     {
       index: 5,
-      image:
-        'https://i.guim.co.uk/img/media/c1aedf11fb47d24670fc865804e49e96d1c124f4/143_257_2319_1392/master/2319.jpg?width=300&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=2cf83b1b3d5c5dfeabffed87455c4621',
+      image: airPollution,
       date: '9 Jun 2016 ',
       title:
         'Air pollution now major contributor to stroke, global study finds',
@@ -93,8 +95,7 @@ const data = {
     },
     {
       index: 8,
-      image:
-        'https://media.licdn.com/media/gcrc/dms/image/C5612AQH-x4y2xokNPg/article-cover_image-shrink_423_752/0?e=1549497600&amp;v=beta&amp;t=O5S1NibLzooTfOtGwXlRt-UCh7XTv48ZKa7ULdGYso8',
+      image: airquality,
       date: 'September 7, 2016',
       title: 'How important is air quality in cities?',
       body:
