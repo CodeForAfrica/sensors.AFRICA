@@ -5,6 +5,8 @@ import { Grid, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { TwitterShareButton } from 'react-share';
 
+import Share from './Dialog/Share';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -98,15 +100,9 @@ function HostSensorButtons({ city, classes }) {
           </Button>
         </TwitterShareButton>
       </Grid>
-      {/*<Grid item>
-          <Button
-            variant="contained"
-            size="large"
-            className={classes.buttonContained}
-          >
-            SHARE
-          </Button>
-      </Grid>*/}
+      <Grid item>
+        <Share />
+      </Grid>
     </Grid>
   );
 }
