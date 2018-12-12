@@ -13,10 +13,7 @@ import ShareButton from './ShareButtons';
 import Embed from './Embed';
 
 const styles = theme => ({
-  dialogContent: {
-    backgroundColor: 'white',
-    border: '0px'
-  },
+  dialogTitle: { paddingTop: '3rem', fontWeight: '700' },
   buttonContained: {
     backgroundColor: theme.palette.primary.light,
     color: '#fff',
@@ -29,7 +26,7 @@ const styles = theme => ({
       border: '1px solid rgba(0, 0, 0, 0.23)'
     }
   },
-  share: { paddingBottom: '2rem' }
+  share: { paddingBottom: '4rem' }
 });
 
 const DialogTitle = withStyles(theme => ({
@@ -66,7 +63,9 @@ const DialogTitle = withStyles(theme => ({
 const DialogContent = withStyles(theme => ({
   root: {
     margin: 0,
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing.unit * 2,
+    backgroundColor: 'white',
+    border: '0px'
   }
 }))(MuiDialogContent);
 
@@ -105,11 +104,11 @@ class Share extends React.Component {
           <DialogTitle
             id="customized-dialog-title"
             onClose={this.handleClose}
-            style={{ paddingTop: '3rem', fontWeight: '700' }}
+            className={classes.dialogTitle}
           >
             Share
           </DialogTitle>
-          <DialogContent className={classes.dialogContent}>
+          <DialogContent>
             <Grid
               item
               xs={12}
@@ -120,10 +119,10 @@ class Share extends React.Component {
               <Grid gutterBottom className={classes.Share}>
                 <ShareButton />
               </Grid>
-              <Grid style={{ margin: '1rem' }}>
+              <Grid style={{ margin: '3rem' }}>
                 <Typography
                   gutterBottom
-                  variant="body2"
+                  variant="caption"
                   style={{ color: 'black' }}
                 >
                   Embed this project into your website by using the following
