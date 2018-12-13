@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Typography, Card, CardMedia, CardContent } from '@material-ui/core';
+import {
+  Typography,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import '../../assets/css/App.css';
 
 const styles = theme => ({
-  classRoot: {
+  root: {
+    width: '100vw',
     height: '100%',
     backgroundColor: '#fafafa',
     border: '1px solid #eeeeee',
@@ -14,6 +21,12 @@ const styles = theme => ({
     '&:hover': {
       opacity: 1,
       backgroundColor: '#fff'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '19.875rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '26.5rem'
     }
   },
   media: {
@@ -21,13 +34,7 @@ const styles = theme => ({
     paddingTop: '56.25%'
   },
   cardLink: {
-    textDecoration: 'none',
-    transition: 'all .2s ease-in-out',
-    '&:hover': {
-      border: '1px solid',
-      transform: 'scale(1.1)',
-      color: '#f3f33'
-    }
+    textDecoration: 'none'
   },
   overline: {
     color: '#c7c7c7',
@@ -38,37 +45,44 @@ const styles = theme => ({
   body: {
     color: theme.typography.h5.color
   },
-  bodyArea: { paddingTop: '2rem' }
+  bodyArea: {
+    paddingTop: '2rem'
+  }
 });
 
-function StoryCard({ property, classes }) {
-  const { index, image, date, title, body, link } = property;
+function StoryCard({ story, classes }) {
+  const { image, date, title, body, link } = story;
 
   return (
-    <div className={classes.mainCard}>
-      {/*<a id={`card-${index}`} href={link} className={classes.cardLink}>*/}
-      <Card id={`card-${index}`} className={classes.classRoot}>
-        <CardMedia className={classes.media} image={image} title=" Story" />
-        <CardContent>
-          <Typography variant="h5" className={classes.overline}>
-            {date}
-          </Typography>
-          <div className={classes.bodyArea}>
-            <Typography variant="h5">{title}</Typography>
-            <Typography variant="subtitle2" className={classes.body}>
-              {body}{' '}
+    <Card className={classes.root}>
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes.cardLink}
+      >
+        <CardActionArea>
+          <CardMedia className={classes.media} image={image} title=" Story" />
+          <CardContent>
+            <Typography variant="h5" className={classes.overline}>
+              {date}
             </Typography>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-    //</a>
+            <div className={classes.bodyArea}>
+              <Typography variant="h5">Boom {title}</Typography>
+              <Typography variant="subtitle2" className={classes.body}>
+                Body here {body}{' '}
+              </Typography>
+            </div>
+          </CardContent>
+        </CardActionArea>
+      </a>
+    </Card>
   );
 }
 
 StoryCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  property: PropTypes.object.isRequired
+  story: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(StoryCard);

@@ -15,7 +15,7 @@ import Issues from '../../components/Air/Issues';
 import Stories from '../../components/About/Stories';
 import Support from '../../components/Support';
 import HealthAndClimateImpacts from './HealthAndClimateImpacts';
-import Carousel from '../../components/Showcase/Carousel';
+import Showcase from '../../components/Showcase';
 
 const CITY_PATHNAME = '/air/city';
 class AirHome extends React.Component {
@@ -40,7 +40,7 @@ class AirHome extends React.Component {
         <AirHeader handleSearch={this.handleSearch} />
         <Issues />
         <IndoorOutdoor />
-        <Carousel />
+        <Showcase />
         <Stories />
         <Support />
         <Footer />
