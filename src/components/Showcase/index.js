@@ -27,7 +27,8 @@ function Showcase({ classes }) {
       <Grid item xs={12} className={classes.headline}>
         <Typography variant="h3">SHOWCASE</Typography>
         <Typography variant="body1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Here are stories from all around the world on the effects of air
+          pollution
         </Typography>
       </Grid>
       <Grid item xs={12}>

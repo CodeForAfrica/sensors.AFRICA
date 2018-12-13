@@ -2,6 +2,9 @@ import airPollution from '../../assets/images/Showcase/airpollution.jpg';
 import sensors from '../../assets/images/Showcase/sensor.png';
 import airquality from '../../assets/images/Showcase/airquality.png';
 import mediumStory from '../../assets/images/Showcase/sensorMedium.png';
+import children from '../../assets/images/Showcase/children.jpg';
+import toxic from '../../assets/images/Showcase/toxic.jpg';
+import london from '../../assets/images/Showcase/london.jpg';
 
 const data = [
   {
@@ -110,6 +113,38 @@ const data = [
       'When Louisville-Jefferson County Metro Government officials wanted to monitor the air quality across Louisville, it needed a product...',
     link:
       'https://www.the-star.co.ke/news/2018/11/07/mukuru-fumes-put-60-asthma-patients-a-month-in-hospital_c1843071'
+  },
+  {
+    index: 10,
+    image: children,
+    date: 'Oct 21, 2016',
+    title:
+      '300 million children live in areas with extreme air pollution, data reveals',
+    body:
+      'Global study reveals huge number of children breathing toxic fumes more than six times over safe limits, while billions are affected by air pollution that exceeds guidelines...',
+    link:
+      'https://www.theguardian.com/environment/2016/oct/31/300-million-children-live-in-areas-with-extreme-air-pollution-data-reveals?CMP=Share_iOSApp_Other'
+  },
+  {
+    index: 11,
+    image: toxic,
+    date: 'Sept 5, 2016',
+    title: 'Toxic air pollution particles found in human brains',
+    body:
+      'Detection of ‘abundant’ magnetite particles raises concerns because of suggested links to Alzheimer’s disease...',
+    link:
+      'https://www.theguardian.com/environment/2016/sep/05/toxic-air-pollution-particles-found-in-human-brains-links-alzheimers?CMP=Share_iOSApp_Other'
+  },
+  {
+    index: 12,
+    image: london,
+    date: 'Jul 1, 2016',
+    title:
+      'Children at nearly 90 London secondary schools exposed to dangerous air pollution',
+    body:
+      'Children at nearly 90 London secondary schools exposed to dangerous air pollution Westminster, Tower Hamlets and Southwark have highest number of secondaries in breach of legal limits of NO2, new research for the mayor reveals...',
+    link:
+      'https://www.theguardian.com/environment/2016/jul/01/children-at-nearly-90-london-secondary-schools-exposed-to-dangerous-air-pollution?CMP=Share_iOSApp_Other'
   }
 ];
 
