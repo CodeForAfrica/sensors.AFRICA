@@ -30,8 +30,8 @@ const styles = theme => ({
   },
   gridList: {
     flexWrap: 'nowrap',
-
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    // Todo {Material-ui documentation for Grid list componenet }
+    //        Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)'
   },
   gridListTile: {
