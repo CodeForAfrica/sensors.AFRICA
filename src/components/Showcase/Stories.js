@@ -5,6 +5,7 @@ import mediumStory from '../../assets/images/Showcase/sensorMedium.png';
 import children from '../../assets/images/Showcase/children.jpg';
 import toxic from '../../assets/images/Showcase/toxic.jpg';
 import london from '../../assets/images/Showcase/london.jpg';
+import hindustan from '../../assets/images/Showcase/hindustan.png';
 
 const data = [
   {
@@ -83,8 +84,7 @@ const data = [
   },
   {
     index: 7,
-    image:
-      'https://www.niemanlab.org/images/Hindustan-Times-air-quality-map-990x595.png',
+    image: hindustan,
     date: 'May 18, 2016',
     title:
       'The Hindustan Times is working to build the definitive online source of real-time air quality in all of India',
