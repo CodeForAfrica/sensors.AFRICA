@@ -70,7 +70,7 @@ function StoryCard({ story, classes }) {
             <div className={classes.bodyArea}>
               <Typography variant="h5">Boom {title}</Typography>
               <Typography variant="subtitle2" className={classes.body}>
-                Body here {body}{' '}
+                {body}{' '}
               </Typography>
             </div>
           </CardContent>
