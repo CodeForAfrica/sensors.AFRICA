@@ -1,9 +1,10 @@
 const URLS = {
   HOME: '/',
+  ABOUT: '/about',
   AIR: {
-    ABOUT: '/air/about',
-    CITY: '/air/city',
     HOME: '/air',
+    CITY: '/air/city',
+    ABOUT: '/air/about',
     HOW_SENSORS_WORK: '/air/how-sensors-work',
     IMPACT: '/air/health-and-climate-impact',
     JOIN: '/air/join-network'
@@ -23,6 +24,11 @@ export default [
   {
     url: URLS.HOME,
     title: 'sensors.AFRICA | Home',
+    color: 'black'
+  },
+  {
+    url: URLS.ABOUT,
+    title: 'sensors.AFRICA | ABOUT',
     color: 'black'
   },
   {
