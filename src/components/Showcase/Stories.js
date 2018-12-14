@@ -80,7 +80,7 @@ const data = [
     body:
       'This air pollution testing kit helps parents make informed decisions about the type of environments they expose their children to....',
     link:
-      'http://www.designindaba.com/articles/creative-work/buggyair-mobile-air-pollution-tracker'
+      'https://www.designindaba.com/articles/creative-work/buggyair-mobile-air-pollution-tracker'
   },
   {
     index: 7,
