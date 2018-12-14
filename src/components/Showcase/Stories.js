@@ -5,6 +5,7 @@ import mediumStory from '../../assets/images/Showcase/sensorMedium.png';
 import children from '../../assets/images/Showcase/children.jpg';
 import toxic from '../../assets/images/Showcase/toxic.jpg';
 import london from '../../assets/images/Showcase/london.jpg';
+import hindustan from '../../assets/images/Showcase/hindustan.png';
 
 const data = [
   {
@@ -74,24 +75,23 @@ const data = [
     index: 6,
     image:
       'http://www.designindaba.com/sites/default/files/styles/large/public/node/news/22257/gallery/buggyairkit11.jpg?itok=XepjELQt',
-    date: '21 Nov 2019',
+    date: '19 Aug 2016',
     title: 'BuggyAir: A mobile air pollution tracker',
     body:
       'This air pollution testing kit helps parents make informed decisions about the type of environments they expose their children to....',
     link:
-      'http://www.designindaba.com/articles/creative-work/buggyair-mobile-air-pollution-tracker'
+      'https://www.designindaba.com/articles/creative-work/buggyair-mobile-air-pollution-tracker'
   },
   {
     index: 7,
-    image:
-      'http://www.niemanlab.org/images/Hindustan-Times-air-quality-map-990x595.png',
+    image: hindustan,
     date: 'May 18, 2016',
     title:
       'The Hindustan Times is working to build the definitive online source of real-time air quality in all of India',
     body:
       'In addition to pulling in data from government stations for its map, the organization is deploying and testing its own air quality sensors across the country...',
     link:
-      'http://www.niemanlab.org/2016/05/the-hindustan-times-is-working-to-build-the-definitive-online-source-of-real-time-air-quality-in-all-of-india/'
+      'https://www.niemanlab.org/2016/05/the-hindustan-times-is-working-to-build-the-definitive-online-source-of-real-time-air-quality-in-all-of-india/'
   },
   {
     index: 8,
@@ -106,7 +106,7 @@ const data = [
   {
     index: 9,
     image:
-      'http://media.bizj.us/view/img/3196721/durhamlabsmobileairsensorcreditannielangan.jpg',
+      'https://media.bizj.us/view/img/3196721/durhamlabsmobileairsensorcreditannielangan.jpg',
     date: 'Jul 15, 2014',
     title: 'City partners with local engineers on air-quality initiative',
     body:

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
@@ -71,10 +71,81 @@ const styles = theme => ({
   },
   form: {
     textAlign: 'center'
+  },
+  button: {
+    color: 'white',
+    margin: '1rem'
   }
 });
 
-function ComingSoon({ classes, show, onClose }) {
+class ComingSoon extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleBack = this.handleBack.bind(this);
+  }
+
+  handleBack() {
+    const { history } = this.props;
+    history.goBack();
+  }
+
+  render() {
+    const { classes, show, onClose } = this.props;
+
+    const containerClassName = classNames(classes.root, classes.popup, {
+      [classes.showpopup]: show
+    });
+
+    return (
+      <Grid
+        container
+        justify="space-around"
+        alignitems="center"
+        className={containerClassName}
+      >
+        <Grid item xs={12} className={classes.popupcontent} container>
+          <Grid item xs={12}>
+            <Button onClick={onClose} className={classes.closeButton}>
+              &times;
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              We will be launching soon. Sign up to receive updates as we build
+              a transnational and pan-African network of citizen sensors:
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.form}>
+            <Email onSubmit={onClose} />
+          </Grid>
+          <Grid item xs={12} className={classes.form}>
+            <Email onSubmit={onClose} />
+          </Grid>
+          <Button
+            variant="outlined"
+            onClick={this.handleBack}
+            className={classes.button}
+          >
+            GO BACK
+          </Button>
+        </Grid>
+      </Grid>
+    );
+  }
+}
+
+ComingSoon.propTypes = {
+  classes: PropTypes.object.isRequired,
+  onClose: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(ComingSoon);
+
+{
+  /*function ComingSoon({ classes, show, onClose }) {
   const containerClassName = classNames(classes.root, classes.popup, {
     [classes.showpopup]: show
   });
@@ -101,6 +172,9 @@ function ComingSoon({ classes, show, onClose }) {
         <Grid item xs={12} className={classes.form}>
           <Email onSubmit={onClose} />
         </Grid>
+        <Grid item xs={12} className={classes.form}>
+          <Email onSubmit={onClose} />
+        </Grid>
       </Grid>
     </Grid>
   );
@@ -112,4 +186,5 @@ ComingSoon.propTypes = {
   show: PropTypes.bool.isRequired
 };
 
-export default withStyles(styles)(ComingSoon);
+export default withStyles(styles)(ComingSoon);*/
+}
