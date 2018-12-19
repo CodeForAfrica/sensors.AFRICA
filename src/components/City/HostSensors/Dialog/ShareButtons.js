@@ -8,91 +8,61 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    //color: 'white',
-    backgroundColor: '#424143',
-    paddingTop: theme.spacing.unit * 1,
-    paddingBottom: theme.spacing.unit * 2
-  },
-
-  fa: {
-    transition: 'all .5s ease-in-out',
-    //padding: theme.spacing.unit / 2,
-    '&:hover': {
-      transform: 'scale(1.3)'
-      //color: '#f3f33'
-    }
-  },
-
-  links: {
-    //color: 'white'
-  }
+  twitter: { backgroundColor: '#00aced', margin: '0.2rem' },
+  facebook: { backgroundColor: '#3b5998', margin: '0.2rem' },
+  instagram: { backgroundColor: '#8a3ab9', margin: '0.2rem' },
+  medium: { backgroundColor: '#00ab6c', margin: '0.2rem' },
+  fa: { color: 'white', margin: '0.2rem' }
 });
 
-function SocialMedia({ color, classes }) {
+function SocialMedia({ classes }) {
   return (
-    <Grid
-      container
-      justify="center"
-      alignitems="center"
-      className={classes.icons}
-    >
-      <Grid item>
+    <Grid container justify="center" alignitems="center">
+      <Grid item className={classes.twitter}>
         <a
           href="https://twitter.com/sensorsAFRICA/"
-          className={classes.links}
           target="_blank"
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
-            className={classes.fa}
-            icon={['fab', 'twitter-square']}
+            icon={['fab', 'twitter']}
             size="2x"
             fixedWidth
-            style={{ color: '#00aced' }}
+            className={classes.fa}
           />
         </a>
       </Grid>
-      <Grid item>
+      <Grid item className={classes.facebook}>
         <a
           href="https://www.facebook.com/sensorsAFRICA/"
-          className={classes.links}
           target="_blank"
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
-            className={classes.fa}
-            icon={['fab', 'facebook']}
+            icon={['fab', 'facebook-f']}
             size="2x"
             fixedWidth
-            style={{ color: '#3b5998' }}
+            className={classes.fa}
           />
         </a>
       </Grid>
-      <Grid item>
-        <a
-          href="https://www.instagram.com/sensorsAFRICA/"
-          className={classes.links}
-        >
+      <Grid item className={classes.instagram}>
+        <a href="https://www.instagram.com/sensorsAFRICA/">
           <FontAwesomeIcon
-            className={classes.fa}
             icon={['fab', 'instagram']}
             size="2x"
             fixedWidth
-            style={{ color: '#8a3ab9' }}
+            className={classes.fa}
           />
         </a>
-        <a
-          href="https://medium.com/code-for-africa/tagged/innovateafrica"
-          className={classes.links}
-        >
+      </Grid>
+      <Grid item className={classes.medium}>
+        <a href="https://medium.com/code-for-africa/tagged/innovateafrica">
           <FontAwesomeIcon
-            className={classes.fa}
-            icon={['fab', 'medium']}
+            icon={['fab', 'medium-m']}
             size="2x"
             fixedWidth
-            style={{ color: '#00ab6c' }}
+            className={classes.fa}
           />
         </a>
       </Grid>
@@ -101,10 +71,6 @@ function SocialMedia({ color, classes }) {
 }
 
 SocialMedia.propTypes = {
-  color: PropTypes.string,
   classes: PropTypes.object.isRequired
-};
-SocialMedia.defaultProps = {
-  color: '#fff'
 };
 export default withStyles(styles)(SocialMedia);
