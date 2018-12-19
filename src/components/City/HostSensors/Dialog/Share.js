@@ -29,7 +29,7 @@ const styles = theme => ({
   typography: {
     textAlign: 'center',
     paddingBottom: '0.5rem',
-    fontWeight: 500
+    fontWeight: 600
   }
 });
 
