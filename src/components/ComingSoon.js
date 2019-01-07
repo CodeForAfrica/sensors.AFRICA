@@ -98,7 +98,7 @@ class ComingSoon extends Component {
   }
 
   render() {
-    const { classes, show, onClose } = this.props;
+    const { classes, show } = this.props;
 
     const containerClassName = classNames(classes.root, classes.popup, {
       [classes.showpopup]: show
