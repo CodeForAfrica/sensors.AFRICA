@@ -1,18 +1,18 @@
 import airPollution from '../../assets/images/Showcase/airpollution.jpg';
 import sensors from '../../assets/images/Showcase/sensor.png';
-import airquality from '../../assets/images/Showcase/airquality.png';
 import mediumStory from '../../assets/images/Showcase/sensorMedium.png';
 import children from '../../assets/images/Showcase/children.jpg';
 import toxic from '../../assets/images/Showcase/toxic.jpg';
 import london from '../../assets/images/Showcase/london.jpg';
 import hindustan from '../../assets/images/Showcase/hindustan.png';
 
+
 const data = [
   {
     index: 0,
     image:
       'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1844003.jpg?itok=bR8u_WoP',
-    date: '21 Nov 2019',
+    date: '7 Nov 2018',
     title: 'Mukuru fumes put 60 asthma patients a month in hospital',
     body:
       'As we wait to be let into Maendeleo Learning Centre, smoke drifts over from the chimney of a factory next door...',
@@ -23,7 +23,7 @@ const data = [
     index: 1,
     image:
       'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/11/07/1601063.jpg?itok=n4FtkFhm',
-    date: '21 Nov 2019',
+    date: '7 Nov 2018',
     title: 'We emit no smoke and have Nema approval — factory director',
     body:
       'Mukuru kwa Reuben slum residents have long complained of chest pains and asthma....',
@@ -32,6 +32,17 @@ const data = [
   },
   {
     index: 2,
+    image:
+      'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/06/07/1768335.jpg?itok=DjfwMOdN',
+    date: '7 Jun 2018',
+    title: 'Fumes pupils inhale akin to smoking two cigarettes in a day',
+    body:
+      'As we wait to be let into Maendeleo Learning Centre, smoke drifts over from the chimney of a factory next door....',
+    link:
+      'https://www.the-star.co.ke/news/2018/06/07/fumes-pupils-inhale-akin-to-smoking-two-cigarettes-in-a-day_c1768330'
+  },
+  {
+    index: 3,
     image: mediumStory,
     date: '9 May 2018',
     title:
@@ -42,27 +53,7 @@ const data = [
       'https://medium.com/code-for-africa/measuring-nairobis-air-quality-using-locally-assembled-low-cost-sensors-94a356885120'
   },
   {
-    index: 3,
-    image:
-      'https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2018/06/07/1768335.jpg?itok=DjfwMOdN',
-    date: 'Jun. 07, 2018',
-    title: 'Fumes pupils inhale akin to smoking two cigarettes in a day',
-    body:
-      'As we wait to be let into Maendeleo Learning Centre, smoke drifts over from the chimney of a factory next door....',
-    link:
-      'https://www.the-star.co.ke/news/2018/06/07/fumes-pupils-inhale-akin-to-smoking-two-cigarettes-in-a-day_c1768330'
-  },
-  {
     index: 4,
-    image: sensors,
-    date: 'Jun 3, 2015',
-    title: 'Opening Air Quality Data',
-    body:
-      'Air pollution is a leading cause of death across the globe, and contributes to stroke, heart disease, lung cancer, and other respiratory illness....',
-    link: 'https://medium.com/devseed/opening-up-air-quality-data-ab56fc2099af'
-  },
-  {
-    index: 5,
     image: airPollution,
     date: '9 Jun 2016 ',
     title: 'Air pollution now major contributor to stroke, global study finds',
@@ -70,6 +61,16 @@ const data = [
       'Scientists say finding is alarming, and shows that harm caused by air pollution to the lungs, heart and brain has been underestimated....',
     link:
       'https://www.theguardian.com/science/2016/jun/09/air-pollution-now-major-contributor-to-stroke?CMP=Share_iOSApp_Other'
+  },
+  {
+   index: 5,
+    image: sensors,
+    date: '3 Jun 2015',
+    title: 'Opening Air Quality Data',
+
+    body:
+      'Air pollution is a leading cause of death across the globe, and contributes to stroke, heart disease, lung cancer, and other respiratory illness....',
+    link: 'https://medium.com/devseed/opening-up-air-quality-data-ab56fc2099af'
   },
   {
     index: 6,
@@ -141,10 +142,6 @@ const data = [
     date: 'Jul 1, 2016',
     title:
       'Children at nearly 90 London secondary schools exposed to dangerous air pollution',
-    body:
-      'Children at nearly 90 London secondary schools exposed to dangerous air pollution Westminster, Tower Hamlets and Southwark have highest number of secondaries in breach of legal limits of NO2, new research for the mayor reveals...',
-    link:
-      'https://www.theguardian.com/environment/2016/jul/01/children-at-nearly-90-london-secondary-schools-exposed-to-dangerous-air-pollution?CMP=Share_iOSApp_Other'
   }
 ];
 
