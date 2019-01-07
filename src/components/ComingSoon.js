@@ -85,6 +85,13 @@ class ComingSoon extends Component {
     this.handleBack = this.handleBack.bind(this);
   }
 
+  componentDidUpdate() {
+    const { onClose } = this.props;
+    window.onpopstate = () => {
+      onClose();
+    };
+  }
+
   handleBack() {
     const { history } = this.props;
     history.goBack();
@@ -106,7 +113,7 @@ class ComingSoon extends Component {
       >
         <Grid item xs={12} className={classes.popupcontent} container>
           <Grid item xs={12}>
-            <Button onClick={onClose} className={classes.closeButton}>
+            <Button onClick={this.handleBack} className={classes.closeButton}>
               &times;
             </Button>
           </Grid>
@@ -117,7 +124,7 @@ class ComingSoon extends Component {
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.form}>
-            <Email onSubmit={onClose} />
+            <Email onSubmit={this.handleBack} />
           </Grid>
           <Grid item xs={12} style={{ textAlign: 'center' }}>
             <Button
