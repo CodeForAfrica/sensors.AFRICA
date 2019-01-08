@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-import { List, MenuItem, Typography } from '@material-ui/core';
+import { Grid, MenuItem, Typography, MenuList } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Modal from '@material-ui/core/Modal';
 
@@ -18,32 +18,28 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4
   },
-  list: {
+  grid: {
+    flex: 1
+  },
+  menuList: {
     color: 'white',
+    marginTop: '7rem',
     textAlign: 'right',
+    paddingRight: '2%',
     [theme.breakpoints.up('md')]: {
-      paddingRight: '45%'
+      marginTop: '2rem',
+      paddingRight: '10%'
     }
   },
-  listItem: {
+  menuListItem: {
     color: 'white',
     display: 'block',
     height: '18px'
   },
-
   modalContent: {
     margin: 'auto',
     padding: '20px',
-    height: 'auto',
-    top: '6%',
-    left: '0%',
-    [theme.breakpoints.up('md')]: {
-      width: '25%',
-      left: '75%'
-    },
-    [theme.breakpoints.up('xl')]: {
-      top: '4%'
-    }
+    height: 'auto'
   },
   typography: {
     color: '#fff',
@@ -57,79 +53,83 @@ const styles = theme => ({
 
 function HambugerMenu({ classes, handleToggle, menuOpen }) {
   return (
-    <div>
-      <MenuButton
-        open={menuOpen}
-        onClick={handleToggle}
-        onClose={handleToggle}
-      />
-      <Modal
-        className={classes.modalContent}
-        open={menuOpen}
-        onClose={handleToggle}
-        disableAutoFocus
-      >
-        <List container item xs={3} direction="column" className={classes.list}>
-          <a
-            href="https://medium.com/code-for-africa/tagged/innovateafrica"
-            className={classes.link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MenuItem className={classes.listItem}>
-              <Typography className={classes.typography} variant="subtitle1">
-                STORIES
-              </Typography>
-            </MenuItem>
-          </a>
+    <Grid container className={classes.grid}>
+      <Grid item xs={12}>
+        <MenuButton
+          open={menuOpen}
+          onClick={handleToggle}
+          onClose={handleToggle}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Modal
+          className={classes.modalContent}
+          open={menuOpen}
+          onClose={handleToggle}
+          disableAutoFocus
+        >
+          <MenuList className={classes.menuList}>
+            <a
+              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              className={classes.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MenuItem className={classes.menuListItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  STORIES
+                </Typography>
+              </MenuItem>
+            </a>
 
-          <a
-            href="https://archive.sensors.africa/"
-            className={classes.link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MenuItem className={classes.listItem}>
-              <Typography className={classes.typography} variant="subtitle1">
-                DATA
-              </Typography>
-            </MenuItem>
-          </a>
+            <a
+              href="https://archive.sensors.africa/"
+              className={classes.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MenuItem className={classes.menuListItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  DATA
+                </Typography>
+              </MenuItem>
+            </a>
 
-          <Link to={URLS.AIR.JOIN} className={classes.link}>
-            <MenuItem className={classes.listItem}>
-              <Typography className={classes.typography} variant="subtitle1">
-                JOIN
-              </Typography>
-            </MenuItem>
-          </Link>
+            <Link to={URLS.AIR.JOIN} className={classes.link}>
+              <MenuItem className={classes.menuListItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  JOIN
+                </Typography>
+              </MenuItem>
+            </Link>
 
-          <Link to={URLS.AIR.ABOUT} className={classes.link}>
-            <MenuItem className={classes.listItem}>
-              <Typography className={classes.typography} variant="subtitle1">
-                ABOUT
-              </Typography>
-            </MenuItem>
-          </Link>
+            <Link to={URLS.AIR.ABOUT} className={classes.link}>
+              <MenuItem className={classes.menuListItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  ABOUT
+                </Typography>
+              </MenuItem>
+            </Link>
 
-          <Link to={URLS.AIR.IMPACT} className={classes.link}>
-            <MenuItem className={classes.listItem}>
-              <Typography className={classes.typography} variant="subtitle1">
-                RESOURCES
-              </Typography>
-            </MenuItem>
-          </Link>
+            <Link to={URLS.AIR.IMPACT} className={classes.link}>
+              <MenuItem className={classes.menuListItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  RESOURCES
+                </Typography>
+              </MenuItem>
+            </Link>
 
-          <Link to={URLS.AIR.JOIN} className={classes.link}>
-            <MenuItem className={classes.listItem}>
-              <Typography className={classes.typography} variant="subtitle1">
-                CONTACT
-              </Typography>
-            </MenuItem>
-          </Link>
-        </List>
-      </Modal>
-    </div>
+            <Link to={URLS.AIR.JOIN} className={classes.link}>
+              <MenuItem className={classes.menuListItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  CONTACT
+                </Typography>
+              </MenuItem>
+            </Link>
+          </MenuList>
+        </Modal>
+      </Grid>
+    </Grid>
   );
 }
 
