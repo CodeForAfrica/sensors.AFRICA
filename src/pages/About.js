@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import DocumentHead from '../components/DocumentHead';
 import Stories from '../components/About/Stories';
 import Navbar from '../components/Header/Navbar';
-import AboutGlobalHeader from '../components/About/AboutGlobalHeader';
+import AboutHeader from '../components/About/Header';
 import Partners from '../components/About/Partners';
 import Staff from '../components/About/Staff';
 import Footer from '../components/Footer';
@@ -24,7 +24,7 @@ function AboutGlobal({ classes, url }) {
     <React.Fragment>
       <DocumentHead url={url} />
       <Navbar />
-      <AboutGlobalHeader />
+      <AboutHeader />
       <Partners />
       <Staff />
       <Stories />
