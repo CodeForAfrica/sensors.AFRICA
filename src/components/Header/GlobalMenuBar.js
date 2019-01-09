@@ -38,11 +38,10 @@ class GlobalMenuBar extends React.Component {
 
   render() {
     const { children, classes } = this.props;
-    const { menuOpen } = this.state;
     const logo = (
       <Grid item>
         <Link to="/">
-          <Logo active={menuOpen} />
+          <Logo active />
         </Link>
       </Grid>
     );
