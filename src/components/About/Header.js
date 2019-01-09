@@ -10,7 +10,7 @@ import AboutHeaderContent from '../Header/JumbotronContent/AboutHeaderContent';
 const styles = theme => ({
   jumbotron: {
     flexGrow: 1,
-    backgroundColor: '#2FB56B',
+    backgroundColor: '#424143',
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
       height: 450
@@ -27,7 +27,7 @@ function AboutHeader({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <MenuBar />
+        <MenuBar alwaysActive showMenu={false} />
       </Grid>
       <Grid item xs={12}>
         <AboutHeaderContent

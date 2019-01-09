@@ -7,6 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import ScrollToTop from './ScrollToTop';
 import { URLS } from './components/DocumentHead/PageHeads';
 import Home from './pages';
+import About from './pages/About';
 import NotFound from './pages/NotFound';
 import Air, {
   About as AirAbout,
@@ -114,6 +115,7 @@ function App() {
               path={URLS.AIR.HOME}
               render={props => <Air {...props} url={URLS.AIR.HOME} />}
             />
+            <Route path={URLS.ABOUT} component={About} />
             <Route
               path={URLS.AIR.ABOUT}
               render={props => <AirAbout {...props} url={URLS.AIR.ABOUT} />}
