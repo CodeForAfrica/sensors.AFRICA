@@ -88,6 +88,7 @@ const styles = () => ({
   }
 });
 
+const CITY_PATHNAME = '/air/city';
 class City extends React.Component {
   constructor() {
     super();
@@ -254,7 +255,10 @@ class City extends React.Component {
 
   handleSearch(option) {
     const city = (option && option.value) || DEFAULT_CITY;
-    this.props.history.push(city);
+    const { history } = this.props;
+
+    history.push({ CITY_PATHNAME, city }, { city: city.value });
+    history.push(city);
     this.fetchCityReadings(city);
   }
 

@@ -17,7 +17,7 @@ import Support from '../../components/Support';
 import HealthAndClimateImpacts from './HealthAndClimateImpacts';
 import Showcase from '../../components/Showcase';
 
-const CITY_PATHNAME = '/air/city';
+const CITY_PATHNAME = '/air/city/';
 class AirHome extends React.Component {
   constructor(props) {
     super(props);
