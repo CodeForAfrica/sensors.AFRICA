@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
-import GlobalMenuBar from '../Header/GlobalMenuBar';
+import MenuBar from '../Header/MenuBar';
 import AboutHeaderContent from '../Header/JumbotronContent/AboutHeaderContent';
 
 const styles = theme => ({
@@ -18,7 +18,7 @@ const styles = theme => ({
   }
 });
 
-function AboutGlobalHeader({ classes }) {
+function AboutHeader({ classes }) {
   return (
     <Grid
       container
@@ -27,7 +27,7 @@ function AboutGlobalHeader({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <GlobalMenuBar />
+        <MenuBar alwaysActive showMenu={false} />
       </Grid>
       <Grid item xs={12}>
         <AboutHeaderContent
@@ -39,8 +39,8 @@ function AboutGlobalHeader({ classes }) {
   );
 }
 
-AboutGlobalHeader.propTypes = {
+AboutHeader.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AboutGlobalHeader);
+export default withStyles(styles)(AboutHeader);

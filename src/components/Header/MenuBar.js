@@ -39,12 +39,13 @@ class MenuBar extends React.Component {
   }
 
   render() {
-    const { children, classes } = this.props;
+    const { alwaysActive, children, classes, showMenu } = this.props;
     const { menuOpen } = this.state;
+    const active = alwaysActive || menuOpen;
     const logo = (
       <Grid item>
         <Link to="/">
-          <Logo active={menuOpen} />
+          <Logo active={active} />
         </Link>
       </Grid>
     );
@@ -67,14 +68,16 @@ class MenuBar extends React.Component {
         alignItems="flex-start"
       >
         {leftComponent}
-        <Grid item>
-          <Grid className={classes.iconContainer}>
-            <HamburgerMenu
-              handleToggle={this.handleToggle}
-              menuOpen={menuOpen}
-            />
+        {showMenu && (
+          <Grid item>
+            <Grid className={classes.iconContainer}>
+              <HamburgerMenu
+                handleToggle={this.handleToggle}
+                menuOpen={menuOpen}
+              />
+            </Grid>
           </Grid>
-        </Grid>
+        )}
       </Grid>
     );
   }
@@ -82,11 +85,15 @@ class MenuBar extends React.Component {
 
 MenuBar.propTypes = {
   children: PropTypes.node,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  showMenu: PropTypes.bool,
+  alwaysActive: PropTypes.bool
 };
 
 MenuBar.defaultProps = {
-  children: null
+  children: null,
+  showMenu: true,
+  alwaysActive: false
 };
 
 export default withStyles(styles)(MenuBar);
