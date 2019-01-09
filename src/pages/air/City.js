@@ -254,6 +254,7 @@ class City extends React.Component {
 
   handleSearch(option) {
     const city = (option && option.value) || DEFAULT_CITY;
+    this.props.history.push(city);
     this.fetchCityReadings(city);
   }
 
