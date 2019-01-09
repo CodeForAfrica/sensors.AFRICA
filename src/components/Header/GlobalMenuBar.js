@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
-//import HamburgerMenu from '../Hambuger/HambugerMenu';
-
 import Logo from '../Logo';
 
 const styles = theme => ({
@@ -67,14 +65,7 @@ class GlobalMenuBar extends React.Component {
         alignItems="flex-start"
       >
         {leftComponent}
-        <Grid item>
-          {/*<Grid className={classes.iconContainer}>
-            <HamburgerMenu
-              handleToggle={this.handleToggle}
-              menuOpen={menuOpen}
-            />
-    </Grid>*/}
-        </Grid>
+        <Grid item />
       </Grid>
     );
   }
