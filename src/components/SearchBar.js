@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 
 import Select from 'react-select';
 
@@ -49,6 +50,19 @@ const styles = theme => ({
     background: theme.palette.primary.main
   }
 });
+
+function getParams(location) {
+  const searchParams = new URLSearchParams(location.search);
+  return {
+    query: searchParams.get('city') || ''
+  };
+}
+
+function setParams({ city }) {
+  const searchParams = new URLSearchParams();
+  searchParams.set('city', city || '');
+  return searchParams.toString();
+}
 
 function NoOptionsMessage({ children, innerProps, selectProps }) {
   return (
@@ -166,21 +180,37 @@ class SearchBar extends React.Component {
     }
   }
 
+  updateURL = () => {
+    const url = setParams({ city: this.state.single });
+    this.props.history.push(`?${url}`);
+  };
+
   render() {
-    const { classes, options, placeholder } = this.props;
+    const { classes, options, placeholder, location } = this.props;
     const { single } = this.state;
+    const { city } = getParams(location);
 
     return (
-      <div className={classes.root}>
-        <Select
-          classes={classes}
-          options={options}
-          components={components}
-          value={single}
-          onChange={this.handleChange}
-          placeholder={placeholder}
-        />
-      </div>
+      <Route
+        path="/air/city/"
+        render={({ location, history, city }) => {
+          //const { city } = location;
+          //const { city } = getParams(location);
+          return (
+            <Select
+              city={city}
+              history={history}
+              lasses={classes}
+              options={options}
+              components={components}
+              value={single}
+              onChange={this.handleChange}
+              placeholder={placeholder}
+              onClick={this.updateUrl}
+            />
+          );
+        }}
+      />
     );
   }
 }
