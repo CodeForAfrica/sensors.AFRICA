@@ -1,39 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Button } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { TwitterShareButton } from 'react-share';
 
-import Share from './Dialog/Share';
+import HostSensorButton from './HostSensorButton';
+import ShareButton from './ShareButton';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1,
     paddingTop: '2rem'
-  },
-  buttonContained: {
-    backgroundColor: theme.palette.primary.light,
-    color: '#fff',
-    borderRadius: 0,
-    margin: theme.spacing.unit * 2,
-    fontWeight: 700,
-    border: '1px solid transparent',
-    '&:hover': {
-      backgroundColor: theme.palette.primary.dark,
-      border: '1px solid rgba(0, 0, 0, 0.23)'
-    }
-  },
-  buttonOutlined: {
-    color: theme.palette.primary.dark,
-    borderRadius: 0,
-    margin: theme.spacing.unit * 2,
-    fontWeight: 700,
-    '&:hover': {
-      color: 'white',
-      backgroundColor: theme.palette.primary.dark,
-      border: '1px solid rgba(0, 0, 0, 0.23)'
-    }
   },
   buttonLink: {
     textDecoration: 'none'
@@ -55,13 +33,7 @@ function HostSensorButtons({ city, classes }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button
-            variant="outlined"
-            size="large"
-            className={classes.buttonOutlined}
-          >
-            SUBSCRIBE
-          </Button>
+          <HostSensorButton outlined>SUBSCRIBE</HostSensorButton>
         </a>
       </Grid>
       <Grid item>
@@ -71,13 +43,7 @@ function HostSensorButtons({ city, classes }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button
-            variant="contained"
-            size="large"
-            className={classes.buttonContained}
-          >
-            CONNECT
-          </Button>
+          <HostSensorButton>CONNECT</HostSensorButton>
         </a>
       </Grid>
       <Grid item>
@@ -91,17 +57,11 @@ function HostSensorButtons({ city, classes }) {
           via="sensorsAFRICA"
           hashtags={['sensorsAFRICA']}
         >
-          <Button
-            variant="contained"
-            size="large"
-            className={classes.buttonContained}
-          >
-            ACT
-          </Button>
+          <HostSensorButton>ACT</HostSensorButton>
         </TwitterShareButton>
       </Grid>
       <Grid item>
-        <Share />
+        <ShareButton className={classes.buttonContained} />
       </Grid>
     </Grid>
   );

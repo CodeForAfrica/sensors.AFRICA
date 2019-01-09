@@ -1,6 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -8,24 +8,13 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-import ShareButton from './ShareButtons';
+import HostSensorButton from '../HostSensorButton';
+import SocialMediaButtons from './SocialMediaButtons';
 import Embed from './Embed';
 
-const styles = theme => ({
-  buttonContained: {
-    backgroundColor: theme.palette.primary.light,
-    color: '#fff',
-    borderRadius: 0,
-    margin: theme.spacing.unit * 2,
-    fontWeight: 700,
-    border: '1px solid transparent',
-    '&:hover': {
-      backgroundColor: theme.palette.primary.dark,
-      border: '1px solid rgba(0, 0, 0, 0.23)'
-    }
-  },
-  share: { paddingBottom: '4rem' },
+const styles = () => ({
   typography: {
     textAlign: 'center',
     paddingBottom: '0.5rem',
@@ -73,57 +62,45 @@ const DialogContent = withStyles(theme => ({
   }
 }))(MuiDialogContent);
 
-class Share extends React.Component {
-  state = {
-    open: false
-  };
+class ShareButton extends React.Component {
+  constructor(props) {
+    super(props);
 
-  handleClickOpen = () => {
-    this.setState({
-      open: true
-    });
-  };
+    this.state = { open: false };
 
-  handleClose = () => {
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClick() {
+    this.setState({ open: true });
+  }
+
+  handleClose() {
     this.setState({ open: false });
-  };
+  }
 
   render() {
     const { classes } = this.props;
+    const { open } = this.state;
     return (
-      <Grid>
-        <Button
-          variant="outlined"
-          color="secondary"
-          onClick={this.handleClickOpen}
-          className={classes.buttonContained}
-        >
-          Share
-        </Button>
-        <Dialog
-          onClose={this.handleClose}
-          aria-labelledby="customized-dialog-title"
-          open={this.state.open}
-        >
-          <DialogTitle
-            id="customized-dialog-title"
-            onClose={this.handleClose}
-            //className={classes.dialogTitle}
-          >
+      <React.Fragment>
+        <HostSensorButton onClick={this.handleClick}>Share</HostSensorButton>
+        <Dialog aria-labelledby="customized-dialog-title" open={open}>
+          <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
             Share
           </DialogTitle>
           <DialogContent>
             <Grid
-              item
-              xs={12}
+              container
               direction="row"
               justufy="center"
               alignItems="center"
             >
-              <Grid gutterBottom className={classes.Share}>
-                <ShareButton />
+              <Grid item xs={12}>
+                <SocialMediaButtons />
               </Grid>
-              <Grid style={{ margin: '1.5rem' }}>
+              <Grid item xs={12} style={{ margin: '1.5rem' }}>
                 <Typography
                   gutterBottom
                   variant="caption"
@@ -137,9 +114,13 @@ class Share extends React.Component {
             </Grid>
           </DialogContent>
         </Dialog>
-      </Grid>
+      </React.Fragment>
     );
   }
 }
 
-export default withStyles(styles)(Share);
+ShareButton.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(ShareButton);

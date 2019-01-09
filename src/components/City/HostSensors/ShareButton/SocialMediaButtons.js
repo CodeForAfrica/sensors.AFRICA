@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = () => ({
   twitter: { backgroundColor: '#00aced', margin: '0.2rem' },
   facebook: { backgroundColor: '#3b5998', margin: '0.2rem' },
   instagram: { backgroundColor: '#8a3ab9', margin: '0.2rem' },
@@ -15,7 +15,7 @@ const styles = theme => ({
   fa: { color: 'white', margin: '0.2rem' }
 });
 
-function SocialMedia({ classes }) {
+function SocialMediaButtons({ classes }) {
   return (
     <Grid container justify="center" alignitems="center">
       <Grid item className={classes.twitter}>
@@ -70,7 +70,7 @@ function SocialMedia({ classes }) {
   );
 }
 
-SocialMedia.propTypes = {
+SocialMediaButtons.propTypes = {
   classes: PropTypes.object.isRequired
 };
-export default withStyles(styles)(SocialMedia);
+export default withStyles(styles)(SocialMediaButtons);
