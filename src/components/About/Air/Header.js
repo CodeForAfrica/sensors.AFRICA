@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
-import MenuBar from '../Header/MenuBar';
-import AboutHeaderContent from '../Header/JumbotronContent/AboutHeaderContent';
+import MenuBar from '../../Header/MenuBar';
+import AboutHeaderContent from '../../Header/JumbotronContent/AboutHeaderContent';
 
 const styles = theme => ({
   jumbotron: {

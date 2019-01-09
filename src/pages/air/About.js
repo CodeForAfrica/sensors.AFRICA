@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import DocumentHead from '../../components/DocumentHead';
 import Stories from '../../components/About/Stories';
 import Navbar from '../../components/Header/Navbar';
-import AboutHeader from '../../components/About/AboutHeader';
+import AboutHeader from '../../components/About/Air/Header';
 import Partners from '../../components/About/Partners';
 import Staff from '../../components/About/Staff';
 import Footer from '../../components/Footer';

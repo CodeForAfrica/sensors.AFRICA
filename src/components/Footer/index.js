@@ -137,12 +137,7 @@ function Footer({ classes }) {
             sensors to monitor air, water and sound pollution to give citizens
             actionable information about their cities.
           </Typography>
-          <Link
-            to="/about"
-            className={classes.buttonLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link to="/about" className={classes.buttonLink}>
             <Button variant="contained" className={classes.footerButton}>
               READ MORE
             </Button>
