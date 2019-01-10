@@ -22,12 +22,12 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       width: '25rem',
       height: '18.125rem',
-      marginLeft: '4.8125rem'
+      marginRight: '4.8125rem'
     },
     [theme.breakpoints.up('lg')]: {
       width: '37.875rem',
       height: '29.75rem',
-      marginLeft: '1.875rem',
+      marginRight: '1.875rem',
       padding: '3rem'
     }
   },
@@ -49,12 +49,12 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       width: '25rem',
       height: '18.125rem',
-      marginRight: '4.8125rem'
+      marginLeft: '4.8125rem'
     },
     [theme.breakpoints.up('lg')]: {
       width: '37.875rem',
       height: '29.75rem',
-      marginRight: '1.875rem',
+      marginLeft: '1.875rem',
       padding: '3rem'
     }
   },
@@ -115,9 +115,9 @@ function IndoorOutdoor({ classes }) {
       alignItems="center"
     >
       <Grid item>
-        <Card className={classes.outdoor}>
+        <Card className={classes.indoor}>
           <CardContent className={classes.cardContent}>
-            <img src={OutdoorIcon} alt="Housing" className={classes.img} />
+            <img src={IndoorIcon} alt="Housing" className={classes.img} />
             <Typography variant="h5" className={classes.title}>
               OUTDOOR POLLUTION
             </Typography>
@@ -141,7 +141,7 @@ function IndoorOutdoor({ classes }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="contained" className={classes.outdoorButton}>
+              <Button variant="outlined" className={classes.indoorButton}>
                 READ MORE
               </Button>
             </a>
@@ -150,9 +150,9 @@ function IndoorOutdoor({ classes }) {
       </Grid>
 
       <Grid item>
-        <Card className={classes.indoor}>
+        <Card className={classes.outdoor}>
           <CardContent className={classes.cardContent}>
-            <img src={IndoorIcon} alt="Housing" className={classes.img} />
+            <img src={OutdoorIcon} alt="Housing" className={classes.img} />
             <Typography variant="h5" className={classes.title}>
               INDOOR POLLUTION
             </Typography>
@@ -176,7 +176,7 @@ function IndoorOutdoor({ classes }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="outlined" className={classes.indoorButton}>
+              <Button variant="contained" className={classes.outdoorButton}>
                 READ MORE
               </Button>
             </a>
