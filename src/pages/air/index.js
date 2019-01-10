@@ -38,9 +38,9 @@ class AirHome extends React.Component {
         <DocumentHead url={url} />
         <Navbar />
         <AirHeader handleSearch={this.handleSearch} />
+        <Showcase />
         <Issues />
         <IndoorOutdoor />
-        <Showcase />
         <Stories />
         <Support />
         <Footer />
