@@ -17,7 +17,7 @@ import Support from '../../components/Support';
 import HealthAndClimateImpacts from './HealthAndClimateImpacts';
 import Showcase from '../../components/Showcase';
 
-const CITY_PATHNAME = '/air/city/';
+const CITY_PATHNAME = '/air/city/{city}';
 class AirHome extends React.Component {
   constructor(props) {
     super(props);
@@ -27,8 +27,8 @@ class AirHome extends React.Component {
 
   handleSearch(city) {
     const { history } = this.props;
-
     history.push(CITY_PATHNAME, { city: city.value });
+    //history.push(city);
   }
 
   render() {
