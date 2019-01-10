@@ -159,7 +159,6 @@ class SearchBar extends React.Component {
 
   handleChange(city) {
     this.setState({ single: city });
-
     const { handleSearch } = this.props;
     if (handleSearch) {
       handleSearch(city);
