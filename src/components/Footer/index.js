@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { Button, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
@@ -136,16 +137,11 @@ function Footer({ classes }) {
             sensors to monitor air, water and sound pollution to give citizens
             actionable information about their cities.
           </Typography>
-          <a
-            href="https://medium.com/code-for-africa/tagged/innovateafrica"
-            className={classes.buttonLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link to="/about" className={classes.buttonLink}>
             <Button variant="contained" className={classes.footerButton}>
               READ MORE
             </Button>
-          </a>
+          </Link>
         </Grid>
         <Grid item className={classes.footerContentContainer}>
           <Typography variant="h6" className={classes.titles}>

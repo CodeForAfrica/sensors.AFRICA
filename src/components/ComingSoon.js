@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
 import { Button, Typography } from '@material-ui/core';
@@ -71,45 +72,80 @@ const styles = theme => ({
   },
   form: {
     textAlign: 'center'
+  },
+  button: {
+    color: 'white',
+    margin: '1rem'
   }
 });
 
-function ComingSoon({ classes, show, onClose }) {
-  const containerClassName = classNames(classes.root, classes.popup, {
-    [classes.showpopup]: show
-  });
+class ComingSoon extends Component {
+  constructor(props) {
+    super(props);
+    this.handleBack = this.handleBack.bind(this);
+  }
 
-  return (
-    <Grid
-      container
-      justify="space-around"
-      alignitems="center"
-      className={containerClassName}
-    >
-      <Grid item xs={12} className={classes.popupcontent} container>
-        <Grid item xs={12}>
-          <Button onClick={onClose} className={classes.closeButton}>
-            &times;
-          </Button>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="subtitle1" className={classes.subtitle}>
-            We will be launching soon. Sign up to receive updates as we build a
-            transnational and pan-African network of citizen sensors:
-          </Typography>
-        </Grid>
-        <Grid item xs={12} className={classes.form}>
-          <Email onSubmit={onClose} />
+  componentDidUpdate() {
+    const { onClose } = this.props;
+    window.onpopstate = () => {
+      onClose();
+    };
+  }
+
+  handleBack() {
+    const { history } = this.props;
+    history.goBack();
+  }
+
+  render() {
+    const { classes, show } = this.props;
+
+    const containerClassName = classNames(classes.root, classes.popup, {
+      [classes.showpopup]: show
+    });
+
+    return (
+      <Grid
+        container
+        justify="space-around"
+        alignitems="center"
+        className={containerClassName}
+      >
+        <Grid item xs={12} className={classes.popupcontent} container>
+          <Grid item xs={12}>
+            <Button onClick={this.handleBack} className={classes.closeButton}>
+              &times;
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              We will be launching soon. Sign up to receive updates as we build
+              a transnational and pan-African network of citizen sensors:
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.form}>
+            <Email onSubmit={this.handleBack} />
+          </Grid>
+          <Grid item xs={12} style={{ textAlign: 'center' }}>
+            <Button
+              variant="outlined"
+              onClick={this.handleBack}
+              className={classes.button}
+            >
+              GO BACK
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 ComingSoon.propTypes = {
   classes: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired
+  show: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ComingSoon);
+export default withRouter(withStyles(styles)(ComingSoon));

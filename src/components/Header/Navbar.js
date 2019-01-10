@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
@@ -75,14 +75,25 @@ class Navbar extends React.Component {
     super(props);
     this.state = { show: false };
 
-    this.toggleShowAlert = this.toggleShowAlert.bind(this);
+    this.showComingSoonAlert = this.showComingSoonAlert.bind(this);
+    this.hideComingSoonAlert = this.hideComingSoonAlert.bind(this);
   }
 
-  toggleShowAlert(e) {
+  showComingSoonAlert(e) {
     if (e) {
       e.preventDefault();
     }
-    this.setState(prevState => ({ show: !prevState.show }));
+
+    const { location, history } = this.props;
+    if (location) {
+      const { pathname } = location;
+      history.push(pathname);
+    }
+    this.setState({ show: true });
+  }
+
+  hideComingSoonAlert() {
+    this.setState({ show: false });
   }
 
   render() {
@@ -115,7 +126,7 @@ class Navbar extends React.Component {
                   <a
                     href="/water"
                     className={classes.waterlink}
-                    onClick={this.toggleShowAlert}
+                    onClick={this.showComingSoonAlert}
                   >
                     WATER
                   </a>
@@ -124,7 +135,7 @@ class Navbar extends React.Component {
                   <a
                     href="/sound"
                     className={classes.soundlink}
-                    onClick={this.toggleShowAlert}
+                    onClick={this.showComingSoonAlert}
                   >
                     SOUND
                   </a>
@@ -149,7 +160,7 @@ class Navbar extends React.Component {
                 </Grid>
               </Grid>
             </Toolbar>
-            <ComingSoon show={show} onClose={this.toggleShowAlert} />
+            <ComingSoon show={show} onClose={this.hideComingSoonAlert} />
           </AppBar>
         </Grid>
       </Grid>
@@ -158,7 +169,9 @@ class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Navbar);
+export default withRouter(withStyles(styles)(Navbar));

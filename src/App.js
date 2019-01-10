@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -7,6 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import ScrollToTop from './ScrollToTop';
 import { URLS } from './components/DocumentHead/PageHeads';
 import Home from './pages';
+import About from './pages/About';
 import NotFound from './pages/NotFound';
 import Air, {
   About as AirAbout,
@@ -114,6 +115,7 @@ function App() {
               path={URLS.AIR.HOME}
               render={props => <Air {...props} url={URLS.AIR.HOME} />}
             />
+            <Route path={URLS.ABOUT} component={About} />
             <Route
               path={URLS.AIR.ABOUT}
               render={props => <AirAbout {...props} url={URLS.AIR.ABOUT} />}
@@ -125,6 +127,11 @@ function App() {
               )}
             />
 
+            <Route
+              exact
+              path={URLS.AIR.CITY_HOME}
+              render={() => <Redirect to={URLS.AIR.CITY_DEFAULT} />}
+            />
             <Route
               path={URLS.AIR.CITY}
               render={props => <AirCity {...props} url={URLS.AIR.CITY} />}

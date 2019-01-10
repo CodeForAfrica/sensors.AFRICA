@@ -1,9 +1,14 @@
 const URLS = {
   HOME: '/',
+  ABOUT: '/about',
   AIR: {
-    ABOUT: '/air/about',
-    CITY: '/air/city',
     HOME: '/air',
+    ABOUT: '/air/about',
+
+    // Redirect /air/city to /air/city/nairobi
+    CITY_HOME: '/air/city',
+    CITY_DEFAULT: '/air/city/nairobi',
+    CITY: '/air/city/:city(nairobi|dar-es-salaam|lagos)',
     HOW_SENSORS_WORK: '/air/how-sensors-work',
     IMPACT: '/air/health-and-climate-impact',
     JOIN: '/air/join-network'
@@ -23,6 +28,11 @@ export default [
   {
     url: URLS.HOME,
     title: 'sensors.AFRICA | Home',
+    color: 'black'
+  },
+  {
+    url: URLS.ABOUT,
+    title: 'sensors.AFRICA | ABOUT',
     color: 'black'
   },
   {
