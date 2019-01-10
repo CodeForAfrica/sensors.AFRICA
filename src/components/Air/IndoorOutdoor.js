@@ -22,12 +22,12 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       width: '25rem',
       height: '18.125rem',
-      marginRight: '4.8125rem'
+      marginLeft: '4.8125rem'
     },
     [theme.breakpoints.up('lg')]: {
       width: '37.875rem',
       height: '29.75rem',
-      marginRight: '1.875rem',
+      marginLeft: '1.875rem',
       padding: '3rem'
     }
   },
@@ -49,12 +49,12 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       width: '25rem',
       height: '18.125rem',
-      marginLeft: '4.8125rem'
+      marginRight: '4.8125rem'
     },
     [theme.breakpoints.up('lg')]: {
       width: '37.875rem',
       height: '29.75rem',
-      marginLeft: '1.875rem',
+      marginRight: '1.875rem',
       padding: '3rem'
     }
   },
@@ -115,41 +115,6 @@ function IndoorOutdoor({ classes }) {
       alignItems="center"
     >
       <Grid item>
-        <Card className={classes.indoor}>
-          <CardContent className={classes.cardContent}>
-            <img src={IndoorIcon} alt="Housing" className={classes.img} />
-            <Typography variant="h5" className={classes.title}>
-              INDOOR POLLUTION
-            </Typography>
-            <Typography variant="subtitle2" className={classes.caption}>
-              Indoor pollution causes an estimated{' '}
-              <cite>
-                <a
-                  href="https://www.who.int/airpollution/"
-                  className={classes.cite}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  3.8
-                </a>
-              </cite>{' '}
-              million premature deaths each year.
-            </Typography>
-            <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outlined" className={classes.indoorButton}>
-                READ MORE
-              </Button>
-            </a>
-          </CardContent>
-        </Card>
-      </Grid>
-
-      <Grid item>
         <Card className={classes.outdoor}>
           <CardContent className={classes.cardContent}>
             <img src={OutdoorIcon} alt="Housing" className={classes.img} />
@@ -171,12 +136,47 @@ function IndoorOutdoor({ classes }) {
               million premature deaths each year.
             </Typography>
             <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              href="https://www.who.int/airpollution/data/cities/en/"
               className={classes.buttonLink}
               target="_blank"
               rel="noopener noreferrer"
             >
               <Button variant="contained" className={classes.outdoorButton}>
+                READ MORE
+              </Button>
+            </a>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      <Grid item>
+        <Card className={classes.indoor}>
+          <CardContent className={classes.cardContent}>
+            <img src={IndoorIcon} alt="Housing" className={classes.img} />
+            <Typography variant="h5" className={classes.title}>
+              INDOOR POLLUTION
+            </Typography>
+            <Typography variant="subtitle2" className={classes.caption}>
+              Indoor pollution causes an estimated{' '}
+              <cite>
+                <a
+                  href="https://www.who.int/airpollution/"
+                  className={classes.cite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  3.8
+                </a>
+              </cite>{' '}
+              million premature deaths each year.
+            </Typography>
+            <a
+              href="https://www.who.int/gho/phe/indoor_air_pollution/burden_text/en/"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outlined" className={classes.indoorButton}>
                 READ MORE
               </Button>
             </a>
