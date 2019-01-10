@@ -103,9 +103,9 @@ class City extends React.Component {
 
   componentDidMount() {
     let { city } = this.state;
-    const { location } = this.props;
-    if (location.state && location.state.city) {
-      ({ city } = location.state);
+    const { match } = this.props;
+    if (match) {
+      ({ city } = match.params);
     }
 
     this.fetchCityReadings(city);
@@ -254,12 +254,15 @@ class City extends React.Component {
   }
 
   handleSearch(option) {
-    const city = (option && option.value) || DEFAULT_CITY;
-    const { history } = this.props;
+    const searchedCity = (option && option.value) || DEFAULT_CITY;
+    const { city } = this.state;
+    if (searchedCity !== city) {
+      const path = `${CITY_PATHNAME}/${searchedCity}`;
 
-    history.push({ CITY_PATHNAME, city }, { city: city.value });
-    history.push(city);
-    this.fetchCityReadings(city);
+      const { history } = this.props;
+      history.push(path);
+      this.fetchCityReadings(searchedCity);
+    }
   }
 
   render() {
@@ -325,7 +328,8 @@ class City extends React.Component {
 
 City.propTypes = {
   classes: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   url: PropTypes.string.isRequired
 };
 

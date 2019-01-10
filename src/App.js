@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -125,6 +125,11 @@ function App() {
               )}
             />
 
+            <Route
+              exact
+              path={URLS.AIR.CITY_HOME}
+              render={() => <Redirect to={URLS.AIR.CITY_DEFAULT} />}
+            />
             <Route
               path={URLS.AIR.CITY}
               render={props => <AirCity {...props} url={URLS.AIR.CITY} />}
