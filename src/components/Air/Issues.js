@@ -20,6 +20,10 @@ const styles = theme => ({
     fontWeight: 'bold',
     fontSize: 14
   },
+  issues: {
+    textAlign: 'center',
+    paddingBottom: '1rem'
+  },
   title: {
     textAlign: 'center',
     textTransform: 'none'
@@ -50,7 +54,7 @@ function Issues({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Typography variant="h6" className={classes.subheading}>
+        <Typography variant="h3" className={classes.issues}>
           THE ISSUES
         </Typography>
       </Grid>
