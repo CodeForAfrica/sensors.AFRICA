@@ -49,7 +49,7 @@ function Stories({ classes }) {
         <Grid item xs={12}>
           <div className={classes.buttonContainer}>
             <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              href="https://medium.com/code-for-africa/tagged/sensorsafrica"
               className={classes.buttonLink}
               target="_blank"
               rel="noopener noreferrer"

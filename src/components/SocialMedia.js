@@ -74,6 +74,8 @@ function SocialMedia({ color, classes }) {
         <a
           href="https://www.instagram.com/sensorsAFRICA/"
           className={classes.links}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <FontAwesomeIcon
             className={classes.fa}
@@ -84,8 +86,10 @@ function SocialMedia({ color, classes }) {
           />
         </a>
         <a
-          href="https://medium.com/code-for-africa/tagged/innovateafrica"
+          href="https://medium.com/code-for-africa/tagged/sensorsafrica"
           className={classes.links}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <FontAwesomeIcon
             className={classes.fa}

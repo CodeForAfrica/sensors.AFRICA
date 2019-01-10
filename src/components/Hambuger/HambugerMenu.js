@@ -71,7 +71,7 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
       >
         <List container item xs={3} direction="column" className={classes.list}>
           <a
-            href="https://medium.com/code-for-africa/tagged/innovateafrica"
+            href="https://medium.com/code-for-africa/tagged/sensorsafrica"
             className={classes.link}
             target="_blank"
             rel="noopener noreferrer"
