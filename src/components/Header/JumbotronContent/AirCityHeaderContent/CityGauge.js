@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactSpeedometer from 'react-d3-speedometer';
 
-import { Grid, Hidden } from '@material-ui/core';
+import { withWidth, Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  gaugeBox: {
+  root: {
+    position: 'relative'
+  },
+  gaugeDescription: {
+    position: 'absolute'
+  },
+  gaugeDescGuideline: {
     [theme.breakpoints.between('sm', 'md')]: {
       width: '10rem',
       marginLeft: '15%',
@@ -28,43 +34,21 @@ const styles = theme => ({
   gaugeBoxWhoTitle: {
     display: 'block'
   },
-  gaugeDesc: {
-    [theme.breakpoints.between('sm', 'md')]: {
-      bottom: '0',
-      width: '80%',
-      padding: '40px 0px'
-    },
-    [theme.breakpoints.down('sm')]: {
-      marginTop: '0px',
-      padding: '20px 15px',
-      width: '300px'
-    },
-    color: 'white',
-    textAlign: 'center',
-    width: '250px',
-    padding: '40px 15px',
-    marginTop: '-30%'
-  },
-  gaugeWho: {
-    [theme.breakpoints.down('sm')]: {
-      bottom: '31%',
-      left: '3%'
-    },
-    [theme.breakpoints.between('sm', 'md')]: {
-      left: '7%'
-    },
-    color: 'white',
-    bottom: '10%',
-    left: '25%',
+  gaugeDial: {
     position: 'absolute'
+  },
+  gaugeWhoGuidelineText: {
+    font: `bold ${theme.typography.body1.fontSize} ${
+      theme.typography.h6.fontFamily
+    }`,
+    fill: 'white'
   },
   gaugeNeedleItem: {
     [theme.breakpoints.down('sm')]: {
       top: '90px'
     },
-    width: '600px',
+    width: '900px',
     height: '300px',
-    top: '80px',
     position: 'absolute'
   },
   gaugeArc: {
@@ -81,12 +65,9 @@ const styles = theme => ({
     }
   },
   gaugeCircle: {
-    [theme.breakpoints.down('sm')]: {
-      top: '15rem'
-    },
     width: '300px',
     height: '150px',
-    top: '15rem',
+    top: '10rem',
     justify: 'center',
     position: 'absolute'
   },
@@ -96,19 +77,23 @@ const styles = theme => ({
     fontWeight: 700,
     fill: '#164a3e'
   },
-
   gaugeSmallText: {
     fontSize: theme.typography.caption.fontSize,
     fontFamily: theme.typography.caption.fontFamily,
     fontWeight: theme.typography.caption.fontWeight,
     fill: '#164a3e'
+  },
+  gaugeDescUnits: {
+    color: 'white',
+    textAlign: 'center',
+    width: '250px',
+    padding: '40px 15px',
+    marginTop: '-30%'
   }
 });
-
 class CityGauge extends Component {
   constructor(props) {
     super(props);
-
     this.nodeRef = React.createRef();
   }
 
@@ -150,7 +135,7 @@ class CityGauge extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, width } = this.props;
     let { airPollMeasurement } = this.props;
 
     // Texts on top of the gauge
@@ -168,17 +153,103 @@ class CityGauge extends Component {
         gaugeText = `${(100 - airStat).toFixed(1)}% BELOW THE`;
       }
     }
+
+    if (width === 'xs' || width === 'sm') {
+      return null;
+    }
+
     return (
-      <Grid
-        container
-        justify="center"
-        alignItems="center"
-        style={{ paddingTop: '0.45rem', height: 'auto' }}
-        ref={this.nodeRef}
-      >
-        <Hidden smDown>
-          <Grid container item xs={12} md={3} lg={3} direction="column">
-            <p className={classes.gaugeBox}>
+      <div className={classes.root}>
+        <Grid
+          container
+          className={classes.gaugeDial}
+          justify="center"
+          alignItems="center"
+          style={{ paddingTop: '0.45rem', height: 'auto' }}
+          ref={this.nodeRef}
+        >
+          <Grid item md={12} container alignItems="center" direction="column">
+            <div className={classes.gaugeArc}>
+              <ReactSpeedometer
+                fluidWidth
+                ringWidth={60}
+                minValue={0}
+                maxValue={150}
+                value={parseFloat(airPollMeasurement)}
+                segments={8}
+                textColor="#fff"
+                startColor="#5fbf82"
+                endColor="#b72025"
+                needleColor="#144a3d"
+              />
+            </div>
+            <svg className={classes.gaugeNeedleItem}>
+              <g transform="translate(450,300)">
+                <path
+                  d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
+                  fill="#144a3d"
+                  transform="rotate(-78.75)"
+                  strokeLinecap="round"
+                  strokeWidth="3"
+                  stroke="#fefffd"
+                  style={{ cursor: 'grab' }}
+                />
+              </g>
+              <g transform="translate(80,245)" fill="white">
+                <text
+                  fill="white"
+                  textAnchor="middle"
+                  className={classes.gaugeWhoGuidelineText}
+                >
+                  WHO GUIDELINE
+                </text>
+              </g>
+            </svg>
+            <svg className={classes.gaugeCircle}>
+              <circle
+                r="150"
+                cx="150"
+                cy="150"
+                fill="white"
+                className={classes.gaugeWhiteItem}
+              />
+              <circle r="75" cx="150" cy="150" fill="white" />
+              <g transform="translate(150,60)" style={{ height: '30px' }}>
+                <text
+                  transform="translate(0,10)"
+                  textAnchor="middle"
+                  className={classes.gaugeBigText}
+                >
+                  {gaugeText}
+                </text>
+                <text
+                  transform="translate(0,40)"
+                  textAnchor="middle"
+                  className={classes.gaugeBigText}
+                >
+                  {gaugeBigText}
+                </text>
+                <text
+                  transform="translate(0,70)"
+                  textAnchor="middle"
+                  className={classes.gaugeSmallText}
+                >
+                  PM
+                  <tspan baselineShift="sub">2.5 </tspan>
+                  ANNUAL EXPOSURE
+                </text>
+              </g>
+            </svg>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          className={classes.gaugeDescription}
+          justify="space-between"
+          alignItems="center"
+        >
+          <Grid item>
+            <p className={classes.gaugeDescGuideline}>
               <span className={classes.gaugeBoxWhoTitle}>
                 WHO Guideline (10)
               </span>
@@ -186,85 +257,8 @@ class CityGauge extends Component {
               long-term exposure
             </p>
           </Grid>
-        </Hidden>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          lg={6}
-          container
-          alignItems="center"
-          direction="column"
-        >
-          <p className={classes.gaugeWho}>
-            <strong>WHO GUIDELINE</strong>
-          </p>
-          <div className={classes.gaugeArc}>
-            <ReactSpeedometer
-              fluidWidth
-              ringWidth={60}
-              minValue={0}
-              maxValue={150}
-              value={parseFloat(airPollMeasurement)}
-              segments={8}
-              textColor="#fff"
-              startColor="#5fbf82"
-              endColor="#b72025"
-              needleColor="#144a3d"
-            />
-          </div>
-          <svg className={classes.gaugeNeedleItem}>
-            <g transform="translate(300,300)">
-              <path
-                d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
-                fill="#144a3d"
-                transform="rotate(-78.75)"
-                strokeLinecap="round"
-                strokeWidth="3"
-                stroke="#fefffd"
-                style={{ cursor: 'grab' }}
-              />
-            </g>
-          </svg>
-          <svg className={classes.gaugeCircle}>
-            <circle
-              r="150"
-              cx="150"
-              cy="150"
-              fill="white"
-              className={classes.gaugeWhiteItem}
-            />
-            <circle r="75" cx="150" cy="150" fill="white" />
-            <g transform="translate(150,60)" style={{ height: '30px' }}>
-              <text
-                transform="translate(0,10)"
-                textAnchor="middle"
-                className={classes.gaugeBigText}
-              >
-                {gaugeText}
-              </text>
-              <text
-                transform="translate(0,40)"
-                textAnchor="middle"
-                className={classes.gaugeBigText}
-              >
-                {gaugeBigText}
-              </text>
-              <text
-                transform="translate(0,70)"
-                textAnchor="middle"
-                className={classes.gaugeSmallText}
-              >
-                PM
-                <tspan baselineShift="sub">2.5 </tspan>
-                ANNUAL EXPOSURE
-              </text>
-            </g>
-          </svg>
-        </Grid>
-        <Hidden smDown>
-          <Grid container item xs={12} md={3} direction="column">
-            <p className={classes.gaugeDesc}>
+          <Grid item>
+            <p className={classes.gaugeDescUnits}>
               <strong>
                 *PM
                 <sub>2.5</sub> concentrations measured in micrograms of
@@ -275,15 +269,16 @@ class CityGauge extends Component {
               <em>Data: WHO Global Platform on Air Quality &amp; Health</em>
             </p>
           </Grid>
-        </Hidden>
-      </Grid>
+        </Grid>
+      </div>
     );
   }
 }
 
 CityGauge.propTypes = {
   classes: PropTypes.object.isRequired,
-  airPollMeasurement: PropTypes.number.isRequired
+  airPollMeasurement: PropTypes.number.isRequired,
+  width: PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(CityGauge);
+export default withWidth()(withStyles(styles)(CityGauge));
