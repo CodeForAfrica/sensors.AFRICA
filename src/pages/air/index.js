@@ -26,9 +26,9 @@ class AirHome extends React.Component {
   }
 
   handleSearch(city) {
+    const path = `${CITY_PATHNAME}/${city.value}`;
     const { history } = this.props;
-
-    history.push(CITY_PATHNAME, { city: city.value });
+    history.push(path);
   }
 
   render() {
@@ -38,9 +38,9 @@ class AirHome extends React.Component {
         <DocumentHead url={url} />
         <Navbar />
         <AirHeader handleSearch={this.handleSearch} />
+        <Showcase />
         <Issues />
         <IndoorOutdoor />
-        <Showcase />
         <Stories />
         <Support />
         <Footer />

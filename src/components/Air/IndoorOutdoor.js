@@ -119,41 +119,6 @@ function IndoorOutdoor({ classes }) {
           <CardContent className={classes.cardContent}>
             <img src={IndoorIcon} alt="Housing" className={classes.img} />
             <Typography variant="h5" className={classes.title}>
-              INDOOR POLLUTION
-            </Typography>
-            <Typography variant="subtitle2" className={classes.caption}>
-              Indoor pollution causes an estimated{' '}
-              <cite>
-                <a
-                  href="https://www.who.int/airpollution/"
-                  className={classes.cite}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  3.8
-                </a>
-              </cite>{' '}
-              million premature deaths each year.
-            </Typography>
-            <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outlined" className={classes.indoorButton}>
-                READ MORE
-              </Button>
-            </a>
-          </CardContent>
-        </Card>
-      </Grid>
-
-      <Grid item>
-        <Card className={classes.outdoor}>
-          <CardContent className={classes.cardContent}>
-            <img src={OutdoorIcon} alt="Housing" className={classes.img} />
-            <Typography variant="h5" className={classes.title}>
               OUTDOOR POLLUTION
             </Typography>
             <Typography variant="subtitle2" className={classes.caption}>
@@ -171,7 +136,42 @@ function IndoorOutdoor({ classes }) {
               million premature deaths each year.
             </Typography>
             <a
-              href="https://medium.com/code-for-africa/tagged/innovateafrica"
+              href="https://www.who.int/airpollution/data/cities/en/"
+              className={classes.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outlined" className={classes.indoorButton}>
+                READ MORE
+              </Button>
+            </a>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      <Grid item>
+        <Card className={classes.outdoor}>
+          <CardContent className={classes.cardContent}>
+            <img src={OutdoorIcon} alt="Housing" className={classes.img} />
+            <Typography variant="h5" className={classes.title}>
+              INDOOR POLLUTION
+            </Typography>
+            <Typography variant="subtitle2" className={classes.caption}>
+              Indoor pollution causes an estimated{' '}
+              <cite>
+                <a
+                  href="https://www.who.int/airpollution/"
+                  className={classes.cite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  3.8
+                </a>
+              </cite>{' '}
+              million premature deaths each year.
+            </Typography>
+            <a
+              href="https://www.who.int/gho/phe/indoor_air_pollution/burden_text/en/"
               className={classes.buttonLink}
               target="_blank"
               rel="noopener noreferrer"

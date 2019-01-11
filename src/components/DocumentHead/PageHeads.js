@@ -3,8 +3,12 @@ const URLS = {
   ABOUT: '/about',
   AIR: {
     HOME: '/air',
-    CITY: '/air/city',
     ABOUT: '/air/about',
+
+    // Redirect /air/city to /air/city/nairobi
+    CITY_HOME: '/air/city',
+    CITY_DEFAULT: '/air/city/nairobi',
+    CITY: '/air/city/:city(nairobi|dar-es-salaam|lagos)',
     HOW_SENSORS_WORK: '/air/how-sensors-work',
     IMPACT: '/air/health-and-climate-impact',
     JOIN: '/air/join-network'

@@ -18,6 +18,10 @@ const styles = () => ({
   headline: {
     textAlign: 'center',
     marginBottom: '2rem'
+  },
+  headlineTitle: {
+    textAlign: 'center',
+    paddingBottom: '1rem'
   }
 });
 
@@ -25,7 +29,9 @@ function Showcase({ classes }) {
   return (
     <Grid className={classes.root}>
       <Grid item xs={12} className={classes.headline}>
-        <Typography variant="h3">SHOWCASE</Typography>
+        <Typography variant="h3" className={classes.headlineTitle}>
+          SHOWCASE
+        </Typography>
         <Typography variant="body1">
           Here are stories from all around the world on air quality and its
           effects
