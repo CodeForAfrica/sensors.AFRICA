@@ -17,6 +17,15 @@ const styles = theme => ({
       paddingLeft: '8%'
     }
   },
+  children: {
+    [theme.breakpoints.down('xs')]: {
+      position: 'fixed',
+      top: '16rem',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: 3
+    }
+  },
   icon: {
     color: 'white',
     paddingTop: '3%'
@@ -55,7 +64,9 @@ class MenuBar extends React.Component {
         <Grid item>
           <Grid container alignItems="flex-start">
             {logo}
-            <Grid item>{children}</Grid>
+            <Grid item className={classes.children}>
+              {children}
+            </Grid>
           </Grid>
         </Grid>
       );
