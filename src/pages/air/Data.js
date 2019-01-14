@@ -10,7 +10,6 @@ import DataArchivesHeader from '../../components/DataArchives/DataArchivesHeader
 
 import DataArchives from '../../components/DataArchives/DataArchives';
 import Partners from '../../components/About/Partners';
-import Staff from '../../components/About/Staff';
 import Footer from '../../components/Footer';
 import Support from '../../components/Support';
 
@@ -29,7 +28,7 @@ function Data({ classes, url }) {
       <DataArchivesHeader />
       <DataArchives />
       <Partners />
-      <Staff />
+
       <Stories />
       <Support classNames={classes.aboutSupport} />
       <Footer />

@@ -31,7 +31,7 @@ function DataArchivesHeader({ classes }) {
       </Grid>
       <Grid item xs={12}>
         <DataArchivesHeaderContent
-          title="Sensors.AFRICA Data"
+          title="sensors.AFRICA Data"
           subheading="Sensors data is collected and uploaded to our archives every five minutes. Find out how to use this data."
         />
       </Grid>

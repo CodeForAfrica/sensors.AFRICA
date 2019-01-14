@@ -12,7 +12,8 @@ const styles = theme => ({
   },
   headerText: {
     color: 'white',
-    paddingBottom: '1rem'
+    paddingBottom: '1rem',
+    textTransform: 'none'
   }
 });
 
