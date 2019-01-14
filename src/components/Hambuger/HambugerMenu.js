@@ -11,22 +11,15 @@ import { URLS } from '../DocumentHead/PageHeads';
 import MenuButton from './MenuButton';
 
 const styles = theme => ({
-  paper: {
-    position: 'absolute',
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4
-  },
   grid: {
     flex: 1
   },
   menuList: {
     color: 'white',
-    marginTop: '7rem',
+    marginTop: '8rem',
     textAlign: 'right',
     paddingRight: '2%',
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('sm')]: {
       marginTop: '2rem',
       paddingRight: '10%'
     }

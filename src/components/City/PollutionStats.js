@@ -16,7 +16,6 @@ const styles = theme => ({
     }
   },
   statContentContainer: {
-    width: '100vw',
     textAlign: 'center',
     paddingTop: '2rem',
     paddingBottom: '1rem',
@@ -29,7 +28,7 @@ const styles = theme => ({
     }
   },
   statMiddleContentContainer: {
-    width: '100vw',
+    width: '100%',
     textAlign: 'center',
     paddingTop: '2rem',
     paddingBottom: '1rem',
@@ -178,6 +177,6 @@ function PollutionStats({ classes, pollutionStats, city }) {
 PollutionStats.propTypes = {
   classes: PropTypes.object.isRequired,
   pollutionStats: PropTypes.object.isRequired,
-  city: PropTypes.string.isRequired
+  city: PropTypes.object.isRequired
 };
 export default withStyles(styles)(PollutionStats);

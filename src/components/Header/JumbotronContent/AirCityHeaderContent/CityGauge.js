@@ -4,16 +4,30 @@ import PropTypes from 'prop-types';
 import { withWidth } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import DigitalGauge from './DigitalGauge';
 import RadialGauge from './RadialGauge';
 
 const styles = () => ({});
 
 function CityGauge({ airPollMeasurement, classes, width }) {
-  if (width === 'xs' || width === 'sm') {
-    return null;
+  const percentage = ((parseFloat(airPollMeasurement) / 10) * 100).toFixed(1);
+  let percentageRelative;
+  let isOverGuideline = false;
+  if (percentage > 100) {
+    percentageRelative = percentage - 100;
+    isOverGuideline = true;
+  } else {
+    percentageRelative = 100 - percentage;
   }
+  const Gauge = width === 'xs' || width === 'sm' ? DigitalGauge : RadialGauge;
 
-  return <RadialGauge airPollMeasurement={airPollMeasurement} />;
+  return (
+    <Gauge
+      airPollMeasurement={airPollMeasurement}
+      percentageRelative={percentageRelative}
+      isOverGuideline={isOverGuideline}
+    />
+  );
 }
 
 CityGauge.propTypes = {

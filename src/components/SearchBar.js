@@ -9,7 +9,6 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 250,
     paddingTop: '2.5rem'
   },
   input: {
@@ -42,9 +41,10 @@ const styles = theme => ({
     paddingLeft: '1rem'
   },
   paper: {
-    position: 'relative',
-    zIndex: 1,
+    position: 'absolute',
+    zIndex: 2,
     marginTop: theme.spacing.unit,
+    left: 0,
     right: 0,
     background: theme.palette.primary.main
   }

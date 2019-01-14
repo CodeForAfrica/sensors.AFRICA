@@ -135,7 +135,7 @@ class RadialGauge extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, percentageRelative, isOverGuideline } = this.props;
     let { airPollMeasurement } = this.props;
 
     // Texts on top of the gauge
@@ -145,13 +145,10 @@ class RadialGauge extends Component {
       gaugeText = 'Measurements not';
       gaugeBigText = 'Recorded';
       airPollMeasurement = 0;
+    } else if (isOverGuideline) {
+      gaugeText = `${percentageRelative.toFixed(1)}% OVER THE`;
     } else {
-      const airStat = ((parseFloat(airPollMeasurement) / 10) * 100).toFixed(1);
-      if (airStat > 100) {
-        gaugeText = `${(airStat - 100).toFixed(1)}% OVER THE`;
-      } else if (airStat < 100) {
-        gaugeText = `${(100 - airStat).toFixed(1)}% BELOW THE`;
-      }
+      gaugeText = `${percentageRelative.toFixed(1)}% BELOW THE`;
     }
 
     return (
@@ -171,7 +168,7 @@ class RadialGauge extends Component {
                 ringWidth={60}
                 minValue={0}
                 maxValue={150}
-                value={parseFloat(airPollMeasurement)}
+                value={parseFloat(airPollMeasurement.toFixed(1))}
                 segments={8}
                 textColor="#fff"
                 startColor="#5fbf82"
@@ -273,7 +270,9 @@ class RadialGauge extends Component {
 
 RadialGauge.propTypes = {
   classes: PropTypes.object.isRequired,
-  airPollMeasurement: PropTypes.number.isRequired
+  airPollMeasurement: PropTypes.number.isRequired,
+  percentageRelative: PropTypes.number.isRequired,
+  isOverGuideline: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(RadialGauge);

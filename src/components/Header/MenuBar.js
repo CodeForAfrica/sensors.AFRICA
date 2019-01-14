@@ -12,15 +12,16 @@ import Logo from '../Logo';
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    position: 'relative',
     [theme.breakpoints.up('md')]: {
       paddingRight: '8%',
       paddingLeft: '8%'
     }
   },
   children: {
-    [theme.breakpoints.down('xs')]: {
-      position: 'fixed',
-      top: '16rem',
+    [theme.breakpoints.only('xs')]: {
+      position: 'absolute',
+      top: '8rem',
       left: '50%',
       transform: 'translate(-50%, -50%)',
       zIndex: 3
