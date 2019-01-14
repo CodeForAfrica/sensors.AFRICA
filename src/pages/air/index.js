@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 
 import DocumentHead from '../../components/DocumentHead';
 import About from './About';
+import Data from './Data';
 import HowSensorsWork from './HowSensorsWork';
 import City from './City';
 import JoinNetwork from './JoinNetwork';
@@ -54,5 +55,12 @@ AirHome.propTypes = {
   url: PropTypes.string.isRequired
 };
 
-export { About, HowSensorsWork, City, JoinNetwork, HealthAndClimateImpacts };
+export {
+  About,
+  HowSensorsWork,
+  City,
+  JoinNetwork,
+  Data,
+  HealthAndClimateImpacts
+};
 export default withRouter(AirHome);
