@@ -9,7 +9,6 @@ import Navbar from '../../components/Header/Navbar';
 import DataArchivesHeader from '../../components/DataArchives/DataArchivesHeader';
 
 import DataArchives from '../../components/DataArchives/DataArchives';
-import Partners from '../../components/About/Partners';
 import Footer from '../../components/Footer';
 import Support from '../../components/Support';
 
@@ -27,8 +26,6 @@ function Data({ classes, url }) {
       <Navbar />
       <DataArchivesHeader />
       <DataArchives />
-      <Partners />
-
       <Stories />
       <Support classNames={classes.aboutSupport} />
       <Footer />
