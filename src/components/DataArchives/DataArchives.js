@@ -26,6 +26,7 @@ const now = 'http://api.airquality.codeforafrica.org/v1/now/';
 const data = 'http://api.airquality.codeforafrica.org/v1/data/';
 const sensors = 'http://api.airquality.codeforafrica.org/v1/sensor/{apiID}/';
 const query = 'http://api.airquality.codeforafrica.org/v1/filter/{query}';
+//const wiki: = 'https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-sensors-software/wiki/APIs#api-httpapiairqualitycodeforafricaorg';
 const type = '{sensor type}';
 const area = '{lat, lon, distance}';
 const box = '{lat1, lon1, lat2, lon2}';
@@ -141,6 +142,23 @@ function DataArchives({ classes }) {
             </a>
           </Typography>
         </Grid>
+
+        <Typography variant="body2">
+          <em>
+            <b>
+              For a more detailed documentation on how to access API data ,
+              visit the sensors.AFRICA{' '}
+              <a
+                className={classes.link}
+                href="https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-sensors-software/wiki/APIs#api-httpapiairqualitycodeforafricaorg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WIKI
+              </a>{' '}
+            </b>
+          </em>
+        </Typography>
       </Grid>
     </Grid>
   );
