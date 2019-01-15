@@ -42,8 +42,10 @@ function DataArchives({ classes }) {
     >
       <Grid
         item
-        xs={6}
-        xl={8}
+        xs={8}
+        sm={8}
+        md={6}
+        xl={6}
         justify="center"
         align="left"
         className={classes.main}

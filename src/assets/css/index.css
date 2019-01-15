@@ -9,7 +9,7 @@ body {
   padding: 0;
   margin: 0;
   min-height: 100%;
-  display: inline-block;
+  /**display: inline-block;**/
   background-color: white;
   /**overflow-x: hidden;**/
 }
