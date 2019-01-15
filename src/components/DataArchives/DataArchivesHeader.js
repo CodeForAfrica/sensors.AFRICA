@@ -32,7 +32,8 @@ function DataArchivesHeader({ classes }) {
       <Grid item xs={12}>
         <DataArchivesHeaderContent
           title="sensors.AFRICA DATA"
-          subheading="Sensors data is collected and uploaded to our archives every five minutes. Find out how to use this data."
+          subheading="Sensors data is collected and uploaded to our API archives every five minutes. The API accepts the sensor data and serves as the basis for the graphical display of maps used on the site. 
+          Find out more on how to access and use this data. "
         />
       </Grid>
     </Grid>
