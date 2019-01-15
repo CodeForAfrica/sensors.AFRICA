@@ -9,7 +9,13 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: 'white'
   },
-  main: { paddingBottom: '3rem' },
+  main: {
+    paddingBottom: '3rem',
+    [theme.breakpoints.up('xs')]: {
+      paddingRight: '3rem',
+      paddingLeft: '3rem'
+    }
+  },
   link: { color: theme.palette.primary.dark },
   typography: {
     paddingTop: theme.spacing.unit * 6,
@@ -42,10 +48,8 @@ function DataArchives({ classes }) {
     >
       <Grid
         item
-        xs={8}
-        sm={8}
-        md={6}
-        xl={6}
+        xs={12}
+        sm={6}
         justify="center"
         align="left"
         className={classes.main}
