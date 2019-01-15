@@ -26,17 +26,30 @@ const styles = theme => ({
     fontWeight: 700,
     fontSize: '1rem'
   },
-  archive: { paddingTop: '2rem', paddingBottom: '2rem' }
+  archive: { paddingTop: '2rem', paddingBottom: '2rem' },
+  code: {
+    boxSizing: 'border-box',
+    display: 'inline-block',
+    background: '#fafcfc',
+    padding: '12px 10px',
+    border: '1px solid #f0f4f7',
+    borderRadius: '4px',
+    lineHeight: '20px',
+    fontSize: '14px'
+  },
+  var: {
+    color: theme.palette.primary.dark
+  }
 });
 
 const now = 'http://api.airquality.codeforafrica.org/v1/now/';
 const data = 'http://api.airquality.codeforafrica.org/v1/data/';
 const sensors = 'http://api.airquality.codeforafrica.org/v1/sensor/{apiID}/';
 const query = 'http://api.airquality.codeforafrica.org/v1/filter/{query}';
-const type = '{sensor type}';
-const area = '{lat, lon, distance}';
-const box = '{lat1, lon1, lat2, lon2}';
-const countryCode = '{country code}';
+const type = '{ sensor type }';
+const area = '{ lat, lon, distance }';
+const box = '{ lat1, lon1, lat2, lon2 }';
+const countryCode = '{ country code }';
 
 function DataArchives({ classes }) {
   return (
@@ -75,7 +88,7 @@ function DataArchives({ classes }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {now}
+                <code className={classes.code}>{now}</code>
               </a>{' '}
               - provides all measurements from the last 5 minutes for all
               publicly accessible sensors.
@@ -87,7 +100,7 @@ function DataArchives({ classes }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {data}
+                <code className={classes.code}>{data}</code>
               </a>{' '}
               - provides all measurements for all publicly accessible sensors
               stored in our database.
@@ -99,7 +112,7 @@ function DataArchives({ classes }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {sensors}
+                <code className={classes.code}>{sensors}</code>
               </a>{' '}
               - provides all measurements from the last 5 minutes for one
               sensor, these data is only available if the sensor is publicly
@@ -112,7 +125,7 @@ function DataArchives({ classes }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {query}{' '}
+                <code className={classes.code}>{query}</code>{' '}
               </a>
               - provides all measurements from the last 5 minutes for all
               publicly accessible sensors filtered by a query.
@@ -125,15 +138,20 @@ function DataArchives({ classes }) {
           <Typography variant="body2">
             <ul>
               <li>
-                type = {type}: comma separated list of sensor types, i.e.
-                'SDS011, DHT22'.
+                type = {type}: comma separated list of sensor types, i.e{' '}
+                <var className={classes.var}>SDS011</var> ,
+                <var className={classes.var}> DHT22</var>
               </li>
               <li>area = {area}: provides all sensors within a max radius.</li>
               <li>
                 box = {box}: provides all sensors in a 'box' with the given
                 coordinates.
               </li>
-              <li> country = {countryCode}: i.e. ' KE, TZ, NG, ZA, ... '</li>
+              <li>
+                {' '}
+                country = {countryCode}: i.e.{' '}
+                <var className={classes.var}>KE, TZ, NG, ZA, ... </var>
+              </li>
             </ul>
           </Typography>
         </Grid>
