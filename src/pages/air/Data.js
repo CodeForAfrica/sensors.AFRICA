@@ -13,7 +13,7 @@ import Footer from '../../components/Footer';
 import Support from '../../components/Support';
 
 const styles = theme => ({
-  aboutSupport: {
+  dataSupport: {
     paddingTop: theme.spacing.unit * 5,
     paddingBottom: theme.spacing.unit * 5
   }
@@ -27,7 +27,7 @@ function Data({ classes, url }) {
       <DataArchivesHeader />
       <DataArchives />
       <Stories />
-      <Support classNames={classes.aboutSupport} />
+      <Support classNames={classes.dataSupport} />
       <Footer />
     </React.Fragment>
   );

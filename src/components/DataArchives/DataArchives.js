@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
+    flexGrow: 1,
     backgroundColor: 'white'
   },
   main: { paddingBottom: '3rem' },
@@ -26,7 +27,6 @@ const now = 'http://api.airquality.codeforafrica.org/v1/now/';
 const data = 'http://api.airquality.codeforafrica.org/v1/data/';
 const sensors = 'http://api.airquality.codeforafrica.org/v1/sensor/{apiID}/';
 const query = 'http://api.airquality.codeforafrica.org/v1/filter/{query}';
-//const wiki: = 'https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-sensors-software/wiki/APIs#api-httpapiairqualitycodeforafricaorg';
 const type = '{sensor type}';
 const area = '{lat, lon, distance}';
 const box = '{lat1, lon1, lat2, lon2}';
@@ -40,16 +40,23 @@ function DataArchives({ classes }) {
       alignItems="center"
       className={classes.root}
     >
-      <Grid item xs={6} justify="center" align="left" className={classes.main}>
+      <Grid
+        item
+        xs={6}
+        xl={8}
+        justify="center"
+        align="left"
+        className={classes.main}
+      >
         <Typography variant="h6" className={classes.typography}>
           Sensors Data
         </Typography>
-        <Grid item style={{ paddingTop: '3rem' }}>
+        <Grid style={{ paddingTop: '3rem' }}>
           <Typography variant="h6" className={classes.title}>
             Accessing API Data
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid>
           <Typography variant="body2">
             <Typography variant="body2">
               The primary way to access sensor data is via API endpoints. There
@@ -107,7 +114,7 @@ function DataArchives({ classes }) {
           </Typography>
         </Grid>
 
-        <Grid item style={{ paddingTop: '1rem' }}>
+        <Grid style={{ paddingTop: '1rem' }}>
           <Typography variant="body2">Supported queries are:</Typography>
           <Typography variant="body2">
             <ul>
@@ -120,12 +127,12 @@ function DataArchives({ classes }) {
                 box = {box}: provides all sensors in a 'box' with the given
                 coordinates.
               </li>
-              <li> country = {countryCode}: i.e. 'KE, TZ, NG, ZA, ...</li>
+              <li> country = {countryCode}: i.e. ' KE, TZ, NG, ZA, ... '</li>
             </ul>
           </Typography>
         </Grid>
 
-        <Grid item className={classes.archive}>
+        <Grid className={classes.archive}>
           <Typography variant="h6" className={classes.title}>
             Accessing Archive Data
           </Typography>
