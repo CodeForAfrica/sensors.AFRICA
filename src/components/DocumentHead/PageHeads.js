@@ -5,9 +5,9 @@ const URLS = {
   AIR: {
     HOME: '/air',
     ABOUT: '/air/about',
+    DATA: '/air/data',
     // Redirect /air/city to /air/city/nairobi
     CITY_HOME: '/air/city',
-    DATA: '/air/data',
     CITY_DEFAULT: '/air/city/nairobi',
     CITY: '/air/city/:city(nairobi|dar-es-salaam|lagos)',
     HOW_SENSORS_WORK: '/air/how-sensors-work',
