@@ -12,8 +12,7 @@ const styles = theme => ({
   main: {
     paddingBottom: '3rem',
     [theme.breakpoints.up('xs')]: {
-      paddingRight: '3rem',
-      paddingLeft: '3rem'
+      direction: 'ltr'
     }
   },
   link: { color: theme.palette.primary.dark },
@@ -39,6 +38,10 @@ const styles = theme => ({
   },
   var: {
     color: theme.palette.primary.dark
+  },
+  queries: {
+    color: theme.palette.primary.dark,
+    fontSize: theme.typography.fontSmallDefault.fontSize
   }
 });
 
@@ -68,7 +71,7 @@ function DataArchives({ classes }) {
         className={classes.main}
       >
         <Typography variant="h6" className={classes.typography}>
-          Sensors Data
+          Accessing Sensors Data
         </Typography>
         <Grid style={{ paddingTop: '3rem' }}>
           <Typography variant="h6" className={classes.title}>
@@ -138,21 +141,42 @@ function DataArchives({ classes }) {
           <Typography variant="body2">
             <ul>
               <li>
-                type = {type}: comma separated list of sensor types, i.e{' '}
+                <code className={classes.queries}>type</code> = {type}: comma
+                separated list of sensor types, i.e{' '}
                 <var className={classes.var}>SDS011</var> ,
                 <var className={classes.var}> DHT22</var>
               </li>
-              <li>area = {area}: provides all sensors within a max radius.</li>
               <li>
-                box = {box}: provides all sensors in a 'box' with the given
-                coordinates.
+                <code className={classes.queries}>area</code> = {area}: provides
+                all sensors within a max radius.
+              </li>
+              <li>
+                <code className={classes.queries}>box</code>= {box}: provides
+                all sensors in a 'box' with the given coordinates.
               </li>
               <li>
                 {' '}
-                country = {countryCode}: i.e.{' '}
-                <var className={classes.var}>KE, TZ, NG, ZA, ... </var>
+                <code className={classes.queries}>country</code>= {countryCode}:
+                i.e. <var className={classes.var}>KE, TZ, NG, ZA, ... </var>
               </li>
             </ul>
+          </Typography>
+
+          <Typography variant="body2">
+            <em>
+              <b>
+                For a more detailed documentation on how to access API data ,
+                visit the sensors.AFRICA{' '}
+                <a
+                  className={classes.link}
+                  href="https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-sensors-software/wiki/APIs#api-httpapiairqualitycodeforafricaorg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  WIKI
+                </a>{' '}
+              </b>
+            </em>
           </Typography>
         </Grid>
 
@@ -173,23 +197,6 @@ function DataArchives({ classes }) {
             </a>
           </Typography>
         </Grid>
-
-        <Typography variant="body2">
-          <em>
-            <b>
-              For a more detailed documentation on how to access API data ,
-              visit the sensors.AFRICA{' '}
-              <a
-                className={classes.link}
-                href="https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-sensors-software/wiki/APIs#api-httpapiairqualitycodeforafricaorg"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WIKI
-              </a>{' '}
-            </b>
-          </em>
-        </Typography>
       </Grid>
     </Grid>
   );
