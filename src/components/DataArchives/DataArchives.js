@@ -44,11 +44,10 @@ const styles = theme => ({
     fontSize: theme.typography.fontSmallDefault.fontSize
   }
 });
-
-const now = 'http://api.airquality.codeforafrica.org/v1/now/';
-const data = 'http://api.airquality.codeforafrica.org/v1/data/';
 const sensors = 'http://api.airquality.codeforafrica.org/v1/sensor/{apiID}/';
 const query = 'http://api.airquality.codeforafrica.org/v1/filter/{query}';
+const data = 'http://api.airquality.codeforafrica.org/v1/data/';
+const now = 'http://api.airquality.codeforafrica.org/v1/now/';
 const type = '{ sensor type }';
 const area = '{ lat, lon, distance }';
 const box = '{ lat1, lon1, lat2, lon2 }';
@@ -87,30 +86,6 @@ function DataArchives({ classes }) {
             <p>
               <a
                 className={classes.link}
-                href="http://api.airquality.codeforafrica.org/v1/now/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <code className={classes.code}>{now}</code>
-              </a>{' '}
-              - provides all measurements from the last 5 minutes for all
-              publicly accessible sensors.
-            </p>
-            <p>
-              <a
-                className={classes.link}
-                href="http://api.airquality.codeforafrica.org/v1/data/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <code className={classes.code}>{data}</code>
-              </a>{' '}
-              - provides all measurements for all publicly accessible sensors
-              stored in our database.
-            </p>
-            <p>
-              <a
-                className={classes.link}
                 href="http://api.airquality.codeforafrica.org/v1/sensor/%7BapiID%7D/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -132,6 +107,31 @@ function DataArchives({ classes }) {
               </a>
               - provides all measurements from the last 5 minutes for all
               publicly accessible sensors filtered by a query.
+            </p>
+
+            <p>
+              <a
+                className={classes.link}
+                href="http://api.airquality.codeforafrica.org/v1/data/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <code className={classes.code}>{data}</code>
+              </a>{' '}
+              - provides all measurements for all publicly accessible sensors
+              stored in our database.
+            </p>
+            <p>
+              <a
+                className={classes.link}
+                href="http://api.airquality.codeforafrica.org/v1/now/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <code className={classes.code}>{now}</code>
+              </a>{' '}
+              - provides all measurements from the last 5 minutes for all
+              publicly accessible sensors.
             </p>
           </Typography>
         </Grid>
