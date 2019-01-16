@@ -26,18 +26,34 @@ const styles = theme => ({
     fontWeight: 'bold'
   },
   mainGrid: {
-    paddingLeft: '8rem',
-    paddingRight: '8rem'
+    flexGrow: 1,
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: '8rem',
+      paddingRight: '8rem'
+    }
   },
   imgContainer: {
     textAlign: 'center'
   },
+  mediaImg: {
+    maxWidth: '100%',
+    height: 'auto',
+    maxHeight: 100
+  },
   img: {
     maxWidth: '100%',
-    height: 'auto'
+    height: 50,
+    padding: '0 8px',
+    [theme.breakpoints.up('sm')]: {
+      height: 60
+    },
+    [theme.breakpoints.up('md')]: {
+      height: 70
+    }
   },
   partnersContainer: {
     margin: theme.spacing.unit * 6,
+    textAlign: 'center',
     [theme.breakpoints.up('sm')]: {
       paddingTop: 0
     }
@@ -65,29 +81,37 @@ function Partners({ classes }) {
         alignItems="center"
         className={classes.mainGrid}
       >
-        <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={business} alt="Business Daily" className={classes.img} />
+        <Grid item xs={6} md={3} className={classes.imgContainer}>
+          <img
+            src={business}
+            alt="Business Daily"
+            className={classes.mediaImg}
+          />
         </Grid>
-        <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={premium} alt="Premium Times" className={classes.img} />
+        <Grid item xs={6} sm={3} className={classes.imgContainer}>
+          <img src={premium} alt="Premium Times" className={classes.mediaImg} />
         </Grid>
-        <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={guardian} alt="The Guardian" className={classes.img} />
+        <Grid item xs={6} md={3} className={classes.imgContainer}>
+          <img src={guardian} alt="The Guardian" className={classes.mediaImg} />
         </Grid>
-        <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={nation} alt="The Nation" className={classes.img} />
+        <Grid item xs={6} md={3} className={classes.imgContainer}>
+          <img src={nation} alt="The Nation" className={classes.mediaImg} />
         </Grid>
-        <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={star} alt="The Star" className={classes.img} />
+        <Grid item xs={6} md={3} className={classes.imgContainer}>
+          <img src={star} alt="The Star" className={classes.mediaImg} />
         </Grid>
-        <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={womanng} alt="Woman NG" className={classes.img} />
+        <Grid item xs={6} md={3} className={classes.imgContainer}>
+          <img src={womanng} alt="Woman NG" className={classes.mediaImg} />
         </Grid>
-        <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={dailynation} alt="Daily Nation" className={classes.img} />
+        <Grid item xs={6} md={3} className={classes.imgContainer}>
+          <img
+            src={dailynation}
+            alt="Daily Nation"
+            className={classes.mediaImg}
+          />
         </Grid>
-        <Grid item xs={6} sm={4} md={3} className={classes.imgContainer}>
-          <img src={cable} alt="The Cable" className={classes.img} />
+        <Grid item xs={6} md={3} className={classes.imgContainer}>
+          <img src={cable} alt="The Cable" className={classes.mediaImg} />
         </Grid>
       </Grid>
 
@@ -104,37 +128,21 @@ function Partners({ classes }) {
             In partnership with
           </Typography>
         </Grid>
-        <Grid
-          item
-          xs={6}
-          container
-          className={classes.partnersContainer}
-          justify="center"
-          alignItems="center"
-          spacing={40}
-        >
-          <Grid item xs={3}>
-            <a
-              href="https://codeforafrica.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={code} alt="Code for Africa" className={classes.img} />
-            </a>
-          </Grid>
-          <Grid item xs={3} style={{ paddingTop: '2.5rem' }}>
-            <a
-              href="https://innovateafrica.fund/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={innovate}
-                alt="innovateAFRICA"
-                className={classes.img}
-              />
-            </a>
-          </Grid>
+        <Grid item xs={12} className={classes.partnersContainer}>
+          <a
+            href="https://codeforafrica.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={code} alt="Code for Africa" className={classes.img} />
+          </a>
+          <a
+            href="https://innovateafrica.fund/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={innovate} alt="innovateAFRICA" className={classes.img} />
+          </a>
         </Grid>
       </Grid>
     </Grid>

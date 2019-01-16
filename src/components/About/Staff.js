@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Card, CardMedia, Grid, Typography } from '@material-ui/core';
+import {
+  Card,
+  CardActionArea,
+  CardMedia,
+  Grid,
+  Typography,
+  CardContent
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import chege from '../../assets/images/team/chege.png';
@@ -15,22 +22,38 @@ const styles = theme => ({
     backgroundColor: 'white'
   },
   staffRoot: {
-    flexGrow: 1,
-    padding: '1.5rem 8rem'
+    textAlign: 'center'
   },
   card: {
-    height: 200,
-    width: 300,
-    margin: theme.spacing.unit * 3,
-    backgroundColor: '#F3F3F3'
+    // height: 200,
+    width: '100%',
+    // margin: theme.spacing.unit * 3,
+    backgroundColor: '#fff',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: '0.1rem',
+      marginRight: '0.1rem',
+      width: '18.5rem',
+      display: 'inline-block'
+    },
+    [theme.breakpoints.up('md')]: {
+      marginLeft: '1rem',
+      marginRight: '1rem',
+      width: '20.75rem'
+    }
   },
   cardMedia: {
-    height: '100%',
-    objectFit: 'cover'
+    height: 200,
+    objectFit: 'cover',
+    maxWidth: '20.75rem',
+    margin: 'auto'
+  },
+  carContent: {
+    padding: 0
   },
   title: {
     fontWeight: 800,
-    fontSize: '1rem'
+    fontSize: '1rem',
+    marginBottom: theme.spacing.unit * 3
   },
   h6: {
     textTransform: 'Uppercase',
@@ -47,72 +70,70 @@ const styles = theme => ({
 
 function Staff({ classes }) {
   return (
-    <Grid item xs={12} className={classes.root}>
-      <Typography variant="h6" align="center" className={classes.title}>
-        CONTRIBUTORS AND STAFF
-      </Typography>
-      <Grid
-        container
-        justify="center"
-        align="center"
-        className={classes.staffRoot}
-      >
-        <Grid item xs={12} sm={6} md={4} container>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <CardMedia
-                component="img"
-                alt="Chege"
-                className={classes.cardMedia}
-                src={chege}
-                title="Chege"
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h6" className={classes.h6}>
-              JAMES CHEGE
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="subtitle1">
-              Chege at codeforafrica.org
-            </Typography>
-            <Typography variant="subtitle1">
-              <a className={classes.a} href="https://twitter.com/sensorsAFRICA">
-                @sensorsAFRICA
-              </a>
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} container>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <CardMedia
-                title="kirah"
-                component="img"
-                alt="Chege"
-                className={classes.cardMedia}
-                src={kirah}
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h6" className={classes.h6}>
-              WARUKIRA THEURI
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="subtitle1">
-              Kira at codeforafrica.org
-            </Typography>
-            <Typography variant="subtitle1">
-              <a className={classes.a} href="https://twitter.com/warukira_m">
-                @warukira_m
-              </a>
-            </Typography>
-          </Grid>
-        </Grid>
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
+        <Typography variant="h6" align="center" className={classes.title}>
+          CONTRIBUTORS AND STAFF
+        </Typography>
+      </Grid>
+      <Grid item xs={12} className={classes.staffRoot}>
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt="Chege"
+              className={classes.cardMedia}
+              image={chege}
+              title="Chege"
+            />
+            <CardContent>
+              <Typography variant="h6" className={classes.h6}>
+                JAMES CHEGE
+              </Typography>
+              <Typography variant="subtitle1">
+                Chege at codeforafrica.org
+              </Typography>
+              <Typography variant="subtitle1">
+                <a
+                  className={classes.a}
+                  href="https://twitter.com/sensorsAFRICA"
+                >
+                  @sensorsAFRICA
+                </a>
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardMedia
+              title="kirah"
+              component="img"
+              alt="Chege"
+              className={classes.cardMedia}
+              image={kirah}
+            />
+            <CardContent>
+              <Typography variant="h6" className={classes.h6}>
+                WARUKIRA THEURI
+              </Typography>
+              <Typography variant="subtitle1">
+                Kira at codeforafrica.org
+              </Typography>
+              <Typography variant="subtitle1">
+                <a className={classes.a} href="https://twitter.com/warukira_m">
+                  @warukira_m
+                </a>
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       </Grid>
     </Grid>
   );

@@ -13,7 +13,6 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 4
   },
   statsSummary: {
-    width: '100vw',
     [theme.breakpoints.up('md')]: {
       width: '19.875rem'
     },
@@ -22,7 +21,6 @@ const styles = theme => ({
     }
   },
   dataTable: {
-    width: '100vw',
     [theme.breakpoints.up('md')]: {
       width: '39.75rem'
     },
@@ -34,7 +32,6 @@ const styles = theme => ({
   // TODO(kilemensi): Currently statsSummary is not implemented yet so make
   // dataTable the only component
   qualityStats: {
-    width: '100vw',
     [theme.breakpoints.up('md')]: {
       width: '59.625rem',
       borderTop: '1px solid rgba(0,0,0,0.1)',
@@ -46,7 +43,7 @@ const styles = theme => ({
   }
 });
 
-function SensorsDataReport({
+function SensorsQualityStats({
   classes,
   cityHumidityStats,
   cityTemperatureStats,
@@ -72,10 +69,10 @@ function SensorsDataReport({
   );
 }
 
-SensorsDataReport.propTypes = {
+SensorsQualityStats.propTypes = {
   classes: PropTypes.object.isRequired,
   cityHumidityStats: PropTypes.object.isRequired,
   cityTemperatureStats: PropTypes.object.isRequired,
   cityP2Stats: PropTypes.object.isRequired
 };
-export default withStyles(styles)(SensorsDataReport);
+export default withStyles(styles)(SensorsQualityStats);

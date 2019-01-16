@@ -12,9 +12,19 @@ import Logo from '../Logo';
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    position: 'relative',
     [theme.breakpoints.up('md')]: {
       paddingRight: '8%',
       paddingLeft: '8%'
+    }
+  },
+  children: {
+    [theme.breakpoints.only('xs')]: {
+      position: 'absolute',
+      top: '8rem',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: 3
     }
   },
   icon: {
@@ -55,7 +65,9 @@ class MenuBar extends React.Component {
         <Grid item>
           <Grid container alignItems="flex-start">
             {logo}
-            <Grid item>{children}</Grid>
+            <Grid item className={classes.children}>
+              {children}
+            </Grid>
           </Grid>
         </Grid>
       );

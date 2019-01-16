@@ -23,6 +23,9 @@ const styles = theme => ({
   headerText: {
     color: 'white',
     paddingBottom: '1rem'
+  },
+  searchBar: {
+    paddingBottom: '6rem'
   }
 });
 
@@ -44,7 +47,7 @@ function AirHeaderContent({ classes, handleSearch }) {
           OF YOUR CITY&apos;S AIR.
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid item className={classes.searchBar}>
         <SearchBar
           placeholder="Search for your city ..."
           handleSearch={handleSearch}

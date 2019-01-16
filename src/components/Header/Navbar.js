@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import MenuItem from '@material-ui/core/MenuItem';
+import { AppBar, Hidden, MenuItem, Toolbar } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import ComingSoon from '../ComingSoon';
@@ -142,23 +140,27 @@ class Navbar extends React.Component {
                 </MenuItem>
               </Grid>
 
-              <Grid
-                container
-                direction="row"
-                justify="flex-end"
-                alignItems="center"
-              >
-                {/* <Grid item>
-              <FontAwesomeIcon
-                  className={classes.searchFa}
-                  icon="search"
-                  size="lg"
-                />
-              </Grid> */}
-                <Grid item>
-                  <SocialMedia color="#2FB56B" />
+              <Hidden smDown>
+                <Grid
+                  container
+                  direction="row"
+                  justify="flex-end"
+                  alignItems="center"
+                >
+                  {/*
+                  <Grid item>
+                    <FontAwesomeIcon
+                        className={classes.searchFa}
+                        icon="search"
+                        size="lg"
+                      />
+                  </Grid>
+                */}
+                  <Grid item>
+                    <SocialMedia color="#2FB56B" />
+                  </Grid>
                 </Grid>
-              </Grid>
+              </Hidden>
             </Toolbar>
             <ComingSoon show={show} onClose={this.hideComingSoonAlert} />
           </AppBar>

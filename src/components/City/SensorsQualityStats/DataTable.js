@@ -19,9 +19,7 @@ const styles = theme => ({
       borderLeft: '1px solid rgba(0,0,0,0.1)'
     }
   },
-  table: {
-    minWidth: 500
-  },
+  table: {},
   rowHeight: {
     height: 80
   },
@@ -33,6 +31,9 @@ const styles = theme => ({
     textAlign: 'center'
   },
   typography: {
+    [theme.breakpoints.only('xs')]: {
+      width: 80
+    },
     textAlign: 'center',
     paddingTop: '1.5rem',
     paddingBottom: '1.5rem'
@@ -103,7 +104,12 @@ function DataTable({
   cityTemperatureStats
 }) {
   return (
-    <Grid container className={classes.root}>
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
       <Grid item xs={12}>
         <Table className={classes.table}>
           <TableHead>
@@ -116,12 +122,13 @@ function DataTable({
                   alignItems="center"
                   className={classes.typography}
                 >
-                  <Grid>
+                  <Grid item>
                     <Typography variant="h6" className={classes.subheading}>
                       AIR
                     </Typography>
                   </Grid>
                   <Grid
+                    item
                     container
                     direction="row"
                     justify="center"
@@ -145,7 +152,7 @@ function DataTable({
                   alignItems="center"
                   className={classes.typography}
                 >
-                  <Grid>
+                  <Grid item>
                     <Typography
                       variant="subtitle1"
                       className={classes.subheading}
@@ -153,7 +160,7 @@ function DataTable({
                       HUMIDITY
                     </Typography>
                   </Grid>
-                  <Grid container direction="row" justify="center">
+                  <Grid item container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
                       {renderMaximum(cityHumidityStats)}
                     </Typography>
@@ -172,7 +179,7 @@ function DataTable({
                   alignItems="center"
                   className={classes.typography}
                 >
-                  <Grid>
+                  <Grid item>
                     <Typography
                       variant="subtitle1"
                       className={classes.subheading}
@@ -180,7 +187,7 @@ function DataTable({
                       TEMPERATURE
                     </Typography>
                   </Grid>
-                  <Grid container direction="row" justify="center">
+                  <Grid item container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
                       {renderMaximum(cityTemperatureStats)}
                     </Typography>
@@ -203,7 +210,7 @@ function DataTable({
                   alignItems="center"
                   className={classes.typography}
                 >
-                  <Grid>
+                  <Grid item>
                     <Typography
                       variant="subtitle1"
                       className={classes.subheading}
@@ -211,7 +218,7 @@ function DataTable({
                       AIR
                     </Typography>
                   </Grid>
-                  <Grid container direction="row" justify="center">
+                  <Grid item container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
                       {renderAverage(cityP2Stats)}
                     </Typography>
@@ -230,7 +237,7 @@ function DataTable({
                   alignItems="center"
                   className={classes.typography}
                 >
-                  <Grid>
+                  <Grid item>
                     <Typography
                       variant="subtitle1"
                       className={classes.subheading}
@@ -238,7 +245,7 @@ function DataTable({
                       HUMIDITY
                     </Typography>
                   </Grid>
-                  <Grid container direction="row" justify="center">
+                  <Grid item container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
                       {renderAverage(cityHumidityStats)}
                     </Typography>
@@ -257,7 +264,7 @@ function DataTable({
                   alignItems="center"
                   className={classes.typography}
                 >
-                  <Grid>
+                  <Grid item>
                     <Typography
                       variant="subtitle1"
                       className={classes.subheading}
@@ -265,7 +272,7 @@ function DataTable({
                       TEMPERATURE
                     </Typography>
                   </Grid>
-                  <Grid container direction="row" justify="center">
+                  <Grid item container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
                       {renderAverage(cityTemperatureStats)}
                     </Typography>
@@ -288,7 +295,7 @@ function DataTable({
                   alignItems="center"
                   className={classes.typography}
                 >
-                  <Grid>
+                  <Grid item>
                     <Typography
                       variant="subtitle1"
                       className={classes.subheading}
@@ -296,7 +303,7 @@ function DataTable({
                       AIR
                     </Typography>
                   </Grid>
-                  <Grid container direction="row" justify="center">
+                  <Grid item container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
                       {renderMinimum(cityP2Stats)}
                     </Typography>
@@ -315,7 +322,7 @@ function DataTable({
                   alignItems="center"
                   className={classes.typography}
                 >
-                  <Grid>
+                  <Grid item>
                     <Typography
                       variant="subtitle1"
                       className={classes.subheading}
@@ -323,7 +330,7 @@ function DataTable({
                       HUMIDITY
                     </Typography>
                   </Grid>
-                  <Grid container direction="row" justify="center">
+                  <Grid item container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
                       {renderMinimum(cityHumidityStats)}
                     </Typography>
@@ -342,7 +349,7 @@ function DataTable({
                   alignItems="center"
                   className={classes.typography}
                 >
-                  <Grid>
+                  <Grid item>
                     <Typography
                       variant="subtitle1"
                       className={classes.subheading}
@@ -350,7 +357,7 @@ function DataTable({
                       TEMPERATURE
                     </Typography>
                   </Grid>
-                  <Grid container direction="row" justify="center">
+                  <Grid item container direction="row" justify="center">
                     <Typography variant="h3" className={classes.display2}>
                       {renderMinimum(cityTemperatureStats)}
                     </Typography>
