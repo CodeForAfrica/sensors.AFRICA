@@ -1,0 +1,97 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import { Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = () => ({
+  root: {
+    flexGrow: 1
+  },
+  dial: {
+    textAlign: 'center'
+  },
+  measurement: {
+    width: '16rem',
+    padding: '0.75rem 0',
+    color: 'white',
+    textAlign: 'center',
+    borderBottom: '1px solid white'
+  },
+  measurementUnit: {
+    width: '16rem',
+    color: 'white',
+    textAlign: 'center',
+    textTransform: 'uppercase'
+  },
+  safeLevel: {
+    width: '16rem',
+    padding: '0.75rem 0',
+    color: 'white',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontWeight: 'bold'
+  }
+});
+
+function DigitalGauge({
+  classes,
+  airPollMeasurement,
+  percentageRelative,
+  isOverGuideline
+}) {
+  const pointDescription = isOverGuideline ? 'over' : 'below';
+  const formattedPercentage = percentageRelative.toFixed(1);
+  const measurementDescription = `${formattedPercentage}% ${pointDescription} the safe level`;
+  return (
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid
+        item
+        xs={12}
+        container
+        justify="center"
+        alignItems="center"
+        direction="column"
+      >
+        <Grid item xs={12} className={classes.dial}>
+          <Typography
+            variant="h2"
+            className={classes.measurement}
+            component="h1"
+          >
+            {airPollMeasurement.toFixed(1)}
+            <Typography
+              variant="caption"
+              component="small"
+              className={classes.measurementUnit}
+            >
+              PM
+              <sub>2.5</sub> Annual Exposure
+            </Typography>
+          </Typography>
+          <Typography
+            variant="caption"
+            component="h2"
+            className={classes.safeLevel}
+          >
+            {measurementDescription}
+          </Typography>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+}
+
+DigitalGauge.propTypes = {
+  classes: PropTypes.object.isRequired,
+  airPollMeasurement: PropTypes.number.isRequired,
+  percentageRelative: PropTypes.number.isRequired,
+  isOverGuideline: PropTypes.bool.isRequired
+};
+
+export default withStyles(styles)(DigitalGauge);

@@ -7,12 +7,18 @@ import { withStyles } from '@material-ui/core/styles';
 import CityGauge from './CityGauge';
 
 const styles = theme => ({
+  root: {
+    flexGrow: 1
+  },
   gaugeContainer: {
-    flexGrow: 1,
-    position: 'absolute',
-    top: '15rem',
+    marginTop: '6rem',
     [theme.breakpoints.up('md')]: {
-      top: '12rem'
+      marginTop: '1.875rem'
+    }
+  },
+  city: {
+    [theme.breakpoints.only('xs')]: {
+      fontSize: theme.typography.h6.fontSize
     }
   }
 });
@@ -21,7 +27,7 @@ function AirCityHeaderContent({ airPol, city, classes }) {
   return (
     <Grid
       container
-      className={classes.gaugeContainer}
+      className={classes.root}
       justify="center"
       alignItems="center"
     >
@@ -29,6 +35,7 @@ function AirCityHeaderContent({ airPol, city, classes }) {
         item
         xs={12}
         container
+        className={classes.gaugeContainer}
         direction="column"
         justify="center"
         alignItems="center"
@@ -36,7 +43,11 @@ function AirCityHeaderContent({ airPol, city, classes }) {
         <Typography variant="subtitle1" style={{ color: 'white' }}>
           THE AIR POLLUTION IN{' '}
         </Typography>
-        <Typography variant="h4" style={{ color: 'white' }}>
+        <Typography
+          variant="h4"
+          style={{ color: 'white' }}
+          className={classes.city}
+        >
           {city.label}
         </Typography>
       </Grid>

@@ -74,6 +74,40 @@ const POLLUTION_SENSOR_NAMES = ['sds021', 'sds011', 'ppd42ns'];
 const HUMIDITY_SENSOR_NAMES = ['dht22', 'dht11'];
 const TEMPERATURE_SENSOR_NAMES = ['dht22'];
 const SENSOR_READINGS_URL = 'https://api.airquality.codeforafrica.org/v1/now/';
+const AQ_COLOR = [
+  '#5fbf82',
+  '#34b86f',
+  '#299a5c',
+  '#ce8e4e',
+  '#cf7d4e',
+  '#d45f4b',
+  '#ce4c34',
+  '#b72025'
+];
+function aqIndex(aq) {
+  if (aq < 10) {
+    return 0;
+  }
+  if (aq < 20) {
+    return 1;
+  }
+  if (aq < 30) {
+    return 2;
+  }
+  if (aq < 40) {
+    return 3;
+  }
+  if (aq < 50) {
+    return 4;
+  }
+  if (aq < 60) {
+    return 5;
+  }
+  if (aq < 120) {
+    return 6;
+  }
+  return 7;
+}
 
 const styles = () => ({
   root: {
@@ -271,10 +305,11 @@ class City extends React.Component {
       city,
       cityAirPol: airPol,
       isLoading,
-      cityP2Stats,
-      cityHumidityStats,
-      cityTemperatureStats
+      cityP2Stats = {},
+      cityHumidityStats = {},
+      cityTemperatureStats = {}
     } = this.state;
+    const aqColor = AQ_COLOR[aqIndex(airPol)];
 
     return (
       <Grid
@@ -293,6 +328,7 @@ class City extends React.Component {
           <CityHeader
             city={CITIES_LOCATION[city]}
             airPol={airPol}
+            aqColor={aqColor}
             handleSearch={this.handleSearch}
           />
           <Grid item xs={12}>

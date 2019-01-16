@@ -47,7 +47,11 @@ function HostSensorButton({ children, classes, outlined, onClick }) {
 
 HostSensorButton.propTypes = {
   classes: PropTypes.object.isRequired,
-  children: PropTypes.shape({}).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+    PropTypes.string
+  ]).isRequired,
   outlined: PropTypes.bool,
   onClick: PropTypes.func
 };

@@ -24,7 +24,7 @@ const styles = theme => ({
   sensorsWorkCard: {
     color: '#fff',
     backgroundColor: theme.palette.primary.dark,
-    width: '100vw',
+    width: '100%',
     paddingTop: '1rem',
     [theme.breakpoints.up('md')]: {
       width: '25rem',
@@ -42,7 +42,7 @@ const styles = theme => ({
     color: '#fff',
     backgroundColor: theme.palette.primary.light,
     height: '100%',
-    width: '100vw',
+    width: '100%',
     paddingTop: '1rem',
     [theme.breakpoints.up('md')]: {
       width: '25rem',
@@ -108,57 +108,53 @@ function CallToAction({ classes }) {
       justify="center"
       alignItems="center"
     >
-      <Grid item>
-        <Card className={classes.sensorsWorkCard}>
-          <CardContent className={classes.cardContent}>
-            <Typography variant="h5" className={classes.typography}>
-              HOW DO
-            </Typography>
-            <Typography variant="h5" className={classes.typography}>
-              SENSORS WORK?
-            </Typography>
-            <div className={classes.buttonContainer}>
-              <Button
-                variant="outlined"
-                size="large"
-                className={classes.learnMorebutton}
-                component={howToLink}
-              >
-                LEARN MORE
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </Grid>
+      <Card className={classes.sensorsWorkCard}>
+        <CardContent className={classes.cardContent}>
+          <Typography variant="h5" className={classes.typography}>
+            HOW DO
+          </Typography>
+          <Typography variant="h5" className={classes.typography}>
+            SENSORS WORK?
+          </Typography>
+          <div className={classes.buttonContainer}>
+            <Button
+              variant="outlined"
+              size="large"
+              className={classes.learnMorebutton}
+              component={howToLink}
+            >
+              LEARN MORE
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
 
-      <Grid item>
-        <Card className={classes.joinNowCard}>
-          <CardContent className={classes.cardContent}>
-            <Typography variant="h5" className={classes.typography}>
-              GET YOUR
-            </Typography>
-            <Typography variant="h5" className={classes.typography}>
-              CITY ON BOARD
-            </Typography>
-            <div className={classes.buttonContainer}>
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
-                style={{ textDecoration: 'none' }}
-                target="_blank"
-                rel="noopener noreferrer"
+      <Card className={classes.joinNowCard}>
+        <CardContent className={classes.cardContent}>
+          <Typography variant="h5" className={classes.typography}>
+            GET YOUR
+          </Typography>
+          <Typography variant="h5" className={classes.typography}>
+            CITY ON BOARD
+          </Typography>
+          <div className={classes.buttonContainer}>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
+              style={{ textDecoration: 'none' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                variant="contained"
+                size="large"
+                className={classes.joinNowbutton}
               >
-                <Button
-                  variant="contained"
-                  size="large"
-                  className={classes.joinNowbutton}
-                >
-                  JOIN NOW
-                </Button>
-              </a>
-            </div>
-          </CardContent>
-        </Card>
-      </Grid>
+                JOIN NOW
+              </Button>
+            </a>
+          </div>
+        </CardContent>
+      </Card>
     </Grid>
   );
 }
