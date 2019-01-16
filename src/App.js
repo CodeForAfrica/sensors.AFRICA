@@ -11,6 +11,7 @@ import About from './pages/About';
 import NotFound from './pages/NotFound';
 import Air, {
   About as AirAbout,
+  Data as AirData,
   HowSensorsWork as AirHowSensorsWork,
   City as AirCity,
   JoinNetwork as AirJoinNetwork,
@@ -117,6 +118,10 @@ function App() {
             />
             <Route path={URLS.ABOUT} component={About} />
             <Route
+              path={URLS.AIR.DATA}
+              render={props => <AirData {...props} url={URLS.AIR.DATA} />}
+            />
+            <Route
               path={URLS.AIR.ABOUT}
               render={props => <AirAbout {...props} url={URLS.AIR.ABOUT} />}
             />
@@ -126,7 +131,6 @@ function App() {
                 <AirHowSensorsWork {...props} url={URLS.AIR.HOW_SENSORS_WORK} />
               )}
             />
-
             <Route
               exact
               path={URLS.AIR.CITY_HOME}
@@ -136,7 +140,6 @@ function App() {
               path={URLS.AIR.CITY}
               render={props => <AirCity {...props} url={URLS.AIR.CITY} />}
             />
-
             <Route
               path={URLS.AIR.JOIN}
               render={props => (

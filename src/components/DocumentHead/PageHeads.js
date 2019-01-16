@@ -1,10 +1,11 @@
 const URLS = {
   HOME: '/',
   ABOUT: '/about',
+
   AIR: {
     HOME: '/air',
     ABOUT: '/air/about',
-
+    DATA: '/air/data',
     // Redirect /air/city to /air/city/nairobi
     CITY_HOME: '/air/city',
     CITY_DEFAULT: '/air/city/nairobi',
@@ -34,6 +35,11 @@ export default [
     url: URLS.ABOUT,
     title: 'sensors.AFRICA | ABOUT',
     color: 'black'
+  },
+  {
+    url: URLS.AIR.DATA,
+    title: 'sensors.AFRICA | Air | DATA',
+    color: 'green'
   },
   {
     url: URLS.AIR.HOME,

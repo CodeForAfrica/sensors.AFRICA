@@ -75,18 +75,13 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
               </MenuItem>
             </a>
 
-            <a
-              href="https://archive.sensors.africa/"
-              className={classes.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link to={URLS.AIR.DATA} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   DATA
                 </Typography>
               </MenuItem>
-            </a>
+            </Link>
 
             <Link to={URLS.AIR.JOIN} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
