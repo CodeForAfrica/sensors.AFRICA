@@ -11,6 +11,9 @@ const styles = theme => ({
   },
   main: {
     paddingBottom: '3rem',
+    [theme.breakpoints.up('xs')]: {
+      direction: 'ltr'
+    },
     [theme.breakpoints.up('md')]: {
       width: '59.625rem'
     },
@@ -78,7 +81,14 @@ function DataArchives({ classes }) {
       justify="center"
       alignItems="center"
     >
-      <Grid item justify="center" align="left" className={classes.main}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        justify="center"
+        align="left"
+        className={classes.main}
+      >
         <Typography variant="h6" className={classes.typography} component="h2">
           Accessing Sensors Data
         </Typography>
@@ -89,7 +99,7 @@ function DataArchives({ classes }) {
           The primary way to access sensor data is via API endpoints. There are
           several public endpoints:
         </Typography>
-        <blockquote
+        <p
           className={classes.blockquote}
           cite="https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-sensors-software/wiki/APIs#api-httpapiairqualitycodeforafricaorg"
         >
@@ -187,7 +197,7 @@ function DataArchives({ classes }) {
               </Typography>
             </dd>
           </dl>
-        </blockquote>
+        </p>
 
         <Typography variant="body2">
           <em>
