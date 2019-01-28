@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../assets/css/App.css';
 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -46,25 +47,16 @@ class Email extends Component {
     super(props);
 
     this.state = { value: '' };
-    //this.handleChange = this.handleChange.bind(this);
-    ///this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  //handleChange(e) {
-  //this.setState({ value: e.target.value });
-  //}
-
-  handleSubmit() {
-    const { onSubmit } = this.props;
-
-    if (onSubmit) {
-      onSubmit();
-    }
+  handleChange(e) {
+    this.setState({ value: e.target.value });
   }
 
   render() {
     const { classes } = this.props;
-    //const { value } = this.state;
+
     return (
       <Grid
         container
@@ -86,11 +78,8 @@ class Email extends Component {
               name="MERGE0"
               value={this.state.value}
               placeholder="you@gmail.com"
-              onChange={e => {
-                this.setState({ value: e.target.value });
-              }}
-              className="Email-input"
-              defaultValue="Naked input"
+              onChange={this.handleChange}
+              className={classes.footerInput}
             />
             <div className={classes.buttonContainer}>
               <Button
@@ -112,12 +101,7 @@ class Email extends Component {
 }
 
 Email.propTypes = {
-  classes: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func
-};
-
-Email.defaultProps = {
-  onSubmit: null
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Email);
