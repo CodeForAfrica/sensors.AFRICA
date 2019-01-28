@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../assets/css/App.css';
 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { Input } from '@material-ui/core';
+import { Input, FormControl } from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -70,29 +69,33 @@ class Email extends Component {
             method="POST"
             noValidate
           >
-            <input type="hidden" name="u" value="65e5825507b3cec760f272e79" />
-            <input type="hidden" name="id" value="c2ff751541" />
-            <Input
-              id="MERGE0"
-              type="email"
-              name="MERGE0"
-              value={this.state.value}
-              placeholder="you@gmail.com"
-              onChange={this.handleChange}
-              className={classes.footerInput}
-            />
-            <div className={classes.buttonContainer}>
-              <Button
-                value="Subscribe"
-                type="submit"
-                name="submit"
-                id="mc-embedded-subscribe-form"
-                variant="contained"
-                className={classes.footerButton}
-              >
-                SUBSCRIBE TO UPDATES
-              </Button>
-            </div>
+            <FormControl>
+              <input type="hidden" name="u" value="65e5825507b3cec760f272e79" />
+              <input type="hidden" name="id" value="c2ff751541" />
+              <Input
+                id="MERGE0"
+                type="email"
+                name="MERGE0"
+                value={this.state.value}
+                placeholder="you@gmail.com"
+                onChange={this.handleChange}
+                className="Email-input"
+              />
+              <div className={classes.buttonContainer}>
+                <Button
+                  value="Subscribe"
+                  type="submit"
+                  name="submit"
+                  id="mc-embedded-subscribe-form"
+                  variant="contained"
+                  className={classes.footerButton}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SUBSCRIBE TO UPDATES
+                </Button>
+              </div>
+            </FormControl>
           </form>
         </Grid>
       </Grid>
