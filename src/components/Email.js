@@ -47,25 +47,15 @@ class Email extends Component {
 
     this.state = { value: '' };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
 
-  handleSubmit() {
-    const { onSubmit } = this.props;
-
-    if (onSubmit) {
-      onSubmit();
-    }
-  }
-
   render() {
     const { classes } = this.props;
-    const { value } = this.state;
-    const href = `https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541&EMAIL=${value}`;
+
     return (
       <Grid
         container
@@ -74,31 +64,39 @@ class Email extends Component {
         className={classes.root}
       >
         <Grid item xs={12}>
-          <FormControl>
-            <Input
-              type="text"
-              id="you@gmail.com"
-              placeholder="you@gmail.com"
-              onChange={this.handleChange}
-              className="Email-input"
-            />
-            <div className={classes.buttonContainer}>
-              <a
-                href={href}
-                className={classes.buttonLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+          <form
+            action="https://codeforafrica.us6.list-manage.com/subscribe/post"
+            method="POST"
+            noValidate
+          >
+            <FormControl>
+              <input type="hidden" name="u" value="65e5825507b3cec760f272e79" />
+              <input type="hidden" name="id" value="c2ff751541" />
+              <Input
+                id="MERGE0"
+                type="email"
+                name="MERGE0"
+                value={this.state.value}
+                placeholder="you@gmail.com"
+                onChange={this.handleChange}
+                className="Email-input"
+              />
+              <div className={classes.buttonContainer}>
                 <Button
+                  value="Subscribe"
+                  type="submit"
+                  name="submit"
+                  id="mc-embedded-subscribe-form"
                   variant="contained"
                   className={classes.footerButton}
-                  onClick={this.handleSubmit}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   SUBSCRIBE TO UPDATES
                 </Button>
-              </a>
-            </div>
-          </FormControl>
+              </div>
+            </FormControl>
+          </form>
         </Grid>
       </Grid>
     );
@@ -106,12 +104,7 @@ class Email extends Component {
 }
 
 Email.propTypes = {
-  classes: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func
-};
-
-Email.defaultProps = {
-  onSubmit: null
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Email);
