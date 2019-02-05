@@ -31,7 +31,8 @@ const styles = theme => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%'
+    paddingTop: '56.25%',
+    width: '100%'
   },
   cardLink: {
     textDecoration: 'none'
@@ -61,9 +62,11 @@ function StoryCard({ story, classes }) {
         rel="noopener noreferrer"
         className={classes.cardLink}
       >
-        <CardActionArea>
+        <CardActionArea
+          style={{ display: 'flex', flexFlow: 'column', height: '100%' }}
+        >
           <CardMedia className={classes.media} image={image} title=" Story" />
-          <CardContent>
+          <CardContent style={{ flexGrow: 1 }}>
             <Typography variant="h5" className={classes.overline}>
               {date}
             </Typography>

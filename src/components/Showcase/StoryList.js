@@ -61,7 +61,7 @@ function StoryList(props) {
     <Grid
       container
       justify="center"
-      alignitems="center"
+      alignItems="center"
       className={classes.root}
     >
       <Grid item xs={12} container justify="center" alignItems="center">
