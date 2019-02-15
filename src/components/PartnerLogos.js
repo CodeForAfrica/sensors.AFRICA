@@ -20,7 +20,8 @@ const styles = theme => ({
   },
   img: {
     maxWidth: '100%',
-    height: '100px'
+    height: '100px',
+    filter: 'grayscale(100%)'
   },
   titles: {
     fontWeight: 800,
