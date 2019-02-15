@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import worldbankgroup from '../assets/images/partners/worldbankgroup.png';
 import liquidtelcom from '../assets/images/partners/liquidtelcom.png';
-import data4sdg from '../assets/images/partners/data4sdg.png';
+import data4sdg from '../assets/images/partners/data4sdg.jpg';
 
 const styles = theme => ({
   root: {
