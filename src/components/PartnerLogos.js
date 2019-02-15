@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import worldbankgroup from '../assets/images/partners/worldbankgroup.png';
 import liquidtelcom from '../assets/images/partners/liquidtelcom.png';
-import giz from '../assets/images/partners/gizlogo.png';
+import data4sdg from '../assets/images/partners/data4sdg.png';
 
 const styles = theme => ({
   root: {
@@ -70,6 +70,13 @@ function PartnerLogos({ classes }) {
         >
           <Grid item xs={12} sm={4} md={4} lg={3}>
             <img
+              src={data4sdg}
+              alt="World Bank Group"
+              className={classes.img}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4} md={4} lg={3}>
+            <img
               src={worldbankgroup}
               alt="World Bank Group"
               className={classes.img}
@@ -81,9 +88,6 @@ function PartnerLogos({ classes }) {
               alt="Liquid Telcom"
               className={classes.img}
             />
-          </Grid>
-          <Grid item xs={12} sm={4} md={4} lg={3}>
-            <img src={giz} alt="World Bank Group" className={classes.img} />
           </Grid>
         </Grid>
       </Grid>
