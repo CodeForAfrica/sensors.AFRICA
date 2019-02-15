@@ -10,6 +10,7 @@ import JoinHeader from '../../components/JoinNetwork/JoinHeader';
 import Support from '../../components/Support';
 import Footer from '../../components/Footer';
 import backgroundImage from '../../assets/images/background/bgsupport.jpg';
+import PartnerLogos from '../../components/PartnerLogos';
 
 const styles = theme => ({
   joinNetworkSupport: {
@@ -41,6 +42,9 @@ function JoinNetwork({ classes, url }) {
       </Grid>
       <Grid item xs={12}>
         <Support classNames={classes.joinNetworkSupport} />
+      </Grid>
+      <Grid item xs={12}>
+        <PartnerLogos />
       </Grid>
       <Grid item xs={12}>
         <Footer />

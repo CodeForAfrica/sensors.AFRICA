@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import DocumentHead from '../../components/DocumentHead';
 import Navbar from '../../components/Header/Navbar';
+import PartnerLogos from '../../components/PartnerLogos';
 import Footer from '../../components/Footer';
 import SensorMap from '../../components/SensorMap';
 import CityHeader from '../../components/City/Header/CityHeader';
@@ -352,6 +353,9 @@ class City extends React.Component {
           </Grid>
           <Grid item xs={12}>
             <CallToAction />
+          </Grid>
+          <Grid item xs={12}>
+            <PartnerLogos />
           </Grid>
           <Grid item xs={12}>
             <Footer />
