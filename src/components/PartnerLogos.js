@@ -6,8 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 import worldbankgroup from '../assets/images/partners/worldbankgroup.png';
 import liquidtelcom from '../assets/images/partners/liquidtelcom.png';
-import codeforafrica from '../assets/images/partners/codeforafrica.png';
-import innovateafrica from '../assets/images/partners/innovateafrica.png';
 
 const styles = theme => ({
   root: {
@@ -69,7 +67,7 @@ function PartnerLogos({ classes }) {
           xs={8}
           spacing={24}
           direction="row"
-          justify="center"
+          justify="space-evenly"
           alignItems="center"
           className={classes.partnerGrid}
         >
@@ -83,20 +81,6 @@ function PartnerLogos({ classes }) {
           <Grid item xs={12} sm={4} md={4} lg={3}>
             <img
               src={liquidtelcom}
-              alt="Liquid Telcom"
-              className={classes.img}
-            />
-          </Grid>
-          <Grid item xs={12} sm={4} md={4} lg={3}>
-            <img
-              src={codeforafrica}
-              alt="Liquid Telcom"
-              className={classes.img}
-            />
-          </Grid>
-          <Grid item xs={12} sm={4} md={4} lg={3}>
-            <img
-              src={innovateafrica}
               alt="Liquid Telcom"
               className={classes.img}
             />
