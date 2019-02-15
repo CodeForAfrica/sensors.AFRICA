@@ -26,10 +26,13 @@ const styles = theme => ({
   },
   titles: {
     fontWeight: 800,
-    textTransform: 'none'
+    textTransform: 'uppercase'
   },
   partnerinfo: {
-    color: theme.palette.secondary.main
+    color: theme.palette.secondary.main,
+    [theme.breakpoints.up('lg')]: {
+      paddingRight: '1.5rem'
+    }
   },
   partnerGrid: {
     paddingTop: 0,
@@ -51,7 +54,7 @@ function PartnerLogos({ classes }) {
         spacing={40}
         className={classes.mainGrid}
       >
-        <Grid item xs={8} sm={8} md={4}>
+        <Grid item xs={12} sm={8} md={4}>
           <Typography variant="h6" className={classes.titles}>
             Our Partners
           </Typography>
