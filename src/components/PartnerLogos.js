@@ -1,12 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import worldbankgroup from '../assets/images/partners/worldbankgroup.png';
 import liquidtelcom from '../assets/images/partners/liquidtelcom.png';
+import codeforafrica from '../assets/images/partners/codeforafrica.png';
+import innovateafrica from '../assets/images/partners/innovateafrica.png';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
     paddingTop: '3rem',
@@ -14,7 +17,8 @@ const styles = () => ({
     backgroundColor: 'white'
   },
   mainGrid: {
-    margin: '2rem'
+    margin: '2rem',
+    width: 'auto'
   },
   img: {
     maxWidth: '100%',
@@ -25,7 +29,14 @@ const styles = () => ({
     textTransform: 'none'
   },
   partnerinfo: {
-    color: '#424143'
+    color: theme.palette.secondary.main
+  },
+  partnerGrid: {
+    paddingTop: 0,
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: '2rem',
+      textAlign: 'center'
+    }
   }
 });
 
@@ -53,22 +64,36 @@ function PartnerLogos({ classes }) {
         <Grid
           container
           xs={8}
-          spacing={40}
+          spacing={24}
           direction="row"
           justify="center"
           alignItems="center"
           className={classes.partnerGrid}
         >
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={4} md={4} lg={3}>
             <img
               src={worldbankgroup}
               alt="World Bank Group"
               className={classes.img}
             />
           </Grid>
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={4} md={4} lg={3}>
             <img
               src={liquidtelcom}
+              alt="Liquid Telcom"
+              className={classes.img}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4} md={4} lg={3}>
+            <img
+              src={codeforafrica}
+              alt="Liquid Telcom"
+              className={classes.img}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4} md={4} lg={3}>
+            <img
+              src={innovateafrica}
               alt="Liquid Telcom"
               className={classes.img}
             />
@@ -78,5 +103,9 @@ function PartnerLogos({ classes }) {
     </Grid>
   );
 }
+
+PartnerLogos.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(PartnerLogos);
