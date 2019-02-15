@@ -11,6 +11,7 @@ import JoinNetwork from './JoinNetwork';
 import Navbar from '../../components/Header/Navbar';
 import AirHeader from '../../components/Air/AirHeader';
 import Footer from '../../components/Footer';
+import PartnerLogos from '../../components/PartnerLogos';
 import IndoorOutdoor from '../../components/Air/IndoorOutdoor';
 import Issues from '../../components/Air/Issues';
 import Stories from '../../components/About/Stories';
@@ -44,6 +45,7 @@ class AirHome extends React.Component {
         <IndoorOutdoor />
         <Stories />
         <Support />
+        <PartnerLogos />
         <Footer />
       </React.Fragment>
     );
