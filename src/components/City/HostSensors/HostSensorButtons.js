@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { TwitterShareButton } from 'react-share';
 import { HashLink } from 'react-router-hash-link';
 
 import HostSensorButton from './HostSensorButton';
+import ShareButton from './ShareButton';
 
 const styles = theme => ({
   root: {
@@ -61,24 +61,12 @@ function HostSensorButtons({ city, classes }) {
         </a>
       </Grid>
       <Grid item className={classes.button}>
-        <TwitterShareButton
-          url="https://sensors.AFRICA/air"
-          title={`Did you know the #AirQuality in ${
-            city.name
-          } directly affects my health ${
-            city.twitterHandle
-          }? Check our city’s pollution levels on `}
-          via="sensorsAFRICA"
-          hashtags={['sensorsAFRICA']}
-          className={classes.buttonLink}
-        >
-          <HostSensorButton>ACT</HostSensorButton>
-        </TwitterShareButton>
-      </Grid>
-      <Grid item className={classes.button}>
         <HashLink smooth to="#map" className={classes.buttonLink}>
           <HostSensorButton>EXPLORE</HostSensorButton>
         </HashLink>
+      </Grid>
+      <Grid item className={classes.button}>
+        <ShareButton city={city}>SHARE</ShareButton>
       </Grid>
     </Grid>
   );
