@@ -60,7 +60,7 @@ class StoryList extends React.Component {
     Tabletop.init({
       key: '1I2nTG_lst4nYrg8z1e7RaolC16A-M7f_lO_zRaV9L5s',
       callback: data => {
-        this.setState({ stories: data });
+        this.processData(data);
       },
       simpleSheet: true
     });
