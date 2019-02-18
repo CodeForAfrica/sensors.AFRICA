@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid, GridList, GridListTile } from '@material-ui/core';
+import Tabletop from 'tabletop';
 
 import '../../assets/css/App.css';
 import { withStyles } from '@material-ui/core/styles';
 
 import StoryCard from './StoryCard';
-
-import storyData from './Stories';
 
 const styles = theme => ({
   root: {
@@ -49,41 +48,69 @@ const styles = theme => ({
   }
 });
 
-function StoryList(props) {
-  const { classes } = props;
+class StoryList extends React.Component {
+  constructor(props) {
+    super(props);
 
-  // TODO(kilemensi): GridListTile computes the size of item and sets it using
-  //                  style. This means we can't use classes since element
-  //                  style has higher preference. Hence the use of style here.
-  //                  We need to match exact size of StoryCard so we don't end
-  //                  up with a lot of spaces around StoryCard.
-  return (
-    <Grid
-      container
-      justify="center"
-      alignItems="center"
-      className={classes.root}
-    >
-      <Grid item xs={12} container justify="center" alignItems="center">
-        <div className={classes.gridListRoot}>
-          <GridList className={classes.gridList}>
-            {storyData.map(story => (
-              <GridListTile
-                key={story.index}
-                classes={{ tile: classes.gridListTile }}
-                style={{
-                  height: '100%',
-                  width: classes.gridListTile.width
-                }}
-              >
-                <StoryCard story={story} />
-              </GridListTile>
-            ))}
-          </GridList>
-        </div>
+    this.state = { stories: [] };
+    this.processData = this.processData.bind(this);
+  }
+
+  componentDidMount() {
+    Tabletop.init({
+      key: '1I2nTG_lst4nYrg8z1e7RaolC16A-M7f_lO_zRaV9L5s',
+      callback: data => {
+        this.setState({ stories: data });
+      },
+      simpleSheet: true
+    });
+  }
+
+  processData(data) {
+    /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["data"] }] */
+    for (let i = 0; i < data.length; i += 1) {
+      data[i].id = i;
+    }
+    this.setState({ stories: data });
+  }
+
+  render() {
+    const { classes } = this.props;
+    const { stories } = this.state;
+
+    // TODO(kilemensi): GridListTile computes the size of item and sets it using
+    //                  style. This means we can't use classes since element
+    //                  style has higher preference. Hence the use of style here.
+    //                  We need to match exact size of StoryCard so we don't end
+    //                  up with a lot of spaces around StoryCard.
+    return (
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        className={classes.root}
+      >
+        <Grid item xs={12} container justify="center" alignItems="center">
+          <div className={classes.gridListRoot}>
+            <GridList className={classes.gridList}>
+              {stories.map(story => (
+                <GridListTile
+                  key={story.id}
+                  classes={{ tile: classes.gridListTile }}
+                  style={{
+                    height: '100%',
+                    width: classes.gridListTile.width
+                  }}
+                >
+                  <StoryCard story={story} />
+                </GridListTile>
+              ))}
+            </GridList>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 }
 
 StoryList.propTypes = {
