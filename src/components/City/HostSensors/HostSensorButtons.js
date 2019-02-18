@@ -4,17 +4,31 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { TwitterShareButton } from 'react-share';
+import { HashLink } from 'react-router-hash-link';
 
 import HostSensorButton from './HostSensorButton';
-import ShareButton from './ShareButton';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
     paddingTop: '2rem'
   },
+  button: {
+    margin: '0.25rem 1rem',
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      margin: 0,
+      width: 'auto'
+    }
+  },
   buttonLink: {
-    textDecoration: 'none'
+    display: 'block',
+    width: '100%',
+    textDecoration: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'inline-block',
+      width: 'auto'
+    }
   }
 });
 
@@ -26,7 +40,7 @@ function HostSensorButtons({ city, classes }) {
       justify="center"
       alignItems="center"
     >
-      <Grid item>
+      <Grid item className={classes.button}>
         <a
           href="https://codeforafrica.us6.list-manage.com/subscribe/post?u=65e5825507b3cec760f272e79&id=c2ff751541"
           className={classes.buttonLink}
@@ -36,7 +50,7 @@ function HostSensorButtons({ city, classes }) {
           <HostSensorButton outlined>SUBSCRIBE</HostSensorButton>
         </a>
       </Grid>
-      <Grid item>
+      <Grid item className={classes.button}>
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform"
           className={classes.buttonLink}
@@ -46,7 +60,7 @@ function HostSensorButtons({ city, classes }) {
           <HostSensorButton>CONNECT</HostSensorButton>
         </a>
       </Grid>
-      <Grid item>
+      <Grid item className={classes.button}>
         <TwitterShareButton
           url="https://sensors.AFRICA/air"
           title={`Did you know the #AirQuality in ${
@@ -56,12 +70,15 @@ function HostSensorButtons({ city, classes }) {
           }? Check our city’s pollution levels on `}
           via="sensorsAFRICA"
           hashtags={['sensorsAFRICA']}
+          className={classes.buttonLink}
         >
           <HostSensorButton>ACT</HostSensorButton>
         </TwitterShareButton>
       </Grid>
-      <Grid item>
-        <ShareButton className={classes.buttonContained} />
+      <Grid item className={classes.button}>
+        <HashLink smooth to="#map" className={classes.buttonLink}>
+          <HostSensorButton>EXPLORE</HostSensorButton>
+        </HashLink>
       </Grid>
     </Grid>
   );
