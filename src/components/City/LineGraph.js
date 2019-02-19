@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import { VictoryChart, VictoryTheme, VictoryLine } from 'victory';
+import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from 'victory';
 
 const styles = () => ({
   root: {
@@ -13,6 +13,16 @@ const styles = () => ({
     paddingBottom: '3rem'
   }
 });
+
+const data = [
+  { Day: 1, average: 1000 },
+  { Day: 2, average: 4000 },
+  { Day: 5, average: 3000 },
+  { Day: 4, average: 5000 },
+  { Day: 5, average: 2000 },
+  { Day: 6, average: 4000 },
+  { Day: 7, average: 6000 }
+];
 
 class LineGraph extends React.Component {
   constructor(props) {
@@ -57,21 +67,29 @@ class LineGraph extends React.Component {
             domainPadding={{ x: 40 }}
             standalone={false}
             width={this.state.chartWidth}
-            height={400}
+            height={350}
             theme={VictoryTheme.material}
           >
+            <VictoryAxis
+              style={{ grid: { stroke: '#ccc', strokeDasharray: 'none' } }}
+              // Number of ticks and where to map them to
+              tickValues={[0, 1, 2, 3, 4, 5, 6]}
+              tickFormat={['Mon', 'Tue', 'Wed', ' Thur', 'Fri', 'Sat', 'Sun']}
+            />
+            <VictoryAxis
+              dependentAxis
+              style={{ grid: { stroke: '#ccc', strokeDasharray: 'none' } }}
+              // Display tickFormat
+              tickFormat={x => x}
+            />
             <VictoryLine
               style={{
-                data: { stroke: '#2FB56B' },
+                data: { stroke: '#2FB56B', strokeWidth: '3' },
                 parent: { border: '1px solid #ccc' }
               }}
-              data={[
-                { x: 1, y: 2 },
-                { x: 2, y: 3 },
-                { x: 3, y: 5 },
-                { x: 4, y: 4 },
-                { x: 5, y: 7 }
-              ]}
+              data={data}
+              x="day"
+              y="average"
             />
           </VictoryChart>
         </svg>
