@@ -10,8 +10,13 @@ import JoinHeader from '../../components/JoinNetwork/JoinHeader';
 import Support from '../../components/Support';
 import Footer from '../../components/Footer';
 import backgroundImage from '../../assets/images/background/bgsupport.jpg';
+import PartnerLogos from '../../components/PartnerLogos';
 
 const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: '#fff'
+  },
   joinNetworkSupport: {
     paddingTop: theme.spacing.unit * 5,
     paddingBottom: theme.spacing.unit * 5,
@@ -21,6 +26,10 @@ const styles = theme => ({
       height: '40rem',
       alignItems: 'center'
     }
+  },
+  joinNetworkPartnerLogos: {
+    // Due to the image used in support, no padding top for logos
+    paddingTop: '3rem'
   }
 });
 
@@ -41,6 +50,9 @@ function JoinNetwork({ classes, url }) {
       </Grid>
       <Grid item xs={12}>
         <Support classNames={classes.joinNetworkSupport} />
+      </Grid>
+      <Grid item xs={12} className={classes.joinNetworkPartnerLogos}>
+        <PartnerLogos />
       </Grid>
       <Grid item xs={12}>
         <Footer />

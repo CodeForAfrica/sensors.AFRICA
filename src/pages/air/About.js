@@ -11,6 +11,7 @@ import Partners from '../../components/About/Partners';
 import Staff from '../../components/About/Staff';
 import Footer from '../../components/Footer';
 import Support from '../../components/Support';
+import PartnerLogos from '../../components/PartnerLogos';
 
 const styles = theme => ({
   aboutSupport: {
@@ -29,6 +30,7 @@ function About({ classes, url }) {
       <Staff />
       <Stories />
       <Support classNames={classes.aboutSupport} />
+      <PartnerLogos />
       <Footer />
     </React.Fragment>
   );
