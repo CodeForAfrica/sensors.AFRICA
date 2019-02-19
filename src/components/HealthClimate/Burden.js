@@ -92,11 +92,11 @@ function Burden({ classes }) {
             <PollutionBurden
               icon={snowmelt}
               title="Snow and ice melt"
-              burden="
+              burden='
               Black carbon speeds up glacier and mountain snow and ice melt
-              leading to loss of water storage in these &quot;ice
-              reservoirs&quot; increased drought and exacerbating local
-              weather extremes."
+              leading to loss of water storage in these "ice
+              reservoirs" increased drought and exacerbating local
+              weather extremes.'
               dark
             />
           </div>

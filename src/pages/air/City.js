@@ -331,31 +331,31 @@ class City extends React.Component {
             aqColor={aqColor}
             handleSearch={this.handleSearch}
           />
-          <Grid item xs={12}>
-            <HostSensorsButton city={CITIES_LOCATION[city]} />
-          </Grid>
-          <Grid item xs={12}>
-            <PollutionStats
-              pollutionStats={CITIES_POLLUTION_STATS[city]}
-              city={CITIES_LOCATION[city]}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <SensorMap mapLocation={CITIES_LOCATION[city].location} />
-          </Grid>
-          <Grid item xs={12}>
-            <QualityStats
-              cityHumidityStats={cityHumidityStats}
-              cityP2Stats={cityP2Stats}
-              cityTemperatureStats={cityTemperatureStats}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <CallToAction />
-          </Grid>
-          <Grid item xs={12}>
-            <Footer />
-          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <HostSensorsButton city={CITIES_LOCATION[city]} />
+        </Grid>
+        <Grid item xs={12}>
+          <PollutionStats
+            pollutionStats={CITIES_POLLUTION_STATS[city]}
+            city={CITIES_LOCATION[city]}
+          />
+        </Grid>
+        <Grid item xs={12} id="map">
+          <SensorMap mapLocation={CITIES_LOCATION[city].location} />
+        </Grid>
+        <Grid item xs={12}>
+          <QualityStats
+            cityHumidityStats={cityHumidityStats}
+            cityP2Stats={cityP2Stats}
+            cityTemperatureStats={cityTemperatureStats}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <CallToAction />
+        </Grid>
+        <Grid item xs={12}>
+          <Footer />
         </Grid>
       </Grid>
     );

@@ -141,6 +141,9 @@ class RadialGauge extends Component {
     // Texts on top of the gauge
     let gaugeText = 'AT THE';
     let gaugeBigText = 'SAFE LEVEL';
+
+    // We need global isNaN since the logic below depends on coercion
+    // eslint-disable-next-line no-restricted-globals
     if (isNaN(airPollMeasurement)) {
       gaugeText = 'Measurements not';
       gaugeBigText = 'Recorded';

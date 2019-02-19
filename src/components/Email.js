@@ -55,6 +55,7 @@ class Email extends Component {
 
   render() {
     const { classes } = this.props;
+    const { value } = this.state;
 
     return (
       <Grid
@@ -76,7 +77,7 @@ class Email extends Component {
                 id="MERGE0"
                 type="email"
                 name="MERGE0"
-                value={this.state.value}
+                value={value}
                 placeholder="you@gmail.com"
                 onChange={this.handleChange}
                 className="Email-input"
