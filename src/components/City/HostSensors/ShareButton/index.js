@@ -81,7 +81,7 @@ class ShareButton extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, city } = this.props;
     const { open } = this.state;
     return (
       <React.Fragment>
@@ -98,7 +98,7 @@ class ShareButton extends React.Component {
               alignItems="center"
             >
               <Grid item xs={12}>
-                <SocialMediaButtons />
+                <SocialMediaButtons city={city} />
               </Grid>
               <Grid item xs={12} style={{ margin: '1.5rem' }}>
                 <Typography
@@ -120,7 +120,8 @@ class ShareButton extends React.Component {
 }
 
 ShareButton.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  city: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(ShareButton);

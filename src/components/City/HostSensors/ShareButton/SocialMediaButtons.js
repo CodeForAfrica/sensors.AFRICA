@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import Grid from '@material-ui/core/Grid';
-
 import { withStyles } from '@material-ui/core/styles';
+import { TwitterShareButton } from 'react-share';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const styles = () => ({
   twitter: { backgroundColor: '#00aced', margin: '0.2rem' },
@@ -15,22 +14,34 @@ const styles = () => ({
   fa: { color: 'white', margin: '0.2rem' }
 });
 
-function SocialMediaButtons({ classes }) {
+function SocialMediaButtons({ classes, city }) {
   return (
     <Grid container justify="center" alignitems="center">
       <Grid item className={classes.twitter}>
-        <a
-          href="https://twitter.com/sensorsAFRICA/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <TwitterShareButton
+          url="https://sensors.AFRICA/air"
+          title={`Did you know the #AirQuality in ${
+            city.name
+          } directly affects my health ${
+            city.twitterHandle
+          }? Check our city’s pollution levels on `}
+          via="sensorsAFRICA"
+          hashtags={['sensorsAFRICA']}
+          className={classes.buttonLink}
         >
-          <FontAwesomeIcon
-            icon={['fab', 'twitter']}
-            size="2x"
-            fixedWidth
-            className={classes.fa}
-          />
-        </a>
+          <a
+            href="https://twitter.com/sensorsAFRICA/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              icon={['fab', 'twitter']}
+              size="2x"
+              fixedWidth
+              className={classes.fa}
+            />
+          </a>
+        </TwitterShareButton>
       </Grid>
       <Grid item className={classes.facebook}>
         <a
@@ -71,6 +82,7 @@ function SocialMediaButtons({ classes }) {
 }
 
 SocialMediaButtons.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  city: PropTypes.shape({}).isRequired
 };
 export default withStyles(styles)(SocialMediaButtons);
