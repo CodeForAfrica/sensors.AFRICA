@@ -11,79 +11,87 @@ import data4sdg from '../assets/images/partners/partnershipsdg.png';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    paddingTop: '2rem',
-    paddingBottom: '2rem',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    [theme.breakpoints.up('md')]: {
+      paddingBottom: '3rem'
+    }
   },
-  mainGrid: {
-    margin: '1rem',
-    width: 'auto'
+  leftLogo: {
+    width: '100vw',
+    textAlign: 'center',
+    paddingTop: '2rem',
+    [theme.breakpoints.up('md')]: {
+      paddingTop: 0,
+      width: '18.75rem',
+      marginRight: '1.125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '25.375rem',
+      marginRight: '1.125rem'
+    }
+  },
+  centerLogo: {
+    width: '100vw',
+    textAlign: 'center',
+    padding: '2rem 0',
+    [theme.breakpoints.up('md')]: {
+      padding: 0,
+      width: '18.75rem',
+      marginLeft: '0.5625rem',
+      marginRight: '0.5625rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '25.375rem',
+      marginLeft: '0.5625rem',
+      marginRight: '0.5625rem'
+    }
+  },
+  rightLogo: {
+    width: '100vw',
+    textAlign: 'center',
+    paddingBottom: '2rem',
+    [theme.breakpoints.up('md')]: {
+      paddingBottom: 0,
+      width: '18.75rem',
+      marginLeft: '1.125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '25.375rem',
+      marginLeft: '1.125rem'
+    }
   },
   img: {
     maxWidth: '100%',
     height: '100px',
     filter: 'grayscale(100%)'
-  },
-  titles: {
-    fontWeight: 800,
-    textTransform: 'uppercase'
-  },
-  partnerinfo: {
-    color: theme.palette.secondary.main,
-    [theme.breakpoints.up('lg')]: {
-      paddingRight: '1.5rem'
-    }
-  },
-  partnerGrid: {
-    paddingTop: 0,
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: '1rem',
-      textAlign: 'center'
-    }
   }
 });
 
 function PartnerLogos({ classes }) {
   return (
-    <Grid className={classes.root}>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={40}
-        className={classes.mainGrid}
-      >
-        <Grid
-          container
-          spacing={40}
-          direction="row"
-          justify="center"
-          alignItems="center"
-          className={classes.partnerGrid}
-        >
-          <Grid item xs={12} sm={4} md={4} lg={3}>
-            <img
-              src={worldbankgroup}
-              alt="World Bank Group"
-              className={classes.img}
-            />
-          </Grid>
-          <Grid item xs={12} sm={4} md={4} lg={3}>
-            <img
-              src={liquidtelcom}
-              alt="Liquid Telcom"
-              className={classes.img}
-            />
-          </Grid>
-          <Grid item xs={12} sm={4} md={4} lg={3}>
-            <img
-              src={data4sdg}
-              alt="World Bank Group"
-              className={classes.img}
-            />
-          </Grid>
-        </Grid>
+    <Grid container justify="center" align="center" className={classes.root}>
+      <Grid item>
+        <div className={classes.leftLogo}>
+          <img
+            src={worldbankgroup}
+            alt="World Bank Group"
+            className={classes.img}
+          />
+        </div>
+      </Grid>
+      <Grid item>
+        <div className={classes.centerLogo}>
+          <img src={liquidtelcom} alt="Liquid Telcom" className={classes.img} />
+        </div>
+      </Grid>
+      <Grid item>
+        <div className={classes.rightLogo}>
+          <img
+            src={data4sdg}
+            alt="Global Partnership for Sustainable Development Data"
+            className={classes.img}
+          />
+        </div>
       </Grid>
     </Grid>
   );
