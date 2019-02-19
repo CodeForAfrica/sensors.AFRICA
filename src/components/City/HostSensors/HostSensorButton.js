@@ -6,26 +6,34 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   buttonContained: {
+    width: '100%',
     backgroundColor: theme.palette.primary.light,
     color: '#fff',
     borderRadius: 0,
-    margin: theme.spacing.unit * 2,
     fontWeight: 700,
     border: '1px solid transparent',
     '&:hover': {
       backgroundColor: theme.palette.primary.dark,
       border: '1px solid rgba(0, 0, 0, 0.23)'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 'auto',
+      margin: theme.spacing.unit * 2
     }
   },
   buttonOutlined: {
+    width: '100%',
     color: theme.palette.primary.dark,
     borderRadius: 0,
-    margin: theme.spacing.unit * 2,
     fontWeight: 700,
     '&:hover': {
       color: 'white',
       backgroundColor: theme.palette.primary.dark,
       border: '1px solid rgba(0, 0, 0, 0.23)'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 'auto',
+      margin: theme.spacing.unit * 2
     }
   }
 });

@@ -4,13 +4,14 @@ import { withRouter } from 'react-router-dom';
 
 import { Grid, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { NavigateBefore } from '@material-ui/icons';
 
 import DocumentHead from '../components/DocumentHead';
 import Navbar from '../components/Header/Navbar';
 import Footer from '../components/Footer/index';
 import backgroundImage from '../assets/images/background/bgsupport.jpg';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white',
@@ -21,8 +22,27 @@ const styles = () => ({
     textAlign: 'center'
   },
   button: {
-    color: 'white',
-    margin: '1rem'
+    color: theme.palette.secondary.main,
+    backgroundColor: '#fff',
+    border: `1px solid ${theme.palette.secondary.main}`,
+    margin: '1rem',
+    '& .button-icon': {
+      display: 'none'
+    },
+    '&:hover': {
+      color: theme.palette.secondary.main,
+      backgroundColor: '#fff',
+      border: `1px solid ${theme.palette.secondary.main}`
+    },
+    '&:hover .button-icon': {
+      display: 'inline-block'
+    }
+  },
+  buttonIcon: {
+    display: 'none',
+    '&:hover': {
+      display: 'inline-block'
+    }
   },
   typography: {
     color: 'white'
@@ -38,7 +58,21 @@ class NotFound extends Component {
 
   handleBack() {
     const { history } = this.props;
-    history.goBack();
+
+    // For security and privacy reasons, browsers don't allow JS to view
+    // visited URLs. We'll use document.referrer for approximation
+    // @see: https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer
+    const previous = document.referrer;
+    if (previous) {
+      const { location } = window;
+      if (!location.origin) {
+        location.origin = `${location.protocol}//${location.host}`;
+      }
+      if (previous.startsWith(location.origin)) {
+        return history.goBack();
+      }
+    }
+    return history.push('/');
   }
 
   render() {
@@ -66,11 +100,11 @@ class NotFound extends Component {
 
           <Typography variant="h5">
             <Button
-              variant="outlined"
+              color="secondary"
               onClick={this.handleBack}
               className={classes.button}
             >
-              GO BACK
+              <NavigateBefore className="button-icon" /> GO BACK
             </Button>
           </Typography>
         </Grid>

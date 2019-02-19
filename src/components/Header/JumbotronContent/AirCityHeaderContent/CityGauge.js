@@ -9,7 +9,7 @@ import RadialGauge from './RadialGauge';
 
 const styles = () => ({});
 
-function CityGauge({ airPollMeasurement, classes, width }) {
+function CityGauge({ airPollMeasurement, width }) {
   const percentage = ((parseFloat(airPollMeasurement) / 10) * 100).toFixed(1);
   let percentageRelative;
   let isOverGuideline = false;
@@ -31,7 +31,6 @@ function CityGauge({ airPollMeasurement, classes, width }) {
 }
 
 CityGauge.propTypes = {
-  classes: PropTypes.object.isRequired,
   airPollMeasurement: PropTypes.number.isRequired,
   width: PropTypes.string.isRequired
 };
