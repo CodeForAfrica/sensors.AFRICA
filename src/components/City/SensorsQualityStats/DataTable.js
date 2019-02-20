@@ -105,6 +105,7 @@ function DataTable({
 }) {
   return (
     <Grid
+      xs={12}
       container
       className={classes.root}
       justify="center"

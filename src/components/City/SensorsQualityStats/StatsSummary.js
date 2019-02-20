@@ -6,7 +6,10 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    [theme.breakpoints.down('lg')]: {
+      paddingBottom: '3rem'
+    }
   },
   button: {
     backgroundColor: theme.palette.primary.dark,
@@ -37,6 +40,11 @@ function StatsSummary({ classes }) {
   return (
     <Grid
       container
+      xs={12}
+      sm={8}
+      md={4}
+      lg={4}
+      xl={4}
       className={classes.root}
       justify="center"
       alignItems="center"

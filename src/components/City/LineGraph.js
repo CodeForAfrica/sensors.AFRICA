@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Button, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from 'victory';
@@ -9,8 +9,7 @@ import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from 'victory';
 const styles = () => ({
   root: {
     flexGrow: 1,
-    paddingTop: '3rem',
-    paddingBottom: '3rem'
+    padding: '3rem'
   }
 });
 
@@ -61,32 +60,6 @@ class LineGraph extends React.Component {
         alignItems="center"
         className={classes.root}
       >
-        <Grid
-          container
-          xs={12}
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-          >
-            01 Jan
-          </Button>
-          <div style={{ margin: '2rem' }}>
-            <Typography variant="body1">to</Typography>
-          </div>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-          >
-            07 Jan
-          </Button>
-        </Grid>
-
         <svg
           viewBox={'0 0' + ' ' + this.state.chartWidth + ' ' + '400'}
           preserveAspectRatio="none"

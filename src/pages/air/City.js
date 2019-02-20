@@ -7,7 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 import DocumentHead from '../../components/DocumentHead';
 import Navbar from '../../components/Header/Navbar';
-import LineGraph from '../../components/City/LineGraph';
 import Footer from '../../components/Footer';
 import SensorMap from '../../components/SensorMap';
 import CityHeader from '../../components/City/Header/CityHeader';
@@ -350,9 +349,6 @@ class City extends React.Component {
               cityP2Stats={cityP2Stats}
               cityTemperatureStats={cityTemperatureStats}
             />
-          </Grid>
-          <Grid item xs={12}>
-            <LineGraph />
           </Grid>
           <Grid item xs={12}>
             <CallToAction />
