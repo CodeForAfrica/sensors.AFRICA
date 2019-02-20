@@ -293,11 +293,11 @@ function DataArchives({ classes }) {
             exported once a day in CSV file format and made available at{' '}
             <a
               className={classes.link}
-              href="https://archive.sensors.africa/"
+              href="https://africaopendata.org/group/sensorsafrica-airquality-archive"
               target="_blank"
               rel="noopener noreferrer"
             >
-              archive.sensors.africa.
+              africaopendata.org/group/sensorsafrica-airquality-archive
             </a>
           </Typography>
         </Grid>
