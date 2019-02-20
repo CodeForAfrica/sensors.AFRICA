@@ -56,7 +56,7 @@ function SocialMedia({ color, classes }) {
       </Grid>
       <Grid item>
         <a
-          href="https://www.facebook.com/sensorsAFRICA/"
+          href="https://www.facebook.com/CodeForAfrica/"
           className={classes.links}
           target="_blank"
           rel="noopener noreferrer"
