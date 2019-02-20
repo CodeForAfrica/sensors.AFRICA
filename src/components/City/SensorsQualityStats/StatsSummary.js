@@ -71,7 +71,7 @@ function StatsSummary({ classes }) {
           variant="h6"
           style={{ margin: '1em auto', fontSize: '16px', fontWeight: 'bold' }}
         >
-          SUB HEADING
+          Sensor&apos;s Data
         </Typography>
         <Grid
           container
@@ -81,7 +81,10 @@ function StatsSummary({ classes }) {
         >
           <Typography variant="h3" className={classes.display2}>
             1,234
-            <sup className={classes.small}>Unit/H</sup>
+            <sup className={classes.small}>
+              Ug/m
+              <sup>3</sup>
+            </sup>
           </Typography>
         </Grid>
         <Typography variant="body1" className={classes.caption}>
