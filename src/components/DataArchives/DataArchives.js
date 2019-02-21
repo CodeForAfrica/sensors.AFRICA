@@ -290,14 +290,14 @@ function DataArchives({ classes }) {
           </Typography>
           <Typography variant="body2">
             In addition to sensor data accessible via the API, data is also
-            exported once a day in CSV file format and made available at{' '}
+            exported once a day in CSV file format and made available at the{' '}
             <a
               className={classes.link}
-              href="https://archive.sensors.africa/"
+              href="https://africaopendata.org/group/sensorsafrica-airquality-archive"
               target="_blank"
               rel="noopener noreferrer"
             >
-              archive.sensors.africa.
+              sensors.AFRICA Air Quality Archive
             </a>
           </Typography>
         </Grid>
