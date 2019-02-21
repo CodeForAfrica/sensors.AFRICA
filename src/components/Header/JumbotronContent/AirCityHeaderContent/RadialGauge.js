@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-//import ReactSpeedometer from 'react-d3-speedometer';
 import { VictoryPie, VictoryLabel } from 'victory';
 
 import { Grid } from '@material-ui/core';
@@ -182,7 +181,7 @@ class RadialGauge extends Component {
           ref={this.nodeRef}
         >
           <Grid item md={12} container alignItems="center" direction="column">
-            <div className={classes.gaugeArc}>
+            <div>
               <svg height="700px" width="700px">
                 <VictoryPie
                   colorScale={colors}
