@@ -193,6 +193,8 @@ class RadialGauge extends Component {
                   height={700}
                   innerRadius={230}
                   labelRadius={210}
+                  value={parseFloat(airPollMeasurement.toFixed(1))}
+                  needleColor="#144a3d"
                   textAnchor="start"
                   labelComponent={<VictoryLabel dy={10} dx={0} />}
                   style={{ labels: { fill: 'white' } }}
@@ -218,26 +220,13 @@ class RadialGauge extends Component {
               </g>
             </svg>
 
-            {/*<ReactSpeedometer
-                fluidWidth
-                ringWidth={60}
-                minValue={0}
-                maxValue={150}
-                value={parseFloat(airPollMeasurement.toFixed(1))}
-                segments={8}
-                textColor="#fff"
-                startColor="#5fbf82"
-                endColor="#b72025"
-                needleColor="#144a3d"
-              />*/}
-
             <svg className={classes.gaugeNeedleItem}>
               <g transform="translate(450,300)">
                 <path
                   d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
                   fill="#144a3d"
-                  transform="rotate(-78.75)"
-                  strokeLinecap="round"
+                  transform="rotate(-58.75)"
+                  strokeLinecap="butt"
                   strokeWidth="3"
                   stroke="#fefffd"
                   style={{ cursor: 'grab' }}
