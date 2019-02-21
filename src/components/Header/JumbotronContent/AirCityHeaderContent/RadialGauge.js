@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactSpeedometer from 'react-d3-speedometer';
+//import ReactSpeedometer from 'react-d3-speedometer';
+import { VictoryPie, VictoryLabel } from 'victory';
 
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
@@ -91,6 +92,25 @@ const styles = theme => ({
     marginTop: '-30%'
   }
 });
+
+const colors = [
+  '#5FBF82',
+  '#5FBE84',
+  '#34B771',
+  '#34B86F',
+  '#299A5C',
+  '#299A5C',
+  '#CF8D52',
+  '#CE8E4E',
+  '#CE7C4C',
+  '#CE7C4C',
+  '#D45F4B',
+  '#D45F4B',
+  '#CF4B34',
+  '#CF4B34',
+  '#B91F27',
+  '#B72024'
+];
 class RadialGauge extends Component {
   constructor(props) {
     super(props);
@@ -163,7 +183,42 @@ class RadialGauge extends Component {
         >
           <Grid item md={12} container alignItems="center" direction="column">
             <div className={classes.gaugeArc}>
-              <ReactSpeedometer
+              <svg height="700px" width="700px">
+                <VictoryPie
+                  colorScale={colors}
+                  startAngle={-90}
+                  endAngle={90}
+                  standalone={false}
+                  padAngle={0.3}
+                  width={700}
+                  height={700}
+                  innerRadius={220}
+                  labelRadius={200}
+                  textAnchor="start"
+                  labelComponent={<VictoryLabel dy={10} dx={0} />}
+                  style={{ labels: { fill: 'white' } }}
+                  data={[
+                    { x: 0, y: 150 },
+                    { x: 5, y: 150 },
+                    { x: 10, y: 150 },
+                    { x: 15, y: 150 },
+                    { x: 20, y: 150 },
+                    { x: 25, y: 150 },
+                    { x: 30, y: 150 },
+                    { x: 35, y: 150 },
+                    { x: 40, y: 150 },
+                    { x: 45, y: 150 },
+                    { x: 50, y: 150 },
+                    { x: 55, y: 150 },
+                    { x: 60, y: 150 },
+                    { x: 90, y: 150 },
+                    { x: 120, y: 150 },
+                    { x: 150, y: 150 }
+                  ]}
+                />
+              </svg>
+
+              {/*<ReactSpeedometer
                 fluidWidth
                 ringWidth={60}
                 minValue={0}
@@ -174,7 +229,7 @@ class RadialGauge extends Component {
                 startColor="#5fbf82"
                 endColor="#b72025"
                 needleColor="#144a3d"
-              />
+              />*/}
             </div>
             <svg className={classes.gaugeNeedleItem}>
               <g transform="translate(450,300)">
