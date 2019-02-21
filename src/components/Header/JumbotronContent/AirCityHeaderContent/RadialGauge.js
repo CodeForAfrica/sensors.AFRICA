@@ -177,12 +177,12 @@ class RadialGauge extends Component {
           className={classes.gaugeDial}
           justify="center"
           alignItems="center"
-          style={{ paddingTop: '0.45rem', height: 'auto' }}
+          style={{ height: 'auto' }}
           ref={this.nodeRef}
         >
           <Grid item md={12} container alignItems="center" direction="column">
-            <div>
-              <svg height="700px" width="700px">
+            <svg height="700px" width="700px">
+              <g transform="translate(0,-42)">
                 <VictoryPie
                   colorScale={colors}
                   startAngle={-90}
@@ -191,8 +191,8 @@ class RadialGauge extends Component {
                   padAngle={0.3}
                   width={700}
                   height={700}
-                  innerRadius={220}
-                  labelRadius={200}
+                  innerRadius={230}
+                  labelRadius={210}
                   textAnchor="start"
                   labelComponent={<VictoryLabel dy={10} dx={0} />}
                   style={{ labels: { fill: 'white' } }}
@@ -215,9 +215,10 @@ class RadialGauge extends Component {
                     { x: 150, y: 150 }
                   ]}
                 />
-              </svg>
+              </g>
+            </svg>
 
-              {/*<ReactSpeedometer
+            {/*<ReactSpeedometer
                 fluidWidth
                 ringWidth={60}
                 minValue={0}
@@ -229,7 +230,7 @@ class RadialGauge extends Component {
                 endColor="#b72025"
                 needleColor="#144a3d"
               />*/}
-            </div>
+
             <svg className={classes.gaugeNeedleItem}>
               <g transform="translate(450,300)">
                 <path
@@ -283,7 +284,7 @@ class RadialGauge extends Component {
                 >
                   PM
                   <tspan baselineShift="sub">2.5 </tspan>
-                  ANNUAL EXPOSURE
+                  DAILY EXPOSURE
                 </text>
               </g>
             </svg>
