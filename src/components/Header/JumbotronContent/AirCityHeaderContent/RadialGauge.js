@@ -241,6 +241,18 @@ class RadialGauge extends Component {
                   WHO GUIDELINE
                 </text>
               </g>
+
+              {/*Pointer item*/}
+              <g
+                class="pointer"
+                transform="translate(450,300)"
+                style={{ fill: 'rgb(20, 74, 61)' }}
+              >
+                <path
+                  d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
+                  transform="rotate(-83.87999725341797)"
+                />
+              </g>
             </svg>
             <svg className={classes.gaugeCircle}>
               <circle
