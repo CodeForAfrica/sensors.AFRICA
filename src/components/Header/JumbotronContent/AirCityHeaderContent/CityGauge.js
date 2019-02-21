@@ -9,29 +9,20 @@ import RadialGauge from './RadialGauge';
 
 const styles = () => ({});
 
-function CityGauge({ airPollMeasurement, width }) {
-  const percentage = ((parseFloat(airPollMeasurement) / 10) * 100).toFixed(1);
-  let percentageRelative;
-  let isOverGuideline = false;
-  if (percentage > 100) {
-    percentageRelative = percentage - 100;
-    isOverGuideline = true;
-  } else {
-    percentageRelative = 100 - percentage;
-  }
+function CityGauge({ airPollMeasurement, airPollDescription, width }) {
   const Gauge = width === 'xs' || width === 'sm' ? DigitalGauge : RadialGauge;
 
   return (
     <Gauge
       airPollMeasurement={airPollMeasurement}
-      percentageRelative={percentageRelative}
-      isOverGuideline={isOverGuideline}
+      airPollDescription={airPollDescription}
     />
   );
 }
 
 CityGauge.propTypes = {
-  airPollMeasurement: PropTypes.number.isRequired,
+  airPollMeasurement: PropTypes.string.isRequired,
+  airPollDescription: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired
 };
 

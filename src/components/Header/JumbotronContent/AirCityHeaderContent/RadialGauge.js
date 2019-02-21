@@ -74,6 +74,7 @@ const styles = theme => ({
   gaugeBigText: {
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h6.fontSize,
+    textTransform: 'uppercase',
     fontWeight: 700,
     fill: '#164a3e'
   },
@@ -135,23 +136,21 @@ class RadialGauge extends Component {
   }
 
   render() {
-    const { classes, percentageRelative, isOverGuideline } = this.props;
-    let { airPollMeasurement } = this.props;
+    const { airPollDescription, airPollMeasurement, classes } = this.props;
+    let gaugeTextLine1;
+    let gaugeTextLine2;
+    let value = airPollMeasurement;
 
-    // Texts on top of the gauge
-    let gaugeText = 'AT THE';
-    let gaugeBigText = 'SAFE LEVEL';
+    if (airPollMeasurement === '--') {
+      gaugeTextLine1 = 'Measurements';
+      gaugeTextLine2 = 'not recorded';
 
-    // We need global isNaN since the logic below depends on coercion
-    // eslint-disable-next-line no-restricted-globals
-    if (isNaN(airPollMeasurement)) {
-      gaugeText = 'Measurements not';
-      gaugeBigText = 'Recorded';
-      airPollMeasurement = 0;
-    } else if (isOverGuideline) {
-      gaugeText = `${percentageRelative.toFixed(1)}% OVER THE`;
+      // Hide the gauge when we don't have measurements
+      value = -75.0;
     } else {
-      gaugeText = `${percentageRelative.toFixed(1)}% BELOW THE`;
+      const lines = airPollDescription.split(' safe ');
+      [gaugeTextLine1] = lines;
+      gaugeTextLine2 = `safe level`;
     }
 
     return (
@@ -161,7 +160,7 @@ class RadialGauge extends Component {
           className={classes.gaugeDial}
           justify="center"
           alignItems="center"
-          style={{ paddingTop: '0.45rem', height: 'auto' }}
+          style={{ paddingTop: '0.35rem', height: 'auto' }}
           ref={this.nodeRef}
         >
           <Grid item md={12} container alignItems="center" direction="column">
@@ -171,7 +170,7 @@ class RadialGauge extends Component {
                 ringWidth={60}
                 minValue={0}
                 maxValue={150}
-                value={parseFloat(airPollMeasurement.toFixed(1))}
+                value={value}
                 segments={8}
                 textColor="#fff"
                 startColor="#5fbf82"
@@ -216,24 +215,26 @@ class RadialGauge extends Component {
                   textAnchor="middle"
                   className={classes.gaugeBigText}
                 >
-                  {gaugeText}
+                  {gaugeTextLine1}
                 </text>
                 <text
                   transform="translate(0,40)"
                   textAnchor="middle"
                   className={classes.gaugeBigText}
                 >
-                  {gaugeBigText}
+                  {gaugeTextLine2}
                 </text>
-                <text
-                  transform="translate(0,70)"
-                  textAnchor="middle"
-                  className={classes.gaugeSmallText}
-                >
-                  PM
-                  <tspan baselineShift="sub">2.5 </tspan>
-                  ANNUAL EXPOSURE
-                </text>
+                {airPollMeasurement !== '--' && (
+                  <text
+                    transform="translate(0,70)"
+                    textAnchor="middle"
+                    className={classes.gaugeSmallText}
+                  >
+                    PM
+                    <tspan baselineShift="sub">2.5 </tspan>
+                    24 HOURS EXPOSURE
+                  </text>
+                )}
               </g>
             </svg>
           </Grid>
@@ -273,9 +274,8 @@ class RadialGauge extends Component {
 
 RadialGauge.propTypes = {
   classes: PropTypes.object.isRequired,
-  airPollMeasurement: PropTypes.number.isRequired,
-  percentageRelative: PropTypes.number.isRequired,
-  isOverGuideline: PropTypes.bool.isRequired
+  airPollMeasurement: PropTypes.string.isRequired,
+  airPollDescription: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(RadialGauge);

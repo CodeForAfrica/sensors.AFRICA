@@ -10,21 +10,21 @@ import logowhite from '../assets/images/logos/logowhite.png';
 const styles = theme => ({
   defaultBadge: {
     zIndex: 1301,
-    top: 82,
-    right: 15,
+    top: '5.8rem',
+    right: '1.65rem',
     color: theme.palette.primary.dark,
     fontSize: theme.typography.caption.fontSize
   },
   defaultActiveBadge: {
     zIndex: 1301,
-    top: 82,
-    right: 15,
+    top: '5.8rem',
+    right: '1.65rem',
     fontSize: theme.typography.caption.fontSize
   },
   landingBadge: {
     zIndex: 1301,
-    top: 104,
-    right: 15,
+    top: '7.175rem',
+    right: '1.65rem',
     fontSize: theme.typography.caption.fontSize
   },
   logo: {

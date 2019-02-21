@@ -65,17 +65,26 @@ NoOptionsMessage.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
-  innerProps: PropTypes.shape({}).isRequired,
-  selectProps: PropTypes.shape({}).isRequired
+  ]),
+  innerProps: PropTypes.shape({}),
+  selectProps: PropTypes.shape({})
+};
+NoOptionsMessage.defaultProps = {
+  children: null,
+  innerProps: null,
+  selectProps: null
 };
 
 function inputComponent({ inputRef, ...props }) {
   return <div ref={inputRef} {...props} />;
 }
 inputComponent.propTypes = {
-  inputRef: PropTypes.node.isRequired,
-  props: PropTypes.shape({}).isRequired
+  inputRef: PropTypes.shape(),
+  props: PropTypes.shape({})
+};
+inputComponent.defaultProps = {
+  inputRef: null,
+  props: null
 };
 
 function Control({ children, innerProps, innerRef, selectProps }) {
@@ -98,10 +107,16 @@ Control.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
-  innerProps: PropTypes.shape({}).isRequired,
-  innerRef: PropTypes.node.isRequired,
-  selectProps: PropTypes.shape({}).isRequired
+  ]),
+  innerProps: PropTypes.shape({}),
+  innerRef: PropTypes.node,
+  selectProps: PropTypes.shape({})
+};
+Control.defaultProps = {
+  children: null,
+  innerProps: null,
+  innerRef: null,
+  selectProps: null
 };
 
 function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
@@ -124,11 +139,18 @@ Option.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
-  innerProps: PropTypes.shape({}).isRequired,
-  innerRef: PropTypes.node.isRequired,
-  isFocused: PropTypes.bool.isRequired,
-  isSelected: PropTypes.bool.isRequired
+  ]),
+  innerProps: PropTypes.shape({}),
+  innerRef: PropTypes.node,
+  isFocused: PropTypes.bool,
+  isSelected: PropTypes.bool
+};
+Option.defaultProps = {
+  children: null,
+  innerProps: null,
+  innerRef: null,
+  isFocused: false,
+  isSelected: false
 };
 
 function Placeholder({ children, innerProps, selectProps }) {
@@ -146,9 +168,14 @@ Placeholder.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
-  innerProps: PropTypes.shape({}).isRequired,
-  selectProps: PropTypes.shape({}).isRequired
+  ]),
+  innerProps: PropTypes.shape({}),
+  selectProps: PropTypes.shape({})
+};
+Placeholder.defaultProps = {
+  children: null,
+  innerProps: null,
+  selectProps: null
 };
 
 function SingleValue({ children, innerProps, selectProps }) {
@@ -162,21 +189,29 @@ SingleValue.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
-  innerProps: PropTypes.shape({}).isRequired,
-  selectProps: PropTypes.shape({}).isRequired
+  ]),
+  innerProps: PropTypes.shape({}),
+  selectProps: PropTypes.shape({})
+};
+SingleValue.defaultProps = {
+  children: null,
+  innerProps: null,
+  selectProps: null
 };
 
 function ValueContainer({ children, selectProps }) {
   return <div className={selectProps.classes.valueContainer}>{children}</div>;
 }
-
 ValueContainer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
-  selectProps: PropTypes.shape({}).isRequired
+  ]),
+  selectProps: PropTypes.shape({})
+};
+ValueContainer.defaultProps = {
+  children: null,
+  selectProps: null
 };
 
 function Menu({ children, innerProps, selectProps }) {
@@ -190,9 +225,14 @@ Menu.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
-  innerProps: PropTypes.shape({}).isRequired,
-  selectProps: PropTypes.shape({}).isRequired
+  ]),
+  innerProps: PropTypes.shape({}),
+  selectProps: PropTypes.shape({})
+};
+Menu.defaultProps = {
+  children: null,
+  innerProps: null,
+  selectProps: null
 };
 
 const components = {

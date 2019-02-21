@@ -23,7 +23,7 @@ const styles = theme => ({
   }
 });
 
-function AirCityHeaderContent({ airPol, city, classes }) {
+function AirCityHeaderContent({ airPol, airPolDescription, city, classes }) {
   return (
     <Grid
       container
@@ -52,7 +52,10 @@ function AirCityHeaderContent({ airPol, city, classes }) {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <CityGauge airPollMeasurement={airPol} />
+        <CityGauge
+          airPollMeasurement={airPol}
+          airPollDescription={airPolDescription}
+        />
       </Grid>
     </Grid>
   );
@@ -61,7 +64,8 @@ function AirCityHeaderContent({ airPol, city, classes }) {
 AirCityHeaderContent.propTypes = {
   city: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  airPol: PropTypes.number.isRequired
+  airPol: PropTypes.string.isRequired,
+  airPolDescription: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(AirCityHeaderContent);
