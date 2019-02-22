@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { VictoryPie, VictoryLabel } from 'victory';
+
+import { VictoryPie, VictoryLabel, VictoryPolarAxis } from 'victory';
 
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
@@ -51,6 +52,7 @@ const styles = theme => ({
     height: '300px',
     position: 'absolute'
   },
+
   gaugeArc: {
     [theme.breakpoints.down('sm')]: {
       width: '400px',
@@ -63,6 +65,9 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
+  },
+  pointer: {
+    fill: 'rgb(20, 74, 61)'
   },
   gaugeCircle: {
     width: '300px',
@@ -188,16 +193,29 @@ class RadialGauge extends Component {
                   startAngle={-90}
                   endAngle={90}
                   standalone={false}
-                  padAngle={0.3}
+                  padAngle={0.4}
                   width={700}
                   height={700}
                   innerRadius={230}
-                  labelRadius={205}
+                  labelRadius={210}
                   value={parseFloat(airPollMeasurement.toFixed(1))}
                   needleColor="#144a3d"
                   textAnchor="start"
-                  labelComponent={<VictoryLabel verticalAnchor="start" />}
-                  style={{ labels: { fill: 'white' } }}
+                  labelComponent={
+                    <VictoryLabel
+                      transform="translate(-26,38) rotate(-5)"
+                      verticalAnchor="middle"
+                      textAnchor="end"
+                    />
+                  }
+                  style={{
+                    labels: {
+                      display: 'inline-block',
+                      fill: 'white'
+                    }
+                  }}
+                  minDomain={{ x: 0 }}
+                  maxDomain={{ x: 150 }}
                   data={[
                     { x: 0, y: 150 },
                     { x: 5, y: 150 },
@@ -217,6 +235,12 @@ class RadialGauge extends Component {
                     { x: 150, y: 150 }
                   ]}
                 />
+
+                <VictoryPolarAxis
+                  startAngle={0}
+                  endAngle={180}
+                  tickValues={[0, 45, 90, 135, 180]}
+                />
               </g>
             </svg>
 
@@ -225,13 +249,19 @@ class RadialGauge extends Component {
                 <path
                   d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
                   fill="#144a3d"
-                  transform="rotate(-58.75)"
+                  transform="rotate(-28.75)"
                   strokeLinecap="butt"
                   strokeWidth="3"
                   stroke="#fefffd"
                   style={{ cursor: 'grab' }}
                 />
               </g>
+
+              {/*Pointer */}
+              <g className={classes.pointer} transform="translate(450,300)">
+                <path d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0" />
+              </g>
+
               <g transform="translate(80,245)" fill="white">
                 <text
                   fill="white"
@@ -242,6 +272,7 @@ class RadialGauge extends Component {
                 </text>
               </g>
             </svg>
+
             <svg className={classes.gaugeCircle}>
               <circle
                 r="150"
