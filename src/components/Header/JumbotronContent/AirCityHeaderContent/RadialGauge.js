@@ -123,37 +123,39 @@ class RadialGauge extends Component {
 
   componentDidMount() {
     const { airPollMeasurement } = this.props;
-    const node = this.nodeRef.current;
-    if (node instanceof HTMLElement) {
-      const gaugeLabels = node.querySelectorAll('.label > text');
-      let deg = -90;
-      for (let i = 0; i < gaugeLabels.length; i += 1) {
-        const valueLabel = gaugeLabels[i];
-        if (valueLabel.hasAttribute('transform')) {
-          const newtrans = `rotate(${deg}) translate(0,-200)`;
-          deg += 22.5;
-          valueLabel.setAttribute('transform', newtrans);
-          valueLabel.setAttribute('style', 'fill: white');
+    {
+      const node = this.nodeRef.current;
+      if (node instanceof HTMLElement) {
+        const gaugeLabels = node.querySelectorAll('.label > text');
+        let deg = -90;
+        for (let i = 0; i < gaugeLabels.length; i += 1) {
+          const valueLabel = gaugeLabels[i];
+          if (valueLabel.hasAttribute('transform')) {
+            const newtrans = `rotate(${deg}) translate(0,-200)`;
+            deg += 22.5;
+            valueLabel.setAttribute('transform', newtrans);
+            valueLabel.setAttribute('style', 'fill: white');
+          }
         }
-      }
 
-      // Set value outside the arc
-      const currentVal = node.querySelector('.current-value');
-      let transform = 0;
-      if (currentVal) {
-        transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
-        currentVal.setAttribute(
-          'transform',
-          `rotate(${transform}) translate(0,-310)`
-        );
-      }
+        // Set value outside the arc
+        const currentVal = node.querySelector('.current-value');
+        let transform = 0;
+        if (currentVal) {
+          transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
+          currentVal.setAttribute(
+            'transform',
+            `rotate(${transform}) translate(0,-310)`
+          );
+        }
 
-      // Customise pointer
-      const pointer = node.querySelector('.pointer > path');
-      pointer.setAttribute('stroke-width', '10');
-      pointer.setAttribute('stroke', '#144a3d');
-      if (pointer.hasAttribute('transform')) {
-        pointer.setAttribute('transform', `rotate(${transform})`);
+        // Customise pointer
+        const pointer = node.querySelector('.pointer > path');
+        pointer.setAttribute('stroke-width', '10');
+        pointer.setAttribute('stroke', '#144a3d');
+        if (pointer.hasAttribute('transform')) {
+          pointer.setAttribute('transform', `rotate(${transform})`);
+        }
       }
     }
   }
@@ -198,7 +200,7 @@ class RadialGauge extends Component {
                   height={700}
                   innerRadius={230}
                   labelRadius={210}
-                  value={parseFloat(airPollMeasurement.toFixed(1))}
+                  //value={parseFloat(airPollMeasurement.toFixed(1))}
                   needleColor="#144a3d"
                   textAnchor="start"
                   labelComponent={
@@ -215,7 +217,7 @@ class RadialGauge extends Component {
                     }
                   }}
                   minDomain={{ x: 0 }}
-                  maxDomain={{ x: 150 }}
+                  maxDomain={{ x: 160 }}
                   data={[
                     { x: 0, y: 150 },
                     { x: 5, y: 150 },
@@ -249,7 +251,7 @@ class RadialGauge extends Component {
                 <path
                   d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
                   fill="#144a3d"
-                  transform="rotate(-28.75)"
+                  transform="rotate(-34.75)"
                   strokeLinecap="butt"
                   strokeWidth="3"
                   stroke="#fefffd"
