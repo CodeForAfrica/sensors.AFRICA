@@ -2,7 +2,7 @@
   "name": "sensors.AFRICA",
   "version": "0.0.4",
   "private": true,
-  "homepage": "https://alpha.sensors.africa/",
+  "homepage": "https://sensors.africa/",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
@@ -11,60 +11,67 @@
     "@fortawesome/react-fontawesome": "^0.1.0-11",
     "@material-ui/core": "^3.0.0",
     "@material-ui/icons": "^3.0.0",
-    "@storybook/cli": "^3.4.10",
-    "axios": "^0.18.0",
     "classnames": "^2.2.6",
-    "dokku-deploy": "^1.0.3",
-    "getstorybook": "^1.7.0",
-    "gh-pages": "^2.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
-    "react-autosuggest": "^9.4.2",
     "react-d3-speedometer": "^0.4.1",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-router-hash-link": "^1.2.1",
     "react-scripts": "^2.0.5",
     "react-select": "^2.0.0",
     "react-share": "^2.3.1",
     "reactjs-percentage-circle": "^1.0.0",
-    "victory": "^31.2.0"
+    "victory": "^31.2.0",
+    "tabletop": "^1.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint": "node_modules/eslint/bin/eslint.js --fix src",
+    "prebuild": "yarn lint",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "predeploy": "npm run build",
+    "preserve": "yarn build",
+    "serve": "node_modules/serve/bin/serve.js build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "eject": "react-scripts eject"
   },
   "main": "index.js",
   "repository": "https://github.com/CodeForAfricaLabs/sensors.AFRICA.git",
   "author": "Code for Africa",
   "license": "GNU GPLv3",
   "devDependencies": {
-    "@storybook/addon-actions": "^3.4.10",
-    "@storybook/addon-links": "^3.4.10",
-    "@storybook/addons": "^3.4.10",
-    "@storybook/react": "^3.4.10",
-    "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.14.3"
+    "gh-pages": "^2.0.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.4",
+    "prettier": "^1.14.3",
+    "serve": "^10.1.2"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,json,scss,md}": [
+      "yarn lint",
+      "git add"
+    ]
+  }
 }

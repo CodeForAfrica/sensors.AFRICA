@@ -50,7 +50,8 @@ class LineGraph extends React.Component {
   }
 
   render() {
-    const { width, classes } = this.props;
+    const { classes } = this.props;
+    const { chartWidth } = this.state;
 
     return (
       <Grid
@@ -61,14 +62,14 @@ class LineGraph extends React.Component {
         className={classes.root}
       >
         <svg
-          viewBox={'0 0' + ' ' + this.state.chartWidth + ' ' + '400'}
+          viewBox={`0 0 ${chartWidth} 400`}
           preserveAspectRatio="none"
           width="100%"
         >
           <VictoryChart
             domainPadding={{ x: 20 }}
             standalone={false}
-            width={this.state.chartWidth}
+            width={chartWidth}
             height={350}
             theme={VictoryTheme.material}
           >

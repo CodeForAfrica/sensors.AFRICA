@@ -21,7 +21,7 @@ const styles = theme => ({
     padding: theme.spacing.unit / 2,
     '&:hover': {
       transform: 'scale(1.3)',
-      color: '#f3f33'
+      color: '#f3f3f3'
     }
   },
 
@@ -56,7 +56,7 @@ function SocialMedia({ color, classes }) {
       </Grid>
       <Grid item>
         <a
-          href="https://www.facebook.com/sensorsAFRICA/"
+          href="https://www.facebook.com/CodeForAfrica/"
           className={classes.links}
           target="_blank"
           rel="noopener noreferrer"

@@ -57,45 +57,78 @@ const styles = theme => ({
   }
 });
 
-function renderMaximum(readingsObject) {
-  if (readingsObject) {
-    const readings = Object.values(readingsObject);
-    if (readings[0]) {
-      const cityMaximum = readings.reduce(
-        (min, p) => (p.average > min ? p.average : min),
-        readings[0].average
-      );
-      return cityMaximum.toFixed(1);
-    }
+function DataValue({ children, classes, value }) {
+  const valueComponent = (
+    <Typography variant="h3" className={classes.display2}>
+      {value}
+    </Typography>
+  );
+  if (value === '--') {
+    return <React.Fragment>{valueComponent}</React.Fragment>;
   }
-  return 0;
+  return (
+    <React.Fragment>
+      {valueComponent}
+      {children}
+    </React.Fragment>
+  );
 }
+DataValue.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+    PropTypes.string
+  ]).isRequired,
+  classes: PropTypes.object.isRequired,
+  value: PropTypes.string
+};
+DataValue.defaultProps = {
+  value: '--'
+};
 
-function renderMinimum(readingsObject) {
-  if (readingsObject) {
-    const readings = Object.values(readingsObject);
-    if (readings[0]) {
-      const cityMinimum = readings.reduce(
-        (min, p) => (p.average < min ? p.average : min),
-        readings[0].average
-      );
-      return cityMinimum.toFixed(1);
-    }
-  }
-  return 0;
+function PMValue({ classes, value }) {
+  return (
+    <DataValue value={value} classes={classes}>
+      <small className={classes.small}>
+        PM
+        <sub>2.5</sub>
+      </small>
+    </DataValue>
+  );
 }
+PMValue.propTypes = {
+  classes: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired
+};
 
-function renderAverage(readingsObject) {
-  if (readingsObject) {
-    const readings = Object.values(readingsObject);
-    if (readings[0]) {
-      const cityAverage =
-        readings.reduce((a, b) => a + b.average, 0) / readings.length;
-      return cityAverage.toFixed(1);
-    }
-  }
-  return 0;
+function HumidityValue({ classes, value }) {
+  return (
+    <DataValue value={value} classes={classes}>
+      <small className={classes.small}>
+        g/m
+        <sup>3</sup>
+      </small>
+    </DataValue>
+  );
 }
+HumidityValue.propTypes = {
+  classes: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired
+};
+
+function TemperatureValue({ classes, value }) {
+  return (
+    <DataValue value={value} classes={classes}>
+      <small className={classes.small}>
+        <sup>o</sup>C
+      </small>
+    </DataValue>
+  );
+}
+TemperatureValue.propTypes = {
+  classes: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired
+};
 
 function DataTable({
   classes,
@@ -135,13 +168,7 @@ function DataTable({
                     justify="center"
                     className={classes.data}
                   >
-                    <Typography variant="h3" className={classes.display2}>
-                      {renderMaximum(cityP2Stats)}
-                    </Typography>
-                    <small className={classes.small}>
-                      PM
-                      <sub>2.5</sub>
-                    </small>
+                    <PMValue value={cityP2Stats.maximum} classes={classes} />
                   </Grid>
                 </Grid>
               </TableCell>
@@ -162,13 +189,10 @@ function DataTable({
                     </Typography>
                   </Grid>
                   <Grid item container direction="row" justify="center">
-                    <Typography variant="h3" className={classes.display2}>
-                      {renderMaximum(cityHumidityStats)}
-                    </Typography>
-                    <small className={classes.small}>
-                      g/m
-                      <sup>3</sup>
-                    </small>
+                    <HumidityValue
+                      value={cityHumidityStats.maximum}
+                      classes={classes}
+                    />
                   </Grid>
                 </Grid>
               </TableCell>
@@ -189,12 +213,10 @@ function DataTable({
                     </Typography>
                   </Grid>
                   <Grid item container direction="row" justify="center">
-                    <Typography variant="h3" className={classes.display2}>
-                      {renderMaximum(cityTemperatureStats)}
-                    </Typography>
-                    <small className={classes.small}>
-                      <sup>o</sup>C
-                    </small>
+                    <TemperatureValue
+                      value={cityTemperatureStats.maximum}
+                      classes={classes}
+                    />
                   </Grid>
                 </Grid>
               </TableCell>
@@ -220,13 +242,7 @@ function DataTable({
                     </Typography>
                   </Grid>
                   <Grid item container direction="row" justify="center">
-                    <Typography variant="h3" className={classes.display2}>
-                      {renderAverage(cityP2Stats)}
-                    </Typography>
-                    <small className={classes.small}>
-                      PM
-                      <sub>2.5</sub>
-                    </small>
+                    <PMValue value={cityP2Stats.average} classes={classes} />
                   </Grid>
                 </Grid>
               </TableCell>
@@ -247,13 +263,10 @@ function DataTable({
                     </Typography>
                   </Grid>
                   <Grid item container direction="row" justify="center">
-                    <Typography variant="h3" className={classes.display2}>
-                      {renderAverage(cityHumidityStats)}
-                    </Typography>
-                    <small className={classes.small}>
-                      g/m
-                      <sup>3</sup>
-                    </small>
+                    <HumidityValue
+                      value={cityHumidityStats.average}
+                      classes={classes}
+                    />
                   </Grid>
                 </Grid>
               </TableCell>
@@ -274,12 +287,10 @@ function DataTable({
                     </Typography>
                   </Grid>
                   <Grid item container direction="row" justify="center">
-                    <Typography variant="h3" className={classes.display2}>
-                      {renderAverage(cityTemperatureStats)}
-                    </Typography>
-                    <small className={classes.small}>
-                      <sup>o</sup>C
-                    </small>
+                    <TemperatureValue
+                      value={cityTemperatureStats.average}
+                      classes={classes}
+                    />
                   </Grid>
                 </Grid>
               </TableCell>
@@ -305,13 +316,7 @@ function DataTable({
                     </Typography>
                   </Grid>
                   <Grid item container direction="row" justify="center">
-                    <Typography variant="h3" className={classes.display2}>
-                      {renderMinimum(cityP2Stats)}
-                    </Typography>
-                    <small className={classes.small}>
-                      PM
-                      <sub>2.5</sub>
-                    </small>
+                    <PMValue value={cityP2Stats.minimum} classes={classes} />
                   </Grid>
                 </Grid>
               </TableCell>
@@ -332,13 +337,10 @@ function DataTable({
                     </Typography>
                   </Grid>
                   <Grid item container direction="row" justify="center">
-                    <Typography variant="h3" className={classes.display2}>
-                      {renderMinimum(cityHumidityStats)}
-                    </Typography>
-                    <small className={classes.small}>
-                      g/m
-                      <sup>3</sup>
-                    </small>
+                    <HumidityValue
+                      value={cityHumidityStats.minimum}
+                      classes={classes}
+                    />
                   </Grid>
                 </Grid>
               </TableCell>
@@ -359,12 +361,10 @@ function DataTable({
                     </Typography>
                   </Grid>
                   <Grid item container direction="row" justify="center">
-                    <Typography variant="h3" className={classes.display2}>
-                      {renderMinimum(cityTemperatureStats)}
-                    </Typography>
-                    <small className={classes.small}>
-                      <sup>o</sup>C
-                    </small>
+                    <TemperatureValue
+                      value={cityTemperatureStats.minimum}
+                      classes={classes}
+                    />
                   </Grid>
                 </Grid>
               </TableCell>
