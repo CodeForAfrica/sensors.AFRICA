@@ -5,8 +5,6 @@ import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import DataTable from './DataTable';
-import StatsSummary from './StatsSummary';
-import LineGraph from '../LineGraph';
 
 const styles = theme => ({
   root: {
@@ -58,8 +56,7 @@ function SensorsQualityStats({
       justify="center"
       alignItems="center"
     >
-      <StatsSummary />
-      <Grid item lg={8} xl={8}>
+      <Grid item>
         <div className={classes.qualityStats}>
           <DataTable
             cityTemperatureStats={cityTemperatureStats}
@@ -68,7 +65,6 @@ function SensorsQualityStats({
           />
         </div>
       </Grid>
-      <LineGraph />
     </Grid>
   );
 }

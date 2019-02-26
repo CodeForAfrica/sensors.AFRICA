@@ -73,7 +73,7 @@ const styles = theme => ({
   },
   gaugeBigText: {
     fontFamily: theme.typography.h6.fontFamily,
-    fontSize: theme.typography.h6.fontSize,
+    fontSize: '1.35rem',
     textTransform: 'uppercase',
     fontWeight: 700,
     fill: '#164a3e'
@@ -183,14 +183,14 @@ class RadialGauge extends Component {
                 <path
                   d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
                   fill="#144a3d"
-                  transform="rotate(-78.75)"
+                  transform="rotate(-61.00)"
                   strokeLinecap="round"
                   strokeWidth="3"
                   stroke="#fefffd"
                   style={{ cursor: 'grab' }}
                 />
               </g>
-              <g transform="translate(80,245)" fill="white">
+              <g transform="translate(100,165)" fill="white">
                 <text
                   fill="white"
                   textAnchor="middle"
@@ -232,7 +232,7 @@ class RadialGauge extends Component {
                   >
                     PM
                     <tspan baselineShift="sub">2.5 </tspan>
-                    24 HOURS EXPOSURE
+                    24 HOURS EXPOSURE*
                   </text>
                 )}
               </g>
@@ -248,7 +248,7 @@ class RadialGauge extends Component {
           <Grid item>
             <p className={classes.gaugeDescGuideline}>
               <span className={classes.gaugeBoxWhoTitle}>
-                WHO Guideline (10)
+                WHO Guideline (25)
               </span>
               Lowest level at which premature mortality increases in response to
               long-term exposure

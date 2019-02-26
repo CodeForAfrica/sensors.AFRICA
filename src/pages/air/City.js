@@ -15,6 +15,7 @@ import CallToAction from '../../components/City/CallToAction';
 import PollutionStats from '../../components/City/PollutionStats';
 import QualityStats from '../../components/City/SensorsQualityStats';
 import HostSensorsButton from '../../components/City/HostSensors/HostSensorButtons';
+import QualityStatsGraph from '../../components/City/QualityStatsGraph';
 
 import '../../assets/css/App.css';
 
@@ -71,7 +72,13 @@ const CITIES_POLLUTION_STATS = {
     percent: '130% more'
   }
 };
-const SENSOR_READINGS_URL = 'https://api.sensors.africa/v2/';
+const SENSOR_READINGS_URL = 'https://api.sensors.africa/v2/data/air/';
+const DATE_FMT_OPTIONS = {
+  timeZone: 'UTC',
+  weekday: 'short',
+  day: 'numeric',
+  month: 'short'
+};
 const AQ_COLOR = [
   '#5fbf82',
   '#34b86f',
@@ -125,6 +132,46 @@ const styles = () => ({
 });
 
 const CITY_PATHNAME = '/air/city';
+
+const formatCurrentP2Stats = (data, isPm2 = false) => {
+  const formatted = {};
+  ['average', 'maximum', 'minimum'].forEach(stat => {
+    const parsed = Number.parseFloat(data[stat]);
+    if (isPm2 && stat === 'average') {
+      formatted.averageDescription = `measurements not recorded`;
+      if (!Number.isNaN(parsed)) {
+        let difference = 25.0 - parsed;
+        let position = 'below';
+        if (parsed > 25.0) {
+          difference = parsed - 25.0;
+          position = 'above';
+        }
+        const percentage = ((difference / 25.0) * 100).toFixed(2);
+        formatted.averageDescription = `${percentage}% ${position} the safe level`;
+      }
+    }
+    formatted[stat] = Number.isNaN(parsed) ? '--' : parsed.toFixed(2);
+  });
+  return formatted;
+};
+
+const formatWeeklyP2Stats = data => {
+  const stats = [];
+  // Start with the oldest value
+  for (let i = data.length - 1; i >= 0; i -= 1) {
+    let averagePM = Number.parseFloat(data[i].average);
+    if (Number.isNaN(averagePM)) {
+      averagePM = 0.0;
+    }
+    const date = new Date(data[i].start_datetime).toLocaleDateString(
+      'en-US',
+      DATE_FMT_OPTIONS
+    );
+    stats.push({ date, averagePM });
+  }
+  return stats;
+};
+
 class City extends React.Component {
   constructor() {
     super();
@@ -132,12 +179,18 @@ class City extends React.Component {
       city: DEFAULT_CITY,
       cityP2Stats: {
         average: '--',
-        averageDescription: 'measurements not recorded'
+        averageDescription: ''
       },
       isLoading: false
     };
 
-    this.fetchAirQuality = this.fetchAirQuality.bind(this);
+    this.fetchAirQualityStats = this.fetchAirQualityStats.bind(this);
+    this.fetchCurrentAirQualityStats = this.fetchCurrentAirQualityStats.bind(
+      this
+    );
+    this.fetchWeeklyAirQualityStats = this.fetchWeeklyAirQualityStats.bind(
+      this
+    );
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -148,31 +201,15 @@ class City extends React.Component {
       ({ city } = match.params);
     }
 
-    this.fetchAirQuality(city);
+    this.fetchAirQualityStats(city);
   }
 
-  fetchAirQuality(city) {
-    const processStats = (data, isPm2 = false) => {
-      const formatted = {};
-      ['average', 'maximum', 'minimum'].forEach(stat => {
-        const parsed = Number.parseFloat(data[stat]);
-        if (isPm2 && stat === 'average') {
-          formatted.averageDescription = `measurements not recorded`;
-          if (!Number.isNaN(parsed)) {
-            let difference = 10.0 - parsed;
-            let position = 'below';
-            if (parsed > 10.0) {
-              difference = parsed - 10.0;
-              position = 'above';
-            }
-            const percentage = ((difference / 10) * 100).toFixed(2);
-            formatted.averageDescription = `${percentage} ${position} the safe level`;
-          }
-        }
-        formatted[stat] = Number.isNaN(parsed) ? '--' : parsed.toFixed(2);
-      });
-      return formatted;
-    };
+  fetchAirQualityStats(city) {
+    this.fetchCurrentAirQualityStats(city);
+    this.fetchWeeklyAirQualityStats(city);
+  }
+
+  fetchCurrentAirQualityStats(city) {
     const processJson = json => {
       let cityP2Stats = {};
       let cityTemperatureStats = {};
@@ -182,26 +219,66 @@ class City extends React.Component {
         cityTemperatureStats = json.results[0].temperature || {};
         cityHumidityStats = json.results[0].humidity || {};
       }
-      cityP2Stats = processStats(cityP2Stats, true);
-      cityTemperatureStats = processStats(cityTemperatureStats);
-      cityHumidityStats = processStats(cityHumidityStats);
-      this.setState({
+      cityP2Stats = formatCurrentP2Stats(cityP2Stats, true);
+      cityTemperatureStats = formatCurrentP2Stats(cityTemperatureStats);
+      cityHumidityStats = formatCurrentP2Stats(cityHumidityStats);
+      this.setState(state => ({
         city,
         cityP2Stats,
+        cityP2WeeklyStats: state.cityP2WeeklyStats,
         cityTemperatureStats,
         cityHumidityStats,
         isLoading: false
-      });
+      }));
     };
 
     this.setState(state => ({
       city: state.city,
       isLoading: true,
+      cityP2Stats: {
+        average: '--',
+        averageDescription: 'loading'
+      },
+      cityP2WeeklyStats: state.cityP2WeeklyStats,
+      cityTemperatureStats: {},
+      cityHumidityStats: {}
+    }));
+    fetch(`${SENSOR_READINGS_URL}?city=${city}`)
+      .then(data => data.json())
+      .then(json => processJson(json));
+  }
+
+  fetchWeeklyAirQualityStats(city) {
+    const processJson = json => {
+      let cityP2WeeklyStats = [];
+      if (json.count === 1) {
+        cityP2WeeklyStats = formatWeeklyP2Stats(json.results[0].P2 || []);
+      }
+      this.setState(state => ({
+        city,
+        cityP2Stats: state.cityP2Stats,
+        cityP2WeeklyStats,
+        cityTemperatureStats: state.cityTemperatureStats,
+        cityHumidityStats: state.cityHumidityStats,
+        isLoading: false
+      }));
+    };
+
+    this.setState(state => ({
+      city: state.city,
+      isLoading: true,
+      cityP2WeeklyStats: state.cityP2WeeklyStats,
       cityP2Stats: state.cityP2Stats,
       cityTemperatureStats: state.cityTemperatureStats,
       cityHumidityStats: state.cityHumidityStats
     }));
-    fetch(`${SENSOR_READINGS_URL}data/air/?city=${city}`)
+    const today = Date.now();
+
+    // Substring date without time e.g. 2019-02-26
+    const from = new Date(today - 7 * 24 * 3600 * 1000)
+      .toISOString()
+      .substr(0, 10);
+    fetch(`${SENSOR_READINGS_URL}?city=${city}&from=${from}&value_type=P2`)
       .then(data => data.json())
       .then(json => processJson(json));
   }
@@ -214,7 +291,7 @@ class City extends React.Component {
 
       const { history } = this.props;
       history.push(path);
-      this.fetchAirQuality(searchedCity);
+      this.fetchAirQualityStats(searchedCity);
     }
   }
 
@@ -224,6 +301,7 @@ class City extends React.Component {
       city,
       isLoading,
       cityP2Stats = {},
+      cityP2WeeklyStats = [],
       cityHumidityStats = {},
       cityTemperatureStats = {}
     } = this.state;
@@ -273,6 +351,11 @@ class City extends React.Component {
             cityP2Stats={cityP2Stats}
             cityTemperatureStats={cityTemperatureStats}
           />
+        </Grid>
+        <Grid item xs={12}>
+          {cityP2WeeklyStats.length && (
+            <QualityStatsGraph data={cityP2WeeklyStats} />
+          )}
         </Grid>
         <Grid item xs={12}>
           <CallToAction />
