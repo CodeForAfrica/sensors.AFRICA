@@ -1,6 +1,6 @@
 {
   "name": "sensors.AFRICA",
-  "version": "0.0.4",
+  "version": "0.3.0",
   "private": true,
   "homepage": "https://sensors.africa/",
   "dependencies": {
@@ -24,6 +24,7 @@
     "react-select": "^2.0.0",
     "react-share": "^2.3.1",
     "reactjs-percentage-circle": "^1.0.0",
+    "victory": "^31.2.0",
     "tabletop": "^1.5.2"
   },
   "scripts": {

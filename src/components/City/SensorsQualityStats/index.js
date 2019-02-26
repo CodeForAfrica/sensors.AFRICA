@@ -54,7 +54,7 @@ function SensorsQualityStats({
       container
       className={classes.root}
       justify="center"
-      alignItems="flex-start"
+      alignItems="center"
     >
       <Grid item>
         <div className={classes.qualityStats}>
