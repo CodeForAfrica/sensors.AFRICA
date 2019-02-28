@@ -243,27 +243,37 @@ class RadialGauge extends Component {
             </svg>
 
             <svg className={classes.gaugeNeedleItem}>
-              <g transform="translate(450,300)">
-                <path
-                  d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
-                  fill="#144a3d"
-                  transform="rotate(-34.75)"
-                  strokeLinecap="butt"
-                  strokeWidth="3"
-                  stroke="#fefffd"
-                  style={{ cursor: 'grab' }}
-                />
-              </g>
+              <svg viewBox="0 0 600 600">
+                <g transform="translate(-90,90)">
+                  <line
+                    x1="50"
+                    y1="10"
+                    x2="160"
+                    y2="180"
+                    fill="#144a3d"
+                    stroke="white"
+                    strokeWidth="10"
+                  />
+                  <line
+                    x1="50"
+                    y1="10"
+                    x2="160"
+                    y2="180"
+                    fill="#144a3d"
+                    stroke="#144a3d"
+                    strokeWidth="5"
+                  />
+                </g>
+              </svg>
 
               <NeedlePointer />
-
               <g transform="translate(195,65)" fill="white">
                 <text
                   fill="white"
                   textAnchor="middle"
                   className={classes.gaugeWhoGuidelineText}
                 >
-                  WHO GUIDELINE
+                  WHO
                 </text>
               </g>
             </svg>
