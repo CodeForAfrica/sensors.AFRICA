@@ -257,7 +257,7 @@ class RadialGauge extends Component {
 
               <NeedlePointer />
 
-              <g transform="translate(200,65)" fill="white">
+              <g transform="translate(195,65)" fill="white">
                 <text
                   fill="white"
                   textAnchor="middle"
