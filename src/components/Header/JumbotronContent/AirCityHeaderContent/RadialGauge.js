@@ -28,7 +28,7 @@ const styles = theme => ({
     fontStyle: 'italic',
     textAlign: 'center',
     width: '250px',
-    marginLeft: '20%',
+    marginLeft: '10%',
     padding: '40px 15px',
     marginTop: '-30%',
     border: '1px white solid'
@@ -253,6 +253,7 @@ class RadialGauge extends Component {
                     fill="#144a3d"
                     stroke="white"
                     strokeWidth="10"
+                    strokeLinecap="round"
                   />
                   <line
                     x1="50"
@@ -262,18 +263,19 @@ class RadialGauge extends Component {
                     fill="#144a3d"
                     stroke="#144a3d"
                     strokeWidth="5"
+                    strokeLinecap="round"
                   />
                 </g>
               </svg>
 
               <NeedlePointer />
-              <g transform="translate(195,65)" fill="white">
+              <g transform="translate(185,60)" fill="white">
                 <text
                   fill="white"
                   textAnchor="middle"
                   className={classes.gaugeWhoGuidelineText}
                 >
-                  WHO
+                  WHO GUIDELINE
                 </text>
               </g>
             </svg>
