@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { VictoryPie, VictoryLabel, VictoryPolarAxis } from 'victory';
+import { VictoryPie, VictoryLabel } from 'victory';
 
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import NeedlePointer from './NeedlePointer';
 
 const styles = theme => ({
   root: {
@@ -115,6 +116,26 @@ const colors = [
   '#B91F27',
   '#B72024'
 ];
+
+const data = [
+  { x: 0, y: 150 },
+  { x: 5, y: 150 },
+  { x: 10, y: 150 },
+  { x: 15, y: 150 },
+  { x: 20, y: 150 },
+  { x: 25, y: 150 },
+  { x: 30, y: 150 },
+  { x: 35, y: 150 },
+  { x: 40, y: 150 },
+  { x: 45, y: 150 },
+  { x: 50, y: 150 },
+  { x: 55, y: 150 },
+  { x: 60, y: 150 },
+  { x: 90, y: 150 },
+  { x: 120, y: 150 },
+  { x: 150, y: 150 }
+];
+
 class RadialGauge extends Component {
   constructor(props) {
     super(props);
@@ -139,7 +160,7 @@ class RadialGauge extends Component {
         }
 
         // Set value outside the arc
-        const currentVal = node.querySelector('.current-value');
+        const currentVal = node.querySelector('text');
         let transform = 0;
         if (currentVal) {
           transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
@@ -150,12 +171,12 @@ class RadialGauge extends Component {
         }
 
         // Customise pointer
-        const pointer = node.querySelector('.pointer > path');
-        pointer.setAttribute('stroke-width', '10');
-        pointer.setAttribute('stroke', '#144a3d');
-        if (pointer.hasAttribute('transform')) {
-          pointer.setAttribute('transform', `rotate(${transform})`);
-        }
+        //const pointer = node.querySelector('.pointer > path');
+        //pointer.setAttribute('stroke-width', '10');
+        //pointer.setAttribute('stroke', '#144a3d');
+        //if (pointer.hasAttribute('transform')) {
+        //pointer.setAttribute('transform', `rotate(${transform})`);
+        //}
       }
     }
   }
@@ -200,11 +221,12 @@ class RadialGauge extends Component {
                   height={700}
                   innerRadius={230}
                   labelRadius={210}
+                  data={data}
                   //value={parseFloat(airPollMeasurement.toFixed(1))}
-                  needleColor="#144a3d"
                   textAnchor="start"
                   labelComponent={
                     <VictoryLabel
+                      className={classes.label}
                       transform="translate(-26,38) rotate(-5)"
                       verticalAnchor="middle"
                       textAnchor="end"
@@ -216,32 +238,6 @@ class RadialGauge extends Component {
                       fill: 'white'
                     }
                   }}
-                  minDomain={{ x: 0 }}
-                  maxDomain={{ x: 160 }}
-                  data={[
-                    { x: 0, y: 150 },
-                    { x: 5, y: 150 },
-                    { x: 10, y: 150 },
-                    { x: 15, y: 150 },
-                    { x: 20, y: 150 },
-                    { x: 25, y: 150 },
-                    { x: 30, y: 150 },
-                    { x: 35, y: 150 },
-                    { x: 40, y: 150 },
-                    { x: 45, y: 150 },
-                    { x: 50, y: 150 },
-                    { x: 55, y: 150 },
-                    { x: 60, y: 150 },
-                    { x: 90, y: 150 },
-                    { x: 120, y: 150 },
-                    { x: 150, y: 150 }
-                  ]}
-                />
-
-                <VictoryPolarAxis
-                  startAngle={0}
-                  endAngle={180}
-                  tickValues={[0, 45, 90, 135, 180]}
                 />
               </g>
             </svg>
@@ -259,12 +255,9 @@ class RadialGauge extends Component {
                 />
               </g>
 
-              {/*Pointer */}
-              <g className={classes.pointer} transform="translate(450,300)">
-                <path d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0" />
-              </g>
+              <NeedlePointer />
 
-              <g transform="translate(80,245)" fill="white">
+              <g transform="translate(200,65)" fill="white">
                 <text
                   fill="white"
                   textAnchor="middle"
