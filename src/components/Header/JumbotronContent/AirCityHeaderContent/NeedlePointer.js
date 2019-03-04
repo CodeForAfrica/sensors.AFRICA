@@ -41,11 +41,12 @@ class NeedlePointer extends Component {
         />
         <text
           transform="scale(1.2)"
-          x={`${-290 * Math.cos(((rotate + 90) * Math.PI) / 180)}`}
-          y={`${-290 * Math.sin(((rotate + 90) * Math.PI) / 180)}`}
+          x={`${-270 * Math.cos(((rotate + 90) * Math.PI) / 180)}`}
+          y={`${-300 * Math.sin(((rotate + 90) * Math.PI) / 180) + 10}`}
+          textAnchor={measurement > 40 ? 'start' : 'end'}
         >
           <tspan className={classes.gaugeBigText}>
-            {measurement.toFixed(1)}
+            {Math.round(measurement * 10) / 10}
           </tspan>
         </text>
       </g>
