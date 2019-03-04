@@ -227,7 +227,7 @@ class RadialGauge extends Component {
                   textAnchor="start"
                   labelComponent={
                     <VictoryLabel
-                      className={classes.label}
+                      //className={classes.label}
                       transform="translate(-26,38) rotate(-5)"
                       verticalAnchor="middle"
                       textAnchor="end"
