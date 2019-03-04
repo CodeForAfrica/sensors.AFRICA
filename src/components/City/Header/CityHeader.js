@@ -8,16 +8,13 @@ import { isWidthDown } from '@material-ui/core/withWidth';
 import CityMenuBar from './CityMenuBar';
 import AirCityHeaderContent from '../../Header/JumbotronContent/AirCityHeaderContent';
 
-const styles = theme => ({
+const styles = {
   jumbotron: {
     flexGrow: 1,
     borderRadius: 'none',
-    height: 450,
-    [theme.breakpoints.up('md')]: {
-      height: 513
-    }
+    height: 550
   }
-});
+};
 
 function CityHeader({ airPol, aqColor, city, classes, handleSearch, width }) {
   let backgroundColor = '#2fb56b';

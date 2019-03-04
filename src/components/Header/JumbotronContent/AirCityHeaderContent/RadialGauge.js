@@ -9,7 +9,8 @@ import NeedlePointer from './NeedlePointer';
 
 const styles = theme => ({
   root: {
-    position: 'relative'
+    position: 'relative',
+    paddingTop: '36px'
   },
   gaugeDescription: {
     position: 'absolute'
@@ -171,12 +172,12 @@ class RadialGauge extends Component {
         }
 
         // Customise pointer
-        //const pointer = node.querySelector('.pointer > path');
-        //pointer.setAttribute('stroke-width', '10');
-        //pointer.setAttribute('stroke', '#144a3d');
-        //if (pointer.hasAttribute('transform')) {
-        //pointer.setAttribute('transform', `rotate(${transform})`);
-        //}
+        // const pointer = node.querySelector('.pointer > path');
+        // pointer.setAttribute('stroke-width', '10');
+        // pointer.setAttribute('stroke', '#144a3d');
+        // if (pointer.hasAttribute('transform')) {
+        // pointer.setAttribute('transform', `rotate(${transform})`);
+        // }
       }
     }
   }
@@ -222,7 +223,7 @@ class RadialGauge extends Component {
                   innerRadius={230}
                   labelRadius={210}
                   data={data}
-                  //value={parseFloat(airPollMeasurement.toFixed(1))}
+                  // value={parseFloat(airPollMeasurement.toFixed(1))}
                   textAnchor="start"
                   labelComponent={
                     <VictoryLabel
@@ -268,7 +269,7 @@ class RadialGauge extends Component {
                 </g>
               </svg>
 
-              <NeedlePointer />
+              <NeedlePointer measurement={airPollMeasurement} />
               <g transform="translate(185,60)" fill="white">
                 <text
                   fill="white"
