@@ -41,7 +41,8 @@ class NeedlePointer extends Component {
         />
         <text
           transform="scale(1.2)"
-          x={`${-270 * Math.cos(((rotate + 90) * Math.PI) / 180)}`}
+          x={`${-270 * Math.cos(((rotate + 90) * Math.PI) / 180) +
+            (measurement > 40 ? 5 : -5)}`}
           y={`${-300 * Math.sin(((rotate + 90) * Math.PI) / 180) + 10}`}
           textAnchor={measurement > 40 ? 'start' : 'end'}
         >
