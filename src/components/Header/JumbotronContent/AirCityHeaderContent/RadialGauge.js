@@ -134,7 +134,7 @@ const data = [
   { x: 60, y: 150 },
   { x: 90, y: 150 },
   { x: 120, y: 150 },
-  { x: 150, y: 150 }
+  { x: '150 +', y: 150 }
 ];
 
 class RadialGauge extends Component {
@@ -223,11 +223,9 @@ class RadialGauge extends Component {
                   innerRadius={230}
                   labelRadius={210}
                   data={data}
-                  // value={parseFloat(airPollMeasurement.toFixed(1))}
                   textAnchor="start"
                   labelComponent={
                     <VictoryLabel
-                      //className={classes.label}
                       transform="translate(-26,38) rotate(-5)"
                       verticalAnchor="middle"
                       textAnchor="end"
