@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import worldbank from '../assets/images/partners/worldbankgroup.png';
+
 import liquidtelcom from '../assets/images/partners/liquidtelcom.png';
 import data4sdg from '../assets/images/partners/partnershipsdg.png';
 
@@ -97,6 +99,11 @@ function PartnerLogos({ classes }) {
         align="center"
         className={classes.partnerContainer}
       >
+        <Grid item>
+          <div className={classes.centerLogo}>
+            <img src={worldbank} alt="World Bank" className={classes.img} />
+          </div>
+        </Grid>
         <Grid item>
           <div className={classes.centerLogo}>
             <img
