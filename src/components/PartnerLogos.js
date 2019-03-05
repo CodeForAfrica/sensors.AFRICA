@@ -15,7 +15,8 @@ const styles = theme => ({
   },
   title: {
     backgroundColor: 'white',
-    paddingBottom: '3rem',
+    paddingTop: '5rem',
+    paddingBottom: '5rem',
     [theme.breakpoints.down('md')]: {
       paddingTop: '3rem'
     }
@@ -23,7 +24,6 @@ const styles = theme => ({
   partnerContainer: {
     flexGrow: 1,
     backgroundColor: 'white',
-    paddingBottom: '3rem',
     [theme.breakpoints.up('md')]: {
       paddingBottom: '3rem'
     }
@@ -81,7 +81,7 @@ const styles = theme => ({
 
 function PartnerLogos({ classes }) {
   return (
-    <Grid container xs={12}>
+    <Grid container xs={12} style={{ paddingBottom: '5rem' }}>
       <Grid
         container
         xs={12}
@@ -90,7 +90,9 @@ function PartnerLogos({ classes }) {
         alignItems="center"
         className={classes.title}
       >
-        <Typography variant="h5">OUT PARTNERS</Typography>
+        <Typography variant="h3" className={classes.headlineTitle}>
+          OUR PARTNERS
+        </Typography>
       </Grid>
 
       <Grid
