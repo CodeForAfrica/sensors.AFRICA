@@ -16,7 +16,15 @@ const styles = {
   }
 };
 
-function CityHeader({ airPol, aqColor, city, classes, handleSearch, width }) {
+function CityHeader({
+  airPol,
+  airPolDescription,
+  aqColor,
+  city,
+  classes,
+  handleSearch,
+  width
+}) {
   let backgroundColor = '#2fb56b';
   if (isWidthDown('sm', width)) {
     backgroundColor = aqColor;
@@ -25,23 +33,24 @@ function CityHeader({ airPol, aqColor, city, classes, handleSearch, width }) {
     <Grid container className={classes.jumbotron} style={{ backgroundColor }}>
       <Grid item xs={12}>
         <CityMenuBar handleSearch={handleSearch} />
-        <AirCityHeaderContent city={city} airPol={airPol} />
+        <AirCityHeaderContent
+          city={city}
+          airPol={airPol}
+          airPolDescription={airPolDescription}
+        />
       </Grid>
     </Grid>
   );
 }
 
 CityHeader.propTypes = {
-  airPol: PropTypes.number,
+  airPol: PropTypes.string.isRequired,
+  airPolDescription: PropTypes.string.isRequired,
   aqColor: PropTypes.string.isRequired,
   city: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   handleSearch: PropTypes.func.isRequired,
   width: PropTypes.string.isRequired
-};
-
-CityHeader.defaultProps = {
-  airPol: 0.0
 };
 
 export default withWidth()(withStyles(styles)(CityHeader));

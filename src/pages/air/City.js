@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import DocumentHead from '../../components/DocumentHead';
 import Navbar from '../../components/Header/Navbar';
+import PartnerLogos from '../../components/PartnerLogos';
 import Footer from '../../components/Footer';
 import SensorMap from '../../components/SensorMap';
 import CityHeader from '../../components/City/Header/CityHeader';
@@ -14,6 +15,7 @@ import CallToAction from '../../components/City/CallToAction';
 import PollutionStats from '../../components/City/PollutionStats';
 import QualityStats from '../../components/City/SensorsQualityStats';
 import HostSensorsButton from '../../components/City/HostSensors/HostSensorButtons';
+import QualityStatsGraph from '../../components/City/QualityStatsGraph';
 
 import '../../assets/css/App.css';
 
@@ -70,10 +72,13 @@ const CITIES_POLLUTION_STATS = {
     percent: '130% more'
   }
 };
-const POLLUTION_SENSOR_NAMES = ['sds021', 'sds011', 'ppd42ns'];
-const HUMIDITY_SENSOR_NAMES = ['dht22', 'dht11'];
-const TEMPERATURE_SENSOR_NAMES = ['dht22'];
-const SENSOR_READINGS_URL = 'https://api.airquality.codeforafrica.org/v1/now/';
+const SENSOR_READINGS_URL = 'https://api.sensors.africa/v2/data/air/';
+const DATE_FMT_OPTIONS = {
+  timeZone: 'UTC',
+  weekday: 'short',
+  day: 'numeric',
+  month: 'short'
+};
 const AQ_COLOR = [
   '#5fbf82',
   '#34b86f',
@@ -82,7 +87,8 @@ const AQ_COLOR = [
   '#cf7d4e',
   '#d45f4b',
   '#ce4c34',
-  '#b72025'
+  '#b72025',
+  '#2A2A2B'
 ];
 function aqIndex(aq) {
   if (aq < 10) {
@@ -106,7 +112,10 @@ function aqIndex(aq) {
   if (aq < 120) {
     return 6;
   }
-  return 7;
+  if (aq <= 150) {
+    return 7;
+  }
+  return 8;
 }
 
 const styles = () => ({
@@ -123,15 +132,65 @@ const styles = () => ({
 });
 
 const CITY_PATHNAME = '/air/city';
+
+const formatCurrentP2Stats = (data, isPm2 = false) => {
+  const formatted = {};
+  ['average', 'maximum', 'minimum'].forEach(stat => {
+    const parsed = Number.parseFloat(data[stat]);
+    if (isPm2 && stat === 'average') {
+      formatted.averageDescription = `measurements not recorded`;
+      if (!Number.isNaN(parsed)) {
+        let difference = 25.0 - parsed;
+        let position = 'below';
+        if (parsed > 25.0) {
+          difference = parsed - 25.0;
+          position = 'above';
+        }
+        const percentage = ((difference / 25.0) * 100).toFixed(2);
+        formatted.averageDescription = `${percentage}% ${position} the safe level`;
+      }
+    }
+    formatted[stat] = Number.isNaN(parsed) ? '--' : parsed.toFixed(2);
+  });
+  return formatted;
+};
+
+const formatWeeklyP2Stats = data => {
+  const stats = [];
+  // Start with the oldest value
+  for (let i = data.length - 1; i >= 0; i -= 1) {
+    let averagePM = Number.parseFloat(data[i].average);
+    if (Number.isNaN(averagePM)) {
+      averagePM = 0.0;
+    }
+    const date = new Date(data[i].start_datetime).toLocaleDateString(
+      'en-US',
+      DATE_FMT_OPTIONS
+    );
+    stats.push({ date, averagePM });
+  }
+  return stats;
+};
+
 class City extends React.Component {
   constructor() {
     super();
     this.state = {
       city: DEFAULT_CITY,
-      isLoading: false,
-      cityAirPol: 0
+      cityP2Stats: {
+        average: '--',
+        averageDescription: ''
+      },
+      isLoading: false
     };
-    this.fetchCityReadings = this.fetchCityReadings.bind(this);
+
+    this.fetchAirQualityStats = this.fetchAirQualityStats.bind(this);
+    this.fetchCurrentAirQualityStats = this.fetchCurrentAirQualityStats.bind(
+      this
+    );
+    this.fetchWeeklyAirQualityStats = this.fetchWeeklyAirQualityStats.bind(
+      this
+    );
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -142,149 +201,86 @@ class City extends React.Component {
       ({ city } = match.params);
     }
 
-    this.fetchCityReadings(city);
+    this.fetchAirQualityStats(city);
   }
 
-  fetchCityReadings(city) {
-    const isInCity = reading => {
-      const { location } = reading;
-      return (
-        location.latitude.startsWith(CITIES_LOCATION[city].latitude) &&
-        location.longitude.startsWith(CITIES_LOCATION[city].longitude)
-      );
-    };
+  fetchAirQualityStats(city) {
+    this.fetchCurrentAirQualityStats(city);
+    this.fetchWeeklyAirQualityStats(city);
+  }
 
-    const isAirSensorWithPollutionReadings = ({ sensor, sensordatavalues }) => {
-      let { name = '' } = sensor.sensor_type;
-      name = name.toLowerCase();
-      return (
-        POLLUTION_SENSOR_NAMES.indexOf(name) !== -1 &&
-        sensordatavalues.length >= 2
-      );
-    };
-
-    const isAirSensorWithHumidityReadings = ({ sensor, sensordatavalues }) => {
-      let { name = '' } = sensor.sensor_type;
-      name = name.toLowerCase();
-      return (
-        HUMIDITY_SENSOR_NAMES.indexOf(name) !== -1 &&
-        sensordatavalues.length >= 2
-      );
-    };
-
-    const isAirSensorWithTemperatureReadings = ({
-      sensor,
-      sensordatavalues
-    }) => {
-      let { name = '' } = sensor.sensor_type;
-      name = name.toLowerCase();
-      return (
-        TEMPERATURE_SENSOR_NAMES.indexOf(name) !== -1 &&
-        sensordatavalues.length >= 2
-      );
-    };
-    const averageP2ValuesPerSensor = (
-      accumulator,
-      { sensor, sensordatavalues }
-    ) => {
-      const { id } = sensor;
-      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
-      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
-        if (valueType.toLowerCase() === 'p2') {
-          const reading = accumulator[id];
-          const { average, length } = reading;
-          reading.length = length + 1;
-          reading.average = (average + parseFloat(value)) / reading.length;
-        }
-      });
-      return accumulator;
-    };
-    const averageP2ValuesForCity = accumulator => {
-      const readings = Object.values(accumulator);
-      const cityAverage =
-        readings.reduce((a, b) => a + b.average, 0) / readings.length;
-      return cityAverage;
-    };
-    const averageTemperatureValuesPerSensor = (
-      accumulator,
-      { sensor, sensordatavalues }
-    ) => {
-      const { id } = sensor;
-      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
-      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
-        if (valueType.toLowerCase() === 'temperature') {
-          const reading = accumulator[id];
-          const { average, length } = reading;
-          reading.length = length + 1;
-          reading.average = (average + parseFloat(value)) / reading.length;
-        }
-      });
-      return accumulator;
-    };
-    const averageHumidityValuesPerSensor = (
-      accumulator,
-      { sensor, sensordatavalues }
-    ) => {
-      const { id } = sensor;
-      accumulator[id] = accumulator[id] || { average: 0.0, length: 0 };
-      sensordatavalues.forEach(({ value_type: valueType = '', value }) => {
-        if (valueType.toLowerCase() === 'humidity') {
-          const reading = accumulator[id];
-          const { average, length } = reading;
-          reading.length = length + 1;
-          reading.average = (average + parseFloat(value)) / reading.length;
-        }
-      });
-      return accumulator;
+  fetchCurrentAirQualityStats(city) {
+    const processJson = json => {
+      let cityP2Stats = {};
+      let cityTemperatureStats = {};
+      let cityHumidityStats = {};
+      if (json.count === 1) {
+        cityP2Stats = json.results[0].P2 || {};
+        cityTemperatureStats = json.results[0].temperature || {};
+        cityHumidityStats = json.results[0].humidity || {};
+      }
+      cityP2Stats = formatCurrentP2Stats(cityP2Stats, true);
+      cityTemperatureStats = formatCurrentP2Stats(cityTemperatureStats);
+      cityHumidityStats = formatCurrentP2Stats(cityHumidityStats);
+      this.setState(state => ({
+        city,
+        cityP2Stats,
+        cityP2WeeklyStats: state.cityP2WeeklyStats,
+        cityTemperatureStats,
+        cityHumidityStats,
+        isLoading: false
+      }));
     };
 
     this.setState(state => ({
       city: state.city,
-      cityAirPol: state.cityAirPol,
       isLoading: true,
+      cityP2Stats: {
+        average: '--',
+        averageDescription: 'loading'
+      },
+      cityP2WeeklyStats: state.cityP2WeeklyStats,
+      cityTemperatureStats: {},
+      cityHumidityStats: {}
+    }));
+    fetch(`${SENSOR_READINGS_URL}?city=${city}`)
+      .then(data => data.json())
+      .then(json => processJson(json));
+  }
+
+  fetchWeeklyAirQualityStats(city) {
+    const processJson = json => {
+      let cityP2WeeklyStats = [];
+      if (json.count === 1) {
+        cityP2WeeklyStats = formatWeeklyP2Stats(json.results[0].P2 || []);
+      }
+      this.setState(state => ({
+        city,
+        cityP2Stats: state.cityP2Stats,
+        cityP2WeeklyStats,
+        cityTemperatureStats: state.cityTemperatureStats,
+        cityHumidityStats: state.cityHumidityStats,
+        isLoading: false
+      }));
+    };
+
+    this.setState(state => ({
+      city: state.city,
+      isLoading: true,
+      cityP2WeeklyStats: state.cityP2WeeklyStats,
       cityP2Stats: state.cityP2Stats,
       cityTemperatureStats: state.cityTemperatureStats,
       cityHumidityStats: state.cityHumidityStats
     }));
+    const today = Date.now();
 
-    let cityP2Stats = {};
-    let cityTemperatureStats = {};
-    let cityHumidityStats = {};
-
-    fetch(SENSOR_READINGS_URL)
+    // Substring date without time e.g. 2019-02-26
+    const from = new Date(today - 7 * 24 * 3600 * 1000)
+      .toISOString()
+      .substr(0, 10);
+    fetch(`${SENSOR_READINGS_URL}?city=${city}&from=${from}&value_type=P2`)
       .then(data => data.json())
-      .then(readings => {
-        cityP2Stats = readings
-          .filter(
-            data => isInCity(data) && isAirSensorWithPollutionReadings(data)
-          )
-          .reduce(averageP2ValuesPerSensor, {});
-
-        cityTemperatureStats = readings
-          .filter(
-            data => isInCity(data) && isAirSensorWithTemperatureReadings(data)
-          )
-          .reduce(averageTemperatureValuesPerSensor, {});
-
-        cityHumidityStats = readings
-          .filter(
-            data => isInCity(data) && isAirSensorWithHumidityReadings(data)
-          )
-          .reduce(averageHumidityValuesPerSensor, {});
-
-        return Promise.resolve(cityP2Stats);
-      })
-      .then(averageP2ValuesForCity)
-      .then(reading => {
-        this.setState({
-          city,
-          cityAirPol: parseFloat(reading.toFixed(2)),
-          isLoading: false,
-          cityP2Stats,
-          cityTemperatureStats,
-          cityHumidityStats
-        });
-      });
+      .then(json => processJson(json));
   }
 
   handleSearch(option) {
@@ -295,7 +291,7 @@ class City extends React.Component {
 
       const { history } = this.props;
       history.push(path);
-      this.fetchCityReadings(searchedCity);
+      this.fetchAirQualityStats(searchedCity);
     }
   }
 
@@ -303,13 +299,17 @@ class City extends React.Component {
     const { classes, url } = this.props;
     const {
       city,
-      cityAirPol: airPol,
       isLoading,
       cityP2Stats = {},
+      cityP2WeeklyStats = [],
       cityHumidityStats = {},
       cityTemperatureStats = {}
     } = this.state;
-    const aqColor = AQ_COLOR[aqIndex(airPol)];
+    let aqColorIndex = 8;
+    if (cityP2Stats.average !== '--') {
+      aqColorIndex = aqIndex(cityP2Stats.average);
+    }
+    const aqColor = AQ_COLOR[aqColorIndex];
 
     return (
       <Grid
@@ -327,35 +327,44 @@ class City extends React.Component {
 
           <CityHeader
             city={CITIES_LOCATION[city]}
-            airPol={airPol}
+            airPol={cityP2Stats.average}
+            airPolDescription={cityP2Stats.averageDescription}
             aqColor={aqColor}
             handleSearch={this.handleSearch}
           />
-          <Grid item xs={12}>
-            <HostSensorsButton city={CITIES_LOCATION[city]} />
-          </Grid>
-          <Grid item xs={12}>
-            <PollutionStats
-              pollutionStats={CITIES_POLLUTION_STATS[city]}
-              city={CITIES_LOCATION[city]}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <SensorMap mapLocation={CITIES_LOCATION[city].location} />
-          </Grid>
-          <Grid item xs={12}>
-            <QualityStats
-              cityHumidityStats={cityHumidityStats}
-              cityP2Stats={cityP2Stats}
-              cityTemperatureStats={cityTemperatureStats}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <CallToAction />
-          </Grid>
-          <Grid item xs={12}>
-            <Footer />
-          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <HostSensorsButton city={CITIES_LOCATION[city]} />
+        </Grid>
+        <Grid item xs={12}>
+          <PollutionStats
+            pollutionStats={CITIES_POLLUTION_STATS[city]}
+            city={CITIES_LOCATION[city]}
+          />
+        </Grid>
+        <Grid item xs={12} id="map">
+          <SensorMap mapLocation={CITIES_LOCATION[city].location} />
+        </Grid>
+        <Grid item xs={12}>
+          <QualityStats
+            cityHumidityStats={cityHumidityStats}
+            cityP2Stats={cityP2Stats}
+            cityTemperatureStats={cityTemperatureStats}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          {cityP2WeeklyStats.length && (
+            <QualityStatsGraph data={cityP2WeeklyStats} />
+          )}
+        </Grid>
+        <Grid item xs={12}>
+          <CallToAction />
+        </Grid>
+        <Grid item xs={12}>
+          <PartnerLogos />
+        </Grid>
+        <Grid item xs={12}>
+          <Footer />
         </Grid>
       </Grid>
     );

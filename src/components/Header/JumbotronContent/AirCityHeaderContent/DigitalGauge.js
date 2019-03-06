@@ -34,15 +34,7 @@ const styles = () => ({
   }
 });
 
-function DigitalGauge({
-  classes,
-  airPollMeasurement,
-  percentageRelative,
-  isOverGuideline
-}) {
-  const pointDescription = isOverGuideline ? 'over' : 'below';
-  const formattedPercentage = percentageRelative.toFixed(1);
-  const measurementDescription = `${formattedPercentage}% ${pointDescription} the safe level`;
+function DigitalGauge({ classes, airPollMeasurement, airPollDescription }) {
   return (
     <Grid
       container
@@ -64,22 +56,24 @@ function DigitalGauge({
             className={classes.measurement}
             component="h1"
           >
-            {airPollMeasurement.toFixed(1)}
-            <Typography
-              variant="caption"
-              component="small"
-              className={classes.measurementUnit}
-            >
-              PM
-              <sub>2.5</sub> Annual Exposure
-            </Typography>
+            {airPollMeasurement}
+            {airPollMeasurement !== '--' && (
+              <Typography
+                variant="caption"
+                component="small"
+                className={classes.measurementUnit}
+              >
+                PM
+                <sub>2.5</sub> 24 Hours Exposure
+              </Typography>
+            )}
           </Typography>
           <Typography
             variant="caption"
             component="h2"
             className={classes.safeLevel}
           >
-            {measurementDescription}
+            {airPollDescription}
           </Typography>
         </Grid>
       </Grid>
@@ -89,9 +83,8 @@ function DigitalGauge({
 
 DigitalGauge.propTypes = {
   classes: PropTypes.object.isRequired,
-  airPollMeasurement: PropTypes.number.isRequired,
-  percentageRelative: PropTypes.number.isRequired,
-  isOverGuideline: PropTypes.bool.isRequired
+  airPollMeasurement: PropTypes.string.isRequired,
+  airPollDescription: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(DigitalGauge);
