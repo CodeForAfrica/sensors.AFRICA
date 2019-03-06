@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactSpeedometer from 'react-d3-speedometer';
+
+import { VictoryPie, VictoryLabel } from 'victory';
 
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import NeedlePointer from './NeedlePointer';
 
 const styles = theme => ({
   root: {
-    position: 'relative'
+    position: 'relative',
+    paddingTop: '36px'
   },
   gaugeDescription: {
     position: 'absolute'
@@ -26,7 +29,7 @@ const styles = theme => ({
     fontStyle: 'italic',
     textAlign: 'center',
     width: '250px',
-    marginLeft: '20%',
+    marginLeft: '10%',
     padding: '40px 15px',
     marginTop: '-30%',
     border: '1px white solid'
@@ -48,9 +51,10 @@ const styles = theme => ({
       top: '90px'
     },
     width: '900px',
-    height: '300px',
+    height: '500px',
     position: 'absolute'
   },
+
   gaugeArc: {
     [theme.breakpoints.down('sm')]: {
       width: '400px',
@@ -64,19 +68,21 @@ const styles = theme => ({
       display: 'none'
     }
   },
+  pointer: {
+    fill: 'rgb(20, 74, 61)'
+  },
   gaugeCircle: {
-    width: '300px',
-    height: '150px',
-    top: '10rem',
-    justify: 'center',
+    width: 350,
+    height: 175,
+    top: 208,
     position: 'absolute'
   },
   gaugeBigText: {
     fontFamily: theme.typography.h6.fontFamily,
-    fontSize: '1.35rem',
-    textTransform: 'uppercase',
+    fontSize: theme.typography.h6.fontSize,
     fontWeight: 700,
-    fill: '#164a3e'
+    fill: '#164a3e',
+    textTransform: 'uppercase'
   },
   gaugeSmallText: {
     fontSize: theme.typography.caption.fontSize,
@@ -92,6 +98,45 @@ const styles = theme => ({
     marginTop: '-30%'
   }
 });
+
+const colors = [
+  '#5FBF82',
+  '#5FBE84',
+  '#34B771',
+  '#34B86F',
+  '#299A5C',
+  '#299A5C',
+  '#CF8D52',
+  '#CE8E4E',
+  '#CE7C4C',
+  '#CE7C4C',
+  '#D45F4B',
+  '#D45F4B',
+  '#CF4B34',
+  '#CF4B34',
+  '#B91F27',
+  '#B72024'
+];
+
+const data = [
+  { x: 0, y: 150 },
+  { x: 5, y: 150 },
+  { x: 10, y: 150 },
+  { x: 15, y: 150 },
+  { x: 20, y: 150 },
+  { x: 25, y: 150 },
+  { x: 30, y: 150 },
+  { x: 35, y: 150 },
+  { x: 40, y: 150 },
+  { x: 45, y: 150 },
+  { x: 50, y: 150 },
+  { x: 55, y: 150 },
+  { x: 60, y: 150 },
+  { x: 90, y: 150 },
+  { x: 120, y: 150 },
+  { x: '150 +', y: 150 }
+];
+
 class RadialGauge extends Component {
   constructor(props) {
     super(props);
@@ -115,7 +160,7 @@ class RadialGauge extends Component {
       }
 
       // Set value outside the arc
-      const currentVal = node.querySelector('.current-value');
+      const currentVal = node.querySelector('text');
       let transform = 0;
       if (currentVal) {
         transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
@@ -124,14 +169,6 @@ class RadialGauge extends Component {
           `rotate(${transform}) translate(0,-310)`
         );
       }
-
-      // Customise pointer
-      const pointer = node.querySelector('.pointer > path');
-      pointer.setAttribute('stroke-width', '10');
-      pointer.setAttribute('stroke', '#144a3d');
-      if (pointer.hasAttribute('transform')) {
-        pointer.setAttribute('transform', `rotate(${transform})`);
-      }
     }
   }
 
@@ -139,14 +176,17 @@ class RadialGauge extends Component {
     const { airPollDescription, airPollMeasurement, classes } = this.props;
     let gaugeTextLine1;
     let gaugeTextLine2;
+    let isNeedleHidden = false;
     let value = airPollMeasurement;
 
     if (airPollMeasurement === '--') {
-      gaugeTextLine1 = 'Measurements';
-      gaugeTextLine2 = 'not recorded';
+      gaugeTextLine1 = 'Measurements not';
+      gaugeTextLine2 = 'Recorded';
 
-      // Hide the gauge when we don't have measurements
-      value = -75.0;
+      // Hide the needle when we don't have measurements
+      // but ensure value is still a number since needle doesn't check
+      isNeedleHidden = true;
+      value = 0.0;
     } else {
       const lines = airPollDescription.split(' safe ');
       [gaugeTextLine1] = lines;
@@ -160,37 +200,70 @@ class RadialGauge extends Component {
           className={classes.gaugeDial}
           justify="center"
           alignItems="center"
-          style={{ paddingTop: '0.35rem', height: 'auto' }}
+          style={{ height: 'auto' }}
           ref={this.nodeRef}
         >
           <Grid item md={12} container alignItems="center" direction="column">
-            <div className={classes.gaugeArc}>
-              <ReactSpeedometer
-                fluidWidth
-                ringWidth={60}
-                minValue={0}
-                maxValue={150}
-                value={value}
-                segments={8}
-                textColor="#fff"
-                startColor="#5fbf82"
-                endColor="#b72025"
-                needleColor="#144a3d"
-              />
-            </div>
-            <svg className={classes.gaugeNeedleItem}>
-              <g transform="translate(450,300)">
-                <path
-                  d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
-                  fill="#144a3d"
-                  transform="rotate(-61.00)"
-                  strokeLinecap="round"
-                  strokeWidth="3"
-                  stroke="#fefffd"
-                  style={{ cursor: 'grab' }}
+            <svg height="700px" width="700px" style={{ paddingTop: 71 }}>
+              <g transform="translate(0,-42)">
+                <VictoryPie
+                  colorScale={colors}
+                  startAngle={-90}
+                  endAngle={90}
+                  standalone={false}
+                  padAngle={0.4}
+                  width={700}
+                  height={700}
+                  innerRadius={230}
+                  labelRadius={210}
+                  data={data}
+                  textAnchor="start"
+                  labelComponent={
+                    <VictoryLabel
+                      transform="translate(-26,38) rotate(-5)"
+                      verticalAnchor="middle"
+                      textAnchor="end"
+                    />
+                  }
+                  style={{
+                    labels: {
+                      display: 'inline-block',
+                      fill: 'white',
+                      fontFamily: '"Montserrat", "sans-serif"'
+                    }
+                  }}
                 />
               </g>
-              <g transform="translate(100,165)" fill="white">
+            </svg>
+
+            <svg className={classes.gaugeNeedleItem}>
+              <svg viewBox="0 0 750 750">
+                <g transform="translate(39,120)">
+                  <line
+                    x1="50"
+                    y1="10"
+                    x2="160"
+                    y2="180"
+                    fill="#144a3d"
+                    stroke="white"
+                    strokeWidth="10"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="50"
+                    y1="10"
+                    x2="160"
+                    y2="180"
+                    fill="#144a3d"
+                    stroke="#144a3d"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                  />
+                </g>
+              </svg>
+
+              <NeedlePointer measurement={value} hidden={isNeedleHidden} />
+              <g transform="translate(165,85)" fill="white">
                 <text
                   fill="white"
                   textAnchor="middle"
@@ -200,16 +273,17 @@ class RadialGauge extends Component {
                 </text>
               </g>
             </svg>
+
             <svg className={classes.gaugeCircle}>
               <circle
-                r="150"
-                cx="150"
-                cy="150"
+                r="175"
+                cx="175"
+                cy="175"
                 fill="white"
                 className={classes.gaugeWhiteItem}
               />
-              <circle r="75" cx="150" cy="150" fill="white" />
-              <g transform="translate(150,60)" style={{ height: '30px' }}>
+              <circle r="87.5" cx="175" cy="175" fill="white" />
+              <g transform="translate(175,80)" style={{ height: '30px' }}>
                 <text
                   transform="translate(0,10)"
                   textAnchor="middle"
@@ -224,17 +298,15 @@ class RadialGauge extends Component {
                 >
                   {gaugeTextLine2}
                 </text>
-                {airPollMeasurement !== '--' && (
-                  <text
-                    transform="translate(0,70)"
-                    textAnchor="middle"
-                    className={classes.gaugeSmallText}
-                  >
-                    PM
-                    <tspan baselineShift="sub">2.5 </tspan>
-                    24 HOURS EXPOSURE*
-                  </text>
-                )}
+                <text
+                  transform="translate(0,70)"
+                  textAnchor="middle"
+                  className={classes.gaugeSmallText}
+                >
+                  PM
+                  <tspan baselineShift="sub">2.5 </tspan>
+                  24 HOURS EXPOSURE*
+                </text>
               </g>
             </svg>
           </Grid>
@@ -248,7 +320,7 @@ class RadialGauge extends Component {
           <Grid item>
             <p className={classes.gaugeDescGuideline}>
               <span className={classes.gaugeBoxWhoTitle}>
-                WHO Guideline (25)
+                WHO Guideline (10)
               </span>
               Lowest level at which premature mortality increases in response to
               long-term exposure
