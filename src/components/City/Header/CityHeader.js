@@ -12,7 +12,7 @@ const styles = {
   jumbotron: {
     flexGrow: 1,
     borderRadius: 'none',
-    height: 550
+    height: 596
   }
 };
 

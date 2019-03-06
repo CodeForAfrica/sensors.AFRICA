@@ -51,7 +51,7 @@ const styles = theme => ({
       top: '90px'
     },
     width: '900px',
-    height: '300px',
+    height: '500px',
     position: 'absolute'
   },
 
@@ -74,7 +74,7 @@ const styles = theme => ({
   gaugeCircle: {
     width: '300px',
     height: '150px',
-    top: '10rem',
+    top: '15rem',
     justify: 'center',
     position: 'absolute'
   },
@@ -170,14 +170,6 @@ class RadialGauge extends Component {
             `rotate(${transform}) translate(0,-310)`
           );
         }
-
-        // Customise pointer
-        // const pointer = node.querySelector('.pointer > path');
-        // pointer.setAttribute('stroke-width', '10');
-        // pointer.setAttribute('stroke', '#144a3d');
-        // if (pointer.hasAttribute('transform')) {
-        // pointer.setAttribute('transform', `rotate(${transform})`);
-        // }
       }
     }
   }
@@ -210,7 +202,7 @@ class RadialGauge extends Component {
           ref={this.nodeRef}
         >
           <Grid item md={12} container alignItems="center" direction="column">
-            <svg height="700px" width="700px">
+            <svg height="700px" width="700px" style={{ paddingTop: '3rem' }}>
               <g transform="translate(0,-42)">
                 <VictoryPie
                   colorScale={colors}
@@ -242,8 +234,8 @@ class RadialGauge extends Component {
             </svg>
 
             <svg className={classes.gaugeNeedleItem}>
-              <svg viewBox="0 0 600 600">
-                <g transform="translate(-90,90)">
+              <svg viewBox="0 0 800 800">
+                <g transform="translate(60,120)">
                   <line
                     x1="50"
                     y1="10"
