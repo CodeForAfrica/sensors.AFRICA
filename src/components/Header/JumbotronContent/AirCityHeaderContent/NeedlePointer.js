@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -42,9 +43,15 @@ class NeedlePointer extends Component {
         <text
           transform="scale(1.2)"
           x={`${-275 * Math.cos(((rotate + 90) * Math.PI) / 180) +
-            (measurement > 40 ? 5 : -5)}`}
-          y={`${-300 * Math.sin(((rotate + 90) * Math.PI) / 180) + 10}`}
-          textAnchor={measurement > 40 ? 'start' : 'end'}
+            (measurement > 55 ? 5 : -2.5)}`}
+          y={`${-275 * Math.sin(((rotate + 90) * Math.PI) / 180)}`}
+          textAnchor={
+            measurement > 25 && measurement < 55
+              ? 'middle'
+              : measurement > 40
+              ? 'start'
+              : 'end'
+          }
         >
           <tspan className={classes.gaugeBigText}>
             {Math.round(measurement * 10) / 10}
