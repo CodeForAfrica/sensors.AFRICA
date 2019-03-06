@@ -17,7 +17,7 @@ const styles = theme => ({
     }
   },
   leftLogo: {
-    width: '100vw',
+    width: '100%',
     textAlign: 'center',
     paddingTop: '2rem',
     [theme.breakpoints.up('md')]: {
@@ -31,7 +31,7 @@ const styles = theme => ({
     }
   },
   centerLogo: {
-    width: '100vw',
+    width: '100%',
     textAlign: 'center',
     padding: '2rem 0',
     [theme.breakpoints.up('md')]: {
@@ -47,7 +47,7 @@ const styles = theme => ({
     }
   },
   rightLogo: {
-    width: '100vw',
+    width: '100%',
     textAlign: 'center',
     paddingBottom: '2rem',
     [theme.breakpoints.up('md')]: {
