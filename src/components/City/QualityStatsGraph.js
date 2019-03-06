@@ -26,12 +26,15 @@ const styles = theme => ({
 
 function QualityStatsGraph({ classes, data, width }) {
   let chartWidth = window.innerWidth;
-  if (width === 'md') {
+  let labelAngle = 45;
+  if (isWidthUp('md', width)) {
     chartWidth = 59.625 * 16;
-  } else if (isWidthUp('lg', width)) {
-    chartWidth = 79.5 * 16;
+    labelAngle = 0;
+    if (isWidthUp('lg', width)) {
+      chartWidth = 79.5 * 16;
+    }
   }
-  const chartHeight = chartWidth * (6 / 16);
+  const chartHeight = chartWidth * (6 / 16) + 20;
 
   return (
     <Grid
@@ -59,9 +62,13 @@ function QualityStatsGraph({ classes, data, width }) {
                   stroke: 'rgba(0,0,0,0.1)',
                   strokeDasharray: ''
                 },
+                ticks: {
+                  // padding: 20
+                },
                 tickLabels: {
                   fontFamily: '"Montserrat", "sans-serif"',
-                  fontWeight: 'bold'
+                  fontWeight: 'bold',
+                  angle: labelAngle
                 }
               }}
             />
@@ -81,6 +88,7 @@ function QualityStatsGraph({ classes, data, width }) {
                   fontWeight: 'bold'
                 }
               }}
+              fixLabelOverlap
             />
             <VictoryLine
               data={data}
