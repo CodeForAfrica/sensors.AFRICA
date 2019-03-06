@@ -263,7 +263,7 @@ class RadialGauge extends Component {
               </svg>
 
               <NeedlePointer measurement={value} hidden={isNeedleHidden} />
-              <g transform="translate(170,70)" fill="white">
+              <g transform="translate(165,85)" fill="white">
                 <text
                   fill="white"
                   textAnchor="middle"
