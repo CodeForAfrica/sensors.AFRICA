@@ -74,7 +74,7 @@ const styles = theme => ({
   gaugeCircle: {
     width: '300px',
     height: '150px',
-    top: '13rem',
+    top: '15rem',
     justify: 'center',
     position: 'absolute'
   },
@@ -202,7 +202,7 @@ class RadialGauge extends Component {
           ref={this.nodeRef}
         >
           <Grid item md={12} container alignItems="center" direction="column">
-            <svg height="700px" width="700px" style={{ paddingTop: '3rem' }}>
+            <svg height="700px" width="700px" style={{ paddingTop: '4.5rem' }}>
               <g transform="translate(0,-42)">
                 <VictoryPie
                   colorScale={colors}
@@ -234,8 +234,8 @@ class RadialGauge extends Component {
             </svg>
 
             <svg className={classes.gaugeNeedleItem}>
-              <svg viewBox="0 0 800 800">
-                <g transform="translate(60,120)">
+              <svg viewBox="0 0 750 750">
+                <g transform="translate(39,120)">
                   <line
                     x1="50"
                     y1="10"
