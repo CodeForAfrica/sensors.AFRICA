@@ -13,6 +13,7 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 4
   },
   statsSummary: {
+    width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '19.875rem'
     },
@@ -20,18 +21,11 @@ const styles = theme => ({
       width: '26.5rem'
     }
   },
-  dataTable: {
-    [theme.breakpoints.up('md')]: {
-      width: '39.75rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '53rem'
-    }
-  },
 
   // TODO(kilemensi): Currently statsSummary is not implemented yet so make
   // dataTable the only component
   qualityStats: {
+    width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '59.625rem',
       borderTop: '1px solid rgba(0,0,0,0.1)',
