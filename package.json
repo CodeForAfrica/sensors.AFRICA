@@ -14,7 +14,6 @@
     "classnames": "^2.2.6",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
-    "react-d3-speedometer": "^0.4.1",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
     "react-router": "^4.3.1",
@@ -24,8 +23,8 @@
     "react-select": "^2.0.0",
     "react-share": "^2.3.1",
     "reactjs-percentage-circle": "^1.0.0",
-    "victory": "^31.2.0",
-    "tabletop": "^1.5.2"
+    "tabletop": "^1.5.2",
+    "victory": "^31.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

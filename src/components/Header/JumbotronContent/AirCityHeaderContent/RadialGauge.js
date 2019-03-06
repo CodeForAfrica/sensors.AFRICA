@@ -72,17 +72,17 @@ const styles = theme => ({
     fill: 'rgb(20, 74, 61)'
   },
   gaugeCircle: {
-    width: '300px',
-    height: '150px',
-    top: '15rem',
-    justify: 'center',
+    width: 350,
+    height: 175,
+    top: 208,
     position: 'absolute'
   },
   gaugeBigText: {
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h6.fontSize,
     fontWeight: 700,
-    fill: '#164a3e'
+    fill: '#164a3e',
+    textTransform: 'uppercase'
   },
   gaugeSmallText: {
     fontSize: theme.typography.caption.fontSize,
@@ -145,50 +145,52 @@ class RadialGauge extends Component {
 
   componentDidMount() {
     const { airPollMeasurement } = this.props;
-    {
-      const node = this.nodeRef.current;
-      if (node instanceof HTMLElement) {
-        const gaugeLabels = node.querySelectorAll('.label > text');
-        let deg = -90;
-        for (let i = 0; i < gaugeLabels.length; i += 1) {
-          const valueLabel = gaugeLabels[i];
-          if (valueLabel.hasAttribute('transform')) {
-            const newtrans = `rotate(${deg}) translate(0,-200)`;
-            deg += 22.5;
-            valueLabel.setAttribute('transform', newtrans);
-            valueLabel.setAttribute('style', 'fill: white');
-          }
+    const node = this.nodeRef.current;
+    if (node instanceof HTMLElement) {
+      const gaugeLabels = node.querySelectorAll('.label > text');
+      let deg = -90;
+      for (let i = 0; i < gaugeLabels.length; i += 1) {
+        const valueLabel = gaugeLabels[i];
+        if (valueLabel.hasAttribute('transform')) {
+          const newtrans = `rotate(${deg}) translate(0,-200)`;
+          deg += 22.5;
+          valueLabel.setAttribute('transform', newtrans);
+          valueLabel.setAttribute('style', 'fill: white');
         }
+      }
 
-        // Set value outside the arc
-        const currentVal = node.querySelector('text');
-        let transform = 0;
-        if (currentVal) {
-          transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
-          currentVal.setAttribute(
-            'transform',
-            `rotate(${transform}) translate(0,-310)`
-          );
-        }
+      // Set value outside the arc
+      const currentVal = node.querySelector('text');
+      let transform = 0;
+      if (currentVal) {
+        transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
+        currentVal.setAttribute(
+          'transform',
+          `rotate(${transform}) translate(0,-310)`
+        );
       }
     }
   }
 
   render() {
-    const { classes, percentageRelative, isOverGuideline } = this.props;
-    let { airPollMeasurement } = this.props;
+    const { airPollDescription, airPollMeasurement, classes } = this.props;
+    let gaugeTextLine1;
+    let gaugeTextLine2;
+    let isNeedleHidden = false;
+    let value = airPollMeasurement;
 
-    // Texts on top of the gauge
-    let gaugeText = 'AT THE';
-    let gaugeBigText = 'SAFE LEVEL';
-    if (Number.isNaN(airPollMeasurement)) {
-      gaugeText = 'Measurements not';
-      gaugeBigText = 'Recorded';
-      airPollMeasurement = 0;
-    } else if (isOverGuideline) {
-      gaugeText = `${percentageRelative.toFixed(1)}% OVER THE`;
+    if (airPollMeasurement === '--') {
+      gaugeTextLine1 = 'Measurements not';
+      gaugeTextLine2 = 'Recorded';
+
+      // Hide the needle when we don't have measurements
+      // but ensure value is still a number since needle doesn't check
+      isNeedleHidden = true;
+      value = 0.0;
     } else {
-      gaugeText = `${percentageRelative.toFixed(1)}% BELOW THE`;
+      const lines = airPollDescription.split(' safe ');
+      [gaugeTextLine1] = lines;
+      gaugeTextLine2 = `safe level`;
     }
 
     return (
@@ -202,7 +204,7 @@ class RadialGauge extends Component {
           ref={this.nodeRef}
         >
           <Grid item md={12} container alignItems="center" direction="column">
-            <svg height="700px" width="700px" style={{ paddingTop: '4.5rem' }}>
+            <svg height="700px" width="700px" style={{ paddingTop: 71 }}>
               <g transform="translate(0,-42)">
                 <VictoryPie
                   colorScale={colors}
@@ -226,7 +228,8 @@ class RadialGauge extends Component {
                   style={{
                     labels: {
                       display: 'inline-block',
-                      fill: 'white'
+                      fill: 'white',
+                      fontFamily: '"Montserrat", "sans-serif"'
                     }
                   }}
                 />
@@ -259,8 +262,8 @@ class RadialGauge extends Component {
                 </g>
               </svg>
 
-              <NeedlePointer measurement={airPollMeasurement} />
-              <g transform="translate(185,60)" fill="white">
+              <NeedlePointer measurement={value} hidden={isNeedleHidden} />
+              <g transform="translate(170,70)" fill="white">
                 <text
                   fill="white"
                   textAnchor="middle"
@@ -273,27 +276,27 @@ class RadialGauge extends Component {
 
             <svg className={classes.gaugeCircle}>
               <circle
-                r="150"
-                cx="150"
-                cy="150"
+                r="175"
+                cx="175"
+                cy="175"
                 fill="white"
                 className={classes.gaugeWhiteItem}
               />
-              <circle r="75" cx="150" cy="150" fill="white" />
-              <g transform="translate(150,60)" style={{ height: '30px' }}>
+              <circle r="87.5" cx="175" cy="175" fill="white" />
+              <g transform="translate(175,80)" style={{ height: '30px' }}>
                 <text
                   transform="translate(0,10)"
                   textAnchor="middle"
                   className={classes.gaugeBigText}
                 >
-                  {gaugeText}
+                  {gaugeTextLine1}
                 </text>
                 <text
                   transform="translate(0,40)"
                   textAnchor="middle"
                   className={classes.gaugeBigText}
                 >
-                  {gaugeBigText}
+                  {gaugeTextLine2}
                 </text>
                 <text
                   transform="translate(0,70)"
@@ -302,7 +305,7 @@ class RadialGauge extends Component {
                 >
                   PM
                   <tspan baselineShift="sub">2.5 </tspan>
-                  DAILY EXPOSURE
+                  24 HOURS EXPOSURE*
                 </text>
               </g>
             </svg>
@@ -343,9 +346,8 @@ class RadialGauge extends Component {
 
 RadialGauge.propTypes = {
   classes: PropTypes.object.isRequired,
-  airPollMeasurement: PropTypes.number.isRequired,
-  percentageRelative: PropTypes.number.isRequired,
-  isOverGuideline: PropTypes.bool.isRequired
+  airPollMeasurement: PropTypes.string.isRequired,
+  airPollDescription: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(RadialGauge);
