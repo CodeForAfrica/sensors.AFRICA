@@ -74,7 +74,7 @@ const styles = theme => ({
   gaugeCircle: {
     width: '300px',
     height: '150px',
-    top: '15rem',
+    top: '13rem',
     justify: 'center',
     position: 'absolute'
   },
