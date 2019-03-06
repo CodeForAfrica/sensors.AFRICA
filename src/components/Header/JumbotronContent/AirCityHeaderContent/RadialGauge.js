@@ -181,7 +181,7 @@ class RadialGauge extends Component {
     // Texts on top of the gauge
     let gaugeText = 'AT THE';
     let gaugeBigText = 'SAFE LEVEL';
-    if (!Number.isNaN(airPollMeasurement)) {
+    if (Number.isNaN(airPollMeasurement)) {
       gaugeText = 'Measurements not';
       gaugeBigText = 'Recorded';
       airPollMeasurement = 0;
