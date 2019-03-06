@@ -1,15 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import worldbankgroup from '../assets/images/partners/worldbankgroup.png';
+import worldbank from '../assets/images/partners/worldbankgroup.png';
+
 import liquidtelcom from '../assets/images/partners/liquidtelcom.png';
 import data4sdg from '../assets/images/partners/partnershipsdg.png';
 
 const styles = theme => ({
   root: {
+    flexGrow: 1
+  },
+  title: {
+    backgroundColor: 'white',
+    paddingTop: '5rem',
+    paddingBottom: '5rem',
+    [theme.breakpoints.down('md')]: {
+      paddingTop: '3rem'
+    }
+  },
+  partnerContainer: {
     flexGrow: 1,
     backgroundColor: 'white',
     [theme.breakpoints.up('md')]: {
@@ -69,29 +81,49 @@ const styles = theme => ({
 
 function PartnerLogos({ classes }) {
   return (
-    <Grid container justify="center" align="center" className={classes.root}>
-      <Grid item>
-        <div className={classes.leftLogo}>
-          <img
-            src={worldbankgroup}
-            alt="World Bank Group"
-            className={classes.img}
-          />
-        </div>
+    <Grid container xs={12} style={{ paddingBottom: '5rem' }}>
+      <Grid
+        container
+        xs={12}
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.title}
+      >
+        <Typography variant="h3" className={classes.headlineTitle}>
+          OUR PARTNERS
+        </Typography>
       </Grid>
-      <Grid item>
-        <div className={classes.centerLogo}>
-          <img src={liquidtelcom} alt="Liquid Telcom" className={classes.img} />
-        </div>
-      </Grid>
-      <Grid item>
-        <div className={classes.rightLogo}>
-          <img
-            src={data4sdg}
-            alt="Global Partnership for Sustainable Development Data"
-            className={classes.img}
-          />
-        </div>
+
+      <Grid
+        container
+        justify="center"
+        align="center"
+        className={classes.partnerContainer}
+      >
+        <Grid item>
+          <div className={classes.centerLogo}>
+            <img src={worldbank} alt="World Bank" className={classes.img} />
+          </div>
+        </Grid>
+        <Grid item>
+          <div className={classes.centerLogo}>
+            <img
+              src={liquidtelcom}
+              alt="Liquid Telcom"
+              className={classes.img}
+            />
+          </div>
+        </Grid>
+        <Grid item>
+          <div className={classes.rightLogo}>
+            <img
+              src={data4sdg}
+              alt="Global Partnership for Sustainable Development Data"
+              className={classes.img}
+            />
+          </div>
+        </Grid>
       </Grid>
     </Grid>
   );
