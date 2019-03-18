@@ -165,8 +165,6 @@ function App() {
                 />
               )}
             />
-            <Route path={URLS.ABOUT} component={About} />
-            <Route path={URLS.ABOUT} component={About} />
             <Route
               render={props => <NotFound {...props} url={URLS.NOT_FOUND} />}
             />
