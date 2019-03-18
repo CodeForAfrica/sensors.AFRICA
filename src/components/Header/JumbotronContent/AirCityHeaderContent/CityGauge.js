@@ -10,7 +10,7 @@ import RadialGauge from './RadialGauge';
 const styles = () => ({});
 
 function CityGauge({ airPollMeasurement, airPollDescription, width }) {
-  const Gauge = width === 'xs' || width === 'sm' ? DigitalGauge : RadialGauge;
+  const Gauge = width === 'xs' ? DigitalGauge : RadialGauge;
 
   return (
     <Gauge
