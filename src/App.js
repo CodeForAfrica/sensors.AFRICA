@@ -18,6 +18,8 @@ import Air, {
   HealthAndClimateImpacts as AirHealthAndClimateImpacts
 } from './pages/air';
 
+import { AirMap, AirGraph, AirGauge } from './components/Embeds';
+
 const FONT_FAMILY = '"Montserrat", "sans-serif"';
 const HEADINGS_FONT_FAMILY = '"Anton", "sans-serif"';
 
@@ -150,6 +152,21 @@ function App() {
               path={URLS.AIR.IMPACT}
               render={props => (
                 <AirHealthAndClimateImpacts {...props} url={URLS.AIR.IMPACT} />
+              )}
+            />
+            <Route
+              path="/embeded"
+              render={({ match: { url } }) => (
+                <Route
+                  path={`${url}/air`}
+                  render={({ match: { url: url1 } }) => (
+                    <React.Fragment>
+                      <Route path={`${url1}/map`} component={AirMap} />
+                      <Route path={`${url1}/graph`} component={AirGraph} />
+                      <Route path={`${url1}/dial`} component={AirGauge} />
+                    </React.Fragment>
+                  )}
+                />
               )}
             />
             <Route

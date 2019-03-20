@@ -10,7 +10,9 @@ import NeedlePointer from './NeedlePointer';
 const styles = theme => ({
   root: {
     position: 'relative',
-    paddingTop: '36px'
+    paddingTop: '36px',
+    width: 'inherit',
+    height: 'inherit'
   },
   gaugeDescription: {
     position: 'absolute'
@@ -47,9 +49,6 @@ const styles = theme => ({
     fill: 'white'
   },
   gaugeNeedleItem: {
-    [theme.breakpoints.down('sm')]: {
-      top: '90px'
-    },
     width: '900px',
     height: '500px',
     position: 'absolute'
@@ -62,11 +61,6 @@ const styles = theme => ({
     },
     width: '600px',
     height: '300px'
-  },
-  gaugeWhiteItem: {
-    [theme.breakpoints.down('sm')]: {
-      display: 'none'
-    }
   },
   pointer: {
     fill: 'rgb(20, 74, 61)'
