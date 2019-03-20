@@ -22,13 +22,14 @@ function Embed({ classes, city }) {
   const iframe = `
     <iframe src="https://sensors.africa/embeded/air/dial?city=${city.slug}"
             style="border: none;"
-            name="sensors.AFRICA | ${city.name}"
+            name="sensors-dial-${city.slug}"
+            title="sensors.AFRICA | ${city.name} AQ Gauge"
             scrolling="no"
             frameborder="0"
             height="400"
             width="100%"
-            allowfullscreen>
-    </iframe>`;
+            allowfullscreen />
+    `;
   return (
     <form className={classes.container} noValidate autoComplete="off">
       <textarea className={classes.input} readOnly rows={8}>

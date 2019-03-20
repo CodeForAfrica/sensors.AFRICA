@@ -9,13 +9,18 @@ function AirMap({ location }) {
 
   return (
     <iframe
-      title="Sensor Map"
       src={`https://map.aq.sensors.africa/#${CITIES_LOCATION[city].location}`}
+      name={`sensors-map-${CITIES_LOCATION[city].slug}`}
+      title={`sensors.AFRICA | ${CITIES_LOCATION[city].name} Sensor Map`}
+      scrolling="no"
+      frameBorder="0"
+      height="auto"
+      width="100%"
       style={{
-        height: '100vh',
-        width: '100vw'
+        width: '100vw',
+        height: '100vh'
       }}
-      frameBorder="none"
+      allowFullScreen
     />
   );
 }
