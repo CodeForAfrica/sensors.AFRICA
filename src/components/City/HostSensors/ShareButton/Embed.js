@@ -18,13 +18,16 @@ const styles = () => ({
     width: 200
   }
 });
-function Embed({ classes }) {
+function Embed({ classes, city }) {
   const iframe = `
-    <iframe src="https://sensors.africa/air"
-            style="border:0px #ffffff none;"
-            name="sensors" scrolling="no" frameborder="1"
-            marginheight="1px" marginwidth="1px"
-            height="570px" width="800px" allowfullscreen>
+    <iframe src="https://sensors.africa/embeded/air/dial?city=${city.slug}"
+            style="border: none;"
+            name="sensors.AFRICA | ${city.name}"
+            scrolling="no"
+            frameborder="0"
+            height="400"
+            width="100%"
+            allowfullscreen>
     </iframe>`;
   return (
     <form className={classes.container} noValidate autoComplete="off">
@@ -36,7 +39,8 @@ function Embed({ classes }) {
 }
 
 Embed.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  city: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(Embed);

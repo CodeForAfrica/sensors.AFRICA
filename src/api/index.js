@@ -46,6 +46,7 @@ const formatWeeklyP2Stats = data => {
 
 const CITIES_LOCATION = {
   nairobi: {
+    slug: 'nairobi',
     latitude: '-1.',
     longitude: '36.',
     name: 'Nairobi',
@@ -55,6 +56,7 @@ const CITIES_LOCATION = {
     twitterHandle: '@nairobicitygov'
   },
   lagos: {
+    slug: 'lagos',
     latitude: '6.',
     longitude: '3.',
     name: 'Lagos',
@@ -64,6 +66,7 @@ const CITIES_LOCATION = {
     twitterHandle: '@followlasg'
   },
   'dar-es-salaam': {
+    slug: 'dar-es-salaam',
     latitude: '-6.',
     longitude: '39.',
     name: 'Dar es Salaam',

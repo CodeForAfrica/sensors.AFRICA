@@ -109,7 +109,7 @@ class ShareButton extends React.Component {
                   Embed this project into your website by using the following
                   iframe:
                 </Typography>
-                <Embed />
+                <Embed city={city} />
               </Grid>
             </Grid>
           </DialogContent>
