@@ -49,7 +49,8 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 6,
     textAlign: 'center',
     fontWeight: 'bold'
-  }
+  },
+  caption: { textAlign: 'right' }
 });
 function DescriptionContent({ classes }) {
   return (
@@ -81,26 +82,26 @@ function DescriptionContent({ classes }) {
             <Content
               title="AIR"
               description="
-             The World Health Organisation reported in 2018 that air pollution causes 
-             about 7 million premature deaths globally each year. 
-             Indoor air pollution accounts for 3.8 million deaths globally, while outdoor
-            (ambient) air pollution causes 4.2 million deaths every year. In
-            addition to deaths directly attributable to air pollution, exposure
-            increases the risk of respiratory diseases and cardiovascular
-            conditions. The leading pollutant is particulate matter (PM), which is
-            composed of sulfate, nitrates, ammonia, sodium chloride, black carbon,
-            mineral dust and water droplets. Citizens and governments are
-            increasingly aware of the toxic health risks from air pollution but
-            don’t have easily accessible, hyper-local and real-time data that would
-            provide actionable information to either avoid the effects, fight the
-            causes, or stage interventions. sensors.AFRICA aims to change this with
-            low-cost air quality sensors, which citizens and civic watchdogs will be
-            able to use to measure, and monitor the quality of real-time air. The
-            data from these air quality sensors are already being used by local
-            watchdog NGOs and journalists to spotlight major public health risks
-            using both the live data and data from our historical archives. We aim
-            to ramp up these watchdog impacts, by giving public protectors more and
-            better actionable data."
+              The World Health Organisation reported in 2018 that air pollution causes 
+              about 7 million premature deaths globally each year. 
+              Indoor air pollution accounts for 3.8 million deaths globally, while outdoor
+              (ambient) air pollution causes 4.2 million deaths every year. In
+              addition to deaths directly attributable to air pollution, exposure
+              increases the risk of respiratory diseases and cardiovascular
+              conditions. The leading pollutant is particulate matter (PM), which is
+              composed of sulfate, nitrates, ammonia, sodium chloride, black carbon,
+              mineral dust and water droplets. Citizens and governments are
+              increasingly aware of the toxic health risks from air pollution but
+              don’t have easily accessible, hyper-local and real-time data that would
+              provide actionable information to either avoid the effects, fight the
+              causes, or stage interventions. sensors.AFRICA aims to change this with
+              low-cost air quality sensors, which citizens and civic watchdogs will be
+              able to use to measure, and monitor the quality of real-time air. The
+              data from these air quality sensors are already being used by local
+              watchdog NGOs and journalists to spotlight major public health risks
+              using both the live data and data from our historical archives. We aim
+              to ramp up these watchdog impacts, by giving public protectors more and
+              better actionable data."
             />
           </div>
           <div className={classes.water}>
@@ -149,6 +150,23 @@ function DescriptionContent({ classes }) {
               Tanzania, Lake Malawi and Lake Rukwa."
             />
           </div>
+        </Grid>
+      </Grid>
+
+      <Grid container direction="row" justify="flex-end" alignItem="center">
+        <Grid item xs={3} style={{ padding: '2rem' }}>
+          <Typography variant="caption" className={classes.caption}>
+            Sources retrieved from{' '}
+            <a href="https://www.who.int/airpollution/en/">
+              The World Bank. (2018) and
+            </a>
+          </Typography>
+          <Typography variant="caption" className={classes.caption}>
+            <a href="https://www.who.int/airpollution/en/">
+              The Global Burden of Disease study and applications in water,
+              sanitation and hygiene. (2018).
+            </a>
+          </Typography>
         </Grid>
       </Grid>
     </Grid>
