@@ -137,7 +137,7 @@ function DescriptionContent({ classes }) {
             <Content
               title="STORMWATCH"
               description="
-              PAn estimated 5,000 fishermen drown during storms on just Lake Victoria
+              An estimated 5,000 fishermen drown during storms on just Lake Victoria
               every year. StormWatch will change this by using VIEWS ((Lake Victoria
               Intense storm Early Warning System) to predict thunderstorms and send
               out public alerts to villagers ahead of extreme storms on Africa's great
