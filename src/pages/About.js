@@ -7,6 +7,7 @@ import DocumentHead from '../components/DocumentHead';
 import Stories from '../components/About/Stories';
 import Navbar from '../components/Header/Navbar';
 import AboutHeader from '../components/About/Header';
+import AboutContent from '../components/About/AboutContent';
 import Partners from '../components/About/Partners';
 import Staff from '../components/About/Staff';
 import Footer from '../components/Footer';
@@ -25,6 +26,7 @@ function AboutGlobal({ classes, url }) {
       <DocumentHead url={url} />
       <Navbar />
       <AboutHeader />
+      <AboutContent />
       <Partners />
       <Staff />
       <Stories />
