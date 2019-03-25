@@ -111,18 +111,18 @@ function EmbedDocumentation({ classes }) {
             className={classes.typography}
             component="h2"
           >
-            Embed Sensors Components
+            Embeding Sensors Widgets
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h6" className={classes.title} component="h3">
-            Embeding Widgets
+            Embeding City Widgets
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="body2" component="p">
-            The primary way to embed sensors.AFRICA widgets is via iframes.
-            There are three embedable widgets:
+            The primary way to embed sensors.AFRICA city widgets is via iframes.
+            There are three embedable city widgets:
           </Typography>
         </Grid>
         <Grid
