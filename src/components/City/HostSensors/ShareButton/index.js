@@ -106,7 +106,7 @@ class ShareButton extends React.Component {
                   variant="caption"
                   className={classes.typography}
                 >
-                  Embed this project into your website by using the following
+                  Embed this dial into your website by using the following
                   iframe:
                 </Typography>
                 <Embed city={city} />
