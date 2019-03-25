@@ -43,14 +43,31 @@ const styles = theme => ({
       width: '26.5rem'
     }
   },
-
   mainTitle: {
     paddingTop: theme.spacing.unit * 3,
     paddingBottom: theme.spacing.unit * 6,
     textAlign: 'center',
     fontWeight: 'bold'
   },
-  caption: { textAlign: 'right' }
+  caption: {
+    textAlign: 'center',
+    [theme.breakpoints.up('md')]: {
+      textAlign: 'right'
+    }
+  },
+  sources: {
+    padding: '1rem 0',
+    width: '100vw',
+    [theme.breakpoints.up('md')]: {
+      width: '59.625rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '79.5rem'
+    },
+    '& > ul': {
+      listStyle: 'none'
+    }
+  }
 });
 function DescriptionContent({ classes }) {
   return (
@@ -71,13 +88,7 @@ function DescriptionContent({ classes }) {
       </Grid>
 
       <Grid item xs={12}>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="strech"
-          style={{ paddingTop: '2rem', paddingBottom: '2rem' }}
-        >
+        <Grid container direction="row" justify="center" alignItems="strech">
           <div className={classes.airContent}>
             <Content
               title="AIR"
@@ -153,21 +164,38 @@ function DescriptionContent({ classes }) {
         </Grid>
       </Grid>
 
-      <Grid container direction="row" justify="flex-end" alignItem="center">
-        <Grid item xs={3} style={{ padding: '2rem' }}>
+      <Grid container direction="row" justify="center" alignItem="center">
+        <div className={classes.sources}>
           <Typography variant="caption" className={classes.caption}>
             Sources retrieved from{' '}
-            <a href="https://www.who.int/airpollution/en/">
-              The World Bank. (2018) and
-            </a>
           </Typography>
-          <Typography variant="caption" className={classes.caption}>
-            <a href="https://www.who.int/airpollution/en/">
-              The Global Burden of Disease study and applications in water,
-              sanitation and hygiene. (2018).
-            </a>
+          <Typography
+            variant="caption"
+            className={classes.caption}
+            component="ul"
+          >
+            <li>
+              <a
+                href="https://www.who.int/airpollution/en/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The World Bank. (2018)
+              </a>
+              , and
+            </li>
+            <li>
+              <a
+                href="https://www.who.int/airpollution/en/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The Global Burden of Disease study and applications in water,
+                sanitation and hygiene. (2018).
+              </a>
+            </li>
           </Typography>
-        </Grid>
+        </div>
       </Grid>
     </Grid>
   );

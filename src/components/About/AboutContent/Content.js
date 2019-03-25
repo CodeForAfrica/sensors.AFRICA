@@ -11,7 +11,8 @@ const styles = theme => ({
   mainTitle: {
     color: '#424143',
     textAlign: 'center',
-    fontSize: theme.typography.h6.fontSize
+    fontSize: theme.typography.h6.fontSize,
+    paddingBottom: theme.typography.h6.fontSize
   },
   subTitle: {
     textAlign: 'center',
