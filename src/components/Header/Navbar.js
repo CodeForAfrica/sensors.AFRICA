@@ -69,9 +69,16 @@ const styles = theme => ({
     textDecoration: 'none',
     color: '#B64598'
   },
-  logoGrid: { paddingBottom: '0.5rem' },
-  linkGrid: { paddingTop: '2.5rem' },
-  mediaGrid: { paddingTop: '2rem' }
+  logoGrid: {
+    paddingTop: '0.3rem',
+    paddingBottom: '0.5rem'
+  },
+  linkGrid: {
+    paddingTop: '2.5rem'
+  },
+  mediaGrid: {
+    paddingTop: '2rem'
+  }
 });
 
 class Navbar extends React.Component {
