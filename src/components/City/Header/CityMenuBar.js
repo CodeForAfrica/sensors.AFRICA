@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MenuBar from '../../Header/MenuBar';
 import SearchBar from '../../SearchBar';
+import MenuBar from '../../Header/MenuBar';
 
 function CityMenuBar({ handleSearch }) {
   return (

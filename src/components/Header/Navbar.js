@@ -9,6 +9,9 @@ import { withStyles } from '@material-ui/core/styles';
 import ComingSoon from '../ComingSoon';
 import SocialMedia from '../SocialMedia';
 
+import Logo from '../Logo';
+import MenuBar from './MenuBar';
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -65,7 +68,10 @@ const styles = theme => ({
   soundlink: {
     textDecoration: 'none',
     color: '#B64598'
-  }
+  },
+  logoGrid: { paddingBottom: '0.5rem' },
+  linkGrid: { paddingTop: '2.5rem' },
+  mediaGrid: { paddingTop: '2rem' }
 });
 
 class Navbar extends React.Component {
@@ -108,11 +114,17 @@ class Navbar extends React.Component {
         <Grid item xs={12}>
           <AppBar position="static" className={classes.appBar}>
             <Toolbar className={classes.toolbar} disableGutters>
+              <Grid item className={classes.logoGrid}>
+                <Link to="/">
+                  <Logo />
+                </Link>
+              </Grid>
               <Grid
                 container
                 direction="row"
                 justify="flex-start"
                 alignItems="center"
+                className={classes.linkGrid}
               >
                 <MenuItem className={classes.airText}>
                   <Link to="/air" className={classes.airlink}>
@@ -140,22 +152,19 @@ class Navbar extends React.Component {
                 </MenuItem>
               </Grid>
 
+              <Grid item>
+                <MenuBar />
+              </Grid>
+
               <Hidden smDown>
                 <Grid
                   container
+                  xs={4}
                   direction="row"
-                  justify="flex-end"
+                  justify="center"
                   alignItems="center"
+                  className={classes.mediaGrid}
                 >
-                  {/*
-                  <Grid item>
-                    <FontAwesomeIcon
-                        className={classes.searchFa}
-                        icon="search"
-                        size="lg"
-                      />
-                  </Grid>
-                */}
                   <Grid item>
                     <SocialMedia color="#2FB56B" />
                   </Grid>
