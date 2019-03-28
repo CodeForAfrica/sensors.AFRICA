@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
-import { AppBar, Hidden, MenuItem, Toolbar } from '@material-ui/core';
+import { AppBar, MenuItem, Toolbar } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import ComingSoon from '../ComingSoon';
-import SocialMedia from '../SocialMedia';
 
-import Logo from '../Logo';
+import IconLogo from '../IconLogo';
 import MenuBar from './MenuBar';
 
 const styles = theme => ({
@@ -123,7 +122,7 @@ class Navbar extends React.Component {
             <Toolbar className={classes.toolbar} disableGutters>
               <Grid item className={classes.logoGrid}>
                 <Link to="/">
-                  <Logo />
+                  <IconLogo />
                 </Link>
               </Grid>
               <Grid
@@ -162,21 +161,6 @@ class Navbar extends React.Component {
               <Grid item>
                 <MenuBar />
               </Grid>
-
-              <Hidden smDown>
-                <Grid
-                  container
-                  xs={4}
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                  className={classes.mediaGrid}
-                >
-                  <Grid item>
-                    <SocialMedia color="#2FB56B" />
-                  </Grid>
-                </Grid>
-              </Hidden>
             </Toolbar>
             <ComingSoon show={show} onClose={this.hideComingSoonAlert} />
           </AppBar>
