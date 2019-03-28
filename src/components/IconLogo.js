@@ -31,7 +31,7 @@ const styles = theme => ({
     position: 'relative'
   },
   img: {
-    paddingTop: '0.5em'
+    paddingTop: '1em'
   }
 });
 
