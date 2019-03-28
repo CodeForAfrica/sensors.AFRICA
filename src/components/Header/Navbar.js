@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ComingSoon from '../ComingSoon';
 import SocialMedia from '../SocialMedia';
 
-import Logo from '../Logo';
+import IconLogo from '../IconLogo';
 import MenuBar from './MenuBar';
 
 const styles = theme => ({
@@ -123,7 +123,7 @@ class Navbar extends React.Component {
             <Toolbar className={classes.toolbar} disableGutters>
               <Grid item className={classes.logoGrid}>
                 <Link to="/">
-                  <Logo />
+                  <IconLogo />
                 </Link>
               </Grid>
               <Grid
@@ -159,10 +159,6 @@ class Navbar extends React.Component {
                 </MenuItem>
               </Grid>
 
-              <Grid item>
-                <MenuBar />
-              </Grid>
-
               <Hidden smDown>
                 <Grid
                   container
@@ -177,6 +173,10 @@ class Navbar extends React.Component {
                   </Grid>
                 </Grid>
               </Hidden>
+
+              <Grid item>
+                <MenuBar />
+              </Grid>
             </Toolbar>
             <ComingSoon show={show} onClose={this.hideComingSoonAlert} />
           </AppBar>
