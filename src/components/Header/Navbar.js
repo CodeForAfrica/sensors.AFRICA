@@ -74,7 +74,7 @@ const styles = theme => ({
     paddingBottom: '0.3rem'
   },
   linkGrid: {
-    paddingTop: '2rem'
+    paddingTop: '2.5rem'
   },
   mediaGrid: {
     paddingTop: '2rem'
