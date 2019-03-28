@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ComingSoon from '../ComingSoon';
 import SocialMedia from '../SocialMedia';
 
-import IconLogo from '../IconLogo';
+import Logo from '../Logo';
 import MenuBar from './MenuBar';
 
 const styles = theme => ({
@@ -71,7 +71,7 @@ const styles = theme => ({
   },
   logoGrid: {
     paddingTop: '0.3rem',
-    paddingBottom: '0.5rem'
+    paddingBottom: '0.3rem'
   },
   linkGrid: {
     paddingTop: '2rem'
@@ -123,7 +123,7 @@ class Navbar extends React.Component {
             <Toolbar className={classes.toolbar} disableGutters>
               <Grid item className={classes.logoGrid}>
                 <Link to="/">
-                  <IconLogo />
+                  <Logo />
                 </Link>
               </Grid>
               <Grid
