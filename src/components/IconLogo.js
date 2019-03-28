@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
-import iconlogo from '../assets/images/logos/sensorsLogo.jpg';
+import iconlogo from '../assets/images/logos/sensorsLogo.png';
 
 const styles = theme => ({
   defaultBadge: {
