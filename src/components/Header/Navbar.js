@@ -69,11 +69,11 @@ const styles = theme => ({
     color: '#B64598'
   },
   logoGrid: {
-    // paddingTop: '0',
-    // paddingBottom: '0.3rem'
+    paddingTop: '0.4rem'
   },
   linkGrid: {
-    paddingTop: '1.4rem'
+    paddingTop: '1rem',
+    paddingBottom: '1rem'
   },
   mediaGrid: {
     paddingTop: '2rem'
@@ -120,11 +120,12 @@ class Navbar extends React.Component {
         <Grid item xs={12}>
           <AppBar position="static" className={classes.appBar}>
             <Toolbar className={classes.toolbar} disableGutters>
-              <Grid item className={classes.logoGrid}>
+              <div item className={classes.logoGrid}>
                 <Link to="/">
                   <IconLogo />
                 </Link>
-              </Grid>
+              </div>
+
               <Grid
                 container
                 direction="row"

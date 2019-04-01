@@ -29,7 +29,7 @@ const styles = theme => ({
     paddingTop: '3%'
   },
   iconContainer: {
-    paddingTop: '1.4rem'
+    // paddingTop: '1rem'
   }
 });
 

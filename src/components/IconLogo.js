@@ -30,9 +30,7 @@ const styles = theme => ({
     zIndex: 1301,
     position: 'relative'
   },
-  img: {
-    paddingTop: '1.6rem'
-  }
+  img: {}
 });
 
 function IconLogo({ classes }) {
@@ -42,7 +40,7 @@ function IconLogo({ classes }) {
       src={iconlogo}
       className={imgClassName}
       alt="sensors.AFRICA"
-      height="80"
+      height="60"
     />
   );
 }
