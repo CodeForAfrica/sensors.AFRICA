@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { VictoryPie, VictoryLabel } from 'victory';
 
-import { Grid } from '@material-ui/core';
+import { Grid, Tooltip } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import NeedlePointer from './NeedlePointer';
 
@@ -257,13 +257,16 @@ class RadialGauge extends Component {
               </svg>
 
               <NeedlePointer measurement={value} hidden={isNeedleHidden} />
+
               <g transform="translate(165,85)" fill="white">
                 <text
                   fill="white"
                   textAnchor="middle"
                   className={classes.gaugeWhoGuidelineText}
                 >
-                  WHO GUIDELINE
+                  <Tooltip title="add">
+                    <span>WHO GUIDELINE</span>
+                  </Tooltip>
                 </text>
               </g>
             </svg>

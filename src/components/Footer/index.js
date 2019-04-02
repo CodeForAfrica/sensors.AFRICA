@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography, Tooltip } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import SocialMedia from '../SocialMedia';
@@ -11,6 +11,7 @@ import Email from '../Email';
 import '../../assets/css/App.css';
 import codeforafrica from '../../assets/images/logos/cfafrica_white.png';
 import innovateafrica from '../../assets/images/logos/innovateafrica_white.png';
+import GlossaryToolTipTitle from '../Tooltip/GlossaryToolTipsTitle';
 
 const styles = theme => ({
   root: {
@@ -99,6 +100,15 @@ const styles = theme => ({
   img: {
     maxWidth: '100%',
     height: '100px'
+  },
+  htmlTooltip: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: '100',
+    border: '1px solid #dadde9',
+    '& b': {
+      fontWeight: theme.typography.fontWeightMedium
+    }
   }
 });
 
@@ -133,9 +143,25 @@ function Footer({ classes }) {
             ABOUT sensors.AFRICA
           </Typography>
           <Typography variant="caption" className={classes.aboutContent}>
-            sensors.AFRICA is a pan-African citizen science initiative that uses
-            sensors to monitor air, water and sound pollution to give citizens
-            actionable information about their cities.
+            sensors.AFRICA is a pan-African&nbsp;
+            <Tooltip
+              classes={{
+                tooltip: classes.htmlTooltip
+              }}
+              title={
+                <GlossaryToolTipTitle
+                  title="Citizen science initiative"
+                  description="Scientific research conducted, in whole or in part, by amateur (or nonprofessional) 
+                  scientists, to expand opportunities for scientific data collection and to 
+                  provide access to scientific information for community members."
+                />
+              }
+              placement="top"
+            >
+              <span>citizen science initiative</span>
+            </Tooltip>
+            &nbsp;that uses sensors to monitor air, water and sound pollution to
+            give citizens actionable information about their cities.
           </Typography>
           <Link to="/about" className={classes.buttonLink}>
             <Button variant="contained" className={classes.footerButton}>

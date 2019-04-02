@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Tooltip } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import HealthEffects from './HealthEffects';
+import GlossaryToolTipTitle from '../Tooltip/GlossaryToolTipsTitle';
 
 const styles = theme => ({
   root: {
@@ -42,6 +43,15 @@ const styles = theme => ({
     [theme.breakpoints.up('lg')]: {
       width: '15rem'
     }
+  },
+  htmlTooltip: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: '100',
+    border: '1px solid #dadde9',
+    '& b': {
+      fontWeight: theme.typography.fontWeightMedium
+    }
   }
 });
 
@@ -60,7 +70,23 @@ function Issues({ classes }) {
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h5" className={classes.title}>
-          Air pollution causes 1 in 9 deaths
+          <Tooltip
+            classes={{
+              tooltip: classes.htmlTooltip
+            }}
+            title={
+              <GlossaryToolTipTitle
+                title="Air pollution"
+                description="The release of pollutants into the air that are detrimental to human
+                health and the planet as a whole and can reach harmful concentrations
+                both outside and indoors."
+              />
+            }
+            placement="top"
+          >
+            <span>Air Pollution</span>
+          </Tooltip>
+          &nbsp;causes 1 in 9 deaths
         </Typography>
       </Grid>
       <Grid item xs={12}>

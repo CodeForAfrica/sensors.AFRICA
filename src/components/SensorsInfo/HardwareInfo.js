@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Tooltip } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import SDS011 from '../../assets/images/sensors/sensor1.jpg';
 import DHT22 from '../../assets/images/sensors/sensor2.jpg';
 import GSMSIM800L from '../../assets/images/sensors/sensor3.jpg';
 import NODEMCU from '../../assets/images/sensors/sensor4.jpg';
+import GlossaryToolTipTitle from '../Tooltip/GlossaryToolTipsTitle';
 
 const styles = theme => ({
   root: {
@@ -62,6 +63,15 @@ const styles = theme => ({
     backgroundColor: 'white',
     color: theme.palette.secondary.main,
     fontWeight: 'bold'
+  },
+  htmlTooltip: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: '100',
+    border: '1px solid #dadde9',
+    '& b': {
+      fontWeight: theme.typography.fontWeightMedium
+    }
   }
 });
 
@@ -107,14 +117,30 @@ function HardwareInfo({ classes }) {
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
             <Typography variant="caption" className={classes.caption}>
-              This sensor is used to measure PM10 and PM2.5 particles for
-              concentration ranges between 0-999µg/m3. It uses laser scattering
-              principle to get particles concentration between 0.3 to 10ug in
-              the air. Air gets in through the pitot inlet, then it passes
-              through the detection area before being ejected from the sensors
-              through the built fan. Laser scattering can be induced when
-              particles go through the detection area. The scattered light is
-              transformed into electrical signals and these signals will be
+              This sensor is used to measure PM10 and{' '}
+              <Tooltip
+                classes={{
+                  tooltip: classes.htmlTooltip
+                }}
+                title={
+                  <GlossaryToolTipTitle
+                    title="Pm 2.5 Particles"
+                    description="An air pollutant that is a concern for people's health when 
+                    levels in air are high. PM2.5 are tiny particles in the air that reduce 
+                    visibility and cause the air to appear hazy when levels are elevated."
+                  />
+                }
+                placement="top"
+              >
+                <span>PM2.5 particles</span>
+              </Tooltip>{' '}
+              for concentration ranges between 0-999µg/m3. It uses laser
+              scattering principle to get particles concentration between 0.3 to
+              10ug in the air. Air gets in through the pitot inlet, then it
+              passes through the detection area before being ejected from the
+              sensors through the built fan. Laser scattering can be induced
+              when particles go through the detection area. The scattered light
+              is transformed into electrical signals and these signals will be
               amplified and processed. The number and diameter of particles can
               be obtained by analysis because the signal waveform has certain
               relations with the particle diameter. It has a response time of 10
