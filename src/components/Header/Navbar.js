@@ -9,6 +9,9 @@ import { withStyles } from '@material-ui/core/styles';
 import ComingSoon from '../ComingSoon';
 import SocialMedia from '../SocialMedia';
 
+import IconLogo from '../IconLogo';
+import MenuBar from './MenuBar';
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -65,6 +68,9 @@ const styles = theme => ({
   soundlink: {
     textDecoration: 'none',
     color: '#B64598'
+  },
+  logoGrid: {
+    paddingTop: '0.4rem'
   }
 });
 
@@ -108,11 +114,17 @@ class Navbar extends React.Component {
         <Grid item xs={12}>
           <AppBar position="static" className={classes.appBar}>
             <Toolbar className={classes.toolbar} disableGutters>
+              <div item className={classes.logoGrid}>
+                <Link to="/">
+                  <IconLogo />
+                </Link>
+              </div>
               <Grid
                 container
                 direction="row"
                 justify="flex-start"
                 alignItems="center"
+                className={classes.linkGrid}
               >
                 <MenuItem className={classes.airText}>
                   <Link to="/air" className={classes.airlink}>
@@ -143,24 +155,21 @@ class Navbar extends React.Component {
               <Hidden smDown>
                 <Grid
                   container
+                  xs={4}
                   direction="row"
-                  justify="flex-end"
+                  justify="center"
                   alignItems="center"
+                  className={classes.mediaGrid}
                 >
-                  {/*
-                  <Grid item>
-                    <FontAwesomeIcon
-                        className={classes.searchFa}
-                        icon="search"
-                        size="lg"
-                      />
-                  </Grid>
-                */}
                   <Grid item>
                     <SocialMedia color="#2FB56B" />
                   </Grid>
                 </Grid>
               </Hidden>
+
+              <Grid item>
+                <MenuBar />
+              </Grid>
             </Toolbar>
             <ComingSoon show={show} onClose={this.hideComingSoonAlert} />
           </AppBar>

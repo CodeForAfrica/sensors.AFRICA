@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 import HamburgerMenu from '../Hambuger/HambugerMenu';
-
-import Logo from '../Logo';
 
 const styles = theme => ({
   root: {
@@ -32,7 +29,7 @@ const styles = theme => ({
     paddingTop: '3%'
   },
   iconContainer: {
-    paddingTop: '2rem'
+    // paddingTop: '2rem'
   }
 });
 
@@ -49,37 +46,16 @@ class MenuBar extends React.Component {
   }
 
   render() {
-    const { alwaysActive, children, classes, showMenu } = this.props;
+    const { classes, showMenu } = this.props;
     const { menuOpen } = this.state;
-    const active = alwaysActive || menuOpen;
-    const logo = (
-      <Grid item>
-        <Link to="/">
-          <Logo active={active} />
-        </Link>
-      </Grid>
-    );
-    let leftComponent = logo;
-    if (children) {
-      leftComponent = (
-        <Grid item>
-          <Grid container alignItems="flex-start">
-            {logo}
-            <Grid item className={classes.children}>
-              {children}
-            </Grid>
-          </Grid>
-        </Grid>
-      );
-    }
+
     return (
       <Grid
         container
         className={classes.root}
-        justify="space-between"
-        alignItems="flex-start"
+        justify="flex-end"
+        alignItems="center"
       >
-        {leftComponent}
         {showMenu && (
           <Grid item>
             <Grid className={classes.iconContainer}>
@@ -96,16 +72,12 @@ class MenuBar extends React.Component {
 }
 
 MenuBar.propTypes = {
-  children: PropTypes.node,
   classes: PropTypes.object.isRequired,
-  showMenu: PropTypes.bool,
-  alwaysActive: PropTypes.bool
+  showMenu: PropTypes.bool
 };
 
 MenuBar.defaultProps = {
-  children: null,
-  showMenu: true,
-  alwaysActive: false
+  showMenu: true
 };
 
 export default withStyles(styles)(MenuBar);

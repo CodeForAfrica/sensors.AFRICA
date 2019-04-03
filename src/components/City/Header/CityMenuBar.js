@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MenuBar from '../../Header/MenuBar';
+import { Grid } from '@material-ui/core';
+
 import SearchBar from '../../SearchBar';
 
 function CityMenuBar({ handleSearch }) {
   return (
-    <MenuBar>
+    <Grid container xs={3}>
       <SearchBar
         placeholder="Search for another location ..."
         handleSearch={handleSearch}
       />
-    </MenuBar>
+    </Grid>
   );
 }
 

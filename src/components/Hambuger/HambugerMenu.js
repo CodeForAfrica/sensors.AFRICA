@@ -14,11 +14,11 @@ const styles = theme => ({
   grid: {
     flex: 1
   },
+
   menuList: {
     color: 'white',
-    marginTop: '8rem',
+    marginTop: '5rem !important', // Override the default marginTop:'2rem' of <MenuList /> Component
     textAlign: 'right',
-    paddingRight: '2%',
     [theme.breakpoints.up('sm')]: {
       marginTop: '2rem',
       paddingRight: '10%'

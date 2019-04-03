@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
-import MenuBar from '../Header/MenuBar';
 import HealthClimateContent from '../Header/JumbotronContent/HealthClimateContent';
 
 const styles = theme => ({
@@ -26,9 +25,6 @@ function HealthClimateHeader({ classes }) {
       justify="center"
       alignItems="center"
     >
-      <Grid item xs={12}>
-        <MenuBar />
-      </Grid>
       <Grid item xs={12}>
         <HealthClimateContent title="HEALTH AND CLIMATE IMPACTS" />
       </Grid>
