@@ -113,7 +113,6 @@ class Navbar extends React.Component {
       >
         <Grid item xs={12}>
           {/* Position sticky is not universally supported so the attribute reverts to static when unavailable */}
-
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar className={classes.toolbar} disableGutters>
               <div item className={classes.logoGrid}>
