@@ -112,7 +112,7 @@ class Navbar extends React.Component {
         alignItems="center"
       >
         <Grid item xs={12}>
-          <AppBar position="static" className={classes.appBar}>
+          <AppBar position="sticky" className={classes.appBar}>
             <Toolbar className={classes.toolbar} disableGutters>
               <div item className={classes.logoGrid}>
                 <Link to="/">
