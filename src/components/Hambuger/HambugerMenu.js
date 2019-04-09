@@ -63,7 +63,7 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
         >
           <MenuList className={classes.menuList}>
             <a
-              href="https://medium.com/code-for-africa/tagged/sensorsafrica"
+              href="https://medium.com/@sensors.AFRICA"
               className={classes.link}
               target="_blank"
               rel="noopener noreferrer"

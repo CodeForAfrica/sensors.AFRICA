@@ -86,7 +86,7 @@ function SocialMedia({ color, classes }) {
           />
         </a>
         <a
-          href="https://medium.com/code-for-africa/tagged/sensorsafrica"
+          href="https://medium.com/@sensors.AFRICA"
           className={classes.links}
           target="_blank"
           rel="noopener noreferrer"
