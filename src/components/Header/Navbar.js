@@ -71,6 +71,9 @@ const styles = theme => ({
   },
   logoGrid: {
     paddingTop: '0.4rem'
+  },
+  mediaGrid: {
+    paddingRight: theme.spacing.unit
   }
 });
 
@@ -112,7 +115,8 @@ class Navbar extends React.Component {
         alignItems="center"
       >
         <Grid item xs={12}>
-          <AppBar position="static" className={classes.appBar}>
+          {/* Position sticky is not universally supported so the attribute reverts to static when unavailable */}
+          <AppBar position="fixed" className={classes.appBar}>
             <Toolbar className={classes.toolbar} disableGutters>
               <div item className={classes.logoGrid}>
                 <Link to="/">
@@ -157,7 +161,7 @@ class Navbar extends React.Component {
                   container
                   xs={4}
                   direction="row"
-                  justify="center"
+                  justify="flex-end"
                   alignItems="center"
                   className={classes.mediaGrid}
                 >

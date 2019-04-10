@@ -10,7 +10,7 @@ const styles = theme => ({
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
-    paddingTop: '2rem',
+    paddingTop: '6rem',
     [theme.breakpoints.up('md')]: {
       paddingRight: '20%',
       paddingLeft: '20%'
