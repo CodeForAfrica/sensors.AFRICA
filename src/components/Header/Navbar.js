@@ -71,6 +71,9 @@ const styles = theme => ({
   },
   logoGrid: {
     paddingTop: '0.4rem'
+  },
+  mediaGrid: {
+    paddingRight: theme.spacing.unit
   }
 });
 
@@ -158,7 +161,7 @@ class Navbar extends React.Component {
                   container
                   xs={4}
                   direction="row"
-                  justify="center"
+                  justify="flex-end"
                   alignItems="center"
                   className={classes.mediaGrid}
                 >
