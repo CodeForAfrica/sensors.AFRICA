@@ -198,7 +198,7 @@ class RadialGauge extends Component {
           ref={this.nodeRef}
         >
           <Grid item md={12} container alignItems="center" direction="column">
-            <svg height="700px" width="700px" style={{ paddingTop: 71 }}>
+            <svg height="700px" width="700px" style={{ paddingTop: 32 }}>
               <g transform="translate(0,-42)">
                 <VictoryPie
                   colorScale={colors}
