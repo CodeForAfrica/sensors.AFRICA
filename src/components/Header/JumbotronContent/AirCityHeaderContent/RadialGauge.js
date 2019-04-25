@@ -66,9 +66,9 @@ const styles = theme => ({
     fill: 'rgb(20, 74, 61)'
   },
   gaugeCircle: {
-    width: 355,
-    height: 190,
-    top: 208,
+    width: 365,
+    height: 181,
+    top: 200,
     position: 'absolute'
   },
   gaugeBigText: {
@@ -270,9 +270,9 @@ class RadialGauge extends Component {
 
             <svg className={classes.gaugeCircle}>
               <circle
-                r="175"
-                cx="175"
-                cy="175"
+                r="180"
+                cx="180"
+                cy="180"
                 fill="white"
                 className={classes.gaugeWhiteItem}
               />
