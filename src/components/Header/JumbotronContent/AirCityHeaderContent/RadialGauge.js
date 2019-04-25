@@ -66,8 +66,8 @@ const styles = theme => ({
     fill: 'rgb(20, 74, 61)'
   },
   gaugeCircle: {
-    width: 350,
-    height: 175,
+    width: 355,
+    height: 190,
     top: 208,
     position: 'absolute'
   },
@@ -214,7 +214,7 @@ class RadialGauge extends Component {
                   textAnchor="start"
                   labelComponent={
                     <VictoryLabel
-                      transform="translate(-26,38) rotate(-5)"
+                      transform="translate(-26,38) rotate(-5.8)"
                       verticalAnchor="middle"
                       textAnchor="end"
                     />
@@ -270,14 +270,14 @@ class RadialGauge extends Component {
 
             <svg className={classes.gaugeCircle}>
               <circle
-                r="175"
+                r="180"
                 cx="175"
-                cy="175"
+                cy="180"
                 fill="white"
                 className={classes.gaugeWhiteItem}
               />
-              <circle r="87.5" cx="175" cy="175" fill="white" />
-              <g transform="translate(175,80)" style={{ height: '30px' }}>
+              <circle r="87.5" cx="180" cy="180" fill="white" />
+              <g transform="translate(180,70)" style={{ height: '30px' }}>
                 <text
                   transform="translate(0,10)"
                   textAnchor="middle"
