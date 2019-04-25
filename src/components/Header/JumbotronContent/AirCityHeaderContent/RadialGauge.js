@@ -232,7 +232,7 @@ class RadialGauge extends Component {
 
             <svg className={classes.gaugeNeedleItem}>
               <svg viewBox="0 0 750 750">
-                <g transform="translate(39,120)">
+                <g transform="translate(60,100)">
                   <line
                     x1="50"
                     y1="10"
@@ -270,9 +270,9 @@ class RadialGauge extends Component {
 
             <svg className={classes.gaugeCircle}>
               <circle
-                r="180"
+                r="175"
                 cx="175"
-                cy="180"
+                cy="175"
                 fill="white"
                 className={classes.gaugeWhiteItem}
               />
