@@ -66,9 +66,9 @@ const styles = theme => ({
     fill: 'rgb(20, 74, 61)'
   },
   gaugeCircle: {
-    width: 365,
-    height: 181,
-    top: 200,
+    width: 350,
+    height: 175,
+    top: 208,
     position: 'absolute'
   },
   gaugeBigText: {
@@ -198,7 +198,7 @@ class RadialGauge extends Component {
           ref={this.nodeRef}
         >
           <Grid item md={12} container alignItems="center" direction="column">
-            <svg height="700px" width="700px" style={{ paddingTop: 31 }}>
+            <svg height="700px" width="700px" style={{ paddingTop: 71 }}>
               <g transform="translate(0,-42)">
                 <VictoryPie
                   colorScale={colors}
@@ -214,7 +214,7 @@ class RadialGauge extends Component {
                   textAnchor="start"
                   labelComponent={
                     <VictoryLabel
-                      transform="translate(-26,38) rotate(-5.8)"
+                      transform="translate(-26,38) rotate(-5)"
                       verticalAnchor="middle"
                       textAnchor="end"
                     />
@@ -232,7 +232,7 @@ class RadialGauge extends Component {
 
             <svg className={classes.gaugeNeedleItem}>
               <svg viewBox="0 0 750 750">
-                <g transform="translate(60,100)">
+                <g transform="translate(39,120)">
                   <line
                     x1="50"
                     y1="10"
@@ -270,14 +270,14 @@ class RadialGauge extends Component {
 
             <svg className={classes.gaugeCircle}>
               <circle
-                r="180"
-                cx="180"
-                cy="180"
+                r="175"
+                cx="175"
+                cy="175"
                 fill="white"
                 className={classes.gaugeWhiteItem}
               />
-              <circle r="87.5" cx="180" cy="180" fill="white" />
-              <g transform="translate(180,70)" style={{ height: '30px' }}>
+              <circle r="87.5" cx="175" cy="175" fill="white" />
+              <g transform="translate(175,80)" style={{ height: '30px' }}>
                 <text
                   transform="translate(0,10)"
                   textAnchor="middle"
