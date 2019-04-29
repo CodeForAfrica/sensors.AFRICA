@@ -24,9 +24,9 @@ function NeedlePointer({ classes, hidden, measurement }) {
   // Limit the value to 160
   const value = measurement > 160 ? 160 : measurement;
   if (value > 60) {
-    rotate = ((value - 60) * 45) / 100 + 45;
+    rotate = ((value - 100) * 45) / 100 + 45;
   } else {
-    rotate = (value * (45 + 90)) / 60 + -90;
+    rotate = (value * (45 + 90)) / 100 + -90;
   }
 
   return (
