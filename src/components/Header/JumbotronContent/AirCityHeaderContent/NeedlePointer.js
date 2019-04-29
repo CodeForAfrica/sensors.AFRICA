@@ -24,15 +24,15 @@ function NeedlePointer({ classes, hidden, measurement }) {
   // Limit the value to 160
   const value = measurement > 160 ? 160 : measurement;
   if (value > 60) {
-    rotate = ((value - 100) * 45) / 100 + 45;
+    rotate = ((value - 60) * 45) / 100 + 45;
   } else {
-    rotate = (value * (45 + 90)) / 100 + -90;
+    rotate = (value * (45 + 90)) / 60 + -90;
   }
 
   return (
     <g transform="translate(450,370)" className={className}>
       <path
-        transform={`rotate(${rotate}) scale(1.2)`}
+        transform={`rotate(${rotate - 4.0}) scale(1.2)`}
         d="M5,0C3.333333333333333,-135,1.6666666666666667,-270,0,-270C-1.6666666666666667,-270,-3.333333333333333,0,-5,0C-3.333333333333333,0,-1.6666666666666667,5,0,5C1.6666666666666667,5,3.333333333333333,2.5,5,0"
         strokeLinecap="round"
         strokeWidth="5"
