@@ -14,7 +14,7 @@ const styles = theme => ({
     borderRadius: 'none',
     height: 450,
     [theme.breakpoints.up('md')]: {
-      height: 606
+      height: 646
     }
   }
 });
