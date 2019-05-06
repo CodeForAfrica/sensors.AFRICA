@@ -15,6 +15,11 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       height: 450
     }
+  },
+  link: {
+    paddingRight: '0.2rem',
+    paddingLeft: '0.2rem',
+    color: 'white'
   }
 });
 
@@ -32,7 +37,14 @@ function AboutHeader({ classes }) {
       <Grid item xs={12}>
         <AboutHeaderContent
           title="ABOUT sensors.AFRICA"
-          subheading="sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities. The initiative was seed-funded by innovateAFRICA and is being incubated by Code for Africa"
+          subheading={[
+            'sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities',
+            'The air quality sensors use open source technology from the Luftdaten project',
+            <a href="https://luftdaten.info/" className={classes.link}>
+              (https://luftdaten.info/)
+            </a>,
+            '. The initiative was seed-funded by innovateAFRICA and is being incubated by Code for Africa'
+          ]}
         />
       </Grid>
     </Grid>
