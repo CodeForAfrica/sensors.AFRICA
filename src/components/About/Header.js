@@ -19,7 +19,10 @@ const styles = theme => ({
   link: {
     paddingRight: '0.2rem',
     paddingLeft: '0.2rem',
-    color: 'white'
+    color: 'white',
+    '&:hover': {
+      color: '#2FB56B'
+    }
   }
 });
 
