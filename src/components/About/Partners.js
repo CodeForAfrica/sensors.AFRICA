@@ -14,15 +14,21 @@ import dailynation from '../../assets/images/logos/dailynation.png';
 import cable from '../../assets/images/logos/cable.png';
 import code from '../../assets/images/logos/cfafrica_gray.png';
 import innovate from '../../assets/images/logos/innovateafrica_gray.jpg';
+import luftdaten from '../../assets/images/logos/luftdaten.png';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white'
   },
-  typography: {
+  mediaTypography: {
     paddingTop: theme.spacing.unit * 6,
     textAlign: 'center',
+    fontWeight: 'bold'
+  },
+  partnerTypography: {
+    paddingTop: theme.spacing.unit * 6,
+    // textAlign: 'center',
     fontWeight: 'bold'
   },
   mainGrid: {
@@ -47,6 +53,7 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       height: 60
     },
+    filter: 'grayscale(1)',
     [theme.breakpoints.up('md')]: {
       height: 70
     }
@@ -57,6 +64,12 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       paddingTop: 0
     }
+  },
+  titleGrid: {
+    padding: '1rem 0'
+  },
+  logoContainer: {
+    padding: '0 2rem'
   }
 });
 
@@ -69,7 +82,7 @@ function Partners({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Typography variant="h6" className={classes.typography}>
+        <Typography variant="h6" className={classes.mediaTypography}>
           Media partners
         </Typography>
       </Grid>
@@ -115,34 +128,61 @@ function Partners({ classes }) {
         </Grid>
       </Grid>
 
-      <Grid
-        item
-        xs={12}
-        container
-        justify="center"
-        alignItems="center"
-        style={{ paddingTop: '1rem', paddingBottom: '1rem' }}
-      >
-        <Grid item xs={12}>
-          <Typography variant="h6" className={classes.typography}>
-            In partnership with
-          </Typography>
-        </Grid>
-        <Grid item xs={12} className={classes.partnersContainer}>
-          <a
-            href="https://codeforafrica.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={code} alt="Code for Africa" className={classes.img} />
-          </a>
-          <a
-            href="https://innovateafrica.fund/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={innovate} alt="innovateAFRICA" className={classes.img} />
-          </a>
+      <Grid item xs={12} container justify="center" alignItems="center">
+        <Grid
+          item
+          xs={12}
+          container="row"
+          justify="center"
+          alignItems="center"
+          className={classes.partnersContainer}
+        >
+          <div className={classes.logoContainer}>
+            <Grid item xs={12} className={classes.titleGrid}>
+              <Typography variant="h6" className={classes.partnerTypography}>
+                In partnership with
+              </Typography>
+            </Grid>
+
+            <a
+              href="https://codeforafrica.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={code} alt="Code for Africa" className={classes.img} />
+            </a>
+            <a
+              href="https://innovateafrica.fund/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={innovate}
+                alt="innovateAFRICA"
+                className={classes.img}
+              />
+            </a>
+          </div>
+
+          <div className={classes.logoContainer}>
+            <Grid item xs={12} className={classes.titleGrid}>
+              <Typography variant="h6" className={classes.partnerTypography}>
+                Powered by
+              </Typography>
+            </Grid>
+            <a
+              href="https://luftdaten.info/"
+              s
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={luftdaten}
+                alt="Luftdaten Project"
+                className={classes.img}
+              />
+            </a>
+          </div>
         </Grid>
       </Grid>
     </Grid>
