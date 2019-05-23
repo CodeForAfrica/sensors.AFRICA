@@ -18,7 +18,10 @@ const styles = theme => ({
   link: {
     paddingRight: '0.2rem',
     paddingLeft: '0.2rem',
-    color: 'white'
+    color: 'white',
+    '&:hover': {
+      color: '#164B3E'
+    }
   }
 });
 
@@ -34,10 +37,10 @@ function AboutHeader({ classes }) {
         <AboutHeaderContent
           title="ABOUT sensors.AFRICA air"
           subheading={[
-            'sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities',
-            'The air quality sensors use open source technology from the Luftdaten project',
+            'sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities ',
+            'The air quality sensors use open source technology from the',
             <a href="https://luftdaten.info/" className={classes.link}>
-              (https://luftdaten.info/)
+              Luftdaten project
             </a>,
             '. The initiative was seed-funded by innovateAFRICA and is being incubated by Code for Africa'
           ]}
