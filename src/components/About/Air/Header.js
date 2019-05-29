@@ -37,12 +37,12 @@ function AboutHeader({ classes }) {
         <AboutHeaderContent
           title="ABOUT sensors.AFRICA air"
           subheading={[
-            'sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities ',
+            'sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities.  ',
             'The air quality sensors use open source technology from the',
             <a href="https://luftdaten.info/" className={classes.link}>
               Luftdaten project
             </a>,
-            '. The initiative was seed-funded by innovateAFRICA and is being incubated by Code for Africa'
+            '. The initiative was seed-funded by innovateAFRICA and is being incubated by Code for Africa. '
           ]}
         />
       </Grid>

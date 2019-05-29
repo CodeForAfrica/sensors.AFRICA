@@ -46,7 +46,7 @@ function AboutHeader({ classes }) {
             <a href="https://luftdaten.info/" className={classes.link}>
               Luftdaten project
             </a>,
-            '. The initiative was seed-funded by innovateAFRICA and is being incubated by Code for Africa'
+            '. The initiative was seed-funded by innovateAFRICA and is being incubated by Code for Africa.'
           ]}
         />
       </Grid>
