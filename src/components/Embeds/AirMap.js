@@ -6,7 +6,6 @@ import { CITIES_LOCATION } from '../../api';
 function AirMap({ location }) {
   const params = new URLSearchParams(location.search);
   const city = params.get('city');
-
   return (
     <iframe
       src={`https://map.aq.sensors.africa/#${CITIES_LOCATION[city].location}`}
