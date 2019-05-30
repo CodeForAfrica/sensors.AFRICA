@@ -9,7 +9,7 @@ function AirMap({ location }) {
   return (
     <iframe
       src={`https://map.aq.sensors.africa/#${CITIES_LOCATION[city].location}`}
-      name={`ssensors-map-${CITIES_LOCATION[city].slug}`}
+      name={`sensors-map-${CITIES_LOCATION[city].slug}`}
       title={`sensors.AFRICA | ${CITIES_LOCATION[city].name} Sensor Map`}
       scrolling="no"
       frameBorder="0"
