@@ -3,26 +3,43 @@ import PropTypes from 'prop-types';
 
 import { CITIES_LOCATION } from '../../api';
 
-function AirMap({ location }) {
-  const params = new URLSearchParams(location.search);
-  const city = params.get('city');
+class AirMap extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { iframe: 0 };
+  }
 
-  return (
-    <iframe
-      src={`https://map.aq.sensors.africa/#${CITIES_LOCATION[city].location}`}
-      name={`sensors-map-${CITIES_LOCATION[city].slug}`}
-      title={`sensors.AFRICA | ${CITIES_LOCATION[city].name} Sensor Map`}
-      scrolling="no"
-      frameBorder="0"
-      height="auto"
-      width="100%"
-      style={{
-        width: '100vw',
-        height: '100vh'
-      }}
-      allowFullScreen
-    />
-  );
+  resetIframe() {
+    this.setState(prevState => ({ iframe: prevState.iframe + 1 }));
+  }
+
+  render() {
+    const { location } = this.props;
+    const { iframe } = this.state;
+    const params = new URLSearchParams(location.search);
+    const city = params.get('city');
+
+    return (
+      <iframe
+        key={this.iframe}
+        onChange={() => {
+          this.resetIframe();
+        }}
+        src={`https://map.aq.sensors.africa/#${CITIES_LOCATION[city].location}`}
+        name={`ssensors-map-${CITIES_LOCATION[city].slug}`}
+        title={`sensors.AFRICA | ${CITIES_LOCATION[city].name} Sensor Map`}
+        scrolling="no"
+        frameBorder="0"
+        height="auto"
+        width="100%"
+        style={{
+          width: '100vw',
+          height: '100vh'
+        }}
+        allowFullScreen
+      />
+    );
+  }
 }
 
 AirMap.propTypes = {
