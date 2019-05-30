@@ -24,6 +24,7 @@ function KenyaMap({
   return (
     <iframe
       title={title}
+      key={src}
       src={src}
       height={height}
       width={width}
