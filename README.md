@@ -19,7 +19,7 @@ This project uses [yarn](https://yarnpkg.com/lang/en/) as a dependancy. See [the
 Run the following command to get started
 
 ```shell
-    git clone https://github.com/CodeForAfricaLabs/sensors.AFRICA.git
+    git clone https://github.com/CodeForAfrica/sensors.AFRICA.git
     cd sensors.AFRICA
     yarn
     yarn start
@@ -48,7 +48,7 @@ yarn deploy
 sensors.AFRICA Stack
 --------------------
 
-Map - https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-map
+Map - https://github.com/CodeForAfrica/sensors.AFRICA-AQ-map
 API - https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-api
 Grafana and TICK Stack - [./contrib/grafana-and-tick](./contrib/grafana-and-tick)
 
