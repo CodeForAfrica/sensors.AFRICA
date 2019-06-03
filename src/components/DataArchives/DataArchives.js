@@ -293,7 +293,7 @@ function DataArchives({ classes }) {
             exported once a day in CSV file format and made available at the{' '}
             <a
               className={classes.link}
-              href="https://africaopendata.org/group/sensorsafrica-airquality-archive"
+              href="https://openafrica.net/organization/sensors-africa"
               target="_blank"
               rel="noopener noreferrer"
             >
