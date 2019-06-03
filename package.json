@@ -39,7 +39,7 @@
     "eject": "react-scripts eject"
   },
   "main": "index.js",
-  "repository": "https://github.com/CodeForAfricaLabs/sensors.AFRICA.git",
+  "repository": "https://github.com/CodeForAfrica/sensors.AFRICA.git",
   "author": "Code for Africa",
   "license": "GNU GPLv3",
   "devDependencies": {
