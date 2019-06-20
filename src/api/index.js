@@ -52,7 +52,8 @@ const CITIES_LOCATION = {
     name: 'Nairobi',
     country: 'Kenya',
     label: 'Nairobi, Kenya',
-    location: '12/-1.2709/36.8169',
+    zoom: '12',
+    center: '-1.2709,36.8169',
     twitterHandle: '@nairobicitygov'
   },
   lagos: {
@@ -62,7 +63,8 @@ const CITIES_LOCATION = {
     name: 'Lagos',
     country: 'Nigeria',
     label: 'Lagos, Nigeria',
-    location: '12/6.4552/3.4198',
+    zoom: '12',
+    center: '6.4552,3.4198',
     twitterHandle: '@followlasg'
   },
   'dar-es-salaam': {
@@ -72,7 +74,8 @@ const CITIES_LOCATION = {
     name: 'Dar es Salaam',
     country: 'Tanzania',
     label: 'Dar-es-salaam, Tanzania',
-    location: '12/-6.8555/39.1518',
+    zoom: '12',
+    center: '-6.8555,39.1518',
     twitterHandle: '#DarEsSalaam'
   }
 };

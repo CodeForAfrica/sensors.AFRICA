@@ -263,7 +263,10 @@ class City extends React.Component {
           />
         </Grid>
         <Grid item xs={12} id="map">
-          <SensorMap mapLocation={CITIES_LOCATION[city].location} />
+          <SensorMap
+            zoom={CITIES_LOCATION[city].zoom}
+            center={CITIES_LOCATION[city].center}
+          />
         </Grid>
         <Grid item xs={12}>
           <QualityStats
