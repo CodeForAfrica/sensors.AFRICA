@@ -75,7 +75,7 @@ const CITIES_LOCATION = {
     country: 'Tanzania',
     label: 'Dar-es-salaam, Tanzania',
     zoom: '12',
-    center: '-6.8555,39.1518',
+    center: '-6.7846,39.2669',
     twitterHandle: '#DarEsSalaam'
   }
 };
