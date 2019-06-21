@@ -23,8 +23,7 @@ const styles = theme => ({
   }
 });
 
-function Map({ classes, mapLocation }) {
-  const src = `//map.aq.sensors.africa/#${mapLocation}`;
+function Map({ classes, zoom, center }) {
   return (
     <Grid
       container
@@ -43,7 +42,7 @@ function Map({ classes, mapLocation }) {
       <Grid item xs={12}>
         <IframeComponent
           title="Map section"
-          src={src}
+          src={`//map.aq.sensors.africa/?zoom=${zoom}&center=${center}`}
           height="500"
           width="100%"
           frameBorder="0"
@@ -56,6 +55,7 @@ function Map({ classes, mapLocation }) {
 
 Map.propTypes = {
   classes: PropTypes.object.isRequired,
-  mapLocation: PropTypes.string.isRequired
+  zoom: PropTypes.string.isRequired,
+  center: PropTypes.string.isRequired
 };
 export default withStyles(styles)(Map);
