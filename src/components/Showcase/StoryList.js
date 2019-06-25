@@ -58,7 +58,7 @@ class StoryList extends React.Component {
 
   componentDidMount() {
     Tabletop.init({
-      key: '1I2nTG_lst4nYrg8z1e7RaolC16A-M7f_lO_zRaV9L5s',
+      key: '1aHn_C0LjMAib1X1m2kfuI3YvD5zzvi7cqbaymxXbXZs',
       callback: data => {
         this.processData(data);
       },
