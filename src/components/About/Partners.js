@@ -14,7 +14,7 @@ import dailynation from '../../assets/images/logos/dailynation.png';
 import cable from '../../assets/images/logos/cable.png';
 import code from '../../assets/images/logos/cfafrica_gray.png';
 import innovate from '../../assets/images/logos/innovateafrica_gray.jpg';
-import luftdaten from '../../assets/images/logos/luftdaten.png';
+import luftdaten from '../../assets/images/logos/luftdaten.jpg';
 
 const styles = theme => ({
   root: {
@@ -46,7 +46,7 @@ const styles = theme => ({
     height: 'auto',
     maxHeight: 100
   },
-  img: {
+  logoImg: {
     maxWidth: '100%',
     height: 50,
     padding: '0 8px',
@@ -56,6 +56,18 @@ const styles = theme => ({
     filter: 'grayscale(1)',
     [theme.breakpoints.up('md')]: {
       height: 70
+    }
+  },
+  img: {
+    maxWidth: '100%',
+    height: 50,
+    padding: '0 8px',
+    [theme.breakpoints.up('sm')]: {
+      height: 60
+    },
+    filter: 'grayscale(1)',
+    [theme.breakpoints.up('md')]: {
+      height: 100
     }
   },
   partnersContainer: {
@@ -149,7 +161,11 @@ function Partners({ classes }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={code} alt="Code for Africa" className={classes.img} />
+              <img
+                src={code}
+                alt="Code for Africa"
+                className={classes.logoImg}
+              />
             </a>
             <a
               href="https://innovateafrica.fund/"
@@ -159,7 +175,7 @@ function Partners({ classes }) {
               <img
                 src={innovate}
                 alt="innovateAFRICA"
-                className={classes.img}
+                className={classes.logoImg}
               />
             </a>
           </div>
@@ -179,7 +195,7 @@ function Partners({ classes }) {
               <img
                 src={luftdaten}
                 alt="Luftdaten Project"
-                className={classes.img}
+                className={classes.logoImg}
               />
             </a>
           </div>
