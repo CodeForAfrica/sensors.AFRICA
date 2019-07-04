@@ -62,23 +62,34 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
           disableAutoFocus
         >
           <MenuList className={classes.menuList}>
-            <a
-              href="https://medium.com/@sensors.AFRICA"
-              className={classes.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link to={URLS.AIR.ABOUT} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
-                  STORIES
+                  ABOUT
                 </Typography>
               </MenuItem>
-            </a>
+            </Link>
+
+            <Link to={URLS.AIR.JOIN} className={classes.link}>
+              <MenuItem className={classes.menuListItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  CONTACT
+                </Typography>
+              </MenuItem>
+            </Link>
 
             <Link to={URLS.AIR.DATA} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   DATA
+                </Typography>
+              </MenuItem>
+            </Link>
+
+            <Link to={URLS.AIR.HOW_SENSORS_WORK} className={classes.link}>
+              <MenuItem className={classes.menuListItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  HARDWARE
                 </Typography>
               </MenuItem>
             </Link>
@@ -91,14 +102,6 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
               </MenuItem>
             </Link>
 
-            <Link to={URLS.AIR.ABOUT} className={classes.link}>
-              <MenuItem className={classes.menuListItem}>
-                <Typography className={classes.typography} variant="subtitle1">
-                  ABOUT
-                </Typography>
-              </MenuItem>
-            </Link>
-
             <Link to={URLS.AIR.IMPACT} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
@@ -107,13 +110,18 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
               </MenuItem>
             </Link>
 
-            <Link to={URLS.AIR.JOIN} className={classes.link}>
+            <a
+              href="https://medium.com/@sensors.AFRICA"
+              className={classes.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
-                  CONTACT
+                  STORIES
                 </Typography>
               </MenuItem>
-            </Link>
+            </a>
           </MenuList>
         </Modal>
       </Grid>
