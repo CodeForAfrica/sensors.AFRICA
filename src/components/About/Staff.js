@@ -93,10 +93,10 @@ function Staff({ classes }) {
             />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
-                JAMES CHEGE
+                CHEGE JAMES
               </Typography>
               <Typography variant="subtitle1">
-                Chege at codeforafrica.org
+                chege at codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
                 <a
@@ -115,7 +115,7 @@ function Staff({ classes }) {
             <CardMedia
               title="kirah"
               component="img"
-              alt="Chege"
+              alt="Kirah"
               className={classes.cardMedia}
               image={kirah}
             />
@@ -124,7 +124,7 @@ function Staff({ classes }) {
                 WARUKIRA THEURI
               </Typography>
               <Typography variant="subtitle1">
-                Kira at codeforafrica.org
+                kira at codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
                 <a className={classes.a} href="https://twitter.com/warukira_m">
