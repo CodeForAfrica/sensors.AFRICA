@@ -113,8 +113,8 @@ function PMValue({ classes, value }) {
   return (
     <DataValue value={value} classes={classes}>
       <small className={classes.small}>
-        PM
-        <sub>2.5</sub>
+        µg/m
+        <sub>3</sub>
       </small>
     </DataValue>
   );
@@ -127,10 +127,7 @@ PMValue.propTypes = {
 function HumidityValue({ classes, value }) {
   return (
     <DataValue value={value} classes={classes}>
-      <small className={classes.small}>
-        g/m
-        <sup>3</sup>
-      </small>
+      <small className={classes.small}>% RH</small>
     </DataValue>
   );
 }
@@ -142,9 +139,7 @@ HumidityValue.propTypes = {
 function TemperatureValue({ classes, value }) {
   return (
     <DataValue value={value} classes={classes}>
-      <small className={classes.small}>
-        <sup>o</sup>C
-      </small>
+      <small className={classes.small}>&#8451;</small>
     </DataValue>
   );
 }
@@ -175,7 +170,7 @@ function DataTable({
             >
               <Grid item>
                 <Typography variant="h6" className={classes.subheading}>
-                  AIR
+                  PM 2.5
                 </Typography>
               </Grid>
               <Grid
@@ -246,7 +241,7 @@ function DataTable({
             >
               <Grid item>
                 <Typography variant="subtitle1" className={classes.subheading}>
-                  AIR
+                  PM 2.5
                 </Typography>
               </Grid>
               <Grid item container direction="row" justify="center">
@@ -311,7 +306,7 @@ function DataTable({
             >
               <Grid item>
                 <Typography variant="subtitle1" className={classes.subheading}>
-                  AIR
+                  PM 2.5
                 </Typography>
               </Grid>
               <Grid item container direction="row" justify="center">
