@@ -42,7 +42,7 @@ function Map({ classes, zoom, center }) {
       <Grid item xs={12}>
         <IframeComponent
           title="Map section"
-          src={`//map.aq.sensors.africa/?zoom=${zoom}&center=${center}`}
+          src={`//v2.map.aq.sensors.africa/?zoom=${zoom}&center=${center}`}
           height="500"
           width="100%"
           frameBorder="0"
