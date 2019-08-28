@@ -8,7 +8,7 @@ function AirMap({ location }) {
   const city = params.get('city');
   return (
     <iframe
-      src={`https://map.aq.sensors.africa/?zoom=${
+      src={`https://v2.map.aq.sensors.africa/?zoom=${
         CITIES_LOCATION[city].zoom
       }&center=${CITIES_LOCATION[city].center}`}
       name={`sensors-map-${CITIES_LOCATION[city].slug}`}
