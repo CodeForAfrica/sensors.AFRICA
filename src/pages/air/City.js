@@ -265,7 +265,8 @@ class City extends React.Component {
         <Grid item xs={12} id="map">
           <SensorMap
             zoom={CITIES_LOCATION[city].zoom}
-            center={CITIES_LOCATION[city].center}
+            latitude={CITIES_LOCATION[city].latitude}
+            longitude={CITIES_LOCATION[city].longitude}
           />
         </Grid>
         <Grid item xs={12}>

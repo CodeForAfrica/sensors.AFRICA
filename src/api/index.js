@@ -47,8 +47,8 @@ const formatWeeklyP2Stats = data => {
 const CITIES_LOCATION = {
   nairobi: {
     slug: 'nairobi',
-    latitude: '-1.',
-    longitude: '36.',
+    latitude: '-1.2709,',
+    longitude: '36.8169',
     name: 'Nairobi',
     country: 'Kenya',
     label: 'Nairobi, Kenya',
@@ -58,8 +58,8 @@ const CITIES_LOCATION = {
   },
   lagos: {
     slug: 'lagos',
-    latitude: '6.',
-    longitude: '3.',
+    latitude: '6.4552',
+    longitude: '3.4198',
     name: 'Lagos',
     country: 'Nigeria',
     label: 'Lagos, Nigeria',
@@ -69,8 +69,8 @@ const CITIES_LOCATION = {
   },
   'dar-es-salaam': {
     slug: 'dar-es-salaam',
-    latitude: '-6.',
-    longitude: '39.',
+    latitude: '-6.7846',
+    longitude: '39.2669',
     name: 'Dar es Salaam',
     country: 'Tanzania',
     label: 'Dar-es-salaam, Tanzania',
