@@ -47,7 +47,7 @@ const formatWeeklyP2Stats = data => {
 const CITIES_LOCATION = {
   nairobi: {
     slug: 'nairobi',
-    latitude: '-1.2709,',
+    latitude: '-1.2709',
     longitude: '36.8169',
     name: 'Nairobi',
     country: 'Kenya',
