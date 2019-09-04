@@ -71,7 +71,11 @@ NoOptionsMessage.propTypes = {
     PropTypes.node
   ]),
   innerProps: PropTypes.shape({}),
-  selectProps: PropTypes.shape({})
+  selectProps: PropTypes.shape({
+    classes: PropTypes.shape({
+      noOptionsMessage: PropTypes.string
+    })
+  })
 };
 NoOptionsMessage.defaultProps = {
   children: null,
@@ -114,7 +118,12 @@ Control.propTypes = {
   ]),
   innerProps: PropTypes.shape({}),
   innerRef: PropTypes.node,
-  selectProps: PropTypes.shape({})
+  selectProps: PropTypes.shape({
+    textFieldProps: PropTypes.string,
+    classes: PropTypes.shape({
+      input: PropTypes.string
+    })
+  })
 };
 Control.defaultProps = {
   children: null,
@@ -174,7 +183,11 @@ Placeholder.propTypes = {
     PropTypes.node
   ]),
   innerProps: PropTypes.shape({}),
-  selectProps: PropTypes.shape({})
+  selectProps: PropTypes.shape({
+    classes: PropTypes.shape({
+      placeholder: PropTypes.string
+    })
+  })
 };
 Placeholder.defaultProps = {
   children: null,
@@ -195,7 +208,11 @@ SingleValue.propTypes = {
     PropTypes.node
   ]),
   innerProps: PropTypes.shape({}),
-  selectProps: PropTypes.shape({})
+  selectProps: PropTypes.shape({
+    classes: PropTypes.shape({
+      singleValue: PropTypes.string
+    })
+  })
 };
 SingleValue.defaultProps = {
   children: null,
@@ -211,7 +228,11 @@ ValueContainer.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
-  selectProps: PropTypes.shape({})
+  selectProps: PropTypes.shape({
+    classes: PropTypes.shape({
+      valueContainer: PropTypes.string
+    })
+  })
 };
 ValueContainer.defaultProps = {
   children: null,
@@ -231,7 +252,11 @@ Menu.propTypes = {
     PropTypes.node
   ]),
   innerProps: PropTypes.shape({}),
-  selectProps: PropTypes.shape({})
+  selectProps: PropTypes.shape({
+    classes: PropTypes.shape({
+      paper: PropTypes.string
+    })
+  })
 };
 Menu.defaultProps = {
   children: null,

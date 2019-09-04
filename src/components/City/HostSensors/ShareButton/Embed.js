@@ -41,7 +41,10 @@ function Embed({ classes, city }) {
 
 Embed.propTypes = {
   classes: PropTypes.object.isRequired,
-  city: PropTypes.shape({}).isRequired
+  city: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default withStyles(styles)(Embed);

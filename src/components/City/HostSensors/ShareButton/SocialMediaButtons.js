@@ -20,11 +20,7 @@ function SocialMediaButtons({ classes, city }) {
       <Grid item className={classes.twitter}>
         <TwitterShareButton
           url="https://sensors.AFRICA/air"
-          title={`Did you know the #AirQuality in ${
-            city.name
-          } directly affects my health ${
-            city.twitterHandle
-          }? Check our city’s pollution levels on `}
+          title={`Did you know the #AirQuality in ${city.name} directly affects my health ${city.twitterHandle}? Check our city’s pollution levels on `}
           via="sensorsAFRICA"
           hashtags={['sensorsAFRICA']}
           className={classes.buttonLink}
@@ -83,6 +79,9 @@ function SocialMediaButtons({ classes, city }) {
 
 SocialMediaButtons.propTypes = {
   classes: PropTypes.object.isRequired,
-  city: PropTypes.shape({}).isRequired
+  city: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    twitterHandle: PropTypes.string.isRequired
+  }).isRequired
 };
 export default withStyles(styles)(SocialMediaButtons);
