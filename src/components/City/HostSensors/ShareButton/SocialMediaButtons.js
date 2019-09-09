@@ -45,7 +45,7 @@ function SocialMediaButtons({ classes, city }) {
       </Grid>
       <Grid item className={classes.facebook}>
         <a
-          href="https://www.facebook.com/sensorsAFRICA/"
+          href="https://www.facebook.com/CodeForAfrica/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -58,7 +58,11 @@ function SocialMediaButtons({ classes, city }) {
         </a>
       </Grid>
       <Grid item className={classes.instagram}>
-        <a href="https://www.instagram.com/sensorsAFRICA/">
+        <a
+          href="https://www.instagram.com/sensorsAFRICA/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon
             icon={['fab', 'instagram']}
             size="2x"
@@ -68,7 +72,11 @@ function SocialMediaButtons({ classes, city }) {
         </a>
       </Grid>
       <Grid item className={classes.medium}>
-        <a href="https://medium.com/code-for-africa/tagged/innovateafrica">
+        <a
+          href="https://medium.com/code-for-africa/tagged/innovateafrica"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon
             icon={['fab', 'medium-m']}
             size="2x"
