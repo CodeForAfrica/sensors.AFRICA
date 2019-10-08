@@ -89,10 +89,10 @@ const styles = theme => ({
     marginTop: '2rem'
   }
 });
-const sensors = 'http://api.airquality.codeforafrica.org/v1/sensor/{sensorID}/';
-const query = 'http://api.airquality.codeforafrica.org/v1/filter/{query}';
-const data = 'http://api.airquality.codeforafrica.org/v1/data/';
-const now = 'http://api.airquality.codeforafrica.org/v1/now/';
+const sensors = 'https://api.sensors.africa/v1/sensor/{sensorID}/';
+const query = 'https://api.sensors.africa/v1/filter/{query}';
+const data = 'https://api.sensors.africa/v1/data/';
+const now = 'https://api.sensors.africa/v1/now/';
 const type = '{sensor type}';
 const area = '{lat, lon, distance}';
 const box = '{lat1, lon1, lat2, lon2}';
