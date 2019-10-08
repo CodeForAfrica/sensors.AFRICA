@@ -275,7 +275,7 @@ function DataArchives({ classes }) {
                 visit the sensors.AFRICA{' '}
                 <a
                   className={classes.link}
-                  href="https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-sensors-software/wiki/APIs#api-httpapiairqualitycodeforafricaorg"
+                  href="https://github.com/CodeForAfrica/sensors.AFRICA/wiki/APIs"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
