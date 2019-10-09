@@ -130,7 +130,7 @@ function DataArchives({ classes }) {
         <Grid item xs={12}>
           <Typography variant="body2" component="p">
             The primary way to access sensor data is via API endpoints.
-            Currently we have:
+            Currently, you can access our API using:
           </Typography>
         </Grid>
 
