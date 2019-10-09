@@ -89,14 +89,14 @@ const styles = theme => ({
     marginTop: '2rem'
   }
 });
-const sensors = 'https://api.sensors.africa/v1/sensor/{sensorID}/';
-const query = 'https://api.sensors.africa/v1/filter/{query}';
+// const sensors = 'https://api.sensors.africa/v1/sensor/{sensorID}/';
+// const query = 'https://api.sensors.africa/v1/filter/{query}';
 const data = 'https://api.sensors.africa/v1/data/';
 const now = 'https://api.sensors.africa/v1/now/';
-const type = '{sensor type}';
-const area = '{lat, lon, distance}';
-const box = '{lat1, lon1, lat2, lon2}';
-const countryCode = '{country code}';
+// const type = '{sensor type}';
+// const area = '{lat, lon, distance}';
+// const box = '{lat1, lon1, lat2, lon2}';
+// const countryCode = '{country code}';
 
 function DataArchives({ classes }) {
   return (
@@ -133,7 +133,8 @@ function DataArchives({ classes }) {
             are several public endpoints:
           </Typography>
         </Grid>
-        <Grid
+
+        {/* <Grid
           item
           xs={12}
           container
@@ -157,7 +158,7 @@ function DataArchives({ classes }) {
               This data is only available if the sensor is publicly accessible.
             </Typography>
           </Grid>
-        </Grid>
+        </Grid> */}
 
         <Grid
           item
@@ -185,7 +186,7 @@ function DataArchives({ classes }) {
           </Grid>
         </Grid>
 
-        <Grid
+        {/* <Grid
           item
           xs={12}
           container
@@ -239,7 +240,7 @@ function DataArchives({ classes }) {
               </li>
             </Typography>
           </Grid>
-        </Grid>
+        </Grid> */}
 
         <Grid
           item
