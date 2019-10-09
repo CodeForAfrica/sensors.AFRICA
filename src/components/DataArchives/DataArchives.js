@@ -91,7 +91,7 @@ const styles = theme => ({
 });
 // const sensors = 'https://api.sensors.africa/v1/sensor/{sensorID}/';
 // const query = 'https://api.sensors.africa/v1/filter/{query}';
-const data = 'https://api.sensors.africa/v1/data/';
+// const data = 'https://api.sensors.africa/v1/data/';
 const now = 'https://api.sensors.africa/v1/now/';
 // const type = '{sensor type}';
 // const area = '{lat, lon, distance}';
@@ -129,8 +129,8 @@ function DataArchives({ classes }) {
         </Grid>
         <Grid item xs={12}>
           <Typography variant="body2" component="p">
-            The primary way to access sensor data is via API endpoints. There
-            are several public endpoints:
+            The primary way to access sensor data is via API endpoints.
+            Currently we have:
           </Typography>
         </Grid>
 
@@ -242,7 +242,7 @@ function DataArchives({ classes }) {
           </Grid>
         </Grid> */}
 
-        <Grid
+        {/* <Grid
           item
           xs={12}
           container
@@ -266,7 +266,7 @@ function DataArchives({ classes }) {
               stored in our database.
             </Typography>
           </Grid>
-        </Grid>
+        </Grid> */}
 
         <Grid item xs={12} className={classes.wiki}>
           <Typography variant="body2">
