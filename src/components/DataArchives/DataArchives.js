@@ -90,13 +90,14 @@ const styles = theme => ({
   }
 });
 // const sensors = 'https://api.sensors.africa/v1/sensor/{sensorID}/';
-// const query = 'https://api.sensors.africa/v1/filter/{query}';
-// const data = 'https://api.sensors.africa/v1/data/';
+const query = 'https://api.sensors.africa/v1/filter?city=&country=&type=';
+const data = 'https://api.sensors.africa/v1/data/';
 const now = 'https://api.sensors.africa/v1/now/';
-// const type = '{sensor type}';
+const type = '{sensor type}';
+const city = '{city}';
+const countryCode = '{country code}';
 // const area = '{lat, lon, distance}';
 // const box = '{lat1, lon1, lat2, lon2}';
-// const countryCode = '{country code}';
 
 function DataArchives({ classes }) {
   return (
@@ -186,7 +187,7 @@ function DataArchives({ classes }) {
           </Grid>
         </Grid>
 
-        {/* <Grid
+        <Grid
           item
           xs={12}
           container
@@ -216,33 +217,41 @@ function DataArchives({ classes }) {
               style={{ listStyle: 'none', marginTop: '0.5rem' }}
             >
               <li className={classes.query}>
-                <code className={classes.queryParam}>type</code> ={' '}
-                <code className={classes.queryDescription}>{type}</code>: comma
-                separated list of sensor types, i.e{' '}
-                <code className={classes.var}>SDS011</code> ,
-                <code className={classes.var}> DHT22</code>
+                <code className={classes.queryParam}>city</code> ={' '}
+                <code className={classes.queryDescription}>{city}</code>:
+                Separated list of cities i.e{' '}
+                <code className={classes.var}>nairobi</code> ,
+                <code className={classes.var}>lagos</code>
               </li>
-              <li className={classes.query}>
+              {/* <li className={classes.query}>
                 <code className={classes.queryParam}>area</code> ={' '}
                 <code>{area}</code>: provides all sensors within a max radius.
-              </li>
-              <li className={classes.query}>
+              </li> */}
+              {/* } <li className={classes.query}>
                 <code className={classes.queryParam}>box</code>={' '}
                 <code className={classes.queryDescription}>{box}</code>:
                 provides all sensors in a &lsquo;box&rsquo; with the given
                 coordinates.
-              </li>
+              </li> */}
               <li className={classes.query}>
                 {' '}
                 <code className={classes.queryParam}>country</code>={' '}
                 <code className={classes.queryDescription}>{countryCode}</code>:
-                i.e. <code className={classes.var}>KE, TZ, NG, ZA, ... </code>
+                Separated list of countries i.e.{' '}
+                <code className={classes.var}>KE, TZ, NG, ZA, ... </code>
+              </li>
+              <li className={classes.query}>
+                <code className={classes.queryParam}>type</code> ={' '}
+                <code className={classes.queryDescription}>{type}</code>:
+                Separated list of sensor types, i.e{' '}
+                <code className={classes.var}>SDS011</code> ,
+                <code className={classes.var}> DHT22</code>
               </li>
             </Typography>
           </Grid>
-        </Grid> */}
+        </Grid>
 
-        {/* <Grid
+        <Grid
           item
           xs={12}
           container
@@ -266,7 +275,7 @@ function DataArchives({ classes }) {
               stored in our database.
             </Typography>
           </Grid>
-        </Grid> */}
+        </Grid>
 
         <Grid item xs={12} className={classes.wiki}>
           <Typography variant="body2">
