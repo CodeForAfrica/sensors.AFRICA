@@ -96,7 +96,17 @@ const data = 'https://api.sensors.africa/v1/data/';
 const now = 'https://api.sensors.africa/v1/now/';
 const type = '{sensor type}';
 const city = '{city}';
-const countryCode = '{country code}';
+const countryCode = '{country name}';
+
+const allCities = 'http://api.sensors.africa/v2/cities';
+const specificCities = 'https://api.sensors.africa/v2/data/air?city={slug}&';
+const nodes = 'https://api.sensors.africa/v2/nodes';
+const data5 = 'http://api.sensors.africa/static/v2/data.json';
+const data1 = 'http://api.sensors.africa/static/v2/data.1h.json';
+const data24 = 'http://api.sensors.africa/static/v2/data.24h.json';
+const dataDust = 'http://api.sensors.africa/static/v2/data.dust.min.json';
+const otherSensors = 'http://api.sensors.africa/static/v2/data.temp.min.json';
+
 // const area = '{lat, lon, distance}';
 // const box = '{lat1, lon1, lat2, lon2}';
 
@@ -206,6 +216,7 @@ function DataArchives({ classes }) {
               <code className={classes.code}>{query}</code>
             </a>
           </Grid>
+
           <Grid className={classes.dd}>
             <Typography variant="body2" component="p">
               Provides all measurements from the last 5 minutes for all publicly
@@ -274,6 +285,211 @@ function DataArchives({ classes }) {
             <Typography variant="body2" component="p">
               Provides all measurements for all publicly accessible sensors
               stored in our database.
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          justify="flex-start"
+          alignItems="flex-start"
+          className={classes.dl}
+        >
+          <Grid item className={classes.dt}>
+            <a
+              className={classes.link}
+              href="http://api.airquality.africa.org/v1/now/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{allCities}</code>
+            </a>
+          </Grid>
+          <Grid item className={classes.dd}>
+            <Typography variant="body2" component="p">
+              Provides all measurements for all supported cities
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          justify="flex-start"
+          alignItems="flex-start"
+          className={classes.dl}
+        >
+          <Grid item className={classes.dt}>
+            <a
+              className={classes.link}
+              href="https://api.sensors.africa/v2/data/air?city={slug}& "
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{specificCities}</code>
+            </a>
+          </Grid>
+          <Grid item className={classes.dd}>
+            <Typography variant="body2" component="p">
+              Provides average of all measurements per sensor of the last 5
+              minutes for temperature, humidity and air pressure sensors only.
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          justify="flex-start"
+          alignItems="flex-start"
+          className={classes.dl}
+        >
+          <Grid item className={classes.dt}>
+            <a
+              className={classes.link}
+              href="http://api.airquality.africa.org/v2/nodes/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{nodes}</code>
+            </a>
+          </Grid>
+          <Grid item className={classes.dd}>
+            <Typography variant="body2" component="p">
+              Provides all sensors node data including if the sensor was moved
+              and where
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          justify="flex-start"
+          alignItems="flex-start"
+          className={classes.dl}
+        >
+          <Grid item className={classes.dt}>
+            <a
+              className={classes.link}
+              href="https://api.sensors.africa/static/v2/data.json"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{data5}</code>
+            </a>
+          </Grid>
+          <Grid item className={classes.dd}>
+            <Typography variant="body2" component="p">
+              Provides averages of all measurements per sensor of the last 5
+              minutes for all sensors
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          justify="flex-start"
+          alignItems="flex-start"
+          className={classes.dl}
+        >
+          <Grid item className={classes.dt}>
+            <a
+              className={classes.link}
+              href="https://api.sensors.africa/static/v2/data.1h.json"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{data1}</code>
+            </a>
+          </Grid>
+          <Grid item className={classes.dd}>
+            <Typography variant="body2" component="p">
+              Provides average of all measurements per sensor of the last hour
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          justify="flex-start"
+          alignItems="flex-start"
+          className={classes.dl}
+        >
+          <Grid item className={classes.dt}>
+            <a
+              className={classes.link}
+              href="https://api.sensors.africa/static/v2/data.24.json"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{data24}</code>
+            </a>
+          </Grid>
+          <Grid item className={classes.dd}>
+            <Typography variant="body2" component="p">
+              Provides average of all measurements per sensor of the 24 hours
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          justify="flex-start"
+          alignItems="flex-start"
+          className={classes.dl}
+        >
+          <Grid item className={classes.dt}>
+            <a
+              className={classes.link}
+              href="https://api.sensors.africa/static/v2/data.dust.min.json"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{dataDust}</code>
+            </a>
+          </Grid>
+          <Grid item className={classes.dd}>
+            <Typography variant="body2" component="p">
+              Provides average of all measurements per sensor of the last 5
+              minutes for dust sensors
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          justify="flex-start"
+          alignItems="flex-start"
+          className={classes.dl}
+        >
+          <Grid item className={classes.dt}>
+            <a
+              className={classes.link}
+              href="https://api.sensors.africa/static/v2/data.temp.min.json"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{otherSensors}</code>
+            </a>
+          </Grid>
+          <Grid item className={classes.dd}>
+            <Typography variant="body2" component="p">
+              Provides average of all measurements per sensor of the last 5
+              minutes for temperature, humidity and air pressure sensors only
             </Typography>
           </Grid>
         </Grid>
