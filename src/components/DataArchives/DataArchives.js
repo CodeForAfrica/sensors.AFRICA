@@ -89,7 +89,8 @@ const styles = theme => ({
     marginTop: '2rem'
   }
 });
-// const sensors = 'https://api.sensors.africa/v1/sensor/{sensorID}/';
+
+const sensors = 'https://api.sensors.africa/v1/sensors/{sensor_id}/';
 const query = 'https://api.sensors.africa/v1/filter?city=&country=&type=';
 const data = 'https://api.sensors.africa/v1/data/';
 const now = 'https://api.sensors.africa/v1/now/';
@@ -135,7 +136,7 @@ function DataArchives({ classes }) {
           </Typography>
         </Grid>
 
-        {/* <Grid
+        <Grid
           item
           xs={12}
           container
@@ -159,7 +160,7 @@ function DataArchives({ classes }) {
               This data is only available if the sensor is publicly accessible.
             </Typography>
           </Grid>
-        </Grid> */}
+        </Grid>
 
         <Grid
           item
