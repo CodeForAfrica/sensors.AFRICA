@@ -107,6 +107,9 @@ const data24 = 'http://api.sensors.africa/static/v2/data.24h.json';
 const dataDust = 'http://api.sensors.africa/static/v2/data.dust.min.json';
 const otherSensors = 'http://api.sensors.africa/static/v2/data.temp.min.json';
 
+const toFrom = '{YYYY - mm - dd}';
+const valueType = '{P1, P2, temperature, humidity}';
+
 // const area = '{lat, lon, distance}';
 // const box = '{lat1, lon1, lat2, lon2}';
 
@@ -157,7 +160,7 @@ function DataArchives({ classes }) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.airquality.codeforafrica.org/v1/sensor/%7BsensorID%7D/"
+              href="http://api.sensors.africa/v1/sensor/%7BsensorID%7D/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -183,7 +186,7 @@ function DataArchives({ classes }) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.airquality.codeforafrica.org/v1/now/"
+              href="http://api.sensors.africa/v1/now/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -209,7 +212,7 @@ function DataArchives({ classes }) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.airquality.codeforafrica.org/v1/filter/%7Bquery%7D"
+              href="http://api.sensors.africa/v1/filter/%7Bquery%7D"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -274,7 +277,7 @@ function DataArchives({ classes }) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.airquality.codeforafrica.org/v1/data/"
+              href="http://api.sensors.africa/v1/data/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -300,7 +303,7 @@ function DataArchives({ classes }) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.airquality.africa.org/v1/now/"
+              href="http://api.sensors.africa/v1/now/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -325,7 +328,7 @@ function DataArchives({ classes }) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="https://api.sensors.africa/v2/data/air?city={slug}& "
+              href="https://api.sensors.africa/v2/data/air?city={slug}&"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -334,8 +337,8 @@ function DataArchives({ classes }) {
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
-              Provides average of all measurements per sensor of the last 5
-              minutes for temperature, humidity and air pressure sensors only.
+              Provides air data with city query from = {toFrom}&to = {toFrom}
+              &value_type={valueType}
             </Typography>
           </Grid>
         </Grid>
@@ -351,7 +354,7 @@ function DataArchives({ classes }) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.airquality.africa.org/v2/nodes/"
+              href="http:/api.sensors.africa/v2/nodes/"
               target="_blank"
               rel="noopener noreferrer"
             >
