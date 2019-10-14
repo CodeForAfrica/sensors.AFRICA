@@ -40,7 +40,7 @@ This project will be primarily using [airbnb react](https://github.com/airbnb/ja
 Following [Facebook's guide on deploying React App on GitHub Pages](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages), site deployment can be done by simple doing:
 
 ```shell
-yarn deploy
+yarn version
 ```
 
 ---
