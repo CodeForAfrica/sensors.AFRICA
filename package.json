@@ -36,7 +36,8 @@
     "serve": "node_modules/serve/bin/serve.js build",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postversion": "git push --follow-tags && yarn deploy && echo \"Successfully released version $npm_package_version!\""
   },
   "main": "index.js",
   "repository": "https://github.com/CodeForAfrica/sensors.AFRICA.git",
