@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import IndoorIcon from '../../assets/images/indooricon.png';
-import OutdoorIcon from '../../assets/images/outdooricon.png';
+import HouseholdIcon from '../../assets/images/icons/HouseholdIcon.png';
+import AmbientIcon from '../../assets/images/icons/AmbientIcon.png';
 
 const styles = theme => ({
   root: {
@@ -91,7 +91,7 @@ const styles = theme => ({
   cite: {
     color: '#F3F3F3',
     fontStyle: 'normal',
-    textDecoration: 'underline dotted'
+    textDecoration: 'underline'
   },
   cardContent: {
     color: 'white',
@@ -117,15 +117,15 @@ function IndoorOutdoor({ classes }) {
       <Grid item>
         <Card className={classes.indoor}>
           <CardContent className={classes.cardContent}>
-            <img src={IndoorIcon} alt="Housing" className={classes.img} />
+            <img src={AmbientIcon} alt="Housing" className={classes.img} />
             <Typography variant="h5" className={classes.title}>
-              OUTDOOR POLLUTION
+              AMBIENT POLLUTION
             </Typography>
             <Typography variant="subtitle2" className={classes.caption}>
-              Outdoor pollution causes an estimated{' '}
+              Ambient air pollution causes an estimated{' '}
               <cite>
                 <a
-                  href="https://www.who.int/airpollution/"
+                  href="https://www.who.int/health-topics/air-pollution#tab=tab_2"
                   className={classes.cite}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -152,15 +152,15 @@ function IndoorOutdoor({ classes }) {
       <Grid item>
         <Card className={classes.outdoor}>
           <CardContent className={classes.cardContent}>
-            <img src={OutdoorIcon} alt="Housing" className={classes.img} />
+            <img src={HouseholdIcon} alt="Housing" className={classes.img} />
             <Typography variant="h5" className={classes.title}>
-              INDOOR POLLUTION
+              HOUSEHOLD POLLUTION
             </Typography>
             <Typography variant="subtitle2" className={classes.caption}>
-              Indoor pollution causes an estimated{' '}
+              Household air pollution causes an estimated{' '}
               <cite>
                 <a
-                  href="https://www.who.int/airpollution/"
+                  href="https://www.who.int/health-topics/air-pollution#tab=tab_3"
                   className={classes.cite}
                   target="_blank"
                   rel="noopener noreferrer"
