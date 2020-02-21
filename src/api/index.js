@@ -91,7 +91,7 @@ const API = {
       .toISOString()
       .substr(0, 10);
     fetch(
-      `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&value_type=P2`
+      `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`
     )
       .then(data => data.json())
       .then(json => callback(json));
