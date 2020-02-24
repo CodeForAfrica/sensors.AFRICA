@@ -46,7 +46,7 @@ function Map({ classes, zoom, latitude, longitude }) {
           height="500"
           width="100%"
           frameBorder="0"
-          scrollling="no"
+          scrolling="no"
         />
       </Grid>
     </Grid>
