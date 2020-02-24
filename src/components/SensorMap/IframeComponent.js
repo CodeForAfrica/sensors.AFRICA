@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
   fullHeight: {
-    height: '90vh',
     display: 'inline-block',
     margin: '0 auto',
     backgroundColor: 'white'
@@ -29,8 +28,8 @@ function KenyaMap({
       height={height}
       width={width}
       frameBorder={frameBorder}
-      className={classes.fullheight}
-      scrollling={scrolling}
+      className={classes.fullHeight}
+      scrolling={scrolling}
     />
   );
 }
