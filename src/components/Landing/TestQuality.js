@@ -11,6 +11,7 @@ import ComingSoon from '../ComingSoon';
 import air from '../../assets/images/button/airbtn.png';
 import water from '../../assets/images/button/waterbtn.png';
 import sound from '../../assets/images/button/soundbtn.png';
+import radiation from '../../assets/images/button/radiationbtn.png';
 
 const styles = theme => ({
   root: {
@@ -49,6 +50,14 @@ const styles = theme => ({
   },
   soundCard: {
     backgroundColor: '#B64598',
+    height: '12.5rem',
+    width: '10.5rem',
+    [theme.breakpoints.up('md')]: {
+      width: '15.625rem'
+    }
+  },
+  radiationCard: {
+    backgroundColor: '#F7C600',
     height: '12.5rem',
     width: '10.5rem',
     [theme.breakpoints.up('md')]: {
@@ -150,6 +159,20 @@ class TestQuality extends React.Component {
                     title="sound"
                   />
                 </CardActionArea>
+              </Card>
+            </Grid>
+            {/** radiation */}
+            <Grid item>
+              <Card className={classes.radiationCard}>
+                <CardActionArea onClick={this.showComingSoonAlert}>
+                  <CardMedia
+                    component="img"
+                    className={classes.img}
+                    image={radiation}
+                    title="radiation"
+                  />
+                </CardActionArea>
+                <Typography variant="h4">Radiation</Typography>
               </Card>
             </Grid>
           </Grid>
