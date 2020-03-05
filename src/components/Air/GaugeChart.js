@@ -9,14 +9,19 @@ const styles = theme => ({
     maxWidth: '100%',
     margin: 'auto'
   },
-  circularChartWhiteCircle: {
+  circularChartGreenCircle: {
     display: 'block',
-    stroke: '#fff'
+    stroke: '#2FB56B'
+  },
+  circleOuter: {
+    fill: 'none',
+    stroke: '#2FB56B',
+    strokeWidth: '3.4'
   },
   circleBg: {
     fill: 'none',
-    stroke: '#2FB56B',
-    strokeWidth: '4.4'
+    stroke: '#fff',
+    strokeWidth: '2.4'
   },
   percentage: {
     fill: '#666',
@@ -29,7 +34,7 @@ const styles = theme => ({
   },
   circle: {
     fill: 'none',
-    strokeWidth: '3.8',
+    strokeWidth: '1.8',
     strokeLinecap: 'none',
     animation: 'progress 1s ease-out forwards'
   },
@@ -45,14 +50,22 @@ function GaugeChart(props) {
   return (
     <svg
       viewBox="0 0 37 37"
-      className={(classes.circularChart, classes.circularChartWhiteCircle)}
+      className={(classes.circularChart, classes.circularChartGreenCircle)}
     >
       <path
-        className={classes.circleBg}
+        className={classes.circleOuter}
         d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
       />
+
+      <path
+        className={classes.circleBg}
+        d="M18 2.0845
+            a 14.9155 14.9155 0 0 1 0 31.831
+            a 14.9155 14.9155 0 0 1 0 -31.831"
+      />
+
       <path
         className={classes.circle}
         strokeDasharray={`${percentage} 100`}
@@ -60,6 +73,7 @@ function GaugeChart(props) {
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
       />
+
       <text x="18" y="20.35" className={classes.percentage}>
         {percentage}%
       </text>
