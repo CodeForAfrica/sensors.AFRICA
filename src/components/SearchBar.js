@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Select from 'react-select';
 
-import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
+import {
+  MenuItem,
+  Paper,
+  TextField,
+  Typography,
+  Grid
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { CITIES_LOCATION } from '../api';
+import locateIcon from '../assets/images/icons/locate.svg';
 
 const styles = theme => ({
   root: {
@@ -132,7 +140,16 @@ Control.defaultProps = {
   selectProps: null
 };
 
-function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
+function Option({
+  data,
+  children,
+  innerProps: { onClick, ...props },
+  innerRef,
+  isFocused,
+  isSelected,
+  selectOption
+}) {
+  const [label, setLabel] = useState(children);
   return (
     <MenuItem
       buttonRef={innerRef}
@@ -142,13 +159,65 @@ function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
         color: '#fff',
         fontWeight: isSelected ? 500 : 400
       }}
-      {...innerProps}
+      {...props}
+      onClick={e => {
+        if (data.value === 'locate-me') {
+          setLabel('LOCATING...');
+          navigator.geolocation.getCurrentPosition(
+            async ({ coords: { latitude, longitude } }) => {
+              const { error, address } = await fetch(
+                `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
+              ).then(res => res.json());
+
+              // If not really there
+              if (error || !address) {
+                setLabel('COULD NOT LOCATE');
+              } else {
+                // Find country
+                const foundEntry = Object.entries(CITIES_LOCATION).find(
+                  ([, country]) => address.country === country.name
+                );
+                if (foundEntry) {
+                  const [slug] = foundEntry;
+                  selectOption({ value: slug });
+                } else {
+                  setLabel(
+                    <p style={{ lineHeight: '1em' }}>
+                      {address.city}, {address.country}
+                      <br />
+                      <b style={{ fontSize: '0.625rem' }}>
+                        Is not covered by sensorsAFRICA
+                      </b>
+                    </p>
+                  );
+                }
+              }
+            },
+            failure => setLabel(failure.message.toUpperCase()),
+            {
+              timeout: 10000
+            }
+          );
+        } else {
+          onClick(e);
+        }
+      }}
     >
-      {children}
+      <Grid container justify="space-between" alignItems="center">
+        <Grid item>{label}</Grid>
+
+        {data.value === 'locate-me' && (
+          <Grid item>
+            <img alt="icon" src={locateIcon} />
+          </Grid>
+        )}
+      </Grid>
     </MenuItem>
   );
 }
 Option.propTypes = {
+  selectOption: PropTypes.func.isRequired,
+  data: PropTypes.shape({}).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
@@ -275,11 +344,12 @@ const components = {
   DropdownIndicator: null
 };
 
-const DEFAULT_OPTIONS = [
-  { value: 'nairobi', label: 'Nairobi, Kenya' },
-  { value: 'lagos', label: 'Lagos, Nigeria' },
-  { value: 'dar-es-salaam', label: 'Dar-es-Salaam, Tanzania' }
-];
+const DEFAULT_OPTIONS = [{ value: 'locate-me', label: 'LOCATE ME' }].concat(
+  Object.values(CITIES_LOCATION).map(({ slug: value, name: label }) => ({
+    value,
+    label
+  }))
+);
 
 class SearchBar extends React.Component {
   constructor(props) {

@@ -20,7 +20,11 @@ function SocialMediaButtons({ classes, city }) {
       <Grid item className={classes.twitter}>
         <TwitterShareButton
           url="https://sensors.AFRICA/air"
-          title={`Did you know the #AirQuality in ${city.name} directly affects my health ${city.twitterHandle}? Check our city’s pollution levels on `}
+          title={`Did you know the #AirQuality in ${
+            city.name
+          } directly affects my health ${
+            city.twitterHandle
+          }? Check our city’s pollution levels on `}
           via="sensorsAFRICA"
           hashtags={['sensorsAFRICA']}
           className={classes.buttonLink}

@@ -3,6 +3,7 @@ const URLS = {
   ABOUT: '/about',
 
   AIR: {
+    LOCATE_ME: '/locate-me',
     HOME: '/air',
     ABOUT: '/air/about',
     DATA: '/air/data',

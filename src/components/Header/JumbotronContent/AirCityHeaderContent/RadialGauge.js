@@ -43,7 +43,9 @@ const styles = theme => ({
     position: 'absolute'
   },
   gaugeWhoGuidelineText: {
-    font: `bold ${theme.typography.body1.fontSize} ${theme.typography.h6.fontFamily}`,
+    font: `bold ${theme.typography.body1.fontSize} ${
+      theme.typography.h6.fontFamily
+    }`,
     fill: 'white'
   },
   gaugeNeedleItem: {
