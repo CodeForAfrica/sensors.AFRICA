@@ -172,7 +172,6 @@ class TestQuality extends React.Component {
                     title="radiation"
                   />
                 </CardActionArea>
-                <Typography variant="h4">Radiation</Typography>
               </Card>
             </Grid>
           </Grid>
