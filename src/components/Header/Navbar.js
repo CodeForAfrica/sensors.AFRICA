@@ -53,6 +53,15 @@ const styles = theme => ({
     },
     fontFamily: 'Anton'
   },
+  radiationText: {
+    color: '#F7C600',
+    transition: 'all .5s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      color: '#f3f33'
+    },
+    fontFamily: 'Anton'
+  },
   // searchFa: {
   //   padding: theme.spacing.unit * 1.5,
   //   color: '#454545'
@@ -68,6 +77,10 @@ const styles = theme => ({
   soundlink: {
     textDecoration: 'none',
     color: '#B64598'
+  },
+  radiationlink: {
+    textDecoration: 'none',
+    color: '#F7C600'
   },
   logoGrid: {
     paddingTop: '0.4rem'
@@ -152,6 +165,15 @@ class Navbar extends React.Component {
                     onClick={this.showComingSoonAlert}
                   >
                     SOUND
+                  </a>
+                </MenuItem>
+                <MenuItem className={classes.radiationText}>
+                  <a
+                    href="/radiation"
+                    className={classes.radiationlink}
+                    onClick={this.showComingSoonAlert}
+                  >
+                    RADIATION
                   </a>
                 </MenuItem>
               </Grid>
