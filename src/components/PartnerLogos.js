@@ -26,15 +26,17 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: 'white',
     [theme.breakpoints.up('md')]: {
-      paddingBottom: '3rem'
+      paddingBottom: '3rem',
+      justifyContent: 'flex-start'
     }
   },
   leftLogo: {
     width: '100%',
     textAlign: 'center',
-    paddingTop: '2rem',
+    paddingTop: 0,
+    paddingBottom: '2rem',
     [theme.breakpoints.up('md')]: {
-      paddingTop: 0,
+      paddingTop: '3rem',
       width: '18.75rem',
       marginRight: '1.125rem'
     },
@@ -98,8 +100,9 @@ function PartnerLogos({ classes }) {
 
       <Grid
         container
+        direction="row"
         justify="center"
-        align="center"
+        alignItems="center"
         className={classes.partnerContainer}
       >
         <Grid item>
@@ -126,7 +129,7 @@ function PartnerLogos({ classes }) {
           </div>
         </Grid>
         <Grid item>
-          <div className={classes.rightLogo}>
+          <div className={classes.leftLogo}>
             <img
               src={germanCoopLogo}
               alt="German Cooperation"
