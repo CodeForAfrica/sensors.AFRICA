@@ -161,7 +161,6 @@ class TestQuality extends React.Component {
                 </CardActionArea>
               </Card>
             </Grid>
-            {/** radiation */}
             <Grid item>
               <Card className={classes.radiationCard}>
                 <CardActionArea onClick={this.showComingSoonAlert}>
