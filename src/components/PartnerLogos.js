@@ -8,6 +8,7 @@ import worldbank from '../assets/images/partners/worldbankgroup.png';
 
 import liquidtelcom from '../assets/images/partners/liquidtelcom.png';
 import data4sdg from '../assets/images/partners/partnershipsdg.png';
+import germanCoopLogo from '../assets/images/partners/germanCoopLogo.bmp';
 
 const styles = theme => ({
   root: {
@@ -120,6 +121,15 @@ function PartnerLogos({ classes }) {
             <img
               src={data4sdg}
               alt="Global Partnership for Sustainable Development Data"
+              className={classes.img}
+            />
+          </div>
+        </Grid>
+        <Grid item>
+          <div className={classes.rightLogo}>
+            <img
+              src={germanCoopLogo}
+              alt="German Cooperation"
               className={classes.img}
             />
           </div>
