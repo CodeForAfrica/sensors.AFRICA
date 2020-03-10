@@ -17,13 +17,14 @@ const styles = theme => ({
   },
   title: {
     backgroundColor: 'white',
-    paddingTop: '5rem',
-    paddingBottom: '5rem',
+    padding: '2rem 0',
     [theme.breakpoints.down('md')]: {
       paddingTop: '3rem'
     }
   },
-
+  partnersLogo: {
+    padding: '2rem 0'
+  },
   worldBankLogo: {
     width: '100%',
     textAlign: 'center',
@@ -106,7 +107,13 @@ function PartnerLogos({ classes }) {
         <Typography variant="h3">OUR PARTNERS</Typography>
       </Grid>
 
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.partnersLogo}
+      >
         <Grid item sm={6} md={3}>
           <div className={classes.worldBankLogo}>
             <img src={worldbank} alt="World Bank" className={classes.img} />
