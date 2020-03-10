@@ -57,7 +57,7 @@ const styles = theme => ({
     }
   },
   radiationCard: {
-    backgroundColor: '#F7C600',
+    backgroundColor: '#F57C00',
     height: '12.5rem',
     width: '10.5rem',
     [theme.breakpoints.up('md')]: {

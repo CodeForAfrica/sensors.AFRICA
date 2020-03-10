@@ -54,7 +54,7 @@ const styles = theme => ({
     fontFamily: 'Anton'
   },
   radiationText: {
-    color: '#F7C600',
+    color: '#F57C00',
     transition: 'all .5s ease-in-out',
     '&:hover': {
       transform: 'scale(1.1)',
@@ -80,7 +80,7 @@ const styles = theme => ({
   },
   radiationlink: {
     textDecoration: 'none',
-    color: '#F7C600'
+    color: '#F57C00'
   },
   logoGrid: {
     paddingTop: '0.4rem'
