@@ -12,7 +12,8 @@ import germanCoopLogo from '../assets/images/partners/germanCoopLogo.bmp';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: theme.palette.common.white
   },
   title: {
     backgroundColor: 'white',
@@ -22,30 +23,8 @@ const styles = theme => ({
       paddingTop: '3rem'
     }
   },
-  partnerContainer: {
-    flexGrow: 1,
-    backgroundColor: 'white',
-    [theme.breakpoints.up('md')]: {
-      paddingBottom: '3rem',
-      justifyContent: 'flex-start'
-    }
-  },
-  leftLogo: {
-    width: '100%',
-    textAlign: 'center',
-    paddingTop: 0,
-    paddingBottom: '2rem',
-    [theme.breakpoints.up('md')]: {
-      paddingTop: '3rem',
-      width: '18.75rem',
-      marginRight: '1.125rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '25.375rem',
-      marginRight: '1.125rem'
-    }
-  },
-  centerLogo: {
+
+  worldBankLogo: {
     width: '100%',
     textAlign: 'center',
     padding: '2rem 0',
@@ -61,7 +40,23 @@ const styles = theme => ({
       marginRight: '0.5625rem'
     }
   },
-  rightLogo: {
+  liquidLogo: {
+    width: '100%',
+    textAlign: 'center',
+    padding: '2rem 0',
+    [theme.breakpoints.up('md')]: {
+      padding: 0,
+      width: '18.75rem',
+      marginLeft: '0.5625rem',
+      marginRight: '0.5625rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '25.375rem',
+      marginLeft: '0.5625rem',
+      marginRight: '0.5625rem'
+    }
+  },
+  globalLogo: {
     width: '100%',
     textAlign: 'center',
     paddingBottom: '2rem',
@@ -75,6 +70,21 @@ const styles = theme => ({
       marginLeft: '1.125rem'
     }
   },
+  germanCoopLogo: {
+    width: '100%',
+    textAlign: 'center',
+    paddingTop: 0,
+    paddingBottom: '2rem',
+    [theme.breakpoints.up('md')]: {
+      paddingTop: '3rem',
+      width: '18.75rem',
+      marginRight: '1.125rem'
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '25.375rem',
+      marginRight: '1.125rem'
+    }
+  },
   img: {
     maxWidth: '100%',
     height: '100px',
@@ -84,7 +94,7 @@ const styles = theme => ({
 
 function PartnerLogos({ classes }) {
   return (
-    <Grid container xs={12} style={{ paddingBottom: '5rem' }}>
+    <Grid container className={classes.root}>
       <Grid
         container
         xs={12}
@@ -93,25 +103,17 @@ function PartnerLogos({ classes }) {
         alignItems="center"
         className={classes.title}
       >
-        <Typography variant="h3" className={classes.headlineTitle}>
-          OUR PARTNERS
-        </Typography>
+        <Typography variant="h3">OUR PARTNERS</Typography>
       </Grid>
 
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        className={classes.partnerContainer}
-      >
-        <Grid item>
-          <div className={classes.centerLogo}>
+      <Grid container direction="row" justify="center" alignItems="center">
+        <Grid item sm={6} md={3}>
+          <div className={classes.worldBankLogo}>
             <img src={worldbank} alt="World Bank" className={classes.img} />
           </div>
         </Grid>
-        <Grid item>
-          <div className={classes.centerLogo}>
+        <Grid item sm={6} md={3}>
+          <div className={classes.liquidLogo}>
             <img
               src={liquidtelcom}
               alt="Liquid Telcom"
@@ -119,8 +121,8 @@ function PartnerLogos({ classes }) {
             />
           </div>
         </Grid>
-        <Grid item>
-          <div className={classes.rightLogo}>
+        <Grid item sm={6} md={3}>
+          <div className={classes.globalLogo}>
             <img
               src={data4sdg}
               alt="Global Partnership for Sustainable Development Data"
@@ -128,8 +130,8 @@ function PartnerLogos({ classes }) {
             />
           </div>
         </Grid>
-        <Grid item>
-          <div className={classes.leftLogo}>
+        <Grid item sm={6} md={3}>
+          <div className={classes.germanCoopLogo}>
             <img
               src={germanCoopLogo}
               alt="German Cooperation"
