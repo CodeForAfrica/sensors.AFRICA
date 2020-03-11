@@ -53,7 +53,7 @@ function Hero({ classes }) {
       <Grid item xs={6}>
         <Typography variant="h4" className={classes.intro}>
           We are here to give you actionable information about the quality of
-          your city&apos;s air, water, sound and radiation level.
+          your city&apos;s air, water, sound and radiation levels.
         </Typography>
       </Grid>
       <Grid item xs={12}>
