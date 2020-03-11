@@ -1,9 +1,15 @@
 import React from 'react';
 
-export default function Index() {
+import Hero from 'components/Landing/Hero';
+import Footer from 'components/Footer';
+
+function Home() {
   return (
-    <div>
-      <p>This is the home page</p>
-    </div>
+    <>
+      <Hero />
+      <Footer />
+    </>
   );
 }
+
+export default Home;

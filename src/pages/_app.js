@@ -6,7 +6,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import 'assets/css/index.css';
 import 'assets/css/App.css';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import theme from '../theme';
+
+library.add(fab, faSearch);
 
 export default class sensorsAfricaApp extends App {
   componentDidMount() {
