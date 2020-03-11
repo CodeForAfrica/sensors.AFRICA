@@ -2,75 +2,78 @@
   "name": "sensors.AFRICA",
   "version": "0.3.1",
   "private": true,
+  "main": "index.js",
   "homepage": "https://sensors.africa/",
+  "repository": "https://github.com/CodeForAfrica/sensors.AFRICA.git",
+  "author": "Code For Africa",
+  "license": "GNU GPLv3",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.8.2",
-    "@fortawesome/fontawesome-svg-core": "^1.2.18",
-    "@fortawesome/free-brands-svg-icons": "^5.8.2",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "@material-ui/core": "^3.9.3",
-    "@material-ui/icons": "^3.0.2",
+    "@material-ui/core": "^4.9.5",
+    "@material-ui/icons": "^4.9.1",
     "classnames": "^2.2.6",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.3.0",
+    "next-images": "^1.3.1",
+    "next-seo": "^4.4.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1",
-    "react-router": "^5.0.0",
-    "react-router-dom": "^5.0.0",
-    "react-router-hash-link": "^1.2.1",
-    "react-scripts": "^3.0.1",
-    "react-select": "^2.4.3",
-    "react-share": "^3.0.0",
-    "reactjs-percentage-circle": "^1.0.0",
-    "tabletop": "^1.5.2",
-    "victory": "^32.2.3"
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-feather": "^2.0.3",
+    "react-share": "^4.0.1",
+    "tabletop": "^1.6.2",
+    "victory": "^34.1.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "lint": "node_modules/eslint/bin/eslint.js --fix src",
-    "prebuild": "yarn lint",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "preserve": "yarn build",
-    "serve": "node_modules/serve/bin/serve.js build",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject",
-    "postversion": "git push --follow-tags && yarn deploy && echo \"Successfully released version $npm_package_version!\""
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
-  "main": "index.js",
-  "repository": "https://github.com/CodeForAfrica/sensors.AFRICA.git",
-  "author": "Code for Africa",
-  "license": "GNU GPLv3",
   "devDependencies": {
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.13.0",
-    "gh-pages": "^2.0.1",
-    "husky": "^2.3.0",
-    "lint-staged": "^8.1.7",
-    "prettier": "^1.17.1",
-    "serve": "^11.0.0"
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-babel-module": "^5.1.2",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-json": "^2.1.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-markdown": "^1.0.2",
+    "eslint-plugin-module-resolver": "^0.16.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "husky": "^4.2.3",
+    "lint": "^0.7.0",
+    "lint-staged": "^10.0.8",
+    "now": "^17.0.4",
+    "prettier": "^1.19.1"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "husky": {
+   "eslintConfig": {
+    "extends": "react-app"
+  },
+   "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged": {
+   "lint-staged": {
     "src/**/*.{js,json,scss,md}": [
-      "yarn lint",
+      "yarn lint-staged",
       "git add"
     ]
   }

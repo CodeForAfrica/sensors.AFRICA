@@ -1,16 +1,27 @@
 {
+  "root": true,
+  "parser": "babel-eslint",
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
+  },
+  "plugins": ["module-resolver"],
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
   },
   "rules": {
-    "react/forbid-prop-types": 0,
+    "module-resolver/use-alias": 2,
+    "react/prop-types": 0,
     "react/jsx-filename-extension": [
       1,
       {
         "extensions": [".js", ".jsx"]
       }
     ],
-    "jsx-a11y/click-events-have-key-events": "off"
+    "react/jsx-props-no-spreading": 0,
+    "no-nested-ternary": "off"
   }
 }

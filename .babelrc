@@ -1,0 +1,24 @@
+{
+  "presets": [
+    "next/babel"
+  ],
+  "plugins": [
+    [
+      "syntax-dynamic-import"
+    ],
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "assets": "./src/assets",
+          "components": "./src/components",
+          "data": "./src/data",
+          "lib": "./src/lib"
+        }
+      }
+    ]
+  ]
+}
