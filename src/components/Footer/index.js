@@ -132,12 +132,14 @@ function Footer(props) {
           <Typography variant="h6" className={classes.titles}>
             ABOUT sensors.AFRICA
           </Typography>
-          <Typography variant="caption" className={classes.aboutContent}>
-            sensors.AFRICA is a pan-African citizen science initiative that uses
-            sensors to monitor air, water and sound pollution to give citizens
-            actionable information about their cities.
-          </Typography>
-          <Link href="/about">
+          <div className={classes.aboutContent}>
+            <Typography variant="caption">
+              sensors.AFRICA is a pan-African citizen science initiative that
+              uses sensors to monitor air, water and sound pollution to give
+              citizens actionable information about their cities.
+            </Typography>
+          </div>
+          <Link href="/about" className={classes.buttonLink}>
             <Button variant="contained" className={classes.footerButton}>
               READ MORE
             </Button>
@@ -147,10 +149,12 @@ function Footer(props) {
           <Typography variant="h6" className={classes.titles}>
             FUNDED BY
           </Typography>
-          <Typography variant="caption" className={classes.supportText}>
-            This initiative was seed-funded by innovateAFRICA and is being
-            incubated by Code for Africa.
-          </Typography>
+          <div className={classes.supportText}>
+            <Typography variant="caption">
+              This initiative was seed-funded by innovateAFRICA and is being
+              incubated by Code for Africa.
+            </Typography>
+          </div>
           <Grid container justify="center" alignItems="center">
             <Grid item xs>
               <a
