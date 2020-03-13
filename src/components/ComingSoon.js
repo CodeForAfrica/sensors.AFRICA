@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'next/router';
 
 import PropTypes from 'prop-types';
 
@@ -142,7 +143,8 @@ class ComingSoon extends Component {
 
 ComingSoon.propTypes = {
   onClose: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired
+  show: PropTypes.bool.isRequired,
+  history: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(ComingSoon);
+export default withRouter(withStyles(styles)(ComingSoon));

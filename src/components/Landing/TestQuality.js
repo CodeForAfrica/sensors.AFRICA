@@ -84,6 +84,7 @@ class TestQuality extends React.Component {
 
   showComingSoonAlert() {
     const { location, history } = this.props;
+
     if (location) {
       const { pathname } = location;
       history.push(pathname);
@@ -126,7 +127,7 @@ class TestQuality extends React.Component {
           >
             <ComingSoon show={show} onClose={this.hideComingSoonAlert} />
             <Grid item>
-              <Link href="/air">
+              <Link href="/air/index">
                 <Card className={classes.airCard}>
                   <CardMedia
                     component="img"
