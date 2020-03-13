@@ -318,7 +318,7 @@ class SearchBar extends React.Component {
 
 SearchBar.propTypes = {
   handleSearch: PropTypes.func,
-  options: PropTypes.string,
+  options: PropTypes.string, // needs to be changed
   placeholder: PropTypes.string
 };
 

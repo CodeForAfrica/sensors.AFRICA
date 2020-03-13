@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import ImpactCard from 'components/HealthClimate/ImpactCards';
 
 import HealthImpact from 'assets/images/healthimpacticon.png';
 import ClimateImpact from 'assets/images/climateimpacticon.png';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     paddingTop: '3rem',
@@ -33,9 +33,10 @@ const styles = theme => ({
       marginLeft: '1.875rem'
     }
   }
-});
+}));
 
-function HealthClimateCards({ classes }) {
+function HealthClimateCards() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -82,4 +83,4 @@ function HealthClimateCards({ classes }) {
   );
 }
 
-export default withStyles(styles)(HealthClimateCards);
+export default HealthClimateCards;

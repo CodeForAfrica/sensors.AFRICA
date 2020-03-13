@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white'
@@ -87,9 +87,10 @@ const styles = theme => ({
   wiki: {
     marginTop: '2rem'
   }
-});
+}));
 
-function EmbedDocumentation({ classes }) {
+function EmbedDocumentation() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -279,4 +280,4 @@ function EmbedDocumentation({ classes }) {
   );
 }
 
-export default withStyles(styles)(EmbedDocumentation);
+export default EmbedDocumentation;

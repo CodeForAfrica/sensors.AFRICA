@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Gauge from './Gauge';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   svgContainer: {
     paddingTop: '3rem',
     paddingBottom: '2rem',
@@ -18,9 +18,10 @@ const styles = theme => ({
       width: '79.5rem'
     }
   }
-});
+}));
 
-function HealthEffects({ classes }) {
+function HealthEffects() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -36,4 +37,4 @@ function HealthEffects({ classes }) {
   );
 }
 
-export default withStyles(styles)(HealthEffects);
+export default HealthEffects;

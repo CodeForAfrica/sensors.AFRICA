@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import HealthEffects from 'components/Air/HealthEffects';
 import Burden from 'components/HealthClimate/Burden';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: 'white',
     display: 'block'
@@ -43,9 +43,10 @@ const styles = theme => ({
     textAlign: 'center',
     textTransform: 'None'
   }
-});
+}));
 
-function HealthAndBurden({ classes }) {
+function HealthAndBurden() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -73,4 +74,4 @@ function HealthAndBurden({ classes }) {
   );
 }
 
-export default withStyles(styles)(HealthAndBurden);
+export default HealthAndBurden;

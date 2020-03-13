@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Grid, MenuItem, Typography, MenuList } from '@material-ui/core';
 import Link from 'next/link';
 import Modal from '@material-ui/core/Modal';
@@ -10,7 +10,7 @@ import { URLS } from 'components/DocumentHead/PageHeads';
 
 import MenuButton from 'components/Hambuger/MenuButton';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   grid: {
     flex: 1
   },
@@ -42,9 +42,10 @@ const styles = theme => ({
   link: {
     textDecoration: 'none'
   }
-});
+}));
 
-function HambugerMenu({ classes, handleToggle, menuOpen }) {
+function HambugerMenu({ handleToggle, menuOpen }) {
+  const classes = useStyles();
   return (
     <Grid container className={classes.grid}>
       <Grid item xs={12}>
@@ -134,4 +135,4 @@ HambugerMenu.propTypes = {
   menuOpen: PropTypes.bool.isRequired
 };
 
-export default withStyles(styles)(HambugerMenu);
+export default HambugerMenu;

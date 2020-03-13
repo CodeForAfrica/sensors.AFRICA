@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import HouseholdIcon from 'assets/images/icons/HouseholdIcon.png';
 import AmbientIcon from 'assets/images/icons/AmbientIcon.png';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white',
@@ -103,9 +103,10 @@ const styles = theme => ({
       height: '100%'
     }
   }
-});
+}));
 
-function IndoorOutdoor({ classes }) {
+function IndoorOutdoor() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -186,4 +187,4 @@ function IndoorOutdoor({ classes }) {
   );
 }
 
-export default withStyles(styles)(IndoorOutdoor);
+export default IndoorOutdoor;

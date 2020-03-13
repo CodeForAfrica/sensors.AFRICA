@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import HealthClimateContent from 'components/Header/JumboContent/HealthClimateContent';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   jumbotron: {
     flexGrow: 1,
     backgroundColor: '#2FB56B',
@@ -14,9 +14,10 @@ const styles = theme => ({
       height: 450
     }
   }
-});
+}));
 
-function HealthClimateHeader({ classes }) {
+function HealthClimateHeader() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -31,4 +32,4 @@ function HealthClimateHeader({ classes }) {
   );
 }
 
-export default withStyles(styles)(HealthClimateHeader);
+export default HealthClimateHeader;

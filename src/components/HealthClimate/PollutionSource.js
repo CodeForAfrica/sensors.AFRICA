@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flex: 1,
     padding: '2rem'
@@ -23,16 +23,15 @@ const styles = theme => ({
   bodyCopy: {
     textAlign: 'center'
   }
-});
-
+}));
 function PollutionSource({
-  classes,
   title,
   sources,
   impact,
   reduction,
   backgroundColor
 }) {
+  const classes = useStyles();
   return (
     <Grid
       direction="row"
@@ -95,4 +94,4 @@ PollutionSource.defaultProps = {
   backgroundColor: '#F3F3F3'
 };
 
-export default withStyles(styles)(PollutionSource);
+export default PollutionSource;

@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white'
@@ -87,7 +87,7 @@ const styles = theme => ({
   wiki: {
     marginTop: '2rem'
   }
-});
+}));
 
 const sensors = 'https://api.sensors.africa/v1/sensors/{sensor_id}/';
 const query = 'https://api.sensors.africa/v1/filter?city=&country=&type=';
@@ -112,7 +112,8 @@ const valueType = '{P1, P2, temperature, humidity}';
 // const area = '{lat, lon, distance}';
 // const box = '{lat1, lon1, lat2, lon2}';
 
-function DataArchives({ classes }) {
+function DataArchives() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -535,4 +536,4 @@ function DataArchives({ classes }) {
   );
 }
 
-export default withStyles(styles)(DataArchives);
+export default DataArchives;

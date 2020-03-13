@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import HardwareHeaderContent from 'components/Header/JumboContent/HardwareHeaderContent';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   jumbotron: {
     paddingBottom: '2rem',
     backgroundColor: '#2FB56B',
@@ -15,9 +15,10 @@ const styles = theme => ({
       height: 450
     }
   }
-});
+}));
 
-function HardwareHeader({ classes }) {
+function HardwareHeader() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -35,4 +36,4 @@ function HardwareHeader({ classes }) {
   );
 }
 
-export default withStyles(styles)(HardwareHeader);
+export default HardwareHeader;

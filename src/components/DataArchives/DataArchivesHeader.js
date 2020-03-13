@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import DataArchivesHeaderContent from 'components/Header/JumboContent/DataArchivesHeaderContent';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   jumbotron: {
     flexGrow: 1,
     backgroundColor: '#2FB56B',
@@ -14,9 +14,10 @@ const styles = theme => ({
       height: 450
     }
   }
-});
+}));
 
-function DataArchivesHeader({ classes }) {
+function DataArchivesHeader() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -35,4 +36,4 @@ function DataArchivesHeader({ classes }) {
   );
 }
 
-export default withStyles(styles)(DataArchivesHeader);
+export default DataArchivesHeader;

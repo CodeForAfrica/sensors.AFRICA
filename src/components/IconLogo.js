@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
 import iconlogo from 'assets/images/logos/sensorsLogo.png';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   defaultBadge: {
     zIndex: 1301,
     top: '5.8rem',
@@ -30,9 +30,10 @@ const styles = theme => ({
     position: 'relative'
   },
   img: {}
-});
+}));
 
-function IconLogo({ classes }) {
+function IconLogo() {
+  const classes = useStyles();
   const imgClassName = classNames(classes.logo, classes.img);
   return (
     <img
@@ -44,4 +45,4 @@ function IconLogo({ classes }) {
   );
 }
 
-export default withStyles(styles)(IconLogo);
+export default IconLogo;

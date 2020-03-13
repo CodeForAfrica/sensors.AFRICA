@@ -1,11 +1,11 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { Grid, Typography } from '@material-ui/core';
 
 import PollutionSource from './PollutionSource';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,
@@ -47,8 +47,10 @@ const styles = theme => ({
     fontWeight: 800,
     fontSize: theme.typography.fontSize
   }
-});
-function Sources({ classes }) {
+}));
+
+function Sources() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -134,4 +136,4 @@ function Sources({ classes }) {
   );
 }
 
-export default withStyles(styles)(Sources);
+export default Sources;

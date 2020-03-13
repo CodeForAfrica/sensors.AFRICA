@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import SDS011 from 'assets/images/sensors/sensor1.jpg';
 import DHT22 from 'assets/images/sensors/sensor2.jpg';
 import GSMSIM800L from 'assets/images/sensors/sensor3.jpg';
 import NODEMCU from 'assets/images/sensors/sensor4.jpg';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white',
@@ -62,9 +62,10 @@ const styles = theme => ({
     color: theme.palette.secondary.main,
     fontWeight: 'bold'
   }
-});
+}));
 
-function HardwareInfo({ classes }) {
+function HardwareInfo() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -196,4 +197,4 @@ function HardwareInfo({ classes }) {
   );
 }
 
-export default withStyles(styles)(HardwareInfo);
+export default HardwareInfo;
