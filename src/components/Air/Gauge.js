@@ -41,6 +41,7 @@ function Gauge({ props, percentage, caption }) {
 }
 
 Gauge.propTypes = {
+  percentage: PropTypes.number.isRequired,
   caption: PropTypes.string.isRequired
 };
 
