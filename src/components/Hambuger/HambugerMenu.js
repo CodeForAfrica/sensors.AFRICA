@@ -26,8 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
   menuListItem: {
     color: 'white',
-    display: 'block',
-    height: '18px'
+    display: 'block'
   },
   modalContent: {
     margin: 'auto',

@@ -15,10 +15,13 @@ const URLS = {
     JOIN: '/air/join-network'
   },
   WATER: {
-    HOME: '/water'
+    HOME: '/water/index'
   },
   SOUND: {
-    HOME: '/sound'
+    HOME: '/sound/index'
+  },
+  RADIATION: {
+    HOME: '/radiation/index'
   },
   NOT_FOUND: '*'
 };
