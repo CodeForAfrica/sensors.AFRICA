@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Link from 'next/link';
 
 import Typography from '@material-ui/core/Typography';
 import { Grid, Card, CardActionArea, CardMedia } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import ComingSoon from 'components/ComingSoon';
 
@@ -13,7 +13,9 @@ import water from 'assets/images/button/waterbtn.png';
 import sound from 'assets/images/button/soundbtn.png';
 import radiation from 'assets/images/button/radiationbtn.png';
 
-const styles = theme => ({
+import { useRouter } from 'next/router';
+
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
@@ -71,114 +73,104 @@ const styles = theme => ({
     fontFamily: theme.typography.h6.fontFamily,
     fontWeight: 900
   }
-});
+}));
 
-class TestQuality extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { show: false };
+function TestQuality({ props, pathname }) {
+  const classes = useStyles(props);
+  const router = useRouter();
+  const [show, setShow] = useState(false);
 
-    this.showComingSoonAlert = this.showComingSoonAlert.bind(this);
-    this.hideComingSoonAlert = this.hideComingSoonAlert.bind(this);
-  }
+  console.log(router);
 
-  showComingSoonAlert() {
-    const { location, history } = this.props;
-
-    if (location) {
-      const { pathname } = location;
-      history.push(pathname);
+  const showComingSoonAlert = () => {
+    if (pathname) {
+      router.push(pathname);
     }
-    this.setState({ show: true });
-  }
+    setShow({ show: true });
+  };
 
-  hideComingSoonAlert() {
-    this.setState({ show: false });
-  }
+  const hideComingSoonAlert = () => {
+    setShow({ show: false });
+  };
 
-  render() {
-    const { classes } = this.props;
-    const { show } = this.state;
-
-    return (
-      <Grid
-        container
-        className={classes.root}
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item xs={12}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            align="center"
-            className={classes.testTitle}
-          >
-            Test the quality of the city&apos;s
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-            style={{ paddingTop: '1rem', paddingBottom: '3rem' }}
-          >
-            <ComingSoon show={show} onClose={this.hideComingSoonAlert} />
-            <Grid item>
-              <Link href="/air/index">
-                <Card className={classes.airCard}>
-                  <CardMedia
-                    component="img"
-                    className={classes.img}
-                    image={air}
-                    title="Air"
-                  />
-                </Card>
-              </Link>
-            </Grid>
-            <Grid item>
-              <Card className={classes.waterCard}>
-                <CardActionArea onClick={this.showComingSoonAlert}>
-                  <CardMedia
-                    component="img"
-                    className={classes.img}
-                    image={water}
-                    title="water"
-                  />
-                </CardActionArea>
+  return (
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
+        <Typography
+          variant="h5"
+          gutterBottom
+          align="center"
+          className={classes.testTitle}
+        >
+          Test the quality of the city&apos;s
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          style={{ paddingTop: '1rem', paddingBottom: '3rem' }}
+        >
+          <ComingSoon show={show} onClose={hideComingSoonAlert} />
+          <Grid item>
+            <Link href="/air/index">
+              <Card className={classes.airCard}>
+                <CardMedia
+                  component="img"
+                  className={classes.img}
+                  image={air}
+                  title="Air"
+                />
               </Card>
-            </Grid>
-            <Grid item>
-              <Card className={classes.soundCard}>
-                <CardActionArea onClick={this.showComingSoonAlert}>
-                  <CardMedia
-                    component="img"
-                    className={classes.img}
-                    image={sound}
-                    title="sound"
-                  />
-                </CardActionArea>
-              </Card>
-            </Grid>
-            <Grid item>
-              <Card className={classes.radiationCard}>
-                <CardActionArea onClick={this.showComingSoonAlert}>
-                  <CardMedia
-                    component="img"
-                    className={classes.img}
-                    image={radiation}
-                    title="radiation"
-                  />
-                </CardActionArea>
-              </Card>
-            </Grid>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Card className={classes.waterCard}>
+              <CardActionArea onClick={showComingSoonAlert}>
+                <CardMedia
+                  component="img"
+                  className={classes.img}
+                  image={water}
+                  title="water"
+                />
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item>
+            <Card className={classes.soundCard}>
+              <CardActionArea onClick={showComingSoonAlert}>
+                <CardMedia
+                  component="img"
+                  className={classes.img}
+                  image={sound}
+                  title="sound"
+                />
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item>
+            <Card className={classes.radiationCard}>
+              <CardActionArea onClick={showComingSoonAlert}>
+                <CardMedia
+                  component="img"
+                  className={classes.img}
+                  image={radiation}
+                  title="radiation"
+                />
+              </CardActionArea>
+            </Card>
           </Grid>
         </Grid>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
-export default withStyles(styles)(TestQuality);
+export default TestQuality;
