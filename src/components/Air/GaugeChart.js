@@ -11,12 +11,13 @@ const styles = theme => ({
   },
   circularChartWhiteCircle: {
     display: 'block',
-    stroke: '#fff'
+    stroke: '#fff',
+    margin: 'auto'
   },
   circleBg: {
     fill: 'none',
     stroke: '#2FB56B',
-    strokeWidth: '4.4'
+    strokeWidth: '7.4'
   },
   percentage: {
     fill: '#666',
@@ -29,7 +30,7 @@ const styles = theme => ({
   },
   circle: {
     fill: 'none',
-    strokeWidth: '3.8',
+    strokeWidth: '4.8',
     strokeLinecap: 'none',
     animation: 'progress 1s ease-out forwards'
   },
@@ -47,7 +48,9 @@ function GaugeChart(props) {
   const { classes, percentage } = props;
   return (
     <svg
-      viewBox="0 0 37 37"
+      viewBox="-2 -2 40 40"
+      width="180"
+      height="180"
       className={(classes.circularChart, classes.circularChartWhiteCircle)}
     >
       <path
