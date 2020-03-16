@@ -24,7 +24,7 @@ const styles = theme => ({
     stroke: '#666',
     strokeWidth: '0.25',
     fontFamily: theme.typography.fontFamily,
-    fontWeight: 500,
+    fontWeight: 600,
     fontSize: '0.35em',
     textAnchor: 'middle'
   },
@@ -49,8 +49,6 @@ function GaugeChart(props) {
   return (
     <svg
       viewBox="-2 -2 40 40"
-      width="180"
-      height="180"
       className={(classes.circularChart, classes.circularChartWhiteCircle)}
     >
       <path
