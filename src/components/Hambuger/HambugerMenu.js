@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, MenuItem, Typography, MenuList } from '@material-ui/core';
-import Link from 'next/link';
+import Link from 'components/Link';
 import Modal from '@material-ui/core/Modal';
 
 import { URLS } from 'components/DocumentHead/PageHeads';

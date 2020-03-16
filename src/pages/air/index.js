@@ -8,6 +8,7 @@ import PartnerLogos from 'components/PartnerLogos';
 import IndoorOutdoor from 'components/Air/IndoorOutdoor';
 import Issues from 'components/Air/Issues';
 import Stories from 'components/About/Stories';
+import AirHeader from 'components/Air/AirHeader';
 // import Showcase from 'components/Showcase';
 import Support from 'components/Support';
 
@@ -21,6 +22,7 @@ function AirHome() {
   return (
     <>
       <Navbar />
+      <AirHeader />
       <Issues />
       <IndoorOutdoor />
       <Stories />
