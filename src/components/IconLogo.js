@@ -2,6 +2,7 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import Link from 'next/link';
 
 import iconlogo from 'assets/images/logos/sensorsLogo.png';
 
@@ -36,12 +37,14 @@ function IconLogo() {
   const classes = useStyles();
   const imgClassName = classNames(classes.logo, classes.img);
   return (
-    <img
-      src={iconlogo}
-      className={imgClassName}
-      alt="sensors.AFRICA"
-      height="50"
-    />
+    <Link href="/">
+      <img
+        src={iconlogo}
+        className={imgClassName}
+        alt="sensors.AFRICA"
+        height="50"
+      />
+    </Link>
   );
 }
 

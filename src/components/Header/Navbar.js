@@ -133,9 +133,7 @@ class Navbar extends React.Component {
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar className={classes.toolbar} disableGutters>
               <div item className={classes.logoGrid}>
-                <Link href="/">
-                  <IconLogo />
-                </Link>
+                <IconLogo />
               </div>
               <Grid
                 container

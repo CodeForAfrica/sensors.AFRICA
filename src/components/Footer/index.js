@@ -139,7 +139,7 @@ function Footer(props) {
               citizens actionable information about their cities.
             </Typography>
           </div>
-          <Link href="about" className={classes.buttonLink}>
+          <Link href="/about" className={classes.buttonLink}>
             <Button variant="contained" className={classes.footerButton}>
               READ MORE
             </Button>
