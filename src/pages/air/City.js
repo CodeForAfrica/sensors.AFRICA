@@ -102,8 +102,6 @@ const styles = () => ({
   }
 });
 
-const CITY_PATHNAME = '/air/city';
-
 class City extends React.Component {
   constructor() {
     super();
@@ -207,7 +205,8 @@ class City extends React.Component {
     const searchedCity = (option && option.value) || DEFAULT_CITY;
     const { city } = this.state;
     if (searchedCity !== city) {
-      const path = `${CITY_PATHNAME}/${searchedCity}`;
+      const path =
+        city === 'locate-me' ? '/air/locate-me' : `/air/city/${searchedCity}`;
 
       const { history } = this.props;
       history.push(path);
