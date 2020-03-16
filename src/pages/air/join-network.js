@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Navbar from 'components/Header/Navbar';
-import JoinHeader from 'components/Header/JumboContent/JoinHeaderContent';
+import JoinHeader from 'components/JoinNetwork/JoinHeader';
 import Support from 'components/Support';
 import Footer from 'components/Footer';
 import PartnerLogos from 'components/PartnerLogos';

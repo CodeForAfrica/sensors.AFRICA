@@ -12,7 +12,7 @@ import Support from 'components/Support';
 import PartnerLogos from 'components/PartnerLogos';
 import Footer from 'components/Footer';
 
-function HealthAndClimateImpacts() {
+function HealthAndClimateImpact() {
   return (
     <Grid>
       <Navbar />
@@ -28,4 +28,4 @@ function HealthAndClimateImpacts() {
   );
 }
 
-export default HealthAndClimateImpacts;
+export default HealthAndClimateImpact;

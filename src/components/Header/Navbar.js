@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
+
 import { withRouter } from 'next/router';
 
 import Grid from '@material-ui/core/Grid';
@@ -12,6 +12,7 @@ import SocialMedia from 'components/SocialMedia';
 
 import IconLogo from 'components/IconLogo';
 import MenuBar from 'components/Header/MenuBar';
+import Link from 'components/Link';
 
 const styles = theme => ({
   root: {
