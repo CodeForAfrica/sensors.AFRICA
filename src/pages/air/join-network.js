@@ -6,6 +6,7 @@ import Navbar from 'components/Header/Navbar';
 import JoinHeader from 'components/Header/JumboContent/JoinHeaderContent';
 import Support from 'components/Support';
 import Footer from 'components/Footer';
+import PartnerLogos from 'components/PartnerLogos';
 import backgroundImage from 'assets/images/background/bgsupport.jpg';
 
 const useStyles = makeStyles(theme => ({
@@ -46,6 +47,9 @@ function JoinNetwork() {
       </Grid>
       <Grid item xs={12}>
         <Support classNames={classes.joinNetworkSupport} />
+      </Grid>
+      <Grid item xs={12} className={classes.joinNetworkPartnerLogos}>
+        <PartnerLogos />
       </Grid>
       <Grid item xs={12}>
         <Footer />

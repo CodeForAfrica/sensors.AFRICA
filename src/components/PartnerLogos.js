@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import worldbank from 'assets/images/partners/worldbankgroup.png';
 import liquidtelcom from 'assets/images/partners/liquidtelcom.png';
 import data4sdg from 'assets/images/partners/partnershipsdg.png';
-import germanCoopLogo from 'assets/images/partners/germanCoopLogo.bmp';
+import germanCoopLogo from 'assets/images/partners/germanCoopLogo.png';
 
 const useStyles = makeStyles(theme => ({
   root: {

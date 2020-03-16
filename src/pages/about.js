@@ -10,6 +10,7 @@ import Partners from 'components/About/Partners';
 import Staff from 'components/About/Staff';
 import Footer from 'components/Footer';
 import Support from 'components/Support';
+import PartnerLogos from 'components/PartnerLogos';
 
 const useStyles = makeStyles(theme => ({
   aboutSupport: {
@@ -29,6 +30,7 @@ function AboutGlobal() {
       <Staff />
       <Stories />
       <Support classNames={classes.aboutSupport} />
+      <PartnerLogos />
       <Footer />
     </>
   );
