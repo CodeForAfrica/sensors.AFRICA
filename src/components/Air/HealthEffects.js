@@ -28,11 +28,20 @@ function HealthEffects({ classes }) {
       className={classes.svgContainer}
       justify="center"
       alignItems="flex-start"
+      spacing={2}
     >
-      <Gauge percentage={36} caption="of lung cancer deaths" />
-      <Gauge percentage={34} caption="of stroke deaths" />
-      <Gauge percentage={27} caption="of heart disease deaths" />
-      <Gauge percentage={35} caption="of COPD (pulmonary disease deaths)" />
+      <Grid item>
+        <Gauge percentage={36} caption="of lung cancer deaths" />
+      </Grid>
+      <Grid item>
+        <Gauge percentage={34} caption="of stroke deaths" />
+      </Grid>
+      <Grid item>
+        <Gauge percentage={27} caption="of heart disease deaths" />
+      </Grid>
+      <Grid item>
+        <Gauge percentage={35} caption="of COPD (pulmonary disease deaths)" />
+      </Grid>
     </Grid>
   );
 }
