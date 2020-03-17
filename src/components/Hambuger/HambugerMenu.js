@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,7 +15,6 @@ const useStyles = makeStyles(theme => ({
   grid: {
     flex: 1
   },
-
   menuList: {
     color: 'white',
     marginTop: '5rem !important', // Override the default marginTop:'2rem' of <MenuList /> Component
@@ -39,7 +39,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: '700'
   },
   link: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none'
+    }
   }
 }));
 

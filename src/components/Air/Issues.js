@@ -68,8 +68,8 @@ function Issues() {
           and is the biggest environmental health crisis we face
         </Typography>
       </Grid>
-      <Grid item xs={12}>
-        <Typography variant="caption" className={classes.caption}>
+      <Grid item xs={12} className={classes.caption}>
+        <Typography variant="caption">
           While it’s not always visible, air pollution is the cause of some of
           our most common illnesses.
         </Typography>
