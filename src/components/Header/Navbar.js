@@ -70,7 +70,10 @@ const styles = theme => ({
   // },
   airlink: {
     textDecoration: 'none',
-    color: '#2FB56B'
+    color: '#2FB56B',
+    '&:hover': {
+      textDecoration: 'none'
+    }
   },
   waterlink: {
     textDecoration: 'none',
@@ -192,7 +195,6 @@ class Navbar extends React.Component {
                   </Grid>
                 </Grid>
               </Hidden>
-
               <Grid item>
                 <MenuBar />
               </Grid>
