@@ -32,7 +32,6 @@ function Gauge({ props, percentage, caption }) {
   return (
     <div className={classes.root}>
       <GaugeChart percentage={percentage} />
-
       <Typography variant="caption" className={classes.caption}>
         {caption}
       </Typography>

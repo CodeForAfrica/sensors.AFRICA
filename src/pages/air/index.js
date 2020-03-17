@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 import Navbar from 'components/Header/Navbar';
 import Footer from 'components/Footer';
@@ -9,7 +9,6 @@ import IndoorOutdoor from 'components/Air/IndoorOutdoor';
 import Issues from 'components/Air/Issues';
 import Stories from 'components/About/Stories';
 import AirHeader from 'components/Air/AirHeader';
-// import Showcase from 'components/Showcase';
 import Support from 'components/Support';
 
 import About from 'pages/air/about';
@@ -18,11 +17,19 @@ import HowSensorsWork from 'pages/air/how-sensors-work';
 import JoinNetwork from 'pages/air/join-network';
 import HealthAndClimateImpacts from 'pages/air/health-and-climate-impact';
 
-function AirHome() {
+const CITY_PATHNAME = '/air/city';
+
+function AirHome({ city }) {
+  const router = useRouter();
+  const handleSearch = () => {
+    const path = `${CITY_PATHNAME}/${city.value}`;
+    router.push(path);
+  };
+
   return (
     <>
       <Navbar />
-      <AirHeader />
+      <AirHeader handleSearch={handleSearch} />
       <Issues />
       <IndoorOutdoor />
       <Stories />
@@ -35,4 +42,4 @@ function AirHome() {
 
 export { About, HowSensorsWork, JoinNetwork, Data, HealthAndClimateImpacts };
 
-export default withRouter(AirHome);
+export default AirHome;

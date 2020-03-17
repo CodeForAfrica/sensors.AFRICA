@@ -80,8 +80,6 @@ function TestQuality({ props, pathname }) {
   const router = useRouter();
   const [show, setShow] = useState(false);
 
-  console.log(router);
-
   const showComingSoonAlert = () => {
     if (pathname) {
       router.push(pathname);
@@ -120,7 +118,7 @@ function TestQuality({ props, pathname }) {
         >
           <ComingSoon show={show} onClose={hideComingSoonAlert} />
           <Grid item>
-            <Link href="/air/index">
+            <Link href="/air">
               <Card className={classes.airCard}>
                 <CardMedia
                   component="img"
