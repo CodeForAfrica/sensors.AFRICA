@@ -19,11 +19,10 @@ import HealthAndClimateImpacts from 'pages/air/health-and-climate-impact';
 
 const CITY_PATHNAME = '/air/city';
 
-function AirHome({ city }) {
+function AirHome() {
   const router = useRouter();
-  const handleSearch = () => {
-    const path = `${CITY_PATHNAME}/${city.value}`;
-    router.push(path);
+  const handleSearch = city => {
+    router.push(`${CITY_PATHNAME}/${city.value}`);
   };
 
   return (

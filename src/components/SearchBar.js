@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -283,26 +283,39 @@ const DEFAULT_OPTIONS = [
   { value: 'dar-es-salaam', label: 'Dar-es-Salaam, Tanzania' }
 ];
 
-function SearchBar({ classes, options, placeholder, handleSearch, single }) {
-  const [city, setCity] = useState({ single: null });
-  const handleChange = () => {
-    setCity({ single: city });
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { single: null };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(city) {
+    this.setState({ single: city });
+    const { handleSearch } = this.props;
     if (handleSearch) {
       handleSearch(city);
     }
-  };
-  return (
-    <div className={classes.root}>
-      <Select
-        classes={classes}
-        options={options}
-        components={components}
-        value={single}
-        onChange={handleChange}
-        placeholder={placeholder}
-      />
-    </div>
-  );
+  }
+
+  render() {
+    const { classes, options, placeholder } = this.props;
+    const { single } = this.state;
+
+    return (
+      <div className={classes.root}>
+        <Select
+          classes={classes}
+          options={options}
+          components={components}
+          value={single}
+          onChange={this.handleChange}
+          placeholder={placeholder}
+        />
+      </div>
+    );
+  }
 }
 
 SearchBar.propTypes = {
