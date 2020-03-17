@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
-import { withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 import Grid from '@material-ui/core/Grid';
 import { AppBar, Hidden, MenuItem, Toolbar } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import ComingSoon from 'components/ComingSoon';
 import SocialMedia from 'components/SocialMedia';
@@ -14,7 +13,7 @@ import IconLogo from 'components/IconLogo';
 import MenuBar from 'components/Header/MenuBar';
 import Link from 'components/Link';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
@@ -93,123 +92,108 @@ const styles = theme => ({
   mediaGrid: {
     paddingRight: theme.spacing.unit
   }
-});
+}));
 
-class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { show: false };
+function Navbar({ location }) {
+  const classes = useStyles();
+  const router = useRouter();
 
-    this.showComingSoonAlert = this.showComingSoonAlert.bind(this);
-    this.hideComingSoonAlert = this.hideComingSoonAlert.bind(this);
-  }
+  const [show, setShow] = useState(false);
 
-  showComingSoonAlert(e) {
+  const showComingSoonAlert = e => {
     if (e) {
       e.preventDefault();
     }
-
-    const { location, history } = this.props;
     if (location) {
       const { pathname } = location;
-      history.push(pathname);
+      router.push(pathname);
     }
-    this.setState({ show: true });
-  }
+    setShow({ show: true });
+  };
 
-  hideComingSoonAlert() {
-    this.setState({ show: false });
-  }
+  const hideComingSoonAlert = () => {
+    setShow({ show: false });
+  };
 
-  render() {
-    const { classes } = this.props;
-    const { show } = this.state;
+  return (
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
+      <Grid item xs={12}>
+        {/* Position sticky is not universally supported so the attribute reverts to static when unavailable */}
+        <AppBar position="fixed" className={classes.appBar}>
+          <Toolbar className={classes.toolbar} disableGutters>
+            <div item className={classes.logoGrid}>
+              <IconLogo />
+            </div>
+            <Grid
+              container
+              direction="row"
+              justify="flex-start"
+              alignItems="center"
+              className={classes.linkGrid}
+            >
+              <MenuItem className={classes.airText}>
+                <Link href="/air" className={classes.airlink}>
+                  AIR
+                </Link>
+              </MenuItem>
 
-    return (
-      <Grid
-        container
-        className={classes.root}
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item xs={12}>
-          {/* Position sticky is not universally supported so the attribute reverts to static when unavailable */}
-          <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar className={classes.toolbar} disableGutters>
-              <div item className={classes.logoGrid}>
-                <IconLogo />
-              </div>
+              <MenuItem className={classes.waterText}>
+                <a
+                  href="/water"
+                  className={classes.waterlink}
+                  onClick={showComingSoonAlert}
+                >
+                  WATER
+                </a>
+              </MenuItem>
+              <MenuItem className={classes.soundText}>
+                <a
+                  href="/sound"
+                  className={classes.soundlink}
+                  onClick={showComingSoonAlert}
+                >
+                  SOUND
+                </a>
+              </MenuItem>
+              <MenuItem className={classes.radiationText}>
+                <a
+                  href="/radiation"
+                  className={classes.radiationlink}
+                  onClick={showComingSoonAlert}
+                >
+                  RADIATION
+                </a>
+              </MenuItem>
+            </Grid>
+
+            <Hidden smDown>
               <Grid
                 container
+                xs={4}
                 direction="row"
-                justify="flex-start"
+                justify="flex-end"
                 alignItems="center"
-                className={classes.linkGrid}
+                className={classes.mediaGrid}
               >
-                <MenuItem className={classes.airText}>
-                  <Link href="/air" className={classes.airlink}>
-                    AIR
-                  </Link>
-                </MenuItem>
-
-                <MenuItem className={classes.waterText}>
-                  <a
-                    href="/water"
-                    className={classes.waterlink}
-                    onClick={this.showComingSoonAlert}
-                  >
-                    WATER
-                  </a>
-                </MenuItem>
-                <MenuItem className={classes.soundText}>
-                  <a
-                    href="/sound"
-                    className={classes.soundlink}
-                    onClick={this.showComingSoonAlert}
-                  >
-                    SOUND
-                  </a>
-                </MenuItem>
-                <MenuItem className={classes.radiationText}>
-                  <a
-                    href="/radiation"
-                    className={classes.radiationlink}
-                    onClick={this.showComingSoonAlert}
-                  >
-                    RADIATION
-                  </a>
-                </MenuItem>
-              </Grid>
-
-              <Hidden smDown>
-                <Grid
-                  container
-                  xs={4}
-                  direction="row"
-                  justify="flex-end"
-                  alignItems="center"
-                  className={classes.mediaGrid}
-                >
-                  <Grid item>
-                    <SocialMedia color="#2FB56B" />
-                  </Grid>
+                <Grid item>
+                  <SocialMedia color="#2FB56B" />
                 </Grid>
-              </Hidden>
-              <Grid item>
-                <MenuBar />
               </Grid>
-            </Toolbar>
-            <ComingSoon show={show} onClose={this.hideComingSoonAlert} />
-          </AppBar>
-        </Grid>
+            </Hidden>
+            <Grid item>
+              <MenuBar />
+            </Grid>
+          </Toolbar>
+          <ComingSoon show={show} onClose={hideComingSoonAlert} />
+        </AppBar>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
-Navbar.propTypes = {
-  location: PropTypes.string.isRequired,
-  history: PropTypes.string.isRequired
-};
-
-export default withRouter(withStyles(styles)(Navbar));
+export default Navbar;
