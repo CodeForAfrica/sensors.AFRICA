@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 
-import Link from 'next/link';
-
 import Typography from '@material-ui/core/Typography';
 import { Grid, Card, CardActionArea, CardMedia } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import ComingSoon from 'components/ComingSoon';
+import ButtonLink from 'components/Link/Button';
 
 import air from 'assets/images/button/airbtn.png';
 import water from 'assets/images/button/waterbtn.png';
@@ -118,16 +117,16 @@ function TestQuality({ props, pathname }) {
         >
           <ComingSoon show={show} onClose={hideComingSoonAlert} />
           <Grid item>
-            <Link href="/air">
-              <Card className={classes.airCard}>
+            <Card className={classes.airCard}>
+              <CardActionArea component={ButtonLink} href="/air">
                 <CardMedia
                   component="img"
                   className={classes.img}
                   image={air}
                   title="Air"
                 />
-              </Card>
-            </Link>
+              </CardActionArea>
+            </Card>
           </Grid>
           <Grid item>
             <Card className={classes.waterCard}>

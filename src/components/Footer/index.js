@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Link from 'next/link';
-
 import { Button, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import SocialMedia from 'components/SocialMedia';
 import Email from 'components/Email';
+import Link from 'components/Link';
+import SocialMedia from 'components/SocialMedia';
 
 import codeforafrica from 'assets/images/logos/cfafrica_white.png';
 import innovateafrica from 'assets/images/logos/innovateafrica_white.png';
