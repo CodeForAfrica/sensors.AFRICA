@@ -8,7 +8,7 @@ import theme from 'theme';
 import 'assets/css/index.css';
 import 'assets/css/App.css';
 
-function getGtagInitializerScripts() {
+function getGtagScript() {
   return {
     __html: `
       window.dataLayer = window.dataLayer || [];
@@ -46,7 +46,7 @@ export default class MyDocument extends Document {
           <script
             type="text/javascript"
             // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={getGtagInitializerScripts()}
+            dangerouslySetInnerHTML={getGtagScript()}
           />
         </Head>
         <body>

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Router from 'next/router';
 
 import { Grid, LinearProgress } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import API, {
   CITIES_LOCATION,
@@ -59,6 +59,7 @@ const AQ_COLOR = [
   '#b72025',
   '#2A2A2B'
 ];
+const DEFAULT_AQ_INDEX = 8;
 function aqIndex(aq) {
   if (aq < 10) {
     return 0;
@@ -87,7 +88,7 @@ function aqIndex(aq) {
   return 8;
 }
 
-const styles = () => ({
+const useStyles = makeStyles({
   root: {
     flexGrow: 1,
 
@@ -102,199 +103,170 @@ const styles = () => ({
 
 const AIR_CITY_PATHNAME = '/air/city';
 
-class City extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      city: DEFAULT_CITY,
-      cityP2Stats: {
-        average: '--',
-        averageDescription: ''
-      },
-      isLoading: false
-    };
+function City({ city: citySlug, data, ...props }) {
+  const classes = useStyles(props);
+  const [city, setCity] = useState(citySlug);
+  const [cityP2Stats, setCityP2Stats] = useState({
+    average: '--',
+    averageDescription: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [cityP2WeeklyStats, setCityP2WeeklyStats] = useState({});
+  const [cityTemperatureStats, setCityTemperatureStats] = useState({});
+  const [cityHumidityStats, setCityHumidityStats] = useState({});
+  const [aqColor, setAqColor] = useState(AQ_COLOR[DEFAULT_AQ_INDEX]);
 
-    this.fetchAirQualityStats = this.fetchAirQualityStats.bind(this);
-    this.fetchCurrentAirQualityStats = this.fetchCurrentAirQualityStats.bind(
-      this
-    );
-    this.fetchWeeklyAirQualityStats = this.fetchWeeklyAirQualityStats.bind(
-      this
-    );
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-
-  componentDidMount() {
-    let { city } = this.state;
-    const { match } = this.props;
-    if (match) {
-      ({ city } = match.params);
+  const updateAirQualityStats = json => {
+    let updatedCityP2Stats = {};
+    let updatedCityTemperatureStats = {};
+    let updatedCityHumidityStats = {};
+    if (json.count === 1) {
+      updatedCityHumidityStats = json.results[0].humidity || {};
+      updatedCityTemperatureStats = json.results[0].temperature || {};
+      updatedCityP2Stats = json.results[0].P2 || {};
     }
+    setCityHumidityStats(formatCurrentP2Stats(updatedCityHumidityStats));
+    setCityTemperatureStats(formatCurrentP2Stats(updatedCityTemperatureStats));
+    setCityP2Stats(formatCurrentP2Stats(updatedCityP2Stats, true));
+  };
 
-    this.fetchAirQualityStats(city);
-  }
-
-  fetchAirQualityStats(city) {
-    this.fetchCurrentAirQualityStats(city);
-    this.fetchWeeklyAirQualityStats(city);
-  }
-
-  fetchCurrentAirQualityStats(city) {
-    this.setState(state => ({
-      city: state.city,
-      isLoading: true,
-      cityP2Stats: {
-        average: '--',
-        averageDescription: 'loading'
-      },
-      cityP2WeeklyStats: state.cityP2WeeklyStats,
-      cityTemperatureStats: {},
-      cityHumidityStats: {}
-    }));
-
-    API.getCurrentAirData(city, json => {
-      let cityP2Stats = {};
-      let cityTemperatureStats = {};
-      let cityHumidityStats = {};
-      if (json.count === 1) {
-        cityP2Stats = json.results[0].P2 || {};
-        cityTemperatureStats = json.results[0].temperature || {};
-        cityHumidityStats = json.results[0].humidity || {};
-      }
-      cityP2Stats = formatCurrentP2Stats(cityP2Stats, true);
-      cityTemperatureStats = formatCurrentP2Stats(cityTemperatureStats);
-      cityHumidityStats = formatCurrentP2Stats(cityHumidityStats);
-      this.setState(state => ({
-        city,
-        cityP2Stats,
-        cityP2WeeklyStats: state.cityP2WeeklyStats,
-        cityTemperatureStats,
-        cityHumidityStats,
-        isLoading: false
-      }));
-    });
-  }
-
-  fetchWeeklyAirQualityStats(city) {
-    this.setState(state => ({
-      city: state.city,
-      isLoading: true,
-      cityP2WeeklyStats: state.cityP2WeeklyStats,
-      cityP2Stats: state.cityP2Stats,
-      cityTemperatureStats: state.cityTemperatureStats,
-      cityHumidityStats: state.cityHumidityStats
-    }));
-
-    API.getOneWeekAirData(city, json => {
-      let cityP2WeeklyStats = [];
-      if (json.count === 1) {
-        cityP2WeeklyStats = formatWeeklyP2Stats(json.results[0].P2 || []);
-      }
-      this.setState(state => ({
-        city,
-        cityP2Stats: state.cityP2Stats,
-        cityP2WeeklyStats,
-        cityTemperatureStats: state.cityTemperatureStats,
-        cityHumidityStats: state.cityHumidityStats,
-        isLoading: false
-      }));
-    });
-  }
-
-  handleSearch(option) {
-    const searchedCity = (option && option.value) || DEFAULT_CITY;
-    const { city } = this.state;
-    if (searchedCity !== city) {
-      const url = `${AIR_CITY_PATHNAME}/[id]`;
-      const as = `${AIR_CITY_PATHNAME}/${searchedCity}`;
-      Router.push(url, as);
-      this.fetchAirQualityStats(searchedCity);
+  const updateP2IntervalQualityStats = json => {
+    let updatedCityP2WeeklyStats = [];
+    if (json.count === 1) {
+      updatedCityP2WeeklyStats = formatWeeklyP2Stats(json.results[0].P2 || []);
     }
-  }
+    setCityP2WeeklyStats(updatedCityP2WeeklyStats);
+  };
 
-  render() {
-    const { classes } = this.props;
-    const {
-      city,
-      isLoading,
-      cityP2Stats = {},
-      cityP2WeeklyStats = [],
-      cityHumidityStats = {},
-      cityTemperatureStats = {}
-    } = this.state;
-    let aqColorIndex = 8;
+  useEffect(() => {
+    const { air, intervalP2 } = data;
+    updateAirQualityStats(air);
+    updateP2IntervalQualityStats(intervalP2);
+  }, [data]);
+
+  useEffect(() => {
+    let aqColorIndex = DEFAULT_AQ_INDEX;
     if (cityP2Stats.average !== '--') {
       aqColorIndex = aqIndex(cityP2Stats.average);
     }
-    const aqColor = AQ_COLOR[aqColorIndex];
+    setAqColor([AQ_COLOR[aqColorIndex]]);
+  }, [cityP2Stats]);
 
-    return (
-      <Grid
-        container
-        className={classes.root}
-        justify="center"
-        alignItems="center"
-      >
-        {/* <DocumentHead url={url} /> */}
-        <Grid item xs={12}>
-          <Navbar />
-        </Grid>
-        <Grid item xs={12}>
-          {isLoading && <LinearProgress />}
+  // if !data, 404
 
-          <CityHeader
-            city={CITIES_LOCATION[city]}
-            airPol={cityP2Stats.average}
-            airPolDescription={cityP2Stats.averageDescription}
-            aqColor={aqColor}
-            handleSearch={this.handleSearch}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <HostSensorsButton city={CITIES_LOCATION[city]} />
-        </Grid>
-        <Grid item xs={12}>
-          <PollutionStats
-            pollutionStats={CITIES_POLLUTION_STATS[city]}
-            city={CITIES_LOCATION[city]}
-          />
-        </Grid>
-        <Grid item xs={12} id="map">
-          <SensorMap
-            zoom={CITIES_LOCATION[city].zoom}
-            latitude={CITIES_LOCATION[city].latitude}
-            longitude={CITIES_LOCATION[city].longitude}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <QualityStats
-            cityHumidityStats={cityHumidityStats}
-            cityP2Stats={cityP2Stats}
-            cityTemperatureStats={cityTemperatureStats}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          {cityP2WeeklyStats.length && (
-            <QualityStatsGraph data={cityP2WeeklyStats} />
-          )}
-        </Grid>
-        <Grid item xs={12}>
-          <CallToAction />
-        </Grid>
-        <Grid item xs={12}>
-          <PartnerLogos />
-        </Grid>
-        <Grid item xs={12}>
-          <Footer />
-        </Grid>
+  const fetchCurrentAirQualityStats = forCity => {
+    setCityP2Stats({ average: '--', averageDescription: 'loading' });
+    setCityTemperatureStats({});
+    setCityHumidityStats({});
+    return API.getAirData(forCity).then(updateAirQualityStats);
+  };
+
+  const fetchP2IntervalQualityStats = forCity => {
+    return API.getP2IntervalData(forCity).then(updateP2IntervalQualityStats);
+  };
+
+  const fetchAirQualityStats = forCity => {
+    setIsLoading(true);
+    fetchCurrentAirQualityStats(forCity)
+      .then(() => fetchP2IntervalQualityStats(forCity))
+      .then(() => setIsLoading(false));
+  };
+
+  const handleSearch = option => {
+    const searchedCity = (option && option.value) || DEFAULT_CITY;
+    if (searchedCity !== city) {
+      setCity(searchedCity);
+      const url = `${AIR_CITY_PATHNAME}/[id]`;
+      const as = `${AIR_CITY_PATHNAME}/${searchedCity}`;
+      Router.push(url, as, { shallow: true });
+      fetchAirQualityStats(searchedCity);
+    }
+  };
+
+  return (
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
+      {/* <DocumentHead url={url} /> */}
+      <Grid item xs={12}>
+        <Navbar />
       </Grid>
-    );
-  }
+      <Grid item xs={12}>
+        {isLoading && <LinearProgress />}
+
+        <CityHeader
+          city={CITIES_LOCATION[city]}
+          airPol={cityP2Stats.average}
+          airPolDescription={cityP2Stats.averageDescription}
+          aqColor={aqColor}
+          handleSearch={handleSearch}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <HostSensorsButton city={CITIES_LOCATION[city]} />
+      </Grid>
+      <Grid item xs={12}>
+        <PollutionStats
+          pollutionStats={CITIES_POLLUTION_STATS[city]}
+          city={CITIES_LOCATION[city]}
+        />
+      </Grid>
+      <Grid item xs={12} id="map">
+        <SensorMap
+          zoom={CITIES_LOCATION[city].zoom}
+          latitude={CITIES_LOCATION[city].latitude}
+          longitude={CITIES_LOCATION[city].longitude}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <QualityStats
+          cityHumidityStats={cityHumidityStats}
+          cityP2Stats={cityP2Stats}
+          cityTemperatureStats={cityTemperatureStats}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        {cityP2WeeklyStats.length && (
+          <QualityStatsGraph data={cityP2WeeklyStats} />
+        )}
+      </Grid>
+      <Grid item xs={12}>
+        <CallToAction />
+      </Grid>
+      <Grid item xs={12}>
+        <PartnerLogos />
+      </Grid>
+      <Grid item xs={12}>
+        <Footer />
+      </Grid>
+    </Grid>
+  );
 }
 
 City.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
-  match: PropTypes.shape({}).isRequired
+  city: PropTypes.string,
+  data: PropTypes.shape({
+    air: PropTypes.shape({}).isRequired,
+    intervalP2: PropTypes.shape({}).isRequired
+  })
 };
 
-export default withStyles(styles)(City);
+City.defaultProps = {
+  city: undefined,
+  data: undefined
+};
+
+export async function getServerSideProps({ params: { id: city } }) {
+  // Fetch data from external API
+  const air = await API.getAirData(city);
+  const intervalP2 = await API.getP2IntervalData(city);
+  const data = air && intervalP2 && { air, intervalP2 };
+
+  // Pass data to the page via props
+  return { props: { city, data } };
+}
+
+export default City;
