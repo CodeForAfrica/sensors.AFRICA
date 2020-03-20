@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import HostSensorButton from 'components/City/HostSensors/HostSensorButton';
 import SocialMediaButtons from 'components/City/HostSensors/ShareButton/SocialMediaButtons';
@@ -46,7 +48,7 @@ const DialogTitle = withStyles(theme => ({
           className={classes.closeButton}
           onClick={onClose}
         >
-          <CloseIcon />
+          <FontAwesomeIcon icon={faTimes} />
         </IconButton>
       ) : null}
     </MuiDialogTitle>
@@ -62,61 +64,46 @@ const DialogContent = withStyles(theme => ({
   }
 }))(MuiDialogContent);
 
-class ShareButton extends React.Component {
-  constructor(props) {
-    super(props);
+function ShareButton({ classes, city }) {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    this.state = { open: false };
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-  }
-
-  handleClick() {
-    this.setState({ open: true });
-  }
-
-  handleClose() {
-    this.setState({ open: false });
-  }
-
-  render() {
-    const { classes, city } = this.props;
-    const { open } = this.state;
-    return (
-      <>
-        <HostSensorButton onClick={this.handleClick}>Share</HostSensorButton>
-        <Dialog aria-labelledby="customized-dialog-title" open={open}>
-          <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
-            Share
-          </DialogTitle>
-          <DialogContent>
-            <Grid
-              container
-              direction="row"
-              justufy="center"
-              alignItems="center"
-            >
-              <Grid item xs={12}>
-                <SocialMediaButtons city={city} />
-              </Grid>
-              <Grid item xs={12} style={{ margin: '1.5rem' }}>
-                <Typography
-                  gutterBottom
-                  variant="caption"
-                  className={classes.typography}
-                >
-                  Embed this dial into your website by using the following
-                  iframe:
-                </Typography>
-                <Embed city={city} />
-              </Grid>
+  return (
+    <>
+      <HostSensorButton onClick={handleOpen}>Share</HostSensorButton>
+      <Dialog
+        aria-labelledby="customized-dialog-title"
+        open={open}
+        onClose={handleClose}
+      >
+        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+          Share
+        </DialogTitle>
+        <DialogContent>
+          <Grid container>
+            <Grid item xs={12}>
+              <SocialMediaButtons city={city} />
             </Grid>
-          </DialogContent>
-        </Dialog>
-      </>
-    );
-  }
+            <Grid item xs={12} style={{ margin: '1.5rem' }}>
+              <Typography
+                gutterBottom
+                variant="caption"
+                className={classes.typography}
+              >
+                Embed this dial into your website by using the following iframe:
+              </Typography>
+              <Embed city={city} />
+            </Grid>
+          </Grid>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
 }
 
 ShareButton.propTypes = {
