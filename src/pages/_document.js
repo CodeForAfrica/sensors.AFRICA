@@ -3,11 +3,52 @@ import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
+import theme from 'theme';
+
+import 'assets/css/index.css';
+import 'assets/css/App.css';
+
+function getGtagInitializerScripts() {
+  return {
+    __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-44795600-44');
+`
+  };
+}
+
 export default class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <Head>{/* PWA primary color */}</Head>
+        <Head>
+          <meta name="theme-color" content={theme.palette.primary.main} />
+          <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com/css?family=Anton|Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Anton|Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+          />
+          <link rel="manifest" href="/manifest.json" />
+
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-44795600-44"
+          />
+          <script
+            type="text/javascript"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={getGtagInitializerScripts()}
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
