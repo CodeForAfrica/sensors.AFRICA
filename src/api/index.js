@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-unfetch';
+
 const formatCurrentP2Stats = (data, isPm2 = false) => {
   const formatted = {};
   ['average', 'maximum', 'minimum'].forEach(stat => {
@@ -81,20 +83,18 @@ const CITIES_LOCATION = {
 };
 
 const API = {
-  getCurrentAirData(city, callback) {
-    fetch(`https://api.sensors.africa/v2/data/air/?city=${city}`)
-      .then(data => data.json())
-      .then(json => callback(json));
+  getAirData(city) {
+    return fetch(
+      `https://api.sensors.africa/v2/data/air/?city=${city}`
+    ).then(data => data.json());
   },
-  getOneWeekAirData(city, callback) {
+  getP2IntervalData(city) {
     const fromDate = new Date(Date.now() - 7 * 24 * 3600 * 1000)
       .toISOString()
       .substr(0, 10);
-    fetch(
+    return fetch(
       `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`
-    )
-      .then(data => data.json())
-      .then(json => callback(json));
+    ).then(data => data.json());
   }
 };
 
