@@ -108,11 +108,11 @@ function Navbar({ location }) {
       const { pathname } = location;
       router.push(pathname);
     }
-    setShow({ show: true });
+    setShow(true);
   };
 
   const hideComingSoonAlert = () => {
-    setShow({ show: false });
+    setShow(false);
   };
 
   return (

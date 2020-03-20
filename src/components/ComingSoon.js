@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
 
 import PropTypes from 'prop-types';
 
@@ -81,7 +80,6 @@ const useStyles = makeStyles(theme => ({
 
 function ComingSoon({ props, show, onClose }) {
   const classes = useStyles(props);
-  const router = useRouter();
 
   const containerClassName = classNames(classes.root, classes.popup, {
     [classes.showpopup]: show
@@ -94,7 +92,7 @@ function ComingSoon({ props, show, onClose }) {
   });
 
   const handleBack = () => {
-    router.back();
+    onClose();
   };
 
   return (
