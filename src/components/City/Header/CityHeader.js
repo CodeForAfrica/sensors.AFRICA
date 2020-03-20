@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { isWidthDown } from '@material-ui/core/withWidth';
 
 import CityMenuBar from 'components/City/Header/CityMenuBar';
-import AirCityHeaderContent from 'components/Header/JumboContent/AirHeaderContent';
+import AirCityHeaderContent from 'components/Header/JumboContent/AirCityHeaderContent';
 
 const styles = theme => ({
   jumbotron: {

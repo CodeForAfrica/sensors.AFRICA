@@ -98,4 +98,5 @@ const API = {
   }
 };
 
-export { API, formatCurrentP2Stats, formatWeeklyP2Stats, CITIES_LOCATION };
+export { formatCurrentP2Stats, formatWeeklyP2Stats, CITIES_LOCATION };
+export default API;

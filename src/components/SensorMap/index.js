@@ -19,6 +19,7 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 3
   },
   caption: {
+    display: 'block',
     textTransform: 'none'
   }
 });
