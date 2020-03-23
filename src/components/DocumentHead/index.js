@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Helmet } from 'react-helmet';
 
-import PageHeads from 'components/DocumentHead/PageHeads';
+import PageHeads, { URLS } from 'components/DocumentHead/PageHeads';
 import Favicon from 'components/Favicon';
 
 function DocumentHead({ url }) {
@@ -29,4 +30,5 @@ DocumentHead.defaultProps = {
   url: null
 };
 
+export { URLS };
 export default DocumentHead;
