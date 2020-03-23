@@ -2,6 +2,7 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+import DocumentHead, { URLS } from 'components/DocumentHead';
 import Stories from 'components/About/Stories';
 import Navbar from 'components/Header/Navbar';
 import AboutHeader from 'components/About/Header';
@@ -23,6 +24,7 @@ function AboutGlobal() {
   const classes = useStyles();
   return (
     <>
+      <DocumentHead url={URLS.AIR.ABOUT} />
       <Navbar />
       <AboutHeader />
       <AboutContent />
