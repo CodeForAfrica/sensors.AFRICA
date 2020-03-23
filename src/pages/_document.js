@@ -5,9 +5,6 @@ import { ServerStyleSheets } from '@material-ui/core/styles';
 
 import theme from 'theme';
 
-import 'assets/css/index.css';
-import 'assets/css/App.css';
-
 function getGtagScript() {
   return {
     __html: `

@@ -7,7 +7,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 import theme from '../theme';
+
+import 'assets/css/index.css';
+import 'assets/css/App.css';
 
 library.add(fab, faSearch);
 
