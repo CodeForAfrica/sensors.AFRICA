@@ -3,6 +3,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import Navbar from 'components/Header/Navbar';
+import DocumentHead from 'components/DocumentHead';
+import { URLS } from 'components/DocumentHead/PageHeads';
 import Footer from 'components/Footer';
 import PartnerLogos from 'components/PartnerLogos';
 import IndoorOutdoor from 'components/Air/IndoorOutdoor';
@@ -27,6 +29,7 @@ function AirHome() {
 
   return (
     <>
+      <DocumentHead url={URLS.AIR.HOME} />
       <Navbar />
       <AirHeader handleSearch={handleSearch} />
       <Issues />
