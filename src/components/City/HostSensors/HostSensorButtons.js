@@ -62,7 +62,7 @@ function HostSensorButtons({ city }) {
         </a>
       </Grid>
       <Grid item className={classes.button}>
-        <HostSensorButton>EXPLORE</HostSensorButton>
+        <HostSensorButton href="#map">EXPLORE</HostSensorButton>
       </Grid>
       <Grid item className={classes.button}>
         <ShareButton city={city}>SHARE</ShareButton>

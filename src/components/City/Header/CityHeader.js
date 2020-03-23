@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, withWidth } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { isWidthDown } from '@material-ui/core/withWidth';
+import { Grid, useMediaQuery } from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-import CityMenuBar from 'components/City/Header/CityMenuBar';
 import AirCityHeaderContent from 'components/Header/JumboContent/AirCityHeaderContent';
+import CityMenuBar from 'components/City/Header/CityMenuBar';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   jumbotron: {
     flexGrow: 1,
     borderRadius: 'none',
@@ -17,21 +16,24 @@ const styles = theme => ({
       height: 646
     }
   }
-});
+}));
 
 function CityHeader({
   airPol,
   airPolDescription,
   aqColor,
   city,
-  classes,
   handleSearch,
-  width
+  width,
+  ...props
 }) {
-  let backgroundColor = '#2fb56b';
-  if (isWidthDown('sm', width)) {
-    backgroundColor = aqColor;
+  const classes = useStyles(props);
+  const theme = useTheme();
+  let backgroundColor = aqColor;
+  if (useMediaQuery(theme.breakpoints.up('md'))) {
+    backgroundColor = '#2fb56b';
   }
+
   return (
     <Grid container className={classes.jumbotron} style={{ backgroundColor }}>
       <Grid item xs={12}>
@@ -55,4 +57,4 @@ CityHeader.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default withWidth()(withStyles(styles)(CityHeader));
+export default CityHeader;
