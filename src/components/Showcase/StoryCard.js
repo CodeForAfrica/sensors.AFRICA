@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     backgroundColor: '#fafafa',
     border: '1px solid #eeeeee',
+    maxWidth: '100%',
     opacity: 0.9,
     '&:hover': {
       opacity: 1,

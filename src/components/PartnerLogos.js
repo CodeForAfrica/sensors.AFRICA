@@ -26,63 +26,23 @@ const useStyles = makeStyles(theme => ({
   worldBankLogo: {
     width: '100%',
     textAlign: 'center',
-    padding: '2rem 0',
-    [theme.breakpoints.up('md')]: {
-      padding: 0,
-      width: '18.75rem',
-      marginLeft: '0.5625rem',
-      marginRight: '0.5625rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '25.375rem',
-      marginLeft: '0.5625rem',
-      marginRight: '0.5625rem'
-    }
+    padding: '2rem 0'
   },
   liquidLogo: {
     width: '100%',
     textAlign: 'center',
-    padding: '2rem 0',
-    [theme.breakpoints.up('md')]: {
-      padding: 0,
-      width: '18.75rem',
-      marginLeft: '0.5625rem',
-      marginRight: '0.5625rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '25.375rem',
-      marginLeft: '0.5625rem',
-      marginRight: '0.5625rem'
-    }
+    padding: '2rem 0'
   },
   globalLogo: {
     width: '100%',
     textAlign: 'center',
-    paddingBottom: '2rem',
-    [theme.breakpoints.up('md')]: {
-      paddingBottom: 0,
-      width: '18.75rem',
-      marginLeft: '1.125rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '25.375rem',
-      marginLeft: '1.125rem'
-    }
+    paddingBottom: '2rem'
   },
   germanCoopLogo: {
     width: '100%',
     textAlign: 'center',
     paddingTop: 0,
-    paddingBottom: '2rem',
-    [theme.breakpoints.up('md')]: {
-      paddingTop: '3rem',
-      width: '18.75rem',
-      marginRight: '1.125rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '25.375rem',
-      marginRight: '1.125rem'
-    }
+    paddingBottom: '2rem'
   },
   img: {
     maxWidth: '100%',
@@ -113,12 +73,12 @@ function PartnerLogos() {
         alignItems="center"
         className={classes.partnersLogo}
       >
-        <Grid item sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <div className={classes.worldBankLogo}>
             <img src={worldbank} alt="World Bank" className={classes.img} />
           </div>
         </Grid>
-        <Grid item sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <div className={classes.liquidLogo}>
             <img
               src={liquidtelcom}
@@ -127,7 +87,7 @@ function PartnerLogos() {
             />
           </div>
         </Grid>
-        <Grid item sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <div className={classes.globalLogo}>
             <img
               src={data4sdg}
@@ -136,7 +96,7 @@ function PartnerLogos() {
             />
           </div>
         </Grid>
-        <Grid item sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <div className={classes.germanCoopLogo}>
             <img
               src={germanCoopLogo}

@@ -15,6 +15,7 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    maxWidth: '100%',
     overflow: 'hidden',
     width: '100vw',
     height: '100%',
