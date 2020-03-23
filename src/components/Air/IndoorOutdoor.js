@@ -8,8 +8,8 @@ import AmbientIcon from 'assets/images/icons/AmbientIcon.png';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
     backgroundColor: 'white',
+    flexGrow: 1,
     [theme.breakpoints.up('md')]: {
       paddingBottom: '3rem'
     }
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   indoor: {
     color: 'white',
     backgroundColor: theme.palette.primary.dark,
-    width: '100vw',
+    width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '25rem',
       height: '18.125rem',
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
   outdoor: {
     color: 'white',
     backgroundColor: theme.palette.primary.light,
-    width: '100vw',
+    width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '25rem',
       height: '18.125rem',
@@ -114,75 +114,71 @@ function IndoorOutdoor() {
       justify="center"
       alignItems="center"
     >
-      <Grid item>
-        <Card className={classes.indoor}>
-          <CardContent className={classes.cardContent}>
-            <img src={AmbientIcon} alt="Ambient" className={classes.img} />
-            <Typography variant="h5" className={classes.title}>
-              AMBIENT POLLUTION
-            </Typography>
-            <Typography variant="subtitle2" className={classes.caption}>
-              Ambient air pollution causes an estimated{' '}
-              <cite>
-                <a
-                  href="https://www.who.int/health-topics/air-pollution#tab=tab_2"
-                  className={classes.cite}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  4.2
-                </a>
-              </cite>{' '}
-              million premature deaths each year.
-            </Typography>
-            <a
-              href="https://www.who.int/airpollution/data/cities/en/"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outlined" className={classes.indoorButton}>
-                READ MORE
-              </Button>
-            </a>
-          </CardContent>
-        </Card>
-      </Grid>
+      <Card className={classes.indoor}>
+        <CardContent className={classes.cardContent}>
+          <img src={AmbientIcon} alt="Ambient" className={classes.img} />
+          <Typography variant="h5" className={classes.title}>
+            AMBIENT POLLUTION
+          </Typography>
+          <Typography variant="subtitle2" className={classes.caption}>
+            Ambient air pollution causes an estimated{' '}
+            <cite>
+              <a
+                href="https://www.who.int/health-topics/air-pollution#tab=tab_2"
+                className={classes.cite}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                4.2
+              </a>
+            </cite>{' '}
+            million premature deaths each year.
+          </Typography>
+          <a
+            href="https://www.who.int/airpollution/data/cities/en/"
+            className={classes.buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="outlined" className={classes.indoorButton}>
+              READ MORE
+            </Button>
+          </a>
+        </CardContent>
+      </Card>
 
-      <Grid item>
-        <Card className={classes.outdoor}>
-          <CardContent className={classes.cardContent}>
-            <img src={HouseholdIcon} alt="Housing" className={classes.img} />
-            <Typography variant="h5" className={classes.title}>
-              HOUSEHOLD POLLUTION
-            </Typography>
-            <Typography variant="subtitle2" className={classes.caption}>
-              Household air pollution causes an estimated{' '}
-              <cite>
-                <a
-                  href="https://www.who.int/health-topics/air-pollution#tab=tab_3"
-                  className={classes.cite}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  3.8
-                </a>
-              </cite>{' '}
-              million premature deaths each year.
-            </Typography>
-            <a
-              href="https://www.who.int/gho/phe/indoor_air_pollution/burden_text/en/"
-              className={classes.buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="contained" className={classes.outdoorButton}>
-                READ MORE
-              </Button>
-            </a>
-          </CardContent>
-        </Card>
-      </Grid>
+      <Card className={classes.outdoor}>
+        <CardContent className={classes.cardContent}>
+          <img src={HouseholdIcon} alt="Housing" className={classes.img} />
+          <Typography variant="h5" className={classes.title}>
+            HOUSEHOLD POLLUTION
+          </Typography>
+          <Typography variant="subtitle2" className={classes.caption}>
+            Household air pollution causes an estimated{' '}
+            <cite>
+              <a
+                href="https://www.who.int/health-topics/air-pollution#tab=tab_3"
+                className={classes.cite}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                3.8
+              </a>
+            </cite>{' '}
+            million premature deaths each year.
+          </Typography>
+          <a
+            href="https://www.who.int/gho/phe/indoor_air_pollution/burden_text/en/"
+            className={classes.buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="contained" className={classes.outdoorButton}>
+              READ MORE
+            </Button>
+          </a>
+        </CardContent>
+      </Card>
     </Grid>
   );
 }

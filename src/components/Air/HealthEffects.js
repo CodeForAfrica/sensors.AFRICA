@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   svgContainer: {
     paddingTop: '3rem',
     paddingBottom: '2rem',
-    width: '100vw',
+    width: '100%',
     margin: '0 auto',
     [theme.breakpoints.up('md')]: {
       width: '59.625rem'
