@@ -1,11 +1,9 @@
 import React from 'react';
 
-import Link from 'next/link';
-
-import Grid from '@material-ui/core/Grid';
+import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
 
+import Link from 'components/Link';
 import Logo from 'components/Logo';
 import TestQuality from 'components/Landing/TestQuality';
 

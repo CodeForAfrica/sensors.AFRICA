@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import Router from 'next/router';
 
 import Typography from '@material-ui/core/Typography';
 import { Grid, Card, CardActionArea, CardMedia } from '@material-ui/core';
@@ -11,8 +13,6 @@ import air from 'assets/images/button/airbtn.png';
 import water from 'assets/images/button/waterbtn.png';
 import sound from 'assets/images/button/soundbtn.png';
 import radiation from 'assets/images/button/radiationbtn.png';
-
-import { useRouter } from 'next/router';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -74,21 +74,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function TestQuality({ props, pathname }) {
+function TestQuality(props) {
   const classes = useStyles(props);
-  const router = useRouter();
   const [show, setShow] = useState(false);
-
-  const showComingSoonAlert = () => {
-    if (pathname) {
-      router.push(pathname);
-    }
-    setShow({ show: true });
-  };
-
   const hideComingSoonAlert = () => {
-    setShow({ show: false });
+    Router.push('/');
+    setShow(false);
   };
+
+  useEffect(() => {
+    const { pathname } = window.location;
+    if (
+      ['/water', '/sound', '/radiation'].includes(
+        pathname && pathname.toLowerCase()
+      )
+    ) {
+      setShow(true);
+    }
+  }, []);
 
   return (
     <Grid
@@ -118,50 +121,50 @@ function TestQuality({ props, pathname }) {
           <ComingSoon show={show} onClose={hideComingSoonAlert} />
           <Grid item>
             <Card className={classes.airCard}>
-              <CardActionArea component={ButtonLink} href="/air">
+              <ButtonLink component={CardActionArea} href="/air">
                 <CardMedia
                   component="img"
                   className={classes.img}
                   image={air}
                   title="Air"
                 />
-              </CardActionArea>
+              </ButtonLink>
             </Card>
           </Grid>
           <Grid item>
             <Card className={classes.waterCard}>
-              <CardActionArea onClick={showComingSoonAlert}>
+              <ButtonLink component={CardActionArea} href="/water">
                 <CardMedia
                   component="img"
                   className={classes.img}
                   image={water}
                   title="water"
                 />
-              </CardActionArea>
+              </ButtonLink>
             </Card>
           </Grid>
           <Grid item>
             <Card className={classes.soundCard}>
-              <CardActionArea onClick={showComingSoonAlert}>
+              <ButtonLink component={CardActionArea} href="/sound">
                 <CardMedia
                   component="img"
                   className={classes.img}
                   image={sound}
                   title="sound"
                 />
-              </CardActionArea>
+              </ButtonLink>
             </Card>
           </Grid>
           <Grid item>
             <Card className={classes.radiationCard}>
-              <CardActionArea onClick={showComingSoonAlert}>
+              <ButtonLink component={CardActionArea} href="/radiation">
                 <CardMedia
                   component="img"
                   className={classes.img}
                   image={radiation}
                   title="radiation"
                 />
-              </CardActionArea>
+              </ButtonLink>
             </Card>
           </Grid>
         </Grid>
