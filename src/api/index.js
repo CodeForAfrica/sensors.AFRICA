@@ -1,6 +1,10 @@
 import fetch from 'isomorphic-unfetch';
 
-const formatCurrentP2Stats = (data, isPm2 = false) => {
+const HUMIDITY_READING = 'humidity';
+const TEMPERATURE_READING = 'temperature';
+const P2_READING = 'P2';
+
+const formatAirStats = (data, isPm2 = false) => {
   const formatted = {};
   ['average', 'maximum', 'minimum'].forEach(stat => {
     const parsed = Number.parseFloat(data[stat]);
@@ -20,6 +24,26 @@ const formatCurrentP2Stats = (data, isPm2 = false) => {
     formatted[stat] = Number.isNaN(parsed) ? '--' : parsed.toFixed(2);
   });
   return formatted;
+};
+
+const getFormattedStats = (data, reading) => {
+  let statData = {};
+  if (data && data.count === 1) {
+    statData = data.results[0][reading];
+  }
+  return formatAirStats(statData, reading === P2_READING);
+};
+
+const getFormattedHumidityStats = data => {
+  return getFormattedStats(data, HUMIDITY_READING);
+};
+
+const getFormattedP2Stats = data => {
+  return getFormattedStats(data, P2_READING);
+};
+
+const getFormattedTemperatureStats = data => {
+  return getFormattedStats(data, TEMPERATURE_READING);
 };
 
 const DATE_FMT_OPTIONS = {
@@ -44,6 +68,12 @@ const formatWeeklyP2Stats = data => {
     stats.push({ date, averagePM });
   }
   return stats;
+};
+
+const getFormattedWeeklyP2Stats = data => {
+  const statData =
+    (data && data.count === 1 && data.results[0][P2_READING]) || [];
+  return formatWeeklyP2Stats(statData);
 };
 
 const CITIES_LOCATION = {
@@ -84,19 +114,23 @@ const CITIES_LOCATION = {
 
 const API = {
   getAirData(city) {
-    return fetch(
-      `https://api.sensors.africa/v2/data/air/?city=${city}`
-    ).then(data => data.json());
+    return fetch(`https://api.sensors.africa/v2/data/air/?city=${city}`);
   },
-  getP2IntervalData(city) {
+  getWeeklyP2Data(city) {
     const fromDate = new Date(Date.now() - 7 * 24 * 3600 * 1000)
       .toISOString()
       .substr(0, 10);
     return fetch(
       `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`
-    ).then(data => data.json());
+    );
   }
 };
 
-export { formatCurrentP2Stats, formatWeeklyP2Stats, CITIES_LOCATION };
+export {
+  CITIES_LOCATION,
+  getFormattedHumidityStats,
+  getFormattedP2Stats,
+  getFormattedTemperatureStats,
+  getFormattedWeeklyP2Stats
+};
 export default API;
