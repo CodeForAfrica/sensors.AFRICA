@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import HealthEffects from './HealthEffects';
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
     paddingBottom: '2rem',
@@ -42,10 +42,9 @@ const useStyles = makeStyles(theme => ({
       width: '15rem'
     }
   }
-}));
+});
 
-function Issues() {
-  const classes = useStyles();
+function Issues({ classes }) {
   return (
     <Grid
       container
@@ -82,4 +81,4 @@ function Issues() {
   );
 }
 
-export default Issues;
+export default withStyles(styles)(Issues);

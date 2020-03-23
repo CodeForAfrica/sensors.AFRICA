@@ -1,9 +1,9 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   circularChart: {
     display: 'block',
     maxWidth: '100%',
@@ -11,40 +11,44 @@ const useStyles = makeStyles(theme => ({
   },
   circularChartWhiteCircle: {
     display: 'block',
-    stroke: '#fff'
+    stroke: '#fff',
+    margin: 'auto'
   },
   circleBg: {
     fill: 'none',
     stroke: '#2FB56B',
-    strokeWidth: '4.4'
+    strokeWidth: '7.4'
   },
   percentage: {
     fill: '#666',
     stroke: '#666',
     strokeWidth: '0.25',
     fontFamily: theme.typography.fontFamily,
-    fontWeight: 500,
+    fontWeight: 600,
     fontSize: '0.35em',
     textAnchor: 'middle'
   },
   circle: {
     fill: 'none',
-    strokeWidth: '3.8',
+    strokeWidth: '4.8',
     strokeLinecap: 'none',
     animation: 'progress 1s ease-out forwards'
   },
   '@keyframes progress': {
-    '0%': {
-      strokeDasharray: '0 100'
+    from: {
+      strokeDashoffset: '100'
+    },
+    to: {
+      strokeDashoffset: '200'
     }
   }
-}));
+});
 
-function GaugeChart({ props, percentage }) {
-  const classes = useStyles(props);
+function GaugeChart(props) {
+  const { classes, percentage } = props;
   return (
     <svg
-      viewBox="0 0 37 37"
+      viewBox="-2 -2 40 40"
       className={(classes.circularChart, classes.circularChartWhiteCircle)}
     >
       <path
@@ -55,7 +59,7 @@ function GaugeChart({ props, percentage }) {
       />
       <path
         className={classes.circle}
-        strokeDasharray={`${percentage} 100`}
+        strokeDasharray={`200 ${percentage}`}
         d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -71,4 +75,4 @@ GaugeChart.propTypes = {
   percentage: PropTypes.number.isRequired
 };
 
-export default GaugeChart;
+export default withStyles(styles)(GaugeChart);
