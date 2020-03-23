@@ -15,6 +15,10 @@ const CONTENT = {
     hex: '#2fb56b',
     version: '78bppvKdQd'
   },
+  orange: {
+    hex: '#F57C00',
+    version: 'WxbPiUQG57'
+  },
   purple: {
     hex: '#b64598',
     version: 'WxbPiUQG57'
