@@ -3,7 +3,6 @@ import React from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import 'assets/css/App.css';
 import 'assets/images/background/bgstories.jpg';
 
 const useStyles = makeStyles(theme => ({
