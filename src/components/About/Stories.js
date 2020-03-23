@@ -3,9 +3,16 @@ import React from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import 'assets/images/background/bgstories.jpg';
+import background from 'assets/images/background/bgstories.jpg';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    paddingTop: '2rem',
+    height: 350,
+    backgroundImage: `url('${background}')`,
+    backgroundSize: 'cover',
+    overflow: 'hidden'
+  },
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
@@ -26,9 +33,10 @@ const useStyles = makeStyles(theme => ({
 
 function Stories(props) {
   const classes = useStyles(props);
+
   return (
     <div
-      className="Jumbotron"
+      className={classes.root}
       style={{ display: 'flex', alignItems: 'center' }}
     >
       <Grid

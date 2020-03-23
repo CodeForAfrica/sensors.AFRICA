@@ -1,20 +1,4 @@
 /* App css */
-
-.Image-section {
-  background-image: url('../images/background/bglanding.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  max-width: 100%;
-}
-
-.Jumbotron {
-  padding-top: 2rem;
-  height: 350px;
-  background-image: url('../images/background/bgstories.jpg');
-  background-size: cover;
-  overflow: hidden;
-}
 .list-ic li {
   position: relative;
 }
