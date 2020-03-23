@@ -1,0 +1,19 @@
+{
+  "name": "sensors.AFRICA",
+  "short_name": "sensors.AFRICA",
+  "icons": [
+    {
+      "src": "/favicons/black/android-chrome-192x192.png?v=Ewqar9pC28",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicons/black/android-chrome-512x512.png?v=Ewqar9pC28",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#424143",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
