@@ -1,6 +1,6 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
+
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -16,7 +16,7 @@ const styles = theme => ({
   },
   circleBg: {
     fill: 'none',
-    stroke: '#2FB56B',
+    stroke: theme.palette.primary.light,
     strokeWidth: '7.4'
   },
   percentage: {
@@ -59,7 +59,7 @@ function GaugeChart(props) {
       />
       <path
         className={classes.circle}
-        strokeDasharray={`200 ${percentage}`}
+        strokeDasharray={`${percentage} 100`}
         d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
