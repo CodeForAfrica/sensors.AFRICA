@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 
-import { useRouter } from 'next/router';
-
-import Grid from '@material-ui/core/Grid';
-import { AppBar, Hidden, MenuItem, Toolbar } from '@material-ui/core';
+import { AppBar, Grid, Hidden, MenuItem, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import ComingSoon from 'components/ComingSoon';
-import SocialMedia from 'components/SocialMedia';
-
 import IconLogo from 'components/IconLogo';
-import MenuBar from 'components/Header/MenuBar';
 import Link from 'components/Link';
+import MenuBar from 'components/Header/MenuBar';
+import SocialMedia from 'components/SocialMedia';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    maxWidth: '100%'
   },
   appBar: {
     backgroundColor: '#2e2e2e',
@@ -94,24 +91,28 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Navbar({ location }) {
-  const classes = useStyles();
-  const router = useRouter();
-
+function Navbar(props) {
+  const classes = useStyles(props);
   const [show, setShow] = useState(false);
+  const [location, setLocation] = useState('/');
 
-  const showComingSoonAlert = e => {
+  const showComingSoonAlert = (e, pathname) => {
     if (e) {
       e.preventDefault();
     }
-    if (location) {
-      const { pathname } = location;
-      router.push(pathname);
+    if (pathname) {
+      setLocation(window.location.pathname);
+      window.history.pushState(null, '', pathname);
     }
     setShow(true);
   };
+  const showWaterComingSoonAlert = e => showComingSoonAlert(e, '/water');
+  const showSoundComingSoonAlert = e => showComingSoonAlert(e, '/sound');
+  const showRadiationComingSoonAlert = e =>
+    showComingSoonAlert(e, '/radiation');
 
   const hideComingSoonAlert = () => {
+    window.history.pushState(null, '', location);
     setShow(false);
   };
 
@@ -146,7 +147,7 @@ function Navbar({ location }) {
                 <a
                   href="/water"
                   className={classes.waterlink}
-                  onClick={showComingSoonAlert}
+                  onClick={showWaterComingSoonAlert}
                 >
                   WATER
                 </a>
@@ -155,7 +156,7 @@ function Navbar({ location }) {
                 <a
                   href="/sound"
                   className={classes.soundlink}
-                  onClick={showComingSoonAlert}
+                  onClick={showSoundComingSoonAlert}
                 >
                   SOUND
                 </a>
@@ -164,7 +165,7 @@ function Navbar({ location }) {
                 <a
                   href="/radiation"
                   className={classes.radiationlink}
-                  onClick={showComingSoonAlert}
+                  onClick={showRadiationComingSoonAlert}
                 >
                   RADIATION
                 </a>
