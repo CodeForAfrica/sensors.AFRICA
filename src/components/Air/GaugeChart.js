@@ -1,26 +1,38 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
+
+import classNames from 'classnames';
 
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  circularChart: {
+  root: {
     display: 'block',
     maxWidth: '100%',
     margin: 'auto'
   },
-  circularChartWhiteCircle: {
-    display: 'block',
-    stroke: '#fff',
-    margin: 'auto'
+  background: {
+    stroke: 'white'
   },
-  circleBg: {
+  stroke: {
     fill: 'none',
     stroke: theme.palette.primary.light,
     strokeWidth: '7.4'
   },
-  percentage: {
+  readingBackground: {
+    fill: 'none',
+    stroke: 'white',
+    // anything less than readingStroke's strokeWidth to make sure there isn't
+    // any visible white gap between the two
+    strokeWidth: '4.5'
+  },
+  readingStroke: {
+    fill: 'none',
+    stroke: theme.palette.primary.light,
+    strokeWidth: '4.8',
+    animation: 'progress 1s ease-out forwards'
+  },
+  label: {
     fill: '#666',
     stroke: '#666',
     strokeWidth: '0.25',
@@ -28,12 +40,6 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     fontSize: '0.35em',
     textAnchor: 'middle'
-  },
-  circle: {
-    fill: 'none',
-    strokeWidth: '4.8',
-    strokeLinecap: 'none',
-    animation: 'progress 1s ease-out forwards'
   },
   '@keyframes progress': {
     from: {
@@ -45,28 +51,34 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function GaugeChart(props) {
-  const classes = useStyles();
-  const { percentage } = props;
+function GaugeChart({ percentage, ...props }) {
+  const classes = useStyles(props);
+
   return (
     <svg
       viewBox="-2 -2 40 40"
-      className={(classes.circularChart, classes.circularChartWhiteCircle)}
+      className={classNames(classes.root, classes.background)}
     >
       <path
-        className={classes.circleBg}
+        className={classes.stroke}
         d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
       />
       <path
-        className={classes.circle}
-        strokeDasharray={`50 ${percentage}`}
+        className={classes.readingBackground}
         d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
       />
-      <text x="18" y="20.35" className={classes.percentage}>
+      <path
+        className={classes.readingStroke}
+        strokeDasharray={`${percentage} 100`}
+        d="M18 2.0845
+            a 15.9155 15.9155 0 0 1 0 31.831
+            a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" className={classes.label}>
         {percentage}%
       </text>
     </svg>
