@@ -83,7 +83,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   buttonLink: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none'
+    }
   },
   supportText: {
     color: 'white',
