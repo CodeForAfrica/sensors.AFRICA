@@ -12,6 +12,7 @@ import Issues from 'components/Air/Issues';
 import Stories from 'components/About/Stories';
 import AirHeader from 'components/Air/AirHeader';
 import Support from 'components/Support';
+import Showcase from 'components/Showcase';
 
 import About from 'pages/air/about';
 import Data from 'pages/air/data';
@@ -32,6 +33,7 @@ function AirHome() {
       <DocumentHead url={URLS.AIR.HOME} />
       <Navbar />
       <AirHeader handleSearch={handleSearch} />
+      <Showcase />
       <Issues />
       <IndoorOutdoor />
       <Stories />
