@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     color: 'white',
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     textTransform: 'uppercase',
     margin: '1rem auto',
     fontWeight: 800,

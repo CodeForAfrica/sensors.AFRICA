@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     padding: '2rem'
   },
   mainTitle: {
-    color: '#424143',
+    color: theme.palette.secondary.main,
     textAlign: 'center',
     fontSize: theme.typography.h6.fontSize,
     paddingBottom: theme.typography.h6.fontSize

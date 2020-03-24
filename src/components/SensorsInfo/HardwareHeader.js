@@ -8,7 +8,7 @@ import HardwareHeaderContent from 'components/Header/JumboContent/HardwareHeader
 const useStyles = makeStyles(theme => ({
   jumbotron: {
     paddingBottom: '2rem',
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
       paddingTop: '2rem',

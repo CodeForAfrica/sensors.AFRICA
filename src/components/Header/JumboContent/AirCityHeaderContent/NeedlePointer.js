@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h6.fontSize,
     fontWeight: 700,
-    fill: '#164a3e'
+    fill: theme.palette.primary.dark
   },
   hidden: {
     visibility: 'hidden'

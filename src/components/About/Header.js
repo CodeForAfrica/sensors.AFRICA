@@ -9,7 +9,7 @@ import AboutHeaderContent from 'components/Header/JumboContent/AboutHeaderConten
 const useStyles = makeStyles(theme => ({
   jumbotron: {
     flexGrow: 1,
-    backgroundColor: '#424143',
+    backgroundColor: theme.palette.secondary.main,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
       height: 450

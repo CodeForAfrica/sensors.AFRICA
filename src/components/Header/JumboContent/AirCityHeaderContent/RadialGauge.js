@@ -73,14 +73,14 @@ const styles = theme => ({
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h6.fontSize,
     fontWeight: 700,
-    fill: '#164a3e',
+    fill: theme.palette.primary.dark,
     textTransform: 'uppercase'
   },
   gaugeSmallText: {
     fontSize: theme.typography.caption.fontSize,
     fontFamily: theme.typography.caption.fontFamily,
     fontWeight: theme.typography.caption.fontWeight,
-    fill: '#164a3e'
+    fill: theme.palette.primary.dark
   },
   gaugeDescUnits: {
     color: 'white',

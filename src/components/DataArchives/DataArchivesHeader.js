@@ -8,7 +8,7 @@ import DataArchivesHeaderContent from 'components/Header/JumboContent/DataArchiv
 const useStyles = makeStyles(theme => ({
   jumbotron: {
     flexGrow: 1,
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
       height: 450
