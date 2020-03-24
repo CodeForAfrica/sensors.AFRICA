@@ -17,6 +17,7 @@ const styles = {
     position: 'relative'
   }
 };
+
 class MenuButton extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.open !== prevState.open) {

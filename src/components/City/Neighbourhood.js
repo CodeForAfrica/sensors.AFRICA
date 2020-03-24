@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Card, CardContent, Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     marginTop: theme.spacing.unit * 6,
@@ -61,9 +61,10 @@ const styles = theme => ({
     color: 'grey',
     opacity: '0.4'
   }
-});
+}));
 
-function Neighbourhood({ classes }) {
+function Neighbourhood() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -173,4 +174,4 @@ function Neighbourhood({ classes }) {
   );
 }
 
-export default withStyles(styles)(Neighbourhood);
+export default Neighbourhood;

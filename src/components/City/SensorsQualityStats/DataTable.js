@@ -11,9 +11,9 @@ import {
   TableRow,
   Typography
 } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   table: {
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -79,9 +79,10 @@ const styles = theme => ({
   data: {
     marginBottom: '0.6rem'
   }
-});
+}));
 
-function DataValue({ children, classes, value }) {
+function DataValue({ children, value }) {
+  const classes = useStyles();
   const valueComponent = (
     <Typography variant="h3" className={classes.display2}>
       {value}
@@ -108,7 +109,8 @@ DataValue.defaultProps = {
   value: '--'
 };
 
-function PMValue({ classes, value }) {
+function PMValue({ value }) {
+  const classes = useStyles();
   return (
     <DataValue value={value} classes={classes}>
       <small className={classes.small}>
@@ -122,7 +124,8 @@ PMValue.propTypes = {
   value: PropTypes.string.isRequired
 };
 
-function HumidityValue({ classes, value }) {
+function HumidityValue({ value }) {
+  const classes = useStyles();
   return (
     <DataValue value={value} classes={classes}>
       <small className={classes.small}>% RH</small>
@@ -133,7 +136,8 @@ HumidityValue.propTypes = {
   value: PropTypes.string.isRequired
 };
 
-function TemperatureValue({ classes, value }) {
+function TemperatureValue({ value }) {
+  const classes = useStyles();
   return (
     <DataValue value={value} classes={classes}>
       <small className={classes.small}>&#8451;</small>
@@ -145,12 +149,12 @@ TemperatureValue.propTypes = {
 };
 
 function DataTable({
-  classes,
   cityHumidityStats,
   cityP2Stats,
   cityTemperatureStats,
   width
 }) {
+  const classes = useStyles();
   const TEMPERATURE = width === 'xs' ? 'TEMP' : 'TEMPERATURE';
   return (
     <Table className={classes.table}>
@@ -365,4 +369,4 @@ DataTable.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default withWidth()(withStyles(styles)(DataTable));
+export default withWidth()(DataTable);

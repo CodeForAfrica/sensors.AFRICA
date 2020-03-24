@@ -1,10 +1,11 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 import Proptypes from 'prop-types';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   pointer: { fill: 'rgb(20, 74, 61)' },
   gaugeBigText: {
     fontFamily: theme.typography.h6.fontFamily,
@@ -15,9 +16,10 @@ const styles = theme => ({
   hidden: {
     visibility: 'hidden'
   }
-});
+}));
 
-function NeedlePointer({ classes, hidden, measurement }) {
+function NeedlePointer({ hidden, measurement }) {
+  const classes = useStyles();
   let rotate = -90;
   const className = hidden ? classes.hidden : '';
 
@@ -65,4 +67,4 @@ NeedlePointer.propTypes = {
   measurement: Proptypes.number.isRequired
 };
 
-export default withStyles(styles)(NeedlePointer);
+export default NeedlePointer;

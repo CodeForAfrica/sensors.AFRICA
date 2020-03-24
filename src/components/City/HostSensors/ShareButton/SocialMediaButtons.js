@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { TwitterShareButton } from 'react-share';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const styles = () => ({
+const useStyles = makeStyles({
   twitter: { backgroundColor: '#00aced', margin: '0.2rem' },
   facebook: { backgroundColor: '#3b5998', margin: '0.2rem' },
   instagram: { backgroundColor: '#8a3ab9', margin: '0.2rem' },
@@ -14,7 +14,8 @@ const styles = () => ({
   fa: { color: 'white', margin: '0.2rem' }
 });
 
-function SocialMediaButtons({ classes, city }) {
+function SocialMediaButtons({ city }) {
+  const classes = useStyles();
   return (
     <Grid container justify="center" alignitems="center">
       <Grid item className={classes.twitter}>
@@ -91,4 +92,4 @@ SocialMediaButtons.propTypes = {
     twitterHandle: PropTypes.string.isRequired
   }).isRequired
 };
-export default withStyles(styles)(SocialMediaButtons);
+export default SocialMediaButtons;

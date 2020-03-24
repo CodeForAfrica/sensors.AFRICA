@@ -1,25 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = {
+const useStyles = makeStyles({
   fullHeight: {
     display: 'inline-block',
     margin: '0 auto',
     backgroundColor: 'white'
   }
-};
+});
 
-function KenyaMap({
-  classes,
-  title,
-  src,
-  height,
-  width,
-  frameBorder,
-  scrolling
-}) {
+function KenyaMap({ title, src, height, width, frameBorder, scrolling }) {
+  const classes = useStyles();
   return (
     <iframe
       title={title}
@@ -49,4 +42,4 @@ KenyaMap.defaultProps = {
   frameBorder: '0',
   scrolling: 'auto'
 };
-export default withStyles(styles)(KenyaMap);
+export default KenyaMap;

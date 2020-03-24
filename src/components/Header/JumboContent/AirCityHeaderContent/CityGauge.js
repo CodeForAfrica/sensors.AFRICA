@@ -2,12 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withWidth } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 
 import DigitalGauge from 'components/Header/JumboContent/AirCityHeaderContent/DigitalGauge';
 import RadialGauge from 'components/Header/JumboContent/AirCityHeaderContent/RadialGauge';
-
-const styles = () => ({});
 
 function CityGauge({ airPollMeasurement, airPollDescription, width }) {
   const Gauge = width === 'xs' || width === 'sm' ? DigitalGauge : RadialGauge;
@@ -26,4 +23,4 @@ CityGauge.propTypes = {
   width: PropTypes.string.isRequired
 };
 
-export default withWidth()(withStyles(styles)(CityGauge));
+export default withWidth()(CityGauge);

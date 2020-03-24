@@ -3,11 +3,11 @@ import React from 'react';
 import { Grid, GridList, GridListTile } from '@material-ui/core';
 import Tabletop from 'tabletop';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import StoryCard from './StoryCard';
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   root: {
     flexGrow: 1
   },
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
       width: '26.5rem'
     }
   }
-}));
+});
 
 class StoryList extends React.Component {
   constructor(props) {
@@ -73,7 +73,7 @@ class StoryList extends React.Component {
   }
 
   render() {
-    const classes = useStyles();
+    const { classes } = this.props;
     const { stories } = this.state;
 
     // TODO(kilemensi): GridListTile computes the size of item and sets it using
@@ -111,4 +111,4 @@ class StoryList extends React.Component {
   }
 }
 
-export default StoryList;
+export default withStyles(styles)(StoryList);

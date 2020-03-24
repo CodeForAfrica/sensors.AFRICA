@@ -2,9 +2,9 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   circularChart: {
     display: 'block',
     maxWidth: '100%',
@@ -43,10 +43,11 @@ const styles = theme => ({
       strokeDashoffset: '200'
     }
   }
-});
+}));
 
 function GaugeChart(props) {
-  const { classes, percentage } = props;
+  const classes = useStyles();
+  const { percentage } = props;
   return (
     <svg
       viewBox="-2 -2 40 40"
@@ -76,4 +77,4 @@ GaugeChart.propTypes = {
   percentage: PropTypes.number.isRequired
 };
 
-export default withStyles(styles)(GaugeChart);
+export default GaugeChart;

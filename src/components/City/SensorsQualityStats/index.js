@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import DataTable from 'components/City/SensorsQualityStats/DataTable';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     marginTop: theme.spacing.unit * 0,
@@ -35,14 +35,14 @@ const styles = theme => ({
       width: '79.5rem'
     }
   }
-});
+}));
 
 function SensorsQualityStats({
-  classes,
   cityHumidityStats,
   cityTemperatureStats,
   cityP2Stats
 }) {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -68,4 +68,4 @@ SensorsQualityStats.propTypes = {
   cityTemperatureStats: PropTypes.shape({}).isRequired,
   cityP2Stats: PropTypes.shape({}).isRequired
 };
-export default withStyles(styles)(SensorsQualityStats);
+export default SensorsQualityStats;
