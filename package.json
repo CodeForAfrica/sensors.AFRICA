@@ -24,7 +24,6 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-feather": "^2.0.3",
-    "react-helmet": "^5.2.1",
     "react-select": "^3.0.8",
     "react-share": "^4.0.1",
     "tabletop": "^1.6.2",

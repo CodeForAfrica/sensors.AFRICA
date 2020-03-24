@@ -4,9 +4,6 @@
   ],
   "plugins": [
     [
-      "syntax-dynamic-import"
-    ],
-    [
       "module-resolver",
       {
         "root": [
