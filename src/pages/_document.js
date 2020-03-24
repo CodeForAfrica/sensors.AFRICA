@@ -5,6 +5,8 @@ import { ServerStyleSheets } from '@material-ui/core/styles';
 
 import theme from 'theme';
 
+const GA_TRACKING_ID = 'UA-44795600-44';
+
 function getGtagScript() {
   return {
     __html: `
@@ -13,7 +15,10 @@ function getGtagScript() {
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
-      gtag('config', 'UA-44795600-44');
+
+      gtag('config', '${GA_TRACKING_ID}', {
+        page_path: window.location.pathname
+      });
 `
   };
 }
@@ -38,7 +43,7 @@ export default class MyDocument extends Document {
           {/* Global site tag (gtag.js) - Google Analytics */}
           <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-44795600-44"
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
           <script
             type="text/javascript"
