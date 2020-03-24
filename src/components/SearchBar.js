@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import Select from 'react-select';
@@ -17,7 +18,8 @@ const styles = theme => ({
   },
   input: {
     display: 'flex',
-    padding: 0
+    padding: 0,
+    height: '3rem'
   },
   valueContainer: {
     display: 'flex',
@@ -317,9 +319,8 @@ class SearchBar extends React.Component {
 }
 
 SearchBar.propTypes = {
-  classes: PropTypes.object.isRequired,
   handleSearch: PropTypes.func,
-  options: PropTypes.array,
+  options: PropTypes.shape({}),
   placeholder: PropTypes.string
 };
 

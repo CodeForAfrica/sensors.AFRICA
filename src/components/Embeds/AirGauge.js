@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
-import CityGauge from '../Header/JumbotronContent/AirCityHeaderContent/CityGauge';
+import CityGauge from 'components/Header/JumboContent/AirCityHeaderContent/CityGauge';
 
-import { API, formatCurrentP2Stats } from '../../api';
+import { API, formatCurrentP2Stats } from 'api';
 
 class AirGauge extends React.Component {
   constructor(props) {

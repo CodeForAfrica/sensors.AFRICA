@@ -1,18 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 import { Grid, Typography } from '@material-ui/core';
 
 import Content from './Content';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: '#fff',
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2
   },
-
   // For air, water, and stormwatch cards, include margins in width
   // since we want the same background color
   airContent: {
@@ -68,8 +67,10 @@ const styles = theme => ({
       listStyle: 'none'
     }
   }
-});
-function DescriptionContent({ classes }) {
+}));
+
+function DescriptionContent(props) {
+  const classes = useStyles(props);
   return (
     <Grid
       container
@@ -201,8 +202,4 @@ function DescriptionContent({ classes }) {
   );
 }
 
-DescriptionContent.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(DescriptionContent);
+export default DescriptionContent;

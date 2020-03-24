@@ -1,13 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Button, Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import '../../assets/css/App.css';
-import '../../assets/images/background/bgstories.jpg';
+import background from 'assets/images/background/bgstories.jpg';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
+  root: {
+    paddingTop: '2rem',
+    height: 350,
+    backgroundImage: `url('${background}')`,
+    backgroundSize: 'cover',
+    overflow: 'hidden'
+  },
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
@@ -24,12 +29,14 @@ const styles = theme => ({
     fontWeight: 900,
     backgroundColor: '#fff'
   }
-});
+}));
 
-function Stories({ classes }) {
+function Stories(props) {
+  const classes = useStyles(props);
+
   return (
     <div
-      className="Jumbotron"
+      className={classes.root}
       style={{ display: 'flex', alignItems: 'center' }}
     >
       <Grid
@@ -65,8 +72,4 @@ function Stories({ classes }) {
   );
 }
 
-Stories.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(Stories);
+export default Stories;

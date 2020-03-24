@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Anton');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
-
 html {
+  padding: 0;
+  margin: 0;
   min-height: 100%;
 }
 
@@ -9,7 +8,6 @@ body {
   padding: 0;
   margin: 0;
   min-height: 100%;
-  display: inline-block;
   background-color: white;
   /**overflow-x: hidden;**/
 }

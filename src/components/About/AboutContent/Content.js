@@ -1,15 +1,17 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+import { Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+import PropTypes from 'prop-types';
+
+const useStyles = makeStyles(theme => ({
   root: {
     flex: 1,
     padding: '2rem'
   },
   mainTitle: {
-    color: '#424143',
+    color: theme.palette.secondary.main,
     textAlign: 'center',
     fontSize: theme.typography.h6.fontSize,
     paddingBottom: theme.typography.h6.fontSize
@@ -24,9 +26,10 @@ const styles = theme => ({
   bodyCopy: {
     textAlign: 'left'
   }
-});
+}));
 
-function Content({ classes, title, description, backgroundColor }) {
+function Content({ title, description, backgroundColor }) {
+  const classes = useStyles();
   return (
     <Grid
       direction="row"
@@ -50,7 +53,6 @@ function Content({ classes, title, description, backgroundColor }) {
 }
 
 Content.propTypes = {
-  classes: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string
@@ -60,4 +62,4 @@ Content.defaultProps = {
   backgroundColor: '#F3F3F3'
 };
 
-export default withStyles(styles)(Content);
+export default Content;

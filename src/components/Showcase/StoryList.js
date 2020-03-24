@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Grid, GridList, GridListTile } from '@material-ui/core';
 import Tabletop from 'tabletop';
 
-import '../../assets/css/App.css';
 import { withStyles } from '@material-ui/core/styles';
 
 import StoryCard from './StoryCard';
@@ -112,9 +110,5 @@ class StoryList extends React.Component {
     );
   }
 }
-
-StoryList.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(StoryList);

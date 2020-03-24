@@ -2,22 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import AirHeaderContent from '../Header/JumbotronContent/AirHeaderContent';
+import AirHeaderContent from 'components/Header/JumboContent/AirHeaderContent';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   jumbotron: {
     flexGrow: 1,
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
       height: 450
     }
   }
-});
+}));
 
-function AirHeader({ classes, handleSearch }) {
+function AirHeader({ handleSearch }) {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -33,8 +34,7 @@ function AirHeader({ classes, handleSearch }) {
 }
 
 AirHeader.propTypes = {
-  classes: PropTypes.object.isRequired,
   handleSearch: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(AirHeader);
+export default AirHeader;

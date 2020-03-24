@@ -1,22 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import business from '../../assets/images/logos/business.png';
-import premium from '../../assets/images/logos/premium.png';
-import guardian from '../../assets/images/logos/guardian.png';
-import nation from '../../assets/images/logos/nation.png';
-import star from '../../assets/images/logos/star.jpg';
-import womanng from '../../assets/images/logos/womanng.png';
-import dailynation from '../../assets/images/logos/dailynation.png';
-import cable from '../../assets/images/logos/cable.png';
-import code from '../../assets/images/logos/cfafrica_gray.png';
-import innovate from '../../assets/images/logos/innovateafrica_gray.jpg';
-import luftdaten from '../../assets/images/logos/luftdaten.jpg';
+import business from 'assets/images/logos/business.png';
+import premium from 'assets/images/logos/premium.png';
+import guardian from 'assets/images/logos/guardian.png';
+import nation from 'assets/images/logos/nation.png';
+import star from 'assets/images/logos/star.jpg';
+import womanng from 'assets/images/logos/womanng.png';
+import dailynation from 'assets/images/logos/dailynation.png';
+import cable from 'assets/images/logos/cable.png';
+import code from 'assets/images/logos/cfafrica_gray.png';
+import innovate from 'assets/images/logos/innovateafrica_gray.jpg';
+import luftdaten from 'assets/images/logos/luftdaten.jpg';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white'
@@ -83,9 +82,10 @@ const styles = theme => ({
   logoContainer: {
     padding: '0 2rem'
   }
-});
+}));
 
-function Partners({ classes }) {
+function Partners(props) {
+  const classes = useStyles(props);
   return (
     <Grid
       container
@@ -205,7 +205,4 @@ function Partners({ classes }) {
   );
 }
 
-Partners.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-export default withStyles(styles)(Partners);
+export default Partners;

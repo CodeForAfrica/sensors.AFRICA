@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import QualityStatsGraph from '../City/QualityStatsGraph';
+import QualityStatsGraph from 'components/City/QualityStatsGraph';
 
-import { API, formatWeeklyP2Stats } from '../../api';
+import { API, formatWeeklyP2Stats } from 'api';
 
 class AirGraph extends React.Component {
   constructor(props) {

@@ -1,20 +1,20 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Grid, MenuItem, Typography, MenuList } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import Link from 'components/Link';
 import Modal from '@material-ui/core/Modal';
 
-import { URLS } from '../DocumentHead/PageHeads';
+import { URLS } from 'components/DocumentHead/PageHeads';
 
-import MenuButton from './MenuButton';
+import MenuButton from 'components/Hambuger/MenuButton';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   grid: {
     flex: 1
   },
-
   menuList: {
     color: 'white',
     marginTop: '5rem !important', // Override the default marginTop:'2rem' of <MenuList /> Component
@@ -26,8 +26,7 @@ const styles = theme => ({
   },
   menuListItem: {
     color: 'white',
-    display: 'block',
-    height: '18px'
+    display: 'block'
   },
   modalContent: {
     margin: 'auto',
@@ -40,11 +39,15 @@ const styles = theme => ({
     fontWeight: '700'
   },
   link: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none'
+    }
   }
-});
+}));
 
-function HambugerMenu({ classes, handleToggle, menuOpen }) {
+function HambugerMenu({ handleToggle, menuOpen }) {
+  const classes = useStyles();
   return (
     <Grid container className={classes.grid}>
       <Grid item xs={12}>
@@ -62,7 +65,7 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
           disableAutoFocus
         >
           <MenuList className={classes.menuList}>
-            <Link to={URLS.AIR.ABOUT} className={classes.link}>
+            <Link href={URLS.AIR.ABOUT} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   ABOUT
@@ -70,7 +73,7 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
               </MenuItem>
             </Link>
 
-            <Link to={URLS.AIR.JOIN} className={classes.link}>
+            <Link href={URLS.AIR.JOIN} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   CONTACT
@@ -78,7 +81,7 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
               </MenuItem>
             </Link>
 
-            <Link to={URLS.AIR.DATA} className={classes.link}>
+            <Link href={URLS.AIR.DATA} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   DATA
@@ -86,7 +89,7 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
               </MenuItem>
             </Link>
 
-            <Link to={URLS.AIR.HOW_SENSORS_WORK} className={classes.link}>
+            <Link href={URLS.AIR.HOW_SENSORS_WORK} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   HARDWARE
@@ -94,7 +97,7 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
               </MenuItem>
             </Link>
 
-            <Link to={URLS.AIR.JOIN} className={classes.link}>
+            <Link href={URLS.AIR.JOIN} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   JOIN
@@ -102,7 +105,7 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
               </MenuItem>
             </Link>
 
-            <Link to={URLS.AIR.IMPACT} className={classes.link}>
+            <Link href={URLS.AIR.IMPACT} className={classes.link}>
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   RESOURCES
@@ -130,9 +133,8 @@ function HambugerMenu({ classes, handleToggle, menuOpen }) {
 }
 
 HambugerMenu.propTypes = {
-  classes: PropTypes.object.isRequired,
   handleToggle: PropTypes.func.isRequired,
   menuOpen: PropTypes.bool.isRequired
 };
 
-export default withStyles(styles)(HambugerMenu);
+export default HambugerMenu;

@@ -1,13 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import Badge from '@material-ui/core/Badge';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+
 import classNames from 'classnames';
 
-import logowhite from '../assets/images/logos/logowhite.png';
+import logowhite from 'assets/images/logos/logowhite.png';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   defaultBadge: {
     zIndex: 1301,
     top: '5.8rem',
@@ -32,9 +34,10 @@ const styles = theme => ({
     position: 'relative'
   },
   img: {}
-});
+}));
 
-function Logo({ badge, active, classes }) {
+function Logo({ badge, active }) {
+  const classes = useStyles();
   const activeStatus = active && badge === 'default' ? 'Active' : '';
   const imgClassName = classNames(classes.logo, classes.img);
   return (
@@ -54,7 +57,6 @@ function Logo({ badge, active, classes }) {
 
 Logo.propTypes = {
   active: PropTypes.bool,
-  classes: PropTypes.object.isRequired,
   badge: PropTypes.string
 };
 
@@ -63,4 +65,4 @@ Logo.defaultProps = {
   badge: 'default'
 };
 
-export default withStyles(styles)(Logo);
+export default Logo;

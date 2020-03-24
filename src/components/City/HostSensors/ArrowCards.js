@@ -1,12 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Grid, Typography, ListItem, List, Button } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import '../../../assets/css/App.css';
-
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   findOutMore: {
     color: theme.palette.primary.dark
   },
@@ -34,9 +31,10 @@ const styles = theme => ({
     color: theme.palette.primary.light,
     fontSize: theme.typography.fontSize
   }
-});
+}));
 
-function ArrowCards({ classes }) {
+function ArrowCards() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -147,8 +145,4 @@ function ArrowCards({ classes }) {
     </Grid>
   );
 }
-
-ArrowCards.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-export default withStyles(styles)(ArrowCards);
+export default ArrowCards;

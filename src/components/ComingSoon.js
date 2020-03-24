@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
 import { Button, Typography } from '@material-ui/core';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
+import bglanding from 'assets/images/background/bglanding.jpg';
 import Email from './Email';
 
-import bglanding from '../assets/images/background/bglanding.jpg';
-
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     color: 'white',
@@ -77,75 +76,64 @@ const styles = theme => ({
     color: 'white',
     margin: '1rem'
   }
-});
+}));
 
-class ComingSoon extends Component {
-  constructor(props) {
-    super(props);
-    this.handleBack = this.handleBack.bind(this);
-  }
+function ComingSoon({ props, show, onClose }) {
+  const classes = useStyles(props);
 
-  componentDidUpdate() {
-    const { onClose } = this.props;
+  const containerClassName = classNames(classes.root, classes.popup, {
+    [classes.showpopup]: show
+  });
+
+  useEffect(() => {
     window.onpopstate = () => {
       onClose();
     };
-  }
+  });
 
-  handleBack() {
-    const { history } = this.props;
-    history.goBack();
-  }
+  const handleBack = () => {
+    onClose();
+  };
 
-  render() {
-    const { classes, show } = this.props;
-
-    const containerClassName = classNames(classes.root, classes.popup, {
-      [classes.showpopup]: show
-    });
-
-    return (
-      <Grid
-        container
-        justify="space-around"
-        alignitems="center"
-        className={containerClassName}
-      >
-        <Grid item xs={12} className={classes.popupcontent} container>
-          <Grid item xs={12}>
-            <Button onClick={this.handleBack} className={classes.closeButton}>
-              &times;
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="subtitle1" className={classes.subtitle}>
-              We will be launching soon. Sign up to receive updates as we build
-              a transnational and pan-African network of citizen sensors:
-            </Typography>
-          </Grid>
-          <Grid item xs={12} className={classes.form}>
-            <Email onSubmit={this.handleBack} />
-          </Grid>
-          <Grid item xs={12} style={{ textAlign: 'center' }}>
-            <Button
-              variant="outlined"
-              onClick={this.handleBack}
-              className={classes.button}
-            >
-              GO BACK
-            </Button>
-          </Grid>
+  return (
+    <Grid
+      container
+      justify="space-around"
+      alignitems="center"
+      className={containerClassName}
+    >
+      <Grid item xs={12} className={classes.popupcontent} container>
+        <Grid item xs={12}>
+          <Button onClick={handleBack} className={classes.closeButton}>
+            &times;
+          </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            We will be launching soon. Sign up to receive updates as we build a
+            transnational and pan-African network of citizen sensors:
+          </Typography>
+        </Grid>
+        <Grid item xs={12} className={classes.form}>
+          <Email onSubmit={handleBack} />
+        </Grid>
+        <Grid item xs={12} style={{ textAlign: 'center' }}>
+          <Button
+            variant="outlined"
+            onClick={handleBack}
+            className={classes.button}
+          >
+            GO BACK
+          </Button>
         </Grid>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
 ComingSoon.propTypes = {
-  classes: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired
+  show: PropTypes.bool.isRequired
 };
 
-export default withRouter(withStyles(styles)(ComingSoon));
+export default ComingSoon;

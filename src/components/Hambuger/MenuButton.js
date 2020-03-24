@@ -17,6 +17,7 @@ const styles = {
     position: 'relative'
   }
 };
+
 class MenuButton extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.open !== prevState.open) {
@@ -58,6 +59,7 @@ class MenuButton extends Component {
       <div
         className={classes.container}
         onClick={onClick}
+        onKeyDown={onClick}
         role="button"
         tabIndex="0"
       >
@@ -70,7 +72,6 @@ class MenuButton extends Component {
 }
 
 MenuButton.propTypes = {
-  classes: PropTypes.object.isRequired,
   color: PropTypes.string,
   onClick: PropTypes.func,
   open: PropTypes.bool

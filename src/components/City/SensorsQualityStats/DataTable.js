@@ -11,9 +11,9 @@ import {
   TableRow,
   Typography
 } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   table: {
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -79,21 +79,22 @@ const styles = theme => ({
   data: {
     marginBottom: '0.6rem'
   }
-});
+}));
 
-function DataValue({ children, classes, value }) {
+function DataValue({ children, value }) {
+  const classes = useStyles();
   const valueComponent = (
     <Typography variant="h3" className={classes.display2}>
       {value}
     </Typography>
   );
   if (value === '--') {
-    return <React.Fragment>{valueComponent}</React.Fragment>;
+    return <>{valueComponent}</>;
   }
   return (
-    <React.Fragment>
+    <>
       {valueComponent} {children}
-    </React.Fragment>
+    </>
   );
 }
 DataValue.propTypes = {
@@ -102,14 +103,14 @@ DataValue.propTypes = {
     PropTypes.node,
     PropTypes.string
   ]).isRequired,
-  classes: PropTypes.object.isRequired,
   value: PropTypes.string
 };
 DataValue.defaultProps = {
   value: '--'
 };
 
-function PMValue({ classes, value }) {
+function PMValue({ value }) {
+  const classes = useStyles();
   return (
     <DataValue value={value} classes={classes}>
       <small className={classes.small}>
@@ -120,11 +121,11 @@ function PMValue({ classes, value }) {
   );
 }
 PMValue.propTypes = {
-  classes: PropTypes.object.isRequired,
   value: PropTypes.string.isRequired
 };
 
-function HumidityValue({ classes, value }) {
+function HumidityValue({ value }) {
+  const classes = useStyles();
   return (
     <DataValue value={value} classes={classes}>
       <small className={classes.small}>% RH</small>
@@ -132,11 +133,11 @@ function HumidityValue({ classes, value }) {
   );
 }
 HumidityValue.propTypes = {
-  classes: PropTypes.object.isRequired,
   value: PropTypes.string.isRequired
 };
 
-function TemperatureValue({ classes, value }) {
+function TemperatureValue({ value }) {
+  const classes = useStyles();
   return (
     <DataValue value={value} classes={classes}>
       <small className={classes.small}>&#8451;</small>
@@ -144,17 +145,16 @@ function TemperatureValue({ classes, value }) {
   );
 }
 TemperatureValue.propTypes = {
-  classes: PropTypes.object.isRequired,
   value: PropTypes.string.isRequired
 };
 
 function DataTable({
-  classes,
   cityHumidityStats,
   cityP2Stats,
   cityTemperatureStats,
   width
 }) {
+  const classes = useStyles();
   const TEMPERATURE = width === 'xs' ? 'TEMP' : 'TEMPERATURE';
   return (
     <Table className={classes.table}>
@@ -363,11 +363,10 @@ function DataTable({
 }
 
 DataTable.propTypes = {
-  classes: PropTypes.object.isRequired,
-  cityHumidityStats: PropTypes.object.isRequired,
-  cityTemperatureStats: PropTypes.object.isRequired,
-  cityP2Stats: PropTypes.object.isRequired,
+  cityHumidityStats: PropTypes.shape({}).isRequired,
+  cityTemperatureStats: PropTypes.shape({}).isRequired,
+  cityP2Stats: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired
 };
 
-export default withWidth()(withStyles(styles)(DataTable));
+export default withWidth()(DataTable);

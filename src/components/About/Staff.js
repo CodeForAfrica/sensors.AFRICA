@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import {
   Card,
   CardActionArea,
@@ -9,12 +7,12 @@ import {
   Typography,
   CardContent
 } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import chege from '../../assets/images/team/chege.png';
-import kirah from '../../assets/images/team/kirah.jpeg';
+import chege from 'assets/images/team/chege.png';
+import kirah from 'assets/images/team/kirah.jpeg';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     paddingTop: '2.5rem',
@@ -66,9 +64,10 @@ const styles = theme => ({
       color: theme.palette.primary.light
     }
   }
-});
+}));
 
-function Staff({ classes }) {
+function Staff(props) {
+  const classes = useStyles(props);
   return (
     <Grid
       container
@@ -139,8 +138,4 @@ function Staff({ classes }) {
   );
 }
 
-Staff.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(Staff);
+export default Staff;

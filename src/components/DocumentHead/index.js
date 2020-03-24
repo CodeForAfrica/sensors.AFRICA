@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Helmet } from 'react-helmet';
 
-import PageHeads from './PageHeads';
-import Favicon from '../Favicon';
+import PageHeads, { URLS } from 'components/DocumentHead/PageHeads';
+import Favicon from 'components/Favicon';
 
 function DocumentHead({ url }) {
   const matchUrl = obj => obj.url === url;
@@ -12,12 +13,12 @@ function DocumentHead({ url }) {
     (url && PageHeads.find(matchUrl)) || PageHeads.find(matchDefault);
 
   return (
-    <React.Fragment>
+    <>
       <Helmet>
         <title>{head.title}</title>
       </Helmet>
       <Favicon color={head.color} />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -29,4 +30,5 @@ DocumentHead.defaultProps = {
   url: null
 };
 
+export { URLS };
 export default DocumentHead;

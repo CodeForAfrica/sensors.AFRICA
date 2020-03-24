@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import GaugeChart from './GaugeChart';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     margin: '0 auto',
     width: '50vw',
@@ -25,24 +25,23 @@ const styles = theme => ({
     paddingTop: '1rem',
     textAlign: 'center'
   }
-});
+}));
 
-function Gauge({ classes, percentage, caption }) {
+function Gauge({ percentage, caption }) {
+  const classes = useStyles();
   return (
     <div className={classes.root}>
       <GaugeChart percentage={percentage} />
-
-      <Typography variant="caption" className={classes.caption}>
-        {caption}
-      </Typography>
+      <div className={classes.caption}>
+        <Typography variant="caption">{caption}</Typography>
+      </div>
     </div>
   );
 }
 
 Gauge.propTypes = {
-  classes: PropTypes.object.isRequired,
   percentage: PropTypes.number.isRequired,
   caption: PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(Gauge);
+export default Gauge;

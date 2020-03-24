@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flex: 1,
     padding: '2rem',
@@ -28,9 +28,10 @@ const styles = theme => ({
     color: '#fff',
     textAlign: 'center'
   }
-});
+}));
 
-function PollutionBurden({ classes, icon, title, burden }) {
+function PollutionBurden({ icon, title, burden }) {
+  const classes = useStyles();
   return (
     <Grid
       direction="row"
@@ -63,10 +64,9 @@ function PollutionBurden({ classes, icon, title, burden }) {
 }
 
 PollutionBurden.propTypes = {
-  classes: PropTypes.object.isRequired,
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   burden: PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(PollutionBurden);
+export default PollutionBurden;

@@ -1,15 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import AboutHeaderContent from '../../Header/JumbotronContent/AboutHeaderContent';
+import AboutHeaderContent from 'components/Header/JumboContent/AboutHeaderContent';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   jumbotron: {
     flexGrow: 1,
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
       height: 450
@@ -23,9 +22,10 @@ const styles = theme => ({
       color: '#164B3E'
     }
   }
-});
+}));
 
-function AboutHeader({ classes }) {
+function AboutHeader(props) {
+  const classes = useStyles(props);
   return (
     <Grid
       container
@@ -50,8 +50,4 @@ function AboutHeader({ classes }) {
   );
 }
 
-AboutHeader.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(AboutHeader);
+export default AboutHeader;

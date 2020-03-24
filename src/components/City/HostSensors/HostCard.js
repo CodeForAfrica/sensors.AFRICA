@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Grid, Card, CardContent, Typography, Button } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   findOutMore: {
     color: theme.palette.primary.dark,
     fontSize: theme.typography.fontSize,
@@ -39,9 +38,10 @@ const styles = theme => ({
   buttonLink: {
     textDecoration: 'none'
   }
-});
+}));
 
-function HostCard({ classes }) {
+function HostCard() {
+  const classes = useStyles();
   return (
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
@@ -92,7 +92,4 @@ function HostCard({ classes }) {
   );
 }
 
-HostCard.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-export default withStyles(styles)(HostCard);
+export default HostCard;

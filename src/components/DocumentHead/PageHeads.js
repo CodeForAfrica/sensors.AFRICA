@@ -9,7 +9,9 @@ const URLS = {
     // Redirect /air/city to /air/city/nairobi
     CITY_HOME: '/air/city',
     CITY_DEFAULT: '/air/city/nairobi',
-    CITY: '/air/city/:city(nairobi|dar-es-salaam|lagos)',
+    CITY_DSM: '/air/city/dar-es-salaam',
+    CITY_LAGOS: '/air/city/lagos',
+    CITY_NAIROBI: '/air/city/nairobi',
     HOW_SENSORS_WORK: '/air/how-sensors-work',
     IMPACT: '/air/health-and-climate-impact',
     JOIN: '/air/join-network'
@@ -19,6 +21,9 @@ const URLS = {
   },
   SOUND: {
     HOME: '/sound'
+  },
+  RADIATION: {
+    HOME: '/radiation'
   },
   NOT_FOUND: '*'
 };
@@ -67,19 +72,34 @@ export default [
     color: 'green'
   },
   {
-    url: URLS.AIR.CITY,
-    title: 'sensors.AFRICA | Air | City',
+    url: URLS.AIR.CITY_DSM,
+    title: 'sensors.AFRICA | Air | Dar es Salaam',
     color: 'green'
   },
   {
-    url: URLS.WATER.HOME,
-    title: 'sensors.AFRICA | Water | Coming Soon',
-    color: 'blue'
+    url: URLS.AIR.CITY_LAGOS,
+    title: 'sensors.AFRICA | Air | Lagos',
+    color: 'green'
+  },
+  {
+    url: URLS.AIR.CITY_NAIROBI,
+    title: 'sensors.AFRICA | Air | Nairobi',
+    color: 'green'
+  },
+  {
+    url: URLS.RADIATION.HOME,
+    title: 'sensors.AFRICA | Radiation | Coming Soon',
+    color: 'orange'
   },
   {
     url: URLS.SOUND.HOME,
     title: 'sensors.AFRICA | Sound | Coming Soon',
     color: 'purple'
+  },
+  {
+    url: URLS.WATER.HOME,
+    title: 'sensors.AFRICA | Water | Coming Soon',
+    color: 'blue'
   },
   {
     url: URLS.NOT_FOUND,

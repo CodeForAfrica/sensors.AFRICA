@@ -1,12 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
-import iconlogo from '../assets/images/logos/sensorsLogo.png';
+import Link from 'components/Link';
 
-const styles = theme => ({
+import logo from 'assets/images/logos/sensorsLogo.png';
+
+const useStyles = makeStyles(theme => ({
   defaultBadge: {
     zIndex: 1301,
     top: '5.8rem',
@@ -30,23 +31,20 @@ const styles = theme => ({
     zIndex: 1301,
     position: 'relative'
   },
-  img: {}
-});
+  img: {
+    height: 50
+  }
+}));
 
-function IconLogo({ classes }) {
+function IconLogo() {
+  const classes = useStyles();
   const imgClassName = classNames(classes.logo, classes.img);
+
   return (
-    <img
-      src={iconlogo}
-      className={imgClassName}
-      alt="sensors.AFRICA"
-      height="50"
-    />
+    <Link href="/">
+      <img src={logo} className={imgClassName} alt="sensors.AFRICA" />
+    </Link>
   );
 }
 
-IconLogo.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(IconLogo);
+export default IconLogo;

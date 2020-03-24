@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
-import HamburgerMenu from '../Hambuger/HambugerMenu';
+import HamburgerMenu from 'components/Hambuger/HambugerMenu';
 
 const styles = theme => ({
   root: {
@@ -72,7 +72,6 @@ class MenuBar extends React.Component {
 }
 
 MenuBar.propTypes = {
-  classes: PropTypes.object.isRequired,
   showMenu: PropTypes.bool
 };
 

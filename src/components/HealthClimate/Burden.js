@@ -1,16 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
+import risingtemperature from 'assets/images/icons/Risingtemperature.png';
+import snowmelt from 'assets/images/icons/snowmelt.png';
+import cropdamage from 'assets/images/icons/cropdamage.png';
 import PollutionBurden from './PollutionBurden';
 
-import risingtemperature from '../../assets/images/icons/Risingtemperature.png';
-import snowmelt from '../../assets/images/icons/snowmelt.png';
-import cropdamage from '../../assets/images/icons/cropdamage.png';
-
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flex: 1,
     backgroundColor: 'white',
@@ -58,9 +56,10 @@ const styles = theme => ({
       width: '26.5rem'
     }
   }
-});
+}));
 
-function Burden({ classes }) {
+function Burden() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -116,8 +115,5 @@ function Burden({ classes }) {
     </Grid>
   );
 }
-Burden.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
-export default withStyles(styles)(Burden);
+export default Burden;

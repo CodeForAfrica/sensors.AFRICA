@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from 'victory';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
@@ -22,9 +22,10 @@ const styles = theme => ({
       width: '79.5rem'
     }
   }
-});
+}));
 
-function QualityStatsGraph({ classes, data, width }) {
+function QualityStatsGraph({ data, width }) {
+  const classes = useStyles();
   let chartWidth = window.innerWidth;
   let labelAngle = 45;
   if (isWidthUp('md', width)) {
@@ -106,9 +107,8 @@ function QualityStatsGraph({ classes, data, width }) {
 }
 
 QualityStatsGraph.propTypes = {
-  classes: PropTypes.object.isRequired,
-  data: PropTypes.array.isRequired,
+  data: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired
 };
 
-export default withWidth()(withStyles(styles)(QualityStatsGraph));
+export default withWidth()(QualityStatsGraph);

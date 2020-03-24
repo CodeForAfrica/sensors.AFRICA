@@ -1,18 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-import Logo from '../Logo';
-import TestQuality from './TestQuality';
+import Link from 'components/Link';
+import Logo from 'components/Logo';
+import TestQuality from 'components/Landing/TestQuality';
 
-import '../../assets/css/App.css';
-import bglanding from '../../assets/images/background/bglanding.jpg';
+import bglanding from 'assets/images/background/bglanding.jpg';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     textAlign: 'center',
@@ -34,9 +31,10 @@ const styles = theme => ({
     height: '8rem',
     maxWidth: '100%'
   }
-});
+}));
 
-function Hero({ classes }) {
+function Hero() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -45,7 +43,7 @@ function Hero({ classes }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <Link to="/">
+        <Link href="/">
           <Logo badge="landing" classes={{ img: classes.img }} />
         </Link>
       </Grid>
@@ -63,8 +61,4 @@ function Hero({ classes }) {
   );
 }
 
-Hero.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(Hero);
+export default Hero;

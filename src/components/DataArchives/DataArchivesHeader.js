@@ -1,23 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import DataArchivesHeaderContent from '../Header/JumbotronContent/DataArchivesHeaderContent';
+import DataArchivesHeaderContent from 'components/Header/JumboContent/DataArchivesHeaderContent';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   jumbotron: {
     flexGrow: 1,
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
       height: 450
     }
   }
-});
+}));
 
-function DataArchivesHeader({ classes }) {
+function DataArchivesHeader() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -36,8 +36,4 @@ function DataArchivesHeader({ classes }) {
   );
 }
 
-DataArchivesHeader.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(DataArchivesHeader);
+export default DataArchivesHeader;

@@ -1,23 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import JoinNetworkContent from '../Header/JumbotronContent/JoinHeaderContent';
+import JoinNetworkContent from 'components/Header/JumboContent/JoinHeaderContent';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   jumbotron: {
     flexGrow: 1,
-    backgroundColor: '#2FB56B',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
       height: 450
     }
   }
-});
+}));
 
-function JoinHeader({ classes }) {
+function JoinHeader() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -35,8 +35,4 @@ function JoinHeader({ classes }) {
   );
 }
 
-JoinHeader.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(JoinHeader);
+export default JoinHeader;

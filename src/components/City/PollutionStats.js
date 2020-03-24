@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white'
@@ -79,9 +79,10 @@ const styles = theme => ({
     fontSize: theme.typography.fontSize,
     textTransform: 'none'
   }
-});
+}));
 
-function PollutionStats({ classes, pollutionStats, city }) {
+function PollutionStats({ pollutionStats, city }) {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -175,8 +176,7 @@ function PollutionStats({ classes, pollutionStats, city }) {
 }
 
 PollutionStats.propTypes = {
-  classes: PropTypes.object.isRequired,
-  pollutionStats: PropTypes.object.isRequired,
-  city: PropTypes.object.isRequired
+  pollutionStats: PropTypes.shape({}).isRequired,
+  city: PropTypes.shape({}).isRequired
 };
-export default withStyles(styles)(PollutionStats);
+export default PollutionStats;

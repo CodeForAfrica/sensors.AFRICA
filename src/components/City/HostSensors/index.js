@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import ArrowCards from './ArrowCards';
-import HostCard from './HostCard';
-import HostSensorButtons from './HostSensorButtons';
+import ArrowCards from 'components/City/HostSensors/ArrowCards';
+import HostCard from 'components/City/HostSensors/HostCard';
+import HostSensorButtons from 'components/City/HostSensors/HostSensorButtons';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
@@ -32,9 +31,10 @@ const styles = theme => ({
     paddingRight: '4rem',
     paddingLeft: '4rem'
   }
-});
+}));
 
-function HostSensor({ classes }) {
+function HostSensor() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -66,8 +66,4 @@ function HostSensor({ classes }) {
   );
 }
 
-HostSensor.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(HostSensor);
+export default HostSensor;

@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Button, Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     [theme.breakpoints.down('lg')]: {
@@ -34,9 +33,10 @@ const styles = theme => ({
   small: {
     fontSize: '1.5rem'
   }
-});
+}));
 
-function StatsSummary({ classes }) {
+function StatsSummary() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -96,7 +96,4 @@ function StatsSummary({ classes }) {
   );
 }
 
-StatsSummary.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-export default withStyles(styles)(StatsSummary);
+export default StatsSummary;

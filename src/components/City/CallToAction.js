@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import Link from 'components/Link';
 
 import {
   Button,
@@ -9,11 +8,11 @@ import {
   Grid,
   Typography
 } from '@material-ui/core/';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const howToLink = props => <Link to="/air/how-sensors-work" {...props} />;
+const howToLink = props => <Link href="/air/how-sensors-work" {...props} />;
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: 'white',
     flexGrow: 1,
@@ -98,9 +97,10 @@ const styles = theme => ({
       paddingRight: '2rem'
     }
   }
-});
+}));
 
-function CallToAction({ classes }) {
+function CallToAction() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -159,7 +159,4 @@ function CallToAction({ classes }) {
   );
 }
 
-CallToAction.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-export default withStyles(styles)(CallToAction);
+export default CallToAction;

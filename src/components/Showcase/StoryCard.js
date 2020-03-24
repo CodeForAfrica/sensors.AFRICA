@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   Typography,
@@ -8,15 +7,15 @@ import {
   CardMedia,
   CardContent
 } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import '../../assets/css/App.css';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     width: '100vw',
     height: '100%',
     backgroundColor: '#fafafa',
     border: '1px solid #eeeeee',
+    maxWidth: '100%',
     opacity: 0.9,
     '&:hover': {
       opacity: 1,
@@ -49,9 +48,10 @@ const styles = theme => ({
   bodyArea: {
     paddingTop: '2rem'
   }
-});
+}));
 
-function StoryCard({ story, classes }) {
+function StoryCard({ story }) {
+  const classes = useStyles();
   const { image, date, title, body, link } = story;
 
   return (
@@ -83,9 +83,4 @@ function StoryCard({ story, classes }) {
   );
 }
 
-StoryCard.propTypes = {
-  classes: PropTypes.object.isRequired,
-  story: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(StoryCard);
+export default StoryCard;

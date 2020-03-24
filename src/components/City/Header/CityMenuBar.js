@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core';
 
-import SearchBar from '../../SearchBar';
+import SearchBar from 'components/SearchBar';
 
 function CityMenuBar({ handleSearch }) {
   return (

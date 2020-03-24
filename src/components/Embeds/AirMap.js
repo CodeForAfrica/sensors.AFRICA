@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { CITIES_LOCATION } from '../../api';
+import { CITIES_LOCATION } from 'api';
 
 function AirMap({ location }) {
   const params = new URLSearchParams(location.search);
