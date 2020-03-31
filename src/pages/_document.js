@@ -5,7 +5,7 @@ import { ServerStyleSheets } from '@material-ui/core/styles';
 
 import theme from 'theme';
 
-const GA_TRACKING_ID = 'UA-44795600-44';
+import { GA_TRACKING_ID } from 'lib/gtag';
 
 function getGtagScript() {
   return {
@@ -23,7 +23,7 @@ function getGtagScript() {
   };
 }
 
-export default class MyDocument extends Document {
+export default class MainDocument extends Document {
   render() {
     return (
       <html lang="en">
@@ -60,7 +60,7 @@ export default class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = async ctx => {
+MainDocument.getInitialProps = async ctx => {
   // Resolution order
   //
   // On the server:
