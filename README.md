@@ -45,11 +45,10 @@ yarn version
 
 ---
 
-sensors.AFRICA Stack
---------------------
+## sensors.AFRICA Stack
 
-Map - https://github.com/CodeForAfrica/sensors.AFRICA-AQ-map
-API - https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-api
+Map - <https://github.com/CodeForAfrica/sensors.AFRICA-AQ-map>
+API - <https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-api>
 Grafana and TICK Stack - [./contrib/grafana-and-tick](./contrib/grafana-and-tick)
 
 ---

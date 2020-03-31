@@ -1,5 +1,7 @@
 import React from 'react';
+
 import App from 'next/app';
+import Router from 'next/router';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,11 +13,15 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import 'assets/css/index.css';
 import 'assets/css/App.css';
 
-import theme from '../theme';
+import theme from 'theme';
+
+import * as gtag from 'lib/gtag';
 
 library.add(fab, faSearch);
 
-export default class sensorsAfricaApp extends App {
+Router.events.on('routeChangeComplete', url => gtag.pageview(url));
+
+export default class MainApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
