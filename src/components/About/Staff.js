@@ -123,7 +123,7 @@ function Staff(props) {
                 WARUKIRA THEURI
               </Typography>
               <Typography variant="subtitle1">
-                kira at codeforafrica.org
+                kirah at codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
                 <a className={classes.a} href="https://twitter.com/warukira_m">
