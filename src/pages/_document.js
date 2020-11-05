@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
 import theme from 'theme';
@@ -19,14 +19,14 @@ function getGtagScript() {
       gtag('config', '${GA_TRACKING_ID}', {
         page_path: window.location.pathname
       });
-`
+`,
   };
 }
 
 export default class MainDocument extends Document {
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
@@ -55,12 +55,12 @@ export default class MainDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
 
-MainDocument.getInitialProps = async ctx => {
+MainDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -89,7 +89,7 @@ MainDocument.getInitialProps = async ctx => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />)
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     });
 
   const initialProps = await Document.getInitialProps(ctx);
@@ -99,7 +99,7 @@ MainDocument.getInitialProps = async ctx => {
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
       ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement()
-    ]
+      sheets.getStyleElement(),
+    ],
   };
 };
