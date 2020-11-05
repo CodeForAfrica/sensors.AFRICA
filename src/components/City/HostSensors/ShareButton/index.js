@@ -20,24 +20,24 @@ const styles = () => ({
   typography: {
     textAlign: 'center',
     paddingBottom: '0.5rem',
-    fontWeight: 600
-  }
+    fontWeight: 600,
+  },
 });
 
-const DialogTitle = withStyles(theme => ({
+const DialogTitle = withStyles((theme) => ({
   root: {
     margin: 0,
     paddingTop: '4rem',
     textAlign: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   closeButton: {
     position: 'absolute',
-    right: theme.spacing.unit,
-    top: theme.spacing.unit,
-    color: theme.palette.secondary.main
-  }
-}))(props => {
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.secondary.main,
+  },
+}))((props) => {
   const { children, classes, onClose } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root}>
@@ -55,13 +55,13 @@ const DialogTitle = withStyles(theme => ({
   );
 });
 
-const DialogContent = withStyles(theme => ({
+const DialogContent = withStyles((theme) => ({
   root: {
     margin: 0,
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     backgroundColor: 'white',
-    border: '0px'
-  }
+    border: '0px',
+  },
 }))(MuiDialogContent);
 
 function ShareButton({ classes, city }) {
@@ -107,7 +107,7 @@ function ShareButton({ classes, city }) {
 }
 
 ShareButton.propTypes = {
-  city: PropTypes.shape({}).isRequired
+  city: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(styles)(ShareButton);

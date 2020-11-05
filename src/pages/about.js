@@ -13,11 +13,11 @@ import Footer from 'components/Footer';
 import Support from 'components/Support';
 import PartnerLogos from 'components/PartnerLogos';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   aboutSupport: {
-    paddingTop: theme.spacing.unit * 5,
-    paddingBottom: theme.spacing.unit * 5
-  }
+    paddingTop: theme.spacing(5),
+    paddingBottom: theme.spacing(5),
+  },
 }));
 
 function AboutGlobal() {

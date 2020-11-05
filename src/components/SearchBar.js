@@ -7,19 +7,19 @@ import Select from 'react-select';
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
     paddingTop: '5rem',
     paddingLeft: '2rem',
     [theme.breakpoints.down('sm')]: {
-      paddingLeft: '3rem'
-    }
+      paddingLeft: '3rem',
+    },
   },
   input: {
     display: 'flex',
     padding: 0,
-    height: '3rem'
+    height: '3rem',
   },
   valueContainer: {
     display: 'flex',
@@ -27,33 +27,33 @@ const styles = theme => ({
     flexGrow: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
-    paddingTop: theme.spacing.unit * 2,
-    width: 300
+    paddingTop: theme.spacing(2),
+    width: 300,
   },
   chip: {
-    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`
+    margin: `${theme.spacing(0.5)}px ${theme.spacing.unit / 4}px`,
   },
   noOptionsMessage: {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+    padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
   },
   singleValue: {
-    fontSize: 16
+    fontSize: 16,
   },
   placeholder: {
     position: 'absolute',
     left: 2,
     fontSize: 16,
     color: '#164B3E',
-    paddingLeft: '1rem'
+    paddingLeft: '1rem',
   },
   paper: {
     position: 'absolute',
     zIndex: 2,
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     left: 0,
     right: 0,
-    background: theme.palette.primary.main
-  }
+    background: theme.palette.primary.main,
+  },
 });
 
 function NoOptionsMessage({ children, innerProps, selectProps }) {
@@ -70,19 +70,19 @@ function NoOptionsMessage({ children, innerProps, selectProps }) {
 NoOptionsMessage.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]),
   innerProps: PropTypes.shape({}),
   selectProps: PropTypes.shape({
     classes: PropTypes.shape({
-      noOptionsMessage: PropTypes.string
-    })
-  })
+      noOptionsMessage: PropTypes.string,
+    }),
+  }),
 };
 NoOptionsMessage.defaultProps = {
   children: null,
   innerProps: null,
-  selectProps: null
+  selectProps: null,
 };
 
 function inputComponent({ inputRef, ...props }) {
@@ -90,11 +90,11 @@ function inputComponent({ inputRef, ...props }) {
 }
 inputComponent.propTypes = {
   inputRef: PropTypes.shape(),
-  props: PropTypes.shape({})
+  props: PropTypes.shape({}),
 };
 inputComponent.defaultProps = {
   inputRef: null,
-  props: null
+  props: null,
 };
 
 function Control({ children, innerProps, innerRef, selectProps }) {
@@ -106,8 +106,8 @@ function Control({ children, innerProps, innerRef, selectProps }) {
           className: selectProps.classes.input,
           inputRef: innerRef,
           children,
-          ...innerProps
-        }
+          ...innerProps,
+        },
       }}
       {...selectProps.textFieldProps}
     />
@@ -116,22 +116,22 @@ function Control({ children, innerProps, innerRef, selectProps }) {
 Control.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]),
   innerProps: PropTypes.shape({}),
   innerRef: PropTypes.node,
   selectProps: PropTypes.shape({
     textFieldProps: PropTypes.string,
     classes: PropTypes.shape({
-      input: PropTypes.string
-    })
-  })
+      input: PropTypes.string,
+    }),
+  }),
 };
 Control.defaultProps = {
   children: null,
   innerProps: null,
   innerRef: null,
-  selectProps: null
+  selectProps: null,
 };
 
 function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
@@ -142,7 +142,7 @@ function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
       component="div"
       style={{
         color: '#fff',
-        fontWeight: isSelected ? 500 : 400
+        fontWeight: isSelected ? 500 : 400,
       }}
       {...innerProps}
     >
@@ -153,19 +153,19 @@ function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
 Option.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]),
   innerProps: PropTypes.shape({}),
   innerRef: PropTypes.node,
   isFocused: PropTypes.bool,
-  isSelected: PropTypes.bool
+  isSelected: PropTypes.bool,
 };
 Option.defaultProps = {
   children: null,
   innerProps: null,
   innerRef: null,
   isFocused: false,
-  isSelected: false
+  isSelected: false,
 };
 
 function Placeholder({ children, innerProps, selectProps }) {
@@ -182,19 +182,19 @@ function Placeholder({ children, innerProps, selectProps }) {
 Placeholder.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]),
   innerProps: PropTypes.shape({}),
   selectProps: PropTypes.shape({
     classes: PropTypes.shape({
-      placeholder: PropTypes.string
-    })
-  })
+      placeholder: PropTypes.string,
+    }),
+  }),
 };
 Placeholder.defaultProps = {
   children: null,
   innerProps: null,
-  selectProps: null
+  selectProps: null,
 };
 
 function SingleValue({ children, innerProps, selectProps }) {
@@ -207,19 +207,19 @@ function SingleValue({ children, innerProps, selectProps }) {
 SingleValue.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]),
   innerProps: PropTypes.shape({}),
   selectProps: PropTypes.shape({
     classes: PropTypes.shape({
-      singleValue: PropTypes.string
-    })
-  })
+      singleValue: PropTypes.string,
+    }),
+  }),
 };
 SingleValue.defaultProps = {
   children: null,
   innerProps: null,
-  selectProps: null
+  selectProps: null,
 };
 
 function ValueContainer({ children, selectProps }) {
@@ -228,17 +228,17 @@ function ValueContainer({ children, selectProps }) {
 ValueContainer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]),
   selectProps: PropTypes.shape({
     classes: PropTypes.shape({
-      valueContainer: PropTypes.string
-    })
-  })
+      valueContainer: PropTypes.string,
+    }),
+  }),
 };
 ValueContainer.defaultProps = {
   children: null,
-  selectProps: null
+  selectProps: null,
 };
 
 function Menu({ children, innerProps, selectProps }) {
@@ -251,19 +251,19 @@ function Menu({ children, innerProps, selectProps }) {
 Menu.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]),
   innerProps: PropTypes.shape({}),
   selectProps: PropTypes.shape({
     classes: PropTypes.shape({
-      paper: PropTypes.string
-    })
-  })
+      paper: PropTypes.string,
+    }),
+  }),
 };
 Menu.defaultProps = {
   children: null,
   innerProps: null,
-  selectProps: null
+  selectProps: null,
 };
 
 const components = {
@@ -274,13 +274,13 @@ const components = {
   Placeholder,
   SingleValue,
   ValueContainer,
-  DropdownIndicator: null
+  DropdownIndicator: null,
 };
 
 const DEFAULT_OPTIONS = [
   { value: 'nairobi', label: 'Nairobi, Kenya' },
   { value: 'lagos', label: 'Lagos, Nigeria' },
-  { value: 'dar-es-salaam', label: 'Dar-es-Salaam, Tanzania' }
+  { value: 'dar-es-salaam', label: 'Dar-es-Salaam, Tanzania' },
 ];
 
 class SearchBar extends React.Component {
@@ -321,13 +321,13 @@ class SearchBar extends React.Component {
 SearchBar.propTypes = {
   handleSearch: PropTypes.func,
   options: PropTypes.shape({}),
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 };
 
 SearchBar.defaultProps = {
   handleSearch: null,
   options: DEFAULT_OPTIONS,
-  placeholder: ''
+  placeholder: '',
 };
 
 export default withStyles(styles)(SearchBar);

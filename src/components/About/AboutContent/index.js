@@ -6,11 +6,11 @@ import { Grid, Typography } from '@material-ui/core';
 
 import Content from './Content';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: '#fff',
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   // For air, water, and stormwatch cards, include margins in width
   // since we want the same background color
@@ -18,55 +18,55 @@ const useStyles = makeStyles(theme => ({
     width: '100vw',
     backgroundColor: '#f3f3f3',
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   water: {
     width: '100vw',
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   stormWatch: {
     width: '100vw',
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   mainTitle: {
-    paddingTop: theme.spacing.unit * 3,
-    paddingBottom: theme.spacing.unit * 6,
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(6),
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   caption: {
     textAlign: 'center',
     [theme.breakpoints.up('md')]: {
-      textAlign: 'right'
-    }
+      textAlign: 'right',
+    },
   },
   sources: {
     padding: '1rem 0',
     width: '100vw',
     [theme.breakpoints.up('md')]: {
-      width: '59.625rem'
+      width: '59.625rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
+      width: '79.5rem',
     },
     '& > ul': {
-      listStyle: 'none'
-    }
-  }
+      listStyle: 'none',
+    },
+  },
 }));
 
 function DescriptionContent(props) {

@@ -7,30 +7,30 @@ import ArrowCards from 'components/City/HostSensors/ArrowCards';
 import HostCard from 'components/City/HostSensors/HostCard';
 import HostSensorButtons from 'components/City/HostSensors/HostSensorButtons';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    marginTop: theme.spacing.unit * 8,
-    marginBottom: theme.spacing.unit * 4
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(4),
   },
   description: {
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing(4),
   },
   arrowDescription: {
     [theme.breakpoints.down('sm')]: {
-      marginTop: theme.spacing.unit * 4
-    }
+      marginTop: theme.spacing(4),
+    },
   },
   hostDescription: {
     [theme.breakpoints.down('sm')]: {
-      marginTop: theme.spacing.unit * 8
-    }
+      marginTop: theme.spacing(8),
+    },
   },
   mainGrid: {
     paddingRight: '4rem',
-    paddingLeft: '4rem'
-  }
+    paddingLeft: '4rem',
+  },
 }));
 
 function HostSensor() {

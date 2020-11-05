@@ -3,41 +3,41 @@ import React from 'react';
 import { Grid, Card, CardContent, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   findOutMore: {
     color: theme.palette.primary.dark,
     fontSize: theme.typography.fontSize,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   card: {
     height: '38rem',
     width: '100%',
     backgroundColor: theme.palette.primary.light,
-    borderRadius: 0
+    borderRadius: 0,
   },
   cardContent: {
     textAlign: 'center',
-    marginTop: '1rem'
+    marginTop: '1rem',
   },
   display1: {
     color: '#fff',
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   body2: {
     color: '#fff',
-    paddingTop: theme.spacing.unit * 4
+    paddingTop: theme.spacing(4),
   },
   caption: {
     color: '#fff',
     paddingTop: '2rem',
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   },
   cardButtonOutlined: {
-    paddingTop: theme.spacing.unit * 3
+    paddingTop: theme.spacing(3),
   },
   buttonLink: {
-    textDecoration: 'none'
-  }
+    textDecoration: 'none',
+  },
 }));
 
 function HostCard() {

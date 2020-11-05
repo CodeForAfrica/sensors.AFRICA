@@ -3,34 +3,34 @@ import React from 'react';
 import { Grid, Typography, ListItem, List, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   findOutMore: {
-    color: theme.palette.primary.dark
+    color: theme.palette.primary.dark,
   },
   buttonContained: {
     backgroundColor: theme.palette.primary.light,
     color: '#fff',
     borderRadius: 0,
-    margin: theme.spacing.unit * 2,
-    marginLeft: 80
+    margin: theme.spacing(2),
+    marginLeft: 80,
   },
   body1: {
     fontSize: '14px',
     fontWeight: 'bold',
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   },
   gridContent: {
     textAlign: 'center',
-    padding: '1.5rem'
+    padding: '1.5rem',
   },
   tweetContent: {
-    fontSize: theme.typography.fontSize
+    fontSize: theme.typography.fontSize,
   },
   titleText: {
     marginLeft: '4.5rem',
     color: theme.palette.primary.light,
-    fontSize: theme.typography.fontSize
-  }
+    fontSize: theme.typography.fontSize,
+  },
 }));
 
 function ArrowCards() {

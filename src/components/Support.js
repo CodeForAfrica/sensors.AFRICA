@@ -8,14 +8,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TwitterShareButton } from 'react-share';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white',
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      paddingBottom: '3rem'
-    }
+      paddingBottom: '3rem',
+    },
   },
   supportCard: {
     height: '15rem',
@@ -24,12 +24,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       marginTop: '3rem',
       width: '18.75rem',
-      marginRight: '1.125rem'
+      marginRight: '1.125rem',
     },
     [theme.breakpoints.up('lg')]: {
       width: '25.375rem',
-      marginRight: '1.125rem'
-    }
+      marginRight: '1.125rem',
+    },
   },
   kickstartCard: {
     height: '15rem',
@@ -39,13 +39,13 @@ const useStyles = makeStyles(theme => ({
       marginTop: '3rem',
       width: '18.75rem',
       marginLeft: '0.5625rem',
-      marginRight: '0.5625rem'
+      marginRight: '0.5625rem',
     },
     [theme.breakpoints.up('lg')]: {
       width: '25.375rem',
       marginLeft: '0.5625rem',
-      marginRight: '0.5625rem'
-    }
+      marginRight: '0.5625rem',
+    },
   },
   cleanWaterCard: {
     height: '15rem',
@@ -54,15 +54,15 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       marginTop: '3rem',
       width: '18.75rem',
-      marginLeft: '1.125rem'
+      marginLeft: '1.125rem',
     },
     [theme.breakpoints.up('lg')]: {
       width: '25.375rem',
-      marginLeft: '1.125rem'
-    }
+      marginLeft: '1.125rem',
+    },
   },
   cardContent: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
   button: {
     color: 'white',
@@ -76,8 +76,8 @@ const useStyles = makeStyles(theme => ({
       fontSize: theme.typography.subtitle1.fontSize,
       height: '3.5rem',
       paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+      paddingRight: '2rem',
+    },
   },
   buttonOutlined: {
     color: theme.palette.primary.dark,
@@ -90,20 +90,20 @@ const useStyles = makeStyles(theme => ({
       fontSize: theme.typography.subtitle1.fontSize,
       height: '3.5rem',
       paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+      paddingRight: '2rem',
+    },
   },
   buttonLink: {
-    textDecoration: 'none'
+    textDecoration: 'none',
   },
   fa: {
     transition: 'all .5s ease-in-out',
-    padding: theme.spacing.unit / 2,
+    padding: theme.spacing(0.5),
     '&:hover': {
       transform: 'scale(1.3)',
-      color: '#f3f33'
-    }
-  }
+      color: '#f3f33',
+    },
+  },
 }));
 
 function Support({ classNames }) {
@@ -185,10 +185,10 @@ function Support({ classNames }) {
 }
 
 Support.propTypes = {
-  classNames: PropTypes.string
+  classNames: PropTypes.string,
 };
 Support.defaultProps = {
-  classNames: undefined
+  classNames: undefined,
 };
 
 export default Support;

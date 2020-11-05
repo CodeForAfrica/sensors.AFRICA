@@ -9,25 +9,25 @@ import Footer from 'components/Footer';
 import PartnerLogos from 'components/PartnerLogos';
 import backgroundImage from 'assets/images/background/bgsupport.jpg';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   joinNetworkSupport: {
-    paddingTop: theme.spacing.unit * 5,
-    paddingBottom: theme.spacing.unit * 5,
+    paddingTop: theme.spacing(5),
+    paddingBottom: theme.spacing(5),
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover',
     [theme.breakpoints.up('md')]: {
       height: '40rem',
-      alignItems: 'center'
-    }
+      alignItems: 'center',
+    },
   },
   joinNetworkPartnerLogos: {
     // Due to the image used in support, no padding top for logos
-    paddingTop: '3rem'
-  }
+    paddingTop: '3rem',
+  },
 }));
 
 function JoinNetwork() {

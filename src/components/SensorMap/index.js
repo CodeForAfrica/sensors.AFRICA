@@ -6,22 +6,22 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import IframeComponent from 'components/SensorMap/IframeComponent';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     height: 610,
     width: '100%',
     marginBottom: '3rem',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   headline: {
     textAlign: 'center',
-    paddingBottom: theme.spacing.unit * 3
+    paddingBottom: theme.spacing(3),
   },
   caption: {
     display: 'block',
-    textTransform: 'none'
-  }
+    textTransform: 'none',
+  },
 }));
 
 function Map({ zoom, latitude, longitude }) {
@@ -58,6 +58,6 @@ function Map({ zoom, latitude, longitude }) {
 Map.propTypes = {
   zoom: PropTypes.string.isRequired,
   latitude: PropTypes.string.isRequired,
-  longitude: PropTypes.string.isRequired
+  longitude: PropTypes.string.isRequired,
 };
 export default Map;

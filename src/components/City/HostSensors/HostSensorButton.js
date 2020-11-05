@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   buttonContained: {
     width: '100%',
     backgroundColor: theme.palette.primary.light,
@@ -14,12 +14,12 @@ const useStyles = makeStyles(theme => ({
     border: '1px solid transparent',
     '&:hover': {
       backgroundColor: theme.palette.primary.dark,
-      border: '1px solid rgba(0, 0, 0, 0.23)'
+      border: '1px solid rgba(0, 0, 0, 0.23)',
     },
     [theme.breakpoints.up('md')]: {
       width: 'auto',
-      margin: theme.spacing.unit * 2
-    }
+      margin: theme.spacing(2),
+    },
   },
   buttonOutlined: {
     width: '100%',
@@ -29,13 +29,13 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       color: 'white',
       backgroundColor: theme.palette.primary.dark,
-      border: '1px solid rgba(0, 0, 0, 0.23)'
+      border: '1px solid rgba(0, 0, 0, 0.23)',
     },
     [theme.breakpoints.up('md')]: {
       width: 'auto',
-      margin: theme.spacing.unit * 2
-    }
-  }
+      margin: theme.spacing(2),
+    },
+  },
 }));
 
 function HostSensorButton({ children, href, outlined, onClick, ...props }) {
@@ -60,16 +60,16 @@ HostSensorButton.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-    PropTypes.string
+    PropTypes.string,
   ]).isRequired,
   href: PropTypes.string,
   outlined: PropTypes.bool,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 HostSensorButton.defaultProps = {
   href: undefined,
   outlined: false,
-  onClick: undefined
+  onClick: undefined,
 };
 
 export default HostSensorButton;
