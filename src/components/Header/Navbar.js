@@ -9,86 +9,86 @@ import Link from 'components/Link';
 import MenuBar from 'components/Header/MenuBar';
 import SocialMedia from 'components/SocialMedia';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    maxWidth: '100%'
+    maxWidth: '100%',
   },
   appBar: {
     backgroundColor: '#2e2e2e',
-    boxShadow: 'none'
+    boxShadow: 'none',
   },
   toolbar: {
     [theme.breakpoints.up('md')]: {
       paddingRight: '8%',
-      paddingLeft: '8%'
-    }
+      paddingLeft: '8%',
+    },
   },
   airText: {
     color: '#2FB56B',
     transition: 'all .5s ease-in-out',
     '&:hover': {
       transform: 'scale(1.1)',
-      color: '#f3f33'
+      color: '#f3f33',
     },
-    fontFamily: 'Anton'
+    fontFamily: 'Anton',
   },
   waterText: {
     color: '#4972B8',
     transition: 'all .5s ease-in-out',
     '&:hover': {
       transform: 'scale(1.1)',
-      color: '#f3f33'
+      color: '#f3f33',
     },
-    fontFamily: 'Anton'
+    fontFamily: 'Anton',
   },
   soundText: {
     color: '#B64598',
     transition: 'all .5s ease-in-out',
     '&:hover': {
       transform: 'scale(1.1)',
-      color: '#f3f33'
+      color: '#f3f33',
     },
-    fontFamily: 'Anton'
+    fontFamily: 'Anton',
   },
   radiationText: {
     color: '#F57C00',
     transition: 'all .5s ease-in-out',
     '&:hover': {
       transform: 'scale(1.1)',
-      color: '#f3f33'
+      color: '#f3f33',
     },
-    fontFamily: 'Anton'
+    fontFamily: 'Anton',
   },
   // searchFa: {
-  //   padding: theme.spacing.unit * 1.5,
+  //   padding: theme.spacing(1.5),
   //   color: '#454545'
   // },
   airlink: {
     textDecoration: 'none',
     color: '#2FB56B',
     '&:hover': {
-      textDecoration: 'none'
-    }
+      textDecoration: 'none',
+    },
   },
   waterlink: {
     textDecoration: 'none',
-    color: '#4972B8'
+    color: '#4972B8',
   },
   soundlink: {
     textDecoration: 'none',
-    color: '#B64598'
+    color: '#B64598',
   },
   radiationlink: {
     textDecoration: 'none',
-    color: '#F57C00'
+    color: '#F57C00',
   },
   logoGrid: {
-    paddingTop: '0.4rem'
+    paddingTop: '0.4rem',
   },
   mediaGrid: {
-    paddingRight: theme.spacing.unit
-  }
+    paddingRight: theme.spacing(1),
+  },
 }));
 
 function Navbar(props) {
@@ -106,9 +106,9 @@ function Navbar(props) {
     }
     setShow(true);
   };
-  const showWaterComingSoonAlert = e => showComingSoonAlert(e, '/water');
-  const showSoundComingSoonAlert = e => showComingSoonAlert(e, '/sound');
-  const showRadiationComingSoonAlert = e =>
+  const showWaterComingSoonAlert = (e) => showComingSoonAlert(e, '/water');
+  const showSoundComingSoonAlert = (e) => showComingSoonAlert(e, '/sound');
+  const showRadiationComingSoonAlert = (e) =>
     showComingSoonAlert(e, '/radiation');
 
   const hideComingSoonAlert = () => {

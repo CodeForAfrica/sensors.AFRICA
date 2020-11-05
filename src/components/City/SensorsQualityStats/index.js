@@ -6,20 +6,20 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import DataTable from 'components/City/SensorsQualityStats/DataTable';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginTop: theme.spacing.unit * 0,
-    marginBottom: theme.spacing.unit * 4
+    marginTop: theme.spacing(0),
+    marginBottom: theme.spacing(4),
   },
   statsSummary: {
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
 
   // TODO(kilemensi): Currently statsSummary is not implemented yet so make
@@ -29,18 +29,18 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       width: '59.625rem',
       borderTop: '1px solid rgba(0,0,0,0.1)',
-      borderBottom: '1px solid rgba(0,0,0,0.1)'
+      borderBottom: '1px solid rgba(0,0,0,0.1)',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
-    }
-  }
+      width: '79.5rem',
+    },
+  },
 }));
 
 function SensorsQualityStats({
   cityHumidityStats,
   cityTemperatureStats,
-  cityP2Stats
+  cityP2Stats,
 }) {
   const classes = useStyles();
   return (
@@ -66,6 +66,6 @@ function SensorsQualityStats({
 SensorsQualityStats.propTypes = {
   cityHumidityStats: PropTypes.shape({}).isRequired,
   cityTemperatureStats: PropTypes.shape({}).isRequired,
-  cityP2Stats: PropTypes.shape({}).isRequired
+  cityP2Stats: PropTypes.shape({}).isRequired,
 };
 export default SensorsQualityStats;

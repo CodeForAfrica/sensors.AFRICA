@@ -3,64 +3,64 @@ import React from 'react';
 import { Card, CardContent, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginTop: theme.spacing.unit * 6,
-    marginBottom: theme.spacing.unit * 6
+    marginTop: theme.spacing(6),
+    marginBottom: theme.spacing(6),
   },
   mainGrid: {
     paddingRight: '7rem',
     paddingLeft: '7rem',
-    paddingBottom: theme.spacing.unit * 6
+    paddingBottom: theme.spacing(6),
   },
   offlineCard: {
     borderRadius: 0,
     borderStyle: 0,
     boxShadow: 'none',
-    backgroundColor: '#f3f3fe'
+    backgroundColor: '#f3f3fe',
   },
   onlineCard: {
     borderRadius: 0,
     boxShadow: 'none',
-    backgroundColor: theme.palette.primary.light
+    backgroundColor: theme.palette.primary.light,
   },
   cardContent: {
     textAlign: 'center',
-    color: '#fff'
+    color: '#fff',
   },
   onlineCaption: {
-    paddingTop: theme.spacing.unit * 3,
-    color: 'white'
+    paddingTop: theme.spacing(3),
+    color: 'white',
   },
   headline: {
     textAlign: 'center',
     fontWeight: 'bolder',
     color: theme.typography.h6.color,
     fontSize: theme.typography.fontSize,
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 3,
-    fontFamily: theme.typography.h6.fontFamily
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(3),
+    fontFamily: theme.typography.h6.fontFamily,
   },
   neighbourhood: {
     fontWeight: 'bold',
     fontSize: 14,
-    color: 'white'
+    color: 'white',
   },
   offlineContent: {
     color: 'grey',
     opacity: 0.4,
-    fontSize: theme.typography.fontSmallDefault.fontSize
+    fontSize: theme.typography.fontSmallDefault.fontSize,
   },
   onlineContent: {
     color: '#fff',
-    fontSize: theme.typography.fontSmallDefault.fontSize
+    fontSize: theme.typography.fontSmallDefault.fontSize,
   },
   offlineCaption: {
-    paddingTop: theme.spacing.unit * 3,
+    paddingTop: theme.spacing(3),
     color: 'grey',
-    opacity: '0.4'
-  }
+    opacity: '0.4',
+  },
 }));
 
 function Neighbourhood() {

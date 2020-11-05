@@ -5,11 +5,11 @@ import { Grid, Typography } from '@material-ui/core';
 
 import PollutionSource from './PollutionSource';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: '#fff',
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
 
   // For groundLevel, blackCarbon, and Methane cards, include margins in width
@@ -18,35 +18,35 @@ const useStyles = makeStyles(theme => ({
     width: '100vw',
     backgroundColor: '#f3f3f3',
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   blackCarbon: {
     width: '100vw',
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   methane: {
     width: '100vw',
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   mainTitle: {
     textAlign: 'center',
     fontWeight: 800,
-    fontSize: theme.typography.fontSize
-  }
+    fontSize: theme.typography.fontSize,
+  },
 }));
 
 function Sources() {
