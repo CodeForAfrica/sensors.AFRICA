@@ -28,7 +28,6 @@
     "react-helmet": "^6.1.0",
     "react-select": "^3.1.0",
     "react-share": "^4.3.1",
-    "tabletop": "^1.6.3",
     "victory": "^35.3.3",
     "webpack": "^5.4.0"
   },
