@@ -11,7 +11,7 @@ import API, {
   getFormattedHumidityStats,
   getFormattedP2Stats,
   getFormattedTemperatureStats,
-  getFormattedWeeklyP2Stats
+  getFormattedWeeklyP2Stats,
 } from 'api';
 
 import DocumentHead from 'components/DocumentHead';
@@ -35,22 +35,36 @@ const CITIES_POLLUTION_STATS = {
     childDeathCount: '6,672',
     topIllness: 'Acute Lower',
     annualAverage: '17',
-    percent: '70% more'
+    percent: '70% more',
+  },
+  kisumu: {
+    deathCount: '19,112',
+    childDeathCount: '6,672',
+    topIllness: 'Acute Lower',
+    annualAverage: '17',
+    percent: '70% more',
+  },
+  nakuru: {
+    deathCount: '19,112',
+    childDeathCount: '6,672',
+    topIllness: 'Acute Lower',
+    annualAverage: '17',
+    percent: '70% more',
   },
   lagos: {
     deathCount: '290,456',
     childDeathCount: '98,001',
     topIllness: 'Lower',
     annualAverage: '122',
-    percent: '170% more'
+    percent: '170% more',
   },
   'dar-es-salaam': {
     deathCount: '41,251',
     childDeathCount: '11,440',
     topIllness: 'Lower',
     annualAverage: '23',
-    percent: '130% more'
-  }
+    percent: '130% more',
+  },
 };
 const AQ_COLOR = [
   '#5fbf82',
@@ -61,7 +75,7 @@ const AQ_COLOR = [
   '#d45f4b',
   '#ce4c34',
   '#b72025',
-  '#2A2A2B'
+  '#2A2A2B',
 ];
 const DEFAULT_AQ_INDEX = 8;
 function aqIndex(aq) {
@@ -101,8 +115,8 @@ const useStyles = makeStyles({
     position: 'absolute',
     top: 0,
     left: 0,
-    backgroundColor: '#fff'
-  }
+    backgroundColor: '#fff',
+  },
 });
 
 const AIR_CITY_PATHNAME = '/air/city';
@@ -142,22 +156,24 @@ function City({ city: citySlug, data, errorCode, ...props }) {
       setCityTemperatureStats({});
       setCityHumidityStats({});
       API.getAirData(city)
-        .then(res => res.json())
-        .then(json => {
+        .then((res) => res.json())
+        .then((json) => {
           setCityHumidityStats(getFormattedHumidityStats(json));
           setCityP2Stats(getFormattedP2Stats(json));
           setCityTemperatureStats(getFormattedTemperatureStats(json));
         })
         .then(() =>
           API.getWeeklyP2Data(city)
-            .then(res => res.json())
-            .then(json => setCityP2WeeklyStats(getFormattedWeeklyP2Stats(json)))
+            .then((res) => res.json())
+            .then((json) =>
+              setCityP2WeeklyStats(getFormattedWeeklyP2Stats(json))
+            )
         )
         .then(() => setIsLoading(false));
     }
   }, [isLoading]);
 
-  const handleSearch = option => {
+  const handleSearch = (option) => {
     const searchedCity = (option && option.value) || DEFAULT_CITY;
     if (searchedCity !== city) {
       setCity(searchedCity);
@@ -235,15 +251,15 @@ City.propTypes = {
   city: PropTypes.string,
   data: PropTypes.shape({
     air: PropTypes.shape({}).isRequired,
-    weeklyP2: PropTypes.shape({}).isRequired
+    weeklyP2: PropTypes.shape({}).isRequired,
   }),
-  errorCode: PropTypes.oneOfType([PropTypes.bool, PropTypes.number])
+  errorCode: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 };
 
 City.defaultProps = {
   city: undefined,
   data: undefined,
-  errorCode: false
+  errorCode: false,
 };
 
 export async function getServerSideProps({ params: { id: city } }) {

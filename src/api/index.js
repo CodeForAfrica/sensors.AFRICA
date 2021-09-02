@@ -6,7 +6,7 @@ const P2_READING = 'P2';
 
 const formatAirStats = (data, isPm2 = false) => {
   const formatted = {};
-  ['average', 'maximum', 'minimum'].forEach(stat => {
+  ['average', 'maximum', 'minimum'].forEach((stat) => {
     const parsed = Number.parseFloat(data[stat]);
     if (isPm2 && stat === 'average') {
       formatted.averageDescription = `measurements not recorded`;
@@ -34,15 +34,15 @@ const getFormattedStats = (data, reading) => {
   return formatAirStats(statData, reading === P2_READING);
 };
 
-const getFormattedHumidityStats = data => {
+const getFormattedHumidityStats = (data) => {
   return getFormattedStats(data, HUMIDITY_READING);
 };
 
-const getFormattedP2Stats = data => {
+const getFormattedP2Stats = (data) => {
   return getFormattedStats(data, P2_READING);
 };
 
-const getFormattedTemperatureStats = data => {
+const getFormattedTemperatureStats = (data) => {
   return getFormattedStats(data, TEMPERATURE_READING);
 };
 
@@ -50,10 +50,10 @@ const DATE_FMT_OPTIONS = {
   timeZone: 'UTC',
   weekday: 'short',
   day: 'numeric',
-  month: 'short'
+  month: 'short',
 };
 
-const formatWeeklyP2Stats = data => {
+const formatWeeklyP2Stats = (data) => {
   const stats = [];
   // Start with the oldest value
   for (let i = data.length - 1; i >= 0; i -= 1) {
@@ -70,7 +70,7 @@ const formatWeeklyP2Stats = data => {
   return stats;
 };
 
-const getFormattedWeeklyP2Stats = data => {
+const getFormattedWeeklyP2Stats = (data) => {
   const statData =
     (data && data.count === 1 && data.results[0][P2_READING]) || [];
   return formatWeeklyP2Stats(statData);
@@ -86,7 +86,29 @@ const CITIES_LOCATION = {
     label: 'Nairobi, Kenya',
     zoom: '12',
     center: '-1.2709,36.8169',
-    twitterHandle: '@nairobicitygov'
+    twitterHandle: '@nairobicitygov',
+  },
+  nakuru: {
+    slug: 'nakuru',
+    latitude: '-0.303099',
+    longitude: '36.080025',
+    name: 'Nakuru',
+    country: 'Kenya',
+    label: 'Nakuru, Kenya',
+    zoom: '12',
+    center: '-0.303099,36.080025',
+    twitterHandle: '@nairobicitygov',
+  },
+  kisumu: {
+    slug: 'kisumu',
+    latitude: '-0.091702',
+    longitude: '34.767956',
+    name: 'Kisumu',
+    country: 'Kenya',
+    label: 'Kisumu, Kenya',
+    zoom: '12',
+    center: '-0.091702,34.767956',
+    twitterHandle: '@nairobicitygov',
   },
   lagos: {
     slug: 'lagos',
@@ -97,7 +119,7 @@ const CITIES_LOCATION = {
     label: 'Lagos, Nigeria',
     zoom: '12',
     center: '6.4552,3.4198',
-    twitterHandle: '@followlasg'
+    twitterHandle: '@followlasg',
   },
   'dar-es-salaam': {
     slug: 'dar-es-salaam',
@@ -108,8 +130,8 @@ const CITIES_LOCATION = {
     label: 'Dar-es-salaam, Tanzania',
     zoom: '12',
     center: '-6.7846,39.2669',
-    twitterHandle: '#DarEsSalaam'
-  }
+    twitterHandle: '#DarEsSalaam',
+  },
 };
 
 const API = {
@@ -123,7 +145,7 @@ const API = {
     return fetch(
       `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`
     );
-  }
+  },
 };
 
 export {
@@ -131,6 +153,6 @@ export {
   getFormattedHumidityStats,
   getFormattedP2Stats,
   getFormattedTemperatureStats,
-  getFormattedWeeklyP2Stats
+  getFormattedWeeklyP2Stats,
 };
 export default API;
