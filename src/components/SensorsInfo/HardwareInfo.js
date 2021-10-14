@@ -8,6 +8,7 @@ import DHT22 from 'assets/images/sensors/DHT22.jpeg';
 import GSMSIM800L from 'assets/images/sensors/GSMSIM800H.jpeg';
 import NODEMCU from 'assets/images/sensors/NODEMCU.jpeg';
 import SIGFOX from 'assets/images/sensors/SIGFOX.jpeg';
+import PMS5003 from 'assets/images/sensors/PMS5003.jpeg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   titleSection: {
-    padding: '1rem 0rem',
+    paddingBottom: '1rem',
     textAlign: 'center',
   },
   title: {
@@ -215,7 +216,7 @@ function HardwareInfo() {
         >
           {/* Content Grid */}
           <Grid item xs={12} className={classes.titleSection}>
-            <img src={SDS011} alt="SDS011" className={classes.img} />
+            <img src={PMS5003} alt="SDS011" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               PMS5003
             </Typography>
