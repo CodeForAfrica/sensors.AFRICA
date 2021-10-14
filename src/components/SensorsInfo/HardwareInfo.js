@@ -6,62 +6,62 @@ import { makeStyles } from '@material-ui/core/styles';
 import SDS011 from 'assets/images/sensors/sensor1.jpg';
 import DHT22 from 'assets/images/sensors/sensor2.jpg';
 import GSMSIM800L from 'assets/images/sensors/sensor3.jpg';
-import NODEMCU from 'assets/images/sensors/sensor4.jpg';
+import NODEMCUImage from 'assets/images/sensors/nodemcu-image.jpeg';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white',
     [theme.breakpoints.up('md')]: {
       paddingRight: '10%',
-      paddingLeft: '10%'
-    }
+      paddingLeft: '10%',
+    },
   },
   column: {
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '23rem'
+      width: '23rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '31rem'
-    }
+      width: '31rem',
+    },
   },
   titleSection: {
-    paddingBottom: '1rem',
-    textAlign: 'center'
+    padding: '1rem 0rem',
+    textAlign: 'center',
   },
   title: {
     color: 'green',
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   subheading: {
     color: theme.palette.secondary.main,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   caption: {
     textAlign: 'center',
     // paddingLeft: '20%',
     // paddingRight: '20%',
-    paddingBottom: '2rem'
+    paddingBottom: '2rem',
     // textAlign: 'justify'
   },
   captionGrid: {
     marginRight: '3.5rem',
     marginLeft: '3.5rem',
     textAlign: 'center',
-    paddingBottom: '2rem'
+    paddingBottom: '2rem',
   },
   img: {
     maxWidth: '100%',
-    height: 'auto'
+    height: 'auto',
   },
   subtitle1: {
     textAlign: 'center',
     paddingTop: '2.5rem',
     backgroundColor: 'white',
     color: theme.palette.secondary.main,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 }));
 
 function HardwareInfo() {
@@ -78,6 +78,7 @@ function HardwareInfo() {
           THE SCIENCE AND HARDWARE
         </Typography>
       </Grid>
+
       <Grid
         item
         xs={12}
@@ -155,7 +156,11 @@ function HardwareInfo() {
           alignItems="center"
         >
           <Grid item xs={12} className={classes.titleSection}>
-            <img src={NODEMCU} alt="SDSNODEMCU011" className={classes.img} />
+            <img
+              src={NODEMCUImage}
+              alt="SDSNODEMCU011"
+              className={classes.img}
+            />
             <Typography variant="h6" className={classes.title}>
               NODE MCU
             </Typography>
@@ -189,6 +194,103 @@ function HardwareInfo() {
               remote transmission. The board features compact size and low
               current consumption. With power saving technique, the current
               consumption is as low as 1mA mode.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <Grid
+        item
+        xs={12}
+        container
+        spacing={24}
+        justify="space-around"
+        alignItems="center"
+      >
+        {/* First Column */}
+        <Grid
+          item
+          className={classes.column}
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
+          {/* Content Grid */}
+          <Grid item xs={12} className={classes.titleSection}>
+            <img src={SDS011} alt="SDS011" className={classes.img} />
+            <Typography variant="h6" className={classes.title}>
+              PMS5003
+            </Typography>
+            <Typography className={classes.subheading}>
+              Particulate matter Sensor
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.captionGrid}>
+            <Typography variant="caption" className={classes.caption}>
+              This sensor is used to measure PM1, PM10 and PM2.5 particles. It
+              uses laser scattering principle to get particle concentration from
+              0.3 µg in the air, i.e by scattering using a laser to radiate
+              suspending particles in the air, then collect scattering light in
+              a certain degree, and finally obtain the curve of scattering light
+              change with time. In the end, equivalent particle diameter and the
+              number of particles with different diameter per unit volume can be
+              calculated by microprocessor based on MIE theory.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.titleSection}>
+            <img
+              src={DHT22}
+              alt="DHT22"
+              width="450px"
+              className={classes.img}
+            />
+            <Typography variant="h6" className={classes.title}>
+              GSM SIM800H
+            </Typography>
+            <Typography className={classes.subheading}>
+              Communication
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.captionGrid}>
+            <Typography variant="caption" className={classes.caption}>
+              The SIM800H connects to any global GSM network, using 2G SIMs. It
+              can be used to send and receive SMS messages, make and receive
+              voice calls, send and receive GPRS data and has an AT command
+              interface. This module has an onboard LIPO charging circuitry that
+              enables you to charge it via USB on the go.
+            </Typography>
+          </Grid>
+        </Grid>
+
+        {/* Second column  */}
+        <Grid
+          item
+          className={classes.column}
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item xs={12} className={classes.titleSection}>
+            <img
+              src={NODEMCUImage}
+              alt="SDSNODEMCU011"
+              className={classes.img}
+            />
+            <Typography variant="h6" className={classes.title}>
+              SIGFOX
+            </Typography>
+            <Typography className={classes.subheading}>
+              Communication
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.captionGrid}>
+            <Typography variant="caption" className={classes.caption}>
+              Sigfox is a low power wide area network, ( LPWAN), whose current
+              standards support upto 140 uplink messages, each of which can
+              carry a payload of 12 octets and at a rate of upto of 100 bits per
+              second. The technology uses a radio-based network.
             </Typography>
           </Grid>
         </Grid>
