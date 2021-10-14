@@ -4,9 +4,10 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import SDS011 from 'assets/images/sensors/sensor1.jpg';
-import DHT22 from 'assets/images/sensors/sensor2.jpg';
-import GSMSIM800L from 'assets/images/sensors/sensor3.jpg';
-import NODEMCUImage from 'assets/images/sensors/nodemcu-image.jpeg';
+import DHT22 from 'assets/images/sensors/DHT22.jpeg';
+import GSMSIM800L from 'assets/images/sensors/GSMSIM800H.jpeg';
+import NODEMCU from 'assets/images/sensors/NODEMCU.jpeg';
+import SIGFOX from 'assets/images/sensors/SIGFOX.jpeg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -134,7 +135,7 @@ function HardwareInfo() {
               DHT22
             </Typography>
             <Typography className={classes.subheading}>
-              Temperature and Humidity Sensor
+              Temperature and Relative Humidity Sensor
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
@@ -156,11 +157,7 @@ function HardwareInfo() {
           alignItems="center"
         >
           <Grid item xs={12} className={classes.titleSection}>
-            <img
-              src={NODEMCUImage}
-              alt="SDSNODEMCU011"
-              className={classes.img}
-            />
+            <img src={NODEMCU} alt="SDSNODEMCU011" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               NODE MCU
             </Typography>
@@ -189,11 +186,11 @@ function HardwareInfo() {
           </Grid>
           <Grid item xs={12} className={classes.captionGrid}>
             <Typography variant="caption" className={classes.caption}>
-              The SIM800L is a low-cost cell-phone module. It supports quad-band
-              GSM/GPRS network and is available for GPRS and SMS message data
-              remote transmission. The board features compact size and low
-              current consumption. With power saving technique, the current
-              consumption is as low as 1mA mode.
+              The SIM800H connects to any global GSM network, using 2G SIMs. It
+              can be used to send and receive SMS messages, make and receive
+              voice calls, send and receive GPRS data and has an AT command
+              interface. This module has an onboard LIPO charging circuitry that
+              enables you to charge it via USB on the go.
             </Typography>
           </Grid>
         </Grid>
@@ -207,7 +204,7 @@ function HardwareInfo() {
         justify="space-around"
         alignItems="center"
       >
-        {/* First Column */}
+        {/* Third Column */}
         <Grid
           item
           className={classes.column}
@@ -238,29 +235,6 @@ function HardwareInfo() {
               calculated by microprocessor based on MIE theory.
             </Typography>
           </Grid>
-          <Grid item xs={12} className={classes.titleSection}>
-            <img
-              src={DHT22}
-              alt="DHT22"
-              width="450px"
-              className={classes.img}
-            />
-            <Typography variant="h6" className={classes.title}>
-              GSM SIM800H
-            </Typography>
-            <Typography className={classes.subheading}>
-              Communication
-            </Typography>
-          </Grid>
-          <Grid item xs={12} className={classes.captionGrid}>
-            <Typography variant="caption" className={classes.caption}>
-              The SIM800H connects to any global GSM network, using 2G SIMs. It
-              can be used to send and receive SMS messages, make and receive
-              voice calls, send and receive GPRS data and has an AT command
-              interface. This module has an onboard LIPO charging circuitry that
-              enables you to charge it via USB on the go.
-            </Typography>
-          </Grid>
         </Grid>
 
         {/* Second column  */}
@@ -273,11 +247,7 @@ function HardwareInfo() {
           alignItems="center"
         >
           <Grid item xs={12} className={classes.titleSection}>
-            <img
-              src={NODEMCUImage}
-              alt="SDSNODEMCU011"
-              className={classes.img}
-            />
+            <img src={SIGFOX} alt="SIGFOX" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               SIGFOX
             </Typography>
