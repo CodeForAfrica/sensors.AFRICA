@@ -73,7 +73,7 @@ function HardwareInfo() {
     <Grid
       container
       justify="center"
-      alignItems="center"
+      alignItems="flex-start"
       className={classes.root}
     >
       <Grid item xs={12}>
@@ -199,7 +199,7 @@ function HardwareInfo() {
         container
         spacing={24}
         justify="space-around"
-        alignItems="center"
+        alignItems="flex-start"
       >
         {/* Third Column */}
         <Grid
@@ -259,7 +259,7 @@ function HardwareInfo() {
           className={classes.column}
           container
           direction="column"
-          justifyContent="flex-start"
+          justifyContent="center"
           alignItems="center"
         >
           <Grid item xs={12} className={classes.titleSection}>
