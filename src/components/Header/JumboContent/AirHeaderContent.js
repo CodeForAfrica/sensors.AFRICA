@@ -6,27 +6,27 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import SearchBar from 'components/SearchBar';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
     paddingTop: '6rem',
     [theme.breakpoints.up('md')]: {
       paddingRight: '20%',
-      paddingLeft: '20%'
+      paddingLeft: '20%',
     },
     [theme.breakpoints.up('lg')]: {
       paddingRight: '25%',
-      paddingLeft: '25%'
-    }
+      paddingLeft: '25%',
+    },
   },
   headerText: {
     color: 'white',
-    paddingBottom: '1rem'
+    paddingBottom: '1rem',
   },
   searchBar: {
-    paddingBottom: '6rem'
-  }
+    paddingBottom: '6rem',
+  },
 }));
 
 function AirHeaderContent({ handleSearch }) {
@@ -59,7 +59,7 @@ function AirHeaderContent({ handleSearch }) {
 }
 
 AirHeaderContent.propTypes = {
-  handleSearch: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default AirHeaderContent;

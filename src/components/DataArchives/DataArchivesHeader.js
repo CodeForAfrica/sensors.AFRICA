@@ -5,15 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import DataArchivesHeaderContent from 'components/Header/JumboContent/DataArchivesHeaderContent';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   jumbotron: {
     flexGrow: 1,
     backgroundColor: theme.palette.primary.light,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
-      height: 450
-    }
-  }
+      height: 450,
+    },
+  },
 }));
 
 function DataArchivesHeader() {

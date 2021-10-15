@@ -6,17 +6,17 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    paddingBottom: '3rem'
+    paddingBottom: '3rem',
   },
   input: {
-    width: '31.25rem'
+    width: '31.25rem',
   },
   dense: {
-    marginTop: 16
+    marginTop: 16,
   },
   menu: {
-    width: 200
-  }
+    width: 200,
+  },
 });
 function Embed({ city }) {
   const classes = useStyles();
@@ -43,8 +43,8 @@ function Embed({ city }) {
 Embed.propTypes = {
   city: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Embed;

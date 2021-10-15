@@ -8,20 +8,20 @@ import snowmelt from 'assets/images/icons/snowmelt.png';
 import cropdamage from 'assets/images/icons/cropdamage.png';
 import PollutionBurden from './PollutionBurden';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
     backgroundColor: 'white',
-    paddingBottom: '3rem'
+    paddingBottom: '3rem',
   },
   titleContainer: {
     marginLeft: '15%',
     marginRight: '15%',
-    paddingBottom: '3rem'
+    paddingBottom: '3rem',
   },
   title: {
     textAlign: 'center',
-    textTransform: 'none'
+    textTransform: 'none',
   },
 
   // For temparate, snowAndIce, and crops cards, include margins in width since
@@ -30,32 +30,32 @@ const useStyles = makeStyles(theme => ({
     width: '100vw',
     backgroundColor: theme.palette.primary.light,
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   snowAndIce: {
     width: '100vw',
     backgroundColor: theme.palette.primary.dark,
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   crops: {
     width: '100vw',
     backgroundColor: theme.palette.primary.light,
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
-  }
+      width: '26.5rem',
+    },
+  },
 }));
 
 function Burden() {

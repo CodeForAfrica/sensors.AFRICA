@@ -16,15 +16,15 @@ import Footer from 'components/Footer/index';
 
 import backgroundImage from 'assets/images/background/bgsupport.jpg';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: 'white',
-    backgroundImage: `url(${backgroundImage})`
+    backgroundImage: `url(${backgroundImage})`,
   },
   bodyCopy: {
     margin: '8rem',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   button: {
     color: theme.palette.secondary.main,
@@ -32,23 +32,23 @@ const useStyles = makeStyles(theme => ({
     border: `1px solid ${theme.palette.secondary.main}`,
     margin: '1rem',
     '& .button-icon': {
-      display: 'none'
+      display: 'none',
     },
     '&:hover': {
       color: theme.palette.secondary.main,
       backgroundColor: '#fff',
-      border: `1px solid ${theme.palette.secondary.main}`
+      border: `1px solid ${theme.palette.secondary.main}`,
     },
     '&:hover .button-icon': {
-      display: 'inline-block'
-    }
+      display: 'inline-block',
+    },
   },
   buttonIcon: {
-    marginRight: '0.5rem'
+    marginRight: '0.5rem',
   },
   typography: {
-    color: 'white'
-  }
+    color: 'white',
+  },
 }));
 
 function NotFound(props) {

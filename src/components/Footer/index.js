@@ -10,16 +10,16 @@ import SocialMedia from 'components/SocialMedia';
 import codeforafrica from 'assets/images/logos/cfafrica_white.png';
 import innovateafrica from 'assets/images/logos/innovateafrica_white.png';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     color: 'white',
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: theme.palette.secondary.main,
   },
   footerContainer: {
     [theme.breakpoints.up('md')]: {
-      paddingBottom: '5rem'
-    }
+      paddingBottom: '5rem',
+    },
   },
   footerContentContainer: {
     textAlign: 'center',
@@ -27,11 +27,11 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: '1rem',
     [theme.breakpoints.up('md')]: {
       marginTop: '3rem',
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   footerAboutContainer: {
     textAlign: 'center',
@@ -44,31 +44,31 @@ const useStyles = makeStyles(theme => ({
       width: '19.875rem',
       border: '1px solid white',
       borderTop: 'none',
-      borderBottom: 'none'
+      borderBottom: 'none',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   titles: {
     color: 'white',
     fontWeight: 800,
-    textTransform: 'none'
+    textTransform: 'none',
   },
   socialMediaContainer: {
     paddingTop: '1rem',
-    paddingBottom: '1rem'
+    paddingBottom: '1rem',
   },
   aboutContent: {
     color: 'white',
     padding: '1rem',
     textalign: 'justify',
-    textAlignLast: 'center'
+    textAlignLast: 'center',
   },
   footerButton: {
     color: 'white',
     '&:hover': {
-      color: theme.palette.secondary.main
+      color: theme.palette.secondary.main,
     },
     backgroundColor: theme.palette.secondary.dark,
     fontWeight: 800,
@@ -79,14 +79,14 @@ const useStyles = makeStyles(theme => ({
       height: '3.5rem',
       marginTop: '1rem',
       paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+      paddingRight: '2rem',
+    },
   },
   buttonLink: {
     textDecoration: 'none',
     '&:hover': {
-      textDecoration: 'none'
-    }
+      textDecoration: 'none',
+    },
   },
   supportText: {
     color: 'white',
@@ -94,13 +94,13 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       marginLeft: '1.5rem',
       marginRight: '1.5rem',
-      textAlign: 'center'
-    }
+      textAlign: 'center',
+    },
   },
   img: {
     maxWidth: '100%',
-    height: '100px'
-  }
+    height: '100px',
+  },
 }));
 
 function Footer(props) {

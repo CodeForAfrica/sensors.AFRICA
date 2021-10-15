@@ -15,7 +15,7 @@ function AirMap({ city }) {
       width="100%"
       style={{
         width: '100vw',
-        height: '100vh'
+        height: '100vh',
       }}
       allowFullScreen
     />
@@ -23,7 +23,7 @@ function AirMap({ city }) {
 }
 
 AirMap.propTypes = {
-  city: PropTypes.string.isRequired
+  city: PropTypes.string.isRequired,
 };
 
 export default AirMap;

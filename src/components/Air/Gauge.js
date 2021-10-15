@@ -6,25 +6,25 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import GaugeChart from './GaugeChart';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     margin: '0 auto',
     width: '50vw',
     [theme.breakpoints.up('sm')]: {
-      width: '9rem'
+      width: '9rem',
     },
     [theme.breakpoints.up('md')]: {
       width: '12rem',
-      padding: '0 1rem'
+      padding: '0 1rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '15rem'
-    }
+      width: '15rem',
+    },
   },
   caption: {
     paddingTop: '1rem',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 }));
 
 function Gauge({ percentage, caption }) {
@@ -41,7 +41,7 @@ function Gauge({ percentage, caption }) {
 
 Gauge.propTypes = {
   percentage: PropTypes.number.isRequired,
-  caption: PropTypes.string.isRequired
+  caption: PropTypes.string.isRequired,
 };
 
 export default Gauge;

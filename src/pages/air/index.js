@@ -24,7 +24,7 @@ const CITY_PATHNAME = '/air/city';
 
 function AirHome() {
   const router = useRouter();
-  const handleSearch = city => {
+  const handleSearch = (city) => {
     router.push(`${CITY_PATHNAME}/${city.value}`);
   };
 

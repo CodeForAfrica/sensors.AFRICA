@@ -11,13 +11,13 @@ import classNames from 'classnames';
 import bglanding from 'assets/images/background/bglanding.jpg';
 import Email from './Email';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     color: 'white',
     backgroundImage: `url(${bglanding})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
   },
   popup: {
     position: 'fixed',
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     opacity: '0',
     visibility: 'hidden',
     transform: 'scale(1.1)',
-    transition: 'visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s'
+    transition: 'visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s',
   },
   popupcontent: {
     position: 'absolute',
@@ -41,11 +41,11 @@ const useStyles = makeStyles(theme => ({
     padding: '1rem 1.5rem',
     width: '100vw',
     [theme.breakpoints.up('md')]: {
-      width: '25rem'
+      width: '25rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '37.875rem'
-    }
+      width: '37.875rem',
+    },
   },
   closeButton: {
     color: 'white',
@@ -55,34 +55,34 @@ const useStyles = makeStyles(theme => ({
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h3.fontSize,
     textAlign: 'center',
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   showpopup: {
     opacity: '1',
     visibility: 'visible',
     transform: 'scale(1.0)',
-    transition: 'visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s'
+    transition: 'visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s',
   },
   subtitle: {
     marginTop: '1rem',
     marginBottom: '1.5rem',
     color: 'white',
-    textAlign: 'justify'
+    textAlign: 'justify',
   },
   form: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
   button: {
     color: 'white',
-    margin: '1rem'
-  }
+    margin: '1rem',
+  },
 }));
 
 function ComingSoon({ props, show, onClose }) {
   const classes = useStyles(props);
 
   const containerClassName = classNames(classes.root, classes.popup, {
-    [classes.showpopup]: show
+    [classes.showpopup]: show,
   });
 
   useEffect(() => {
@@ -133,7 +133,7 @@ function ComingSoon({ props, show, onClose }) {
 
 ComingSoon.propTypes = {
   onClose: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired
+  show: PropTypes.bool.isRequired,
 };
 
 export default ComingSoon;

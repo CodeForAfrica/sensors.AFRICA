@@ -11,9 +11,9 @@ import { URLS } from 'components/DocumentHead/PageHeads';
 
 import MenuButton from 'components/Hambuger/MenuButton';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   grid: {
-    flex: 1
+    flex: 1,
   },
   menuList: {
     color: 'white',
@@ -21,29 +21,29 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'right',
     [theme.breakpoints.up('sm')]: {
       marginTop: '2rem',
-      paddingRight: '10%'
-    }
+      paddingRight: '10%',
+    },
   },
   menuListItem: {
     color: 'white',
-    display: 'block'
+    display: 'block',
   },
   modalContent: {
     margin: 'auto',
     padding: '20px',
-    height: 'auto'
+    height: 'auto',
   },
   typography: {
     color: '#fff',
     textAlign: 'right',
-    fontWeight: '700'
+    fontWeight: '700',
   },
   link: {
     textDecoration: 'none',
     '&:hover': {
-      textDecoration: 'none'
-    }
-  }
+      textDecoration: 'none',
+    },
+  },
 }));
 
 function HambugerMenu({ handleToggle, menuOpen }) {
@@ -134,7 +134,7 @@ function HambugerMenu({ handleToggle, menuOpen }) {
 
 HambugerMenu.propTypes = {
   handleToggle: PropTypes.func.isRequired,
-  menuOpen: PropTypes.bool.isRequired
+  menuOpen: PropTypes.bool.isRequired,
 };
 
 export default HambugerMenu;

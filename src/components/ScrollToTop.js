@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/link';
 
 function ScrollToTop({ children, location }) {
-  useEffect(prevProps => {
+  useEffect((prevProps) => {
     if (location !== prevProps.location) {
       window.scrollTo(0, 0);
     }
@@ -15,11 +15,11 @@ function ScrollToTop({ children, location }) {
 
 ScrollToTop.propTypes = {
   location: PropTypes.shape({}).isRequired,
-  children: PropTypes.shape({})
+  children: PropTypes.shape({}),
 };
 
 ScrollToTop.defaultProps = {
-  children: null
+  children: null,
 };
 
 export default withRouter(ScrollToTop);

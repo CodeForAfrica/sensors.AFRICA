@@ -9,31 +9,31 @@ import classNames from 'classnames';
 
 import logowhite from 'assets/images/logos/logowhite.png';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   defaultBadge: {
     zIndex: 1301,
     top: '5.8rem',
     right: '1.65rem',
     color: theme.palette.primary.dark,
-    fontSize: theme.typography.caption.fontSize
+    fontSize: theme.typography.caption.fontSize,
   },
   defaultActiveBadge: {
     zIndex: 1301,
     top: '5.8rem',
     right: '1.65rem',
-    fontSize: theme.typography.caption.fontSize
+    fontSize: theme.typography.caption.fontSize,
   },
   landingBadge: {
     zIndex: 1301,
     top: '7.175rem',
     right: '1.65rem',
-    fontSize: theme.typography.caption.fontSize
+    fontSize: theme.typography.caption.fontSize,
   },
   logo: {
     zIndex: 1301,
-    position: 'relative'
+    position: 'relative',
   },
-  img: {}
+  img: {},
 }));
 
 function Logo({ badge, active }) {
@@ -57,12 +57,12 @@ function Logo({ badge, active }) {
 
 Logo.propTypes = {
   active: PropTypes.bool,
-  badge: PropTypes.string
+  badge: PropTypes.string,
 };
 
 Logo.defaultProps = {
   active: false,
-  badge: 'default'
+  badge: 'default',
 };
 
 export default Logo;

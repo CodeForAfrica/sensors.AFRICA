@@ -16,12 +16,12 @@ const NextComposed = React.forwardRef(function NextComposed(props, ref) {
 NextComposed.propTypes = {
   as: PropTypes.string,
   href: PropTypes.string,
-  prefetch: PropTypes.bool
+  prefetch: PropTypes.bool,
 };
 
 NextComposed.defaultProps = {
   as: undefined,
   href: undefined,
-  prefetch: undefined
+  prefetch: undefined,
 };
 export default NextComposed;

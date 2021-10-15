@@ -14,8 +14,8 @@ const styles = {
     cursor: 'pointer',
     padding: 4,
     zIndex: '1301',
-    position: 'relative'
-  }
+    position: 'relative',
+  },
 };
 
 class MenuButton extends Component {
@@ -41,19 +41,19 @@ class MenuButton extends Component {
         height: 4,
         width: 28,
         background: color,
-        transition: 'all 0.2s ease'
+        transition: 'all 0.2s ease',
       },
       lineTop: {
         transform: open ? 'rotate(45deg)' : 'none',
-        marginBottom: open ? '0' : '4px'
+        marginBottom: open ? '0' : '4px',
       },
       lineMiddle: {
-        opacity: open ? 0 : 1
+        opacity: open ? 0 : 1,
       },
       lineBottom: {
         transform: open ? 'rotate(-45deg)' : 'none',
-        marginTop: open ? '-8px' : '4px'
-      }
+        marginTop: open ? '-8px' : '4px',
+      },
     };
     return (
       <div
@@ -74,11 +74,11 @@ class MenuButton extends Component {
 MenuButton.propTypes = {
   color: PropTypes.string,
   onClick: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };
 MenuButton.defaultProps = {
   color: 'white',
   onClick: null,
-  open: false
+  open: false,
 };
 export default withStyles(styles)(MenuButton);

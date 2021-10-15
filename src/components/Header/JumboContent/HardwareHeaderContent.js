@@ -8,12 +8,12 @@ const useStyles = makeStyles({
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   headerText: {
     color: 'white',
-    paddingTop: '1rem'
-  }
+    paddingTop: '1rem',
+  },
 });
 
 function HardwareInfoHeaderContent({ title, subheading, secondsubheading }) {
@@ -50,12 +50,12 @@ function HardwareInfoHeaderContent({ title, subheading, secondsubheading }) {
 HardwareInfoHeaderContent.propTypes = {
   title: PropTypes.string,
   subheading: PropTypes.string,
-  secondsubheading: PropTypes.string
+  secondsubheading: PropTypes.string,
 };
 
 HardwareInfoHeaderContent.defaultProps = {
   title: '',
   subheading: '',
-  secondsubheading: ''
+  secondsubheading: '',
 };
 export default HardwareInfoHeaderContent;

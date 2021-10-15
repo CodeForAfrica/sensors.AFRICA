@@ -6,23 +6,23 @@ import { makeStyles } from '@material-ui/core/styles';
 import MenuBar from 'components/Header/MenuBar';
 import AboutHeaderContent from 'components/Header/JumboContent/AboutHeaderContent';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   jumbotron: {
     flexGrow: 1,
     backgroundColor: theme.palette.secondary.main,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
-      height: 450
-    }
+      height: 450,
+    },
   },
   link: {
     paddingRight: '0.2rem',
     paddingLeft: '0.2rem',
     color: 'white',
     '&:hover': {
-      color: '#2FB56B'
-    }
-  }
+      color: '#2FB56B',
+    },
+  },
 }));
 
 function AboutHeader(props) {
@@ -46,7 +46,7 @@ function AboutHeader(props) {
             <a href="https://luftdaten.info/" className={classes.link}>
               Luftdaten project
             </a>,
-            '. The initiative was seed-funded by innovateAFRICA and is being incubated by Code for Africa.'
+            '. The initiative was seed-funded by innovateAFRICA and is being incubated by Code for Africa.',
           ]}
         />
       </Grid>

@@ -8,12 +8,12 @@ const useStyles = makeStyles({
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   headerText: {
     color: 'white',
-    paddingBottom: '1rem'
-  }
+    paddingBottom: '1rem',
+  },
 });
 
 function JoinNetworkContent({ title, subheading }) {
@@ -41,11 +41,11 @@ function JoinNetworkContent({ title, subheading }) {
 
 JoinNetworkContent.propTypes = {
   title: PropTypes.string,
-  subheading: PropTypes.string
+  subheading: PropTypes.string,
 };
 JoinNetworkContent.defaultProps = {
   title: '',
-  subheading: ''
+  subheading: '',
 };
 
 export default JoinNetworkContent;

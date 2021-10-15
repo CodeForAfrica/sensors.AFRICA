@@ -6,13 +6,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import HouseholdIcon from 'assets/images/icons/HouseholdIcon.png';
 import AmbientIcon from 'assets/images/icons/AmbientIcon.png';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: 'white',
     flexGrow: 1,
     [theme.breakpoints.up('md')]: {
-      paddingBottom: '3rem'
-    }
+      paddingBottom: '3rem',
+    },
   },
   indoor: {
     color: 'white',
@@ -21,14 +21,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       width: '25rem',
       height: '18.125rem',
-      marginRight: '4.8125rem'
+      marginRight: '4.8125rem',
     },
     [theme.breakpoints.up('lg')]: {
       width: '37.875rem',
       height: '29.75rem',
       marginRight: '1.875rem',
-      padding: '3rem'
-    }
+      padding: '3rem',
+    },
   },
   indoorButton: {
     color: '#F3F3F3',
@@ -38,8 +38,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
       height: '3.5rem',
       paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+      paddingRight: '2rem',
+    },
   },
   outdoor: {
     color: 'white',
@@ -48,14 +48,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       width: '25rem',
       height: '18.125rem',
-      marginLeft: '4.8125rem'
+      marginLeft: '4.8125rem',
     },
     [theme.breakpoints.up('lg')]: {
       width: '37.875rem',
       height: '29.75rem',
       marginLeft: '1.875rem',
-      padding: '3rem'
-    }
+      padding: '3rem',
+    },
   },
   outdoorButton: {
     fontWeight: 800,
@@ -64,19 +64,19 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
       height: '3.5rem',
       paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+      paddingRight: '2rem',
+    },
   },
   buttonLink: {
-    textDecoration: 'none'
+    textDecoration: 'none',
   },
   title: {
     color: 'white',
     [theme.breakpoints.up('lg')]: {
       paddingTop: '1.5rem',
       fontSize: theme.typography.h4.fontSize,
-      fontWeight: theme.typography.h4.fontWeight
-    }
+      fontWeight: theme.typography.h4.fontWeight,
+    },
   },
   caption: {
     color: '#F3F3F3',
@@ -84,25 +84,25 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
       fontSize: theme.typography.subtitle1.fontSize,
       fontWeight: theme.typography.subtitle1.fontWeight,
-      paddingTop: '2rem'
-    }
+      paddingTop: '2rem',
+    },
   },
   cite: {
     color: '#F3F3F3',
     fontStyle: 'normal',
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   },
   cardContent: {
     color: 'white',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   img: {
     height: '5rem',
     width: 'auto',
     [theme.breakpoints.up('lg')]: {
-      height: '100%'
-    }
-  }
+      height: '100%',
+    },
+  },
 }));
 
 function IndoorOutdoor() {

@@ -8,12 +8,12 @@ const useStyles = makeStyles({
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   headerText: {
     color: 'white',
-    paddingBottom: '1rem'
-  }
+    paddingBottom: '1rem',
+  },
 });
 
 function HealthClimateContent({ title }) {
@@ -35,10 +35,10 @@ function HealthClimateContent({ title }) {
 }
 
 HealthClimateContent.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 HealthClimateContent.defaultProps = {
-  title: ''
+  title: '',
 };
 
 export default HealthClimateContent;

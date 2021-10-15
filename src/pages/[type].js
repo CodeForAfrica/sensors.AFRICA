@@ -17,12 +17,12 @@ function SensorTypeHome({ type }) {
 }
 
 SensorTypeHome.propTypes = {
-  type: PropTypes.oneOf(['RADIATION', 'SOUND', 'WATER']).isRequired
+  type: PropTypes.oneOf(['RADIATION', 'SOUND', 'WATER']).isRequired,
 };
 
 export async function getStaticProps({ params: { type } }) {
   return {
-    props: { type: type.toUpperCase() }
+    props: { type: type.toUpperCase() },
   };
 }
 
@@ -31,9 +31,9 @@ export async function getStaticPaths() {
     paths: [
       { params: { type: 'radiation' } },
       { params: { type: 'sound' } },
-      { params: { type: 'water' } }
+      { params: { type: 'water' } },
     ],
-    fallback: false
+    fallback: false,
   };
 }
 

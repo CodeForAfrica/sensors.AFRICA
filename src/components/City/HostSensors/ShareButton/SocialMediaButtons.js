@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   facebook: { backgroundColor: '#3b5998', margin: '0.2rem' },
   instagram: { backgroundColor: '#8a3ab9', margin: '0.2rem' },
   medium: { backgroundColor: '#00ab6c', margin: '0.2rem' },
-  fa: { color: 'white', margin: '0.2rem' }
+  fa: { color: 'white', margin: '0.2rem' },
 });
 
 function SocialMediaButtons({ city }) {
@@ -89,7 +89,7 @@ function SocialMediaButtons({ city }) {
 SocialMediaButtons.propTypes = {
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    twitterHandle: PropTypes.string.isRequired
-  }).isRequired
+    twitterHandle: PropTypes.string.isRequired,
+  }).isRequired,
 };
 export default SocialMediaButtons;

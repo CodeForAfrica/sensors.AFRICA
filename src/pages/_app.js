@@ -19,7 +19,7 @@ import * as gtag from 'lib/gtag';
 
 library.add(fab, faSearch);
 
-Router.events.on('routeChangeComplete', url => gtag.pageview(url));
+Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
 
 export default class MainApp extends App {
   componentDidMount() {

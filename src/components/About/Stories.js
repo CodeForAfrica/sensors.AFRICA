@@ -5,30 +5,30 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import background from 'assets/images/background/bgstories.jpg';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: '2rem',
     height: 350,
     backgroundImage: `url('${background}')`,
     backgroundSize: 'cover',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
   },
   buttonContainer: {
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   buttonLink: {
-    textDecoration: 'none'
+    textDecoration: 'none',
   },
   button: {
     color: theme.palette.primary.dark,
     fontWeight: 900,
-    backgroundColor: '#fff'
-  }
+    backgroundColor: '#fff',
+  },
 }));
 
 function Stories(props) {

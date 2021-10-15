@@ -11,8 +11,8 @@ const useStyles = makeStyles({
     backgroundColor: 'rgb(95, 191, 130)',
     height: '100vh',
     maxWidth: '100%',
-    width: '100vw'
-  }
+    width: '100vw',
+  },
 });
 
 function AirGauge({ data, ...props }) {
@@ -31,8 +31,8 @@ function AirGauge({ data, ...props }) {
 AirGauge.propTypes = {
   data: PropTypes.shape({
     average: PropTypes.string,
-    averageDescription: PropTypes.string
-  }).isRequired
+    averageDescription: PropTypes.string,
+  }).isRequired,
 };
 
 export default AirGauge;

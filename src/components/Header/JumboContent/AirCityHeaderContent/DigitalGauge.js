@@ -6,23 +6,23 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   dial: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
   measurement: {
     width: '16rem',
     padding: '0.75rem 0',
     color: 'white',
     textAlign: 'center',
-    borderBottom: '1px solid white'
+    borderBottom: '1px solid white',
   },
   measurementUnit: {
     width: '16rem',
     color: 'white',
     textAlign: 'center',
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
   },
   safeLevel: {
     width: '16rem',
@@ -30,8 +30,8 @@ const useStyles = makeStyles({
     color: 'white',
     textAlign: 'center',
     textTransform: 'uppercase',
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 function DigitalGauge({ airPollMeasurement, airPollDescription }) {
@@ -84,7 +84,7 @@ function DigitalGauge({ airPollMeasurement, airPollDescription }) {
 
 DigitalGauge.propTypes = {
   airPollMeasurement: PropTypes.string.isRequired,
-  airPollDescription: PropTypes.string.isRequired
+  airPollDescription: PropTypes.string.isRequired,
 };
 
 export default DigitalGauge;

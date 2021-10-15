@@ -85,7 +85,7 @@ function Staff(props) {
       <Grid item xs={12} className={classes.staffRoot}>
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia title="Constant">
+            <CardMedia>
               <img
                 src={constant}
                 alt="Constant"
@@ -110,7 +110,7 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia title="Kirah">
+            <CardMedia>
               <img src={kirah} alt="Kirah" className={classes.cardMedia} />
             </CardMedia>
             <CardContent>
@@ -131,7 +131,7 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia title="Jack">
+            <CardMedia>
               <img src={jack} alt="Jack" className={classes.cardMedia} />
             </CardMedia>
             <CardContent>
@@ -155,7 +155,7 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia title="Gideon">
+            <CardMedia>
               <img src={gideon} alt="Gideon" className={classes.cardMedia} />
             </CardMedia>
             <CardContent>

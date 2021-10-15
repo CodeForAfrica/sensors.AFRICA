@@ -9,7 +9,7 @@ import TestQuality from 'components/Landing/TestQuality';
 
 import bglanding from 'assets/images/background/bglanding.jpg';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     textAlign: 'center',
@@ -17,20 +17,20 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     [theme.breakpoints.up('md')]: {
-      height: '100vh'
-    }
+      height: '100vh',
+    },
   },
   intro: {
     color: 'white',
     textAlign: 'center',
     textTransform: 'none',
     paddingTop: '1rem',
-    lineHeight: '3.5rem'
+    lineHeight: '3.5rem',
   },
   img: {
     height: '8rem',
-    maxWidth: '100%'
-  }
+    maxWidth: '100%',
+  },
 }));
 
 function Hero() {

@@ -6,21 +6,21 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import CityGauge from 'components/Header/JumboContent/AirCityHeaderContent/CityGauge';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   gaugeContainer: {
     marginTop: '6rem',
     [theme.breakpoints.up('md')]: {
-      marginTop: '1.875rem'
-    }
+      marginTop: '1.875rem',
+    },
   },
   city: {
     [theme.breakpoints.only('xs')]: {
-      fontSize: theme.typography.h6.fontSize
-    }
-  }
+      fontSize: theme.typography.h6.fontSize,
+    },
+  },
 }));
 
 function AirCityHeaderContent({ airPol, airPolDescription, city }) {
@@ -66,7 +66,7 @@ AirCityHeaderContent.propTypes = {
   city: PropTypes.shape({}).isRequired,
   classes: PropTypes.shape({}).isRequired,
   airPol: PropTypes.string.isRequired,
-  airPolDescription: PropTypes.string.isRequired
+  airPolDescription: PropTypes.string.isRequired,
 };
 
 export default AirCityHeaderContent;

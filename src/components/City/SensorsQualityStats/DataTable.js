@@ -9,60 +9,60 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   table: {
     width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '59.625rem',
       borderRight: '1px solid rgba(0,0,0,0.1)',
-      borderLeft: '1px solid rgba(0,0,0,0.1)'
+      borderLeft: '1px solid rgba(0,0,0,0.1)',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
-    }
+      width: '79.5rem',
+    },
   },
   rowHeight: {
-    height: 80
+    height: 80,
   },
   tableCell: {
     [theme.breakpoints.only('xs')]: {
-      padding: 4
+      padding: 4,
     },
-    height: 80
+    height: 80,
   },
   lastRowTableCell: {
     [theme.breakpoints.only('xs')]: {
-      padding: 4
+      padding: 4,
     },
     height: 80,
-    borderBottom: '0px transparent'
+    borderBottom: '0px transparent',
   },
   lastRow: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
   typography: {
     [theme.breakpoints.only('xs')]: {
-      width: 80
+      width: 80,
     },
     textAlign: 'center',
     paddingTop: '1.5rem',
-    paddingBottom: '1.5rem'
+    paddingBottom: '1.5rem',
   },
   subheading: {
     color: '#424143',
     fontWeight: 'bold',
-    fontSize: theme.typography.fontSize
+    fontSize: theme.typography.fontSize,
   },
   display2: {
     color: theme.palette.primary.dark,
     fontSize: theme.typography.h5.fontSize,
     [theme.breakpoints.up('md')]: {
-      fontSize: theme.typography.h3.fontSize
-    }
+      fontSize: theme.typography.h3.fontSize,
+    },
   },
   small: {
     color: theme.palette.primary.light,
@@ -73,12 +73,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       marginTop: '1rem',
       marginLeft: '0.5rem',
-      fontSize: '1rem'
-    }
+      fontSize: '1rem',
+    },
   },
   data: {
-    marginBottom: '0.6rem'
-  }
+    marginBottom: '0.6rem',
+  },
 }));
 
 function DataValue({ children, value }) {
@@ -101,12 +101,12 @@ DataValue.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-    PropTypes.string
+    PropTypes.string,
   ]).isRequired,
-  value: PropTypes.string
+  value: PropTypes.string,
 };
 DataValue.defaultProps = {
-  value: '--'
+  value: '--',
 };
 
 function PMValue({ value }) {
@@ -121,7 +121,7 @@ function PMValue({ value }) {
   );
 }
 PMValue.propTypes = {
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
 
 function HumidityValue({ value }) {
@@ -133,7 +133,7 @@ function HumidityValue({ value }) {
   );
 }
 HumidityValue.propTypes = {
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
 
 function TemperatureValue({ value }) {
@@ -145,14 +145,14 @@ function TemperatureValue({ value }) {
   );
 }
 TemperatureValue.propTypes = {
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
 
 function DataTable({
   cityHumidityStats,
   cityP2Stats,
   cityTemperatureStats,
-  width
+  width,
 }) {
   const classes = useStyles();
   const TEMPERATURE = width === 'xs' ? 'TEMP' : 'TEMPERATURE';
@@ -366,7 +366,7 @@ DataTable.propTypes = {
   cityHumidityStats: PropTypes.shape({}).isRequired,
   cityTemperatureStats: PropTypes.shape({}).isRequired,
   cityP2Stats: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
 };
 
 export default withWidth()(DataTable);

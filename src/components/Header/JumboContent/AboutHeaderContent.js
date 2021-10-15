@@ -9,13 +9,13 @@ const useStyles = makeStyles({
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   headerText: {
     color: 'white',
     paddingBottom: '1rem',
-    textTransform: 'none'
-  }
+    textTransform: 'none',
+  },
 });
 
 function AboutHeaderContent({ title, subheading }) {
@@ -43,10 +43,10 @@ function AboutHeaderContent({ title, subheading }) {
 
 AboutHeaderContent.propTypes = {
   title: PropTypes.string,
-  subheading: PropTypes.string
+  subheading: PropTypes.string,
 };
 AboutHeaderContent.defaultProps = {
   title: '',
-  subheading: ''
+  subheading: '',
 };
 export default AboutHeaderContent;

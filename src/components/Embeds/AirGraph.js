@@ -8,7 +8,7 @@ function AirGraph({ data }) {
 }
 
 AirGraph.propTypes = {
-  data: PropTypes.shape({}).isRequired
+  data: PropTypes.shape({}).isRequired,
 };
 
 export default AirGraph;

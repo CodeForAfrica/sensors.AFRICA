@@ -10,16 +10,16 @@ const useStyles = makeStyles({
   root: {
     paddingTop: '4rem',
     backgroundColor: 'white',
-    paddingBottom: '4rem'
+    paddingBottom: '4rem',
   },
   headline: {
     textAlign: 'center',
-    marginBottom: '2rem'
+    marginBottom: '2rem',
   },
   headlineTitle: {
     textAlign: 'center',
-    paddingBottom: '1rem'
-  }
+    paddingBottom: '1rem',
+  },
 });
 
 function Showcase() {

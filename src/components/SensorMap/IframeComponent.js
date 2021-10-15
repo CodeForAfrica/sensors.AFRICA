@@ -7,8 +7,8 @@ const useStyles = makeStyles({
   fullHeight: {
     display: 'inline-block',
     margin: '0 auto',
-    backgroundColor: 'white'
-  }
+    backgroundColor: 'white',
+  },
 });
 
 function KenyaMap({ title, src, height, width, frameBorder, scrolling }) {
@@ -33,13 +33,13 @@ KenyaMap.propTypes = {
   height: PropTypes.string,
   width: PropTypes.string,
   frameBorder: PropTypes.string,
-  scrolling: PropTypes.string
+  scrolling: PropTypes.string,
 };
 
 KenyaMap.defaultProps = {
   height: '',
   width: '',
   frameBorder: '0',
-  scrolling: 'auto'
+  scrolling: 'auto',
 };
 export default KenyaMap;

@@ -5,27 +5,27 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
-    padding: '2rem'
+    padding: '2rem',
   },
   mainTitle: {
     color: theme.palette.secondary.main,
     textAlign: 'center',
     fontSize: theme.typography.h6.fontSize,
-    paddingBottom: theme.typography.h6.fontSize
+    paddingBottom: theme.typography.h6.fontSize,
   },
   subTitle: {
     textAlign: 'center',
-    fontWeight: 600
+    fontWeight: 600,
   },
   body: {
-    paddingTop: '1.5rem'
+    paddingTop: '1.5rem',
   },
   bodyCopy: {
-    textAlign: 'left'
-  }
+    textAlign: 'left',
+  },
 }));
 
 function Content({ title, description, backgroundColor }) {
@@ -55,11 +55,11 @@ function Content({ title, description, backgroundColor }) {
 Content.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string
+  backgroundColor: PropTypes.string,
 };
 
 Content.defaultProps = {
-  backgroundColor: '#F3F3F3'
+  backgroundColor: '#F3F3F3',
 };
 
 export default Content;

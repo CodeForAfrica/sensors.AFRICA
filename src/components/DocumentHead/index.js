@@ -7,8 +7,8 @@ import PageHeads, { URLS } from 'components/DocumentHead/PageHeads';
 import Favicon from 'components/Favicon';
 
 function DocumentHead({ url }) {
-  const matchUrl = obj => obj.url === url;
-  const matchDefault = obj => obj.url === '/';
+  const matchUrl = (obj) => obj.url === url;
+  const matchDefault = (obj) => obj.url === '/';
   const head =
     (url && PageHeads.find(matchUrl)) || PageHeads.find(matchDefault);
 
@@ -23,11 +23,11 @@ function DocumentHead({ url }) {
 }
 
 DocumentHead.propTypes = {
-  url: PropTypes.string
+  url: PropTypes.string,
 };
 
 DocumentHead.defaultProps = {
-  url: null
+  url: null,
 };
 
 export { URLS };

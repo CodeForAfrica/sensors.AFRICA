@@ -7,15 +7,15 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AirCityHeaderContent from 'components/Header/JumboContent/AirCityHeaderContent';
 import CityMenuBar from 'components/City/Header/CityMenuBar';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   jumbotron: {
     flexGrow: 1,
     borderRadius: 'none',
     height: 450,
     [theme.breakpoints.up('md')]: {
-      height: 646
-    }
-  }
+      height: 646,
+    },
+  },
 }));
 
 function CityHeader({
@@ -54,7 +54,7 @@ CityHeader.propTypes = {
   aqColor: PropTypes.string.isRequired,
   city: PropTypes.shape({}).isRequired,
   handleSearch: PropTypes.func.isRequired,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
 };
 
 export default CityHeader;

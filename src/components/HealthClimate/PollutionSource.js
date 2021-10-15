@@ -3,33 +3,33 @@ import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
-    padding: '2rem'
+    padding: '2rem',
   },
   mainTitle: {
     color: theme.palette.primary.light,
     textAlign: 'center',
-    fontSize: theme.typography.h6.fontSize
+    fontSize: theme.typography.h6.fontSize,
   },
   subTitle: {
     textAlign: 'center',
-    fontWeight: 600
+    fontWeight: 600,
   },
   body: {
-    paddingTop: '1.5rem'
+    paddingTop: '1.5rem',
   },
   bodyCopy: {
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 }));
 function PollutionSource({
   title,
   sources,
   impact,
   reduction,
-  backgroundColor
+  backgroundColor,
 }) {
   const classes = useStyles();
   return (
@@ -87,11 +87,11 @@ PollutionSource.propTypes = {
   sources: PropTypes.string.isRequired,
   impact: PropTypes.string.isRequired,
   reduction: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string
+  backgroundColor: PropTypes.string,
 };
 
 PollutionSource.defaultProps = {
-  backgroundColor: '#F3F3F3'
+  backgroundColor: '#F3F3F3',
 };
 
 export default PollutionSource;

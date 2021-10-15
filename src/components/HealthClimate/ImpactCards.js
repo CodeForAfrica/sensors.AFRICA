@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 let lightBackgroundColor;
 let darkBackgroundColor;
 
-const styles = theme => {
+const styles = (theme) => {
   lightBackgroundColor = theme.palette.primary.light;
   darkBackgroundColor = theme.palette.primary.dark;
 
@@ -18,20 +18,20 @@ const styles = theme => {
       [theme.breakpoints.up('md')]: {
         width: '25rem',
         height: '36.75rem',
-        padding: '2rem'
+        padding: '2rem',
       },
       [theme.breakpoints.up('lg')]: {
         width: '37.875rem',
         height: '36.75rem',
-        padding: '3rem'
-      }
+        padding: '3rem',
+      },
     },
     img: {
       height: '5rem',
       maxWidth: '100%',
       [theme.breakpoints.up('md')]: {
-        height: '100%'
-      }
+        height: '100%',
+      },
     },
     title: {
       color: '#fff',
@@ -40,8 +40,8 @@ const styles = theme => {
       paddingBottom: '1.5rem',
       [theme.breakpoints.up('lg')]: {
         fontSize: theme.typography.h4.fontSize,
-        fontWeight: theme.typography.h4.fontWeight
-      }
+        fontWeight: theme.typography.h4.fontWeight,
+      },
     },
     caption: {
       textAlign: 'center',
@@ -49,9 +49,9 @@ const styles = theme => {
       paddingBottom: '1rem',
       [theme.breakpoints.up('lg')]: {
         fontSize: theme.typography.subtitle1.fontSize,
-        fontWeight: theme.typography.subtitle1.fontWeight
-      }
-    }
+        fontWeight: theme.typography.subtitle1.fontWeight,
+      },
+    },
   };
 };
 
@@ -76,11 +76,11 @@ PollutionBurden.propTypes = {
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   impact: PropTypes.string.isRequired,
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
 };
 
 PollutionBurden.defaultProps = {
-  dark: false
+  dark: false,
 };
 
 export default withStyles(styles)(PollutionBurden);

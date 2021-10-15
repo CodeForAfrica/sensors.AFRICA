@@ -23,7 +23,7 @@ function ButtonLink(props) {
   const router = useRouter();
 
   const className = classNames(classNameProps, {
-    [activeClassName]: router.pathname === href && activeClassName
+    [activeClassName]: router.pathname === href && activeClassName,
   });
 
   if (naked) {
@@ -56,7 +56,7 @@ ButtonLink.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   naked: PropTypes.bool,
   onClick: PropTypes.func,
-  prefetch: PropTypes.bool
+  prefetch: PropTypes.bool,
 };
 
 ButtonLink.defaultProps = {
@@ -67,7 +67,7 @@ ButtonLink.defaultProps = {
   innerRef: undefined,
   naked: undefined,
   onClick: undefined,
-  prefetch: undefined
+  prefetch: undefined,
 };
 
 export default React.forwardRef((props, ref) => (

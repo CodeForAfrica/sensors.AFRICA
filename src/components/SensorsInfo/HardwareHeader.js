@@ -5,16 +5,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import HardwareHeaderContent from 'components/Header/JumboContent/HardwareHeaderContent';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   jumbotron: {
     paddingBottom: '2rem',
     backgroundColor: theme.palette.primary.light,
     borderRadius: 'none',
     [theme.breakpoints.up('md')]: {
       paddingTop: '2rem',
-      height: 450
-    }
-  }
+      height: 450,
+    },
+  },
 }));
 
 function HardwareHeader() {

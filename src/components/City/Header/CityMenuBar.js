@@ -17,7 +17,7 @@ function CityMenuBar({ handleSearch }) {
 }
 
 CityMenuBar.propTypes = {
-  handleSearch: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default CityMenuBar;

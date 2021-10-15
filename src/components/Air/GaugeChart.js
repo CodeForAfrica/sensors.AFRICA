@@ -5,32 +5,32 @@ import classNames from 'classnames';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'block',
     maxWidth: '100%',
-    margin: 'auto'
+    margin: 'auto',
   },
   background: {
-    stroke: 'white'
+    stroke: 'white',
   },
   stroke: {
     fill: 'none',
     stroke: theme.palette.primary.light,
-    strokeWidth: '7.4'
+    strokeWidth: '7.4',
   },
   readingBackground: {
     fill: 'none',
     stroke: 'white',
     // anything less than readingStroke's strokeWidth to make sure there isn't
     // any visible white gap between the two
-    strokeWidth: '4.5'
+    strokeWidth: '4.5',
   },
   readingStroke: {
     fill: 'none',
     stroke: theme.palette.primary.light,
     strokeWidth: '4.8',
-    animation: 'progress 1s ease-out forwards'
+    animation: 'progress 1s ease-out forwards',
   },
   label: {
     fill: '#666',
@@ -39,16 +39,16 @@ const useStyles = makeStyles(theme => ({
     fontFamily: theme.typography.fontFamily,
     fontWeight: 600,
     fontSize: '0.35em',
-    textAnchor: 'middle'
+    textAnchor: 'middle',
   },
   '@keyframes progress': {
     from: {
-      strokeDashoffset: '100'
+      strokeDashoffset: '100',
     },
     to: {
-      strokeDashoffset: '200'
-    }
-  }
+      strokeDashoffset: '200',
+    },
+  },
 }));
 
 function GaugeChart({ percentage, ...props }) {
@@ -86,7 +86,7 @@ function GaugeChart({ percentage, ...props }) {
 }
 
 GaugeChart.propTypes = {
-  percentage: PropTypes.number.isRequired
+  percentage: PropTypes.number.isRequired,
 };
 
 export default GaugeChart;

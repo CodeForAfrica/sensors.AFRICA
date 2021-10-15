@@ -6,14 +6,14 @@ import { withStyles } from '@material-ui/core/styles';
 
 import HamburgerMenu from 'components/Hambuger/HambugerMenu';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
     position: 'relative',
     [theme.breakpoints.up('md')]: {
       paddingRight: '8%',
-      paddingLeft: '8%'
-    }
+      paddingLeft: '8%',
+    },
   },
   children: {
     [theme.breakpoints.only('xs')]: {
@@ -21,16 +21,16 @@ const styles = theme => ({
       top: '8rem',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      zIndex: 3
-    }
+      zIndex: 3,
+    },
   },
   icon: {
     color: 'white',
-    paddingTop: '3%'
+    paddingTop: '3%',
   },
   iconContainer: {
     // paddingTop: '2rem'
-  }
+  },
 });
 
 class MenuBar extends React.Component {
@@ -42,7 +42,7 @@ class MenuBar extends React.Component {
   }
 
   handleToggle() {
-    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
+    this.setState((prevState) => ({ menuOpen: !prevState.menuOpen }));
   }
 
   render() {
@@ -72,11 +72,11 @@ class MenuBar extends React.Component {
 }
 
 MenuBar.propTypes = {
-  showMenu: PropTypes.bool
+  showMenu: PropTypes.bool,
 };
 
 MenuBar.defaultProps = {
-  showMenu: true
+  showMenu: true,
 };
 
 export default withStyles(styles)(MenuBar);

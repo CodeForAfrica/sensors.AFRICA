@@ -7,25 +7,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     color: 'white',
     backgroundColor: theme.palette.secondary.main,
     paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(2)
+    paddingBottom: theme.spacing(2),
   },
   fa: {
     transition: 'all .5s ease-in-out',
     padding: theme.spacing(0.5),
     '&:hover': {
       transform: 'scale(1.3)',
-      color: '#f3f3f3'
-    }
+      color: '#f3f3f3',
+    },
   },
   links: {
-    color: 'white'
-  }
+    color: 'white',
+  },
 }));
 
 function SocialMedia({ color }) {
@@ -104,11 +104,11 @@ function SocialMedia({ color }) {
 }
 
 SocialMedia.propTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 SocialMedia.defaultProps = {
-  color: '#fff'
+  color: '#fff',
 };
 
 export default SocialMedia;

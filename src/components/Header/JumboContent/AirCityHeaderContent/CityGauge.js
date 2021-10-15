@@ -20,7 +20,7 @@ function CityGauge({ airPollMeasurement, airPollDescription, width }) {
 CityGauge.propTypes = {
   airPollMeasurement: PropTypes.string.isRequired,
   airPollDescription: PropTypes.string.isRequired,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
 };
 
 export default withWidth()(CityGauge);

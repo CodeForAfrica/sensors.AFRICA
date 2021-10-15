@@ -7,21 +7,21 @@ import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from 'victory';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   chartContainer: {
     textAlign: 'center',
     marginBottom: '3rem',
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '59.625rem'
+      width: '59.625rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
-    }
-  }
+      width: '79.5rem',
+    },
+  },
 }));
 
 function QualityStatsGraph({ data, width }) {
@@ -57,11 +57,11 @@ function QualityStatsGraph({ data, width }) {
               style={{
                 axis: {
                   stroke: 'rgba(0,0,0,0.1)',
-                  strokeWidth: 1
+                  strokeWidth: 1,
                 },
                 grid: {
                   stroke: 'rgba(0,0,0,0.1)',
-                  strokeDasharray: ''
+                  strokeDasharray: '',
                 },
                 ticks: {
                   // padding: 20
@@ -69,8 +69,8 @@ function QualityStatsGraph({ data, width }) {
                 tickLabels: {
                   fontFamily: '"Montserrat", "sans-serif"',
                   fontWeight: 'bold',
-                  angle: labelAngle
-                }
+                  angle: labelAngle,
+                },
               }}
             />
             <VictoryAxis
@@ -78,16 +78,16 @@ function QualityStatsGraph({ data, width }) {
               style={{
                 axis: {
                   stroke: 'rgba(0,0,0,0.1)',
-                  strokeWidth: 1
+                  strokeWidth: 1,
                 },
                 grid: {
                   stroke: 'rgba(0,0,0,0.1)',
-                  strokeDasharray: ''
+                  strokeDasharray: '',
                 },
                 tickLabels: {
                   fontFamily: '"Montserrat", "sans-serif"',
-                  fontWeight: 'bold'
-                }
+                  fontWeight: 'bold',
+                },
               }}
               fixLabelOverlap
             />
@@ -96,7 +96,7 @@ function QualityStatsGraph({ data, width }) {
               x="date"
               y="averagePM"
               style={{
-                data: { stroke: '#1a995b' }
+                data: { stroke: '#1a995b' },
               }}
             />
           </VictoryChart>
@@ -108,7 +108,7 @@ function QualityStatsGraph({ data, width }) {
 
 QualityStatsGraph.propTypes = {
   data: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
 };
 
 export default withWidth()(QualityStatsGraph);

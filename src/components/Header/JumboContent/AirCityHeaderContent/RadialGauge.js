@@ -7,25 +7,25 @@ import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import NeedlePointer from 'components/Header/JumboContent/AirCityHeaderContent/NeedlePointer';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     position: 'relative',
     paddingTop: '36px',
     width: 'inherit',
-    height: 'inherit'
+    height: 'inherit',
   },
   gaugeDescription: {
-    position: 'absolute'
+    position: 'absolute',
   },
   gaugeDescGuideline: {
     [theme.breakpoints.between('sm', 'md')]: {
       width: '10rem',
       marginLeft: '15%',
-      padding: '40px 10px'
+      padding: '40px 10px',
     },
     [theme.breakpoints.down('sm')]: {
       marginTop: '0px',
-      padding: '10px 10px'
+      padding: '10px 10px',
     },
     color: 'white',
     fontStyle: 'italic',
@@ -34,61 +34,61 @@ const styles = theme => ({
     marginLeft: '10%',
     padding: '40px 15px',
     marginTop: '-30%',
-    border: '1px white solid'
+    border: '1px white solid',
   },
   gaugeBoxWhoTitle: {
-    display: 'block'
+    display: 'block',
   },
   gaugeDial: {
-    position: 'absolute'
+    position: 'absolute',
   },
   gaugeWhoGuidelineText: {
     font: `bold ${theme.typography.body1.fontSize} ${theme.typography.h6.fontFamily}`,
-    fill: 'white'
+    fill: 'white',
   },
   gaugeNeedleItem: {
     width: '900px',
     height: '500px',
-    position: 'absolute'
+    position: 'absolute',
   },
 
   gaugeArc: {
     [theme.breakpoints.down('sm')]: {
       width: '400px',
-      height: '200px'
+      height: '200px',
     },
     width: '600px',
-    height: '300px'
+    height: '300px',
   },
   pointer: {
-    fill: 'rgb(20, 74, 61)'
+    fill: 'rgb(20, 74, 61)',
   },
   gaugeCircle: {
     width: 350,
     height: 175,
     top: 208,
-    position: 'absolute'
+    position: 'absolute',
   },
   gaugeBigText: {
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h6.fontSize,
     fontWeight: 700,
     fill: theme.palette.primary.dark,
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
   },
   gaugeSmallText: {
     fontSize: theme.typography.caption.fontSize,
     fontFamily: theme.typography.caption.fontFamily,
     fontWeight: theme.typography.caption.fontWeight,
-    fill: theme.palette.primary.dark
+    fill: theme.palette.primary.dark,
   },
   gaugeDescUnits: {
     color: 'white',
     textAlign: 'center',
     width: '250px',
     padding: '40px 15px',
-    marginTop: '-30%'
-  }
+    marginTop: '-30%',
+  },
 });
 
 const colors = [
@@ -107,7 +107,7 @@ const colors = [
   '#CF4B34',
   '#CF4B34',
   '#B91F27',
-  '#B72024'
+  '#B72024',
 ];
 
 const data = [
@@ -126,7 +126,7 @@ const data = [
   { x: 60, y: 150 },
   { x: 90, y: 150 },
   { x: 120, y: 150 },
-  { x: '150 +', y: 150 }
+  { x: '150 +', y: 150 },
 ];
 
 class RadialGauge extends Component {
@@ -221,8 +221,8 @@ class RadialGauge extends Component {
                     labels: {
                       display: 'inline-block',
                       fill: 'white',
-                      fontFamily: '"Montserrat", "sans-serif"'
-                    }
+                      fontFamily: '"Montserrat", "sans-serif"',
+                    },
                   }}
                 />
               </g>
@@ -338,7 +338,7 @@ class RadialGauge extends Component {
 
 RadialGauge.propTypes = {
   airPollMeasurement: PropTypes.string.isRequired,
-  airPollDescription: PropTypes.string.isRequired
+  airPollDescription: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(RadialGauge);

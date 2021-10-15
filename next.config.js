@@ -10,5 +10,5 @@ module.exports = withImages({
       config.externals = ['tls', 'net', 'fs'];
     }
     return config;
-  }
+  },
 });

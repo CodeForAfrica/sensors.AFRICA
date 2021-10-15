@@ -8,13 +8,13 @@ const useStyles = makeStyles({
   titleSection: {
     flexGrow: 1,
     textAlign: 'center',
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   headerText: {
     color: 'white',
     paddingBottom: '1rem',
-    textTransform: 'none'
-  }
+    textTransform: 'none',
+  },
 });
 
 function DataArchivesHeaderContent({ title, subheading }) {
@@ -42,11 +42,11 @@ function DataArchivesHeaderContent({ title, subheading }) {
 
 DataArchivesHeaderContent.propTypes = {
   title: PropTypes.string,
-  subheading: PropTypes.string
+  subheading: PropTypes.string,
 };
 DataArchivesHeaderContent.defaultProps = {
   title: '',
-  subheading: ''
+  subheading: '',
 };
 
 export default DataArchivesHeaderContent;

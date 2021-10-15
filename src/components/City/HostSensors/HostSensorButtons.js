@@ -8,18 +8,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import HostSensorButton from 'components/City/HostSensors/HostSensorButton';
 import ShareButton from 'components/City/HostSensors/ShareButton';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   button: {
     margin: '0.25rem 1rem',
     width: '100%',
     [theme.breakpoints.up('md')]: {
       margin: 0,
-      width: 'auto'
-    }
+      width: 'auto',
+    },
   },
   buttonLink: {
     display: 'block',
@@ -27,9 +27,9 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'inline-block',
-      width: 'auto'
-    }
-  }
+      width: 'auto',
+    },
+  },
 }));
 
 function HostSensorButtons({ city }) {
@@ -72,7 +72,7 @@ function HostSensorButtons({ city }) {
 }
 
 HostSensorButtons.propTypes = {
-  city: PropTypes.shape({}).isRequired
+  city: PropTypes.shape({}).isRequired,
 };
 
 export default HostSensorButtons;

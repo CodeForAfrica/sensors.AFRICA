@@ -5,19 +5,19 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Gauge from './Gauge';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   svgContainer: {
     paddingTop: '3rem',
     paddingBottom: '2rem',
     width: '100vw',
     margin: '0 auto',
     [theme.breakpoints.up('md')]: {
-      width: '59.625rem'
+      width: '59.625rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
-    }
-  }
+      width: '79.5rem',
+    },
+  },
 }));
 
 function HealthEffects() {

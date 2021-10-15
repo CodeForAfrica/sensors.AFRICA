@@ -5,17 +5,17 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Proptypes from 'prop-types';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   pointer: { fill: 'rgb(20, 74, 61)' },
   gaugeBigText: {
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h6.fontSize,
     fontWeight: 700,
-    fill: theme.palette.primary.dark
+    fill: theme.palette.primary.dark,
   },
   hidden: {
-    visibility: 'hidden'
-  }
+    visibility: 'hidden',
+  },
 }));
 
 function NeedlePointer({ hidden, measurement }) {
@@ -43,8 +43,10 @@ function NeedlePointer({ hidden, measurement }) {
       />
       <text
         transform="scale(1.2)"
-        x={`${-275 * Math.cos(((rotate + 90) * Math.PI) / 180) +
-          (measurement > 55 ? 5 : -2.5)}`}
+        x={`${
+          -275 * Math.cos(((rotate + 90) * Math.PI) / 180) +
+          (measurement > 55 ? 5 : -2.5)
+        }`}
         y={`${-275 * Math.sin(((rotate + 90) * Math.PI) / 180)}`}
         textAnchor={
           measurement > 25 && measurement < 55
@@ -64,7 +66,7 @@ function NeedlePointer({ hidden, measurement }) {
 
 NeedlePointer.propTypes = {
   hidden: Proptypes.bool.isRequired,
-  measurement: Proptypes.number.isRequired
+  measurement: Proptypes.number.isRequired,
 };
 
 export default NeedlePointer;

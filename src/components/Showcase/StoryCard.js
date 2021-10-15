@@ -5,11 +5,11 @@ import {
   Card,
   CardActionArea,
   CardMedia,
-  CardContent
+  CardContent,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100vw',
     height: '100%',
@@ -19,35 +19,35 @@ const useStyles = makeStyles(theme => ({
     opacity: 0.9,
     '&:hover': {
       opacity: 1,
-      backgroundColor: '#fff'
+      backgroundColor: '#fff',
     },
     [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+      width: '19.875rem',
     },
     [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+      width: '26.5rem',
+    },
   },
   media: {
     height: 0,
     paddingTop: '56.25%',
-    width: '100%'
+    width: '100%',
   },
   cardLink: {
-    textDecoration: 'none'
+    textDecoration: 'none',
   },
   overline: {
     color: '#c7c7c7',
     opacity: '0.5',
     fontSize: '14px',
-    paddingTop: '1rem'
+    paddingTop: '1rem',
   },
   body: {
-    color: theme.typography.h5.color
+    color: theme.typography.h5.color,
   },
   bodyArea: {
-    paddingTop: '2rem'
-  }
+    paddingTop: '2rem',
+  },
 }));
 
 function StoryCard({ story }) {
