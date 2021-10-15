@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Card,
   CardActionArea,
-  CardMedia,
   Grid,
   Typography,
   CardContent,
@@ -85,13 +84,7 @@ function Staff(props) {
       <Grid item xs={12} className={classes.staffRoot}>
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia>
-              <img
-                src={constant}
-                alt="Constant"
-                className={classes.cardMedia}
-              />
-            </CardMedia>
+            <img src={constant} alt="Constant" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 CONSTANT CAP
@@ -110,9 +103,7 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia>
-              <img src={kirah} alt="Kirah" className={classes.cardMedia} />
-            </CardMedia>
+            <img src={kirah} alt="Kirah" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 WARUKIRA THEURI
@@ -131,9 +122,7 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia>
-              <img src={jack} alt="Jack" className={classes.cardMedia} />
-            </CardMedia>
+            <img src={jack} alt="Jack" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 JACK MCLEANS
@@ -155,9 +144,7 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia>
-              <img src={gideon} alt="Gideon" className={classes.cardMedia} />
-            </CardMedia>
+            <img src={gideon} alt="Gideon" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 GIDEON MAINA
