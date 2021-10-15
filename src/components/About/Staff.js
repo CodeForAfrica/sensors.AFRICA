@@ -44,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
     objectFit: 'fit',
     maxWidth: '20.75rem',
     margin: 'auto',
+    overflow: 'hidden',
+    backgroundSize: 'contain',
   },
   carContent: {
     padding: 0,

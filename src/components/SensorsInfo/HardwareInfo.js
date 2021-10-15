@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import SDS011 from 'assets/images/sensors/sensor1.jpg';
 import DHT22 from 'assets/images/sensors/DHT22.jpeg';
+/* import GSMSIM800H from 'assets/images/sensors/GSMSIM800H.jpeg';// CHECK FOR THIS IMAGE =>  */
 import GSMSIM800L from 'assets/images/sensors/GSMSIM800H.jpeg';
 import NODEMCU from 'assets/images/sensors/NODEMCU.jpeg';
 import SIGFOX from 'assets/images/sensors/SIGFOX.jpeg';
@@ -126,12 +127,7 @@ function HardwareInfo() {
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.titleSection}>
-            <img
-              src={DHT22}
-              alt="DHT22"
-              width="450px"
-              className={classes.img}
-            />
+            <img src={DHT22} alt="DHT22" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               DHT22
             </Typography>
