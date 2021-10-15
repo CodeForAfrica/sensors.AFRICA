@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import jack from 'assets/images/team/jack.jpeg';
 import kirah from 'assets/images/team/kirah.jpeg';
-import constant from 'assets/images/team/constant.jpeg';
+import constant from 'assets/images/team/constant.jpg';
 import gideon from 'assets/images/team/gideon.jpeg';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,9 +25,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   card: {
-    // height: 200,
     width: '100%',
-    // margin: theme.spacing.unit * 3,
     backgroundColor: '#fff',
     [theme.breakpoints.up('sm')]: {
       marginLeft: '0.1rem',
@@ -42,8 +40,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardMedia: {
-    height: 250,
-    objectFit: 'cover',
+    height: 300, // To fit all image sizes
+    width: '100%',
+    objectFit: 'fit',
     maxWidth: '20.75rem',
     margin: 'auto',
   },
@@ -86,13 +85,13 @@ function Staff(props) {
       <Grid item xs={12} className={classes.staffRoot}>
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Chege"
-              className={classes.cardMedia}
-              image={constant}
-              title="Chege"
-            />
+            <CardMedia title="Constant">
+              <img
+                src={constant}
+                alt="Constant"
+                className={classes.cardMedia}
+              />
+            </CardMedia>
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 CONSTANT CAP
@@ -111,13 +110,9 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia
-              title="kirah"
-              component="img"
-              alt="Kirah"
-              className={classes.cardMedia}
-              image={kirah}
-            />
+            <CardMedia title="Kirah">
+              <img src={kirah} alt="Kirah" className={classes.cardMedia} />
+            </CardMedia>
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 WARUKIRA THEURI
@@ -136,13 +131,9 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Chege"
-              className={classes.cardMedia}
-              image={jack}
-              title="Chege"
-            />
+            <CardMedia title="Jack">
+              <img src={jack} alt="Jack" className={classes.cardMedia} />
+            </CardMedia>
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 JACK MCLEANS
@@ -164,13 +155,9 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Chege"
-              className={classes.cardMedia}
-              image={gideon}
-              title="Chege"
-            />
+            <CardMedia title="Gideon">
+              <img src={gideon} alt="Gideon" className={classes.cardMedia} />
+            </CardMedia>
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 GIDEON MAINA
