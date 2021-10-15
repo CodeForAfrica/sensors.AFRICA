@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: '10%',
     },
   },
+  section: {
+    padding: '2rem 0',
+  },
   column: {
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -43,10 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   caption: {
     textAlign: 'center',
-    // paddingLeft: '20%',
-    // paddingRight: '20%',
     paddingBottom: '2rem',
-    // textAlign: 'justify'
   },
   captionGrid: {
     marginRight: '3.5rem',
@@ -89,6 +89,7 @@ function HardwareInfo() {
         spacing={24}
         justify="space-around"
         alignItems="center"
+        className={classes.section}
       >
         {/* First Column */}
         <Grid
