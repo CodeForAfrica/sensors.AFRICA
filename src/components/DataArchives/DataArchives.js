@@ -545,7 +545,7 @@ function DataArchives() {
             >
               <a
                 className={classes.link}
-                href="https://docs.google.com/document/d/1ZVMLzEF_GRUz3JEMNQujUFhITkSp7OsQCybTRra0dMk/edit"
+                href="https://docs.google.com/document/d/1ZVMLzEF_GRUz3JEMNQujUFhITkSp7OsQCybTRra0dMk/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -554,7 +554,7 @@ function DataArchives() {
 
               <a
                 className={classes.link}
-                href="https://docs.google.com/document/d/133AYXRbI2qfMBbj5t-lAoxOqsfTrFVwyHKBTJG_ci04/edit"
+                href="https://docs.google.com/document/d/133AYXRbI2qfMBbj5t-lAoxOqsfTrFVwyHKBTJG_ci04/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
               >
