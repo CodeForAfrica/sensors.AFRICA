@@ -2,15 +2,16 @@ import React from 'react';
 import {
   Card,
   CardActionArea,
-  CardMedia,
   Grid,
   Typography,
   CardContent,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import chege from 'assets/images/team/chege.png';
+import jack from 'assets/images/team/jack.jpeg';
 import kirah from 'assets/images/team/kirah.jpeg';
+import constant from 'assets/images/team/constant.jpg';
+import gideon from 'assets/images/team/gideon.jpeg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,9 +24,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   card: {
-    // height: 200,
     width: '100%',
-    // margin: theme.spacing.unit * 3,
     backgroundColor: '#fff',
     [theme.breakpoints.up('sm')]: {
       marginLeft: '0.1rem',
@@ -40,10 +39,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardMedia: {
-    height: 200,
-    objectFit: 'cover',
+    height: 300, // To fit all image sizes
+    width: '100%',
+    objectFit: 'fit',
     maxWidth: '20.75rem',
     margin: 'auto',
+    overflow: 'hidden',
+    backgroundSize: 'contain',
   },
   carContent: {
     padding: 0,
@@ -80,29 +82,21 @@ function Staff(props) {
           CONTRIBUTORS AND STAFF
         </Typography>
       </Grid>
+
       <Grid item xs={12} className={classes.staffRoot}>
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Chege"
-              className={classes.cardMedia}
-              image={chege}
-              title="Chege"
-            />
+            <img src={constant} alt="Constant" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
-                CHEGE JAMES
+                CONSTANT CAP
               </Typography>
               <Typography variant="subtitle1">
-                chege at codeforafrica.org
+                constant@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
-                <a
-                  className={classes.a}
-                  href="https://twitter.com/sensorsAFRICA"
-                >
-                  @sensorsAFRICA
+                <a className={classes.a} href="https://twitter.com/ConstantCap">
+                  @ConstantCap
                 </a>
               </Typography>
             </CardContent>
@@ -111,23 +105,58 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia
-              title="kirah"
-              component="img"
-              alt="Kirah"
-              className={classes.cardMedia}
-              image={kirah}
-            />
+            <img src={kirah} alt="Kirah" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 WARUKIRA THEURI
               </Typography>
               <Typography variant="subtitle1">
-                kirah at codeforafrica.org
+                kirah@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
                 <a className={classes.a} href="https://twitter.com/warukira_m">
                   @warukira_m
+                </a>
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+
+        <Card className={classes.card}>
+          <CardActionArea>
+            <img src={jack} alt="Jack" className={classes.cardMedia} />
+            <CardContent>
+              <Typography variant="h6" className={classes.h6}>
+                JACK MCLEANS
+              </Typography>
+              <Typography variant="subtitle1">
+                jack@codeforafrica.org
+              </Typography>
+              <Typography variant="subtitle1">
+                <a
+                  className={classes.a}
+                  href="https://twitter.com/jack_the_nerd"
+                >
+                  @jack_the_nerd
+                </a>
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+
+        <Card className={classes.card}>
+          <CardActionArea>
+            <img src={gideon} alt="Gideon" className={classes.cardMedia} />
+            <CardContent>
+              <Typography variant="h6" className={classes.h6}>
+                GIDEON MAINA
+              </Typography>
+              <Typography variant="subtitle1">
+                gideon@codeforafrica.org
+              </Typography>
+              <Typography variant="subtitle1">
+                <a className={classes.a} href="https://twitter.com/gmaina">
+                  @gmaina
                 </a>
               </Typography>
             </CardContent>
