@@ -530,6 +530,38 @@ function DataArchives() {
               sensors.AFRICA Air Quality Archive
             </a>
           </Typography>
+
+          <Typography variant="h6" className={classes.title} component="h3">
+            FAQs and Fact checks.
+          </Typography>
+          <Typography variant="body2">
+            Here is some useful information about Air and Noise Polution. <br />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+            >
+              <a
+                className={classes.link}
+                href="https://docs.google.com/document/d/1ZVMLzEF_GRUz3JEMNQujUFhITkSp7OsQCybTRra0dMk/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Air
+              </a>
+
+              <a
+                className={classes.link}
+                href="https://docs.google.com/document/d/133AYXRbI2qfMBbj5t-lAoxOqsfTrFVwyHKBTJG_ci04/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Sound
+              </a>
+            </div>
+          </Typography>
         </Grid>
       </Grid>
     </Grid>
