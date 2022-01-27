@@ -263,8 +263,8 @@ City.defaultProps = {
 };
 
 export async function getStaticPaths() {
-  const paths = Object.keys(CITIES_LOCATION).map((city) => ({
-    params: { id: city },
+  const paths = Object.keys(CITIES_LOCATION).map((id) => ({
+    params: { id },
   }));
 
   return { paths, fallback: false };
