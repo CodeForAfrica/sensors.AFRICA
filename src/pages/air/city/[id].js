@@ -262,7 +262,15 @@ City.defaultProps = {
   errorCode: false,
 };
 
-export async function getServerSideProps({ params: { id: city } }) {
+export async function getStaticPaths() {
+  const paths = Object.keys(CITIES_LOCATION).map((id) => ({
+    params: { id },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params: { id: city } }) {
   // Fetch data from external API
   const airRes = await API.getAirData(city);
   const weeklyP2Res = await API.getWeeklyP2Data(city);
@@ -272,9 +280,8 @@ export async function getServerSideProps({ params: { id: city } }) {
   const air = (!errorCode && (await airRes.json())) || {};
   const weeklyP2 = (!errorCode && (await weeklyP2Res.json())) || {};
   const data = { air, weeklyP2 };
-
   // Pass data to the page via props
-  return { props: { errorCode, city, data } };
+  return { props: { errorCode, city, data }, revalidate: 5 * 60 * 60 };
 }
 
 export default City;
