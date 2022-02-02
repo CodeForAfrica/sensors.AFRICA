@@ -1,14 +1,21 @@
-const withImages = require('next-images');
-
-module.exports = withImages({
-  webpack(config, { isServer }) {
-    // Important: return the modified config
-
-    // https://github.com/jsoma/tabletop/issues/158
-    if (!isServer) {
-      // eslint-disable-next-line no-param-reassign
-      config.externals = ['tls', 'net', 'fs'];
-    }
+module.exports = {
+  images: {
+    domains: process.env.NEXT_PUBLIC_IMAGE_DOMAINS.split(",")
+      .map((d) => d.trim())
+      .filter((d) => d),
+  },
+  reactStrictMode: false,
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        "@svgr/webpack",
+        {
+          loader: "svg-url-loader",
+          options: {},
+        },
+      ],
+    });
     return config;
-  }
-});
+  },
+};
