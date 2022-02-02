@@ -1,27 +1,25 @@
-import fetch from 'isomorphic-unfetch';
-
-const HUMIDITY_READING = 'humidity';
-const TEMPERATURE_READING = 'temperature';
-const P2_READING = 'P2';
+const HUMIDITY_READING = "humidity";
+const TEMPERATURE_READING = "temperature";
+const P2_READING = "P2";
 
 const formatAirStats = (data, isPm2 = false) => {
   const formatted = {};
-  ['average', 'maximum', 'minimum'].forEach((stat) => {
+  ["average", "maximum", "minimum"].forEach((stat) => {
     const parsed = Number.parseFloat(data[stat]);
-    if (isPm2 && stat === 'average') {
+    if (isPm2 && stat === "average") {
       formatted.averageDescription = `measurements not recorded`;
       if (!Number.isNaN(parsed)) {
         let difference = 25.0 - parsed;
-        let position = 'below';
+        let position = "below";
         if (parsed > 25.0) {
           difference = parsed - 25.0;
-          position = 'above';
+          position = "above";
         }
         const percentage = ((difference / 25.0) * 100).toFixed(2);
         formatted.averageDescription = `${percentage}% ${position} the safe level`;
       }
     }
-    formatted[stat] = Number.isNaN(parsed) ? '--' : parsed.toFixed(2);
+    formatted[stat] = Number.isNaN(parsed) ? "--" : parsed.toFixed(2);
   });
   return formatted;
 };
@@ -47,10 +45,10 @@ const getFormattedTemperatureStats = (data) => {
 };
 
 const DATE_FMT_OPTIONS = {
-  timeZone: 'UTC',
-  weekday: 'short',
-  day: 'numeric',
-  month: 'short',
+  timeZone: "UTC",
+  weekday: "short",
+  day: "numeric",
+  month: "short",
 };
 
 const formatWeeklyP2Stats = (data) => {
@@ -62,7 +60,7 @@ const formatWeeklyP2Stats = (data) => {
       averagePM = 0.0;
     }
     const date = new Date(data[i].start_datetime).toLocaleDateString(
-      'en-US',
+      "en-US",
       DATE_FMT_OPTIONS
     );
     stats.push({ date, averagePM });
@@ -78,59 +76,59 @@ const getFormattedWeeklyP2Stats = (data) => {
 
 const CITIES_LOCATION = {
   nairobi: {
-    slug: 'nairobi',
-    latitude: '-1.2709',
-    longitude: '36.8169',
-    name: 'Nairobi',
-    country: 'Kenya',
-    label: 'Nairobi, Kenya',
-    zoom: '12',
-    center: '-1.2709,36.8169',
-    twitterHandle: '@nairobicitygov',
+    slug: "nairobi",
+    latitude: "-1.2709",
+    longitude: "36.8169",
+    name: "Nairobi",
+    country: "Kenya",
+    label: "Nairobi, Kenya",
+    zoom: "12",
+    center: "-1.2709,36.8169",
+    twitterHandle: "@nairobicitygov",
   },
   nakuru: {
-    slug: 'nakuru',
-    latitude: '-0.303099',
-    longitude: '36.080025',
-    name: 'Nakuru',
-    country: 'Kenya',
-    label: 'Nakuru, Kenya',
-    zoom: '12',
-    center: '-0.303099,36.080025',
-    twitterHandle: '@nairobicitygov',
+    slug: "nakuru",
+    latitude: "-0.303099",
+    longitude: "36.080025",
+    name: "Nakuru",
+    country: "Kenya",
+    label: "Nakuru, Kenya",
+    zoom: "12",
+    center: "-0.303099,36.080025",
+    twitterHandle: "@nairobicitygov",
   },
   kisumu: {
-    slug: 'kisumu',
-    latitude: '-0.091702',
-    longitude: '34.767956',
-    name: 'Kisumu',
-    country: 'Kenya',
-    label: 'Kisumu, Kenya',
-    zoom: '12',
-    center: '-0.091702,34.767956',
-    twitterHandle: '@nairobicitygov',
+    slug: "kisumu",
+    latitude: "-0.091702",
+    longitude: "34.767956",
+    name: "Kisumu",
+    country: "Kenya",
+    label: "Kisumu, Kenya",
+    zoom: "12",
+    center: "-0.091702,34.767956",
+    twitterHandle: "@nairobicitygov",
   },
   lagos: {
-    slug: 'lagos',
-    latitude: '6.4552',
-    longitude: '3.4198',
-    name: 'Lagos',
-    country: 'Nigeria',
-    label: 'Lagos, Nigeria',
-    zoom: '12',
-    center: '6.4552,3.4198',
-    twitterHandle: '@followlasg',
+    slug: "lagos",
+    latitude: "6.4552",
+    longitude: "3.4198",
+    name: "Lagos",
+    country: "Nigeria",
+    label: "Lagos, Nigeria",
+    zoom: "12",
+    center: "6.4552,3.4198",
+    twitterHandle: "@followlasg",
   },
-  'dar-es-salaam': {
-    slug: 'dar-es-salaam',
-    latitude: '-6.7846',
-    longitude: '39.2669',
-    name: 'Dar es Salaam',
-    country: 'Tanzania',
-    label: 'Dar-es-salaam, Tanzania',
-    zoom: '12',
-    center: '-6.7846,39.2669',
-    twitterHandle: '#DarEsSalaam',
+  "dar-es-salaam": {
+    slug: "dar-es-salaam",
+    latitude: "-6.7846",
+    longitude: "39.2669",
+    name: "Dar es Salaam",
+    country: "Tanzania",
+    label: "Dar-es-salaam, Tanzania",
+    zoom: "12",
+    center: "-6.7846,39.2669",
+    twitterHandle: "#DarEsSalaam",
   },
 };
 
@@ -141,7 +139,7 @@ const API = {
   getWeeklyP2Data(city) {
     const fromDate = new Date(Date.now() - 7 * 24 * 3600 * 1000)
       .toISOString()
-      .substr(0, 10);
+      .substring(0, 10);
     return fetch(
       `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`
     );
@@ -155,4 +153,5 @@ export {
   getFormattedTemperatureStats,
   getFormattedWeeklyP2Stats,
 };
+
 export default API;
