@@ -1,35 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-// import { HashLink } from 'react-router-hash-link';
+import HostSensorButton from "@/sensorsafrica/components/City/HostSensors/HostSensorButton";
+import ShareButton from "@/sensorsafrica/components/City/HostSensors/ShareButton";
 
-import HostSensorButton from 'components/City/HostSensors/HostSensorButton';
-import ShareButton from 'components/City/HostSensors/ShareButton';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    paddingTop: '2rem'
+    paddingTop: "2rem",
   },
   button: {
-    margin: '0.25rem 1rem',
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
+    margin: "0.25rem 1rem",
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
       margin: 0,
-      width: 'auto'
-    }
+      width: "auto",
+    },
   },
   buttonLink: {
-    display: 'block',
-    width: '100%',
-    textDecoration: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'inline-block',
-      width: 'auto'
-    }
-  }
+    display: "block",
+    width: "100%",
+    textDecoration: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "inline-block",
+      width: "auto",
+    },
+  },
 }));
 
 function HostSensorButtons({ city }) {
@@ -38,7 +36,7 @@ function HostSensorButtons({ city }) {
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item className={classes.button}>
@@ -72,7 +70,7 @@ function HostSensorButtons({ city }) {
 }
 
 HostSensorButtons.propTypes = {
-  city: PropTypes.shape({}).isRequired
+  city: PropTypes.shape({}).isRequired,
 };
 
 export default HostSensorButtons;

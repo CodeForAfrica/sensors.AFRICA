@@ -1,39 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Button } from "@material-ui/core";
+import clsx from "clsx";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import React from "react";
 
-import classNames from 'classnames';
-
-import { useRouter } from 'next/router';
-
-import Button from '@material-ui/core/Button';
-
-import NextComposed from './NextComposed';
+import NextComposed from "./NextComposed";
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/#with-link
-function ButtonLink(props) {
+const ButtonLink = React.forwardRef(function ButtonLink(props, ref) {
   const {
-    activeClassName = 'active',
+    activeClassName = "active",
     className: classNameProps,
     href,
-    innerRef,
     naked,
     ...other
   } = props;
   const router = useRouter();
 
-  const className = classNames(classNameProps, {
-    [activeClassName]: router.pathname === href && activeClassName
+  const className = clsx(classNameProps, {
+    [activeClassName]: router.pathname === href && activeClassName,
   });
 
   if (naked) {
     return (
-      <NextComposed
-        className={className}
-        href={href}
-        ref={innerRef}
-        {...other}
-      />
+      <NextComposed className={className} href={href} ref={ref} {...other} />
     );
   }
 
@@ -42,11 +33,11 @@ function ButtonLink(props) {
       component={NextComposed}
       className={className}
       href={href}
-      ref={innerRef}
+      ref={ref}
       {...other}
     />
   );
-}
+});
 
 ButtonLink.propTypes = {
   activeClassName: PropTypes.string,
@@ -56,7 +47,7 @@ ButtonLink.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   naked: PropTypes.bool,
   onClick: PropTypes.func,
-  prefetch: PropTypes.bool
+  prefetch: PropTypes.bool,
 };
 
 ButtonLink.defaultProps = {
@@ -67,9 +58,7 @@ ButtonLink.defaultProps = {
   innerRef: undefined,
   naked: undefined,
   onClick: undefined,
-  prefetch: undefined
+  prefetch: undefined,
 };
 
-export default React.forwardRef((props, ref) => (
-  <ButtonLink {...props} innerRef={ref} />
-));
+export default ButtonLink;

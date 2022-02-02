@@ -1,16 +1,15 @@
-import React from 'react';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-
-import ArrowCards from 'components/City/HostSensors/ArrowCards';
-import HostCard from 'components/City/HostSensors/HostCard';
-import HostSensorButtons from 'components/City/HostSensors/HostSensorButtons';
+import ArrowCards from "@/sensorsafrica/components/City/HostSensors/ArrowCards";
+import HostCard from "@/sensorsafrica/components/City/HostSensors/HostCard";
+import HostSensorButtons from "@/sensorsafrica/components/City/HostSensors/HostSensorButtons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: '100%',
+    width: "100%",
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(4),
   },
@@ -18,18 +17,18 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   arrowDescription: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       marginTop: theme.spacing(4),
     },
   },
   hostDescription: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       marginTop: theme.spacing(8),
     },
   },
   mainGrid: {
-    paddingRight: '4rem',
-    paddingLeft: '4rem',
+    paddingRight: "4rem",
+    paddingLeft: "4rem",
   },
 }));
 
@@ -40,7 +39,7 @@ function HostSensor() {
       container
       className={classes.root}
       alignItems="center"
-      justify="center"
+      justifyContent="center"
     >
       <Grid item xs={12}>
         <HostSensorButtons />
@@ -50,7 +49,7 @@ function HostSensor() {
         <Grid
           container
           className={classes.description}
-          justify="center"
+          justifyContent="center"
           alignItems="center"
           spacing={40}
         >

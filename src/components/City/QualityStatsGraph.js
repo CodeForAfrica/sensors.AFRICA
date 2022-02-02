@@ -1,37 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid, withWidth } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { isWidthUp } from "@material-ui/core/withWidth";
+import PropTypes from "prop-types";
+import React from "react";
+import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from "victory";
 
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
-
-import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from 'victory';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   chartContainer: {
-    textAlign: 'center',
-    marginBottom: '3rem',
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '59.625rem'
+    textAlign: "center",
+    marginBottom: "3rem",
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "59.625rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
-    }
-  }
+    [theme.breakpoints.up("lg")]: {
+      width: "79.5rem",
+    },
+  },
 }));
 
 function QualityStatsGraph({ data, width }) {
   const classes = useStyles();
   let chartWidth = window.innerWidth;
   let labelAngle = 45;
-  if (isWidthUp('md', width)) {
+  if (isWidthUp("md", width)) {
     chartWidth = 59.625 * 16;
     labelAngle = 0;
-    if (isWidthUp('lg', width)) {
+    if (isWidthUp("lg", width)) {
       chartWidth = 79.5 * 16;
     }
   }
@@ -42,52 +40,52 @@ function QualityStatsGraph({ data, width }) {
       container
       color="secondary"
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item>
         <div className={classes.chartContainer}>
           <VictoryChart
             theme={VictoryTheme.material}
-            style={{ parent: { width: '100%' } }}
+            style={{ parent: { width: "100%" } }}
             height={chartHeight}
             width={chartWidth}
           >
             <VictoryAxis
               style={{
                 axis: {
-                  stroke: 'rgba(0,0,0,0.1)',
-                  strokeWidth: 1
+                  stroke: "rgba(0,0,0,0.1)",
+                  strokeWidth: 1,
                 },
                 grid: {
-                  stroke: 'rgba(0,0,0,0.1)',
-                  strokeDasharray: ''
+                  stroke: "rgba(0,0,0,0.1)",
+                  strokeDasharray: "",
                 },
                 ticks: {
                   // padding: 20
                 },
                 tickLabels: {
                   fontFamily: '"Montserrat", "sans-serif"',
-                  fontWeight: 'bold',
-                  angle: labelAngle
-                }
+                  fontWeight: "bold",
+                  angle: labelAngle,
+                },
               }}
             />
             <VictoryAxis
               dependentAxis
               style={{
                 axis: {
-                  stroke: 'rgba(0,0,0,0.1)',
-                  strokeWidth: 1
+                  stroke: "rgba(0,0,0,0.1)",
+                  strokeWidth: 1,
                 },
                 grid: {
-                  stroke: 'rgba(0,0,0,0.1)',
-                  strokeDasharray: ''
+                  stroke: "rgba(0,0,0,0.1)",
+                  strokeDasharray: "",
                 },
                 tickLabels: {
                   fontFamily: '"Montserrat", "sans-serif"',
-                  fontWeight: 'bold'
-                }
+                  fontWeight: "bold",
+                },
               }}
               fixLabelOverlap
             />
@@ -96,7 +94,7 @@ function QualityStatsGraph({ data, width }) {
               x="date"
               y="averagePM"
               style={{
-                data: { stroke: '#1a995b' }
+                data: { stroke: "#1a995b" },
               }}
             />
           </VictoryChart>
@@ -108,7 +106,7 @@ function QualityStatsGraph({ data, width }) {
 
 QualityStatsGraph.propTypes = {
   data: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
 };
 
 export default withWidth()(QualityStatsGraph);

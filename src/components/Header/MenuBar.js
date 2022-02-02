@@ -1,82 +1,67 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
 
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import HamburgerMenu from "@/sensorsafrica/components/Hambuger/HambugerMenu";
 
-import HamburgerMenu from 'components/Hambuger/HambugerMenu';
-
-const styles = theme => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
   root: {
     flexGrow: 1,
-    position: 'relative',
-    [theme.breakpoints.up('md')]: {
-      paddingRight: '8%',
-      paddingLeft: '8%'
-    }
+    position: "relative",
+    [breakpoints.up("md")]: {
+      paddingRight: "8%",
+      paddingLeft: "8%",
+    },
   },
   children: {
-    [theme.breakpoints.only('xs')]: {
-      position: 'absolute',
-      top: '8rem',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      zIndex: 3
-    }
+    [breakpoints.only("xs")]: {
+      position: "absolute",
+      top: "8rem",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      zIndex: 3,
+    },
   },
   icon: {
-    color: 'white',
-    paddingTop: '3%'
+    color: "white",
+    paddingTop: "3%",
   },
-  iconContainer: {
-    // paddingTop: '2rem'
-  }
-});
+  iconContainer: {},
+}));
 
-class MenuBar extends React.Component {
-  constructor(props) {
-    super(props);
+function MenuBar({ showMenu, ...props }) {
+  const classes = useStyles(props);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    this.state = { menuOpen: false };
-    this.handleToggle = this.handleToggle.bind(this);
-  }
+  const handleToggle = () => {
+    setMenuOpen((prevState) => !prevState);
+  };
 
-  handleToggle() {
-    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
-  }
-
-  render() {
-    const { classes, showMenu } = this.props;
-    const { menuOpen } = this.state;
-
-    return (
-      <Grid
-        container
-        className={classes.root}
-        justify="flex-end"
-        alignItems="center"
-      >
-        {showMenu && (
-          <Grid item>
-            <Grid className={classes.iconContainer}>
-              <HamburgerMenu
-                handleToggle={this.handleToggle}
-                menuOpen={menuOpen}
-              />
-            </Grid>
+  return (
+    <Grid
+      container
+      className={classes.root}
+      justifyContent="flex-end"
+      alignItems="center"
+    >
+      {showMenu && (
+        <Grid item>
+          <Grid className={classes.iconContainer}>
+            <HamburgerMenu handleToggle={handleToggle} menuOpen={menuOpen} />
           </Grid>
-        )}
-      </Grid>
-    );
-  }
+        </Grid>
+      )}
+    </Grid>
+  );
 }
 
 MenuBar.propTypes = {
-  showMenu: PropTypes.bool
+  showMenu: PropTypes.bool,
 };
 
 MenuBar.defaultProps = {
-  showMenu: true
+  showMenu: true,
 };
 
-export default withStyles(styles)(MenuBar);
+export default MenuBar;

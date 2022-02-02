@@ -1,53 +1,50 @@
-import React from 'react';
+import { Grid, MenuItem, Typography, MenuList, Modal } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import PropTypes from 'prop-types';
+import { URLS } from "@/sensorsafrica/components/DocumentHead/PageHeads";
+import MenuButton from "@/sensorsafrica/components/Hambuger/MenuButton";
+import Link from "@/sensorsafrica/components/Link";
 
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, MenuItem, Typography, MenuList } from '@material-ui/core';
-import Link from 'components/Link';
-import Modal from '@material-ui/core/Modal';
-
-import { URLS } from 'components/DocumentHead/PageHeads';
-
-import MenuButton from 'components/Hambuger/MenuButton';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   grid: {
-    flex: 1
+    flex: 1,
   },
   menuList: {
-    color: 'white',
-    marginTop: '5rem !important', // Override the default marginTop:'2rem' of <MenuList /> Component
-    textAlign: 'right',
-    [theme.breakpoints.up('sm')]: {
-      marginTop: '2rem',
-      paddingRight: '10%'
-    }
+    color: "white",
+    marginTop: "5rem !important", // Override the default marginTop:'2rem' of <MenuList /> Component
+    textAlign: "right",
+    [theme.breakpoints.up("sm")]: {
+      marginTop: "2rem",
+      paddingRight: "10%",
+    },
   },
   menuListItem: {
-    color: 'white',
-    display: 'block'
+    color: "white",
+    display: "block",
   },
   modalContent: {
-    margin: 'auto',
-    padding: '20px',
-    height: 'auto'
+    margin: "auto",
+    padding: "20px",
+    height: "auto",
   },
   typography: {
-    color: '#fff',
-    textAlign: 'right',
-    fontWeight: '700'
+    color: "#fff",
+    textAlign: "right",
+    fontWeight: "700",
   },
   link: {
-    textDecoration: 'none',
-    '&:hover': {
-      textDecoration: 'none'
-    }
-  }
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    },
+  },
 }));
 
-function HambugerMenu({ handleToggle, menuOpen }) {
-  const classes = useStyles();
+function HambugerMenu({ handleToggle, menuOpen, ...props }) {
+  const classes = useStyles(props);
+
   return (
     <Grid container className={classes.grid}>
       <Grid item xs={12}>
@@ -134,7 +131,7 @@ function HambugerMenu({ handleToggle, menuOpen }) {
 
 HambugerMenu.propTypes = {
   handleToggle: PropTypes.func.isRequired,
-  menuOpen: PropTypes.bool.isRequired
+  menuOpen: PropTypes.bool.isRequired,
 };
 
 export default HambugerMenu;

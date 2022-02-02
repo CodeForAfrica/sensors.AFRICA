@@ -1,116 +1,115 @@
-import React from 'react';
+import { Button, Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Button, Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import codeforafrica from "@/sensorsafrica/assets/images/logos/cfafrica_white.png";
+import innovateafrica from "@/sensorsafrica/assets/images/logos/innovateafrica_white.png";
+import Email from "@/sensorsafrica/components/Email";
+import Figure from "@/sensorsafrica/components/Figure";
+import Link from "@/sensorsafrica/components/Link";
+import SocialMedia from "@/sensorsafrica/components/SocialMedia";
 
-import Email from 'components/Email';
-import Link from 'components/Link';
-import SocialMedia from 'components/SocialMedia';
-
-import codeforafrica from 'assets/images/logos/cfafrica_white.png';
-import innovateafrica from 'assets/images/logos/innovateafrica_white.png';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    color: 'white',
-    backgroundColor: theme.palette.secondary.main
+    color: "white",
+    backgroundColor: theme.palette.secondary.main,
   },
   footerContainer: {
-    [theme.breakpoints.up('md')]: {
-      paddingBottom: '5rem'
-    }
+    [theme.breakpoints.up("md")]: {
+      paddingBottom: "5rem",
+    },
   },
   footerContentContainer: {
-    textAlign: 'center',
-    paddingTop: '2rem',
-    paddingBottom: '1rem',
-    [theme.breakpoints.up('md')]: {
-      marginTop: '3rem',
-      width: '19.875rem'
+    textAlign: "center",
+    paddingTop: "2rem",
+    paddingBottom: "1rem",
+    [theme.breakpoints.up("md")]: {
+      marginTop: "3rem",
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
+    },
   },
   footerAboutContainer: {
-    textAlign: 'center',
-    paddingTop: '2rem',
-    paddingBottom: '1rem',
-    borderTop: '1px solid white',
-    borderBottom: '1px solid white',
-    [theme.breakpoints.up('md')]: {
-      marginTop: '3rem',
-      width: '19.875rem',
-      border: '1px solid white',
-      borderTop: 'none',
-      borderBottom: 'none'
+    textAlign: "center",
+    paddingTop: "2rem",
+    paddingBottom: "1rem",
+    borderTop: "1px solid white",
+    borderBottom: "1px solid white",
+    [theme.breakpoints.up("md")]: {
+      marginTop: "3rem",
+      width: "19.875rem",
+      border: "1px solid white",
+      borderTop: "none",
+      borderBottom: "none",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
+    },
   },
   titles: {
-    color: 'white',
+    color: "white",
     fontWeight: 800,
-    textTransform: 'none'
+    textTransform: "none",
   },
   socialMediaContainer: {
-    paddingTop: '1rem',
-    paddingBottom: '1rem'
+    paddingTop: "1rem",
+    paddingBottom: "1rem",
   },
   aboutContent: {
-    color: 'white',
-    padding: '1rem',
-    textalign: 'justify',
-    textAlignLast: 'center'
+    color: "white",
+    padding: "1rem",
+    textalign: "justify",
+    textAlignLast: "center",
   },
   footerButton: {
-    color: 'white',
-    '&:hover': {
-      color: theme.palette.secondary.main
+    color: "white",
+    "&:hover": {
+      color: theme.palette.secondary.main,
     },
     backgroundColor: theme.palette.secondary.dark,
     fontWeight: 800,
     fontSize: theme.typography.subtitle2.fontSize,
-    height: '3rem',
-    [theme.breakpoints.up('lg')]: {
+    height: "3rem",
+    [theme.breakpoints.up("lg")]: {
       fontSize: theme.typography.subtitle1.fontSize,
-      height: '3.5rem',
-      marginTop: '1rem',
-      paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+      height: "3.5rem",
+      marginTop: "1rem",
+      paddingLeft: "2rem",
+      paddingRight: "2rem",
+    },
   },
   buttonLink: {
-    textDecoration: 'none',
-    '&:hover': {
-      textDecoration: 'none'
-    }
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    },
   },
   supportText: {
-    color: 'white',
-    padding: '1.2rem',
-    [theme.breakpoints.up('md')]: {
-      marginLeft: '1.5rem',
-      marginRight: '1.5rem',
-      textAlign: 'center'
-    }
+    color: "white",
+    padding: "1.2rem",
+    [theme.breakpoints.up("md")]: {
+      marginLeft: "1.5rem",
+      marginRight: "1.5rem",
+      textAlign: "center",
+    },
   },
   img: {
-    maxWidth: '100%',
-    height: '100px'
-  }
+    height: 100,
+  },
 }));
 
 function Footer(props) {
   const classes = useStyles(props);
+
   return (
     <Grid
       container
       color="secondary"
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid
@@ -118,7 +117,7 @@ function Footer(props) {
         xs={12}
         container
         className={classes.footerContainer}
-        justify="center"
+        justifyContent="center"
         alignItems="flex-start"
       >
         <Grid item className={classes.footerContentContainer}>
@@ -157,14 +156,14 @@ function Footer(props) {
               incubated by Code for Africa.
             </Typography>
           </div>
-          <Grid container justify="center" alignItems="center">
+          <Grid container justifyContent="center" alignItems="center">
             <Grid item xs>
               <a
                 href="https://codeforafrica.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
+                <Figure
                   src={codeforafrica}
                   alt="Code for Africa"
                   className={classes.img}
@@ -177,7 +176,7 @@ function Footer(props) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
+                <Figure
                   src={innovateafrica}
                   alt="innovateAFRICA"
                   className={classes.img}

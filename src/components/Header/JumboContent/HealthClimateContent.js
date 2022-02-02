@@ -1,19 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles({
   titleSection: {
     flexGrow: 1,
-    textAlign: 'center',
-    paddingTop: '2rem'
+    textAlign: "center",
+    paddingTop: "2rem",
   },
   headerText: {
-    color: 'white',
-    paddingBottom: '1rem'
-  }
+    color: "white",
+    paddingBottom: "1rem",
+  },
 });
 
 function HealthClimateContent({ title }) {
@@ -22,7 +21,7 @@ function HealthClimateContent({ title }) {
     <Grid
       container
       className={classes.titleSection}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12}>
@@ -35,10 +34,10 @@ function HealthClimateContent({ title }) {
 }
 
 HealthClimateContent.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 HealthClimateContent.defaultProps = {
-  title: ''
+  title: "",
 };
 
 export default HealthClimateContent;

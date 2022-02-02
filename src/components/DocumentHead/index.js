@@ -1,33 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import Head from "next/head";
+import PropTypes from "prop-types";
+import React from "react";
 
-import { Helmet } from 'react-helmet';
-
-import PageHeads, { URLS } from 'components/DocumentHead/PageHeads';
-import Favicon from 'components/Favicon';
+import PageHeads, {
+  URLS,
+} from "@/sensorsafrica/components/DocumentHead/PageHeads";
+import Favicon from "@/sensorsafrica/components/Favicon";
 
 function DocumentHead({ url }) {
-  const matchUrl = obj => obj.url === url;
-  const matchDefault = obj => obj.url === '/';
+  const matchUrl = (obj) => obj.url === url;
+  const matchDefault = (obj) => obj.url === "/";
   const head =
     (url && PageHeads.find(matchUrl)) || PageHeads.find(matchDefault);
-
   return (
     <>
-      <Helmet>
-        <title>{head.title}</title>
-      </Helmet>
+      <Head>
+        <title key="title">{head.title}</title>
+      </Head>
       <Favicon color={head.color} />
     </>
   );
 }
 
 DocumentHead.propTypes = {
-  url: PropTypes.string
+  url: PropTypes.string,
 };
 
 DocumentHead.defaultProps = {
-  url: null
+  url: null,
 };
 
 export { URLS };

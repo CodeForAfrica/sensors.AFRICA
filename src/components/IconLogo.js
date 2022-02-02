@@ -1,49 +1,49 @@
-import React from 'react';
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import React from "react";
 
-import { makeStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import logo from "@/sensorsafrica/assets/images/logos/sensorsLogo.png";
+import Figure from "@/sensorsafrica/components/Figure";
+import ButtonLink from "@/sensorsafrica/components/Link/Button";
 
-import Link from 'components/Link';
-
-import logo from 'assets/images/logos/sensorsLogo.png';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   defaultBadge: {
     zIndex: 1301,
-    top: '5.8rem',
-    right: '1.65rem',
+    top: "5.8rem",
+    right: "1.65rem",
     color: theme.palette.primary.dark,
-    fontSize: theme.typography.caption.fontSize
+    fontSize: theme.typography.caption.fontSize,
   },
   defaultActiveBadge: {
     zIndex: 1301,
-    top: '5.8rem',
-    right: '1.65rem',
-    fontSize: theme.typography.caption.fontSize
+    top: "5.8rem",
+    right: "1.65rem",
+    fontSize: theme.typography.caption.fontSize,
   },
   landingBadge: {
     zIndex: 1301,
-    top: '7.175rem',
-    right: '1.65rem',
-    fontSize: theme.typography.caption.fontSize
+    top: "7.175rem",
+    right: "1.65rem",
+    fontSize: theme.typography.caption.fontSize,
   },
   logo: {
     zIndex: 1301,
-    position: 'relative'
+    position: "relative",
   },
   img: {
-    height: 50
-  }
+    height: 50,
+    width: 50,
+  },
 }));
 
-function IconLogo() {
-  const classes = useStyles();
-  const imgClassName = classNames(classes.logo, classes.img);
+function IconLogo(props) {
+  const classes = useStyles(props);
+  const imgClassName = clsx(classes.logo, classes.img);
 
   return (
-    <Link href="/">
-      <img src={logo} className={imgClassName} alt="sensors.AFRICA" />
-    </Link>
+    <ButtonLink href="/">
+      <Figure src={logo} alt="sensors.AFRICA" className={imgClassName} />
+    </ButtonLink>
   );
 }
 

@@ -1,78 +1,79 @@
-import React from 'react';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-import SDS011 from 'assets/images/sensors/sensor1.jpg';
-import DHT22 from 'assets/images/sensors/DHT22.jpeg';
-import GSMSIM800L from 'assets/images/sensors/GSMSIM800L.jpg';
-import GSMSIM800H from 'assets/images/sensors/GSMSIM800H.jpeg';
-import NODEMCU from 'assets/images/sensors/NODEMCU.jpeg';
-import SIGFOX from 'assets/images/sensors/SIGFOX.jpeg';
-import PMS5003 from 'assets/images/sensors/PMS5003.jpeg';
+import DHT22 from "@/sensorsafrica/assets/images/sensors/DHT22.jpeg";
+import GSMSIM800H from "@/sensorsafrica/assets/images/sensors/GSMSIM800H.jpeg";
+import GSMSIM800L from "@/sensorsafrica/assets/images/sensors/GSMSIM800L.jpg";
+import NODEMCU from "@/sensorsafrica/assets/images/sensors/NODEMCU.jpeg";
+import PMS5003 from "@/sensorsafrica/assets/images/sensors/PMS5003.jpeg";
+import SDS011 from "@/sensorsafrica/assets/images/sensors/sensor1.jpg";
+import SIGFOX from "@/sensorsafrica/assets/images/sensors/SIGFOX.jpeg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'white',
-    [theme.breakpoints.up('md')]: {
-      paddingRight: '10%',
-      paddingLeft: '10%',
+    backgroundColor: "white",
+    [theme.breakpoints.up("md")]: {
+      paddingRight: "10%",
+      paddingLeft: "10%",
     },
   },
   section: {
-    padding: '2rem 0',
+    padding: "2rem 0",
   },
   column: {
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '23rem',
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "23rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '31rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "31rem",
     },
   },
   titleSection: {
-    paddingBottom: '1rem',
-    textAlign: 'center',
+    paddingBottom: "1rem",
+    textAlign: "center",
   },
   title: {
-    color: 'green',
-    paddingTop: '2rem',
+    color: "green",
+    paddingTop: "2rem",
   },
   subheading: {
     color: theme.palette.secondary.main,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   caption: {
-    textAlign: 'center',
-    paddingBottom: '2rem',
+    textAlign: "center",
+    paddingBottom: "2rem",
   },
   captionGrid: {
-    marginRight: '3.5rem',
-    marginLeft: '3.5rem',
-    textAlign: 'center',
-    paddingBottom: '2rem',
+    marginRight: "3.5rem",
+    marginLeft: "3.5rem",
+    textAlign: "center",
+    paddingBottom: "2rem",
   },
   img: {
-    maxWidth: '100%',
-    height: 'auto',
+    // maxHeight: 512,
+    // minWidth: 288,
   },
   subtitle1: {
-    textAlign: 'center',
-    paddingTop: '2.5rem',
-    backgroundColor: 'white',
+    textAlign: "center",
+    paddingTop: "2.5rem",
+    backgroundColor: "white",
     color: theme.palette.secondary.main,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 }));
 
-function HardwareInfo() {
-  const classes = useStyles();
+function HardwareInfo(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
-      justify="center"
+      justifyContent="center"
       alignItems="flex-start"
       className={classes.root}
     >
@@ -87,7 +88,7 @@ function HardwareInfo() {
         xs={12}
         container
         spacing={24}
-        justify="space-around"
+        justifyContent="space-around"
         alignItems="center"
         className={classes.section}
       >
@@ -97,12 +98,12 @@ function HardwareInfo() {
           className={classes.column}
           container
           direction="column"
-          justify="center"
+          justifyContent="center"
           alignItems="center"
         >
           {/* Content Grid */}
           <Grid item xs={12} className={classes.titleSection}>
-            <img src={SDS011} alt="SDS011" className={classes.img} />
+            <Image src={SDS011} alt="SDS011" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               SDS011
             </Typography>
@@ -128,7 +129,7 @@ function HardwareInfo() {
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.titleSection}>
-            <img src={DHT22} alt="DHT22" className={classes.img} />
+            <Image src={DHT22} alt="DHT22" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               DHT22
             </Typography>
@@ -151,11 +152,11 @@ function HardwareInfo() {
           className={classes.column}
           container
           direction="column"
-          justify="center"
+          justifyContent="center"
           alignItems="center"
         >
           <Grid item xs={12} className={classes.titleSection}>
-            <img src={NODEMCU} alt="SDSNODEMCU011" className={classes.img} />
+            <Image src={NODEMCU} alt="SDSNODEMCU011" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               NODE MCU
             </Typography>
@@ -174,7 +175,7 @@ function HardwareInfo() {
           </Grid>
 
           <Grid item xs={12} className={classes.titleSection}>
-            <img src={GSMSIM800L} alt="GSMSIM800L" className={classes.img} />
+            <Image src={GSMSIM800L} alt="GSMSIM800L" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               GSM SIM800L
             </Typography>
@@ -199,7 +200,7 @@ function HardwareInfo() {
         xs={12}
         container
         spacing={24}
-        justify="space-around"
+        justifyContent="space-around"
         alignItems="flex-start"
       >
         {/* Third Column */}
@@ -208,12 +209,12 @@ function HardwareInfo() {
           className={classes.column}
           container
           direction="column"
-          justify="center"
+          justifyContent="center"
           alignItems="center"
         >
           {/* Content Grid */}
           <Grid item xs={12} className={classes.titleSection}>
-            <img src={PMS5003} alt="SDS011" className={classes.img} />
+            <Image src={PMS5003} alt="SDS011" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               PMS5003
             </Typography>
@@ -235,7 +236,7 @@ function HardwareInfo() {
           </Grid>
 
           <Grid item xs={12} className={classes.titleSection}>
-            <img src={GSMSIM800H} alt="GSMSIM800H" className={classes.img} />
+            <Image src={GSMSIM800H} alt="GSMSIM800H" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               GSMSIM800H
             </Typography>
@@ -264,7 +265,7 @@ function HardwareInfo() {
           alignItems="center"
         >
           <Grid item xs={12} className={classes.titleSection}>
-            <img src={SIGFOX} alt="SIGFOX" className={classes.img} />
+            <Image src={SIGFOX} alt="SIGFOX" className={classes.img} />
             <Typography variant="h6" className={classes.title}>
               SIGFOX
             </Typography>

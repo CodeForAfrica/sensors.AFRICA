@@ -1,86 +1,84 @@
-import React from 'react';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-import business from 'assets/images/logos/business.png';
-import premium from 'assets/images/logos/premium.png';
-import guardian from 'assets/images/logos/guardian.png';
-import nation from 'assets/images/logos/nation.png';
-import star from 'assets/images/logos/star.jpg';
-import womanng from 'assets/images/logos/womanng.png';
-import dailynation from 'assets/images/logos/dailynation.png';
-import cable from 'assets/images/logos/cable.png';
-import code from 'assets/images/logos/cfafrica_gray.png';
-import innovate from 'assets/images/logos/innovateafrica_gray.jpg';
-import luftdaten from 'assets/images/logos/luftdaten.jpg';
+import business from "@/sensorsafrica/assets/images/logos/business.png";
+import cable from "@/sensorsafrica/assets/images/logos/cable.png";
+import code from "@/sensorsafrica/assets/images/logos/cfafrica_gray.png";
+import dailynation from "@/sensorsafrica/assets/images/logos/dailynation.png";
+import guardian from "@/sensorsafrica/assets/images/logos/guardian.png";
+import innovate from "@/sensorsafrica/assets/images/logos/innovateafrica_gray.jpg";
+import luftdaten from "@/sensorsafrica/assets/images/logos/luftdaten.jpg";
+import nation from "@/sensorsafrica/assets/images/logos/nation.png";
+import premium from "@/sensorsafrica/assets/images/logos/premium.png";
+import star from "@/sensorsafrica/assets/images/logos/star.jpg";
+import womanng from "@/sensorsafrica/assets/images/logos/womanng.png";
+import Figure from "@/sensorsafrica/components/Figure";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   mediaTypography: {
     paddingTop: theme.spacing(6),
-    textAlign: 'center',
-    fontWeight: 'bold',
+    textAlign: "center",
+    fontWeight: "bold",
   },
   partnerTypography: {
     paddingTop: theme.spacing(6),
-    // textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   mainGrid: {
     flexGrow: 1,
-    [theme.breakpoints.up('sm')]: {
-      paddingLeft: '8rem',
-      paddingRight: '8rem',
+    [theme.breakpoints.up("sm")]: {
+      paddingLeft: "8rem",
+      paddingRight: "8rem",
     },
   },
-  imgContainer: {
-    textAlign: 'center',
-  },
+  imgContainer: {},
   mediaImg: {
-    maxWidth: '100%',
-    height: 'auto',
-    maxHeight: 100,
+    height: 100,
   },
   logoImg: {
-    maxWidth: '100%',
+    display: "inline-block",
+    filter: "grayscale(1)",
     height: 50,
-    padding: '0 8px',
-    [theme.breakpoints.up('sm')]: {
+    padding: "0 8px",
+    maxWidth: "100%",
+    width: 122,
+    [theme.breakpoints.up("sm")]: {
       height: 60,
+      width: 143,
     },
-    filter: 'grayscale(1)',
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       height: 70,
+      width: 164,
     },
   },
-  img: {
-    maxWidth: '100%',
-    height: 50,
-    padding: '0 8px',
-    [theme.breakpoints.up('sm')]: {
-      height: 60,
+  poweredByImg: {
+    width: 201,
+    [theme.breakpoints.up("sm")]: {
+      width: 237,
     },
-    filter: 'grayscale(1)',
-    [theme.breakpoints.up('md')]: {
-      height: 100,
+    [theme.breakpoints.up("md")]: {
+      height: 70,
+      width: 274,
     },
   },
   partnersContainer: {
     margin: theme.spacing(6),
-    textAlign: 'center',
-    [theme.breakpoints.up('sm')]: {
+    textAlign: "center",
+    [theme.breakpoints.up("sm")]: {
       paddingTop: 0,
     },
   },
   titleGrid: {
-    padding: '1rem 0',
+    padding: "1rem 0",
   },
   logoContainer: {
-    padding: '0 2rem',
+    padding: "0 2rem",
   },
 }));
 
@@ -90,7 +88,7 @@ function Partners(props) {
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12}>
@@ -102,50 +100,58 @@ function Partners(props) {
         item
         xs={12}
         container
-        justify="center"
+        justifyContent="center"
         alignItems="center"
         className={classes.mainGrid}
       >
-        <Grid item xs={6} md={3} className={classes.imgContainer}>
-          <img
+        <Grid item xs={12} sm={6} md={3} className={classes.imgContainer}>
+          <Figure
             src={business}
             alt="Business Daily"
             className={classes.mediaImg}
           />
         </Grid>
-        <Grid item xs={6} sm={3} className={classes.imgContainer}>
-          <img src={premium} alt="Premium Times" className={classes.mediaImg} />
+        <Grid item xs={12} sm={6} md={3} className={classes.imgContainer}>
+          <Figure
+            src={premium}
+            alt="Premium Times"
+            className={classes.mediaImg}
+          />
         </Grid>
-        <Grid item xs={6} md={3} className={classes.imgContainer}>
-          <img src={guardian} alt="The Guardian" className={classes.mediaImg} />
+        <Grid item xs={12} sm={6} md={3} className={classes.imgContainer}>
+          <Figure
+            src={guardian}
+            alt="The Guardian"
+            className={classes.mediaImg}
+          />
         </Grid>
-        <Grid item xs={6} md={3} className={classes.imgContainer}>
-          <img src={nation} alt="The Nation" className={classes.mediaImg} />
+        <Grid item xs={12} sm={6} md={3} className={classes.imgContainer}>
+          <Figure src={nation} alt="The Nation" className={classes.mediaImg} />
         </Grid>
-        <Grid item xs={6} md={3} className={classes.imgContainer}>
-          <img src={star} alt="The Star" className={classes.mediaImg} />
+        <Grid item xs={12} sm={6} md={3} className={classes.imgContainer}>
+          <Figure src={star} alt="The Star" className={classes.mediaImg} />
         </Grid>
-        <Grid item xs={6} md={3} className={classes.imgContainer}>
-          <img src={womanng} alt="Woman NG" className={classes.mediaImg} />
+        <Grid item xs={12} sm={6} md={3} className={classes.imgContainer}>
+          <Figure src={womanng} alt="Woman NG" className={classes.mediaImg} />
         </Grid>
-        <Grid item xs={6} md={3} className={classes.imgContainer}>
-          <img
+        <Grid item xs={12} sm={6} md={3} className={classes.imgContainer}>
+          <Figure
             src={dailynation}
             alt="Daily Nation"
             className={classes.mediaImg}
           />
         </Grid>
         <Grid item xs={6} md={3} className={classes.imgContainer}>
-          <img src={cable} alt="The Cable" className={classes.mediaImg} />
+          <Figure src={cable} alt="The Cable" className={classes.mediaImg} />
         </Grid>
       </Grid>
 
-      <Grid item xs={12} container justify="center" alignItems="center">
+      <Grid item xs={12} container justifyContent="center" alignItems="center">
         <Grid
           item
           xs={12}
           container="row"
-          justify="center"
+          justifyContent="center"
           alignItems="center"
           className={classes.partnersContainer}
         >
@@ -161,7 +167,7 @@ function Partners(props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Figure
                 src={code}
                 alt="Code for Africa"
                 className={classes.logoImg}
@@ -172,7 +178,7 @@ function Partners(props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Figure
                 src={innovate}
                 alt="innovateAFRICA"
                 className={classes.logoImg}
@@ -192,10 +198,10 @@ function Partners(props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Figure
                 src={luftdaten}
                 alt="Luftdaten Project"
-                className={classes.logoImg}
+                className={clsx(classes.logoImg, classes.poweredByImg)}
               />
             </a>
           </div>

@@ -1,127 +1,128 @@
-import React from 'react';
+import { Button, Card, CardContent, Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import AmbientIcon from "@/sensorsafrica/assets/images/icons/AmbientIcon.png";
+import HouseholdIcon from "@/sensorsafrica/assets/images/icons/HouseholdIcon.png";
+import Figure from "@/sensorsafrica/components/Figure";
 
-import HouseholdIcon from 'assets/images/icons/HouseholdIcon.png';
-import AmbientIcon from 'assets/images/icons/AmbientIcon.png';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     flexGrow: 1,
-    [theme.breakpoints.up('md')]: {
-      paddingBottom: '3rem'
-    }
+    [theme.breakpoints.up("md")]: {
+      paddingBottom: "3rem",
+    },
   },
   indoor: {
-    color: 'white',
+    color: "white",
     backgroundColor: theme.palette.primary.dark,
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '25rem',
-      height: '18.125rem',
-      marginRight: '4.8125rem'
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "25rem",
+      height: "18.125rem",
+      marginRight: "4.8125rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '37.875rem',
-      height: '29.75rem',
-      marginRight: '1.875rem',
-      padding: '3rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "37.875rem",
+      height: "29.75rem",
+      marginRight: "1.875rem",
+      padding: "3rem",
+    },
   },
   indoorButton: {
-    color: '#F3F3F3',
-    borderColor: 'white',
+    color: "#F3F3F3",
+    borderColor: "white",
     fontWeight: 800,
     fontSize: theme.typography.subtitle1.fontSize,
-    [theme.breakpoints.up('lg')]: {
-      height: '3.5rem',
-      paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      height: "3.5rem",
+      paddingLeft: "2rem",
+      paddingRight: "2rem",
+    },
   },
   outdoor: {
-    color: 'white',
+    color: "white",
     backgroundColor: theme.palette.primary.light,
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '25rem',
-      height: '18.125rem',
-      marginLeft: '4.8125rem'
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "25rem",
+      height: "18.125rem",
+      marginLeft: "4.8125rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '37.875rem',
-      height: '29.75rem',
-      marginLeft: '1.875rem',
-      padding: '3rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "37.875rem",
+      height: "29.75rem",
+      marginLeft: "1.875rem",
+      padding: "3rem",
+    },
   },
   outdoorButton: {
     fontWeight: 800,
     fontSize: theme.typography.subtitle1.fontSize,
     color: theme.palette.primary.dark,
-    [theme.breakpoints.up('lg')]: {
-      height: '3.5rem',
-      paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      height: "3.5rem",
+      paddingLeft: "2rem",
+      paddingRight: "2rem",
+    },
   },
   buttonLink: {
-    textDecoration: 'none'
+    textDecoration: "none",
   },
   title: {
-    color: 'white',
-    [theme.breakpoints.up('lg')]: {
-      paddingTop: '1.5rem',
+    color: "white",
+    [theme.breakpoints.up("lg")]: {
+      paddingTop: "1.5rem",
       fontSize: theme.typography.h4.fontSize,
-      fontWeight: theme.typography.h4.fontWeight
-    }
+      fontWeight: theme.typography.h4.fontWeight,
+    },
   },
   caption: {
-    color: '#F3F3F3',
-    paddingBottom: '1rem',
-    [theme.breakpoints.up('lg')]: {
+    color: "#F3F3F3",
+    paddingBottom: "1rem",
+    [theme.breakpoints.up("lg")]: {
       fontSize: theme.typography.subtitle1.fontSize,
       fontWeight: theme.typography.subtitle1.fontWeight,
-      paddingTop: '2rem'
-    }
+      paddingTop: "2rem",
+    },
   },
   cite: {
-    color: '#F3F3F3',
-    fontStyle: 'normal',
-    textDecoration: 'underline'
+    color: "#F3F3F3",
+    fontStyle: "normal",
+    textDecoration: "underline",
   },
   cardContent: {
-    color: 'white',
-    textAlign: 'center'
+    color: "white",
+    textAlign: "center",
   },
   img: {
-    height: '5rem',
-    width: 'auto',
-    [theme.breakpoints.up('lg')]: {
-      height: '100%'
-    }
-  }
+    height: "5rem",
+    width: "auto",
+    [theme.breakpoints.up("lg")]: {
+      height: "7.5rem",
+    },
+  },
 }));
 
-function IndoorOutdoor() {
-  const classes = useStyles();
+function IndoorOutdoor(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Card className={classes.indoor}>
         <CardContent className={classes.cardContent}>
-          <img src={AmbientIcon} alt="Ambient" className={classes.img} />
+          <Figure src={AmbientIcon} alt="Ambient" className={classes.img} />
           <Typography variant="h5" className={classes.title}>
             AMBIENT POLLUTION
           </Typography>
           <Typography variant="subtitle2" className={classes.caption}>
-            Ambient air pollution causes an estimated{' '}
+            Ambient air pollution causes an estimated{" "}
             <cite>
               <a
                 href="https://www.who.int/health-topics/air-pollution#tab=tab_2"
@@ -131,7 +132,7 @@ function IndoorOutdoor() {
               >
                 4.2
               </a>
-            </cite>{' '}
+            </cite>{" "}
             million premature deaths each year.
           </Typography>
           <a
@@ -149,12 +150,12 @@ function IndoorOutdoor() {
 
       <Card className={classes.outdoor}>
         <CardContent className={classes.cardContent}>
-          <img src={HouseholdIcon} alt="Housing" className={classes.img} />
+          <Figure src={HouseholdIcon} alt="Housing" className={classes.img} />
           <Typography variant="h5" className={classes.title}>
             HOUSEHOLD POLLUTION
           </Typography>
           <Typography variant="subtitle2" className={classes.caption}>
-            Household air pollution causes an estimated{' '}
+            Household air pollution causes an estimated{" "}
             <cite>
               <a
                 href="https://www.who.int/health-topics/air-pollution#tab=tab_3"
@@ -164,7 +165,7 @@ function IndoorOutdoor() {
               >
                 3.8
               </a>
-            </cite>{' '}
+            </cite>{" "}
             million premature deaths each year.
           </Typography>
           <a

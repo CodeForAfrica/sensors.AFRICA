@@ -1,26 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import CityGauge from "@/sensorsafrica/components/Header/JumboContent/AirCityHeaderContent/CityGauge";
 
-import CityGauge from 'components/Header/JumboContent/AirCityHeaderContent/CityGauge';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   gaugeContainer: {
-    marginTop: '6rem',
-    [theme.breakpoints.up('md')]: {
-      marginTop: '1.875rem'
-    }
+    marginTop: "6rem",
+    [theme.breakpoints.up("md")]: {
+      marginTop: "1.875rem",
+    },
   },
   city: {
-    [theme.breakpoints.only('xs')]: {
-      fontSize: theme.typography.h6.fontSize
-    }
-  }
+    [theme.breakpoints.only("xs")]: {
+      fontSize: theme.typography.h6.fontSize,
+    },
+  },
 }));
 
 function AirCityHeaderContent({ airPol, airPolDescription, city }) {
@@ -29,7 +28,7 @@ function AirCityHeaderContent({ airPol, airPolDescription, city }) {
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid
@@ -38,15 +37,15 @@ function AirCityHeaderContent({ airPol, airPolDescription, city }) {
         container
         className={classes.gaugeContainer}
         direction="column"
-        justify="center"
+        justifyContent="center"
         alignItems="center"
       >
-        <Typography variant="subtitle1" style={{ color: 'white' }}>
-          THE AIR POLLUTION IN{' '}
+        <Typography variant="subtitle1" style={{ color: "white" }}>
+          THE AIR POLLUTION IN{" "}
         </Typography>
         <Typography
           variant="h4"
-          style={{ color: 'white' }}
+          style={{ color: "white" }}
           className={classes.city}
         >
           {city.label}
@@ -63,10 +62,11 @@ function AirCityHeaderContent({ airPol, airPolDescription, city }) {
 }
 
 AirCityHeaderContent.propTypes = {
-  city: PropTypes.shape({}).isRequired,
-  classes: PropTypes.shape({}).isRequired,
+  city: PropTypes.shape({
+    label: PropTypes.string,
+  }).isRequired,
   airPol: PropTypes.string.isRequired,
-  airPolDescription: PropTypes.string.isRequired
+  airPolDescription: PropTypes.string.isRequired,
 };
 
 export default AirCityHeaderContent;

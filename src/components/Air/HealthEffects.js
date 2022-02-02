@@ -1,32 +1,32 @@
-import React from 'react';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import Gauge from "./Gauge";
 
-import Gauge from './Gauge';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   svgContainer: {
-    paddingTop: '3rem',
-    paddingBottom: '2rem',
-    width: '100vw',
-    margin: '0 auto',
-    [theme.breakpoints.up('md')]: {
-      width: '59.625rem'
+    paddingTop: "3rem",
+    paddingBottom: "2rem",
+    width: "100vw",
+    margin: "0 auto",
+    [theme.breakpoints.up("md")]: {
+      width: "59.625rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '79.5rem'
-    }
-  }
+    [theme.breakpoints.up("lg")]: {
+      width: "79.5rem",
+    },
+  },
 }));
 
-function HealthEffects() {
-  const classes = useStyles();
+function HealthEffects(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.svgContainer}
-      justify="center"
+      justifyContent="center"
       alignItems="flex-start"
       spacing={2}
     >

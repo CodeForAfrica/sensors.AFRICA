@@ -1,34 +1,33 @@
-import React from 'react';
+import { Button, Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Button, Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import background from "@/sensorsafrica/assets/images/background/bgstories.jpg";
 
-import background from 'assets/images/background/bgstories.jpg';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    paddingTop: '2rem',
+    paddingTop: "2rem",
     height: 350,
-    backgroundImage: `url('${background}')`,
-    backgroundSize: 'cover',
-    overflow: 'hidden'
+    backgroundImage: `url('${background.src}')`,
+    backgroundSize: "cover",
+    overflow: "hidden",
   },
   titleSection: {
     flexGrow: 1,
-    textAlign: 'center',
-    color: 'white'
+    textAlign: "center",
+    color: "white",
   },
   buttonContainer: {
-    paddingTop: '2rem'
+    paddingTop: "2rem",
   },
   buttonLink: {
-    textDecoration: 'none'
+    textDecoration: "none",
   },
   button: {
     color: theme.palette.primary.dark,
     fontWeight: 900,
-    backgroundColor: '#fff'
-  }
+    backgroundColor: "#fff",
+  },
 }));
 
 function Stories(props) {
@@ -37,18 +36,18 @@ function Stories(props) {
   return (
     <div
       className={classes.root}
-      style={{ display: 'flex', alignItems: 'center' }}
+      style={{ display: "flex", alignItems: "center" }}
     >
       <Grid
         container
         className={classes.titleSection}
-        justify="center"
+        justifyContent="center"
         alignItems="center"
       >
         <Grid item xs={12}>
           <Typography
             variant="h3"
-            style={{ color: 'white', textTrandform: 'Uppercase' }}
+            style={{ color: "white", textTrandform: "Uppercase" }}
           >
             SENSORS STORIES
           </Typography>

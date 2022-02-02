@@ -1,13 +1,12 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-
-import PollutionSource from './PollutionSource';
+import PollutionSource from "./PollutionSource";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
@@ -15,47 +14,48 @@ const useStyles = makeStyles((theme) => ({
   // For groundLevel, blackCarbon, and Methane cards, include margins in width
   // since we want the same background color
   groundLevel: {
-    width: '100vw',
-    backgroundColor: '#f3f3f3',
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem',
+    width: "100vw",
+    backgroundColor: "#f3f3f3",
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
     },
   },
   blackCarbon: {
-    width: '100vw',
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem',
+    width: "100vw",
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
     },
   },
   methane: {
-    width: '100vw',
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem',
+    width: "100vw",
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
     },
   },
   mainTitle: {
-    textAlign: 'center',
+    textAlign: "center",
     fontWeight: 800,
     fontSize: theme.typography.fontSize,
   },
 }));
 
-function Sources() {
-  const classes = useStyles();
+function Sources(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12}>
@@ -72,9 +72,9 @@ function Sources() {
         <Grid
           container
           direction="row"
-          justify="center"
+          justifyContent="center"
           alignItems="strech"
-          style={{ paddingTop: '2rem', paddingBottom: '2rem' }}
+          style={{ paddingTop: "2rem", paddingBottom: "2rem" }}
         >
           <div className={classes.groundLevel}>
             <PollutionSource

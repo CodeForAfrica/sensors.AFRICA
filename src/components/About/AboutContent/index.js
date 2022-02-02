@@ -1,70 +1,68 @@
-import React from 'react';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { makeStyles } from '@material-ui/core/styles';
-
-import { Grid, Typography } from '@material-ui/core';
-
-import Content from './Content';
+import Content from "./Content";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
   // For air, water, and stormwatch cards, include margins in width
   // since we want the same background color
   airContent: {
-    width: '100vw',
-    backgroundColor: '#f3f3f3',
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem',
+    width: "100vw",
+    backgroundColor: "#f3f3f3",
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
     },
   },
   water: {
-    width: '100vw',
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem',
+    width: "100vw",
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
     },
   },
   stormWatch: {
-    width: '100vw',
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem',
+    width: "100vw",
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
     },
   },
   mainTitle: {
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(6),
-    textAlign: 'center',
-    fontWeight: 'bold',
+    textAlign: "center",
+    fontWeight: "bold",
   },
   caption: {
-    textAlign: 'center',
-    [theme.breakpoints.up('md')]: {
-      textAlign: 'right',
+    textAlign: "center",
+    [theme.breakpoints.up("md")]: {
+      textAlign: "right",
     },
   },
   sources: {
-    padding: '1rem 0',
-    width: '100vw',
-    [theme.breakpoints.up('md')]: {
-      width: '59.625rem',
+    padding: "1rem 0",
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "59.625rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '79.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "79.5rem",
     },
-    '& > ul': {
-      listStyle: 'none',
+    "& > ul": {
+      listStyle: "none",
     },
   },
 }));
@@ -75,7 +73,7 @@ function DescriptionContent(props) {
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12}>
@@ -89,7 +87,12 @@ function DescriptionContent(props) {
       </Grid>
 
       <Grid item xs={12}>
-        <Grid container direction="row" justify="center" alignItems="strech">
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="strech"
+        >
           <div className={classes.airContent}>
             <Content
               title="AIR"
@@ -165,15 +168,20 @@ function DescriptionContent(props) {
         </Grid>
       </Grid>
 
-      <Grid container direction="row" justify="center" alignItem="center">
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItem="center"
+      >
         <div className={classes.sources}>
           <Typography variant="caption" className={classes.caption}>
-            Sources retrieved from{' '}
+            Sources retrieved from{" "}
           </Typography>
           <Typography
+            component="ul"
             variant="caption"
             className={classes.caption}
-            component="ul"
           >
             <li>
               <a

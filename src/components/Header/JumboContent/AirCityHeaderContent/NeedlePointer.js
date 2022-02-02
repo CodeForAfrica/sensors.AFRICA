@@ -1,27 +1,26 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
+import Proptypes from "prop-types";
+import React from "react";
 
-import Proptypes from 'prop-types';
-
-const useStyles = makeStyles(theme => ({
-  pointer: { fill: 'rgb(20, 74, 61)' },
+const useStyles = makeStyles((theme) => ({
+  pointer: { fill: "rgb(20, 74, 61)" },
   gaugeBigText: {
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h6.fontSize,
     fontWeight: 700,
-    fill: theme.palette.primary.dark
+    fill: theme.palette.primary.dark,
   },
   hidden: {
-    visibility: 'hidden'
-  }
+    visibility: "hidden",
+  },
 }));
 
 function NeedlePointer({ hidden, measurement }) {
   const classes = useStyles();
   let rotate = -90;
-  const className = hidden ? classes.hidden : '';
+  const className = hidden ? classes.hidden : "";
 
   // Limit the value to 160
   const value = measurement > 160 ? 160 : measurement;
@@ -39,19 +38,21 @@ function NeedlePointer({ hidden, measurement }) {
         strokeLinecap="round"
         strokeWidth="5"
         stroke="#144a3d"
-        style={{ cursor: 'grab' }}
+        style={{ cursor: "grab" }}
       />
       <text
         transform="scale(1.2)"
-        x={`${-275 * Math.cos(((rotate + 90) * Math.PI) / 180) +
-          (measurement > 55 ? 5 : -2.5)}`}
+        x={`${
+          -275 * Math.cos(((rotate + 90) * Math.PI) / 180) +
+          (measurement > 55 ? 5 : -2.5)
+        }`}
         y={`${-275 * Math.sin(((rotate + 90) * Math.PI) / 180)}`}
         textAnchor={
           measurement > 25 && measurement < 55
-            ? 'middle'
+            ? "middle"
             : measurement > 40
-            ? 'start'
-            : 'end'
+            ? "start"
+            : "end"
         }
       >
         <tspan className={classes.gaugeBigText}>
@@ -64,7 +65,7 @@ function NeedlePointer({ hidden, measurement }) {
 
 NeedlePointer.propTypes = {
   hidden: Proptypes.bool.isRequired,
-  measurement: Proptypes.number.isRequired
+  measurement: Proptypes.number.isRequired,
 };
 
 export default NeedlePointer;

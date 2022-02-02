@@ -1,18 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-import CityGauge from 'components/Header/JumboContent/AirCityHeaderContent/CityGauge';
+import CityGauge from "@/sensorsafrica/components/Header/JumboContent/AirCityHeaderContent/CityGauge";
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'rgb(95, 191, 130)',
-    height: '100vh',
-    maxWidth: '100%',
-    width: '100vw'
-  }
+    backgroundColor: "rgb(95, 191, 130)",
+    height: "100vh",
+    maxWidth: "100%",
+    width: "100vw",
+  },
 });
 
 function AirGauge({ data, ...props }) {
@@ -31,8 +30,8 @@ function AirGauge({ data, ...props }) {
 AirGauge.propTypes = {
   data: PropTypes.shape({
     average: PropTypes.string,
-    averageDescription: PropTypes.string
-  }).isRequired
+    averageDescription: PropTypes.string,
+  }).isRequired,
 };
 
 export default AirGauge;

@@ -1,93 +1,93 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'white'
+    backgroundColor: "white",
   },
 
   statContainer: {
-    [theme.breakpoints.up('md')]: {
-      paddingBottom: '3rem'
-    }
+    [theme.breakpoints.up("md")]: {
+      paddingBottom: "3rem",
+    },
   },
   statContentContainer: {
-    textAlign: 'center',
-    paddingTop: '2rem',
-    paddingBottom: '1rem',
-    [theme.breakpoints.up('md')]: {
-      marginTop: '3rem',
-      width: '19.875rem'
+    textAlign: "center",
+    paddingTop: "2rem",
+    paddingBottom: "1rem",
+    [theme.breakpoints.up("md")]: {
+      marginTop: "3rem",
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
+    },
   },
   statMiddleContentContainer: {
-    width: '100%',
-    textAlign: 'center',
-    paddingTop: '2rem',
-    paddingBottom: '1rem',
-    borderTop: '1px solid  rgba(0, 0, 0, 0.2)',
-    borderBottom: '1px solid  rgba(0, 0, 0, 0.2)',
-    [theme.breakpoints.up('md')]: {
-      marginTop: '3rem',
-      width: '19.875rem',
-      border: '1px solid  rgba(0, 0, 0, 0.2)',
-      borderTop: 'none',
-      borderBottom: 'none'
+    width: "100%",
+    textAlign: "center",
+    paddingTop: "2rem",
+    paddingBottom: "1rem",
+    borderTop: "1px solid  rgba(0, 0, 0, 0.2)",
+    borderBottom: "1px solid  rgba(0, 0, 0, 0.2)",
+    [theme.breakpoints.up("md")]: {
+      marginTop: "3rem",
+      width: "19.875rem",
+      border: "1px solid  rgba(0, 0, 0, 0.2)",
+      borderTop: "none",
+      borderBottom: "none",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
+    },
   },
   subtitle: {
-    fontWeight: theme.typography.h6.fontWeight
+    fontWeight: theme.typography.h6.fontWeight,
   },
   subtitleContinue: {
     fontWeight: theme.typography.h6.fontWeight,
-    lineHeight: 1
+    lineHeight: 1,
   },
   subtitleLast: {
     fontWeight: theme.typography.h6.fontWeight,
-    paddingBottom: '0.75rem'
+    paddingBottom: "0.75rem",
   },
   statHighlight: {
     color: theme.palette.primary.light,
-    paddingBottom: '1rem'
+    paddingBottom: "1rem",
   },
   nameHighlight: {
     color: theme.palette.primary.light,
-    paddingTop: '1.5rem'
+    paddingTop: "1.5rem",
   },
   nameHighlightContinue: {
-    color: theme.palette.primary.light
+    color: theme.palette.primary.light,
   },
   nameHighlightLast: {
     color: theme.palette.primary.light,
-    paddingBottom: '3rem'
+    paddingBottom: "3rem",
   },
   statTitle: {
     fontWeight: 700,
-    textTransform: 'uppercase'
+    textTransform: "uppercase",
   },
   sup: {
     fontSize: theme.typography.fontSize,
-    textTransform: 'none'
-  }
+    textTransform: "none",
+  },
 }));
 
-function PollutionStats({ pollutionStats, city }) {
-  const classes = useStyles();
+function PollutionStats({ pollutionStats, city, ...props }) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid
@@ -95,7 +95,7 @@ function PollutionStats({ pollutionStats, city }) {
         xs={12}
         container
         className={classes.statContainer}
-        justify="center"
+        justifyContent="center"
         alignItems="flex-start"
       >
         <Grid item className={classes.statContentContainer}>
@@ -153,7 +153,7 @@ function PollutionStats({ pollutionStats, city }) {
             annual average of
           </Typography>
           <Typography variant="h3" className={classes.statHighlight}>
-            {pollutionStats.annualAverage}{' '}
+            {pollutionStats.annualAverage}{" "}
             <sup className={classes.sup}>
               µg/m
               <sup>3</sup>
@@ -176,7 +176,16 @@ function PollutionStats({ pollutionStats, city }) {
 }
 
 PollutionStats.propTypes = {
-  pollutionStats: PropTypes.shape({}).isRequired,
-  city: PropTypes.shape({}).isRequired
+  pollutionStats: PropTypes.shape({
+    annualAverage: PropTypes.string,
+    childDeathCount: PropTypes.string,
+    deathCount: PropTypes.string,
+    topIllness: PropTypes.string,
+    percent: PropTypes.string,
+  }).isRequired,
+  city: PropTypes.shape({
+    country: PropTypes.string,
+    name: PropTypes.string,
+  }).isRequired,
 };
 export default PollutionStats;

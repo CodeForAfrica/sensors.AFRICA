@@ -1,57 +1,57 @@
-import React from 'react';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-import HealthEffects from 'components/Air/HealthEffects';
-import Burden from 'components/HealthClimate/Burden';
+import HealthEffects from "@/sensorsafrica/components/Air/HealthEffects";
+import Burden from "@/sensorsafrica/components/HealthClimate/Burden";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'white',
-    display: 'block',
+    backgroundColor: "white",
+    display: "block",
   },
   grid: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
   mainTitle: {
-    textAlign: 'center',
+    textAlign: "center",
     fontWeight: 800,
     fontSize: theme.typography.fontSize,
   },
   caption: {
-    paddingTop: '1rem',
-    textAlign: 'center',
+    paddingTop: "1rem",
+    textAlign: "center",
   },
   graph: {
-    margin: '0 auto',
-    width: '9rem',
-    [theme.breakpoints.up('md')]: {
-      width: '12rem',
-      padding: '0 1rem',
+    margin: "0 auto",
+    width: "9rem",
+    [theme.breakpoints.up("md")]: {
+      width: "12rem",
+      padding: "0 1rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '15rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "15rem",
     },
   },
   titleGrid: {
-    marginRight: '15%',
-    marginLeft: '15%',
+    marginRight: "15%",
+    marginLeft: "15%",
   },
   title: {
-    textAlign: 'center',
-    textTransform: 'None',
+    textAlign: "center",
+    textTransform: "None",
   },
 }));
 
-function HealthAndBurden() {
-  const classes = useStyles();
+function HealthAndBurden(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12} className={classes.grid}>

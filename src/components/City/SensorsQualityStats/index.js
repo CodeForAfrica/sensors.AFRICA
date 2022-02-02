@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-import DataTable from 'components/City/SensorsQualityStats/DataTable';
+import DataTable from "@/sensorsafrica/components/City/SensorsQualityStats/DataTable";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,26 +12,26 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(4),
   },
   statsSummary: {
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem',
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
     },
   },
 
   // TODO(kilemensi): Currently statsSummary is not implemented yet so make
   // dataTable the only component
   qualityStats: {
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '59.625rem',
-      borderTop: '1px solid rgba(0,0,0,0.1)',
-      borderBottom: '1px solid rgba(0,0,0,0.1)',
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "59.625rem",
+      borderTop: "1px solid rgba(0,0,0,0.1)",
+      borderBottom: "1px solid rgba(0,0,0,0.1)",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '79.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "79.5rem",
     },
   },
 }));
@@ -47,7 +46,7 @@ function SensorsQualityStats({
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item>

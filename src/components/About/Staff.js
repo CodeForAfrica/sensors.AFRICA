@@ -1,68 +1,69 @@
-import React from 'react';
 import {
   Card,
   CardActionArea,
   Grid,
   Typography,
   CardContent,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import jack from 'assets/images/team/jack.jpeg';
-import kirah from 'assets/images/team/kirah.jpeg';
-import constant from 'assets/images/team/constant.jpg';
-import gideon from 'assets/images/team/gideon.jpeg';
+import constant from "@/sensorsafrica/assets/images/team/constant.jpg";
+import gideon from "@/sensorsafrica/assets/images/team/gideon.jpeg";
+import jack from "@/sensorsafrica/assets/images/team/jack.jpeg";
+import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
+import Figure from "@/sensorsafrica/components/Figure";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    paddingTop: '2.5rem',
-    paddingBottom: '2.5rem',
-    backgroundColor: 'white',
+    paddingTop: "2.5rem",
+    paddingBottom: "2.5rem",
+    backgroundColor: "white",
   },
   staffRoot: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   card: {
-    width: '100%',
-    backgroundColor: '#fff',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: '0.1rem',
-      marginRight: '0.1rem',
-      width: '18.5rem',
-      display: 'inline-block',
+    width: "100%",
+    backgroundColor: "#fff",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: "0.1rem",
+      marginRight: "0.1rem",
+      width: "18.5rem",
+      display: "inline-block",
     },
-    [theme.breakpoints.up('md')]: {
-      marginLeft: '1rem',
-      marginRight: '1rem',
-      width: '20.75rem',
+    [theme.breakpoints.up("md")]: {
+      marginLeft: "1rem",
+      marginRight: "1rem",
+      width: "20.75rem",
     },
   },
   cardMedia: {
     height: 300, // To fit all image sizes
-    width: '100%',
-    objectFit: 'fit',
-    maxWidth: '20.75rem',
-    margin: 'auto',
-    overflow: 'hidden',
-    backgroundSize: 'contain',
+    width: "100%",
+    objectFit: "fit",
+    maxWidth: "20.75rem",
+    margin: "auto",
+    overflow: "hidden",
+    backgroundSize: "contain",
   },
   carContent: {
     padding: 0,
   },
   title: {
     fontWeight: 800,
-    fontSize: '1rem',
+    fontSize: "1rem",
     marginBottom: theme.spacing(3),
   },
   h6: {
-    textTransform: 'Uppercase',
-    fontWeight: 'bolder',
+    textTransform: "Uppercase",
+    fontWeight: "bolder",
   },
   a: {
-    textDecoration: 'none',
-    color: 'rgba(0, 0, 0, 0.87)',
-    '&:hover': {
+    textDecoration: "none",
+    color: "rgba(0, 0, 0, 0.87)",
+    "&:hover": {
       color: theme.palette.primary.light,
     },
   },
@@ -70,11 +71,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Staff(props) {
   const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12}>
@@ -86,7 +88,11 @@ function Staff(props) {
       <Grid item xs={12} className={classes.staffRoot}>
         <Card className={classes.card}>
           <CardActionArea>
-            <img src={constant} alt="Constant" className={classes.cardMedia} />
+            <Figure
+              src={constant}
+              alt="Constant"
+              className={classes.cardMedia}
+            />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 CONSTANT CAP
@@ -105,7 +111,7 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <img src={kirah} alt="Kirah" className={classes.cardMedia} />
+            <Figure src={kirah} alt="Kirah" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 WARUKIRA THEURI
@@ -124,7 +130,7 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <img src={jack} alt="Jack" className={classes.cardMedia} />
+            <Figure src={jack} alt="Jack" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 JACK MCLEANS
@@ -146,7 +152,7 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <img src={gideon} alt="Gideon" className={classes.cardMedia} />
+            <Figure src={gideon} alt="Gideon" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 GIDEON MAINA

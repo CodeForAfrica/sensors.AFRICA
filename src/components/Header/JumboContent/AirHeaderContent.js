@@ -1,41 +1,41 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import SearchBar from "@/sensorsafrica/components/SearchBar";
 
-import SearchBar from 'components/SearchBar';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   titleSection: {
     flexGrow: 1,
-    textAlign: 'center',
-    paddingTop: '6rem',
-    [theme.breakpoints.up('md')]: {
-      paddingRight: '20%',
-      paddingLeft: '20%'
+    textAlign: "center",
+    paddingTop: "6rem",
+    [theme.breakpoints.up("md")]: {
+      paddingRight: "20%",
+      paddingLeft: "20%",
     },
-    [theme.breakpoints.up('lg')]: {
-      paddingRight: '25%',
-      paddingLeft: '25%'
-    }
+    [theme.breakpoints.up("lg")]: {
+      paddingRight: "25%",
+      paddingLeft: "25%",
+    },
   },
   headerText: {
-    color: 'white',
-    paddingBottom: '1rem'
+    color: "white",
+    paddingBottom: "1rem",
   },
   searchBar: {
-    paddingBottom: '6rem'
-  }
+    paddingBottom: "6rem",
+  },
 }));
 
-function AirHeaderContent({ handleSearch }) {
-  const classes = useStyles();
+function AirHeaderContent({ handleSearch, ...props }) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.titleSection}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12}>
@@ -59,7 +59,7 @@ function AirHeaderContent({ handleSearch }) {
 }
 
 AirHeaderContent.propTypes = {
-  handleSearch: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default AirHeaderContent;

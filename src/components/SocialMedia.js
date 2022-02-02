@@ -1,39 +1,37 @@
-import React from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import PropTypes from 'prop-types';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    color: 'white',
+    color: "white",
     backgroundColor: theme.palette.secondary.main,
     paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(2)
+    paddingBottom: theme.spacing(2),
   },
   fa: {
-    transition: 'all .5s ease-in-out',
+    transition: "all .5s ease-in-out",
     padding: theme.spacing(0.5),
-    '&:hover': {
-      transform: 'scale(1.3)',
-      color: '#f3f3f3'
-    }
+    "&:hover": {
+      transform: "scale(1.3)",
+      color: "#f3f3f3",
+    },
   },
   links: {
-    color: 'white'
-  }
+    color: "white",
+  },
 }));
 
-function SocialMedia({ color }) {
-  const classes = useStyles();
+function SocialMedia({ color, ...props }) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
-      justify="center"
+      justifyContent="center"
       alignitems="center"
       className={classes.icons}
     >
@@ -46,7 +44,7 @@ function SocialMedia({ color }) {
         >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={['fab', 'twitter']}
+            icon={["fab", "twitter"]}
             size="2x"
             fixedWidth
             style={{ color }}
@@ -62,7 +60,7 @@ function SocialMedia({ color }) {
         >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={['fab', 'facebook-f']}
+            icon={["fab", "facebook-f"]}
             size="2x"
             fixedWidth
             style={{ color }}
@@ -78,7 +76,7 @@ function SocialMedia({ color }) {
         >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={['fab', 'instagram']}
+            icon={["fab", "instagram"]}
             size="2x"
             fixedWidth
             style={{ color }}
@@ -92,7 +90,7 @@ function SocialMedia({ color }) {
         >
           <FontAwesomeIcon
             className={classes.fa}
-            icon={['fab', 'medium-m']}
+            icon={["fab", "medium-m"]}
             size="2x"
             fixedWidth
             style={{ color }}
@@ -104,11 +102,11 @@ function SocialMedia({ color }) {
 }
 
 SocialMedia.propTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 SocialMedia.defaultProps = {
-  color: '#fff'
+  color: "#fff",
 };
 
 export default SocialMedia;

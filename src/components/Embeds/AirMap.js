@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import React from "react";
 
-import { CITIES_LOCATION } from 'api';
+import { CITIES_LOCATION } from "api";
 
 function AirMap({ city }) {
   return (
@@ -14,8 +14,8 @@ function AirMap({ city }) {
       height="auto"
       width="100%"
       style={{
-        width: '100vw',
-        height: '100vh'
+        width: "100vw",
+        height: "100vh",
       }}
       allowFullScreen
     />
@@ -23,7 +23,7 @@ function AirMap({ city }) {
 }
 
 AirMap.propTypes = {
-  city: PropTypes.string.isRequired
+  city: PropTypes.string.isRequired,
 };
 
 export default AirMap;

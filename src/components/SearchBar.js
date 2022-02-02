@@ -1,32 +1,29 @@
-import React from 'react';
+import { MenuItem, Paper, TextField, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import Select from "react-select";
 
-import PropTypes from 'prop-types';
-
-import Select from 'react-select';
-
-import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    paddingTop: '5rem',
-    paddingLeft: '2rem',
-    [theme.breakpoints.down('sm')]: {
-      paddingLeft: '3rem',
+    paddingTop: "5rem",
+    paddingLeft: "2rem",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "3rem",
     },
   },
   input: {
-    display: 'flex',
+    display: "flex",
     padding: 0,
-    height: '3rem',
+    height: "3rem",
   },
   valueContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap",
     flexGrow: 1,
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    alignItems: "center",
+    backgroundColor: "#fff",
     paddingTop: theme.spacing(2),
     width: 300,
   },
@@ -40,21 +37,21 @@ const styles = (theme) => ({
     fontSize: 16,
   },
   placeholder: {
-    position: 'absolute',
+    position: "absolute",
     left: 2,
     fontSize: 16,
-    color: '#164B3E',
-    paddingLeft: '1rem',
+    color: "#164B3E",
+    paddingLeft: "1rem",
   },
   paper: {
-    position: 'absolute',
+    position: "absolute",
     zIndex: 2,
     marginTop: theme.spacing(1),
     left: 0,
     right: 0,
     background: theme.palette.primary.main,
   },
-});
+}));
 
 function NoOptionsMessage({ children, innerProps, selectProps }) {
   return (
@@ -67,6 +64,7 @@ function NoOptionsMessage({ children, innerProps, selectProps }) {
     </Typography>
   );
 }
+
 NoOptionsMessage.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -79,6 +77,7 @@ NoOptionsMessage.propTypes = {
     }),
   }),
 };
+
 NoOptionsMessage.defaultProps = {
   children: null,
   innerProps: null,
@@ -88,10 +87,12 @@ NoOptionsMessage.defaultProps = {
 function inputComponent({ inputRef, ...props }) {
   return <div ref={inputRef} {...props} />;
 }
+
 inputComponent.propTypes = {
   inputRef: PropTypes.shape(),
   props: PropTypes.shape({}),
 };
+
 inputComponent.defaultProps = {
   inputRef: null,
   props: null,
@@ -113,6 +114,7 @@ function Control({ children, innerProps, innerRef, selectProps }) {
     />
   );
 }
+
 Control.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -127,6 +129,7 @@ Control.propTypes = {
     }),
   }),
 };
+
 Control.defaultProps = {
   children: null,
   innerProps: null,
@@ -141,7 +144,7 @@ function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
       selected={isFocused}
       component="div"
       style={{
-        color: '#fff',
+        color: "#fff",
         fontWeight: isSelected ? 500 : 400,
       }}
       {...innerProps}
@@ -150,6 +153,7 @@ function Option({ children, innerProps, innerRef, isFocused, isSelected }) {
     </MenuItem>
   );
 }
+
 Option.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -160,6 +164,7 @@ Option.propTypes = {
   isFocused: PropTypes.bool,
   isSelected: PropTypes.bool,
 };
+
 Option.defaultProps = {
   children: null,
   innerProps: null,
@@ -179,6 +184,7 @@ function Placeholder({ children, innerProps, selectProps }) {
     </Typography>
   );
 }
+
 Placeholder.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -191,6 +197,7 @@ Placeholder.propTypes = {
     }),
   }),
 };
+
 Placeholder.defaultProps = {
   children: null,
   innerProps: null,
@@ -204,6 +211,7 @@ function SingleValue({ children, innerProps, selectProps }) {
     </Typography>
   );
 }
+
 SingleValue.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -216,6 +224,7 @@ SingleValue.propTypes = {
     }),
   }),
 };
+
 SingleValue.defaultProps = {
   children: null,
   innerProps: null,
@@ -225,6 +234,7 @@ SingleValue.defaultProps = {
 function ValueContainer({ children, selectProps }) {
   return <div className={selectProps.classes.valueContainer}>{children}</div>;
 }
+
 ValueContainer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -236,6 +246,7 @@ ValueContainer.propTypes = {
     }),
   }),
 };
+
 ValueContainer.defaultProps = {
   children: null,
   selectProps: null,
@@ -248,6 +259,7 @@ function Menu({ children, innerProps, selectProps }) {
     </Paper>
   );
 }
+
 Menu.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -260,6 +272,7 @@ Menu.propTypes = {
     }),
   }),
 };
+
 Menu.defaultProps = {
   children: null,
   innerProps: null,
@@ -278,58 +291,48 @@ const components = {
 };
 
 const DEFAULT_OPTIONS = [
-  { value: 'nairobi', label: 'Nairobi, Kenya' },
-  { value: 'kisumu', label: 'Kisumu, Kenya' },
-  { value: 'nakuru', label: 'Nakuru, Kenya' },
-  { value: 'lagos', label: 'Lagos, Nigeria' },
-  { value: 'dar-es-salaam', label: 'Dar-es-Salaam, Tanzania' },
+  { value: "nairobi", label: "Nairobi, Kenya" },
+  { value: "kisumu", label: "Kisumu, Kenya" },
+  { value: "nakuru", label: "Nakuru, Kenya" },
+  { value: "lagos", label: "Lagos, Nigeria" },
+  { value: "dar-es-salaam", label: "Dar-es-Salaam, Tanzania" },
 ];
 
-class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
+function SearchBar({ handleSearch, placeholder, options, ...props }) {
+  const classes = useStyles(props);
+  const [single, setSingle] = useState();
 
-    this.state = { single: null };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(city) {
-    this.setState({ single: city });
-    const { handleSearch } = this.props;
+  const handleChange = (city) => {
+    setSingle(city);
     if (handleSearch) {
       handleSearch(city);
     }
-  }
+  };
 
-  render() {
-    const { classes, options, placeholder } = this.props;
-    const { single } = this.state;
-
-    return (
-      <div className={classes.root}>
-        <Select
-          classes={classes}
-          options={options}
-          components={components}
-          value={single}
-          onChange={this.handleChange}
-          placeholder={placeholder}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className={classes.root}>
+      <Select
+        classes={classes}
+        options={options}
+        components={components}
+        value={single}
+        onChange={handleChange}
+        placeholder={placeholder}
+      />
+    </div>
+  );
 }
 
 SearchBar.propTypes = {
   handleSearch: PropTypes.func,
-  options: PropTypes.shape({}),
+  options: PropTypes.arrayOf(PropTypes.shape({})),
   placeholder: PropTypes.string,
 };
 
 SearchBar.defaultProps = {
   handleSearch: null,
   options: DEFAULT_OPTIONS,
-  placeholder: '',
+  placeholder: "",
 };
 
-export default withStyles(styles)(SearchBar);
+export default SearchBar;

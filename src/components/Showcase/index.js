@@ -1,29 +1,28 @@
-import React from 'react';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-
-import { makeStyles } from '@material-ui/core/styles';
-
-import StoryList from 'components/Showcase/StoryList';
+import StoryList from "@/sensorsafrica/components/Showcase/StoryList";
 
 const useStyles = makeStyles({
   root: {
-    paddingTop: '4rem',
-    backgroundColor: 'white',
-    paddingBottom: '4rem'
+    paddingTop: "4rem",
+    backgroundColor: "white",
+    paddingBottom: "4rem",
   },
   headline: {
-    textAlign: 'center',
-    marginBottom: '2rem'
+    textAlign: "center",
+    marginBottom: "2rem",
   },
   headlineTitle: {
-    textAlign: 'center',
-    paddingBottom: '1rem'
-  }
+    textAlign: "center",
+    paddingBottom: "1rem",
+  },
 });
 
-function Showcase() {
-  const classes = useStyles();
+function Showcase(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid className={classes.root}>
       <Grid item xs={12} className={classes.headline}>

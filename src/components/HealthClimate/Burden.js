@@ -1,70 +1,71 @@
-import React from 'react';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import PollutionBurden from "./PollutionBurden";
 
-import risingtemperature from 'assets/images/icons/Risingtemperature.png';
-import snowmelt from 'assets/images/icons/snowmelt.png';
-import cropdamage from 'assets/images/icons/cropdamage.png';
-import PollutionBurden from './PollutionBurden';
+import cropdamage from "@/sensorsafrica/assets/images/icons/cropdamage.png";
+import risingtemperature from "@/sensorsafrica/assets/images/icons/Risingtemperature.png";
+import snowmelt from "@/sensorsafrica/assets/images/icons/snowmelt.png";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
-    backgroundColor: 'white',
-    paddingBottom: '3rem'
+    backgroundColor: "white",
+    paddingBottom: "3rem",
   },
   titleContainer: {
-    marginLeft: '15%',
-    marginRight: '15%',
-    paddingBottom: '3rem'
+    marginLeft: "15%",
+    marginRight: "15%",
+    paddingBottom: "3rem",
   },
   title: {
-    textAlign: 'center',
-    textTransform: 'none'
+    textAlign: "center",
+    textTransform: "none",
   },
 
   // For temparate, snowAndIce, and crops cards, include margins in width since
   // we want the same background color
   temperature: {
-    width: '100vw',
+    width: "100vw",
     backgroundColor: theme.palette.primary.light,
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
+    },
   },
   snowAndIce: {
-    width: '100vw',
+    width: "100vw",
     backgroundColor: theme.palette.primary.dark,
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
+    },
   },
   crops: {
-    width: '100vw',
+    width: "100vw",
     backgroundColor: theme.palette.primary.light,
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
-  }
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
+    },
+  },
 }));
 
-function Burden() {
-  const classes = useStyles();
+function Burden(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12} className={classes.titleContainer}>
@@ -74,7 +75,12 @@ function Burden() {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Grid container direction="row" justify="center" alignItems="strech">
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="strech"
+        >
           <div className={classes.temperature}>
             <PollutionBurden
               icon={risingtemperature}
