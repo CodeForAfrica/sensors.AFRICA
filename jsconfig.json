@@ -3,11 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "*": ["*"],
-      "api/*": ["src/api/*"],
-      "assets/*": ["src/assets/*"],
-      "components/*": ["src/components/*"],
-      "pages/*": ["src/pages/*"],
-      "lib/*": ["src/lib/*"]
+      "@/sensorsafrica/*": ["./src/*"]
     }
-  }
+  },
+  "exclude": ["node_modules"]
 }

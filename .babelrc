@@ -2,15 +2,20 @@
   "presets": ["next/babel"],
   "plugins": [
     [
+      "transform-imports",
+      {
+        "material-ui/core": {
+          "transform": "material-ui/core/esm/${member}",
+          "preventFullImport": true
+        }
+      }
+    ],
+    [
       "module-resolver",
       {
         "root": ["./src"],
         "alias": {
-          "api": "./src/api",
-          "assets": "./src/assets",
-          "components": "./src/components",
-          "pages": "./src/pages",
-          "lib": "./src/lib"
+          "@/sensorsafrica": "./src"
         }
       }
     ]
