@@ -1,27 +1,9 @@
-import React from 'react';
+import { ServerStyleSheets } from "@material-ui/core/styles";
+import Document, { Head, Html, Main, NextScript } from "next/document";
+import React from "react";
 
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/core/styles';
-
-import theme from 'theme';
-
-import { GA_TRACKING_ID } from 'lib/gtag';
-
-function getGtagScript() {
-  return {
-    __html: `
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', '${GA_TRACKING_ID}', {
-        page_path: window.location.pathname
-      });
-`,
-  };
-}
+import { GA_TRACKING_ID } from "@/sensorsafrica/lib/gtag";
+import theme from "@/sensorsafrica/theme";
 
 export default class MainDocument extends Document {
   render() {
@@ -30,13 +12,13 @@ export default class MainDocument extends Document {
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
-            rel="preconnect"
             href="https://fonts.googleapis.com/css?family=Anton|Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+            rel="preconnect"
             crossOrigin="anonymous"
           />
           <link
-            rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Anton|Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+            rel="stylesheet"
           />
           <link rel="manifest" href="/manifest.json" />
 
@@ -46,9 +28,20 @@ export default class MainDocument extends Document {
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
           <script
-            type="text/javascript"
             // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={getGtagScript()}
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag() {
+                dataLayer.push(arguments);
+              }
+              gtag('js', new Date());
+
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname
+              });
+            `,
+            }}
           />
         </Head>
         <body>

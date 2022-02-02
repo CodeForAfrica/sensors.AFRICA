@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import DocumentHead from 'components/DocumentHead';
-import { URLS } from 'components/DocumentHead/PageHeads';
-import Footer from 'components/Footer';
-import Hero from 'components/Landing/Hero';
+import DocumentHead from "@/sensorsafrica/components/DocumentHead";
+import { URLS } from "@/sensorsafrica/components/DocumentHead/PageHeads";
+import Footer from "@/sensorsafrica/components/Footer";
+import Hero from "@/sensorsafrica/components/Landing/Hero";
 
 function Home() {
   return (

@@ -1,21 +1,37 @@
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
-import API, { CITIES_LOCATION, getFormattedWeeklyP2Stats } from 'api';
-import { AirGraph } from 'components/Embeds';
-import NotFound from 'pages/404';
+import API, {
+  CITIES_LOCATION,
+  getFormattedWeeklyP2Stats,
+} from "@/sensorsafrica/api";
+import { AirGraph } from "@/sensorsafrica/components/Embeds";
 
-function Graph({ city, data, errorCode }) {
-  // if !data, 404
-  if (!CITIES_LOCATION[city] || errorCode > 400) {
-    return <NotFound />;
-  }
+function Graph({ data }) {
   return <AirGraph data={data} />;
 }
 
+Graph.propTypes = {
+  data: PropTypes.shape({}),
+};
+
+Graph.defaultProps = {
+  data: undefined,
+};
+
 export async function getServerSideProps({ query: { city } }) {
+  if (!CITIES_LOCATION[city]) {
+    return {
+      notFound: true,
+    };
+  }
   const weeklyP2Res = await API.getWeeklyP2Data(city);
-  const errorCode = weeklyP2Res.statusCode > 200 && weeklyP2Res.statusCode;
-  const weeklyP2 = (!errorCode && (await weeklyP2Res.json())) || {};
+  if (!weeklyP2Res.ok) {
+    return {
+      notFound: true,
+    };
+  }
+  const weeklyP2 = (await weeklyP2Res.json()) || {};
   const data = getFormattedWeeklyP2Stats(weeklyP2);
 
   return { props: { city, data } };

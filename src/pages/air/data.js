@@ -1,15 +1,14 @@
-import React from 'react';
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { makeStyles } from '@material-ui/core/styles';
-
-import Stories from 'components/About/Stories';
-import Navbar from 'components/Header/Navbar';
-import DataArchivesHeader from 'components/DataArchives/DataArchivesHeader';
-import DataArchives from 'components/DataArchives/DataArchives';
-import EmbedDocumentation from 'components/EmbedDocumentation';
-import Support from 'components/Support';
-import PartnerLogos from 'components/PartnerLogos';
-import Footer from 'components/Footer';
+import Stories from "@/sensorsafrica/components/About/Stories";
+import DataArchives from "@/sensorsafrica/components/DataArchives/DataArchives";
+import DataArchivesHeader from "@/sensorsafrica/components/DataArchives/DataArchivesHeader";
+import EmbedDocumentation from "@/sensorsafrica/components/EmbedDocumentation";
+import Footer from "@/sensorsafrica/components/Footer";
+import Navbar from "@/sensorsafrica/components/Header/Navbar";
+import PartnerLogos from "@/sensorsafrica/components/PartnerLogos";
+import Support from "@/sensorsafrica/components/Support";
 
 const useStyles = makeStyles((theme) => ({
   dataSupport: {
@@ -18,8 +17,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Data() {
-  const classes = useStyles();
+function Data(props) {
+  const classes = useStyles(props);
+
   return (
     <>
       <Navbar />
@@ -27,7 +27,7 @@ function Data() {
       <DataArchives />
       <EmbedDocumentation />
       <Stories />
-      <Support classNames={classes.dataSupport} />
+      <Support className={classes.dataSupport} />
       <PartnerLogos />
       <Footer />
     </>

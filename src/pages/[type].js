@@ -1,39 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import React from "react";
 
-import DocumentHead from 'components/DocumentHead';
-import { URLS } from 'components/DocumentHead/PageHeads';
-import Footer from 'components/Footer';
-import Hero from 'components/Landing/Hero';
+import DocumentHead from "@/sensorsafrica/components/DocumentHead";
+import { URLS } from "@/sensorsafrica/components/DocumentHead/PageHeads";
+import Footer from "@/sensorsafrica/components/Footer";
+import Hero from "@/sensorsafrica/components/Landing/Hero";
 
 function SensorTypeHome({ type }) {
   return (
     <>
       <DocumentHead url={URLS[type].HOME} />
-      <Hero />
+      <Hero comingSoon />
       <Footer />
     </>
   );
 }
 
 SensorTypeHome.propTypes = {
-  type: PropTypes.oneOf(['RADIATION', 'SOUND', 'WATER']).isRequired
+  type: PropTypes.oneOf(["RADIATION", "SOUND", "WATER"]).isRequired,
 };
-
-export async function getStaticProps({ params: { type } }) {
-  return {
-    props: { type: type.toUpperCase() }
-  };
-}
 
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { type: 'radiation' } },
-      { params: { type: 'sound' } },
-      { params: { type: 'water' } }
+      { params: { type: "radiation" } },
+      { params: { type: "sound" } },
+      { params: { type: "water" } },
     ],
-    fallback: false
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params: { type } }) {
+  return {
+    props: { type: type.toUpperCase() },
   };
 }
 

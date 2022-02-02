@@ -1,42 +1,43 @@
-import React from 'react';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Navbar from 'components/Header/Navbar';
-import JoinHeader from 'components/JoinNetwork/JoinHeader';
-import Support from 'components/Support';
-import Footer from 'components/Footer';
-import PartnerLogos from 'components/PartnerLogos';
-import backgroundImage from 'assets/images/background/bgsupport.jpg';
+import backgroundImage from "@/sensorsafrica/assets/images/background/bgsupport.jpg";
+import Footer from "@/sensorsafrica/components/Footer";
+import Navbar from "@/sensorsafrica/components/Header/Navbar";
+import JoinHeader from "@/sensorsafrica/components/JoinNetwork/JoinHeader";
+import PartnerLogos from "@/sensorsafrica/components/PartnerLogos";
+import Support from "@/sensorsafrica/components/Support";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   joinNetworkSupport: {
     paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(5),
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover',
-    [theme.breakpoints.up('md')]: {
-      height: '40rem',
-      alignItems: 'center',
+    backgroundImage: `url(${backgroundImage.src})`,
+    backgroundSize: "cover",
+    [theme.breakpoints.up("md")]: {
+      height: "40rem",
+      alignItems: "center",
     },
   },
   joinNetworkPartnerLogos: {
     // Due to the image used in support, no padding top for logos
-    paddingTop: '3rem',
+    paddingTop: "3rem",
   },
 }));
 
-function JoinNetwork() {
-  const classes = useStyles();
+function JoinNetwork(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12}>
@@ -46,7 +47,7 @@ function JoinNetwork() {
         <JoinHeader />
       </Grid>
       <Grid item xs={12}>
-        <Support classNames={classes.joinNetworkSupport} />
+        <Support className={classes.joinNetworkSupport} />
       </Grid>
       <Grid item xs={12} className={classes.joinNetworkPartnerLogos}>
         <PartnerLogos />

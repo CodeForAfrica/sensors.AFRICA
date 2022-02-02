@@ -1,17 +1,16 @@
-import React from 'react';
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { makeStyles } from '@material-ui/core/styles';
-
-import DocumentHead, { URLS } from 'components/DocumentHead';
-import Stories from 'components/About/Stories';
-import Navbar from 'components/Header/Navbar';
-import AboutHeader from 'components/About/Header';
-import AboutContent from 'components/About/AboutContent';
-import Partners from 'components/About/Partners';
-import Staff from 'components/About/Staff';
-import Footer from 'components/Footer';
-import Support from 'components/Support';
-import PartnerLogos from 'components/PartnerLogos';
+import AboutContent from "@/sensorsafrica/components/About/AboutContent";
+import AboutHeader from "@/sensorsafrica/components/About/Header";
+import Partners from "@/sensorsafrica/components/About/Partners";
+import Staff from "@/sensorsafrica/components/About/Staff";
+import Stories from "@/sensorsafrica/components/About/Stories";
+import DocumentHead, { URLS } from "@/sensorsafrica/components/DocumentHead";
+import Footer from "@/sensorsafrica/components/Footer";
+import Navbar from "@/sensorsafrica/components/Header/Navbar";
+import PartnerLogos from "@/sensorsafrica/components/PartnerLogos";
+import Support from "@/sensorsafrica/components/Support";
 
 const useStyles = makeStyles((theme) => ({
   aboutSupport: {
@@ -31,7 +30,7 @@ function AboutGlobal() {
       <Partners />
       <Staff />
       <Stories />
-      <Support classNames={classes.aboutSupport} />
+      <Support className={classes.aboutSupport} />
       <PartnerLogos />
       <Footer />
     </>

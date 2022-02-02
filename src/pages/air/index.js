@@ -1,30 +1,28 @@
-import React from 'react';
+import { useRouter } from "next/router";
+import React from "react";
 
-import { useRouter } from 'next/router';
+import Stories from "@/sensorsafrica/components/About/Stories";
+import AirHeader from "@/sensorsafrica/components/Air/AirHeader";
+import IndoorOutdoor from "@/sensorsafrica/components/Air/IndoorOutdoor";
+import Issues from "@/sensorsafrica/components/Air/Issues";
+import DocumentHead from "@/sensorsafrica/components/DocumentHead";
+import { URLS } from "@/sensorsafrica/components/DocumentHead/PageHeads";
+import Footer from "@/sensorsafrica/components/Footer";
+import Navbar from "@/sensorsafrica/components/Header/Navbar";
+import PartnerLogos from "@/sensorsafrica/components/PartnerLogos";
+import Showcase from "@/sensorsafrica/components/Showcase";
+import Support from "@/sensorsafrica/components/Support";
+import About from "@/sensorsafrica/pages/air/about";
+import Data from "@/sensorsafrica/pages/air/data";
+import HealthAndClimateImpacts from "@/sensorsafrica/pages/air/health-and-climate-impact";
+import HowSensorsWork from "@/sensorsafrica/pages/air/how-sensors-work";
+import JoinNetwork from "@/sensorsafrica/pages/air/join-network";
 
-import Navbar from 'components/Header/Navbar';
-import DocumentHead from 'components/DocumentHead';
-import { URLS } from 'components/DocumentHead/PageHeads';
-import Footer from 'components/Footer';
-import PartnerLogos from 'components/PartnerLogos';
-import IndoorOutdoor from 'components/Air/IndoorOutdoor';
-import Issues from 'components/Air/Issues';
-import Stories from 'components/About/Stories';
-import AirHeader from 'components/Air/AirHeader';
-import Support from 'components/Support';
-import Showcase from 'components/Showcase';
-
-import About from 'pages/air/about';
-import Data from 'pages/air/data';
-import HowSensorsWork from 'pages/air/how-sensors-work';
-import JoinNetwork from 'pages/air/join-network';
-import HealthAndClimateImpacts from 'pages/air/health-and-climate-impact';
-
-const CITY_PATHNAME = '/air/city';
+const CITY_PATHNAME = "/air/city";
 
 function AirHome() {
   const router = useRouter();
-  const handleSearch = city => {
+  const handleSearch = (city) => {
     router.push(`${CITY_PATHNAME}/${city.value}`);
   };
 
