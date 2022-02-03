@@ -1,58 +1,55 @@
-import React from 'react';
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import { useRouter } from "next/router";
+import React from "react";
 
-import classNames from 'classnames';
+import backgroundImage from "@/sensorsafrica/assets/images/background/bgsupport.jpg";
+import DocumentHead, { URLS } from "@/sensorsafrica/components/DocumentHead";
+import Footer from "@/sensorsafrica/components/Footer/index";
+import Navbar from "@/sensorsafrica/components/Header/Navbar";
 
-import Router from 'next/router';
-
-import { Button, Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-
-import DocumentHead, { URLS } from 'components/DocumentHead';
-import Navbar from 'components/Header/Navbar';
-import Footer from 'components/Footer/index';
-
-import backgroundImage from 'assets/images/background/bgsupport.jpg';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'white',
-    backgroundImage: `url(${backgroundImage})`
+    backgroundColor: "white",
+    backgroundImage: `url(${backgroundImage.src})`,
   },
   bodyCopy: {
-    margin: '8rem',
-    textAlign: 'center'
+    margin: "8rem",
+    textAlign: "center",
   },
   button: {
     color: theme.palette.secondary.main,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     border: `1px solid ${theme.palette.secondary.main}`,
-    margin: '1rem',
-    '& .button-icon': {
-      display: 'none'
+    margin: "1rem",
+    "& .button-icon": {
+      display: "none",
     },
-    '&:hover': {
+    "&:hover": {
       color: theme.palette.secondary.main,
-      backgroundColor: '#fff',
-      border: `1px solid ${theme.palette.secondary.main}`
+      backgroundColor: "#fff",
+      border: `1px solid ${theme.palette.secondary.main}`,
     },
-    '&:hover .button-icon': {
-      display: 'inline-block'
-    }
+    "&:hover .button-icon": {
+      display: "inline-block",
+    },
   },
   buttonIcon: {
-    marginRight: '0.5rem'
+    marginRight: "0.5rem",
   },
   typography: {
-    color: 'white'
-  }
+    color: "white",
+  },
 }));
 
 function NotFound(props) {
   const classes = useStyles(props);
+  const router = useRouter();
+
   const handleBack = () => {
     // For security and privacy reasons, browsers don't allow JS to view
     // visited URLs. We'll use document.referrer for approximation
@@ -64,10 +61,10 @@ function NotFound(props) {
         location.origin = `${location.protocol}//${location.host}`;
       }
       if (previous.startsWith(location.origin)) {
-        return Router.back();
+        return router.back();
       }
     }
-    return Router.push('/');
+    return router.push("/");
   };
 
   return (
@@ -79,7 +76,7 @@ function NotFound(props) {
         xs={12}
         container
         direction="column"
-        justify="center"
+        justifyContent="center"
         alignItems="center"
         className={classes.bodyCopy}
       >
@@ -98,7 +95,7 @@ function NotFound(props) {
           >
             <FontAwesomeIcon
               icon={faAngleLeft}
-              className={classNames(classes.buttonIcon, 'button-icon')}
+              clsx={clsx(classes.buttonIcon, "button-icon")}
             />
             GO BACK
           </Button>

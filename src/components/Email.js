@@ -1,51 +1,48 @@
-import React, { useState } from 'react';
+import { Button, Grid, Input, FormControl } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from "react";
 
-import { Button, Grid, Input, FormControl } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    color: 'white',
-    background: 'none'
+    color: "white",
+    background: "none",
   },
   footerButton: {
-    width: '100%',
-    color: 'white',
-    '&:hover': {
-      color: theme.palette.secondary.main
+    width: "100%",
+    color: "white",
+    "&:hover": {
+      color: theme.palette.secondary.main,
     },
     backgroundColor: theme.palette.secondary.dark,
     fontWeight: 800,
     fontSize: theme.typography.subtitle2.fontSize,
-    height: '3rem',
-    [theme.breakpoints.up('lg')]: {
+    height: "3rem",
+    [theme.breakpoints.up("lg")]: {
       fontSize: theme.typography.subtitle1.fontSize,
-      height: '3.5rem',
-      paddingLeft: '2rem',
-      paddingRight: '2rem'
-    }
+      height: "3.5rem",
+      paddingLeft: "2rem",
+      paddingRight: "2rem",
+    },
   },
   buttonContainer: {
-    paddingTop: '1rem'
+    paddingTop: "1rem",
   },
-  footerInput: {
-    // Moved to `App.css` due to difficult of setting input `text-align` to `center`
-  },
+  footerInput: {},
   buttonLink: {
-    textDecoration: 'none'
-  }
+    textDecoration: "none",
+  },
 }));
 
 function Email(props) {
   const classes = useStyles(props);
-  const [value, setValue] = useState('');
-  const handleChange = e => setValue(e.target.value);
+  const [value, setValue] = useState("");
+  const handleChange = (e) => setValue(e.target.value);
 
   return (
     <Grid
       container
-      justify="space-around"
+      justifyContent="space-around"
       alignitems="center"
       className={classes.root}
     >

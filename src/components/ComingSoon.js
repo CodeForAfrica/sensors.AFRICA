@@ -1,88 +1,85 @@
-import React, { useEffect } from 'react';
+import { Button, Typography, Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React, { useEffect } from "react";
 
-import PropTypes from 'prop-types';
+import Email from "./Email";
 
-import Grid from '@material-ui/core/Grid';
-import { Button, Typography } from '@material-ui/core';
+import bglanding from "@/sensorsafrica/assets/images/background/bglanding.jpg";
 
-import { makeStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-
-import bglanding from 'assets/images/background/bglanding.jpg';
-import Email from './Email';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    color: 'white',
-    backgroundImage: `url(${bglanding})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    color: "white",
+    backgroundImage: `url(${bglanding.src})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
   popup: {
-    position: 'fixed',
-    left: '0',
-    top: '0',
-    width: '100%',
-    height: '100%',
-    zIndex: '2000',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    opacity: '0',
-    visibility: 'hidden',
-    transform: 'scale(1.1)',
-    transition: 'visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s'
+    position: "fixed",
+    left: "0",
+    top: "0",
+    width: "100%",
+    height: "100%",
+    zIndex: "2000",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    opacity: "0",
+    visibility: "hidden",
+    transform: "scale(1.1)",
+    transition: "visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s",
   },
   popupcontent: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    color: 'black',
-    padding: '1rem 1.5rem',
-    width: '100vw',
-    [theme.breakpoints.up('md')]: {
-      width: '25rem'
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    color: "black",
+    padding: "1rem 1.5rem",
+    width: "100vw",
+    [theme.breakpoints.up("md")]: {
+      width: "25rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '37.875rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "37.875rem",
+    },
   },
   closeButton: {
-    color: 'white',
-    background: 'none',
-    float: 'right',
+    color: "white",
+    background: "none",
+    float: "right",
     fontWeight: 800,
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h3.fontSize,
-    textAlign: 'center',
-    cursor: 'pointer'
+    textAlign: "center",
+    cursor: "pointer",
   },
   showpopup: {
-    opacity: '1',
-    visibility: 'visible',
-    transform: 'scale(1.0)',
-    transition: 'visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s'
+    opacity: "1",
+    visibility: "visible",
+    transform: "scale(1.0)",
+    transition: "visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s",
   },
   subtitle: {
-    marginTop: '1rem',
-    marginBottom: '1.5rem',
-    color: 'white',
-    textAlign: 'justify'
+    marginTop: "1rem",
+    marginBottom: "1.5rem",
+    color: "white",
+    textAlign: "justify",
   },
   form: {
-    textAlign: 'center'
+    textAlign: "center",
   },
   button: {
-    color: 'white',
-    margin: '1rem'
-  }
+    color: "white",
+    margin: "1rem",
+  },
 }));
 
-function ComingSoon({ props, show, onClose }) {
+function ComingSoon({ show, onClose, ...props }) {
   const classes = useStyles(props);
 
-  const containerClassName = classNames(classes.root, classes.popup, {
-    [classes.showpopup]: show
+  const containerClassName = clsx(classes.root, classes.popup, {
+    [classes.showpopup]: show,
   });
 
   useEffect(() => {
@@ -98,7 +95,7 @@ function ComingSoon({ props, show, onClose }) {
   return (
     <Grid
       container
-      justify="space-around"
+      justifyContent="space-around"
       alignitems="center"
       className={containerClassName}
     >
@@ -117,7 +114,7 @@ function ComingSoon({ props, show, onClose }) {
         <Grid item xs={12} className={classes.form}>
           <Email onSubmit={handleBack} />
         </Grid>
-        <Grid item xs={12} style={{ textAlign: 'center' }}>
+        <Grid item xs={12} style={{ textAlign: "center" }}>
           <Button
             variant="outlined"
             onClick={handleBack}
@@ -133,7 +130,7 @@ function ComingSoon({ props, show, onClose }) {
 
 ComingSoon.propTypes = {
   onClose: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired
+  show: PropTypes.bool.isRequired,
 };
 
 export default ComingSoon;

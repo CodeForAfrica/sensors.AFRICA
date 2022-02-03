@@ -1,54 +1,52 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
-import classNames from 'classnames';
-
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'block',
-    maxWidth: '100%',
-    margin: 'auto'
+    display: "block",
+    maxWidth: "100%",
+    margin: "auto",
   },
   background: {
-    stroke: 'white'
+    stroke: "white",
   },
   stroke: {
-    fill: 'none',
+    fill: "none",
     stroke: theme.palette.primary.light,
-    strokeWidth: '7.4'
+    strokeWidth: "7.4",
   },
   readingBackground: {
-    fill: 'none',
-    stroke: 'white',
+    fill: "none",
+    stroke: "white",
     // anything less than readingStroke's strokeWidth to make sure there isn't
     // any visible white gap between the two
-    strokeWidth: '4.5'
+    strokeWidth: "4.5",
   },
   readingStroke: {
-    fill: 'none',
+    fill: "none",
     stroke: theme.palette.primary.light,
-    strokeWidth: '4.8',
-    animation: 'progress 1s ease-out forwards'
+    strokeWidth: "4.8",
+    animation: "progress 1s ease-out forwards",
   },
   label: {
-    fill: '#666',
-    stroke: '#666',
-    strokeWidth: '0.25',
+    fill: "#666",
+    stroke: "#666",
+    strokeWidth: "0.25",
     fontFamily: theme.typography.fontFamily,
     fontWeight: 600,
-    fontSize: '0.35em',
-    textAnchor: 'middle'
+    fontSize: "0.35em",
+    textAnchor: "middle",
   },
-  '@keyframes progress': {
+  "@keyframes progress": {
     from: {
-      strokeDashoffset: '100'
+      strokeDashoffset: "100",
     },
     to: {
-      strokeDashoffset: '200'
-    }
-  }
+      strokeDashoffset: "200",
+    },
+  },
 }));
 
 function GaugeChart({ percentage, ...props }) {
@@ -57,7 +55,7 @@ function GaugeChart({ percentage, ...props }) {
   return (
     <svg
       viewBox="-2 -2 40 40"
-      className={classNames(classes.root, classes.background)}
+      className={clsx(classes.root, classes.background)}
     >
       <path
         className={classes.stroke}
@@ -86,7 +84,7 @@ function GaugeChart({ percentage, ...props }) {
 }
 
 GaugeChart.propTypes = {
-  percentage: PropTypes.number.isRequired
+  percentage: PropTypes.number.isRequired,
 };
 
 export default GaugeChart;

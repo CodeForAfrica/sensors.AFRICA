@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-
-import Router from 'next/router';
-
-import { Grid, LinearProgress } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, LinearProgress } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Router from "next/router";
+import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 
 import API, {
   CITIES_LOCATION,
@@ -12,70 +10,67 @@ import API, {
   getFormattedP2Stats,
   getFormattedTemperatureStats,
   getFormattedWeeklyP2Stats,
-} from 'api';
+} from "@/sensorsafrica/api";
+import CallToAction from "@/sensorsafrica/components/City/CallToAction";
+import CityHeader from "@/sensorsafrica/components/City/Header/CityHeader";
+import HostSensorsButton from "@/sensorsafrica/components/City/HostSensors/HostSensorButtons";
+import PollutionStats from "@/sensorsafrica/components/City/PollutionStats";
+import QualityStatsGraph from "@/sensorsafrica/components/City/QualityStatsGraph";
+import QualityStats from "@/sensorsafrica/components/City/SensorsQualityStats";
+import DocumentHead from "@/sensorsafrica/components/DocumentHead";
+import Footer from "@/sensorsafrica/components/Footer";
+import Navbar from "@/sensorsafrica/components/Header/Navbar";
+import PartnerLogos from "@/sensorsafrica/components/PartnerLogos";
+import SensorMap from "@/sensorsafrica/components/SensorMap";
 
-import DocumentHead from 'components/DocumentHead';
-import Navbar from 'components/Header/Navbar';
-import PartnerLogos from 'components/PartnerLogos';
-import Footer from 'components/Footer';
-import SensorMap from 'components/SensorMap';
-import CityHeader from 'components/City/Header/CityHeader';
-import CallToAction from 'components/City/CallToAction';
-import PollutionStats from 'components/City/PollutionStats';
-import QualityStats from 'components/City/SensorsQualityStats';
-import HostSensorsButton from 'components/City/HostSensors/HostSensorButtons';
-import QualityStatsGraph from 'components/City/QualityStatsGraph';
-
-import NotFound from 'pages/404';
-
-const DEFAULT_CITY = 'nairobi';
+const DEFAULT_CITY = "nairobi";
 const CITIES_POLLUTION_STATS = {
   nairobi: {
-    deathCount: '19,112',
-    childDeathCount: '6,672',
-    topIllness: 'Acute Lower',
-    annualAverage: '17',
-    percent: '70% more',
+    deathCount: "19,112",
+    childDeathCount: "6,672",
+    topIllness: "Acute Lower",
+    annualAverage: "17",
+    percent: "70% more",
   },
   kisumu: {
-    deathCount: '19,112',
-    childDeathCount: '6,672',
-    topIllness: 'Acute Lower',
-    annualAverage: '17',
-    percent: '70% more',
+    deathCount: "19,112",
+    childDeathCount: "6,672",
+    topIllness: "Acute Lower",
+    annualAverage: "17",
+    percent: "70% more",
   },
   nakuru: {
-    deathCount: '19,112',
-    childDeathCount: '6,672',
-    topIllness: 'Acute Lower',
-    annualAverage: '17',
-    percent: '70% more',
+    deathCount: "19,112",
+    childDeathCount: "6,672",
+    topIllness: "Acute Lower",
+    annualAverage: "17",
+    percent: "70% more",
   },
   lagos: {
-    deathCount: '290,456',
-    childDeathCount: '98,001',
-    topIllness: 'Lower',
-    annualAverage: '122',
-    percent: '170% more',
+    deathCount: "290,456",
+    childDeathCount: "98,001",
+    topIllness: "Lower",
+    annualAverage: "122",
+    percent: "170% more",
   },
-  'dar-es-salaam': {
-    deathCount: '41,251',
-    childDeathCount: '11,440',
-    topIllness: 'Lower',
-    annualAverage: '23',
-    percent: '130% more',
+  "dar-es-salaam": {
+    deathCount: "41,251",
+    childDeathCount: "11,440",
+    topIllness: "Lower",
+    annualAverage: "23",
+    percent: "130% more",
   },
 };
 const AQ_COLOR = [
-  '#5fbf82',
-  '#34b86f',
-  '#299a5c',
-  '#ce8e4e',
-  '#cf7d4e',
-  '#d45f4b',
-  '#ce4c34',
-  '#b72025',
-  '#2A2A2B',
+  "#5fbf82",
+  "#34b86f",
+  "#299a5c",
+  "#ce8e4e",
+  "#cf7d4e",
+  "#d45f4b",
+  "#ce4c34",
+  "#b72025",
+  "#2A2A2B",
 ];
 const DEFAULT_AQ_INDEX = 8;
 function aqIndex(aq) {
@@ -112,16 +107,16 @@ const useStyles = makeStyles({
 
     // TODO(kilemensi): This is hack to force the page to be 100% wide w/o
     //                  horizontal scrollbars.
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
 });
 
-const AIR_CITY_PATHNAME = '/air/city';
+const AIR_CITY_PATHNAME = "/air/city";
 
-function City({ city: citySlug, data, errorCode, ...props }) {
+function City({ city: citySlug, data, ...props }) {
   const classes = useStyles(props);
   const [isLoading, setIsLoading] = useState(false);
   const [city, setCity] = useState(citySlug);
@@ -137,22 +132,9 @@ function City({ city: citySlug, data, errorCode, ...props }) {
     getFormattedTemperatureStats(air)
   );
 
-  // if !data, 404
-  if (!CITIES_LOCATION[city] || errorCode >= 400) {
-    return <NotFound />;
-  }
-
-  const getAqColor = () => {
-    let aqColorIndex = DEFAULT_AQ_INDEX;
-    if (cityP2Stats.average !== '--') {
-      aqColorIndex = aqIndex(cityP2Stats.average);
-    }
-    return [AQ_COLOR[aqColorIndex]];
-  };
-
   useEffect(() => {
     if (isLoading) {
-      setCityP2Stats({ average: '--', averageDescription: 'loading' });
+      setCityP2Stats({ average: "--", averageDescription: "loading" });
       setCityTemperatureStats({});
       setCityHumidityStats({});
       API.getAirData(city)
@@ -171,7 +153,15 @@ function City({ city: citySlug, data, errorCode, ...props }) {
         )
         .then(() => setIsLoading(false));
     }
-  }, [isLoading]);
+  }, [city, isLoading]);
+
+  const getAqColor = () => {
+    let aqColorIndex = DEFAULT_AQ_INDEX;
+    if (cityP2Stats.average !== "--") {
+      aqColorIndex = aqIndex(cityP2Stats.average);
+    }
+    return [AQ_COLOR[aqColorIndex]];
+  };
 
   const handleSearch = (option) => {
     const searchedCity = (option && option.value) || DEFAULT_CITY;
@@ -188,7 +178,7 @@ function City({ city: citySlug, data, errorCode, ...props }) {
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <DocumentHead url={`${AIR_CITY_PATHNAME}/${city}`} />
@@ -253,13 +243,11 @@ City.propTypes = {
     air: PropTypes.shape({}).isRequired,
     weeklyP2: PropTypes.shape({}).isRequired,
   }),
-  errorCode: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 };
 
 City.defaultProps = {
   city: undefined,
   data: undefined,
-  errorCode: false,
 };
 
 export async function getStaticPaths() {
@@ -274,14 +262,15 @@ export async function getStaticProps({ params: { id: city } }) {
   // Fetch data from external API
   const airRes = await API.getAirData(city);
   const weeklyP2Res = await API.getWeeklyP2Data(city);
-  let errorCode = airRes.statusCode > 200 && airRes.statusCode;
-  errorCode =
-    !errorCode && weeklyP2Res.statusCode > 200 && weeklyP2Res.statusCode;
-  const air = (!errorCode && (await airRes.json())) || {};
-  const weeklyP2 = (!errorCode && (await weeklyP2Res.json())) || {};
+  if (!(airRes.ok || weeklyP2Res.ok)) {
+    return {
+      notFound: true,
+    };
+  }
+  const air = (await airRes.json()) || {};
+  const weeklyP2 = (await weeklyP2Res.json()) || {};
   const data = { air, weeklyP2 };
-  // Pass data to the page via props
-  return { props: { errorCode, city, data }, revalidate: 5 * 60 * 60 };
+  return { props: { city, data }, revalidate: 5 * 60 * 60 };
 }
 
 export default City;

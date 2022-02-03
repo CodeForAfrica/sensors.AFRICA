@@ -1,56 +1,56 @@
-import React from 'react';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import HealthEffects from "./HealthEffects";
 
-import HealthEffects from './HealthEffects';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    paddingBottom: '2rem',
-    paddingTop: '2rem',
-    backgroundColor: 'white'
+    paddingBottom: "2rem",
+    paddingTop: "2rem",
+    backgroundColor: "white",
   },
   subheading: {
-    paddingTop: '1rem',
-    paddingBottom: '2rem',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 14
+    paddingTop: "1rem",
+    paddingBottom: "2rem",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 14,
   },
   issues: {
-    textAlign: 'center',
-    paddingBottom: '1rem'
+    textAlign: "center",
+    paddingBottom: "1rem",
   },
   title: {
-    textAlign: 'center',
-    textTransform: 'none'
+    textAlign: "center",
+    textTransform: "none",
   },
   caption: {
-    paddingTop: '1rem',
-    textAlign: 'center'
+    paddingTop: "1rem",
+    textAlign: "center",
   },
   graph: {
-    margin: '0 auto',
-    width: '9rem',
-    [theme.breakpoints.up('md')]: {
-      width: '12rem',
-      padding: '0 1rem'
+    margin: "0 auto",
+    width: "9rem",
+    [theme.breakpoints.up("md")]: {
+      width: "12rem",
+      padding: "0 1rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '15rem'
-    }
-  }
+    [theme.breakpoints.up("lg")]: {
+      width: "15rem",
+    },
+  },
 }));
 
-function Issues() {
-  const classes = useStyles();
+function Issues(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12}>

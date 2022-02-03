@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  Dialog,
+  DialogContent as MuiDialogContent,
+  DialogTitle as MuiDialogTitle,
+  Grid,
+  IconButton,
+  Typography,
+} from "@material-ui/core";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
 
-import Dialog from '@material-ui/core/Dialog';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import HostSensorButton from "@/sensorsafrica/components/City/HostSensors/HostSensorButton";
+import Embed from "@/sensorsafrica/components/City/HostSensors/ShareButton/Embed";
+import SocialMediaButtons from "@/sensorsafrica/components/City/HostSensors/ShareButton/SocialMediaButtons";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
-import HostSensorButton from 'components/City/HostSensors/HostSensorButton';
-import SocialMediaButtons from 'components/City/HostSensors/ShareButton/SocialMediaButtons';
-import Embed from 'components/City/HostSensors/ShareButton/Embed';
-
-const styles = () => ({
+const useStyles = makeStyles(() => ({
   typography: {
-    textAlign: 'center',
-    paddingBottom: '0.5rem',
+    textAlign: "center",
+    paddingBottom: "0.5rem",
     fontWeight: 600,
   },
-});
+}));
 
 const DialogTitle = withStyles((theme) => ({
   root: {
     margin: 0,
-    paddingTop: '4rem',
-    textAlign: 'center',
-    backgroundColor: 'white',
+    paddingTop: "4rem",
+    textAlign: "center",
+    backgroundColor: "white",
   },
   closeButton: {
-    position: 'absolute',
+    position: "absolute",
     right: theme.spacing(1),
     top: theme.spacing(1),
     color: theme.palette.secondary.main,
@@ -59,12 +59,13 @@ const DialogContent = withStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(2),
-    backgroundColor: 'white',
-    border: '0px',
+    backgroundColor: "white",
+    border: "0px",
   },
 }))(MuiDialogContent);
 
-function ShareButton({ classes, city }) {
+function ShareButton({ city, ...props }) {
+  const classes = useStyles(props);
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -89,7 +90,7 @@ function ShareButton({ classes, city }) {
             <Grid item xs={12}>
               <SocialMediaButtons city={city} />
             </Grid>
-            <Grid item xs={12} style={{ margin: '1.5rem' }}>
+            <Grid item xs={12} style={{ margin: "1.5rem" }}>
               <Typography
                 gutterBottom
                 variant="caption"
@@ -110,4 +111,4 @@ ShareButton.propTypes = {
   city: PropTypes.shape({}).isRequired,
 };
 
-export default withStyles(styles)(ShareButton);
+export default ShareButton;

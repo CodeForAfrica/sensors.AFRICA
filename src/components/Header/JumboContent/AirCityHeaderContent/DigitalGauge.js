@@ -1,37 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   dial: {
-    textAlign: 'center'
+    textAlign: "center",
   },
   measurement: {
-    width: '16rem',
-    padding: '0.75rem 0',
-    color: 'white',
-    textAlign: 'center',
-    borderBottom: '1px solid white'
+    width: "16rem",
+    padding: "0.75rem 0",
+    color: "white",
+    textAlign: "center",
+    borderBottom: "1px solid white",
   },
   measurementUnit: {
-    width: '16rem',
-    color: 'white',
-    textAlign: 'center',
-    textTransform: 'uppercase'
+    width: "16rem",
+    color: "white",
+    textAlign: "center",
+    textTransform: "uppercase",
   },
   safeLevel: {
-    width: '16rem',
-    padding: '0.75rem 0',
-    color: 'white',
-    textAlign: 'center',
-    textTransform: 'uppercase',
-    fontWeight: 'bold'
-  }
+    width: "16rem",
+    padding: "0.75rem 0",
+    color: "white",
+    textAlign: "center",
+    textTransform: "uppercase",
+    fontWeight: "bold",
+  },
 });
 
 function DigitalGauge({ airPollMeasurement, airPollDescription }) {
@@ -40,14 +39,14 @@ function DigitalGauge({ airPollMeasurement, airPollDescription }) {
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid
         item
         xs={12}
         container
-        justify="center"
+        justifyContent="center"
         alignItems="center"
         direction="column"
       >
@@ -58,7 +57,7 @@ function DigitalGauge({ airPollMeasurement, airPollDescription }) {
             component="h1"
           >
             {airPollMeasurement}
-            {airPollMeasurement !== '--' && (
+            {airPollMeasurement !== "--" && (
               <Typography
                 variant="caption"
                 component="small"
@@ -84,7 +83,7 @@ function DigitalGauge({ airPollMeasurement, airPollDescription }) {
 
 DigitalGauge.propTypes = {
   airPollMeasurement: PropTypes.string.isRequired,
-  airPollDescription: PropTypes.string.isRequired
+  airPollDescription: PropTypes.string.isRequired,
 };
 
 export default DigitalGauge;

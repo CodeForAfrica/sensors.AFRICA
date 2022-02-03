@@ -1,40 +1,30 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Link as MuiLink } from "@material-ui/core";
+import clsx from "clsx";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import React from "react";
 
-import classNames from 'classnames';
-
-import { useRouter } from 'next/router';
-
-import MuiLink from '@material-ui/core/Link';
-
-import NextComposed from './NextComposed';
+import NextComposed from "./NextComposed";
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/#with-link
-function Link(props) {
+const Link = React.forwardRef(function Link(props, ref) {
   const {
-    activeClassName = 'active',
+    activeClassName = "active",
     className: classNameProps,
     href,
-    innerRef,
     naked,
     ...other
   } = props;
   const router = useRouter();
 
-  const className = classNames(classNameProps, {
-    [activeClassName]: router.pathname === href && activeClassName
+  const className = clsx(classNameProps, {
+    [activeClassName]: router.pathname === href && activeClassName,
   });
 
   if (naked) {
     return (
-      <NextComposed
-        className={className}
-        href={href}
-        ref={innerRef}
-        {...other}
-      />
+      <NextComposed className={className} href={href} ref={ref} {...other} />
     );
   }
 
@@ -43,11 +33,11 @@ function Link(props) {
       component={NextComposed}
       className={className}
       href={href}
-      ref={innerRef}
+      ref={ref}
       {...other}
     />
   );
-}
+});
 
 Link.propTypes = {
   activeClassName: PropTypes.string,
@@ -57,7 +47,7 @@ Link.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   naked: PropTypes.bool,
   onClick: PropTypes.func,
-  prefetch: PropTypes.bool
+  prefetch: PropTypes.bool,
 };
 
 Link.defaultProps = {
@@ -68,9 +58,7 @@ Link.defaultProps = {
   innerRef: undefined,
   naked: undefined,
   onClick: undefined,
-  prefetch: undefined
+  prefetch: undefined,
 };
 
-export default React.forwardRef((props, ref) => (
-  <Link {...props} innerRef={ref} />
-));
+export default Link;

@@ -1,14 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles({
   fullHeight: {
-    display: 'inline-block',
-    margin: '0 auto',
-    backgroundColor: 'white'
-  }
+    display: "inline-block",
+    margin: "0 auto",
+    backgroundColor: "white",
+  },
 });
 
 function KenyaMap({ title, src, height, width, frameBorder, scrolling }) {
@@ -33,13 +32,13 @@ KenyaMap.propTypes = {
   height: PropTypes.string,
   width: PropTypes.string,
   frameBorder: PropTypes.string,
-  scrolling: PropTypes.string
+  scrolling: PropTypes.string,
 };
 
 KenyaMap.defaultProps = {
-  height: '',
-  width: '',
-  frameBorder: '0',
-  scrolling: 'auto'
+  height: "",
+  width: "",
+  frameBorder: "0",
+  scrolling: "auto",
 };
 export default KenyaMap;

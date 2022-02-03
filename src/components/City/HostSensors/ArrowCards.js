@@ -1,7 +1,6 @@
-import React from 'react';
-
-import { Grid, Typography, ListItem, List, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography, ListItem, List, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   findOutMore: {
@@ -9,25 +8,25 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonContained: {
     backgroundColor: theme.palette.primary.light,
-    color: '#fff',
+    color: "#fff",
     borderRadius: 0,
     margin: theme.spacing(2),
     marginLeft: 80,
   },
   body1: {
-    fontSize: '14px',
-    fontWeight: 'bold',
-    textDecoration: 'underline',
+    fontSize: "14px",
+    fontWeight: "bold",
+    textDecoration: "underline",
   },
   gridContent: {
-    textAlign: 'center',
-    padding: '1.5rem',
+    textAlign: "center",
+    padding: "1.5rem",
   },
   tweetContent: {
     fontSize: theme.typography.fontSize,
   },
   titleText: {
-    marginLeft: '4.5rem',
+    marginLeft: "4.5rem",
     color: theme.palette.primary.light,
     fontSize: theme.typography.fontSize,
   },
@@ -38,16 +37,16 @@ function ArrowCards() {
   return (
     <Grid
       container
-      justify="center"
+      justifyContent="center"
       alignItems="center"
-      style={{ paddingTop: '1rem' }}
+      style={{ paddingTop: "1rem" }}
     >
-      <Grid item xs={12} container justify="center" alignItems="center">
+      <Grid item xs={12} container justifyContent="center" alignItems="center">
         <Typography variant="h6" className={classes.titleText}>
           WHO CAN I REPORT AIR SENSORS QUALITY TO?
         </Typography>
       </Grid>
-      <Grid item xs={12} container justify="center" alignItems="center">
+      <Grid item xs={12} container justifyContent="center" alignItems="center">
         <List className="list-ic vertical">
           <ListItem className={classes.list}>
             <span />
@@ -64,7 +63,12 @@ function ArrowCards() {
             </Grid>
           </ListItem>
 
-          <Grid container direction="row" justify="center" alignItems="center">
+          <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
             <Typography variant="h6" className={classes.titleText}>
               WHO REPORTS HAVE BEEN SENT?
             </Typography>
@@ -77,7 +81,7 @@ function ArrowCards() {
                 <Typography variant="body1" className={classes.tweetContent}>
                   <b>
                     <u>@david</u>
-                  </b>{' '}
+                  </b>{" "}
                   answered the question about
                 </Typography>
                 <Typography variant="body1" className={classes.tweetContent}>
@@ -97,7 +101,7 @@ function ArrowCards() {
                 <Typography variant="body1" className={classes.tweetContent}>
                   <b>
                     <u>@david</u>
-                  </b>{' '}
+                  </b>{" "}
                   answered the question about
                 </Typography>
                 <Typography variant="body1" className={classes.tweetContent}>
@@ -117,7 +121,7 @@ function ArrowCards() {
                 <Typography variant="body1" className={classes.tweetContent}>
                   <b>
                     <u>@david</u>
-                  </b>{' '}
+                  </b>{" "}
                   answered the question about
                 </Typography>
                 <Typography variant="body1" className={classes.tweetContent}>
@@ -133,7 +137,7 @@ function ArrowCards() {
         </List>
       </Grid>
 
-      <Grid item xs={12} container justify="center" alignItems="center">
+      <Grid item xs={12} container justifyContent="center" alignItems="center">
         <Button
           variant="contained"
           size="large"

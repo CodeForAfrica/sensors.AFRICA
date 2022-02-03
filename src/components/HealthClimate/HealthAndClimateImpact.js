@@ -1,47 +1,46 @@
-import React from 'react';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import ClimateImpact from "@/sensorsafrica/assets/images/climateimpacticon.png";
+import HealthImpact from "@/sensorsafrica/assets/images/healthimpacticon.png";
+import ImpactCard from "@/sensorsafrica/components/HealthClimate/ImpactCards";
 
-import ImpactCard from 'components/HealthClimate/ImpactCards';
-
-import HealthImpact from 'assets/images/healthimpacticon.png';
-import ClimateImpact from 'assets/images/climateimpacticon.png';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    paddingTop: '3rem',
-    backgroundColor: 'white',
-    [theme.breakpoints.up('md')]: {
-      paddingBottom: '3rem'
-    }
+    paddingTop: "3rem",
+    backgroundColor: "white",
+    [theme.breakpoints.up("md")]: {
+      paddingBottom: "3rem",
+    },
   },
   health: {
-    [theme.breakpoints.up('md')]: {
-      marginRight: '4.8125rem'
+    [theme.breakpoints.up("md")]: {
+      marginRight: "4.8125rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      marginRight: '1.875rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      marginRight: "1.875rem",
+    },
   },
   climate: {
-    [theme.breakpoints.up('md')]: {
-      marginLeft: '4.8125rem'
+    [theme.breakpoints.up("md")]: {
+      marginLeft: "4.8125rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      marginLeft: '1.875rem'
-    }
-  }
+    [theme.breakpoints.up("lg")]: {
+      marginLeft: "1.875rem",
+    },
+  },
 }));
 
-function HealthClimateCards() {
-  const classes = useStyles();
+function HealthClimateCards(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item>

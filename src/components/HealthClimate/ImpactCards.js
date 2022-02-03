@@ -1,66 +1,62 @@
-import React from 'react';
-import { Card, CardContent, Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { Card, CardContent, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
+import PropTypes from "prop-types";
+import React from "react";
 
-let lightBackgroundColor;
-let darkBackgroundColor;
-
-const styles = theme => {
-  lightBackgroundColor = theme.palette.primary.light;
-  darkBackgroundColor = theme.palette.primary.dark;
-
-  return {
-    root: {
-      textAlign: 'center',
-      width: '100vw',
-      backgroundColor: theme.palette.primary.light,
-      [theme.breakpoints.up('md')]: {
-        width: '25rem',
-        height: '36.75rem',
-        padding: '2rem'
-      },
-      [theme.breakpoints.up('lg')]: {
-        width: '37.875rem',
-        height: '36.75rem',
-        padding: '3rem'
-      }
+const useStyles = makeStyles((theme) => ({
+  root: (props) => ({
+    textAlign: "center",
+    width: "100vw",
+    backgroundColor: props.dark
+      ? theme.palette.primary.dark
+      : theme.palette.primary.light,
+    [theme.breakpoints.up("md")]: {
+      width: "25rem",
+      height: "36.75rem",
+      padding: "2rem",
     },
-    img: {
-      height: '5rem',
-      maxWidth: '100%',
-      [theme.breakpoints.up('md')]: {
-        height: '100%'
-      }
+    [theme.breakpoints.up("lg")]: {
+      width: "37.875rem",
+      height: "36.75rem",
+      padding: "3rem",
     },
-    title: {
-      color: '#fff',
-      textAlign: 'center',
-      paddingTop: '1.5rem',
-      paddingBottom: '1.5rem',
-      [theme.breakpoints.up('lg')]: {
-        fontSize: theme.typography.h4.fontSize,
-        fontWeight: theme.typography.h4.fontWeight
-      }
+  }),
+  img: {
+    height: "5rem",
+    maxWidth: "100%",
+    [theme.breakpoints.up("md")]: {
+      height: "100%",
     },
-    caption: {
-      textAlign: 'center',
-      color: '#F3F3F3',
-      paddingBottom: '1rem',
-      [theme.breakpoints.up('lg')]: {
-        fontSize: theme.typography.subtitle1.fontSize,
-        fontWeight: theme.typography.subtitle1.fontWeight
-      }
-    }
-  };
-};
+  },
+  title: {
+    color: "#fff",
+    textAlign: "center",
+    paddingTop: "1.5rem",
+    paddingBottom: "1.5rem",
+    [theme.breakpoints.up("lg")]: {
+      fontSize: theme.typography.h4.fontSize,
+      fontWeight: theme.typography.h4.fontWeight,
+    },
+  },
+  caption: {
+    textAlign: "center",
+    color: "#F3F3F3",
+    paddingBottom: "1rem",
+    [theme.breakpoints.up("lg")]: {
+      fontSize: theme.typography.subtitle1.fontSize,
+      fontWeight: theme.typography.subtitle1.fontWeight,
+    },
+  },
+}));
 
-function PollutionBurden({ classes, icon, title, impact, dark }) {
-  const backgroundColor = dark ? darkBackgroundColor : lightBackgroundColor;
+function PollutionBurden({ icon, impact, title, ...props }) {
+  const classes = useStyles(props);
+
   return (
-    <Card className={classes.root} style={{ backgroundColor }}>
+    <Card className={classes.root}>
       <CardContent className={classes.cardContent}>
-        <img src={icon} alt={title} className={classes.img} />
+        <Image src={icon} alt={title} className={classes.img} />
         <Typography variant="h5" className={classes.title}>
           {title}
         </Typography>
@@ -76,11 +72,11 @@ PollutionBurden.propTypes = {
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   impact: PropTypes.string.isRequired,
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
 };
 
 PollutionBurden.defaultProps = {
-  dark: false
+  dark: false,
 };
 
-export default withStyles(styles)(PollutionBurden);
+export default PollutionBurden;

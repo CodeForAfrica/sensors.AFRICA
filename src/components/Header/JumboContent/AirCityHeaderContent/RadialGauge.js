@@ -1,113 +1,112 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React, { useEffect, useRef } from "react";
+import { VictoryPie, VictoryLabel } from "victory";
 
-import { VictoryPie, VictoryLabel } from 'victory';
+import NeedlePointer from "@/sensorsafrica/components/Header/JumboContent/AirCityHeaderContent/NeedlePointer";
 
-import { Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import NeedlePointer from 'components/Header/JumboContent/AirCityHeaderContent/NeedlePointer';
-
-const styles = theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    position: 'relative',
-    paddingTop: '36px',
-    width: 'inherit',
-    height: 'inherit'
+    position: "relative",
+    paddingTop: "36px",
+    width: "inherit",
+    height: "inherit",
   },
   gaugeDescription: {
-    position: 'absolute'
+    position: "absolute",
   },
   gaugeDescGuideline: {
-    [theme.breakpoints.between('sm', 'md')]: {
-      width: '10rem',
-      marginLeft: '15%',
-      padding: '40px 10px'
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "10rem",
+      marginLeft: "15%",
+      padding: "40px 10px",
     },
-    [theme.breakpoints.down('sm')]: {
-      marginTop: '0px',
-      padding: '10px 10px'
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "0px",
+      padding: "10px 10px",
     },
-    color: 'white',
-    fontStyle: 'italic',
-    textAlign: 'center',
-    width: '250px',
-    marginLeft: '10%',
-    padding: '40px 15px',
-    marginTop: '-30%',
-    border: '1px white solid'
+    color: "white",
+    fontStyle: "italic",
+    textAlign: "center",
+    width: "250px",
+    marginLeft: "10%",
+    padding: "40px 15px",
+    marginTop: "-30%",
+    border: "1px white solid",
   },
   gaugeBoxWhoTitle: {
-    display: 'block'
+    display: "block",
   },
   gaugeDial: {
-    position: 'absolute'
+    position: "absolute",
   },
   gaugeWhoGuidelineText: {
     font: `bold ${theme.typography.body1.fontSize} ${theme.typography.h6.fontFamily}`,
-    fill: 'white'
+    fill: "white",
   },
   gaugeNeedleItem: {
-    width: '900px',
-    height: '500px',
-    position: 'absolute'
+    width: "900px",
+    height: "500px",
+    position: "absolute",
   },
 
   gaugeArc: {
-    [theme.breakpoints.down('sm')]: {
-      width: '400px',
-      height: '200px'
+    [theme.breakpoints.down("sm")]: {
+      width: "400px",
+      height: "200px",
     },
-    width: '600px',
-    height: '300px'
+    width: "600px",
+    height: "300px",
   },
   pointer: {
-    fill: 'rgb(20, 74, 61)'
+    fill: "rgb(20, 74, 61)",
   },
   gaugeCircle: {
     width: 350,
     height: 175,
     top: 208,
-    position: 'absolute'
+    position: "absolute",
   },
   gaugeBigText: {
     fontFamily: theme.typography.h6.fontFamily,
     fontSize: theme.typography.h6.fontSize,
     fontWeight: 700,
     fill: theme.palette.primary.dark,
-    textTransform: 'uppercase'
+    textTransform: "uppercase",
   },
   gaugeSmallText: {
     fontSize: theme.typography.caption.fontSize,
     fontFamily: theme.typography.caption.fontFamily,
     fontWeight: theme.typography.caption.fontWeight,
-    fill: theme.palette.primary.dark
+    fill: theme.palette.primary.dark,
   },
   gaugeDescUnits: {
-    color: 'white',
-    textAlign: 'center',
-    width: '250px',
-    padding: '40px 15px',
-    marginTop: '-30%'
-  }
-});
+    color: "white",
+    textAlign: "center",
+    width: "250px",
+    padding: "40px 15px",
+    marginTop: "-30%",
+  },
+}));
 
 const colors = [
-  '#5FBF82',
-  '#5FBE84',
-  '#34B771',
-  '#34B86F',
-  '#299A5C',
-  '#299A5C',
-  '#CF8D52',
-  '#CE8E4E',
-  '#CE7C4C',
-  '#CE7C4C',
-  '#D45F4B',
-  '#D45F4B',
-  '#CF4B34',
-  '#CF4B34',
-  '#B91F27',
-  '#B72024'
+  "#5FBF82",
+  "#5FBE84",
+  "#34B771",
+  "#34B86F",
+  "#299A5C",
+  "#299A5C",
+  "#CF8D52",
+  "#CE8E4E",
+  "#CE7C4C",
+  "#CE7C4C",
+  "#D45F4B",
+  "#D45F4B",
+  "#CF4B34",
+  "#CF4B34",
+  "#B91F27",
+  "#B72024",
 ];
 
 const data = [
@@ -126,219 +125,211 @@ const data = [
   { x: 60, y: 150 },
   { x: 90, y: 150 },
   { x: 120, y: 150 },
-  { x: '150 +', y: 150 }
+  { x: "150 +", y: 150 },
 ];
 
-class RadialGauge extends Component {
-  constructor(props) {
-    super(props);
-    this.nodeRef = React.createRef();
-  }
+function RadialGauge({ airPollDescription, airPollMeasurement, ...props }) {
+  const classes = useStyles(props);
+  const nodeRef = useRef();
 
-  componentDidMount() {
-    const { airPollMeasurement } = this.props;
-    const node = this.nodeRef.current;
+  useEffect(() => {
+    const node = nodeRef.current;
     if (node instanceof HTMLElement) {
-      const gaugeLabels = node.querySelectorAll('.label > text');
+      const gaugeLabels = node.querySelectorAll(".label > text");
       let deg = -90;
       for (let i = 0; i < gaugeLabels.length; i += 1) {
         const valueLabel = gaugeLabels[i];
-        if (valueLabel.hasAttribute('transform')) {
+        if (valueLabel.hasAttribute("transform")) {
           const newtrans = `rotate(${deg}) translate(0,-200)`;
           deg += 22.5;
-          valueLabel.setAttribute('transform', newtrans);
-          valueLabel.setAttribute('style', 'fill: white');
+          valueLabel.setAttribute("transform", newtrans);
+          valueLabel.setAttribute("style", "fill: white");
         }
       }
 
       // Set value outside the arc
-      const currentVal = node.querySelector('text');
+      const currentVal = node.querySelector("text");
       let transform = 0;
       if (currentVal) {
         transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
         currentVal.setAttribute(
-          'transform',
+          "transform",
           `rotate(${transform}) translate(0,-310)`
         );
       }
     }
+  }, [airPollMeasurement]);
+
+  let gaugeTextLine1;
+  let gaugeTextLine2;
+  let isNeedleHidden = false;
+  let value = airPollMeasurement;
+
+  if (airPollMeasurement === "--") {
+    gaugeTextLine1 = "Measurements not";
+    gaugeTextLine2 = "Recorded";
+
+    // Hide the needle when we don't have measurements
+    // but ensure value is still a number since needle doesn't check
+    isNeedleHidden = true;
+    value = 0.0;
+  } else {
+    const lines = airPollDescription.split(" safe ");
+    [gaugeTextLine1] = lines;
+    gaugeTextLine2 = `safe level`;
   }
 
-  render() {
-    const { airPollDescription, airPollMeasurement, classes } = this.props;
-    let gaugeTextLine1;
-    let gaugeTextLine2;
-    let isNeedleHidden = false;
-    let value = airPollMeasurement;
+  return (
+    <div className={classes.root}>
+      <Grid
+        container
+        className={classes.gaugeDial}
+        justifyContent="center"
+        alignItems="center"
+        style={{ height: "auto" }}
+        ref={nodeRef}
+      >
+        <Grid item md={12} container alignItems="center" direction="column">
+          <svg height="700px" width="700px" style={{ paddingTop: 71 }}>
+            <g transform="translate(0,-42)">
+              <VictoryPie
+                colorScale={colors}
+                startAngle={-90}
+                endAngle={90}
+                standalone={false}
+                padAngle={0.4}
+                width={700}
+                height={700}
+                innerRadius={230}
+                labelRadius={210}
+                data={data}
+                textAnchor="start"
+                labelComponent={
+                  <VictoryLabel
+                    transform="translate(-26,38) rotate(-5)"
+                    verticalAnchor="middle"
+                    textAnchor="end"
+                  />
+                }
+                style={{
+                  labels: {
+                    display: "inline-block",
+                    fill: "white",
+                    fontFamily: '"Montserrat", "sans-serif"',
+                  },
+                }}
+              />
+            </g>
+          </svg>
 
-    if (airPollMeasurement === '--') {
-      gaugeTextLine1 = 'Measurements not';
-      gaugeTextLine2 = 'Recorded';
-
-      // Hide the needle when we don't have measurements
-      // but ensure value is still a number since needle doesn't check
-      isNeedleHidden = true;
-      value = 0.0;
-    } else {
-      const lines = airPollDescription.split(' safe ');
-      [gaugeTextLine1] = lines;
-      gaugeTextLine2 = `safe level`;
-    }
-
-    return (
-      <div className={classes.root}>
-        <Grid
-          container
-          className={classes.gaugeDial}
-          justify="center"
-          alignItems="center"
-          style={{ height: 'auto' }}
-          ref={this.nodeRef}
-        >
-          <Grid item md={12} container alignItems="center" direction="column">
-            <svg height="700px" width="700px" style={{ paddingTop: 71 }}>
-              <g transform="translate(0,-42)">
-                <VictoryPie
-                  colorScale={colors}
-                  startAngle={-90}
-                  endAngle={90}
-                  standalone={false}
-                  padAngle={0.4}
-                  width={700}
-                  height={700}
-                  innerRadius={230}
-                  labelRadius={210}
-                  data={data}
-                  textAnchor="start"
-                  labelComponent={
-                    <VictoryLabel
-                      transform="translate(-26,38) rotate(-5)"
-                      verticalAnchor="middle"
-                      textAnchor="end"
-                    />
-                  }
-                  style={{
-                    labels: {
-                      display: 'inline-block',
-                      fill: 'white',
-                      fontFamily: '"Montserrat", "sans-serif"'
-                    }
-                  }}
+          <svg className={classes.gaugeNeedleItem}>
+            <svg viewBox="0 0 750 750">
+              <g transform="translate(39,120)">
+                <line
+                  x1="50"
+                  y1="10"
+                  x2="160"
+                  y2="180"
+                  fill="#144a3d"
+                  stroke="white"
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                />
+                <line
+                  x1="50"
+                  y1="10"
+                  x2="160"
+                  y2="180"
+                  fill="#144a3d"
+                  stroke="#144a3d"
+                  strokeWidth="5"
+                  strokeLinecap="round"
                 />
               </g>
             </svg>
 
-            <svg className={classes.gaugeNeedleItem}>
-              <svg viewBox="0 0 750 750">
-                <g transform="translate(39,120)">
-                  <line
-                    x1="50"
-                    y1="10"
-                    x2="160"
-                    y2="180"
-                    fill="#144a3d"
-                    stroke="white"
-                    strokeWidth="10"
-                    strokeLinecap="round"
-                  />
-                  <line
-                    x1="50"
-                    y1="10"
-                    x2="160"
-                    y2="180"
-                    fill="#144a3d"
-                    stroke="#144a3d"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                  />
-                </g>
-              </svg>
-
-              <NeedlePointer measurement={value} hidden={isNeedleHidden} />
-              <g transform="translate(165,85)" fill="white">
-                <text
-                  fill="white"
-                  textAnchor="middle"
-                  className={classes.gaugeWhoGuidelineText}
-                >
-                  WHO GUIDELINE
-                </text>
-              </g>
-            </svg>
-
-            <svg className={classes.gaugeCircle}>
-              <circle
-                r="175"
-                cx="175"
-                cy="175"
+            <NeedlePointer measurement={value} hidden={isNeedleHidden} />
+            <g transform="translate(165,85)" fill="white">
+              <text
                 fill="white"
-                className={classes.gaugeWhiteItem}
-              />
-              <circle r="87.5" cx="175" cy="175" fill="white" />
-              <g transform="translate(175,80)" style={{ height: '30px' }}>
-                <text
-                  transform="translate(0,10)"
-                  textAnchor="middle"
-                  className={classes.gaugeBigText}
-                >
-                  {gaugeTextLine1}
-                </text>
-                <text
-                  transform="translate(0,40)"
-                  textAnchor="middle"
-                  className={classes.gaugeBigText}
-                >
-                  {gaugeTextLine2}
-                </text>
-                <text
-                  transform="translate(0,70)"
-                  textAnchor="middle"
-                  className={classes.gaugeSmallText}
-                >
-                  PM
-                  <tspan baselineShift="sub">2.5 </tspan>
-                  24 HOURS EXPOSURE*
-                </text>
-              </g>
-            </svg>
-          </Grid>
+                textAnchor="middle"
+                className={classes.gaugeWhoGuidelineText}
+              >
+                WHO GUIDELINE
+              </text>
+            </g>
+          </svg>
+
+          <svg className={classes.gaugeCircle}>
+            <circle
+              r="175"
+              cx="175"
+              cy="175"
+              fill="white"
+              className={classes.gaugeWhiteItem}
+            />
+            <circle r="87.5" cx="175" cy="175" fill="white" />
+            <g transform="translate(175,80)" style={{ height: "30px" }}>
+              <text
+                transform="translate(0,10)"
+                textAnchor="middle"
+                className={classes.gaugeBigText}
+              >
+                {gaugeTextLine1}
+              </text>
+              <text
+                transform="translate(0,40)"
+                textAnchor="middle"
+                className={classes.gaugeBigText}
+              >
+                {gaugeTextLine2}
+              </text>
+              <text
+                transform="translate(0,70)"
+                textAnchor="middle"
+                className={classes.gaugeSmallText}
+              >
+                PM
+                <tspan baselineShift="sub">2.5 </tspan>
+                24 HOURS EXPOSURE*
+              </text>
+            </g>
+          </svg>
         </Grid>
-        <Grid
-          container
-          className={classes.gaugeDescription}
-          justify="space-between"
-          alignItems="center"
-        >
-          <Grid item>
-            <p className={classes.gaugeDescGuideline}>
-              <span className={classes.gaugeBoxWhoTitle}>
-                WHO Guideline (10)
-              </span>
-              Lowest level at which premature mortality increases in response to
-              long-term exposure
-            </p>
-          </Grid>
-          <Grid item>
-            <p className={classes.gaugeDescUnits}>
-              <strong>
-                *PM
-                <sub>2.5</sub> concentrations measured in micrograms of
-                particles per cubic meter of air (µg/m <sup>3</sup>)
-              </strong>
-              <br />
-              <br />
-              <em>Data: WHO Global Platform on Air Quality &amp; Health</em>
-            </p>
-          </Grid>
+      </Grid>
+      <Grid
+        container
+        className={classes.gaugeDescription}
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Grid item>
+          <p className={classes.gaugeDescGuideline}>
+            <span className={classes.gaugeBoxWhoTitle}>WHO Guideline (10)</span>
+            Lowest level at which premature mortality increases in response to
+            long-term exposure
+          </p>
         </Grid>
-      </div>
-    );
-  }
+        <Grid item>
+          <p className={classes.gaugeDescUnits}>
+            <strong>
+              *PM
+              <sub>2.5</sub> concentrations measured in micrograms of particles
+              per cubic meter of air (µg/m <sup>3</sup>)
+            </strong>
+            <br />
+            <br />
+            <em>Data: WHO Global Platform on Air Quality &amp; Health</em>
+          </p>
+        </Grid>
+      </Grid>
+    </div>
+  );
 }
 
 RadialGauge.propTypes = {
   airPollMeasurement: PropTypes.string.isRequired,
-  airPollDescription: PropTypes.string.isRequired
+  airPollDescription: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles)(RadialGauge);
+export default RadialGauge;

@@ -14,7 +14,7 @@
   position: relative;
 }
 .list-ic li::before {
-  content: '';
+  content: "";
   position: absolute;
   background: rgba(192, 192, 192, 0.9);
 }
@@ -46,7 +46,7 @@
 }
 .card:after,
 .card:before {
-  content: '';
+  content: "";
   position: absolute;
   right: 100%;
   top: 50%;
@@ -78,7 +78,7 @@
 }
 
 .segment-value {
-  font-family: 'Montserrat', 'sans-serif';
+  font-family: "Montserrat", "sans-serif";
 }
 
 .speedo-segment:nth-of-type(1) {

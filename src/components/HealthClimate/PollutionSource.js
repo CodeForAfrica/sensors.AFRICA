@@ -1,42 +1,44 @@
-import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
-    padding: '2rem'
+    padding: "2rem",
   },
   mainTitle: {
     color: theme.palette.primary.light,
-    textAlign: 'center',
-    fontSize: theme.typography.h6.fontSize
+    textAlign: "center",
+    fontSize: theme.typography.h6.fontSize,
   },
   subTitle: {
-    textAlign: 'center',
-    fontWeight: 600
+    textAlign: "center",
+    fontWeight: 600,
   },
   body: {
-    paddingTop: '1.5rem'
+    paddingTop: "1.5rem",
   },
   bodyCopy: {
-    textAlign: 'center'
-  }
+    textAlign: "center",
+  },
 }));
 function PollutionSource({
   title,
   sources,
   impact,
   reduction,
-  backgroundColor
+  backgroundColor,
+  ...props
 }) {
-  const classes = useStyles();
+  const classes = useStyles(props);
+
   return (
     <Grid
       direction="row"
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
       style={{ backgroundColor: `${backgroundColor}` }}
     >
@@ -51,7 +53,7 @@ function PollutionSource({
           Sources:
         </Typography>
       </Grid>
-      <Grid item xs={12} justify="center" alignItems="center">
+      <Grid item xs={12}>
         <Typography variant="body2" className={classes.bodyCopy}>
           {sources}
         </Typography>
@@ -62,7 +64,7 @@ function PollutionSource({
           Impact:
         </Typography>
       </Grid>
-      <Grid item xs={12} justify="center" alignItems="center">
+      <Grid item xs={12}>
         <Typography variant="body2" className={classes.bodyCopy}>
           {impact}
         </Typography>
@@ -73,7 +75,7 @@ function PollutionSource({
           Reduction:
         </Typography>
       </Grid>
-      <Grid item xs={12} justify="center" alignItems="center">
+      <Grid item xs={12}>
         <Typography variant="body2" className={classes.bodyCopy}>
           {reduction}
         </Typography>
@@ -87,11 +89,11 @@ PollutionSource.propTypes = {
   sources: PropTypes.string.isRequired,
   impact: PropTypes.string.isRequired,
   reduction: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string
+  backgroundColor: PropTypes.string,
 };
 
 PollutionSource.defaultProps = {
-  backgroundColor: '#F3F3F3'
+  backgroundColor: "#F3F3F3",
 };
 
 export default PollutionSource;

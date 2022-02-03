@@ -1,55 +1,55 @@
-import React from 'react';
+import { Badge } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
-import PropTypes from 'prop-types';
+import logowhite from "@/sensorsafrica/assets/images/logos/logowhite.png";
+import Figure from "@/sensorsafrica/components/Figure";
 
-import Badge from '@material-ui/core/Badge';
-import { makeStyles } from '@material-ui/core/styles';
-
-import classNames from 'classnames';
-
-import logowhite from 'assets/images/logos/logowhite.png';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   defaultBadge: {
     zIndex: 1301,
-    top: '5.8rem',
-    right: '1.65rem',
+    top: "5.8rem",
+    right: "1.65rem",
     color: theme.palette.primary.dark,
-    fontSize: theme.typography.caption.fontSize
+    fontSize: theme.typography.caption.fontSize,
   },
   defaultActiveBadge: {
     zIndex: 1301,
-    top: '5.8rem',
-    right: '1.65rem',
-    fontSize: theme.typography.caption.fontSize
+    top: "5.8rem",
+    right: "1.65rem",
+    fontSize: theme.typography.caption.fontSize,
   },
   landingBadge: {
     zIndex: 1301,
-    top: '7.175rem',
-    right: '1.65rem',
-    fontSize: theme.typography.caption.fontSize
+    top: "7.175rem",
+    right: "1.65rem",
+    fontSize: theme.typography.caption.fontSize,
   },
   logo: {
     zIndex: 1301,
-    position: 'relative'
+    position: "relative",
   },
-  img: {}
+  img: {
+    width: 255,
+    height: 100,
+  },
 }));
 
 function Logo({ badge, active }) {
   const classes = useStyles();
-  const activeStatus = active && badge === 'default' ? 'Active' : '';
-  const imgClassName = classNames(classes.logo, classes.img);
+  const activeStatus = active && badge === "default" ? "Active" : "";
+  const imgClassName = clsx(classes.logo, classes.img);
   return (
     <Badge
       badgeContent="beta"
       classes={{ badge: classes[`${badge}${activeStatus}Badge`] }}
     >
-      <img
-        src={logowhite}
-        className={imgClassName}
+      <Figure
+        src={logowhite.src}
         alt="sensors.AFRICA"
-        height="100"
+        className={imgClassName}
       />
     </Badge>
   );
@@ -57,12 +57,12 @@ function Logo({ badge, active }) {
 
 Logo.propTypes = {
   active: PropTypes.bool,
-  badge: PropTypes.string
+  badge: PropTypes.string,
 };
 
 Logo.defaultProps = {
   active: false,
-  badge: 'default'
+  badge: "default",
 };
 
 export default Logo;

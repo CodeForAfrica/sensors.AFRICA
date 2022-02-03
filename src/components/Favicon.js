@@ -1,28 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
+import Head from "next/head";
+import PropTypes from "prop-types";
+import React from "react";
 
 const CONTENT = {
   black: {
-    hex: '#424143',
-    version: 'Ewqar9pC28'
+    hex: "#424143",
+    version: "Ewqar9pC28",
   },
   blue: {
-    hex: '#4972b8',
-    version: '8wB2COTulV'
+    hex: "#4972b8",
+    version: "8wB2COTulV",
   },
   green: {
-    hex: '#2fb56b',
-    version: '78bppvKdQd'
+    hex: "#2fb56b",
+    version: "78bppvKdQd",
   },
   orange: {
-    hex: '#F57C00',
-    version: 'WxbPiUQG57'
+    hex: "#F57C00",
+    version: "WxbPiUQG57",
   },
   purple: {
-    hex: '#b64598',
-    version: 'WxbPiUQG57'
-  }
+    hex: "#b64598",
+    version: "WxbPiUQG57",
+  },
 };
 
 /**
@@ -35,65 +35,70 @@ function Favicon({ color, version }) {
   const v = version || defaultVersion;
 
   return (
-    <Helmet
-      link={[
-        {
-          rel: 'apple-touch-icon',
-          sizes: '180x180',
-          href: `/favicons/${color}/apple-touch-icon.png?v=${v}`
-        },
-        {
-          rel: 'icon',
-          type: 'image/png',
-          sizes: '32x32',
-          href: `/favicons/${color}/favicon-32x32.png?v=${v}`
-        },
-        {
-          rel: 'icon',
-          type: 'image/png',
-          sizes: '16x16',
-          href: `/favicons/${color}/favicon-16x16.png?v=${v}`
-        },
-        {
-          rel: 'mask-icon',
-          color: `${hex}`,
-          href: `/favicons/${color}/safari-pinned-tab.svg?v=${v}`
-        },
-        {
-          rel: 'manifest',
-          href: `/favicons/${color}/manifest.json?v=${v}`
-        }
-      ]}
-      meta={[
-        {
-          name: 'apple-mobile-web-app-title',
-          content: 'sensors.AFRICA'
-        },
-        {
-          name: 'application-name',
-          content: 'sensors.AFRICA'
-        },
-        {
-          name: 'msapplication-TileColor',
-          content: `${hex}`
-        },
-        {
-          name: 'msapplication-config',
-          content: `/favicons/${color}/browserconfig.xml?v=${v}`
-        }
-      ]}
-    />
+    <Head>
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href={`/favicons/${color}/apple-touch-icon.png?v=${v}`}
+        key="favicon-apple-touch"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href={`/favicons/${color}/favicon-32x32.png?v=${v}`}
+        key="favicon-32x32"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href={`/favicons/${color}/favicon-16x16.png?v=${v}`}
+        key="favicon-16x16"
+      />
+      <link
+        rel="mask-icon"
+        color={`${hex}`}
+        href={`/favicons/${color}/safari-pinned-tab.svg?v=${v}`}
+        key="favicon-mask-icon"
+      />
+      <link
+        rel="manifest"
+        href={`/favicons/${color}/manifest.json?v=${v}`}
+        key="favicon-manifest"
+      />
+      <meta
+        property="apple-mobile-web-app-title"
+        content="sensors.AFRICA"
+        key="favicon-meta-apple-mobile-web-app-title"
+      />
+      <meta
+        property="application-name"
+        content="sensors.AFRICA"
+        key="favicon-meta-application-name"
+      />
+      <meta
+        property="msapplication-TileColor"
+        content={`${hex}`}
+        key="favicon-meta-msapplication-tilecolor"
+      />
+      <meta
+        property="msapplication-config"
+        content={`/favicons/${color}/browserconfig.xml?v=${v}`}
+        key="favicon-meta-msapplication-config"
+      />
+    </Head>
   );
 }
 
 Favicon.propTypes = {
   color: PropTypes.string,
-  version: PropTypes.string
+  version: PropTypes.string,
 };
 
 Favicon.defaultProps = {
-  color: 'black',
-  version: null
+  color: "black",
+  version: null,
 };
 
 export default Favicon;

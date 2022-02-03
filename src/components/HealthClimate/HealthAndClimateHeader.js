@@ -1,19 +1,18 @@
-import React from 'react';
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import HealthClimateContent from "@/sensorsafrica/components/Header/JumboContent/HealthClimateContent";
 
-import HealthClimateContent from 'components/Header/JumboContent/HealthClimateContent';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   jumbotron: {
     flexGrow: 1,
     backgroundColor: theme.palette.primary.light,
-    borderRadius: 'none',
-    [theme.breakpoints.up('md')]: {
-      height: 450
-    }
-  }
+    borderRadius: "none",
+    [theme.breakpoints.up("md")]: {
+      height: 450,
+    },
+  },
 }));
 
 function HealthClimateHeader() {
@@ -22,7 +21,7 @@ function HealthClimateHeader() {
     <Grid
       container
       className={classes.jumbotron}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid item xs={12}>

@@ -1,57 +1,57 @@
-import React from 'react';
-
 import {
   Typography,
   Card,
   CardActionArea,
   CardMedia,
-  CardContent
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+  CardContent,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100vw',
-    height: '100%',
-    backgroundColor: '#fafafa',
-    border: '1px solid #eeeeee',
-    maxWidth: '100%',
+    width: "100vw",
+    height: "100%",
+    backgroundColor: "#fafafa",
+    border: "1px solid #eeeeee",
+    maxWidth: "100%",
     opacity: 0.9,
-    '&:hover': {
+    "&:hover": {
       opacity: 1,
-      backgroundColor: '#fff'
+      backgroundColor: "#fff",
     },
-    [theme.breakpoints.up('md')]: {
-      width: '19.875rem'
+    [theme.breakpoints.up("md")]: {
+      width: "19.875rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '26.5rem'
-    }
+    [theme.breakpoints.up("lg")]: {
+      width: "26.5rem",
+    },
   },
   media: {
     height: 0,
-    paddingTop: '56.25%',
-    width: '100%'
+    paddingTop: "56.25%",
+    width: "100%",
   },
   cardLink: {
-    textDecoration: 'none'
+    textDecoration: "none",
   },
   overline: {
-    color: '#c7c7c7',
-    opacity: '0.5',
-    fontSize: '14px',
-    paddingTop: '1rem'
+    color: "#c7c7c7",
+    opacity: "0.5",
+    fontSize: "14px",
+    paddingTop: "1rem",
   },
   body: {
-    color: theme.typography.h5.color
+    color: theme.typography.h5.color,
   },
   bodyArea: {
-    paddingTop: '2rem'
-  }
+    paddingTop: "2rem",
+  },
 }));
 
-function StoryCard({ story }) {
-  const classes = useStyles();
+function StoryCard({ story, ...props }) {
+  const classes = useStyles(props);
   const { image, date, title, body, link } = story;
 
   return (
@@ -63,7 +63,7 @@ function StoryCard({ story }) {
         className={classes.cardLink}
       >
         <CardActionArea
-          style={{ display: 'flex', flexFlow: 'column', height: '100%' }}
+          style={{ display: "flex", flexFlow: "column", height: "100%" }}
         >
           <CardMedia className={classes.media} image={image} title=" Story" />
           <CardContent style={{ flexGrow: 1 }}>
@@ -73,7 +73,7 @@ function StoryCard({ story }) {
             <div className={classes.bodyArea}>
               <Typography variant="h5">{title}</Typography>
               <Typography variant="subtitle2" className={classes.body}>
-                {body}{' '}
+                {body}{" "}
               </Typography>
             </div>
           </CardContent>
@@ -82,5 +82,19 @@ function StoryCard({ story }) {
     </Card>
   );
 }
+
+StoryCard.propTypes = {
+  story: PropTypes.shape({
+    body: PropTypes.string,
+    date: PropTypes.string,
+    image: PropTypes.string,
+    link: PropTypes.string,
+    title: PropTypes.string,
+  }),
+};
+
+StoryCard.defaultProps = {
+  story: undefined,
+};
 
 export default StoryCard;

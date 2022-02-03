@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid } from "@material-ui/core";
+import PropTypes from "prop-types";
+import React from "react";
 
-import { Grid } from '@material-ui/core';
-
-import SearchBar from 'components/SearchBar';
+import SearchBar from "@/sensorsafrica/components/SearchBar";
 
 function CityMenuBar({ handleSearch }) {
   return (
@@ -17,7 +16,7 @@ function CityMenuBar({ handleSearch }) {
 }
 
 CityMenuBar.propTypes = {
-  handleSearch: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default CityMenuBar;

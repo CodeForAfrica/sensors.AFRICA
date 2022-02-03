@@ -1,29 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import { TwitterShareButton } from 'react-share';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
+import { TwitterShareButton } from "react-share";
 
 const useStyles = makeStyles({
-  twitter: { backgroundColor: '#00aced', margin: '0.2rem' },
-  facebook: { backgroundColor: '#3b5998', margin: '0.2rem' },
-  instagram: { backgroundColor: '#8a3ab9', margin: '0.2rem' },
-  medium: { backgroundColor: '#00ab6c', margin: '0.2rem' },
-  fa: { color: 'white', margin: '0.2rem' }
+  twitter: { backgroundColor: "#00aced", margin: "0.2rem" },
+  facebook: { backgroundColor: "#3b5998", margin: "0.2rem" },
+  instagram: { backgroundColor: "#8a3ab9", margin: "0.2rem" },
+  medium: { backgroundColor: "#00ab6c", margin: "0.2rem" },
+  fa: { color: "white", margin: "0.2rem" },
 });
 
 function SocialMediaButtons({ city }) {
   const classes = useStyles();
   return (
-    <Grid container justify="center" alignitems="center">
+    <Grid container justifyContent="center" alignitems="center">
       <Grid item className={classes.twitter}>
         <TwitterShareButton
           url="https://sensors.AFRICA/air"
           title={`Did you know the #AirQuality in ${city.name} directly affects my health ${city.twitterHandle}? Check our city’s pollution levels on `}
           via="sensorsAFRICA"
-          hashtags={['sensorsAFRICA']}
+          hashtags={["sensorsAFRICA"]}
           className={classes.buttonLink}
         >
           <a
@@ -32,7 +31,7 @@ function SocialMediaButtons({ city }) {
             rel="noopener noreferrer"
           >
             <FontAwesomeIcon
-              icon={['fab', 'twitter']}
+              icon={["fab", "twitter"]}
               size="2x"
               fixedWidth
               className={classes.fa}
@@ -47,7 +46,7 @@ function SocialMediaButtons({ city }) {
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
-            icon={['fab', 'facebook-f']}
+            icon={["fab", "facebook-f"]}
             size="2x"
             fixedWidth
             className={classes.fa}
@@ -61,7 +60,7 @@ function SocialMediaButtons({ city }) {
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
-            icon={['fab', 'instagram']}
+            icon={["fab", "instagram"]}
             size="2x"
             fixedWidth
             className={classes.fa}
@@ -75,7 +74,7 @@ function SocialMediaButtons({ city }) {
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
-            icon={['fab', 'medium-m']}
+            icon={["fab", "medium-m"]}
             size="2x"
             fixedWidth
             className={classes.fa}
@@ -89,7 +88,7 @@ function SocialMediaButtons({ city }) {
 SocialMediaButtons.propTypes = {
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    twitterHandle: PropTypes.string.isRequired
-  }).isRequired
+    twitterHandle: PropTypes.string.isRequired,
+  }).isRequired,
 };
 export default SocialMediaButtons;

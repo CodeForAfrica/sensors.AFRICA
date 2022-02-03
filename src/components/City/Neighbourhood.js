@@ -1,7 +1,6 @@
-import React from 'react';
-
-import { Card, CardContent, Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Card, CardContent, Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,32 +9,32 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(6),
   },
   mainGrid: {
-    paddingRight: '7rem',
-    paddingLeft: '7rem',
+    paddingRight: "7rem",
+    paddingLeft: "7rem",
     paddingBottom: theme.spacing(6),
   },
   offlineCard: {
     borderRadius: 0,
     borderStyle: 0,
-    boxShadow: 'none',
-    backgroundColor: '#f3f3fe',
+    boxShadow: "none",
+    backgroundColor: "#f3f3fe",
   },
   onlineCard: {
     borderRadius: 0,
-    boxShadow: 'none',
+    boxShadow: "none",
     backgroundColor: theme.palette.primary.light,
   },
   cardContent: {
-    textAlign: 'center',
-    color: '#fff',
+    textAlign: "center",
+    color: "#fff",
   },
   onlineCaption: {
     paddingTop: theme.spacing(3),
-    color: 'white',
+    color: "white",
   },
   headline: {
-    textAlign: 'center',
-    fontWeight: 'bolder',
+    textAlign: "center",
+    fontWeight: "bolder",
     color: theme.typography.h6.color,
     fontSize: theme.typography.fontSize,
     paddingTop: theme.spacing(2),
@@ -43,23 +42,23 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.h6.fontFamily,
   },
   neighbourhood: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 14,
-    color: 'white',
+    color: "white",
   },
   offlineContent: {
-    color: 'grey',
+    color: "grey",
     opacity: 0.4,
     fontSize: theme.typography.fontSmallDefault.fontSize,
   },
   onlineContent: {
-    color: '#fff',
+    color: "#fff",
     fontSize: theme.typography.fontSmallDefault.fontSize,
   },
   offlineCaption: {
     paddingTop: theme.spacing(3),
-    color: 'grey',
-    opacity: '0.4',
+    color: "grey",
+    opacity: "0.4",
   },
 }));
 
@@ -68,7 +67,7 @@ function Neighbourhood() {
   return (
     <Grid
       container
-      justify="center"
+      justifyContent="center"
       alignItems="center"
       className={classes.root}
     >
@@ -79,7 +78,12 @@ function Neighbourhood() {
       </Grid>
 
       <Grid item xs={12} className={classes.mainGrid}>
-        <Grid container direction="row" justify="center" alignItems="center">
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
           <Grid item xs={3} sm>
             <Card className={classes.onlineCard}>
               <CardContent className={classes.cardContent}>
@@ -115,7 +119,7 @@ function Neighbourhood() {
           <Grid item xs={3} sm>
             <Card
               className={classes.onlineCard}
-              style={{ backgroundColor: '#2FB56B' }}
+              style={{ backgroundColor: "#2FB56B" }}
             >
               <CardContent className={classes.cardContent}>
                 <Typography variant="h6" className={classes.onlineContent}>
@@ -126,7 +130,7 @@ function Neighbourhood() {
                 </Typography>
                 <Typography
                   className={classes.onlineCaption}
-                  style={{ color: '#fff' }}
+                  style={{ color: "#fff" }}
                 >
                   This is a placeholder for text and more information
                 </Typography>
@@ -137,7 +141,7 @@ function Neighbourhood() {
           <Grid item xs={3} sm>
             <Card
               className={classes.onlineCard}
-              style={{ backgroundColor: '#2FB56B' }}
+              style={{ backgroundColor: "#2FB56B" }}
             >
               <CardContent className={classes.cardContent}>
                 <Typography variant="h6" className={classes.onlineContent}>

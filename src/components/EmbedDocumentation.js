@@ -1,71 +1,70 @@
-import React from 'react';
-
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   main: {
-    paddingBottom: '3rem',
-    [theme.breakpoints.up('md')]: {
-      width: '59.625rem',
+    paddingBottom: "3rem",
+    [theme.breakpoints.up("md")]: {
+      width: "59.625rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '79.5rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "79.5rem",
     },
   },
   link: { color: theme.palette.primary.dark },
   typography: {
     paddingTop: theme.spacing(6),
-    textAlign: 'center',
-    fontWeight: 'bold',
+    textAlign: "center",
+    fontWeight: "bold",
   },
   title: {
     fontWeight: 700,
-    fontSize: '1rem',
-    paddingTop: '2rem',
-    paddingBottom: '1rem',
+    fontSize: "1rem",
+    paddingTop: "2rem",
+    paddingBottom: "1rem",
   },
   dlFirst: {
-    padding: '1rem 0.5rem',
-    borderTop: '1px solid #f0f4f7',
-    borderBottom: '1px solid #f0f4f7',
-    [theme.breakpoints.up('md')]: {
+    padding: "1rem 0.5rem",
+    borderTop: "1px solid #f0f4f7",
+    borderBottom: "1px solid #f0f4f7",
+    [theme.breakpoints.up("md")]: {
       paddingLeft: 0,
       paddingRight: 0,
     },
   },
   dl: {
-    padding: '1rem 0.5rem',
-    borderBottom: '1px solid #f0f4f7',
-    [theme.breakpoints.up('md')]: {
+    padding: "1rem 0.5rem",
+    borderBottom: "1px solid #f0f4f7",
+    [theme.breakpoints.up("md")]: {
       paddingLeft: 0,
       paddingRight: 0,
     },
   },
   dt: {
-    [theme.breakpoints.up('md')]: {
-      width: '29.8125rem',
+    [theme.breakpoints.up("md")]: {
+      width: "29.8125rem",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '39.75rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "39.75rem",
     },
-    marginBottom: '0.5rem',
+    marginBottom: "0.5rem",
   },
   dd: {
-    [theme.breakpoints.up('md')]: {
-      width: '29.8125rem',
-      float: 'left',
+    [theme.breakpoints.up("md")]: {
+      width: "29.8125rem",
+      float: "left",
     },
-    [theme.breakpoints.up('lg')]: {
-      width: '39.75rem',
+    [theme.breakpoints.up("lg")]: {
+      width: "39.75rem",
     },
   },
   code: {
-    display: 'inline-block',
+    display: "inline-block",
     color: theme.palette.secondary.main,
     fontSize: theme.typography.caption.fontSize,
   },
@@ -81,27 +80,28 @@ const useStyles = makeStyles((theme) => ({
   },
   var: {
     color: theme.palette.primary.dark,
-    fontStyle: 'italic',
+    fontStyle: "italic",
     fontSize: theme.typography.caption.fontSize,
   },
   wiki: {
-    marginTop: '2rem',
+    marginTop: "2rem",
   },
 }));
 
-function EmbedDocumentation() {
-  const classes = useStyles();
+function EmbedDocumentation(props) {
+  const classes = useStyles(props);
+
   return (
     <Grid
       container
       className={classes.root}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <Grid
         item
         container
-        justify="center"
+        justifyContent="center"
         alignItems="center"
         className={classes.main}
       >
@@ -129,7 +129,7 @@ function EmbedDocumentation() {
           item
           xs={12}
           container
-          justify="flex-start"
+          justifyContent="flex-start"
           alignItems="flex-start"
           className={classes.dlFirst}
         >
@@ -145,18 +145,18 @@ function EmbedDocumentation() {
               </code>
             </a>
           </Grid>
-          <Grid className={classes.dd}>
+          <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
               City Sensors Map
             </Typography>
             <Typography variant="body2">
-              Embed it in a page where:{' '}
+              Embed it in a page where:{" "}
               <code className={classes.var}>city-slug=nairobi</code>
             </Typography>
             <Typography
               variant="body2"
               component="ul"
-              style={{ listStyle: 'none', marginTop: '0.5rem' }}
+              style={{ listStyle: "none", marginTop: "0.5rem" }}
             >
               <li className={classes.query}>
                 <pre className={classes.queryParam}>
@@ -179,7 +179,7 @@ function EmbedDocumentation() {
           item
           xs={12}
           container
-          justify="flex-start"
+          justifyContent="flex-start"
           alignItems="flex-start"
           className={classes.dlFirst}
         >
@@ -195,18 +195,18 @@ function EmbedDocumentation() {
               </code>
             </a>
           </Grid>
-          <Grid className={classes.dd}>
+          <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
               City Weekly Air Quality Graph
             </Typography>
             <Typography variant="body2">
-              Embed it in a page where:{' '}
+              Embed it in a page where:{" "}
               <code className={classes.var}>city-slug=nairobi</code>
             </Typography>
             <Typography
               variant="body2"
               component="ul"
-              style={{ listStyle: 'none', marginTop: '0.5rem' }}
+              style={{ listStyle: "none", marginTop: "0.5rem" }}
             >
               <li className={classes.query}>
                 <pre className={classes.queryParam}>
@@ -229,7 +229,7 @@ function EmbedDocumentation() {
           item
           xs={12}
           container
-          justify="flex-start"
+          justifyContent="flex-start"
           alignItems="flex-start"
           className={classes.dl}
         >
@@ -245,18 +245,18 @@ function EmbedDocumentation() {
               </code>
             </a>
           </Grid>
-          <Grid className={classes.dd}>
+          <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
               City PM<sub>2.5</sub> 24 Hours Exposure Dial
             </Typography>
             <Typography variant="body2">
-              Embed it in a page where:{' '}
+              Embed it in a page where:{" "}
               <code className={classes.var}>city-slug=nairobi</code>
             </Typography>
             <Typography
               variant="body2"
               component="ul"
-              style={{ listStyle: 'none', marginTop: '0.5rem' }}
+              style={{ listStyle: "none", marginTop: "0.5rem" }}
             >
               <li className={classes.query}>
                 <pre className={classes.queryParam}>

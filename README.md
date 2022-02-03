@@ -22,7 +22,7 @@ Run the following command to get started
     git clone https://github.com/CodeForAfrica/sensors.AFRICA.git
     cd sensors.AFRICA
     yarn
-    yarn start
+    yarn dev
 ```
 
 ---
@@ -35,21 +35,15 @@ This project will be primarily using [airbnb react](https://github.com/airbnb/ja
 
 [TODO](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
 
-## Deployment
-
-Following [Facebook's guide on deploying React App on GitHub Pages](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages), site deployment can be done by simple doing:
-
-```shell
-yarn version
-```
-
 ---
 
 ## sensors.AFRICA Stack
 
-Map - <https://github.com/CodeForAfrica/sensors.AFRICA-AQ-map>
-API - <https://github.com/CodeForAfricaLabs/sensors.AFRICA-AQ-api>
-Grafana and TICK Stack - [./contrib/grafana-and-tick](./contrib/grafana-and-tick)
+First Header  | Second Header
+------------- | -------------
+[API](https://github.com/CodeForAfricaLabs/sensors.AFRICA-api)  | Receives, stores, and processes data received from sensors across the continentent
+[Map](https://github.com/CodeForAfrica/sensors.AFRICA-AQ-map-v2) | Visualises the types and locations of all sensors nodes across the continent
+[Firmware](https://github.com/CodeForAfrica/sensors.AFRICA-AQ-sensors-software) | Powers all sensors.AFRICA nodes across the continent
 
 ---
 
