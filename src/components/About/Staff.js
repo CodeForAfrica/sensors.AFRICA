@@ -12,6 +12,7 @@ import constant from "@/sensorsafrica/assets/images/team/constant.jpg";
 import gideon from "@/sensorsafrica/assets/images/team/gideon.jpeg";
 import jack from "@/sensorsafrica/assets/images/team/jack.jpeg";
 import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
+import usman from "@/sensorsafrica/assets/images/team/usman.jpeg";
 import Figure from "@/sensorsafrica/components/Figure";
 
 const useStyles = makeStyles((theme) => ({
@@ -163,6 +164,25 @@ function Staff(props) {
               <Typography variant="subtitle1">
                 <a className={classes.a} href="https://twitter.com/gmaina">
                   @gmaina
+                </a>
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+
+        <Card className={classes.card}>
+          <CardActionArea>
+            <Figure src={usman} alt="Gideon" className={classes.cardMedia} />
+            <CardContent>
+              <Typography variant="h6" className={classes.h6}>
+                Ahmed Biu Usman 
+              </Typography>
+              <Typography variant="subtitle1">
+                ahmed@codeforafrica.org
+              </Typography>
+              <Typography variant="subtitle1">
+                <a className={classes.a} href="https://twitter.com/usmanbiu">
+                  @usmanbiu
                 </a>
               </Typography>
             </CardContent>
