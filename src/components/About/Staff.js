@@ -174,7 +174,9 @@ function Staff(props) {
           <CardActionArea>
             <Figure src={usman} alt="Gideon" className={classes.cardMedia} />
             <CardContent>
-              <Typography variant="h6" className={classes.h6}>Ahmed Biu Usman</Typography>
+              <Typography variant="h6" className={classes.h6}>
+                AHMED BIU USMAN
+              </Typography>
               <Typography variant="subtitle1">
                 ahmed@codeforafrica.org
               </Typography>
