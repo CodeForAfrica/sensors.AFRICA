@@ -3,13 +3,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import React from "react";
 
-import DHT22 from "@/sensorsafrica/assets/images/sensors/DHT22.jpeg";
-import GSMSIM800H from "@/sensorsafrica/assets/images/sensors/GSMSIM800H.jpeg";
+import DHT22 from "@/sensorsafrica/assets/images/sensors/DHT22.png";
+import GSMSIM800H from "@/sensorsafrica/assets/images/sensors/GSMSIM800H.png";
 import GSMSIM800L from "@/sensorsafrica/assets/images/sensors/GSMSIM800L.jpg";
-import NODEMCU from "@/sensorsafrica/assets/images/sensors/NODEMCU.jpeg";
-import PMS5003 from "@/sensorsafrica/assets/images/sensors/PMS5003.jpeg";
+import NODEMCU from "@/sensorsafrica/assets/images/sensors/NODEMCU.png";
+import PMS5003 from "@/sensorsafrica/assets/images/sensors/PMS5003.png";
 import SDS011 from "@/sensorsafrica/assets/images/sensors/sensor1.jpg";
-import SIGFOX from "@/sensorsafrica/assets/images/sensors/SIGFOX.jpeg";
+import SIGFOX from "@/sensorsafrica/assets/images/sensors/SIGFOX.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
