@@ -99,54 +99,59 @@ function Navbar(props) {
         {/* Position sticky is not universally supported so the attribute reverts to static when unavailable */}
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar className={classes.toolbar} disableGutters>
-            <div className={classes.logoGrid}>
-              <IconLogo />
-            </div>
             <Grid
               container
               direction="row"
-              justifyContent="flex-start"
+              justifyContent="space-between"
               alignItems="center"
-              className={classes.linkGrid}
+              // className={classes.linkGrid}
             >
-              <MenuItem className={classes.airText}>
-                <Link href="/air" className={classes.airlink}>
-                  AIR
-                </Link>
-              </MenuItem>
+              <Grid item>
+                <Grid container>
+                  <div className={classes.logoGrid}>
+                    <IconLogo />
+                  </div>
+                  <MenuItem className={classes.airText}>
+                    <Link href="/air" className={classes.airlink}>
+                      AIR
+                    </Link>
+                  </MenuItem>
 
-              <MenuItem className={classes.waterText}>
-                <Link href="/water" className={classes.waterlink}>
-                  WATER
-                </Link>
-              </MenuItem>
-              <MenuItem className={classes.soundText}>
-                <Link href="/sound" className={classes.soundlink}>
-                  SOUND
-                </Link>
-              </MenuItem>
-              <MenuItem className={classes.radiationText}>
-                <Link href="/radiation" className={classes.radiationlink}>
-                  RADIATION
-                </Link>
-              </MenuItem>
-            </Grid>
-
-            <Hidden smDown>
-              <Grid
-                container
-                direction="row"
-                justifyContent="flex-end"
-                alignItems="center"
-                className={classes.mediaGrid}
-              >
-                <Grid item>
-                  <SocialMedia color="#2FB56B" />
+                  <MenuItem className={classes.waterText}>
+                    <Link href="/water" className={classes.waterlink}>
+                      WATER
+                    </Link>
+                  </MenuItem>
+                  <MenuItem className={classes.soundText}>
+                    <Link href="/sound" className={classes.soundlink}>
+                      SOUND
+                    </Link>
+                  </MenuItem>
+                  <MenuItem className={classes.radiationText}>
+                    <Link href="/radiation" className={classes.radiationlink}>
+                      RADIATION
+                    </Link>
+                  </MenuItem>
                 </Grid>
               </Grid>
-            </Hidden>
-            <Grid item>
-              <MenuBar />
+
+              <Grid item>
+                <Grid
+                  item
+                  container
+                  alignItems="center"
+                  justifyContent="flex-end"
+                >
+                  <Hidden smDown>
+                    <Grid item>
+                      <SocialMedia color="#2FB56B" />
+                    </Grid>
+                  </Hidden>
+                  <Grid item>
+                    <MenuBar />
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
           </Toolbar>
         </AppBar>
