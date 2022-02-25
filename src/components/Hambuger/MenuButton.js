@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   container: {
     height: 32,
     width: 32,
@@ -10,10 +10,15 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    marginRight: 8,
     cursor: "pointer",
-    padding: 4,
+    padding: spacing(0.5),
     zIndex: "1301",
     position: "relative",
+    [breakpoints.up("md")]: {
+      marginLeft: 4,
+      marginRight: 0,
+    },
   },
 }));
 
