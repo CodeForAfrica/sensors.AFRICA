@@ -4,17 +4,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(({ palette, spacing, typography }) => ({
   root: {
     flexGrow: 1,
     color: "white",
-    backgroundColor: theme.palette.secondary.main,
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(2),
+    backgroundColor: palette.secondary.main,
+    paddingTop: spacing(1),
+    paddingBottom: spacing(2),
   },
   fa: {
+    height: typography.pxToRem(28),
+    padding: spacing(0.5),
     transition: "all .5s ease-in-out",
-    padding: theme.spacing(0.5),
+    width: typography.pxToRem(28),
     "&:hover": {
       transform: "scale(1.3)",
       color: "#f3f3f3",
