@@ -5,13 +5,18 @@ import PropTypes from "prop-types";
 import React from "react";
 import { TwitterShareButton } from "react-share";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(({ typography }) => ({
   twitter: { backgroundColor: "#00aced", margin: "0.2rem" },
   facebook: { backgroundColor: "#3b5998", margin: "0.2rem" },
   instagram: { backgroundColor: "#8a3ab9", margin: "0.2rem" },
   medium: { backgroundColor: "#00ab6c", margin: "0.2rem" },
-  fa: { color: "white", margin: "0.2rem" },
-});
+  fa: {
+    color: "white",
+    height: typography.pxToRem(28),
+    margin: "0.2rem",
+    width: typography.pxToRem(28),
+  },
+}));
 
 function SocialMediaButtons({ city }) {
   const classes = useStyles();
