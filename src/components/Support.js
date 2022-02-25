@@ -95,8 +95,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
   },
   fa: {
-    transition: "all .5s ease-in-out",
+    height: theme.typography.pxToRem(28),
     padding: theme.spacing(0.5),
+    transition: "all .5s ease-in-out",
+    width: theme.typography.pxToRem(28),
     "&:hover": {
       transform: "scale(1.3)",
       color: "#f3f33",
