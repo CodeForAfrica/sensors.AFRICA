@@ -12,13 +12,11 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ARG NEXT_PUBLIC_IMAGE_DOMAINS=sensors.africa \
-    # Next.js collects completely anonymous telemetry data about general usage.
-    # Learn more here: https://nextjs.org/telemetry
-    NEXT_TELEMETRY_DISABLED=1
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+ARG  NEXT_TELEMETRY_DISABLED=1
 
-ENV NEXT_PUBLIC_IMAGE_DOMAINS=${NEXT_PUBLIC_IMAGE_DOMAINS} \
-    NEXT_TELEMETRY_DISABLED=${NEXT_TELEMETRY_DISABLED}
+ENV NEXT_TELEMETRY_DISABLED=${NEXT_TELEMETRY_DISABLED}
 
 RUN yarn build
 
