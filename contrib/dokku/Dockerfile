@@ -1,1 +1,1 @@
-FROM codeforafrica/twoopstracker-ui:0.4.5
+FROM codeforafrica/sensorsAfrica-ui:0.4.6
