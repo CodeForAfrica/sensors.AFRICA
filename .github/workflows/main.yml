@@ -5,6 +5,7 @@ on:
 env:
   DOKKU_REMOTE_BRANCH: "master"
   DOKKU_REMOTE_URL: "ssh://dokku@ui-1.prod.codeforafrica.org/sensors-africa"
+  IMAGE_NAME: "codeforafrica/sensorsAfrica-ui"
   GIT_PUSH_FLAGS: "--force"
 
 jobs:
@@ -66,7 +67,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           context: .
           push: true
-          tags: "codeforafrica/sensorsAfrica-ui:${{ steps.version-check.outputs.version }}"
+          tags: "${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}"
 
       - name: Move cache
         if: steps.version-check.outputs.changed == 'true'
