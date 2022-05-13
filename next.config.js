@@ -3,9 +3,9 @@ module.exports = {
     outputStandalone: true,
   },
   images: {
-    domains: process.env.NEXT_PUBLIC_IMAGE_DOMAINS?.split(", ")
-      ?.map((d) => d.trim())
-      ?.filter((d) => d),
+    domains: process.env.NEXT_PUBLIC_IMAGE_DOMAINS?.split(",")
+      ?.filter((d) => d.trim())
+      ?.map((d) => d.trim()),
   },
   reactStrictMode: false,
   webpack(config) {
