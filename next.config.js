@@ -4,8 +4,8 @@ module.exports = {
   },
   images: {
     domains: process.env.NEXT_PUBLIC_IMAGE_DOMAINS?.split(",")
-      ?.filter((d) => d.trim())
-      ?.map((d) => d.trim()),
+      ?.map((d) => d.trim())
+      ?.filter((d) => d.trim()),
   },
   reactStrictMode: false,
   webpack(config) {

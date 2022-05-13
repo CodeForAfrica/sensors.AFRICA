@@ -75,6 +75,7 @@ jobs:
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
       - name: Push to Dokku
         if: steps.version-check.outputs.changed == 'true'
         uses: dokku/github-action@v1.0.2
