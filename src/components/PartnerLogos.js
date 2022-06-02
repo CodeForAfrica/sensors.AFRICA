@@ -97,15 +97,6 @@ function PartnerLogos(props) {
             />
           </div>
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <div className={classes.germanCoopLogo}>
-            <Figure
-              src={germanCoopLogo}
-              alt="German Cooperation"
-              className={classes.img}
-            />
-          </div>
-        </Grid>
       </Grid>
     </Grid>
   );
