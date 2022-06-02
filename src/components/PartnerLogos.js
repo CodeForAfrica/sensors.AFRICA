@@ -2,7 +2,6 @@ import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
-import germanCoopLogo from "@/sensorsafrica/assets/images/partners/germanCoopLogo.png";
 import liquidtelcom from "@/sensorsafrica/assets/images/partners/liquidtelcom.png";
 import data4sdg from "@/sensorsafrica/assets/images/partners/partnershipsdg.png";
 import worldbank from "@/sensorsafrica/assets/images/partners/worldbankgroup.png";
