@@ -178,7 +178,7 @@ function Staff(props) {
                 AHMED BIU USMAN
               </Typography>
               <Typography variant="subtitle1">
-                ahmed@codeforafrica.org
+                usman@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
                 <a className={classes.a} href="https://twitter.com/usmanbiu">
