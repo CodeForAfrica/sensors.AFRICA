@@ -2,7 +2,6 @@ import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
-import germanCoopLogo from "@/sensorsafrica/assets/images/partners/germanCoopLogo.png";
 import liquidtelcom from "@/sensorsafrica/assets/images/partners/liquidtelcom.png";
 import data4sdg from "@/sensorsafrica/assets/images/partners/partnershipsdg.png";
 import worldbank from "@/sensorsafrica/assets/images/partners/worldbankgroup.png";
@@ -74,12 +73,12 @@ function PartnerLogos(props) {
         alignItems="center"
         className={classes.partnersLogo}
       >
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={4} md={3}>
           <div className={classes.worldBankLogo}>
             <Figure src={worldbank} alt="World Bank" className={classes.img} />
           </div>
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={4} md={3}>
           <div className={classes.liquidLogo}>
             <Figure
               src={liquidtelcom}
@@ -88,20 +87,11 @@ function PartnerLogos(props) {
             />
           </div>
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={4} md={3}>
           <div className={classes.globalLogo}>
             <Figure
               src={data4sdg}
               alt="Global Partnership for Sustainable Development Data"
-              className={classes.img}
-            />
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <div className={classes.germanCoopLogo}>
-            <Figure
-              src={germanCoopLogo}
-              alt="German Cooperation"
               className={classes.img}
             />
           </div>
