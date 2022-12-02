@@ -289,15 +289,6 @@ const components = {
   ValueContainer,
   DropdownIndicator: null,
 };
-
-const DEFAULT_OPTIONS = [
-  { value: "nairobi", label: "Nairobi, Kenya" },
-  { value: "kisumu", label: "Kisumu, Kenya" },
-  { value: "nakuru", label: "Nakuru, Kenya" },
-  { value: "lagos", label: "Lagos, Nigeria" },
-  { value: "dar-es-salaam", label: "Dar-es-Salaam, Tanzania" },
-];
-
 function SearchBar({ handleSearch, placeholder, options, ...props }) {
   const classes = useStyles(props);
   const [single, setSingle] = useState();
@@ -331,7 +322,7 @@ SearchBar.propTypes = {
 
 SearchBar.defaultProps = {
   handleSearch: null,
-  options: DEFAULT_OPTIONS,
+  options: [],
   placeholder: "",
 };
 

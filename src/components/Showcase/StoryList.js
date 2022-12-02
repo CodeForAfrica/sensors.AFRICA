@@ -1,6 +1,7 @@
 import { Grid, ImageList, ImageListItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Papa from "papaparse";
+import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
 import StoryCard from "./StoryCard";
@@ -46,6 +47,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
 
 function StoryList(props) {
   const classes = useStyles(props);
+  const { storiesLink } = props;
   const [stories, setStories] = useState([]);
 
   const processData = (data) => {
@@ -59,16 +61,16 @@ function StoryList(props) {
   };
 
   useEffect(() => {
-    Papa.parse(
-      "https://docs.google.com/spreadsheets/d/1I2nTG_lst4nYrg8z1e7RaolC16A-M7f_lO_zRaV9L5s/pub?output=csv",
-      {
-        download: true,
-        header: true,
-        complete: (results) => {
-          processData(results?.data);
-        },
-      }
-    );
+    // eslint-disable-next-line no-unused-expressions
+    storiesLink
+      ? Papa.parse(storiesLink, {
+          download: true,
+          header: true,
+          complete: (results) => {
+            processData(results?.data);
+          },
+        })
+      : null;
   }, []);
 
   // TODO(kilemensi): ImageListItem computes the size of item and sets it using
@@ -104,5 +106,9 @@ function StoryList(props) {
     </Grid>
   );
 }
+
+StoryList.propTypes = {
+  storiesLink: PropTypes.string.isRequired,
+};
 
 export default StoryList;
