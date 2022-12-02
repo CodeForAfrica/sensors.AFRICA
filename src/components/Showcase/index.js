@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 function Showcase(props) {
   const classes = useStyles(props);
-  const { title, headline } = props;
+  const { title, headline, storiesLink } = props;
 
   return (
     <Grid className={classes.root}>
@@ -34,7 +34,7 @@ function Showcase(props) {
         <Typography variant="body1">{headline}</Typography>
       </Grid>
       <Grid item xs={12}>
-        <StoryList />
+        <StoryList storiesLink={storiesLink} />
       </Grid>
     </Grid>
   );
@@ -43,6 +43,7 @@ function Showcase(props) {
 Showcase.propTypes = {
   title: PropTypes.string.isRequired,
   headline: PropTypes.string.isRequired,
+  storiesLink: PropTypes.string.isRequired,
 };
 
 export default Showcase;

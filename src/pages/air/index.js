@@ -32,6 +32,8 @@ const showcase = {
   title: "Showcase",
   headline:
     "Here are stories from all around the world on air quality and its effects",
+  storiesLink:
+    "https://docs.google.com/spreadsheets/d/1I2nTG_lst4nYrg8z1e7RaolC16A-M7f_lO_zRaV9L5s/pub?output=csv",
 };
 
 function AirHome() {
