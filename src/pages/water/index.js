@@ -24,7 +24,7 @@ const header1 = "We're Testing Water";
 const header2 = "in Your City";
 const searchOptions = [{ value: "nairobi", label: "Nairobi, Kenya" }];
 
-function AirHome() {
+function WaterHome() {
   const router = useRouter();
   const handleSearch = (city) => {
     router.push(`${CITY_PATHNAME}/${city.value}`);
@@ -53,4 +53,4 @@ function AirHome() {
 
 export { About, HowSensorsWork, JoinNetwork, Data, HealthAndClimateImpacts };
 
-export default AirHome;
+export default WaterHome;
