@@ -21,6 +21,13 @@ import JoinNetwork from "@/sensorsafrica/pages/air/join-network";
 const CITY_PATHNAME = "/air/city";
 const header1 = "We've Tested the Quality";
 const header2 = "of Your City's Air.";
+const searchOptions = [
+  { value: "nairobi", label: "Nairobi, Kenya" },
+  { value: "kisumu", label: "Kisumu, Kenya" },
+  { value: "nakuru", label: "Nakuru, Kenya" },
+  { value: "lagos", label: "Lagos, Nigeria" },
+  { value: "dar-es-salaam", label: "Dar-es-Salaam, Tanzania" },
+];
 
 function AirHome() {
   const router = useRouter();
@@ -36,6 +43,7 @@ function AirHome() {
         handleSearch={handleSearch}
         header1={header1}
         header2={header2}
+        searchOptions={searchOptions}
       />
       <Showcase />
       <Issues />

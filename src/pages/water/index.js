@@ -22,6 +22,7 @@ const CITY_PATHNAME = "/water/city";
 
 const header1 = "We're Testing Water";
 const header2 = "in Your City";
+const searchOptions = [{ value: "nairobi", label: "Nairobi, Kenya" }];
 
 function AirHome() {
   const router = useRouter();
@@ -37,6 +38,7 @@ function AirHome() {
         handleSearch={handleSearch}
         header1={header1}
         header2={header2}
+        searchOptions={searchOptions}
       />
       <Showcase />
       <Issues />

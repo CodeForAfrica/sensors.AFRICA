@@ -28,7 +28,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function HeaderContent({ handleSearch, header1, header2, ...props }) {
+function HeaderContent({
+  handleSearch,
+  header1,
+  header2,
+  searchOptions,
+  ...props
+}) {
   const classes = useStyles(props);
 
   return (
@@ -52,6 +58,7 @@ function HeaderContent({ handleSearch, header1, header2, ...props }) {
         <SearchBar
           placeholder="Search for your city ..."
           handleSearch={handleSearch}
+          options={searchOptions}
         />
       </Grid>
     </Grid>
@@ -62,6 +69,7 @@ HeaderContent.propTypes = {
   handleSearch: PropTypes.func.isRequired,
   header1: PropTypes.string.isRequired,
   header2: PropTypes.string.isRequired,
+  searchOptions: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default HeaderContent;
