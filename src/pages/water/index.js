@@ -18,7 +18,7 @@ import HealthAndClimateImpacts from "@/sensorsafrica/pages/air/health-and-climat
 import HowSensorsWork from "@/sensorsafrica/pages/air/how-sensors-work";
 import JoinNetwork from "@/sensorsafrica/pages/air/join-network";
 
-const CITY_PATHNAME = "/air/city";
+const CITY_PATHNAME = "/water/city";
 
 function AirHome() {
   const router = useRouter();

@@ -22,11 +22,7 @@ SensorTypeHome.propTypes = {
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { type: "radiation" } },
-      { params: { type: "sound" } },
-      { params: { type: "water" } },
-    ],
+    paths: [{ params: { type: "radiation" } }, { params: { type: "sound" } }],
     fallback: false,
   };
 }

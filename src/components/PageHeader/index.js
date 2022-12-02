@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AirHeader({ handleSearch, ...props }) {
+function PageHeader({ handleSearch, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -33,8 +33,8 @@ function AirHeader({ handleSearch, ...props }) {
   );
 }
 
-AirHeader.propTypes = {
+PageHeader.propTypes = {
   handleSearch: PropTypes.func.isRequired,
 };
 
-export default AirHeader;
+export default PageHeader;
