@@ -23,6 +23,10 @@ const CITY_PATHNAME = "/water/city";
 const header1 = "We're Testing Water";
 const header2 = "in Your City";
 const searchOptions = [{ value: "nairobi", label: "Nairobi, Kenya" }];
+const showcase = {
+  title: "Showcase",
+  headline: "Participatory Mapping of Water Pollution",
+};
 
 function WaterHome() {
   const router = useRouter();
@@ -40,7 +44,7 @@ function WaterHome() {
         header2={header2}
         searchOptions={searchOptions}
       />
-      <Showcase />
+      <Showcase {...showcase} />
       <Issues />
       <IndoorOutdoor />
       <Stories />

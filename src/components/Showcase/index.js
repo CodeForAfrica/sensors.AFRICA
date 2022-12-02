@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 import React from "react";
 
 import StoryList from "@/sensorsafrica/components/Showcase/StoryList";
@@ -22,17 +23,15 @@ const useStyles = makeStyles({
 
 function Showcase(props) {
   const classes = useStyles(props);
+  const { title, headline } = props;
 
   return (
     <Grid className={classes.root}>
       <Grid item xs={12} className={classes.headline}>
         <Typography variant="h3" className={classes.headlineTitle}>
-          SHOWCASE
+          {title}
         </Typography>
-        <Typography variant="body1">
-          Here are stories from all around the world on air quality and its
-          effects
-        </Typography>
+        <Typography variant="body1">{headline}</Typography>
       </Grid>
       <Grid item xs={12}>
         <StoryList />
@@ -40,5 +39,10 @@ function Showcase(props) {
     </Grid>
   );
 }
+
+Showcase.propTypes = {
+  title: PropTypes.string.isRequired,
+  headline: PropTypes.string.isRequired,
+};
 
 export default Showcase;

@@ -28,6 +28,11 @@ const searchOptions = [
   { value: "lagos", label: "Lagos, Nigeria" },
   { value: "dar-es-salaam", label: "Dar-es-Salaam, Tanzania" },
 ];
+const showcase = {
+  title: "Showcase",
+  headline:
+    "Here are stories from all around the world on air quality and its effects",
+};
 
 function AirHome() {
   const router = useRouter();
@@ -45,7 +50,7 @@ function AirHome() {
         header2={header2}
         searchOptions={searchOptions}
       />
-      <Showcase />
+      <Showcase {...showcase} />
       <Issues />
       <IndoorOutdoor />
       <Stories />
