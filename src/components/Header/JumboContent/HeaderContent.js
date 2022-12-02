@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AirHeaderContent({ handleSearch, ...props }) {
+function HeaderContent({ handleSearch, header1, header2, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -40,12 +40,12 @@ function AirHeaderContent({ handleSearch, ...props }) {
     >
       <Grid item xs={12}>
         <Typography variant="h3" className={classes.headerText}>
-          WE&apos;VE TESTED THE QUALITY
+          {header1}
         </Typography>
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h3" className={classes.headerText}>
-          OF YOUR CITY&apos;S AIR.
+          {header2}
         </Typography>
       </Grid>
       <Grid item className={classes.searchBar}>
@@ -58,8 +58,10 @@ function AirHeaderContent({ handleSearch, ...props }) {
   );
 }
 
-AirHeaderContent.propTypes = {
+HeaderContent.propTypes = {
   handleSearch: PropTypes.func.isRequired,
+  header1: PropTypes.string.isRequired,
+  header2: PropTypes.string.isRequired,
 };
 
-export default AirHeaderContent;
+export default HeaderContent;

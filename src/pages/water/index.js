@@ -20,6 +20,9 @@ import JoinNetwork from "@/sensorsafrica/pages/air/join-network";
 
 const CITY_PATHNAME = "/water/city";
 
+const header1 = "We're Testing Water";
+const header2 = "in Your City";
+
 function AirHome() {
   const router = useRouter();
   const handleSearch = (city) => {
@@ -30,7 +33,11 @@ function AirHome() {
     <>
       <DocumentHead url={URLS.AIR.HOME} />
       <Navbar />
-      <PageHeader handleSearch={handleSearch} />
+      <PageHeader
+        handleSearch={handleSearch}
+        header1={header1}
+        header2={header2}
+      />
       <Showcase />
       <Issues />
       <IndoorOutdoor />

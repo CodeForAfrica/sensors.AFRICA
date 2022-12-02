@@ -19,6 +19,8 @@ import HowSensorsWork from "@/sensorsafrica/pages/air/how-sensors-work";
 import JoinNetwork from "@/sensorsafrica/pages/air/join-network";
 
 const CITY_PATHNAME = "/air/city";
+const header1 = "We've Tested the Quality";
+const header2 = "of Your City's Air.";
 
 function AirHome() {
   const router = useRouter();
@@ -30,7 +32,11 @@ function AirHome() {
     <>
       <DocumentHead url={URLS.AIR.HOME} />
       <Navbar />
-      <PageHeader handleSearch={handleSearch} />
+      <PageHeader
+        handleSearch={handleSearch}
+        header1={header1}
+        header2={header2}
+      />
       <Showcase />
       <Issues />
       <IndoorOutdoor />

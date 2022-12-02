@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import AirHeaderContent from "@/sensorsafrica/components/Header/JumboContent/AirHeaderContent";
+import HeaderContent from "@/sensorsafrica/components/Header/JumboContent/HeaderContent";
 
 const useStyles = makeStyles((theme) => ({
   jumbotron: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PageHeader({ handleSearch, ...props }) {
+function PageHeader({ handleSearch, header1, header2, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -27,7 +27,11 @@ function PageHeader({ handleSearch, ...props }) {
       alignItems="center"
     >
       <Grid item xs={12}>
-        <AirHeaderContent handleSearch={handleSearch} />
+        <HeaderContent
+          handleSearch={handleSearch}
+          header1={header1}
+          header2={header2}
+        />
       </Grid>
     </Grid>
   );
@@ -35,6 +39,8 @@ function PageHeader({ handleSearch, ...props }) {
 
 PageHeader.propTypes = {
   handleSearch: PropTypes.func.isRequired,
+  header1: PropTypes.string.isRequired,
+  header2: PropTypes.string.isRequired,
 };
 
 export default PageHeader;
