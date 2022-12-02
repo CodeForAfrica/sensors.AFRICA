@@ -1,9 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
 
-import Stories from "@/sensorsafrica/components/About/Stories";
-import IndoorOutdoor from "@/sensorsafrica/components/Air/IndoorOutdoor";
-import Issues from "@/sensorsafrica/components/Air/Issues";
 import DocumentHead from "@/sensorsafrica/components/DocumentHead";
 import { URLS } from "@/sensorsafrica/components/DocumentHead/PageHeads";
 import Footer from "@/sensorsafrica/components/Footer";
@@ -11,7 +8,6 @@ import Navbar from "@/sensorsafrica/components/Header/Navbar";
 import PageHeader from "@/sensorsafrica/components/PageHeader";
 import PartnerLogos from "@/sensorsafrica/components/PartnerLogos";
 import Showcase from "@/sensorsafrica/components/Showcase";
-import Support from "@/sensorsafrica/components/Support";
 import About from "@/sensorsafrica/pages/air/about";
 import Data from "@/sensorsafrica/pages/air/data";
 import HealthAndClimateImpacts from "@/sensorsafrica/pages/air/health-and-climate-impact";
@@ -45,10 +41,6 @@ function WaterHome() {
         searchOptions={searchOptions}
       />
       <Showcase {...showcase} />
-      <Issues />
-      <IndoorOutdoor />
-      <Stories />
-      <Support />
       <PartnerLogos />
       <Footer />
     </>
