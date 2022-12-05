@@ -294,8 +294,12 @@ const DEFAULT_OPTIONS = [
   { value: "nairobi", label: "Nairobi, Kenya" },
   { value: "kisumu", label: "Kisumu, Kenya" },
   { value: "nakuru", label: "Nakuru, Kenya" },
-  { value: "lagos", label: "Lagos, Nigeria" },
   { value: "dar-es-salaam", label: "Dar-es-Salaam, Tanzania" },
+  { value: "abuja", label: "Abuja, Nigeria" },
+  { value: "lagos", label: "Lagos, Nigeria" },
+  { value: "port-harcourt", label: "Port Harcourt, Nigeria" },
+  { value: "ilorin", label: "Ilorin, Nigeria" },
+  { value: "maiduguri", label: "Maiduguri, Nigeria" },
 ];
 
 function SearchBar({ handleSearch, placeholder, options, ...props }) {
