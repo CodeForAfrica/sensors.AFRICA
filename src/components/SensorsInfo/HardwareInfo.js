@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import React from "react";
 
+import AQMONITOR from "@/sensorsafrica/assets/images/sensors/AQMONITOR.png";
 import DHT22 from "@/sensorsafrica/assets/images/sensors/DHT22.png";
 import GSMSIM800H from "@/sensorsafrica/assets/images/sensors/GSMSIM800H.png";
 import GSMSIM800L from "@/sensorsafrica/assets/images/sensors/GSMSIM800L.jpg";
@@ -279,6 +280,32 @@ function HardwareInfo(props) {
               standards support upto 140 uplink messages, each of which can
               carry a payload of 12 octets and at a rate of upto of 100 bits per
               second. The technology uses a radio-based network.
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} className={classes.titleSection}>
+            <Image src={AQMONITOR} alt="AQMONITOR" className={classes.img} />
+            <Typography variant="h6" className={classes.title}>
+              Outdoor AQ Monitor Model 3 (GSM + Solar
+            </Typography>
+            <Typography className={classes.subheading}>
+              Air Quality Monitor
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.captionGrid}>
+            <Typography variant="caption" className={classes.caption}>
+              This outdoor air quality monitor is the first to use our custom
+              enclosure design. The monitor/kit is specially designed to work in
+              locations where there is either no (or only intermittent)
+              electricity, Wi-Fi, and/or Sigfox coverage. Deployment,
+              maintenance and monitoring is made easy due to the independent
+              nature of the kit. The kit houses a NodeMCU, a custom PCB, PMS5003
+              particulate matter sensor, temperature & humidity DHT22 sensor,
+              power bank and 1200mAH LiPo battery for the GSM module. This
+              monitor offers good resistance from degradation due to
+              environmental factors such as UV radiation and rain. The kit is
+              the base design concept for future iterations of the outdoor air
+              quality monitor.
             </Typography>
           </Grid>
         </Grid>
