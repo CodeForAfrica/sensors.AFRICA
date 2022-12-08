@@ -8,21 +8,25 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     paddingTop: "5rem",
-    // paddingLeft: "2rem",
-    // [theme.breakpoints.down("sm")]: {
-    //   paddingLeft: "3rem",
-    // },
   },
   selectDropdown: {
     width: "100%",
     display: "flex",
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
   },
   countrySelect: {
     marginRight: "1rem",
+    [theme.breakpoints.down("xs")]: {
+      marginRight: 0,
+      marginBottom: "1rem",
+    },
   },
   citySelect: {
     // when disabled, the select is greyed out
-    // and the cursor is not a pointer
+    // and the cursor is not allowed
+    // TODO: explore how to make this work
     "&:disabled": {
       cursor: "not-allowed",
     },
@@ -42,9 +46,6 @@ const useStyles = makeStyles((theme) => ({
     width: 300,
     [theme.breakpoints.down("sm")]: {
       width: 250,
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: 200,
     },
   },
   chip: {
