@@ -82,5 +82,6 @@
     "*.yml": [
       "yarn format-staged"
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }

@@ -26,9 +26,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
     paddingTop: theme.spacing(2),
     width: 300,
-    [theme.breakpoints.down("sm")]: {
-      width: 250,
-    },
   },
   chip: {
     margin: `${theme.spacing(0.5)}px ${theme.spacing.unit / 4}px`,
