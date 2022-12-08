@@ -330,14 +330,13 @@ function SearchBar({ handleSearch, placeholder, options, ...props }) {
 
   // filter out unique countries
   const countries = [...new Set(options.map((option) => option.country))];
-  const countryOptions = countries.map((c) => ({
-    value: c,
-    label: c,
+  const countryOptions = countries.map((country) => ({
+    value: country,
+    label: country,
   }));
 
   // group cities by country
   const groupedCities = options.reduce((acc, city) => {
-    // eslint-disable-next-line no-shadow
     const { country } = city;
     if (!acc[country]) {
       acc[country] = [];
