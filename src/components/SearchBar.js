@@ -8,17 +8,17 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     paddingTop: "5rem",
-    paddingLeft: "2rem",
-    [theme.breakpoints.down("sm")]: {
-      paddingLeft: "3rem",
-    },
+    // paddingLeft: "2rem",
+    // [theme.breakpoints.down("sm")]: {
+    //   paddingLeft: "3rem",
+    // },
   },
   selectDropdown: {
     width: "100%",
     display: "flex",
   },
   countrySelect: {
-    paddingRight: "1rem",
+    marginRight: "1rem",
   },
   citySelect: {
     // when disabled, the select is greyed out
@@ -40,6 +40,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
     paddingTop: theme.spacing(2),
     width: 300,
+    [theme.breakpoints.down("sm")]: {
+      width: 250,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: 200,
+    },
   },
   chip: {
     margin: `${theme.spacing(0.5)}px ${theme.spacing.unit / 4}px`,
