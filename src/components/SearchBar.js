@@ -8,27 +8,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     paddingTop: "5rem",
-  },
-  selectDropdown: {
-    width: "100%",
-    display: "flex",
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-    },
-  },
-  countrySelect: {
-    marginRight: "1rem",
-    [theme.breakpoints.down("xs")]: {
-      marginRight: 0,
-      marginBottom: "1rem",
-    },
-  },
-  citySelect: {
-    // when disabled, the select is greyed out
-    // and the cursor is not allowed
-    // TODO: explore how to make this work
-    "&:disabled": {
-      cursor: "not-allowed",
+    paddingLeft: "2rem",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "3rem",
     },
   },
   input: {
@@ -73,6 +55,20 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
   },
 }));
+const groupStyles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  color: "#164B3E",
+  fontWeight: "bold",
+};
+
+const formatGroupLabel = (data) => (
+  <div style={groupStyles}>
+    <span>{data.label}</span>
+    <span>{data.options.length}</span>
+  </div>
+);
 
 function NoOptionsMessage({ children, innerProps, selectProps }) {
   return (
@@ -334,8 +330,6 @@ const DEFAULT_OPTIONS = [
 function SearchBar({ handleSearch, placeholder, options, ...props }) {
   const classes = useStyles(props);
   const [single, setSingle] = useState();
-  const [country, setCountry] = useState();
-  const [filteredCities, setFilteredCities] = useState([]);
 
   // filter out unique countries
   const countries = [...new Set(options.map((option) => option.country))];
@@ -344,6 +338,26 @@ function SearchBar({ handleSearch, placeholder, options, ...props }) {
     label: c,
   }));
 
+  // group cities by country
+  const groupedCities = options.reduce((acc, city) => {
+    // eslint-disable-next-line no-shadow
+    const { country } = city;
+    if (!acc[country]) {
+      acc[country] = [];
+    }
+    acc[country].push(city);
+    return acc;
+  }, {});
+
+  // create options for each country
+  const countryOptionsWithCities = countryOptions.map((option) => {
+    const cities = groupedCities[option.value];
+    return {
+      label: option.label,
+      options: cities,
+    };
+  });
+
   const handleChange = (city) => {
     setSingle(city);
     if (handleSearch) {
@@ -351,45 +365,17 @@ function SearchBar({ handleSearch, placeholder, options, ...props }) {
     }
   };
 
-  const handleCountryChange = (selectedCountry) => {
-    if (selectedCountry) {
-      setCountry(selectedCountry);
-      let filtered = options.filter(
-        (option) => option.country === selectedCountry.value
-      );
-      // sort filtered cities alphabetically
-      filtered = filtered.sort((a, b) => {
-        return a.label > b.label ? 1 : -1;
-      });
-      setFilteredCities(filtered);
-    } else {
-      setFilteredCities([]);
-    }
-  };
-
   return (
     <div className={classes.root}>
-      <div className={classes.selectDropdown}>
-        <Select
-          classes={classes}
-          className={classes.countrySelect}
-          options={countryOptions}
-          components={components}
-          value={country}
-          onChange={handleCountryChange}
-          placeholder="Country"
-        />
-        <Select
-          classes={classes}
-          className={classes.citySelect}
-          options={filteredCities}
-          components={components}
-          value={single}
-          onChange={handleChange}
-          placeholder={placeholder}
-          isDisabled={!filteredCities.length}
-        />
-      </div>
+      <Select
+        classes={classes}
+        options={countryOptionsWithCities}
+        components={components}
+        value={single}
+        onChange={handleChange}
+        placeholder={placeholder}
+        formatGroupLabel={formatGroupLabel}
+      />
     </div>
   );
 }

@@ -94,6 +94,14 @@ function HambugerMenu({ handleToggle, menuOpen, ...props }) {
               </MenuItem>
             </Link>
 
+            <Link href={URLS.AIR.JOIN} className={classes.link}>
+              <MenuItem className={classes.menuListItem}>
+                <Typography className={classes.typography} variant="subtitle1">
+                  JOIN
+                </Typography>
+              </MenuItem>
+            </Link>
+
             <Link
               href={URLS.AIR.MONTHLY_REPORT}
               className={classes.link}
@@ -103,14 +111,6 @@ function HambugerMenu({ handleToggle, menuOpen, ...props }) {
               <MenuItem className={classes.menuListItem}>
                 <Typography className={classes.typography} variant="subtitle1">
                   MONTHLY AIR REPORTS
-                </Typography>
-              </MenuItem>
-            </Link>
-
-            <Link href={URLS.AIR.JOIN} className={classes.link}>
-              <MenuItem className={classes.menuListItem}>
-                <Typography className={classes.typography} variant="subtitle1">
-                  JOIN
                 </Typography>
               </MenuItem>
             </Link>
