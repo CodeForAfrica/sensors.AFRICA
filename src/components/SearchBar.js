@@ -13,6 +13,20 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: "3rem",
     },
   },
+  selectDropdown: {
+    width: "100%",
+    display: "flex",
+  },
+  countrySelect: {
+    paddingRight: "1rem",
+  },
+  citySelect: {
+    // when disabled, the select is greyed out
+    // and the cursor is not a pointer
+    "&:disabled": {
+      cursor: "not-allowed",
+    },
+  },
   input: {
     display: "flex",
     padding: 0,
@@ -291,20 +305,37 @@ const components = {
 };
 
 const DEFAULT_OPTIONS = [
-  { value: "nairobi", label: "Nairobi, Kenya" },
-  { value: "kisumu", label: "Kisumu, Kenya" },
-  { value: "nakuru", label: "Nakuru, Kenya" },
-  { value: "dar-es-salaam", label: "Dar-es-Salaam, Tanzania" },
-  { value: "abuja", label: "Abuja, Nigeria" },
-  { value: "lagos", label: "Lagos, Nigeria" },
-  { value: "port-harcourt", label: "Port Harcourt, Nigeria" },
-  { value: "ilorin", label: "Ilorin, Nigeria" },
-  { value: "maiduguri", label: "Maiduguri, Nigeria" },
+  { value: "nairobi", label: "Nairobi", country: "Kenya" },
+  { value: "kisumu", label: "Kisumu", country: "Kenya" },
+  { value: "nakuru", label: "Nakuru", country: "Kenya" },
+  {
+    value: "dar-es-salaam",
+    label: "Dar-es-Salaam",
+    country: "Tanzania",
+  },
+  { value: "abuja", label: "Abuja", country: "Nigeria" },
+  { value: "lagos", label: "Lagos", country: "Nigeria" },
+  {
+    value: "port-harcourt",
+    label: "Port Harcourt",
+    country: "Nigeria",
+  },
+  { value: "ilorin", label: "Ilorin", country: "Nigeria" },
+  { value: "maiduguri", label: "Maiduguri", country: "Nigeria" },
 ];
 
 function SearchBar({ handleSearch, placeholder, options, ...props }) {
   const classes = useStyles(props);
   const [single, setSingle] = useState();
+  const [country, setCountry] = useState();
+  const [filteredCities, setFilteredCities] = useState([]);
+
+  // filter out unique countries
+  const countries = [...new Set(options.map((option) => option.country))];
+  const countryOptions = countries.map((c) => ({
+    value: c,
+    label: c,
+  }));
 
   const handleChange = (city) => {
     setSingle(city);
@@ -313,16 +344,45 @@ function SearchBar({ handleSearch, placeholder, options, ...props }) {
     }
   };
 
+  const handleCountryChange = (selectedCountry) => {
+    if (selectedCountry) {
+      setCountry(selectedCountry);
+      let filtered = options.filter(
+        (option) => option.country === selectedCountry.value
+      );
+      // sort filtered cities alphabetically
+      filtered = filtered.sort((a, b) => {
+        return a.label > b.label ? 1 : -1;
+      });
+      setFilteredCities(filtered);
+    } else {
+      setFilteredCities([]);
+    }
+  };
+
   return (
     <div className={classes.root}>
-      <Select
-        classes={classes}
-        options={options}
-        components={components}
-        value={single}
-        onChange={handleChange}
-        placeholder={placeholder}
-      />
+      <div className={classes.selectDropdown}>
+        <Select
+          classes={classes}
+          className={classes.countrySelect}
+          options={countryOptions}
+          components={components}
+          value={country}
+          onChange={handleCountryChange}
+          placeholder="Country"
+        />
+        <Select
+          classes={classes}
+          className={classes.citySelect}
+          options={filteredCities}
+          components={components}
+          value={single}
+          onChange={handleChange}
+          placeholder={placeholder}
+          isDisabled={!filteredCities.length}
+        />
+      </div>
     </div>
   );
 }
