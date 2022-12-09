@@ -2,7 +2,10 @@ import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
+import car from "@/sensorsafrica/assets/images/partners/car.png";
+import godown from "@/sensorsafrica/assets/images/partners/godown.png";
 import liquidtelcom from "@/sensorsafrica/assets/images/partners/liquidtelcom.png";
+import msjc from "@/sensorsafrica/assets/images/partners/msjc.png";
 import data4sdg from "@/sensorsafrica/assets/images/partners/partnershipsdg.png";
 import worldbank from "@/sensorsafrica/assets/images/partners/worldbankgroup.png";
 import Figure from "@/sensorsafrica/components/Figure";
@@ -92,6 +95,42 @@ function PartnerLogos(props) {
             <Figure
               src={data4sdg}
               alt="Global Partnership for Sustainable Development Data"
+              className={classes.img}
+            />
+          </div>
+        </Grid>
+      </Grid>
+
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        className={classes.partnersLogo}
+      >
+        <Grid item xs={12} sm={4} md={3}>
+          <div className={classes.worldBankLogo}>
+            <Figure
+              src={car}
+              alt="Center for Atmospherice Research"
+              className={classes.img}
+            />
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={4} md={3}>
+          <div className={classes.liquidLogo}>
+            <Figure
+              src={msjc}
+              alt="Mathare Socisal Justice Centre"
+              className={classes.img}
+            />
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={4} md={3}>
+          <div className={classes.globalLogo}>
+            <Figure
+              src={godown}
+              alt="The Godown Arts Centre"
               className={classes.img}
             />
           </div>
