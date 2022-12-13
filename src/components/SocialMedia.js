@@ -99,6 +99,22 @@ function SocialMedia({ color, ...props }) {
           />
         </a>
       </Grid>
+      <Grid item>
+        <a
+          href="https://github.com/CodeForAfrica/sensors.AFRICA"
+          className={classes.links}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon
+            className={classes.fa}
+            icon={["fab", "github"]}
+            size="2x"
+            fixedWidth
+            style={{ color }}
+          />
+        </a>
+      </Grid>
     </Grid>
   );
 }
