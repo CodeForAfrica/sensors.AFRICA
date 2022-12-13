@@ -9,6 +9,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
   root: {
     flexGrow: 1,
     position: "relative",
+    marginTop: -4,
     [breakpoints.up("md")]: {
       paddingRight: "8%",
       paddingLeft: "8%",

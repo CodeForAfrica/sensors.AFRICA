@@ -34,7 +34,7 @@ function SocialMedia({ color, ...props }) {
     <Grid
       container
       justifyContent="center"
-      alignitems="center"
+      alignItems="center"
       className={classes.icons}
     >
       <Grid item>

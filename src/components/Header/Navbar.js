@@ -104,7 +104,7 @@ function Navbar(props) {
               direction="row"
               justifyContent="space-between"
               alignItems="center"
-              // className={classes.linkGrid}
+            // className={classes.linkGrid}
             >
               <Grid item>
                 <Grid container>
