@@ -34,7 +34,7 @@ function SocialMedia({ color, ...props }) {
     <Grid
       container
       justifyContent="center"
-      alignitems="center"
+      alignItems="center"
       className={classes.icons}
     >
       <Grid item>
@@ -93,6 +93,22 @@ function SocialMedia({ color, ...props }) {
           <FontAwesomeIcon
             className={classes.fa}
             icon={["fab", "medium-m"]}
+            size="2x"
+            fixedWidth
+            style={{ color }}
+          />
+        </a>
+      </Grid>
+      <Grid item>
+        <a
+          href="https://github.com/CodeForAfrica/sensors.AFRICA"
+          className={classes.links}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon
+            className={classes.fa}
+            icon={["fab", "github"]}
             size="2x"
             fixedWidth
             style={{ color }}
