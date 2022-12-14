@@ -305,8 +305,8 @@ const components = {
 };
 
 const DEFAULT_OPTIONS = [
-  { value: "nairobi", label: "Nairobi", country: "Kenya" },
   { value: "kisumu", label: "Kisumu", country: "Kenya" },
+  { value: "nairobi", label: "Nairobi", country: "Kenya" },
   { value: "nakuru", label: "Nakuru", country: "Kenya" },
   {
     value: "dar-es-salaam",
@@ -314,14 +314,14 @@ const DEFAULT_OPTIONS = [
     country: "Tanzania",
   },
   { value: "abuja", label: "Abuja", country: "Nigeria" },
+  { value: "ilorin", label: "Ilorin", country: "Nigeria" },
   { value: "lagos", label: "Lagos", country: "Nigeria" },
+  { value: "maiduguri", label: "Maiduguri", country: "Nigeria" },
   {
     value: "port-harcourt",
     label: "Port Harcourt",
     country: "Nigeria",
   },
-  { value: "ilorin", label: "Ilorin", country: "Nigeria" },
-  { value: "maiduguri", label: "Maiduguri", country: "Nigeria" },
 ];
 
 function SearchBar({ handleSearch, placeholder, options, ...props }) {
