@@ -328,13 +328,6 @@ function SearchBar({ handleSearch, placeholder, options, ...props }) {
   const classes = useStyles(props);
   const [single, setSingle] = useState();
 
-  // filter out unique countries
-  const countries = [...new Set(options.map((option) => option.country))];
-  const countryOptions = countries.map((country) => ({
-    value: country,
-    label: country,
-  }));
-
   // group cities by country
   const groupedCities = options.reduce((acc, city) => {
     const { country } = city;
@@ -345,11 +338,10 @@ function SearchBar({ handleSearch, placeholder, options, ...props }) {
     return acc;
   }, {});
 
-  // create options for each country
-  const countryOptionsWithCities = countryOptions.map((option) => {
-    const cities = groupedCities[option.value];
+  const countryOptionsWithCities = Object.keys(groupedCities).map((country) => {
+    const cities = groupedCities[country];
     return {
-      label: option.label,
+      label: country,
       options: cities,
     };
   });
