@@ -30,12 +30,27 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     padding: "2rem 0",
   },
+  carLogo: {
+    width: "100%",
+    textAlign: "center",
+    padding: "2rem 0",
+  },
   liquidLogo: {
     width: "100%",
     textAlign: "center",
     padding: "2rem 0",
   },
+  msjcLogo: {
+    width: "100%",
+    textAlign: "center",
+    padding: "2rem 0",
+  },
   globalLogo: {
+    width: "100%",
+    textAlign: "center",
+    paddingBottom: "2rem",
+  },
+  godownLogo: {
     width: "100%",
     textAlign: "center",
     paddingBottom: "2rem",
@@ -109,7 +124,7 @@ function PartnerLogos(props) {
         className={classes.partnersLogo}
       >
         <Grid item xs={12} sm={4} md={3}>
-          <div className={classes.worldBankLogo}>
+          <div className={classes.carLogo}>
             <Figure
               src={car}
               alt="Center for Atmospherice Research"
@@ -118,7 +133,7 @@ function PartnerLogos(props) {
           </div>
         </Grid>
         <Grid item xs={12} sm={4} md={3}>
-          <div className={classes.liquidLogo}>
+          <div className={classes.msjcLogo}>
             <Figure
               src={msjc}
               alt="Mathare Socisal Justice Centre"
@@ -127,7 +142,7 @@ function PartnerLogos(props) {
           </div>
         </Grid>
         <Grid item xs={12} sm={4} md={3}>
-          <div className={classes.globalLogo}>
+          <div className={classes.godownLogo}>
             <Figure
               src={godown}
               alt="The Godown Arts Centre"
