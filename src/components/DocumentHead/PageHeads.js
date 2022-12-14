@@ -17,6 +17,8 @@ const URLS = {
     HOW_SENSORS_WORK: "/air/how-sensors-work",
     IMPACT: "/air/health-and-climate-impact",
     JOIN: "/air/join-network",
+    MONTHLY_REPORT:
+      "https://datastudio.google.com/u/0/reporting/2c38d311-4e45-4468-8a8e-b0aa6d80474c/page/Su9vC?s=sYBhhtp0wzA",
   },
   WATER: {
     HOME: "/water",

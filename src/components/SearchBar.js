@@ -52,6 +52,20 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
   },
 }));
+const groupStyles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  color: "#164B3E",
+  fontWeight: "bold",
+};
+
+const formatGroupLabel = (data) => (
+  <div style={groupStyles}>
+    <span>{data.label}</span>
+    <span>{data.options.length}</span>
+  </div>
+);
 
 function NoOptionsMessage({ children, innerProps, selectProps }) {
   return (
@@ -291,16 +305,46 @@ const components = {
 };
 
 const DEFAULT_OPTIONS = [
-  { value: "nairobi", label: "Nairobi, Kenya" },
-  { value: "kisumu", label: "Kisumu, Kenya" },
-  { value: "nakuru", label: "Nakuru, Kenya" },
-  { value: "lagos", label: "Lagos, Nigeria" },
-  { value: "dar-es-salaam", label: "Dar-es-Salaam, Tanzania" },
+  { value: "kisumu", label: "Kisumu", country: "Kenya" },
+  { value: "nairobi", label: "Nairobi", country: "Kenya" },
+  { value: "nakuru", label: "Nakuru", country: "Kenya" },
+  {
+    value: "dar-es-salaam",
+    label: "Dar-es-Salaam",
+    country: "Tanzania",
+  },
+  { value: "abuja", label: "Abuja", country: "Nigeria" },
+  { value: "ilorin", label: "Ilorin", country: "Nigeria" },
+  { value: "lagos", label: "Lagos", country: "Nigeria" },
+  { value: "maiduguri", label: "Maiduguri", country: "Nigeria" },
+  {
+    value: "port-harcourt",
+    label: "Port Harcourt",
+    country: "Nigeria",
+  },
 ];
 
 function SearchBar({ handleSearch, placeholder, options, ...props }) {
   const classes = useStyles(props);
   const [single, setSingle] = useState();
+
+  // group cities by country
+  const groupedCities = options.reduce((acc, city) => {
+    const { country } = city;
+    if (!acc[country]) {
+      acc[country] = [];
+    }
+    acc[country].push(city);
+    return acc;
+  }, {});
+
+  const countryOptionsWithCities = Object.keys(groupedCities).map((country) => {
+    const cities = groupedCities[country];
+    return {
+      label: country,
+      options: cities,
+    };
+  });
 
   const handleChange = (city) => {
     setSingle(city);
@@ -313,11 +357,12 @@ function SearchBar({ handleSearch, placeholder, options, ...props }) {
     <div className={classes.root}>
       <Select
         classes={classes}
-        options={options}
+        options={countryOptionsWithCities}
         components={components}
         value={single}
         onChange={handleChange}
         placeholder={placeholder}
+        formatGroupLabel={formatGroupLabel}
       />
     </div>
   );

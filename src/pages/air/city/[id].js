@@ -60,6 +60,34 @@ const CITIES_POLLUTION_STATS = {
     annualAverage: "23",
     percent: "130% more",
   },
+  abuja: {
+    deathCount: "41,251",
+    childDeathCount: "11,440",
+    topIllness: "Lower",
+    annualAverage: "23",
+    percent: "130% more",
+  },
+  ilorin: {
+    deathCount: "290,456",
+    childDeathCount: "98,001",
+    topIllness: "Lower",
+    annualAverage: "122",
+    percent: "170% more",
+  },
+  maiduguri: {
+    deathCount: "290,456",
+    childDeathCount: "98,001",
+    topIllness: "Lower",
+    annualAverage: "122",
+    percent: "170% more",
+  },
+  "port-harcourt": {
+    deathCount: "290,456",
+    childDeathCount: "98,001",
+    topIllness: "Lower",
+    annualAverage: "122",
+    percent: "170% more",
+  },
 };
 const AQ_COLOR = [
   "#5fbf82",
