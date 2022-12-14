@@ -82,9 +82,5 @@
     "*.yml": [
       "yarn format-staged"
     ]
-  },
-  "volta": {
-    "node": "16.18.1",
-    "yarn": "1.22.19"
   }
 }
