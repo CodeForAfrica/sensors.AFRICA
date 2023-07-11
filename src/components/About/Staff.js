@@ -131,10 +131,14 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <Figure src={augustine} alt="Augustine" className={classes.cardMedia} />
+            <Figure
+              src={augustine}
+              alt="Augustine"
+              className={classes.cardMedia}
+            />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
-                AUGUSTINE MUTINDA MWENDWA  
+                AUGUSTINE MUTINDA MWENDWA
               </Typography>
               <Typography variant="subtitle1">
                 mwendwa.mutinda@codeforafrica.org
