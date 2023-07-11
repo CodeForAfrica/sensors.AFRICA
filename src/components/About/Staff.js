@@ -8,7 +8,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
-import augustine from "@/sensorsafrica/assets/images/team/augustine.jpeg";
+import augustine from "@/sensorsafrica/assets/images/team/augustine.jpg";
 import constant from "@/sensorsafrica/assets/images/team/constant.jpg";
 import gideon from "@/sensorsafrica/assets/images/team/gideon.jpeg";
 import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
