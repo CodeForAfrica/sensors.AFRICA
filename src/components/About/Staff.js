@@ -8,9 +8,9 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
+import augustine from "@/sensorsafrica/assets/images/team/augustine.jpg";
 import constant from "@/sensorsafrica/assets/images/team/constant.jpg";
 import gideon from "@/sensorsafrica/assets/images/team/gideon.jpeg";
-import jack from "@/sensorsafrica/assets/images/team/jack.jpeg";
 import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
 import usman from "@/sensorsafrica/assets/images/team/usman.jpeg";
 import Figure from "@/sensorsafrica/components/Figure";
@@ -131,20 +131,24 @@ function Staff(props) {
 
         <Card className={classes.card}>
           <CardActionArea>
-            <Figure src={jack} alt="Jack" className={classes.cardMedia} />
+            <Figure
+              src={augustine}
+              alt="Augustine"
+              className={classes.cardMedia}
+            />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
-                JACK MCLEANS
+                AUGUSTINE MUTINDA MWENDWA
               </Typography>
               <Typography variant="subtitle1">
-                jack@codeforafrica.org
+                mwendwa.mutinda@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
                 <a
                   className={classes.a}
-                  href="https://twitter.com/jack_the_nerd"
+                  href="https://www.linkedin.com/in/augustine-mwendwa-b00420145/"
                 >
-                  @jack_the_nerd
+                  @Eng. Augustine Mwendwa
                 </a>
               </Typography>
             </CardContent>
