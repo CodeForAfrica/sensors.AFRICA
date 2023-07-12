@@ -138,7 +138,7 @@ function Staff(props) {
             />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
-                AUGUSTINE MUTINDA MWENDWA
+                AUGUSTINE MWENDWA
               </Typography>
               <Typography variant="subtitle1">
                 mwendwa.mutinda@codeforafrica.org
