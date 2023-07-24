@@ -194,7 +194,6 @@ function Partners(props) {
             </Grid>
             <a
               href="https://luftdaten.info/"
-              s
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -42,11 +42,11 @@ function NeedlePointer({ hidden, measurement }) {
       />
       <text
         transform="scale(1.2)"
-        x={`${
+        x={
           -275 * Math.cos(((rotate + 90) * Math.PI) / 180) +
           (measurement > 55 ? 5 : -2.5)
-        }`}
-        y={`${-275 * Math.sin(((rotate + 90) * Math.PI) / 180)}`}
+        }
+        y={-275 * Math.sin(((rotate + 90) * Math.PI) / 180)}
         textAnchor={
           measurement > 25 && measurement < 55
             ? "middle"

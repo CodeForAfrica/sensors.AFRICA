@@ -39,11 +39,11 @@ This project will be primarily using [airbnb react](https://github.com/airbnb/ja
 
 ## sensors.AFRICA Stack
 
-First Header  | Second Header
-------------- | -------------
-[API](https://github.com/CodeForAfricaLabs/sensors.AFRICA-api)  | Receives, stores, and processes data received from sensors across the continentent
-[Map](https://github.com/CodeForAfrica/sensors.AFRICA-AQ-map-v2) | Visualises the types and locations of all sensors nodes across the continent
-[Firmware](https://github.com/CodeForAfrica/sensors.AFRICA-AQ-sensors-software) | Powers all sensors.AFRICA nodes across the continent
+| First Header                                                                    | Second Header                                                                      |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [API](https://github.com/CodeForAfricaLabs/sensors.AFRICA-api)                  | Receives, stores, and processes data received from sensors across the continentent |
+| [Map](https://github.com/CodeForAfrica/sensors.AFRICA-AQ-map-v2)                | Visualises the types and locations of all sensors nodes across the continent       |
+| [Firmware](https://github.com/CodeForAfrica/sensors.AFRICA-AQ-sensors-software) | Powers all sensors.AFRICA nodes across the continent                               |
 
 ---
 

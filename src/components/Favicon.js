@@ -58,7 +58,7 @@ function Favicon({ color, version }) {
       />
       <link
         rel="mask-icon"
-        color={`${hex}`}
+        color={hex}
         href={`/favicons/${color}/safari-pinned-tab.svg?v=${v}`}
         key="favicon-mask-icon"
       />
@@ -79,7 +79,7 @@ function Favicon({ color, version }) {
       />
       <meta
         property="msapplication-TileColor"
-        content={`${hex}`}
+        content={hex}
         key="favicon-meta-msapplication-tilecolor"
       />
       <meta
