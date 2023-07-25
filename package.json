@@ -46,7 +46,7 @@
     "@babel/core": "^7.12.3",
     "@babel/eslint-parser": "^7.14.7",
     "@babel/preset-env": "^7.1.6",
-    "@material-ui/codemod": "^4.5.0",
+    "@material-ui/codemod": "^4.5.1",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-transform-imports": "^2.0.0",
     "eslint": "^8.8.0",
