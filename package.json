@@ -57,7 +57,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-markdown": "^2.2.0",
+    "eslint-plugin-markdown": "^3.0.1",
     "eslint-plugin-module-resolver": "^1.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.21.5",
