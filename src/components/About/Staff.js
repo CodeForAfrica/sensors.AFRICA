@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
 import augustine from "@/sensorsafrica/assets/images/team/augustine.jpg";
-import constant from "@/sensorsafrica/assets/images/team/constant.jpg";
+import Alicia from "@/sensorsafrica/assets/images/team/Alicia.jpg";
 import gideon from "@/sensorsafrica/assets/images/team/gideon.jpeg";
 import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
 import usman from "@/sensorsafrica/assets/images/team/usman.jpeg";
@@ -90,20 +90,20 @@ function Staff(props) {
         <Card className={classes.card}>
           <CardActionArea>
             <Figure
-              src={constant}
-              alt="Constant"
+              src={Alicia}
+              alt="Alicia"
               className={classes.cardMedia}
             />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
-                CONSTANT CAP
+                ALICIA OLAGO
               </Typography>
               <Typography variant="subtitle1">
-                constant@codeforafrica.org
+                alicia.olago@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
-                <a className={classes.a} href="https://twitter.com/ConstantCap">
-                  @ConstantCap
+                <a className={classes.a} href="https://twitter.com/MsOlago">
+                  @MsOlago
                 </a>
               </Typography>
             </CardContent>
