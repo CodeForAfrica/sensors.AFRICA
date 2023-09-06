@@ -8,8 +8,8 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
+import alicia from "@/sensorsafrica/assets/images/team/Alicia.jpg";
 import augustine from "@/sensorsafrica/assets/images/team/augustine.jpg";
-import Alicia from "@/sensorsafrica/assets/images/team/Alicia.jpg";
 import gideon from "@/sensorsafrica/assets/images/team/gideon.jpeg";
 import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
 import usman from "@/sensorsafrica/assets/images/team/usman.jpeg";
@@ -89,11 +89,7 @@ function Staff(props) {
       <Grid item xs={12} className={classes.staffRoot}>
         <Card className={classes.card}>
           <CardActionArea>
-            <Figure
-              src={Alicia}
-              alt="Alicia"
-              className={classes.cardMedia}
-            />
+            <Figure src={alicia} alt="Alicia" className={classes.cardMedia} />
             <CardContent>
               <Typography variant="h6" className={classes.h6}>
                 ALICIA OLAGO
