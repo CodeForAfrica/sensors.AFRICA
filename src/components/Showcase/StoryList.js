@@ -67,7 +67,7 @@ function StoryList(props) {
         complete: (results) => {
           processData(results?.data);
         },
-      }
+      },
     );
   }, []);
 

@@ -61,7 +61,7 @@ const formatWeeklyP2Stats = (data) => {
     }
     const date = new Date(data[i].start_datetime).toLocaleDateString(
       "en-US",
-      DATE_FMT_OPTIONS
+      DATE_FMT_OPTIONS,
     );
     stats.push({ date, averagePM });
   }
@@ -185,7 +185,7 @@ const API = {
       .toISOString()
       .substring(0, 10);
     return fetch(
-      `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`
+      `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`,
     );
   },
 };
