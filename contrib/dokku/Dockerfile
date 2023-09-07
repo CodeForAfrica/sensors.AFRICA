@@ -1,1 +1,1 @@
-FROM codeforafrica/sensors-africa-ui:0.4.16
+FROM codeforafrica/sensors-africa-ui:0.4.17
