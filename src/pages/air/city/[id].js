@@ -150,14 +150,14 @@ function City({ city: citySlug, data, ...props }) {
   const [city, setCity] = useState(citySlug);
   const { air, weeklyP2 } = data;
   const [cityHumidityStats, setCityHumidityStats] = useState(
-    getFormattedHumidityStats(air)
+    getFormattedHumidityStats(air),
   );
   const [cityP2Stats, setCityP2Stats] = useState(getFormattedP2Stats(air));
   const [cityP2WeeklyStats, setCityP2WeeklyStats] = useState(
-    getFormattedWeeklyP2Stats(weeklyP2)
+    getFormattedWeeklyP2Stats(weeklyP2),
   );
   const [cityTemperatureStats, setCityTemperatureStats] = useState(
-    getFormattedTemperatureStats(air)
+    getFormattedTemperatureStats(air),
   );
 
   useEffect(() => {
@@ -176,8 +176,8 @@ function City({ city: citySlug, data, ...props }) {
           API.getWeeklyP2Data(city)
             .then((res) => res.json())
             .then((json) =>
-              setCityP2WeeklyStats(getFormattedWeeklyP2Stats(json))
-            )
+              setCityP2WeeklyStats(getFormattedWeeklyP2Stats(json)),
+            ),
         )
         .then(() => setIsLoading(false));
     }

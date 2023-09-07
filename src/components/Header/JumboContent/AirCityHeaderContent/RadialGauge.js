@@ -154,7 +154,7 @@ function RadialGauge({ airPollDescription, airPollMeasurement, ...props }) {
         transform = ((airPollMeasurement / 160) * 180).toFixed(2) - 90;
         currentVal.setAttribute(
           "transform",
-          `rotate(${transform}) translate(0,-310)`
+          `rotate(${transform}) translate(0,-310)`,
         );
       }
     }
