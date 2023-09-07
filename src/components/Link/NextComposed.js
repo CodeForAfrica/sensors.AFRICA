@@ -18,16 +18,17 @@ const NextComposed = React.forwardRef(function NextComposed(props, ref) {
   const Component = component || "a";
   return (
     <NextLink
-      href={href}
       as={as}
+      href={href}
+      legacyBehavior
+      locale={locale}
       passHref={passHref}
       prefetch={prefetch}
       replace={replace}
       scroll={scroll}
       shallow={shallow}
-      locale={locale}
     >
-      <Component ref={ref} {...other} />
+      <Component {...other} ref={ref} />
     </NextLink>
   );
 });
