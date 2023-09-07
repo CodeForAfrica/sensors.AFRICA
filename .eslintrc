@@ -4,10 +4,8 @@
   "extends": [
     "plugin:markdown/recommended",
     "plugin:json/recommended",
-    "plugin:import/warnings",
-    "plugin:import/errors",
     "airbnb",
-    "plugin:react-hooks/recommended",
+    "airbnb/hooks",
     "plugin:prettier/recommended",
     "plugin:@next/next/recommended"
   ],
