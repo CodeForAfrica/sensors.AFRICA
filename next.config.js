@@ -4,6 +4,7 @@ module.exports = {
       ?.map((d) => d.trim())
       ?.filter((d) => d.trim()),
   },
+  output: "standalone",
   reactStrictMode: false,
   webpack(config) {
     config.module.rules.push({
