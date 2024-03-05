@@ -317,6 +317,7 @@ const DEFAULT_OPTIONS = [
   { value: "ilorin", label: "Ilorin", country: "Nigeria" },
   { value: "lagos", label: "Lagos", country: "Nigeria" },
   { value: "maiduguri", label: "Maiduguri", country: "Nigeria" },
+  { value: "accra", label: "Accra", country: "Ghana" },
   {
     value: "port-harcourt",
     label: "Port Harcourt",

@@ -61,7 +61,7 @@ const formatWeeklyP2Stats = (data) => {
     }
     const date = new Date(data[i].start_datetime).toLocaleDateString(
       "en-US",
-      DATE_FMT_OPTIONS,
+      DATE_FMT_OPTIONS
     );
     stats.push({ date, averagePM });
   }
@@ -174,6 +174,17 @@ const CITIES_LOCATION = {
     center: "4.8472,6.9746",
     twitterHandle: "#PortHarcourt",
   },
+  accra: {
+    slug: "accra",
+    latitude: "5.6120",
+    longitude: "-0.1868",
+    name: "Accra",
+    country: "Ghana",
+    label: "Accra, Ghana",
+    zoom: "12",
+    center: "5.6120,-0.1868",
+    twitterHandle: "#Accra",
+  },
 };
 
 const API = {
@@ -185,7 +196,7 @@ const API = {
       .toISOString()
       .substring(0, 10);
     return fetch(
-      `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`,
+      `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`
     );
   },
 };
