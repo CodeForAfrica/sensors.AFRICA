@@ -11,7 +11,7 @@ import React from "react";
 import alicia from "@/sensorsafrica/assets/images/team/Alicia.jpg";
 import augustine from "@/sensorsafrica/assets/images/team/augustine.jpg";
 import gideon from "@/sensorsafrica/assets/images/team/gideon.jpeg";
-import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
+//import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
 import usman from "@/sensorsafrica/assets/images/team/usman.jpeg";
 import Figure from "@/sensorsafrica/components/Figure";
 
@@ -106,7 +106,7 @@ function Staff(props) {
           </CardActionArea>
         </Card>
 
-        <Card className={classes.card}>
+        {/* <Card className={classes.card}>
           <CardActionArea>
             <Figure src={kirah} alt="Kirah" className={classes.cardMedia} />
             <CardContent>
@@ -123,7 +123,7 @@ function Staff(props) {
               </Typography>
             </CardContent>
           </CardActionArea>
-        </Card>
+        </Card> */}
 
         <Card className={classes.card}>
           <CardActionArea>
@@ -162,7 +162,7 @@ function Staff(props) {
                 gideon@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
-                <a className={classes.a} href="https://twitter.com/gmaina">
+                <a className={classes.a} href="https://twitter.com/gmaina_">
                   @gmaina
                 </a>
               </Typography>
