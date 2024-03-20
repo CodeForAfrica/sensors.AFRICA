@@ -98,8 +98,8 @@ function Staff(props) {
                 alicia.olago@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
-                <a className={classes.a} href="https://twitter.com/MsOlago">
-                  @MsOlago
+                <a className={classes.a} href="https://www.linkedin.com/in/aliciaolago/">
+                  @Alicia Olago
                 </a>
               </Typography>
             </CardContent>
@@ -162,8 +162,8 @@ function Staff(props) {
                 gideon@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
-                <a className={classes.a} href="https://twitter.com/gmaina_">
-                  @gmaina
+                <a className={classes.a} href="https://www.linkedin.com/in/gideonmaina/">
+                  @Gideon Maina
                 </a>
               </Typography>
             </CardContent>
@@ -181,8 +181,8 @@ function Staff(props) {
                 usman@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
-                <a className={classes.a} href="https://twitter.com/usmanbiu">
-                  @usmanbiu
+                <a className={classes.a} href="https://www.linkedin.com/in/usman-ahmed-343513187/">
+                  @Usman Ahmed
                 </a>
               </Typography>
             </CardContent>
