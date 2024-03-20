@@ -10,7 +10,7 @@ import React from "react";
 
 import alicia from "@/sensorsafrica/assets/images/team/Alicia.jpg";
 import augustine from "@/sensorsafrica/assets/images/team/augustine.jpg";
-import gideon from "@/sensorsafrica/assets/images/team/gideon.jpeg";
+import gideon from "@/sensorsafrica/assets/images/team/gideon.jpg";
 //import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
 import usman from "@/sensorsafrica/assets/images/team/usman.jpeg";
 import Figure from "@/sensorsafrica/components/Figure";
