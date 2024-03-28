@@ -11,7 +11,7 @@ import React from "react";
 import alicia from "@/sensorsafrica/assets/images/team/Alicia.jpg";
 import augustine from "@/sensorsafrica/assets/images/team/augustine.jpg";
 import gideon from "@/sensorsafrica/assets/images/team/gideon.jpg";
-//import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
+// import kirah from "@/sensorsafrica/assets/images/team/kirah.jpeg";
 import usman from "@/sensorsafrica/assets/images/team/usman.jpeg";
 import Figure from "@/sensorsafrica/components/Figure";
 
@@ -98,7 +98,10 @@ function Staff(props) {
                 alicia.olago@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
-                <a className={classes.a} href="https://www.linkedin.com/in/aliciaolago/">
+                <a
+                  className={classes.a}
+                  href="https://www.linkedin.com/in/aliciaolago/"
+                >
                   @Alicia Olago
                 </a>
               </Typography>
@@ -162,7 +165,10 @@ function Staff(props) {
                 gideon@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
-                <a className={classes.a} href="https://www.linkedin.com/in/gideonmaina/">
+                <a
+                  className={classes.a}
+                  href="https://www.linkedin.com/in/gideonmaina/"
+                >
                   @Gideon Maina
                 </a>
               </Typography>
@@ -181,7 +187,10 @@ function Staff(props) {
                 usman@codeforafrica.org
               </Typography>
               <Typography variant="subtitle1">
-                <a className={classes.a} href="https://www.linkedin.com/in/usman-ahmed-343513187/">
+                <a
+                  className={classes.a}
+                  href="https://www.linkedin.com/in/usman-ahmed-343513187/"
+                >
                   @Usman Ahmed
                 </a>
               </Typography>
