@@ -18,7 +18,7 @@ const URLS = {
     IMPACT: "/air/health-and-climate-impact",
     JOIN: "/air/join-network",
     MONTHLY_REPORT:
-      "https://datastudio.google.com/u/0/reporting/2c38d311-4e45-4468-8a8e-b0aa6d80474c/page/Su9vC?s=sYBhhtp0wzA",
+      "https://lookerstudio.google.com/u/2/reporting/9ad1ed61-1af5-4828-8cac-cea5cce4ed23/page/Su9vC",
   },
   WATER: {
     HOME: "/water",
