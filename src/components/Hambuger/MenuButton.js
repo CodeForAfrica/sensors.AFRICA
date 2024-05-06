@@ -46,6 +46,7 @@ function MenuButton({ color, onClick, open, ...props }) {
   };
   return (
     <div
+      aria-label="Menu"
       className={classes.container}
       onClick={onClick}
       onKeyDown={onClick}
