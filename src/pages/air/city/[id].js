@@ -299,7 +299,11 @@ export async function getStaticProps({ params: { id: city } }) {
   const air = (await airRes.json()) || {};
   const weeklyP2 = (await weeklyP2Res.json()) || {};
   const data = { air, weeklyP2 };
-  return { props: { city, data }, revalidate: 5 * 60 * 60 };
+  return {
+    props: { city, data },
+    // API update data every 5 mins
+    revalidate: 5 * 60, // in seconds
+  };
 }
 
 export default City;
