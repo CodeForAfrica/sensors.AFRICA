@@ -83,5 +83,10 @@
     "*.yml": [
       "yarn format-staged"
     ]
-  }
+  },
+  "engines": {
+    "node": "20.x",
+    "yarn": "1"
+  },
+  "packageManager": "yarn@1.22.22"
 }
