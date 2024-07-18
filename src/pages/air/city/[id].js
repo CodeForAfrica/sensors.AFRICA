@@ -291,14 +291,19 @@ export async function getStaticProps({ params: { id: city } }) {
   const airRes = await API.getAirData(city);
   const weeklyP2Res = await API.getWeeklyP2Data(city);
   if (!(airRes.ok || weeklyP2Res.ok)) {
-    return {
-      notFound: true,
-    };
+    // Throw an error instead of returning so that the cache is not updated
+    // until the next successful request.
+    const status = `air: ${airRes.status}, weeklyP2: ${weeklyP2Res.status}`;
+    throw new Error(`Failed to fetch data, received status ${status}`);
   }
   const air = (await airRes.json()) || {};
   const weeklyP2 = (await weeklyP2Res.json()) || {};
   const data = { air, weeklyP2 };
-  return { props: { city, data }, revalidate: 5 * 60 * 60 };
+  return {
+    props: { city, data },
+    // API update data every 5 mins
+    revalidate: 5 * 60, // in seconds
+  };
 }
 
 export default City;

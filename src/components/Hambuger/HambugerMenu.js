@@ -56,6 +56,11 @@ function HambugerMenu({ handleToggle, menuOpen, ...props }) {
       </Grid>
       <Grid item xs={12}>
         <Modal
+          BackdropProps={{
+            style: {
+              backgroundColor: "rgba(0,0,0,0.8)",
+            },
+          }}
           className={classes.modalContent}
           open={menuOpen}
           onClose={handleToggle}

@@ -5,7 +5,8 @@ const P2_READING = "P2";
 const formatAirStats = (data, isPm2 = false) => {
   const formatted = {};
   ["average", "maximum", "minimum"].forEach((stat) => {
-    const parsed = Number.parseFloat(data[stat]);
+    // Handle cases we have not data
+    const parsed = Number.parseFloat(data?.[stat]);
     if (isPm2 && stat === "average") {
       formatted.averageDescription = `measurements not recorded`;
       if (!Number.isNaN(parsed)) {
