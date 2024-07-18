@@ -1,40 +1,71 @@
-FROM node:18-alpine as deps
+ARG \
+  NODE_ENV=production \
+  # Next.js collects completely anonymous telemetry data about general usage.
+  # Learn more here: https://nextjs.org/telemetry
+  NEXT_TELEMETRY_DISABLED=1
+
+# ============================================================================
+#  Node
+# ============================================================================
+
+FROM node:20.14-alpine as node
+
+# Always install security updated e.g. https://pythonspeed.com/articles/security-updates-in-docker/
+# Update local cache so that other stages don't need to update cache
+RUN apk update \
+    && apk upgrade
+
+# ============================================================================
+#  Node
+# ============================================================================
+#
+FROM node as deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
-
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile --network-timeout 600000
 
+# ============================================================================
+#  Builder
+# ============================================================================
+
 # Rebuild the source code only when needed
-FROM node:18-alpine AS builder
+FROM node AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-ARG  NEXT_TELEMETRY_DISABLED=1
-
+ARG NEXT_TELEMETRY_DISABLED
 ENV NEXT_TELEMETRY_DISABLED=${NEXT_TELEMETRY_DISABLED}
 
 RUN yarn build
 
-# Production image, copy all the files and run next
-FROM node:18-alpine AS runner
+# ============================================================================
+#  Runner
+# ============================================================================
 
-ENV NODE_ENV production \
-    NEXT_TELEMETRY_DISABLED=1
+# Production image, copy all the files and run next
+FROM node AS runner
+
+ARG NEXT_TELEMETRY_DISABLED \
+    NODE_ENV
+ENV NEXT_TELEMETRY_DISABLED={NEXT_TELEMETRY_DISABLED} \
+    NODE_ENV=${NODE_ENV}
 
 WORKDIR /app
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN set -ex \
+  # Create a non-root user
+  && addgroup --system -g 1001 nodejs \
+  && adduser --system -u 1001 -g 1001 nextjs \
+  # Set the correct permission for prerender cache
+  && mkdir .next \
+  && chown nextjs:nodejs .next \
+  # Delete system cached files we don't need anymore
+  && rm -rf /var/cache/apk/*
 
-# You only need to copy next.config.js if you are NOT using the default configuration
-COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/package.json ./package.json
 
 # Automatically leverage output traces to reduce image size 
 # https://nextjs.org/docs/advanced-features/output-file-tracing
@@ -47,4 +78,6 @@ EXPOSE 3000
 
 ENV PORT=3000
 
-CMD ["node", "server.js"]
+# server.js is created by next build from the standalone output
+# https://nextjs.org/docs/pages/api-reference/next-config-js/output
+CMD HOSTNAME="0.0.0.0" node server.js
