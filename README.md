@@ -19,13 +19,23 @@ This project uses [yarn](https://yarnpkg.com/lang/en/) as a dependancy. See [the
 Run the following command to get started
 
 ```shell
-    git clone https://github.com/CodeForAfrica/sensors.AFRICA.git
-    cd sensors.AFRICA
-    yarn
-    yarn dev
+git clone https://github.com/CodeForAfrica/sensors.AFRICA.git
+cd sensors.AFRICA
+yarn
+yarn dev
 ```
 
 ---
+
+## Docker Image
+To build the docker image, run:
+```shell
+docker build -t codeforafrica/sensors-africa-ui .
+```
+And to run it:
+```shell
+docker run --expose 127.0.0.1:3000:3000/tcp codeforafrica/sensors-africa-ui
+```
 
 ## Style Guidelines
 
