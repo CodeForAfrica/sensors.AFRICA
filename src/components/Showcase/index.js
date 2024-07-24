@@ -30,8 +30,7 @@ function Showcase(props) {
           SHOWCASE
         </Typography>
         <Typography variant="body1">
-          Here are stories from all around the world on air quality and its
-          effects
+          Here are stories from us
         </Typography>
       </Grid>
       <Grid item xs={12}>
