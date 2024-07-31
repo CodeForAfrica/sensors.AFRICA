@@ -1,7 +1,7 @@
 {
   "name": "sensors.africa",
   "description": "sensors.AFRICA",
-  "version": "0.4.24",
+  "version": "0.4.25",
   "private": true,
   "main": "index.js",
   "homepage": "https://sensors.africa/",

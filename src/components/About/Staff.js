@@ -147,7 +147,7 @@ function Staff(props) {
                   className={classes.a}
                   href="https://www.linkedin.com/in/augustine-mwendwa-b00420145/"
                 >
-                  @Eng. Augustine Mwendwa
+                  @Engr. Augustine Mwendwa
                 </a>
               </Typography>
             </CardContent>
