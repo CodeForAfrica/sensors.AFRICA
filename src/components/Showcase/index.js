@@ -29,9 +29,7 @@ function Showcase(props) {
         <Typography variant="h3" className={classes.headlineTitle}>
           SHOWCASE
         </Typography>
-        <Typography variant="body1">
-          Here are stories from us
-        </Typography>
+        <Typography variant="body1">Here are stories from us</Typography>
       </Grid>
       <Grid item xs={12}>
         <StoryList />
