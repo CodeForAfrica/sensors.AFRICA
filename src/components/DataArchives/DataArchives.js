@@ -88,17 +88,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const sensors = "https://api.sensors.africa/v1/sensors/{sensor_id}/";
-const query = "https://api.sensors.africa/v1/filter?city=&country=&type=";
-const data = "https://api.sensors.africa/v1/data/";
-const now = "https://api.sensors.africa/v1/now/";
+const API_BASE_URL = process.env.SENSORS_API_BASE_URL;
+const API_STATIC_URL = process.env.SENSORS_API_STATIC_URL;
+
+const sensors = `${API_BASE_URL}/sensors/{sensor_id}/`;
+const query = `${API_BASE_URL}/filter?city=&country=&type=`;
+const data = `${API_BASE_URL}/data/`;
+const now = `${API_BASE_URL}/now/`;
 const type = "{sensor type}";
 const city = "{city}";
 const countryCode = "{country name}";
 
-const allCities = "http://api.sensors.africa/v2/cities";
-const specificCities = "https://api.sensors.africa/v2/data/air?city={slug}&";
-const nodes = "https://api.sensors.africa/v2/nodes";
+const allCities = `${API_BASE_URL}/cities`;
+const specificCities = `${API_BASE_URL}/data/air?city={slug}&`;
+const nodes = `${API_BASE_URL}/nodes`;
 const data5 = "http://api.sensors.africa/static/v2/data.json";
 const data1 = "http://api.sensors.africa/static/v2/data.1h.json";
 const data24 = "http://api.sensors.africa/static/v2/data.24h.json";
@@ -157,7 +160,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.sensors.africa/v1/sensor/%7BsensorID%7D/"
+              href={sensors}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -183,7 +186,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.sensors.africa/v1/now/"
+              href={now}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -264,7 +267,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.sensors.africa/v1/data/"
+              href={data}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -290,7 +293,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="http://api.sensors.africa/v1/now/"
+              href={now}
               target="_blank"
               rel="noopener noreferrer"
             >
