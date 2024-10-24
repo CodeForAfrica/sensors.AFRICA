@@ -178,14 +178,14 @@ const CITIES_LOCATION = {
 
 const API = {
   getAirData(city) {
-    return fetch(`https://api.sensors.africa/v2/data/air/?city=${city}`);
+    return fetch(`${API_BASE_URL}/data/air/?city=${city}`);
   },
   getWeeklyP2Data(city) {
     const fromDate = new Date(Date.now() - 7 * 24 * 3600 * 1000)
       .toISOString()
       .substring(0, 10);
     return fetch(
-      `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`,
+      `${API_BASE_URL}/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`,
     );
   },
 };

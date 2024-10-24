@@ -102,11 +102,11 @@ const countryCode = "{country name}";
 const allCities = `${API_BASE_URL}/cities`;
 const specificCities = `${API_BASE_URL}/data/air?city={slug}&`;
 const nodes = `${API_BASE_URL}/nodes`;
-const data5 = "http://api.sensors.africa/static/v2/data.json";
-const data1 = "http://api.sensors.africa/static/v2/data.1h.json";
-const data24 = "http://api.sensors.africa/static/v2/data.24h.json";
-const dataDust = "http://api.sensors.africa/static/v2/data.dust.min.json";
-const otherSensors = "http://api.sensors.africa/static/v2/data.temp.min.json";
+const data5 = `${API_STATIC_URL}/data.json`;
+const data1 = `${API_STATIC_URL}/data.1h.json`;
+const data24 = `${API_STATIC_URL}/data.24h.json`;
+const dataDust = `${API_STATIC_URL}/data.dust.min.json`;
+const otherSensors = `${API_STATIC_URL}/data.temp.min.json`;
 
 const toFrom = "{YYYY - mm - dd}";
 const valueType = "{P1, P2, temperature, humidity}";
@@ -318,7 +318,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="https://api.sensors.africa/v2/data/air?city={slug}&"
+              href={specificCities}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -370,7 +370,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="https://api.sensors.africa/static/v2/data.json"
+              href={data5}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -396,7 +396,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="https://api.sensors.africa/static/v2/data.1h.json"
+              href={data1}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -421,7 +421,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="https://api.sensors.africa/static/v2/data.24.json"
+              href={data24}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -446,7 +446,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="https://api.sensors.africa/static/v2/data.dust.min.json"
+              href={dataDust}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -472,7 +472,7 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href="https://api.sensors.africa/static/v2/data.temp.min.json"
+              href={otherSensors}
               target="_blank"
               rel="noopener noreferrer"
             >
