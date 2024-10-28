@@ -88,8 +88,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const API_BASE_URL = process.env.SENSORS_API_BASE_URL;
-const API_STATIC_URL = process.env.SENSORS_API_STATIC_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_APP_API_BASE_URL;
+const API_STATIC_URL = process.env.NEXT_PUBLIC_APP_API_STATIC_URL;
 
 const sensors = `${API_BASE_URL}/sensors/{sensor_id}/`;
 const query = `${API_BASE_URL}/filter?city=&country=&type=`;
@@ -98,7 +98,6 @@ const now = `${API_BASE_URL}/now/`;
 const type = "{sensor type}";
 const city = "{city}";
 const countryCode = "{country name}";
-
 const allCities = `${API_BASE_URL}/cities`;
 const specificCities = `${API_BASE_URL}/data/air?city={slug}&`;
 const nodes = `${API_BASE_URL}/nodes`;
@@ -158,14 +157,9 @@ function DataArchives(props) {
           className={classes.dlFirst}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href={sensors}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{sensors}</code>
-            </a>{" "}
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -184,14 +178,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href={now}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{now}</code>
-            </a>
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -210,14 +199,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href="http://api.sensors.africa/v1/filter/%7Bquery%7D"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{query}</code>
-            </a>
+            </Typography>
           </Grid>
 
           <Grid className={classes.dd}>
@@ -265,14 +249,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href={data}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{data}</code>
-            </a>
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -291,14 +270,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href={now}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{allCities}</code>
-            </a>
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -316,14 +290,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href={specificCities}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{specificCities}</code>
-            </a>
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -342,14 +311,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href="http:/api.sensors.africa/v2/nodes/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{nodes}</code>
-            </a>
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -368,14 +332,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href={data5}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{data5}</code>
-            </a>
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -394,14 +353,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href={data1}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{data1}</code>
-            </a>
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -419,14 +373,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href={data24}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{data24}</code>
-            </a>
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -444,14 +393,9 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <a
-              className={classes.link}
-              href={dataDust}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Typography variant="body2" component="p">
               <code className={classes.code}>{dataDust}</code>
-            </a>
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -478,6 +422,9 @@ function DataArchives(props) {
             >
               <code className={classes.code}>{otherSensors}</code>
             </a>
+            <Typography variant="body2" component="p">
+              <code className={classes.code} />
+            </Typography>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -526,32 +473,32 @@ function DataArchives(props) {
           </Typography>
           <Typography variant="body2">
             Here is some useful information about Air and Noise Polution. <br />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-              }}
-            >
-              <a
-                className={classes.link}
-                href="https://docs.google.com/document/d/1ZVMLzEF_GRUz3JEMNQujUFhITkSp7OsQCybTRra0dMk/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Air
-              </a>
-
-              <a
-                className={classes.link}
-                href="https://docs.google.com/document/d/133AYXRbI2qfMBbj5t-lAoxOqsfTrFVwyHKBTJG_ci04/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Sound
-              </a>
-            </div>
           </Typography>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <a
+              className={classes.link}
+              href="https://docs.google.com/document/d/1ZVMLzEF_GRUz3JEMNQujUFhITkSp7OsQCybTRra0dMk/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Air
+            </a>
+
+            <a
+              className={classes.link}
+              href="https://docs.google.com/document/d/133AYXRbI2qfMBbj5t-lAoxOqsfTrFVwyHKBTJG_ci04/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sound
+            </a>
+          </div>
         </Grid>
       </Grid>
     </Grid>

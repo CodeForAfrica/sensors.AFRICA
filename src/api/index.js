@@ -176,8 +176,8 @@ const CITIES_LOCATION = {
   },
 };
 
-const API_TOKEN = process.env.APP_API_TOKEN;
-const API_BASE_URL = process.env.SENSORS_API_BASE_URL;
+const API_TOKEN = process.env.NEXT_PUBLIC_APP_API_TOKEN;
+const API_BASE_URL = process.env.NEXT_PUBLIC_APP_API_BASE_UR;
 
 const API = {
   getAirData(city) {
