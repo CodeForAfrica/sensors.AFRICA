@@ -177,11 +177,11 @@ const CITIES_LOCATION = {
 };
 
 const API_TOKEN = process.env.NEXT_PUBLIC_APP_API_TOKEN;
-const API_BASE_URL = process.env.NEXT_PUBLIC_APP_API_BASE_UR;
+const API_BASE_URL = process.env.NEXT_PUBLIC_APP_API_BASE_URL;
 
 const API = {
   getAirData(city) {
-    return fetch(`${API_BASE_URL}/data/air/?city=${city}`, {
+    return fetch(`${API_BASE_URL}/data/stats/air/?city=${city}`, {
       headers: {
         Authorization: `Token ${API_TOKEN}`,
         "Content-Type": "application/json",
@@ -193,7 +193,7 @@ const API = {
       .toISOString()
       .substring(0, 10);
     return fetch(
-      `${API_BASE_URL}/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`,
+      `${API_BASE_URL}/data/stats/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`,
       {
         headers: {
           Authorization: `Token ${API_TOKEN}`,
