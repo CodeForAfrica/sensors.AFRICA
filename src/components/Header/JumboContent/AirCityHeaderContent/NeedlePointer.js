@@ -51,8 +51,8 @@ function NeedlePointer({ hidden, measurement }) {
           measurement > 25 && measurement < 55
             ? "middle"
             : measurement > 40
-            ? "start"
-            : "end"
+              ? "start"
+              : "end"
         }
       >
         <tspan className={classes.gaugeBigText}>

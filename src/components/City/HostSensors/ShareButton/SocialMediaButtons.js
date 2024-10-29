@@ -31,6 +31,7 @@ function SocialMediaButtons({ city }) {
           className={classes.buttonLink}
         >
           <a
+            aria-label="Share on Twitter"
             href="https://twitter.com/sensorsAFRICA/"
             target="_blank"
             rel="noopener noreferrer"
@@ -46,6 +47,7 @@ function SocialMediaButtons({ city }) {
       </Grid>
       <Grid item className={classes.facebook}>
         <a
+          aria-label="Share on Facebook"
           href="https://www.facebook.com/CodeForAfrica/"
           target="_blank"
           rel="noopener noreferrer"
@@ -60,6 +62,7 @@ function SocialMediaButtons({ city }) {
       </Grid>
       <Grid item className={classes.instagram}>
         <a
+          aria-label="Share on Instagram"
           href="https://www.instagram.com/sensorsAFRICA/"
           target="_blank"
           rel="noopener noreferrer"
@@ -74,6 +77,7 @@ function SocialMediaButtons({ city }) {
       </Grid>
       <Grid item className={classes.medium}>
         <a
+          aria-label="Share on Medium"
           href="https://medium.com/code-for-africa/tagged/innovateafrica"
           target="_blank"
           rel="noopener noreferrer"

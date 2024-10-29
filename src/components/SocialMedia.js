@@ -39,6 +39,7 @@ function SocialMedia({ color, ...props }) {
     >
       <Grid item>
         <a
+          aria-label="Twitter"
           href="https://twitter.com/sensorsAFRICA/"
           className={classes.links}
           target="_blank"
@@ -55,6 +56,7 @@ function SocialMedia({ color, ...props }) {
       </Grid>
       <Grid item>
         <a
+          aria-label="Facebook"
           href="https://www.facebook.com/CodeForAfrica/"
           className={classes.links}
           target="_blank"
@@ -71,6 +73,7 @@ function SocialMedia({ color, ...props }) {
       </Grid>
       <Grid item>
         <a
+          aria-label="Instagram"
           href="https://www.instagram.com/sensorsAFRICA/"
           className={classes.links}
           target="_blank"
@@ -85,6 +88,7 @@ function SocialMedia({ color, ...props }) {
           />
         </a>
         <a
+          aria-label="Medium"
           href="https://medium.com/@sensors.AFRICA"
           className={classes.links}
           target="_blank"
@@ -101,6 +105,7 @@ function SocialMedia({ color, ...props }) {
       </Grid>
       <Grid item>
         <a
+          aria-label="GitHub"
           href="https://github.com/CodeForAfrica/sensors.AFRICA"
           className={classes.links}
           target="_blank"
