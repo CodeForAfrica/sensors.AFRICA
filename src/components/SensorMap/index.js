@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Map({ zoom, latitude, longitude }) {
   const classes = useStyles();
-  const appMapUrl = process.env.NEXT_PUBLIC_APP_MAP_URL;
+  const APP_MAP_URL = process.env.NEXT_PUBLIC_APP_MAP_URL;
 
   return (
     <Grid
@@ -45,7 +45,7 @@ function Map({ zoom, latitude, longitude }) {
       <Grid item xs={12}>
         <IframeComponent
           title="Map section"
-          src={`${appMapUrl}/#${zoom}/${latitude}/${longitude}`}
+          src={`${APP_MAP_URL}/#${zoom}/${latitude}/${longitude}`}
           height="500"
           width="100%"
           frameBorder="0"

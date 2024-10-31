@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { CITIES_LOCATION } from "@/sensorsafrica/api";
 import { AirMap } from "@/sensorsafrica/components/Embeds";
+import { CITIES_LOCATION } from "@/sensorsafrica/pages/api";
 
 function Map({ city }) {
   return <AirMap city={city} />;

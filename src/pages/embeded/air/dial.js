@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import API, { CITIES_LOCATION, getFormattedP2Stats } from "@/sensorsafrica/api";
 import { AirGauge } from "@/sensorsafrica/components/Embeds";
+import API, {
+  CITIES_LOCATION,
+  getFormattedP2Stats,
+} from "@/sensorsafrica/pages/api";
 
 function Dial({ data }) {
   return <AirGauge data={data} />;

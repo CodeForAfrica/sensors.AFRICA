@@ -4,13 +4,6 @@ import Router from "next/router";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import API, {
-  CITIES_LOCATION,
-  getFormattedHumidityStats,
-  getFormattedP2Stats,
-  getFormattedTemperatureStats,
-  getFormattedWeeklyP2Stats,
-} from "@/sensorsafrica/api";
 import CallToAction from "@/sensorsafrica/components/City/CallToAction";
 import CityHeader from "@/sensorsafrica/components/City/Header/CityHeader";
 import HostSensorsButton from "@/sensorsafrica/components/City/HostSensors/HostSensorButtons";
@@ -22,6 +15,13 @@ import Footer from "@/sensorsafrica/components/Footer";
 import Navbar from "@/sensorsafrica/components/Header/Navbar";
 import PartnerLogos from "@/sensorsafrica/components/PartnerLogos";
 import SensorMap from "@/sensorsafrica/components/SensorMap";
+import API, {
+  CITIES_LOCATION,
+  getFormattedHumidityStats,
+  getFormattedP2Stats,
+  getFormattedTemperatureStats,
+  getFormattedWeeklyP2Stats,
+} from "@/sensorsafrica/pages/api";
 
 const DEFAULT_CITY = "nairobi";
 const CITIES_POLLUTION_STATS = {
