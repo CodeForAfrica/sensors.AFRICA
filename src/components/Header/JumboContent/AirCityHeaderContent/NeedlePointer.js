@@ -48,11 +48,11 @@ function NeedlePointer({ hidden, measurement }) {
         }
         y={-275 * Math.sin(((rotate + 90) * Math.PI) / 180)}
         textAnchor={
-          measurement > 25 && measurement < 55
+          (measurement > 25 && measurement < 55)
             ? "middle"
-            : measurement > 40
-             ? "start"
-             : "end"
+            : (measurement > 40)
+              ? "start"
+              : "end"
         }
       >
         <tspan className={classes.gaugeBigText}>
