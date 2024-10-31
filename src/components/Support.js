@@ -5,7 +5,6 @@ import clsx from "clsx";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React from "react";
-// import { TwitterShareButton } from "react-share";
 
 const TwitterShareButton = dynamic(
   () => import("react-share").then((mod) => mod.TwitterShareButton),
