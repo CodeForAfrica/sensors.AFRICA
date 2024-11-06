@@ -5,7 +5,7 @@ import { AirGraph } from "@/sensorsafrica/components/Embeds";
 import API, {
   CITIES_LOCATION,
   getFormattedWeeklyP2Stats,
-} from "@/sensorsafrica/pages/api";
+} from "@/sensorsafrica/lib/api";
 
 function Graph({ data }) {
   return <AirGraph data={data} />;

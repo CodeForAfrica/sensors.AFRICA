@@ -2,7 +2,7 @@ const HUMIDITY_READING = "humidity";
 const TEMPERATURE_READING = "temperature";
 const P2_READING = "P2";
 const { API_TOKEN } = process.env;
-const API_BASE_URL = process.env.NEXT_PUBLIC_APP_API_BASE_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const formatAirStats = (data, isPm2 = false) => {
   const formatted = {};

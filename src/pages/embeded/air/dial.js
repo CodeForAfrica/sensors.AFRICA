@@ -5,7 +5,7 @@ import { AirGauge } from "@/sensorsafrica/components/Embeds";
 import API, {
   CITIES_LOCATION,
   getFormattedP2Stats,
-} from "@/sensorsafrica/pages/api";
+} from "@/sensorsafrica/lib/api";
 
 function Dial({ data }) {
   return <AirGauge data={data} />;
