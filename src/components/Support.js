@@ -2,14 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, CardContent, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React from "react";
-
-const TwitterShareButton = dynamic(
-  () => import("react-share").then((mod) => mod.TwitterShareButton),
-  { ssr: false },
-);
+import { TwitterShareButton } from "react-share";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -178,6 +173,7 @@ function Support({ className, ...props }) {
               variant="contained"
               color="primary"
               className={classes.button}
+              component="box"
             >
               <FontAwesomeIcon
                 className={classes.fa}
