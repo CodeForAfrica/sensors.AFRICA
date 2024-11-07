@@ -21,7 +21,7 @@ import API, {
   getFormattedP2Stats,
   getFormattedTemperatureStats,
   getFormattedWeeklyP2Stats,
-} from "@/sensorsafrica/pages/api";
+} from "@/sensorsafrica/lib/api";
 
 const DEFAULT_CITY = "nairobi";
 const CITIES_POLLUTION_STATS = {
@@ -165,7 +165,7 @@ function City({ city: citySlug, data, ...props }) {
       setCityP2Stats({ average: "--", averageDescription: "loading" });
       setCityTemperatureStats({});
       setCityHumidityStats({});
-      API.getAirData(city)
+      fetch(`/api/air-quality?city${city}`)
         .then((res) => res.json())
         .then((json) => {
           setCityHumidityStats(getFormattedHumidityStats(json));
@@ -173,7 +173,7 @@ function City({ city: citySlug, data, ...props }) {
           setCityTemperatureStats(getFormattedTemperatureStats(json));
         })
         .then(() =>
-          API.getWeeklyP2Data(city)
+          fetch(`/api/weekly-p2-data?city${city}`)
             .then((res) => res.json())
             .then((json) =>
               setCityP2WeeklyStats(getFormattedWeeklyP2Stats(json)),

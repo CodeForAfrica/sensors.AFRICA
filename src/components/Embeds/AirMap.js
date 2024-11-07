@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { CITIES_LOCATION } from "@/sensorsafrica/pages/api";
+import { CITIES_LOCATION } from "@/sensorsafrica/lib/api";
 
 function AirMap({ city }) {
   const APP_MAP_URL = process.env.NEXT_PUBLIC_APP_MAP_URL;
