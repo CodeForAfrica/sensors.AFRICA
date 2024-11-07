@@ -89,26 +89,43 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_APP_API_BASE_URL;
+const API_DOCS_URL = process.env.NEXT_PUBLIC_APP_API_DOCS_URL;
 const API_STATIC_URL = process.env.NEXT_PUBLIC_APP_API_STATIC_URL;
 
-const sensors = `${API_BASE_URL}/sensors/{sensor_id}/`;
-const query = `${API_BASE_URL}/filter?city=&country=&type=`;
-const data = `${API_BASE_URL}/data/`;
-const now = `${API_BASE_URL}/now/`;
-const type = "{sensor type}";
-const city = "{city}";
-const countryCode = "{country name}";
-const allCities = `${API_BASE_URL}/cities`;
-const specificCities = `${API_BASE_URL}/data/air?city={slug}&`;
-const nodes = `${API_BASE_URL}/nodes`;
-const data5 = `${API_STATIC_URL}/data.json`;
-const data1 = `${API_STATIC_URL}/data.1h.json`;
-const data24 = `${API_STATIC_URL}/data.24h.json`;
-const dataDust = `${API_STATIC_URL}/data.dust.min.json`;
-const otherSensors = `${API_STATIC_URL}/data.temp.min.json`;
-
-const toFrom = "{YYYY - mm - dd}";
-const valueType = "{P1, P2, temperature, humidity}";
+const API_CONFIG = {
+  endpoints: {
+    sensors: `${API_BASE_URL}/sensors/{sensor_id}/`,
+    query: `${API_BASE_URL}/filter?city=&country=&type=`,
+    data: `${API_BASE_URL}/data/`,
+    now: `${API_BASE_URL}/now/`,
+    allCities: `${API_BASE_URL}/cities`,
+    specificCities: `${API_BASE_URL}/data/air?city={slug}&`,
+    nodes: `${API_BASE_URL}/nodes`,
+  },
+  docs: {
+    sensors: `${API_DOCS_URL}sensors-list`,
+    query: `${API_DOCS_URL}/filter?city=&country=&type=`,
+    data: `${API_DOCS_URL}data-stats-list`,
+    now: `${API_DOCS_URL}now-list`,
+    allCities: `${API_DOCS_URL}cities-list`,
+    nodes: `${API_DOCS_URL}nodes-list_nodes`,
+  },
+  staticData: {
+    data1: `${API_STATIC_URL}/data.1h.json`,
+    data5: `${API_STATIC_URL}/data.json`,
+    data1h: `${API_STATIC_URL}/data.1h.json`,
+    data24h: `${API_STATIC_URL}/data.24h.json`,
+    dataDust: `${API_STATIC_URL}/data.dust.min.json`,
+    otherSensors: `${API_STATIC_URL}/data.temp.min.json`,
+  },
+  placeholders: {
+    type: "{sensor type}",
+    city: "{city}",
+    countryCode: "{country name}",
+    toFrom: "{YYYY - mm - dd}",
+    valueType: "{P1, P2, temperature, humidity}",
+  },
+};
 
 function DataArchives(props) {
   const classes = useStyles(props);
@@ -157,9 +174,16 @@ function DataArchives(props) {
           className={classes.dlFirst}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{sensors}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.docs.sensors}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>
+                {API_CONFIG.endpoints.sensors}
+              </code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -178,9 +202,14 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{now}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.docs.sensors}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{API_CONFIG.endpoints.now}</code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -199,9 +228,14 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{query}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.docs.data}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{API_CONFIG.endpoints.query}</code>
+            </a>
           </Grid>
 
           <Grid className={classes.dd}>
@@ -217,22 +251,28 @@ function DataArchives(props) {
             >
               <li className={classes.query}>
                 <code className={classes.queryParam}>city</code> ={" "}
-                <code className={classes.queryDescription}>{city}</code>:
-                Separated list of cities i.e{" "}
+                <code className={classes.queryDescription}>
+                  {API_CONFIG.placeholders.city}
+                </code>
+                : Separated list of cities i.e{" "}
                 <code className={classes.var}>nairobi</code> ,
                 <code className={classes.var}>lagos</code>
               </li>
               <li className={classes.query}>
                 {" "}
                 <code className={classes.queryParam}>country</code>={" "}
-                <code className={classes.queryDescription}>{countryCode}</code>:
-                Separated list of countries i.e.{" "}
+                <code className={classes.queryDescription}>
+                  {API_CONFIG.placeholders.countryCode}
+                </code>
+                : Separated list of countries i.e.{" "}
                 <code className={classes.var}>KE, TZ, NG, ZA, ... </code>
               </li>
               <li className={classes.query}>
                 <code className={classes.queryParam}>type</code> ={" "}
-                <code className={classes.queryDescription}>{type}</code>:
-                Separated list of sensor types, i.e{" "}
+                <code className={classes.queryDescription}>
+                  {API_CONFIG.placeholders.type}
+                </code>
+                : Separated list of sensor types, i.e{" "}
                 <code className={classes.var}>SDS011</code> ,
                 <code className={classes.var}> DHT22</code>
               </li>
@@ -249,9 +289,14 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{data}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.docs.data}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{API_CONFIG.endpoints.data}</code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -270,9 +315,16 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{allCities}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.docs.allCities}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>
+                {API_CONFIG.endpoints.allCities}
+              </code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -290,14 +342,23 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{specificCities}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.docs.cities}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>
+                {API_CONFIG.endpoints.specificCities}
+              </code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
-              Provides air data with city query from = {toFrom}&to = {toFrom}
-              &value_type={valueType}
+              Provides air data with city query from ={" "}
+              {API_CONFIG.placeholders.toFrom}&to ={" "}
+              {API_CONFIG.placeholders.toFrom}
+              &value_type={API_CONFIG.placeholders.valueType}
             </Typography>
           </Grid>
         </Grid>
@@ -311,9 +372,14 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{nodes}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.docs.nodes}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>{API_CONFIG.endpoints.nodes}</code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -332,9 +398,16 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{data5}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.staticData.data5}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>
+                {API_CONFIG.staticData.data5}
+              </code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -353,9 +426,16 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{data1}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.staticData.data1}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>
+                {API_CONFIG.staticData.data1}
+              </code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -373,9 +453,16 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{data24}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.staticData.data24}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>
+                {API_CONFIG.staticData.data24}
+              </code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -393,9 +480,16 @@ function DataArchives(props) {
           className={classes.dl}
         >
           <Grid item className={classes.dt}>
-            <Typography variant="body2" component="p">
-              <code className={classes.code}>{dataDust}</code>
-            </Typography>
+            <a
+              className={classes.link}
+              href={API_CONFIG.staticData.data5}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code className={classes.code}>
+                {API_CONFIG.staticData.data5}
+              </code>
+            </a>
           </Grid>
           <Grid item className={classes.dd}>
             <Typography variant="body2" component="p">
@@ -416,11 +510,13 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={otherSensors}
+              href={API_CONFIG.docs.otherSensors}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <code className={classes.code}>{otherSensors}</code>
+              <code className={classes.code}>
+                {API_CONFIG.endpoints.otherSensors}
+              </code>
             </a>
             <Typography variant="body2" component="p">
               <code className={classes.code} />
