@@ -4,13 +4,6 @@ import Router from "next/router";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import API, {
-  CITIES_LOCATION,
-  getFormattedHumidityStats,
-  getFormattedP2Stats,
-  getFormattedTemperatureStats,
-  getFormattedWeeklyP2Stats,
-} from "@/sensorsafrica/api";
 import CallToAction from "@/sensorsafrica/components/City/CallToAction";
 import CityHeader from "@/sensorsafrica/components/City/Header/CityHeader";
 import HostSensorsButton from "@/sensorsafrica/components/City/HostSensors/HostSensorButtons";
@@ -22,6 +15,13 @@ import Footer from "@/sensorsafrica/components/Footer";
 import Navbar from "@/sensorsafrica/components/Header/Navbar";
 import PartnerLogos from "@/sensorsafrica/components/PartnerLogos";
 import SensorMap from "@/sensorsafrica/components/SensorMap";
+import API, {
+  CITIES_LOCATION,
+  getFormattedHumidityStats,
+  getFormattedP2Stats,
+  getFormattedTemperatureStats,
+  getFormattedWeeklyP2Stats,
+} from "@/sensorsafrica/lib/api";
 
 const DEFAULT_CITY = "nairobi";
 const CITIES_POLLUTION_STATS = {
@@ -165,7 +165,7 @@ function City({ city: citySlug, data, ...props }) {
       setCityP2Stats({ average: "--", averageDescription: "loading" });
       setCityTemperatureStats({});
       setCityHumidityStats({});
-      API.getAirData(city)
+      fetch(`/api/air-quality?city${city}`)
         .then((res) => res.json())
         .then((json) => {
           setCityHumidityStats(getFormattedHumidityStats(json));
@@ -173,7 +173,7 @@ function City({ city: citySlug, data, ...props }) {
           setCityTemperatureStats(getFormattedTemperatureStats(json));
         })
         .then(() =>
-          API.getWeeklyP2Data(city)
+          fetch(`/api/weekly-p2-data?city${city}`)
             .then((res) => res.json())
             .then((json) =>
               setCityP2WeeklyStats(getFormattedWeeklyP2Stats(json)),

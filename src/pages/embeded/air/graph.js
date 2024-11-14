@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import { AirGraph } from "@/sensorsafrica/components/Embeds";
 import API, {
   CITIES_LOCATION,
   getFormattedWeeklyP2Stats,
-} from "@/sensorsafrica/api";
-import { AirGraph } from "@/sensorsafrica/components/Embeds";
+} from "@/sensorsafrica/lib/api";
 
 function Graph({ data }) {
   return <AirGraph data={data} />;

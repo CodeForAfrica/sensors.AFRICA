@@ -1,6 +1,8 @@
 const HUMIDITY_READING = "humidity";
 const TEMPERATURE_READING = "temperature";
 const P2_READING = "P2";
+const { API_TOKEN } = process.env;
+const API_BASE_URL = process.env.NEXT_PUBLIC_APP_API_BASE_URL;
 
 const formatAirStats = (data, isPm2 = false) => {
   const formatted = {};
@@ -179,14 +181,25 @@ const CITIES_LOCATION = {
 
 const API = {
   getAirData(city) {
-    return fetch(`https://api.sensors.africa/v2/data/air/?city=${city}`);
+    return fetch(`${API_BASE_URL}/data/stats/air/?city=${city}`, {
+      headers: {
+        Authorization: `Token ${API_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+    });
   },
   getWeeklyP2Data(city) {
     const fromDate = new Date(Date.now() - 7 * 24 * 3600 * 1000)
       .toISOString()
       .substring(0, 10);
     return fetch(
-      `https://api.sensors.africa/v2/data/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`,
+      `${API_BASE_URL}/data/stats/air/?city=${city}&from=${fromDate}&interval=day&value_type=P2`,
+      {
+        headers: {
+          Authorization: `Token ${API_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      },
     );
   },
 };

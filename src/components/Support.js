@@ -173,6 +173,7 @@ function Support({ className, ...props }) {
               variant="contained"
               color="primary"
               className={classes.button}
+              component="box"
             >
               <FontAwesomeIcon
                 className={classes.fa}
