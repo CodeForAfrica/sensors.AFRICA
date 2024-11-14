@@ -93,22 +93,29 @@ const API_DOCS_URL = process.env.NEXT_PUBLIC_APP_API_DOCS_URL;
 const API_STATIC_URL = process.env.NEXT_PUBLIC_APP_API_STATIC_URL;
 
 const API_CONFIG = {
-  endpoints: {
-    sensors: `${API_BASE_URL}/sensors/{sensor_id}/`,
-    query: `${API_BASE_URL}/filter?city=&country=&type=`,
-    data: `${API_BASE_URL}/data/`,
-    now: `${API_BASE_URL}/now/`,
-    allCities: `${API_BASE_URL}/cities`,
-    specificCities: `${API_BASE_URL}/data/air?city={slug}&`,
-    nodes: `${API_BASE_URL}/nodes`,
+  sensors: {
+    endpoint: `${API_BASE_URL}/sensors/{sensor_id}/`,
+    doc: `${API_DOCS_URL}/#v2-sensors-list`,
   },
-  docs: {
-    sensors: `${API_DOCS_URL}sensors-list`,
-    query: `${API_DOCS_URL}/filter?city=&country=&type=`,
-    data: `${API_DOCS_URL}data-stats-list`,
-    now: `${API_DOCS_URL}now-list`,
-    allCities: `${API_DOCS_URL}cities-list`,
-    nodes: `${API_DOCS_URL}nodes-list_nodes`,
+  data: {
+    endpoint: `${API_BASE_URL}/data/`,
+    doc: `${API_DOCS_URL}/#v2-data-stats-list`,
+  },
+  now: {
+    endpoint: `${API_BASE_URL}/now/`,
+    doc: `${API_DOCS_URL}/#v2-now-list`,
+  },
+  allCities: {
+    endpoint: `${API_BASE_URL}/cities`,
+    doc: `${API_DOCS_URL}/#v2-cities-list`,
+  },
+  specificCities: {
+    endpoint: `${API_BASE_URL}/data/air?city={slug}&`,
+    doc: `${API_DOCS_URL}/#v2-cities-list`,
+  },
+  nodes: {
+    endpoint: `${API_BASE_URL}/nodes`,
+    doc: `${API_DOCS_URL}/#v2-nodes-list_nodes`,
   },
   staticData: {
     data1: `${API_STATIC_URL}/data.1h.json`,
@@ -176,12 +183,12 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={API_CONFIG.docs.sensors}
+              href={API_CONFIG.sensors.doc}
               target="_blank"
               rel="noopener noreferrer"
             >
               <code className={classes.code}>
-                {API_CONFIG.endpoints.sensors}
+                {API_CONFIG.sensors.endpoint}
               </code>
             </a>
           </Grid>
@@ -204,11 +211,11 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={API_CONFIG.docs.sensors}
+              href={API_CONFIG.now.doc}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <code className={classes.code}>{API_CONFIG.endpoints.now}</code>
+              <code className={classes.code}>{API_CONFIG.now.endpoint}</code>
             </a>
           </Grid>
           <Grid item className={classes.dd}>
@@ -230,11 +237,13 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={API_CONFIG.docs.data}
+              href={API_CONFIG.data.endpoint}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <code className={classes.code}>{API_CONFIG.endpoints.query}</code>
+              <code className={classes.code}>
+                `{API_CONFIG.data.endpoint}?city=&country=&type=`
+              </code>
             </a>
           </Grid>
 
@@ -291,11 +300,11 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={API_CONFIG.docs.data}
+              href={API_CONFIG.data.doc}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <code className={classes.code}>{API_CONFIG.endpoints.data}</code>
+              <code className={classes.code}>{API_CONFIG.data.endpoint}</code>
             </a>
           </Grid>
           <Grid item className={classes.dd}>
@@ -317,12 +326,12 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={API_CONFIG.docs.allCities}
+              href={API_CONFIG.allCities.doc}
               target="_blank"
               rel="noopener noreferrer"
             >
               <code className={classes.code}>
-                {API_CONFIG.endpoints.allCities}
+                {API_CONFIG.allCities.endpoint}
               </code>
             </a>
           </Grid>
@@ -344,12 +353,12 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={API_CONFIG.docs.cities}
+              href={API_CONFIG.specificCities.doc}
               target="_blank"
               rel="noopener noreferrer"
             >
               <code className={classes.code}>
-                {API_CONFIG.endpoints.specificCities}
+                {API_CONFIG.specificCities.endpoint}
               </code>
             </a>
           </Grid>
@@ -374,11 +383,11 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={API_CONFIG.docs.nodes}
+              href={API_CONFIG.nodes.doc}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <code className={classes.code}>{API_CONFIG.endpoints.nodes}</code>
+              <code className={classes.code}>{API_CONFIG.nodes.endpoint}</code>
             </a>
           </Grid>
           <Grid item className={classes.dd}>
@@ -455,12 +464,12 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={API_CONFIG.staticData.data24}
+              href={API_CONFIG.staticData.data24h}
               target="_blank"
               rel="noopener noreferrer"
             >
               <code className={classes.code}>
-                {API_CONFIG.staticData.data24}
+                {API_CONFIG.staticData.data24h}
               </code>
             </a>
           </Grid>
@@ -510,12 +519,12 @@ function DataArchives(props) {
           <Grid item className={classes.dt}>
             <a
               className={classes.link}
-              href={API_CONFIG.docs.otherSensors}
+              href={API_CONFIG.staticData.otherSensors}
               target="_blank"
               rel="noopener noreferrer"
             >
               <code className={classes.code}>
-                {API_CONFIG.endpoints.otherSensors}
+                {API_CONFIG.staticData.otherSensors}
               </code>
             </a>
             <Typography variant="body2" component="p">
