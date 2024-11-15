@@ -1,37 +1,50 @@
 name: main
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - update-workflow
+
+# This allows a subsequently queued workflow run to interrupt previous runs
+concurrency:
+  group: "${{ github.workflow }} @ ${{ github.ref }}"
+  cancel-in-progress: true
+
 env:
   DOKKU_REMOTE_BRANCH: "master"
   DOKKU_REMOTE_URL: "ssh://dokku@ui-1.prod.codeforafrica.org/sensors-africa-ui"
+  NEXT_PUBLIC_APP_URL: "https://sensors.africa"
+  NEXT_PUBLIC_APP_API_BASE_URL: "https://api.sensors.africa/v2"
+  NEXT_PUBLIC_APP_API_DOCS_URL: "https://api.sensors.africa/docs"
+  NEXT_PUBLIC_APP_API_STATIC_URL: "https://api.sensors.africa/static/v2"
+  NEXT_PUBLIC_APP_MAP_URL: "https://v2.map.aq.sensors.africa/"
   IMAGE_NAME: "codeforafrica/sensors-africa-ui"
+  VERSION_FILE_NAME: "./package.json"
   GIT_PUSH_FLAGS: "--force"
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node-version: [20.18]
+        os: [ubuntu-latest]
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
-
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       # Set up Node since it's required by version-check
       # https://github.com/EndBug/version-check#github-workflow
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: ${{ matrix.node-version }}
 
       - name: Check if version is bumped
         id: version-check
-        uses: EndBug/version-check@v1
+        uses: EndBug/version-check@v2
         with:
           # Whether to search in every commit's diff.
           # This is useful if you often do change the version without saying it
@@ -39,14 +52,21 @@ jobs:
           # version in your commit message when you bump versions then you can
           # omit this.
           diff-search: true
+          file-name: "${{ env.VERSION_FILE_NAME }}"
+
+      # Add support for more platforms with QEMU (optional)
+      # https://github.com/docker/setup-qemu-action
+      - name: Setup up QEMU
+        if: steps.version-check.outputs.changed == 'true'
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         if: steps.version-check.outputs.changed == 'true'
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v3
 
       - name: Cache Docker layers
         if: steps.version-check.outputs.changed == 'true'
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           path: /tmp/.buildx-cache
@@ -55,15 +75,23 @@ jobs:
 
       - name: Login to DockerHub
         if: steps.version-check.outputs.changed == 'true'
-        uses: docker/login-action@v1
+        uses: docker/login-action@v3
         with:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
 
       - name: Build Docker image
         if: steps.version-check.outputs.changed == 'true'
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
+          build-args: |
+            NEXT_PUBLIC_APP_URL=${{ env.NEXT_PUBLIC_APP_URL }}
+            NEXT_PUBLIC_APP_API_BASE_URL=${{ env.NEXT_PUBLIC_APP_API_BASE_URL }}
+            NEXT_PUBLIC_APP_API_DOCS_URL=${{ env.NEXT_PUBLIC_APP_API_DOCS_URL }}
+            NEXT_PUBLIC_API_STATIC_URL=${{ env.NEXT_PUBLIC_APP_API_STATIC_URL }}
+            NEXT_PUBLIC_APP_MAP_URL=${{ env.NEXT_PUBLIC_APP_MAP_URL }}
+            GOOGLE_ANALYTICS_ID=${{ secrets.SENSORS_AFRICA_GA_ANALYTICS_ID }}
+            API_TOKEN=${{ secrets.SENSORS_AFRICA_API_TOKEN }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           context: .
@@ -78,9 +106,8 @@ jobs:
 
       - name: Push to Dokku
         if: steps.version-check.outputs.changed == 'true'
-        uses: dokku/github-action@v1.0.2
+        uses: dokku/github-action@v1.6.1
         with:
-          branch: ${{ env.DOKKU_REMOTE_BRANCH }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          git_push_flags: ${{ env.GIT_PUSH_FLAGS }}
           git_remote_url: ${{ env.DOKKU_REMOTE_URL }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          deploy_docker_image: ${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}
