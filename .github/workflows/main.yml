@@ -19,8 +19,7 @@ env:
   NEXT_PUBLIC_APP_API_STATIC_URL: "https://api.sensors.africa/static/v2"
   NEXT_PUBLIC_APP_MAP_URL: "https://v2.map.aq.sensors.africa/"
   IMAGE_NAME: "codeforafrica/sensors-africa-ui"
-  VERSION_FILE_NAME: "./package.json"
-  GIT_PUSH_FLAGS: "--force"
+  VERSION_FILE_NAME: "../../package.json"
 
 jobs:
   deploy:
