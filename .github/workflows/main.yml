@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - update-workflow
+      - chore/update-workflow
 
 # This allows a subsequently queued workflow run to interrupt previous runs
 concurrency:
@@ -12,7 +12,7 @@ concurrency:
 
 env:
   DOKKU_REMOTE_BRANCH: "master"
-  DOKKU_REMOTE_URL: "ssh://dokku@ui-1.prod.codeforafrica.org/sensors-africa-ui"
+  DOKKU_REMOTE_URL: "ssh://dokku@ui-2.prod.codeforafrica.org/sensors-africa-ui"
   NEXT_PUBLIC_APP_URL: "https://sensors.africa"
   NEXT_PUBLIC_APP_API_BASE_URL: "https://api.sensors.africa/v2"
   NEXT_PUBLIC_APP_API_DOCS_URL: "https://api.sensors.africa/docs"
