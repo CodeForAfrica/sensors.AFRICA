@@ -3,12 +3,11 @@ ARG \
   # Next.js collects completely anonymous telemetry data about general usage.
   # Learn more here: https://nextjs.org/telemetry
   NEXT_TELEMETRY_DISABLED=1
-
 # ============================================================================
 #  Node
 # ============================================================================
 
-FROM node:20.14-alpine as node
+FROM node:20.14-alpine AS node
 
 # Always install security updated e.g. https://pythonspeed.com/articles/security-updates-in-docker/
 # Update local cache so that other stages don't need to update cache
@@ -19,7 +18,7 @@ RUN apk update \
 #  Node
 # ============================================================================
 #
-FROM node as deps
+FROM node AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
@@ -36,8 +35,17 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ARG NEXT_TELEMETRY_DISABLED
-ENV NEXT_TELEMETRY_DISABLED=${NEXT_TELEMETRY_DISABLED}
+ARG NEXT_TELEMETRY_DISABLED\
+    NEXT_PUBLIC_APP_URL \
+    NEXT_PUBLIC_APP_API_BASE_URL \
+    GOOGLE_ANALYTICS_ID \
+    API_TOKEN
+
+ENV NEXT_TELEMETRY_DISABLED=${NEXT_TELEMETRY_DISABLED}\
+    NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL} \
+    NEXT_PUBLIC_APP_API_BASE_URL=${NEXT_PUBLIC_APP_API_BASE_URL} \
+    GOOGLE_ANALYTICS_ID=${GOOGLE_ANALYTICS_ID} \
+    API_TOKEN=${API_TOKEN}
 
 RUN yarn build
 
@@ -67,7 +75,7 @@ RUN set -ex \
 
 COPY --from=builder /app/public ./public
 
-# Automatically leverage output traces to reduce image size 
+# Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
