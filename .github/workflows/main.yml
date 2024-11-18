@@ -1,7 +1,9 @@
 name: main
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - chore/build-arm-image
 env:
   DOKKU_REMOTE_BRANCH: "master"
   DOKKU_REMOTE_URL: "ssh://dokku@ui-1.prod.codeforafrica.org/sensors-africa-ui"
@@ -21,6 +23,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      # Add support for more platforms with QEMU (optional)
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
       # Set up Node since it's required by version-check
       # https://github.com/EndBug/version-check#github-workflow
@@ -67,6 +73,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           context: .
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: "${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}"
 
