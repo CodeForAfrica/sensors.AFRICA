@@ -80,7 +80,8 @@ jobs:
         if: steps.version-check.outputs.changed == 'true'
         uses: docker/build-push-action@v6
         with:
-          platforms: linux/amd64,linux/arm64
+          # TO_DO: Xavier - yarn build fails for linux/amd64
+          platforms: linux/arm64
           build-args: |
             NEXT_PUBLIC_APP_URL=${{ env.NEXT_PUBLIC_APP_URL }}
             NEXT_PUBLIC_APP_API_BASE_URL=${{ env.NEXT_PUBLIC_APP_API_BASE_URL }}
