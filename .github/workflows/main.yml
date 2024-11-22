@@ -15,6 +15,7 @@ env:
   DOKKU_REMOTE_URL: "ssh://dokku@ui-2.prod.codeforafrica.org/sensors-africa-ui"
   NEXT_PUBLIC_APP_URL: "https://sensors.africa"
   NEXT_PUBLIC_APP_API_BASE_URL: "https://api.sensors.africa/v2"
+  NEXT_PUBLIC_APP_MAP_URL: "https://v2.map.aq.sensors.africa/"
   IMAGE_NAME: "codeforafrica/sensors-africa-ui"
   VERSION_FILE_NAME: "package.json"
 
@@ -85,6 +86,7 @@ jobs:
           build-args: |
             NEXT_PUBLIC_APP_URL=${{ env.NEXT_PUBLIC_APP_URL }}
             NEXT_PUBLIC_APP_API_BASE_URL=${{ env.NEXT_PUBLIC_APP_API_BASE_URL }}
+            NEXT_PUBLIC_APP_MAP_URL=${{ env.NEXT_PUBLIC_APP_MAP_URL }}
             GOOGLE_ANALYTICS_ID=${{ secrets.SENSORS_AFRICA_GA_ANALYTICS_ID }}
             API_TOKEN=${{ secrets.SENSORS_AFRICA_API_TOKEN }}
           cache-from: type=local,src=/tmp/.buildx-cache
