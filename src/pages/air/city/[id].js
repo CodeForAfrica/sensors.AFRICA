@@ -165,7 +165,7 @@ function City({ city: citySlug, data, ...props }) {
       setCityP2Stats({ average: "--", averageDescription: "loading" });
       setCityTemperatureStats({});
       setCityHumidityStats({});
-      fetch(`/api/air-quality?city${city}`)
+      fetch(`/api/air/quality?city=${city}`)
         .then((res) => res.json())
         .then((json) => {
           setCityHumidityStats(getFormattedHumidityStats(json));
@@ -173,7 +173,7 @@ function City({ city: citySlug, data, ...props }) {
           setCityTemperatureStats(getFormattedTemperatureStats(json));
         })
         .then(() =>
-          fetch(`/api/weekly-p2-data?city${city}`)
+          fetch(`/api/air/weekly-p2-data?city=${city}`)
             .then((res) => res.json())
             .then((json) =>
               setCityP2WeeklyStats(getFormattedWeeklyP2Stats(json)),
