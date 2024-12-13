@@ -1,23 +1,23 @@
 {
-  "presets": ["next/babel"],
-  "plugins": [
-    [
-      "transform-imports",
-      {
-        "material-ui/core": {
-          "transform": "material-ui/core/esm/${member}",
-          "preventFullImport": true
+    "presets": ["next/babel"],
+    "plugins": [
+      [
+        "transform-imports",
+        {
+          "material-ui/core": {
+            "transform": "material-ui/core/esm/${member}",
+            "preventFullImport": true
+          }
         }
-      }
-    ],
-    [
-      "module-resolver",
-      {
-        "root": ["./src"],
-        "alias": {
-          "@/sensorsafrica": "./src"
+      ],
+      [
+        "module-resolver",
+        {
+          "root": ["./src"],
+          "alias": {
+            "@/sensorsafrica": "./src"
+          }
         }
-      }
+      ]
     ]
-  ]
-}
+  }
