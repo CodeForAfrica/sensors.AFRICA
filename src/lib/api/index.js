@@ -64,7 +64,7 @@ const formatWeeklyP2Stats = (data) => {
     }
     const date = new Date(data[i].start_datetime).toLocaleDateString(
       "en-US",
-      DATE_FMT_OPTIONS,
+      DATE_FMT_OPTIONS
     );
     stats.push({ date, averagePM });
   }
@@ -177,6 +177,36 @@ const CITIES_LOCATION = {
     center: "4.8472,6.9746",
     twitterHandle: "#PortHarcourt",
   },
+  accra: {
+    slug: "accra",
+    latitude: "5.595005",
+    longitude: "-0.189084",
+    name: "Accra",
+    country: "Ghana",
+    label: "Accra,Ghana",
+    zoom: "12",
+    center: "5.595005,-0.189084",
+  },
+  kumasi: {
+    slug: "kumasi",
+    latitude: "6.6916459",
+    longitude: "-1.62318228",
+    name: "Kumasi",
+    country: "Ghana",
+    label: "Kumasi,Ghana",
+    zoom: "12",
+    center: "6.6916459,-1.62318228",
+  },
+  lusaka: {
+    slug: "lusaka",
+    latitude: "-15.4163395",
+    longitude: "28.2818414",
+    name: "Lusaka",
+    country: "Zambia",
+    label: "Lusaka, Zambia",
+    zoom: "12",
+    center: "-15.4163395,28.2818414",
+  },
 };
 
 const API = {
@@ -199,7 +229,7 @@ const API = {
           Authorization: `Token ${API_TOKEN}`,
           "Content-Type": "application/json",
         },
-      },
+      }
     );
   },
 };

@@ -322,6 +322,21 @@ const DEFAULT_OPTIONS = [
     label: "Port Harcourt",
     country: "Nigeria",
   },
+  {
+    value: "accra",
+    label: "Accra",
+    country: "Ghana",
+  },
+  {
+    value: "kumasi",
+    label: "Kumasi",
+    country: "Ghana",
+  },
+  {
+    value: "lusaka",
+    label: "Lusaka",
+    country: "Zambia",
+  },
 ];
 
 function SearchBar({ handleSearch, placeholder, options, ...props }) {
