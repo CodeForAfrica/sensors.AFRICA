@@ -64,7 +64,7 @@ const formatWeeklyP2Stats = (data) => {
     }
     const date = new Date(data[i].start_datetime).toLocaleDateString(
       "en-US",
-      DATE_FMT_OPTIONS
+      DATE_FMT_OPTIONS,
     );
     stats.push({ date, averagePM });
   }
@@ -229,7 +229,7 @@ const API = {
           Authorization: `Token ${API_TOKEN}`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
   },
 };
