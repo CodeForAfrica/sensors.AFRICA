@@ -228,10 +228,12 @@ function City({ city: citySlug, data, ...props }) {
         <HostSensorsButton city={CITIES_LOCATION[city]} />
       </Grid>
       <Grid item xs={12}>
-        <PollutionStats
-          pollutionStats={CITIES_POLLUTION_STATS[city]}
-          city={CITIES_LOCATION[city]}
-        />
+        {CITIES_POLLUTION_STATS[city] ? (
+          <PollutionStats
+            pollutionStats={CITIES_POLLUTION_STATS[city]}
+            city={CITIES_LOCATION[city]}
+          />
+        ) : null}
       </Grid>
       <Grid item xs={12} id="map">
         <SensorMap
