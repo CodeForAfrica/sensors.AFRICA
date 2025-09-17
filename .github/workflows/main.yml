@@ -86,7 +86,8 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           context: .
           push: true
-          tags: "${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}"
+          # tags: "${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}"
+          tags: "${{ env.IMAGE_NAME }}:0.4.29"
 
       - name: Move cache
         # if: steps.version-check.outputs.changed == 'true'
