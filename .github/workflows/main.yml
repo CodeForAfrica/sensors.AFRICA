@@ -83,10 +83,11 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           build-args: |
-            NEXT_PUBLIC_APP_API_BASE_URL: ${{ env.NEXT_PUBLIC_APP_API_BASE_URL }}
-            NEXT_PUBLIC_APP_API_DOCS_URL: ${{ env.NEXT_PUBLIC_APP_API_DOCS_URL }}
-            NEXT_PUBLIC_APP_API_STATIC_URL: ${{ env.NEXT_PUBLIC_APP_API_STATIC_URL }}
-            NEXT_PUBLIC_APP_MAP_URL: ${{ env.NEXT_PUBLIC_APP_MAP_URL }}
+            GOOGLE_ANALYTICS_ID=${{ secrets.SENSORS_AFRICA_GA_ANALYTICS_ID }}
+            NEXT_PUBLIC_APP_API_BASE_URL=${{ env.NEXT_PUBLIC_APP_API_BASE_URL }}
+            NEXT_PUBLIC_APP_API_DOCS_URL=${{ env.NEXT_PUBLIC_APP_API_DOCS_URL }}
+            NEXT_PUBLIC_APP_API_STATIC_URL=${{ env.NEXT_PUBLIC_APP_API_STATIC_URL }}
+            NEXT_PUBLIC_APP_MAP_URL=${{ env.NEXT_PUBLIC_APP_MAP_URL }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           context: .

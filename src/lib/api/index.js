@@ -213,12 +213,6 @@ const CITIES_LOCATION = {
 
 const API = {
   getAirData(city) {
-    if (API_TOKEN) {
-      console.log("API_TOKEN is set");
-    }
-    if (API_BASE_URL) {
-      console.log("API_BASE_URL is set");
-    }
     return fetch(`${API_BASE_URL}/data/stats/air/?city=${city}`, {
       headers: {
         Authorization: `Token ${API_TOKEN}`,
@@ -227,12 +221,6 @@ const API = {
     });
   },
   getWeeklyP2Data(city) {
-    if (API_TOKEN) {
-      console.log("API_TOKEN is set");
-    }
-    if (API_BASE_URL) {
-      console.log("API_BASE_URL is set");
-    }
     const fromDate = new Date(Date.now() - 7 * 24 * 3600 * 1000)
       .toISOString()
       .substring(0, 10);
