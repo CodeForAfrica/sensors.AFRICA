@@ -4,7 +4,7 @@ on:
     branches: [main]
 env:
   DOKKU_REMOTE_BRANCH: "master"
-  DOKKU_REMOTE_URL: "ssh://dokku@ui-1.prod.codeforafrica.org/sensors-africa-ui"
+  DOKKU_REMOTE_URL: "ssh://dokku@ui-2.prod.codeforafrica.org/sensors-africa-ui"
   IMAGE_NAME: "codeforafrica/sensors-africa-ui"
   GIT_PUSH_FLAGS: "--force"
 
