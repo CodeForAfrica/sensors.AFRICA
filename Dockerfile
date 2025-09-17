@@ -7,7 +7,7 @@ FROM node:20.19-alpine AS node
 # Always install security updated e.g. https://pythonspeed.com/articles/security-updates-in-docker/
 # Update local cache so that other stages don't need to update cache
 RUN apk update \
-    && apk upgrade
+  && apk upgrade
 
 # ============================================================================
 #  Node
@@ -44,7 +44,8 @@ COPY . .
 ARG NEXT_TELEMETRY_DISABLED
 ENV NEXT_TELEMETRY_DISABLED=${NEXT_TELEMETRY_DISABLED}
 
-RUN yarn build
+RUN --mount=type=secret,id=api_token,env=API_TOKEN \
+  yarn build
 
 # ============================================================================
 #  Runner
@@ -54,9 +55,9 @@ RUN yarn build
 FROM node AS runner
 
 ARG NEXT_TELEMETRY_DISABLED \
-    NODE_ENV
+  NODE_ENV
 ENV NEXT_TELEMETRY_DISABLED={NEXT_TELEMETRY_DISABLED} \
-    NODE_ENV=${NODE_ENV}
+  NODE_ENV=${NODE_ENV}
 
 WORKDIR /app
 

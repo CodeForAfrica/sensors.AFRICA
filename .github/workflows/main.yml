@@ -92,6 +92,8 @@ jobs:
           context: .
           platforms: linux/arm64
           push: true
+          secrets: |
+            "api_token=${{ secrets.SENSORS_AFRICA_API_TOKEN }}"
           # tags: "${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}"
           tags: "${{ env.IMAGE_NAME }}:0.4.29"
 
