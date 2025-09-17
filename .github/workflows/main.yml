@@ -76,7 +76,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           build-args: |
-            API_TOKEN=${{ secrets.SENSORS_AFRICA_API_TOKEN }}
             GOOGLE_ANALYTICS_ID=${{ secrets.SENSORS_AFRICA_GA_ANALYTICS_ID }}
             NEXT_PUBLIC_APP_API_BASE_URL: ${{ env.NEXT_PUBLIC_APP_API_BASE_URL }}
             NEXT_PUBLIC_APP_API_DOCS_URL: ${{ env.NEXT_PUBLIC_APP_API_DOCS_URL }}
