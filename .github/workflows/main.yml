@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - chore-upgrade_workflow
 
 concurrency:
   group: "${{ github.workflow }} @ ${{ github.ref }}"
@@ -12,8 +11,9 @@ concurrency:
 env:
   DOKKU_REMOTE_BRANCH: "master"
   DOKKU_REMOTE_URL: "ssh://dokku@ui-2.prod.codeforafrica.org/sensors-africa-ui"
-  IMAGE_NAME: "codeforafrica/sensors-africa-ui"
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GIT_PUSH_FLAGS: "--force"
+  IMAGE_NAME: "codeforafrica/sensors-africa-ui"
   NEXT_PUBLIC_APP_API_BASE_URL: "https://api.sensors.africa/v2"
   NEXT_PUBLIC_APP_API_DOCS_URL: "https://api.sensors.africa/docs"
   NEXT_PUBLIC_APP_API_STATIC_URL: "https://api.sensors.africa/static/v2"
@@ -55,13 +55,11 @@ jobs:
         uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
+        if: steps.version-check.outputs.changed == 'true'
         uses: docker/setup-buildx-action@v1
 
       - name: Cache Docker layers
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
+        if: steps.version-check.outputs.changed == 'true'
         uses: actions/cache@v4
         with:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
@@ -70,16 +68,14 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Login to DockerHub
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
+        if: steps.version-check.outputs.changed == 'true'
         uses: docker/login-action@v3
         with:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
 
       - name: Build Docker image
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
+        if: steps.version-check.outputs.changed == 'true'
         uses: docker/build-push-action@v6
         with:
           build-args: |
@@ -95,12 +91,10 @@ jobs:
           push: true
           secrets: |
             "api_token=${{ secrets.SENSORS_AFRICA_API_TOKEN }}"
-          # tags: "${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}"
-          tags: "${{ env.IMAGE_NAME }}:0.4.29"
+          tags: "${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}"
 
       - name: Move cache
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
+        if: steps.version-check.outputs.changed == 'true'
         run: |
           rm -rf /tmp/.buildx-cache
           [ -f /tmp/.buildx-cache-new ] && mv /tmp/.buildx-cache-new /tmp/.buildx-cache
