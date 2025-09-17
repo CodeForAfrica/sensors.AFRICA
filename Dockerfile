@@ -32,6 +32,15 @@ RUN yarn install --frozen-lockfile --network-timeout 600000
 
 # Rebuild the source code only when needed
 FROM node AS builder
+
+ARG \
+  NEXT_PUBLIC_APP_API_BASE_URL="http://localhost:8000/v2" \
+  NEXT_PUBLIC_APP_API_DOCS_URL="https://localhost:8000/docs" \
+  NEXT_PUBLIC_APP_API_STATIC_URL="http://localhost:8000/static/v2" \
+  NEXT_PUBLIC_APP_MAP_URL="https://v2.map.aq.sensors.africa/" \
+  NEXT_TELEMETRY_DISABLED=1 \
+  NODE_ENV="production"
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
