@@ -15,7 +15,7 @@
     "codemod": "yarn codemod-staged-optimal-imports './src' && yarn codemod-staged-top-level-imports './src'",
     "codemod-staged-optimal-imports": "yarn jscodeshift --transform=node_modules/@material-ui/codemod/lib/v4.0.0/optimal-imports.js",
     "codemod-staged-top-level-imports": "yarn jscodeshift --transform=node_modules/@material-ui/codemod/lib/v4.0.0/top-level-imports.js",
-    "start": "next start",
+    "start": "node .next/standalone/server.js",
     "build": "next build",
     "lint": "yarn eslint --fix --ignore-path './.gitignore' './'",
     "lint-staged": "yarn eslint --fix --ext '.js,.json,.md'",
