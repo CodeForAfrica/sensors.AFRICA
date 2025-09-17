@@ -1,22 +1,32 @@
 name: main
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+
+concurrency:
+  group: "${{ github.workflow }} @ ${{ github.ref }}"
+  cancel-in-progress: true
+
 env:
   DOKKU_REMOTE_BRANCH: "master"
   DOKKU_REMOTE_URL: "ssh://dokku@ui-2.prod.codeforafrica.org/sensors-africa-ui"
-  IMAGE_NAME: "codeforafrica/sensors-africa-ui"
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GIT_PUSH_FLAGS: "--force"
+  IMAGE_NAME: "codeforafrica/sensors-africa-ui"
+  NEXT_PUBLIC_APP_API_BASE_URL: "https://api.sensors.africa/v2"
+  NEXT_PUBLIC_APP_API_DOCS_URL: "https://api.sensors.africa/docs"
+  NEXT_PUBLIC_APP_API_STATIC_URL: "https://api.sensors.africa/static/v2"
+  NEXT_PUBLIC_APP_MAP_URL: "https://v2.map.aq.sensors.africa"
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.16]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -25,13 +35,13 @@ jobs:
       # Set up Node since it's required by version-check
       # https://github.com/EndBug/version-check#github-workflow
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: ${{ matrix.node-version }}
 
       - name: Check if version is bumped
         id: version-check
-        uses: EndBug/version-check@v1
+        uses: EndBug/version-check@v2
         with:
           # Whether to search in every commit's diff.
           # This is useful if you often do change the version without saying it
@@ -40,15 +50,17 @@ jobs:
           # omit this.
           diff-search: true
 
+      # Add support for more platforms with QEMU (optional)
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
       - name: Set up Docker Buildx
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
+        if: steps.version-check.outputs.changed == 'true'
         uses: docker/setup-buildx-action@v1
 
       - name: Cache Docker layers
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
-        uses: actions/cache@v2
+        if: steps.version-check.outputs.changed == 'true'
+        uses: actions/cache@v4
         with:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           path: /tmp/.buildx-cache
@@ -56,27 +68,33 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Login to DockerHub
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
-        uses: docker/login-action@v1
+        if: steps.version-check.outputs.changed == 'true'
+        uses: docker/login-action@v3
         with:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
 
       - name: Build Docker image
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
-        uses: docker/build-push-action@v2
+        if: steps.version-check.outputs.changed == 'true'
+        uses: docker/build-push-action@v6
         with:
+          build-args: |
+            GOOGLE_ANALYTICS_ID=${{ secrets.SENSORS_AFRICA_GA_ANALYTICS_ID }}
+            NEXT_PUBLIC_APP_API_BASE_URL=${{ env.NEXT_PUBLIC_APP_API_BASE_URL }}
+            NEXT_PUBLIC_APP_API_DOCS_URL=${{ env.NEXT_PUBLIC_APP_API_DOCS_URL }}
+            NEXT_PUBLIC_APP_API_STATIC_URL=${{ env.NEXT_PUBLIC_APP_API_STATIC_URL }}
+            NEXT_PUBLIC_APP_MAP_URL=${{ env.NEXT_PUBLIC_APP_MAP_URL }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           context: .
+          platforms: linux/arm64
           push: true
+          secrets: |
+            "api_token=${{ secrets.SENSORS_AFRICA_API_TOKEN }}"
           tags: "${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}"
 
       - name: Move cache
-        # if: steps.version-check.outputs.changed == 'true'
-        if: true
+        if: steps.version-check.outputs.changed == 'true'
         run: |
           rm -rf /tmp/.buildx-cache
           [ -f /tmp/.buildx-cache-new ] && mv /tmp/.buildx-cache-new /tmp/.buildx-cache
