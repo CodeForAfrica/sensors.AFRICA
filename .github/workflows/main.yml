@@ -55,7 +55,7 @@ jobs:
       - name: Cache Docker layers
         # if: steps.version-check.outputs.changed == 'true'
         if: true
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           path: /tmp/.buildx-cache
