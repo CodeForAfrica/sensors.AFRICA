@@ -1,14 +1,8 @@
-ARG \
-  NODE_ENV=production \
-  # Next.js collects completely anonymous telemetry data about general usage.
-  # Learn more here: https://nextjs.org/telemetry
-  NEXT_TELEMETRY_DISABLED=1
-
 # ============================================================================
 #  Node
 # ============================================================================
 
-FROM node:20.14-alpine AS node
+FROM node:20.19-alpine AS node
 
 # Always install security updated e.g. https://pythonspeed.com/articles/security-updates-in-docker/
 # Update local cache so that other stages don't need to update cache
@@ -38,6 +32,8 @@ ARG \
   NEXT_PUBLIC_APP_API_DOCS_URL="https://localhost:8000/docs" \
   NEXT_PUBLIC_APP_API_STATIC_URL="http://localhost:8000/static/v2" \
   NEXT_PUBLIC_APP_MAP_URL="https://v2.map.aq.sensors.africa/" \
+  # Next.js collects completely anonymous telemetry data about general usage.
+  # Learn more here: https://nextjs.org/telemetry
   NEXT_TELEMETRY_DISABLED=1 \
   NODE_ENV="production"
 
@@ -86,7 +82,8 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
-CMD ["HOSTNAME='0.0.0.0'", "node", "server.js"]
+CMD ["node", "server.js"]

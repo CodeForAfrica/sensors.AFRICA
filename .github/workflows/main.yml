@@ -4,6 +4,11 @@ on:
     branches:
       - main
       - chore-upgrade_workflow
+
+concurrency:
+  group: "${{ github.workflow }} @ ${{ github.ref }}"
+  cancel-in-progress: true
+
 env:
   DOKKU_REMOTE_BRANCH: "master"
   DOKKU_REMOTE_URL: "ssh://dokku@ui-2.prod.codeforafrica.org/sensors-africa-ui"
@@ -14,16 +19,14 @@ env:
   NEXT_PUBLIC_APP_API_STATIC_URL: "https://api.sensors.africa/static/v2"
   NEXT_PUBLIC_APP_MAP_URL: "https://v2.map.aq.sensors.africa"
 
-
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.16]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -32,13 +35,13 @@ jobs:
       # Set up Node since it's required by version-check
       # https://github.com/EndBug/version-check#github-workflow
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: ${{ matrix.node-version }}
 
       - name: Check if version is bumped
         id: version-check
-        uses: EndBug/version-check@v1
+        uses: EndBug/version-check@v2
         with:
           # Whether to search in every commit's diff.
           # This is useful if you often do change the version without saying it
@@ -46,6 +49,10 @@ jobs:
           # version in your commit message when you bump versions then you can
           # omit this.
           diff-search: true
+
+      # Add support for more platforms with QEMU (optional)
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         # if: steps.version-check.outputs.changed == 'true'
@@ -55,7 +62,7 @@ jobs:
       - name: Cache Docker layers
         # if: steps.version-check.outputs.changed == 'true'
         if: true
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           path: /tmp/.buildx-cache
@@ -65,7 +72,7 @@ jobs:
       - name: Login to DockerHub
         # if: steps.version-check.outputs.changed == 'true'
         if: true
-        uses: docker/login-action@v1
+        uses: docker/login-action@v3
         with:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
@@ -73,7 +80,7 @@ jobs:
       - name: Build Docker image
         # if: steps.version-check.outputs.changed == 'true'
         if: true
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           build-args: |
             NEXT_PUBLIC_APP_API_BASE_URL: ${{ env.NEXT_PUBLIC_APP_API_BASE_URL }}
@@ -83,6 +90,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           context: .
+          platforms: linux/arm64
           push: true
           # tags: "${{ env.IMAGE_NAME }}:${{ steps.version-check.outputs.version }}"
           tags: "${{ env.IMAGE_NAME }}:0.4.29"
