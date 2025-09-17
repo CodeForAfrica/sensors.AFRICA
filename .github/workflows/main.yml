@@ -79,7 +79,7 @@ jobs:
         if: true
         run: |
           rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          [ -f /tmp/.buildx-cache-new ] && mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
       - name: Push to Dokku
         if: steps.version-check.outputs.changed == 'true'
