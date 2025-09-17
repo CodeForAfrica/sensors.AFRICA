@@ -8,7 +8,7 @@ ARG \
 #  Node
 # ============================================================================
 
-FROM node:20.14-alpine as node
+FROM node:20.14-alpine AS node
 
 # Always install security updated e.g. https://pythonspeed.com/articles/security-updates-in-docker/
 # Update local cache so that other stages don't need to update cache
@@ -19,7 +19,7 @@ RUN apk update \
 #  Node
 # ============================================================================
 #
-FROM node as deps
+FROM node AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
@@ -80,4 +80,4 @@ ENV PORT=3000
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
-CMD HOSTNAME="0.0.0.0" node server.js
+CMD ["HOSTNAME='0.0.0.0'", "node", "server.js"]
