@@ -1,7 +1,9 @@
 name: main
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - chore-upgrade_workflow
 env:
   DOKKU_REMOTE_BRANCH: "master"
   DOKKU_REMOTE_URL: "ssh://dokku@ui-1.prod.codeforafrica.org/sensors-africa-ui"
@@ -46,7 +48,7 @@ jobs:
 
       - name: Cache Docker layers
         if: steps.version-check.outputs.changed == 'true'
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           path: /tmp/.buildx-cache
