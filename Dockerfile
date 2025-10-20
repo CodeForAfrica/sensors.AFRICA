@@ -2,7 +2,7 @@
 #  Node
 # ============================================================================
 
-FROM node:20.19-alpine AS node
+FROM node:25.0-alpine AS node
 
 # Always install security updated e.g. https://pythonspeed.com/articles/security-updates-in-docker/
 # Update local cache so that other stages don't need to update cache
