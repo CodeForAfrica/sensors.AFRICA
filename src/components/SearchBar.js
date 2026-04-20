@@ -322,6 +322,10 @@ const DEFAULT_OPTIONS = [
     label: "Port Harcourt",
     country: "Nigeria",
   },
+  { value: "kano-city", label: "Kano City", country: "Nigeria" },
+  { value: "awka", label: "Awka", country: "Nigeria" },
+  { value: "akure", label: "Akure", country: "Nigeria" },
+  { value: "ado-ekiti", label: "Ado Ekiti", country: "Nigeria" },
   {
     value: "accra",
     label: "Accra",
