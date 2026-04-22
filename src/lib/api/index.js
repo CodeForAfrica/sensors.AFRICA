@@ -218,7 +218,7 @@ const CITIES_LOCATION = {
     longitude: "5.224529",
     name: "Ado Ekiti",
     country: "Nigeria",
-    label: "Ado Ekiti, Nigeria",
+    label: "Ado-Ekiti, Nigeria",
     zoom: "12",
     center: "7.618227,5.224529",
     twitterHandle: "#AdoEkiti",

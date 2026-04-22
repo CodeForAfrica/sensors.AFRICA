@@ -325,7 +325,7 @@ const DEFAULT_OPTIONS = [
   { value: "kano-city", label: "Kano City", country: "Nigeria" },
   { value: "awka", label: "Awka", country: "Nigeria" },
   { value: "akure", label: "Akure", country: "Nigeria" },
-  { value: "ado-ekiti", label: "Ado Ekiti", country: "Nigeria" },
+  { value: "ado-ekiti", label: "Ado-Ekiti", country: "Nigeria" },
   {
     value: "accra",
     label: "Accra",
