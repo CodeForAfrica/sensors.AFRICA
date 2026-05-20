@@ -179,13 +179,13 @@ const CITIES_LOCATION = {
   //   center: "4.8472,6.9746",
   //   twitterHandle: "#PortHarcourt",
   // },
-  "kano-city": {
-    slug: "kano-city",
+  kano: {
+    slug: "kano",
     latitude: "12.0022",
     longitude: "8.592",
-    name: "Kano City",
+    name: "Kano",
     country: "Nigeria",
-    label: "Kano City, Nigeria",
+    label: "Kano, Nigeria",
     zoom: "12",
     center: "12.0022,8.592",
     twitterHandle: "#Kano",
