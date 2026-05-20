@@ -74,20 +74,20 @@ const CITIES_POLLUTION_STATS = {
     annualAverage: "122",
     percent: "170% more",
   },
-  maiduguri: {
-    deathCount: "290,456",
-    childDeathCount: "98,001",
-    topIllness: "Lower",
-    annualAverage: "122",
-    percent: "170% more",
-  },
-  "port-harcourt": {
-    deathCount: "290,456",
-    childDeathCount: "98,001",
-    topIllness: "Lower",
-    annualAverage: "122",
-    percent: "170% more",
-  },
+  // maiduguri: {
+  //   deathCount: "290,456",
+  //   childDeathCount: "98,001",
+  //   topIllness: "Lower",
+  //   annualAverage: "122",
+  //   percent: "170% more",
+  // },
+  // "port-harcourt": {
+  //   deathCount: "290,456",
+  //   childDeathCount: "98,001",
+  //   topIllness: "Lower",
+  //   annualAverage: "122",
+  //   percent: "170% more",
+  // },
 };
 const AQ_COLOR = [
   "#5fbf82",

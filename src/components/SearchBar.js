@@ -316,12 +316,12 @@ const DEFAULT_OPTIONS = [
   { value: "abuja", label: "Abuja", country: "Nigeria" },
   { value: "ilorin", label: "Ilorin", country: "Nigeria" },
   { value: "lagos", label: "Lagos", country: "Nigeria" },
-  { value: "maiduguri", label: "Maiduguri", country: "Nigeria" },
-  {
-    value: "port-harcourt",
-    label: "Port Harcourt",
-    country: "Nigeria",
-  },
+  // { value: "maiduguri", label: "Maiduguri", country: "Nigeria" },
+  // {
+  //   value: "port-harcourt",
+  //   label: "Port Harcourt",
+  //   country: "Nigeria",
+  // },
   { value: "kano-city", label: "Kano City", country: "Nigeria" },
   { value: "awka", label: "Awka", country: "Nigeria" },
   { value: "akure", label: "Akure", country: "Nigeria" },
