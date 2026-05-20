@@ -565,7 +565,7 @@ function DataArchives(props) {
             exported once a day in CSV file format and made available at the{" "}
             <a
               className={classes.link}
-              href="https://openafrica.net/organization/sensors-africa"
+              href="https://open.africa/organization/sensors-africa"
               target="_blank"
               rel="noopener noreferrer"
             >
