@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get started — join the sensors.AFRICA network</title>
+<meta name="description" content="Host a sensor, kickstart a sensor program in your city, or champion clean air. Join the sensors.AFRICA citizen science network.">
+
+<!-- Fonts: Fraunces (display serif) · Space Grotesk (data) · Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — shared with all subpages, do not diverge
+   ============================================================ */
+:root{
+  --ink:#0c0f16; --ink-2:#141821; --ink-3:#1a1f2b;
+  --paper:#f1eee7; --paper-ink:#17140f;
+  --text:#e9ebf0; --text-2:#9aa2b1; --muted:#6b7280;
+  --hair:rgba(255,255,255,0.09); --hair-strong:rgba(255,255,255,0.16);
+  --aqi-good:#46d17f; --aqi-moderate:#f4c542; --aqi-sensitive:#f5822e;
+  --aqi-unhealthy:#ef5350; --aqi-veryunhealthy:#b06ae0; --aqi-hazardous:#c0466c;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --data:"Space Grotesk","Inter",system-ui,sans-serif;
+  --maxw:1200px;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink); color:var(--text);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--aqi-moderate);outline-offset:3px;border-radius:2px}
+::selection{background:var(--aqi-sensitive);color:var(--ink)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.kicker{
+  font-family:var(--data);font-size:.75rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-2);
+}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+h2.display{
+  font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.4vw,2.6rem);
+  line-height:1.12;letter-spacing:-.01em;margin:10px 0 14px;
+}
+.lede{color:var(--text-2);max-width:56ch}
+
+/* The AQI spine — a segmented band used as the page's structural accent */
+.aqi-spine{display:flex;height:4px;width:100%}
+.aqi-spine span{flex:1}
+.aqi-spine .s1{background:var(--aqi-good)}
+.aqi-spine .s2{background:var(--aqi-moderate)}
+.aqi-spine .s3{background:var(--aqi-sensitive)}
+.aqi-spine .s4{background:var(--aqi-unhealthy)}
+.aqi-spine .s5{background:var(--aqi-veryunhealthy)}
+.aqi-spine .s6{background:var(--aqi-hazardous)}
+.spine-sm{width:64px;height:4px;margin-bottom:14px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(12,15,22,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--hair);
+}
+.header-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px;
+}
+.wordmark{
+  font-family:var(--data);font-weight:700;font-size:1.05rem;letter-spacing:.01em;
+  text-decoration:none;white-space:nowrap;
+}
+.wordmark .dot-africa{color:var(--aqi-good)}
+.main-nav{display:flex;gap:2px;align-items:center;overflow-x:auto}
+.main-nav a{
+  font-family:var(--data);font-size:.82rem;font-weight:500;color:var(--text-2);
+  text-decoration:none;padding:8px 11px;border-radius:6px;white-space:nowrap;
+}
+.main-nav a:hover{color:var(--text);background:var(--ink-3)}
+.main-nav a.live-link{color:var(--text)}
+.main-nav a.live-link::before{
+  content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--aqi-good);margin-right:7px;vertical-align:1px;
+}
+.nav-cta{
+  font-family:var(--data);font-size:.82rem;font-weight:700;text-decoration:none;
+  color:var(--ink);background:var(--aqi-good);padding:9px 16px;border-radius:999px;white-space:nowrap;
+}
+.nav-cta:hover{background:#5fdd92}
+.nav-cta[aria-current="page"]{box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--aqi-good)}
+
+/* ============================================================
+   BUTTONS (shared with landing)
+   ============================================================ */
+.btn{
+  font-family:var(--data);font-weight:700;font-size:.92rem;text-decoration:none;
+  padding:13px 24px;border-radius:999px;display:inline-block;
+}
+.btn-primary{background:var(--aqi-good);color:var(--ink)}
+.btn-primary:hover{background:#5fdd92}
+.btn-ghost{color:var(--text);border:1px solid var(--hair-strong)}
+.btn-ghost:hover{border-color:var(--text-2)}
+.proto-badge{
+  display:inline-flex;align-items:center;gap:7px;margin-top:26px;
+  font-family:var(--data);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:5px 12px;
+}
+.proto-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aqi-moderate)}
+
+/* ============================================================
+   HERO — editorial, join the network
+   ============================================================ */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(52rem 30rem at 82% -12%, rgba(70,209,127,.09), transparent 60%),
+    radial-gradient(44rem 26rem at 4% 115%, rgba(245,130,46,.07), transparent 60%);
+}
+.hero-inner{position:relative;padding:84px 0 72px;max-width:820px}
+.hero h1{
+  font-family:var(--serif);font-weight:640;font-variation-settings:"opsz" 100;
+  font-size:clamp(2.5rem,5.4vw,4.3rem);line-height:1.04;letter-spacing:-.015em;
+  margin-top:16px;
+}
+.hero h1 em{font-style:italic;font-weight:520;color:var(--aqi-good)}
+.hero .standfirst{margin-top:22px;font-size:1.1rem;color:var(--text-2);max-width:54ch}
+.hero-actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+
+/* ============================================================
+   PATHWAYS — three editorial cards
+   ============================================================ */
+.section{padding:84px 0}
+.pathways-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.pathway-card{
+  position:relative;display:flex;flex-direction:column;
+  background:var(--ink-2);border:1px solid var(--hair);border-radius:14px;
+  padding:28px 26px 26px;overflow:hidden;transition:transform .2s ease,border-color .2s ease;
+}
+.pathway-card:hover{transform:translateY(-3px);border-color:var(--hair-strong)}
+.pathway-card .accent{position:absolute;top:0;left:0;right:0;height:3px}
+.pathway-num{
+  font-family:var(--data);font-size:.68rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:18px;
+}
+.pathway-card h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;line-height:1.22;margin-bottom:12px}
+.pathway-card p{font-size:.9rem;color:var(--text-2);flex:1}
+.pathway-card .who{
+  font-family:var(--data);font-size:.72rem;color:var(--muted);
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--hair);
+}
+.pathway-card .who strong{color:var(--text-2);font-weight:500}
+.pathway-actions{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pathway-cta{
+  font-family:var(--data);font-size:.82rem;font-weight:700;text-decoration:none;
+  color:var(--ink);background:var(--aqi-good);padding:10px 18px;border-radius:999px;white-space:nowrap;
+}
+.pathway-cta:hover{background:#5fdd92}
+.pathway-alt{
+  font-family:var(--data);font-size:.8rem;font-weight:500;text-decoration:none;
+  color:var(--text-2);padding:10px 4px;white-space:nowrap;
+}
+.pathway-alt:hover{color:var(--text)}
+.pathways-foot{margin-top:24px;font-family:var(--data);font-size:.78rem;color:var(--muted)}
+.pathways-foot a{color:var(--text-2)}
+
+/* ============================================================
+   PAPER SECTION — how hosting works (warm reading surface)
+   ============================================================ */
+.paper-section{background:var(--paper);color:var(--paper-ink)}
+.paper-section .kicker{color:#6d675c}
+.paper-section h2.display{color:var(--paper-ink)}
+.paper-section .lede{color:#4d473c}
+.steps-list{list-style:none;counter-reset:step;margin-top:38px;max-width:820px}
+.steps-list li{
+  counter-increment:step;position:relative;
+  padding:0 0 34px 76px;
+}
+.steps-list li::before{
+  content:counter(step,decimal-leading-zero);
+  position:absolute;left:0;top:-4px;
+  font-family:var(--data);font-weight:700;font-size:1.15rem;
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--paper-ink);background:#fff;border:1px solid #e2ddd1;
+}
+.steps-list li::after{ /* connecting rule between steps */
+  content:"";position:absolute;left:23.5px;top:48px;bottom:8px;width:1px;background:#ddd7c9;
+}
+.steps-list li:last-child{padding-bottom:0}
+.steps-list li:last-child::after{display:none}
+.steps-list li:nth-child(1)::before{box-shadow:inset 0 -3px 0 var(--aqi-good)}
+.steps-list li:nth-child(2)::before{box-shadow:inset 0 -3px 0 var(--aqi-moderate)}
+.steps-list li:nth-child(3)::before{box-shadow:inset 0 -3px 0 var(--aqi-sensitive)}
+.steps-list li:nth-child(4)::before{box-shadow:inset 0 -3px 0 var(--aqi-unhealthy)}
+.steps-list h3{font-family:var(--serif);font-size:1.4rem;font-weight:600;margin-bottom:8px}
+.steps-list p{font-family:var(--serif);font-size:1.08rem;line-height:1.68;color:#2c2820;font-weight:420;max-width:60ch}
+.steps-list .step-note{
+  display:block;margin-top:10px;font-family:var(--data);font-size:.76rem;color:#8a8375;
+}
+.steps-list .step-note a{color:#4d473c}
+
+/* ============================================================
+   HARDWARE — spec / parts list
+   ============================================================ */
+.hardware-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start;margin-top:34px}
+.hardware-prose p{color:var(--text-2);font-size:.98rem}
+.hardware-prose p+p{margin-top:1em}
+.hardware-prose strong{color:var(--text);font-weight:600}
+.hardware-badges{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.hw-badge{
+  font-family:var(--data);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text-2);border:1px solid var(--hair-strong);border-radius:999px;padding:6px 14px;
+}
+.parts-card{
+  background:var(--ink-2);border:1px solid var(--hair);border-radius:16px;overflow:hidden;
+}
+.parts-card .parts-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding:20px 24px 16px;border-bottom:1px solid var(--hair);
+}
+.parts-card .parts-head h3{font-family:var(--serif);font-size:1.2rem;font-weight:600}
+.parts-card .parts-head .sub{font-family:var(--data);font-size:.72rem;color:var(--muted)}
+.parts-list{list-style:none}
+.part{
+  display:grid;grid-template-columns:auto 1fr auto;gap:6px 16px;align-items:baseline;
+  padding:18px 24px;border-bottom:1px solid var(--hair);
+}
+.part:last-child{border-bottom:none}
+.part .part-id{
+  font-family:var(--data);font-weight:700;font-size:.95rem;color:var(--text);white-space:nowrap;
+}
+.part .part-id::before{
+  content:"";display:inline-block;width:8px;height:8px;border-radius:2px;
+  margin-right:10px;vertical-align:1px;background:var(--dot,var(--aqi-good));
+}
+.part .part-role{
+  grid-column:2;font-size:.86rem;color:var(--text-2);
+}
+.part .part-tag{
+  font-family:var(--data);font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;justify-self:end;
+}
+.parts-foot{
+  padding:16px 24px;font-family:var(--data);font-size:.72rem;color:var(--muted);
+  background:var(--ink-3);
+}
+.parts-foot a{color:var(--text-2)}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-section{background:var(--ink-2);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.faq-list{margin-top:30px;max-width:860px}
+.faq-item{border:1px solid var(--hair);border-radius:12px;background:var(--ink);margin-bottom:12px;overflow:hidden}
+.faq-item summary{
+  cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:18px 22px;font-family:var(--serif);font-size:1.08rem;font-weight:600;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:"+";font-family:var(--data);font-weight:500;font-size:1.3rem;color:var(--muted);
+  flex:none;line-height:1;transition:transform .2s ease;
+}
+.faq-item[open] summary::after{transform:rotate(45deg);color:var(--text-2)}
+.faq-item summary:hover{background:var(--ink-3)}
+.faq-item .faq-a{padding:0 22px 20px;font-size:.92rem;color:var(--text-2);max-width:68ch}
+.faq-item .faq-a a{color:var(--text)}
+.faq-item .faq-a p+p{margin-top:.8em}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta-section{position:relative;overflow:hidden;border-top:1px solid var(--hair)}
+.cta-section::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50rem 26rem at 50% 120%, rgba(70,209,127,.1), transparent 65%);
+}
+.cta-inner{position:relative;text-align:center;padding:96px 24px;max-width:760px;margin:0 auto}
+.cta-inner h2{
+  font-family:var(--serif);font-weight:640;font-size:clamp(2rem,4.4vw,3.3rem);
+  line-height:1.08;letter-spacing:-.015em;
+}
+.cta-inner p{margin:20px auto 32px;color:var(--text-2);max-width:46ch}
+.cta-inner .aqi-spine{width:120px;margin:0 auto 28px}
+.cta-small{margin-top:18px;font-family:var(--data);font-size:.76rem;color:var(--muted)}
+.cta-small a{color:var(--text-2)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:#080a10;border-top:1px solid var(--hair);padding:64px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-mission{font-size:.9rem;color:var(--text-2);margin-top:14px;max-width:38ch}
+.footer-col h4{
+  font-family:var(--data);font-size:.66rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:16px;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{font-size:.88rem;color:var(--text-2);text-decoration:none}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{
+  margin-top:52px;padding-top:22px;border-top:1px solid var(--hair);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-family:var(--data);font-size:.74rem;color:var(--muted);
+}
+.footer-bottom a{color:var(--text-2)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1020px){
+  .pathways-grid{grid-template-columns:1fr}
+  .hardware-grid{grid-template-columns:1fr;gap:32px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .main-nav{display:none}
+  .hero-inner{padding:60px 0 56px}
+}
+@media (max-width:600px){
+  .footer-grid{grid-template-columns:1fr}
+  .section{padding:60px 0}
+  .steps-list li{padding-left:62px}
+  .steps-list li::before{width:42px;height:42px;font-size:1rem}
+  .steps-list li::after{left:20.5px;top:42px}
+  .part{grid-template-columns:1fr;gap:4px}
+  .part .part-role{grid-column:1}
+  .part .part-tag{justify-self:start}
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .pathway-card,.faq-item summary::after{transition:none}
+  .pathway-card:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+    <nav class="main-nav" aria-label="Primary">
+      <a class="live-link" href="air.html">Air</a>
+      <a href="water.html">Water</a>
+      <a href="sound.html">Sound</a>
+      <a href="radiation.html">Radiation</a>
+      <a href="data.html">Data</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="nav-cta" href="get-started.html" aria-current="page">Get a sensor</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     HERO — join the network
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="kicker">Get started &middot; hosts, cities &amp; champions welcome</p>
+    <h1>Join the <em>network.</em></h1>
+    <p class="standfirst">
+      Are you interested in hosting a sensor, using our data, or championing air quality
+      in your city? There's a place for you in the network — pick your path below and
+      get started. No lab coat required.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform" rel="noopener">Apply to join</a>
+      <a class="btn btn-ghost" href="#how-it-works">How hosting works</a>
+    </div>
+    <span class="proto-badge">Prototype &middot; redesign concept</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     THREE PATHWAYS
+     ============================================================ -->
+<section class="section" id="pathways">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">Three ways in</p>
+        <h2 class="display">Pick your path</h2>
+      </div>
+      <p class="lede">Whether you have a window ledge, a city budget or just a loud voice — every path ends with cleaner, better-documented air.</p>
+    </div>
+
+    <div class="pathways-grid">
+      <article class="pathway-card">
+        <span class="accent" style="background:var(--aqi-good)" aria-hidden="true"></span>
+        <p class="pathway-num">Path 01 &middot; Host</p>
+        <h3>Support an existing sensor network</h3>
+        <p>
+          Already in one of our network cities? Host a sensor at your home, school or office
+          and add your street to the map. We'll help you get the kit up, connected and
+          reporting — your readings become open data the whole city can use.
+        </p>
+        <p class="who"><strong>Good for:</strong> residents, schools, newsrooms, community groups</p>
+        <div class="pathway-actions">
+          <a class="pathway-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform" rel="noopener">Apply to host →</a>
+        </div>
+      </article>
+
+      <article class="pathway-card">
+        <span class="accent" style="background:var(--aqi-moderate)" aria-hidden="true"></span>
+        <p class="pathway-num">Path 02 &middot; Kickstart</p>
+        <h3>Kickstart your city's own sensor program</h3>
+        <p>
+          No sensors near you yet? Be the reason that changes. We work with local partners —
+          civic groups, universities, city governments, media houses — to seed new deployments,
+          train hosts and stand up a monitoring network from scratch.
+        </p>
+        <p class="who"><strong>Good for:</strong> civic organisations, universities, local government, funders</p>
+        <div class="pathway-actions">
+          <a class="pathway-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform" rel="noopener">Start the conversation →</a>
+        </div>
+      </article>
+
+      <article class="pathway-card">
+        <span class="accent" style="background:var(--aqi-sensitive)" aria-hidden="true"></span>
+        <p class="pathway-num">Path 03 &middot; Champion</p>
+        <h3>Champion clean air</h3>
+        <p>
+          Can't host a device? Advocacy moves the needle too. Use our open data in your
+          reporting, research and campaigns, push your representatives to act on the evidence,
+          and help the readings travel further than the sensors ever could.
+        </p>
+        <p class="who"><strong>Good for:</strong> journalists, researchers, activists, everyone with a feed</p>
+        <div class="pathway-actions">
+          <a class="pathway-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform" rel="noopener">Get involved →</a>
+          <a class="pathway-alt" href="https://twitter.com/sensorsAFRICA/" rel="noopener">Follow &amp; share on Twitter ↗</a>
+        </div>
+      </article>
+    </div>
+    <p class="pathways-foot">All three paths start with the same short form — tell us who you are and we'll route you to the right team.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW HOSTING WORKS — warm paper reading surface
+     ============================================================ -->
+<section class="section paper-section" id="how-it-works">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <p class="kicker">From application to open data</p>
+    <h2 class="display">How hosting a sensor works</h2>
+    <p class="lede">Four steps, most of them ours. Your part takes an afternoon; the sensor does the rest around the clock.</p>
+
+    <ol class="steps-list">
+      <li>
+        <h3>Apply</h3>
+        <p>
+          Fill in the short interest form — where you are, where the sensor could live, and
+          whether you have Wi-Fi or would need a GSM (SIM-card) unit. We prioritise locations
+          that fill gaps in the map: near schools, clinics, industry, busy roads.
+        </p>
+        <span class="step-note">Takes about five minutes. <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform" rel="noopener">Open the form</a>.</span>
+      </li>
+      <li>
+        <h3>Receive &amp; assemble the kit</h3>
+        <p>
+          Your kit arrives as a handful of off-the-shelf parts built to the open-source
+          Luftdaten design — a dust sensor, a climate sensor, a small microcontroller and a
+          weatherproof housing. Assembly is a no-solder job with step-by-step instructions,
+          and in many cities a local workshop will build it with you.
+        </p>
+      </li>
+      <li>
+        <h3>Mount it &amp; connect</h3>
+        <p>
+          Fix the unit outside — a window ledge, balcony rail or wall, away from direct rain
+          and exhaust vents — then connect it to your Wi-Fi, or use the GSM version where
+          network coverage is patchy. Once it's online it needs almost nothing from you:
+          just power and air.
+        </p>
+      </li>
+      <li>
+        <h3>Your data goes live</h3>
+        <p>
+          Within minutes your readings start streaming to the open sensors.AFRICA platform —
+          plotted on the live map, stored in the public archive, and free for journalists,
+          researchers and your own neighbours to interrogate. Your street is now on the record.
+        </p>
+        <span class="step-note">See it in action on the <a href="air.html">air quality map</a> and in the <a href="data.html">open data archive</a>.</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     THE HARDWARE — spec / parts list
+     ============================================================ -->
+<section class="section" id="hardware">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">The hardware</p>
+        <h2 class="display">A lab's worth of measurement, a phone's worth of parts</h2>
+      </div>
+    </div>
+
+    <div class="hardware-grid">
+      <div class="hardware-prose">
+        <p>
+          The sensors.AFRICA air kit is a <strong>low-cost, modular device</strong> built on the
+          open-source <strong>Luftdaten</strong> design that powers thousands of citizen sensors
+          worldwide. Every component is off-the-shelf and replaceable — if a part fails, you swap
+          it, not the whole unit.
+        </p>
+        <p>
+          That modularity is the point: the kit is <strong>cheap enough for a household,
+          durable enough for a rooftop, and accurate enough for a newsroom</strong>. It measures
+          the particulate matter that matters most to health — PM<sub>2.5</sub> and
+          PM<sub>10</sub> — alongside the temperature and humidity needed to keep those readings honest.
+        </p>
+        <p>
+          Connectivity is flexible by design. Where Wi-Fi is reliable, the standard unit uses it.
+          Where it isn't, a <strong>GSM variant</strong> reports over the mobile network instead —
+          so coverage gaps in the internet don't become coverage gaps in the data.
+        </p>
+        <div class="hardware-badges" aria-label="Kit qualities">
+          <span class="hw-badge">Open source</span>
+          <span class="hw-badge">Off-the-shelf</span>
+          <span class="hw-badge">Modular</span>
+          <span class="hw-badge">Low cost</span>
+          <span class="hw-badge">Durable</span>
+        </div>
+      </div>
+
+      <div class="parts-card">
+        <div class="parts-head">
+          <h3>What's in the kit</h3>
+          <span class="sub">Standard air-quality build &middot; Luftdaten design</span>
+        </div>
+        <ul class="parts-list">
+          <li class="part" style="--dot:var(--aqi-sensitive)">
+            <span class="part-id">SDS011</span>
+            <span class="part-tag">Dust sensor</span>
+            <span class="part-role">Laser particulate sensor measuring PM<sub>2.5</sub> and PM<sub>10</sub> — the fine dust that penetrates deep into lungs and bloodstream.</span>
+          </li>
+          <li class="part" style="--dot:var(--aqi-moderate)">
+            <span class="part-id">DHT22</span>
+            <span class="part-tag">Climate sensor</span>
+            <span class="part-role">Temperature and relative-humidity sensor — context that keeps particulate readings comparable across seasons and cities.</span>
+          </li>
+          <li class="part" style="--dot:var(--aqi-good)">
+            <span class="part-id">NodeMCU</span>
+            <span class="part-tag">Microcontroller</span>
+            <span class="part-role">The small ESP8266-based board that runs the open firmware, reads the sensors and ships the data to the platform.</span>
+          </li>
+          <li class="part" style="--dot:var(--aqi-veryunhealthy)">
+            <span class="part-id">Wi-Fi / SIM800L</span>
+            <span class="part-tag">Connectivity</span>
+            <span class="part-role">Built-in Wi-Fi as standard; a SIM800L GSM module where mobile networks are more dependable than broadband.</span>
+          </li>
+          <li class="part" style="--dot:var(--aqi-unhealthy)">
+            <span class="part-id">Housing &amp; cabling</span>
+            <span class="part-tag">Enclosure</span>
+            <span class="part-role">Weatherproof piping enclosure, tubing and USB power — simple parts from any hardware store, built to survive sun and storm.</span>
+          </li>
+        </ul>
+        <div class="parts-foot">
+          Design and firmware are open source — inspect, build or improve them at
+          <a href="https://github.com/CodeForAfrica/sensors.AFRICA" rel="noopener">github.com/CodeForAfrica</a>
+          and <a href="https://luftdaten.info/" rel="noopener">luftdaten.info</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section faq-section" id="faq">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">Before you ask</p>
+        <h2 class="display">Honest answers, short form</h2>
+      </div>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do I need technical skills to host a sensor?</summary>
+        <div class="faq-a">
+          <p>
+            No. If you can plug in a phone charger and join a Wi-Fi network, you can host a
+            sensor. Assembly needs no soldering, and in many network cities we run build
+            workshops or deliver pre-assembled units.
+          </p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What does it cost?</summary>
+        <div class="faq-a">
+          <p>
+            The kit is deliberately built from low-cost, off-the-shelf parts — a fraction of the
+            price of a reference monitoring station. Costs vary by city and program: some
+            deployments are grant-funded and free to hosts, others ask hosts or partners to
+            cover the hardware. Tell us your situation in the form and we'll be straight with
+            you about what's possible.
+          </p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What if I don't have reliable Wi-Fi?</summary>
+        <div class="faq-a">
+          <p>
+            That's exactly why the GSM variant exists. Units fitted with a SIM800L module report
+            over the mobile network instead, so a sensor can live anywhere with phone signal and
+            power — no broadband required.
+          </p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Is a low-cost sensor actually accurate?</summary>
+        <div class="faq-a">
+          <p>
+            Honestly: it's not a reference-grade instrument, and we don't pretend it is. What
+            the SDS011 is very good at is <em>trends and patterns</em> — rush-hour spikes, seasonal
+            shifts, block-by-block differences — across a network dense enough that no single
+            reading has to carry the story alone. That's the evidence journalists and
+            policymakers actually need, at a price cities can actually afford.
+          </p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Who owns the data my sensor produces?</summary>
+        <div class="faq-a">
+          <p>
+            Everyone. Readings are published as open data — mapped live and stored in a public
+            archive that anyone can download and analyse. Your sensor's location is shown at
+            neighbourhood level on the public map.
+          </p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>My city isn't in the network yet. Can I still join?</summary>
+        <div class="faq-a">
+          <p>
+            Yes — that's Path 02. New cities usually start with a local partner and a handful of
+            committed hosts. If that could be you, fill in the form and tell us about your city;
+            pioneering applications are the ones we're most excited to read.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <h2>Put your street on the record.</h2>
+    <p>One short form is all it takes to start — as a host, a city partner or a clean-air champion. We read every application.</p>
+    <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform" rel="noopener">Apply to join the network</a>
+    <p class="cta-small">Prefer to talk first? Reach the team via <a href="https://twitter.com/sensorsAFRICA/" rel="noopener">@sensorsAFRICA</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+        <p class="footer-mission">A pan-African citizen science initiative using sensors to monitor air, water and sound pollution — giving citizens actionable information about their cities.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Network</h4>
+        <ul>
+          <li><a href="air.html">Air quality</a></li>
+          <li><a href="water.html">Water</a></li>
+          <li><a href="sound.html">Sound</a></li>
+          <li><a href="radiation.html">Radiation</a></li>
+          <li><a href="data.html">Open data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-started.html">Get a sensor</a></li>
+          <li><a href="https://twitter.com/sensorsAFRICA/" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.instagram.com/sensorsAFRICA/" rel="noopener">Instagram</a></li>
+          <li><a href="https://medium.com/@sensors.AFRICA" rel="noopener">Medium</a></li>
+          <li><a href="https://github.com/CodeForAfrica/sensors.AFRICA" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a></li>
+          <li><a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a></li>
+          <li><a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Incubated by <a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a> · seed-funded by <a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a> · powered by <a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></span>
+      <span>Redesign prototype — all readings on this page are illustrative sample data.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPT — tiny enhancement only: close other FAQ items when one
+     opens (accordion behaviour). Content works fully without JS.
+     ============================================================ -->
+<script>
+try {
+  var items = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
+  items.forEach(function (item) {
+    item.addEventListener('toggle', function () {
+      if (item.open) {
+        items.forEach(function (other) {
+          if (other !== item && other.open) other.open = false;
+        });
+      }
+    });
+  });
+} catch (err) {
+  console.warn('FAQ enhancement skipped:', err && err.message);
+}
+</script>
+
+</body>
+</html>

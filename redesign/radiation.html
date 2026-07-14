@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radiation — coming soon · sensors.AFRICA</title>
+<meta name="description" content="sensors.AFRICA is preparing a radiation stream: citizen-hosted detectors establishing an open, independent baseline of ambient radiation levels. Coming soon — air is our live network today.">
+
+<!-- Fonts: Fraunces (display serif) · Space Grotesk (data) · Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — shared with all subpages, do not diverge
+   ============================================================ */
+:root{
+  --ink:#0c0f16; --ink-2:#141821; --ink-3:#1a1f2b;
+  --paper:#f1eee7; --paper-ink:#17140f;
+  --text:#e9ebf0; --text-2:#9aa2b1; --muted:#6b7280;
+  --hair:rgba(255,255,255,0.09); --hair-strong:rgba(255,255,255,0.16);
+  --aqi-good:#46d17f; --aqi-moderate:#f4c542; --aqi-sensitive:#f5822e;
+  --aqi-unhealthy:#ef5350; --aqi-veryunhealthy:#b06ae0; --aqi-hazardous:#c0466c;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --data:"Space Grotesk","Inter",system-ui,sans-serif;
+  --maxw:1200px;
+  /* page accent — RADIATION (violet, from the AQI spine) */
+  --accent:#b06ae0; --accent-soft:rgba(176,106,224,.10); --accent-hover:#c286ea;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink); color:var(--text);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--aqi-moderate);outline-offset:3px;border-radius:2px}
+::selection{background:var(--accent);color:var(--ink)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.kicker{
+  font-family:var(--data);font-size:.75rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-2);
+}
+h2.display{
+  font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.4vw,2.6rem);
+  line-height:1.12;letter-spacing:-.01em;margin:10px 0 14px;
+}
+
+/* The AQI spine — a segmented band used as the site's structural accent */
+.aqi-spine{display:flex;height:4px;width:100%}
+.aqi-spine span{flex:1}
+.aqi-spine .s1{background:var(--aqi-good)}
+.aqi-spine .s2{background:var(--aqi-moderate)}
+.aqi-spine .s3{background:var(--aqi-sensitive)}
+.aqi-spine .s4{background:var(--aqi-unhealthy)}
+.aqi-spine .s5{background:var(--aqi-veryunhealthy)}
+.aqi-spine .s6{background:var(--aqi-hazardous)}
+.spine-sm{width:64px;height:4px;margin-bottom:14px}
+
+/* ============================================================
+   HEADER — identical shell across the site
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(12,15,22,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--hair);
+}
+.header-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px;
+}
+.wordmark{
+  font-family:var(--data);font-weight:700;font-size:1.05rem;letter-spacing:.01em;
+  text-decoration:none;white-space:nowrap;
+}
+.wordmark .dot-africa{color:var(--aqi-good)}
+.main-nav{display:flex;gap:2px;align-items:center;overflow-x:auto}
+.main-nav a{
+  font-family:var(--data);font-size:.82rem;font-weight:500;color:var(--text-2);
+  text-decoration:none;padding:8px 11px;border-radius:6px;white-space:nowrap;
+}
+.main-nav a:hover{color:var(--text);background:var(--ink-3)}
+.main-nav a[aria-current="page"]{color:var(--text);background:var(--ink-3)}
+.main-nav a.live-link{color:var(--text)}
+.main-nav a.live-link::before{
+  content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--aqi-good);margin-right:7px;vertical-align:1px;
+}
+.nav-cta{
+  font-family:var(--data);font-size:.82rem;font-weight:700;text-decoration:none;
+  color:var(--ink);background:var(--aqi-good);padding:9px 16px;border-radius:999px;white-space:nowrap;
+}
+.nav-cta:hover{background:#5fdd92}
+
+/* ============================================================
+   HERO — coming-soon data-stream layout (shared template)
+   ============================================================ */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
+.hero::before{ /* faint accent wash */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(52rem 30rem at 78% -10%, var(--accent-soft), transparent 60%),
+    radial-gradient(44rem 26rem at 8% 110%, rgba(70,209,127,.05), transparent 60%);
+}
+.hero-grid{
+  position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:56px;align-items:center;padding:76px 0 68px;
+}
+.hero h1{
+  font-family:var(--serif);font-weight:640;font-variation-settings:"opsz" 100;
+  font-size:clamp(2.5rem,5.4vw,4.3rem);line-height:1.04;letter-spacing:-.015em;
+}
+.hero h1 em{font-style:italic;font-weight:520;color:var(--accent)}
+.hero .standfirst{margin-top:22px;font-size:1.08rem;color:var(--text-2);max-width:52ch}
+.hero-actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{
+  font-family:var(--data);font-weight:700;font-size:.92rem;text-decoration:none;
+  padding:13px 24px;border-radius:999px;display:inline-block;
+}
+.btn-accent{background:var(--accent);color:var(--ink)}
+.btn-accent:hover{background:var(--accent-hover)}
+.btn-ghost{color:var(--text);border:1px solid var(--hair-strong)}
+.btn-ghost:hover{border-color:var(--text-2)}
+.proto-badge{
+  display:inline-flex;align-items:center;gap:7px;margin-top:26px;
+  font-family:var(--data);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:5px 12px;
+}
+.proto-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aqi-moderate)}
+
+/* honest status badge — this stream is not live yet */
+.soon-badge{
+  display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;
+  font-family:var(--data);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:7px 16px;
+}
+.soon-badge::before{content:"";width:7px;height:7px;border-radius:50%;border:2px solid var(--accent)}
+.live-note{margin-top:14px;font-family:var(--data);font-size:.8rem;color:var(--muted)}
+.live-note a{color:var(--text-2)}
+.live-note a:hover{color:var(--text)}
+
+/* Preview panel — planned metrics, deliberately shown without data */
+.preview-panel{
+  position:relative;background:var(--ink-2);border:1px solid var(--hair-strong);
+  border-radius:16px;padding:26px 28px 24px;box-shadow:0 24px 60px rgba(0,0,0,.45);
+}
+.preview-panel .panel-accent{
+  position:absolute;top:0;left:0;right:0;height:4px;
+  border-radius:16px 16px 0 0;background:var(--accent);
+}
+.panel-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:6px}
+.panel-title{font-family:var(--serif);font-size:1.4rem;font-weight:600}
+.panel-status{
+  font-family:var(--data);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:4px 11px;white-space:nowrap;
+}
+.metric-list{list-style:none;margin-top:20px}
+.metric-list li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:11px 0;border-bottom:1px solid var(--hair);
+  font-family:var(--data);font-size:.88rem;
+}
+.metric-list li:last-child{border-bottom:0}
+.metric-list .m{color:var(--text-2)}
+.metric-list .v{color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.08em}
+.metric-list .u{color:var(--muted);font-size:.72rem;margin-left:6px}
+.panel-foot{
+  margin-top:14px;padding-top:14px;border-top:1px solid var(--hair);
+  font-family:var(--data);font-size:.72rem;color:var(--muted);
+}
+
+/* ============================================================
+   PAPER SECTION — why it matters (warm reading surface)
+   ============================================================ */
+.section{padding:84px 0}
+.paper-section{background:var(--paper);color:var(--paper-ink)}
+.paper-section .kicker{color:#6d675c}
+.paper-section h2.display{color:var(--paper-ink)}
+.impact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start;margin-top:20px}
+.impact-prose{font-family:var(--serif);font-size:1.16rem;line-height:1.72;color:#2c2820;font-weight:420}
+.impact-prose p+p{margin-top:1.1em}
+.impact-prose strong{font-weight:640;color:var(--paper-ink)}
+.stat-tiles{display:grid;grid-template-columns:1fr;gap:14px}
+.stat-tile{background:#fff;border:1px solid #e2ddd1;border-radius:12px;padding:20px 20px 18px}
+.stat-tile .val{font-family:var(--data);font-weight:700;font-size:2.1rem;line-height:1.1;color:var(--paper-ink)}
+.stat-tile .lbl{font-size:.8rem;color:#6d675c;margin-top:6px;line-height:1.45}
+.stat-tile .bar{height:4px;border-radius:2px;background:#ece8dd;margin-top:14px;overflow:hidden}
+.stat-tile .bar i{display:block;height:100%;border-radius:2px}
+.paper-credit{margin-top:34px;font-family:var(--data);font-size:.74rem;color:#8a8375}
+
+/* ============================================================
+   CTA — notify me / stay updated
+   ============================================================ */
+.cta-section{position:relative;overflow:hidden;border-top:1px solid var(--hair)}
+.cta-section::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50rem 26rem at 50% 120%, var(--accent-soft), transparent 65%);
+}
+.cta-inner{position:relative;text-align:center;padding:96px 24px;max-width:760px;margin:0 auto}
+.cta-inner h2{
+  font-family:var(--serif);font-weight:640;font-size:clamp(2rem,4.4vw,3.3rem);
+  line-height:1.08;letter-spacing:-.015em;
+}
+.cta-inner p{margin:20px auto 32px;color:var(--text-2);max-width:46ch}
+.cta-inner .aqi-spine{width:120px;margin:0 auto 28px}
+.cta-proto{margin-top:30px;font-family:var(--data);font-size:.74rem;color:var(--muted)}
+
+/* ============================================================
+   FOOTER — identical shell across the site
+   ============================================================ */
+.site-footer{background:#080a10;border-top:1px solid var(--hair);padding:64px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-mission{font-size:.9rem;color:var(--text-2);margin-top:14px;max-width:38ch}
+.footer-col h4{
+  font-family:var(--data);font-size:.66rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:16px;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{font-size:.88rem;color:var(--text-2);text-decoration:none}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{
+  margin-top:52px;padding-top:22px;border-top:1px solid var(--hair);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-family:var(--data);font-size:.74rem;color:var(--muted);
+}
+.footer-bottom a{color:var(--text-2)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1020px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .impact-grid{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:820px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;padding:56px 0}
+  .main-nav{display:none}
+}
+@media (max-width:600px){
+  .footer-grid{grid-template-columns:1fr}
+  .section{padding:60px 0}
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+    <nav class="main-nav" aria-label="Primary">
+      <a class="live-link" href="air.html">Air</a>
+      <a href="water.html">Water</a>
+      <a href="sound.html">Sound</a>
+      <a href="radiation.html" aria-current="page">Radiation</a>
+      <a href="data.html">Data</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="nav-cta" href="get-started.html">Get a sensor</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     HERO — coming-soon stream
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker" style="margin-bottom:18px">Monitoring stream &middot; Radiation</p>
+      <span class="soon-badge">Coming soon</span>
+      <h1>Background radiation, <em>on the public record.</em></h1>
+      <p class="standfirst">
+        We're preparing a radiation stream for the sensors.AFRICA network: citizen-hosted
+        detectors measuring ambient radiation levels to establish an open, independent baseline
+        for African cities. Background radiation is a normal part of the environment — the point
+        is to measure it continuously, so any change is visible and verifiable. This stream is
+        not live yet.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform" rel="noopener">Notify me when it launches</a>
+        <a class="btn btn-ghost" href="air.html">See the live Air network →</a>
+      </div>
+      <p class="live-note">Air is our only live stream today. Every reading on <a href="air.html">the Air network</a> is real, open and citizen-collected.</p>
+      <span class="proto-badge">Prototype &middot; concept page</span>
+    </div>
+
+    <!-- Planned-metrics panel: honest placeholder, no fake readings -->
+    <aside class="preview-panel" aria-label="Planned radiation metrics — no live data yet">
+      <div class="panel-accent" aria-hidden="true"></div>
+      <div class="panel-top">
+        <span class="panel-title">Planned measurements</span>
+        <span class="panel-status">No live data yet</span>
+      </div>
+      <ul class="metric-list">
+        <li><span class="m">Ambient gamma dose rate</span><span class="v">— · —<span class="u">µSv/h</span></span></li>
+        <li><span class="m">Detector counts</span><span class="v">— · —<span class="u">CPM</span></span></li>
+        <li><span class="m">Rolling local baseline (30-day)</span><span class="v">— · —<span class="u">µSv/h</span></span></li>
+        <li><span class="m">Deviation from baseline</span><span class="v">— · —<span class="u">%</span></span></li>
+        <li><span class="m">Sensor uptime</span><span class="v">— · —<span class="u">%</span></span></li>
+      </ul>
+      <p class="panel-foot">Candidate indicators under evaluation, likely built on Geiger–Müller detectors — calibration and methodology will be published openly before launch.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY IT MATTERS — warm-paper reading block
+     ============================================================ -->
+<section class="section paper-section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <p class="kicker">Why radiation, why now</p>
+    <h2 class="display">A baseline you can check beats a rumour you can't</h2>
+    <div class="impact-grid">
+      <div class="impact-prose">
+        <p>
+          Everyone on earth lives with a small, natural dose of background radiation — from rock,
+          soil, building materials and cosmic rays. It is normally low, it varies from place to
+          place, and it is not a cause for alarm. <strong>The problem is not the background; it is
+          the blank spot.</strong> Across most of Africa there is no continuous, publicly
+          accessible record of ambient radiation at all.
+        </p>
+        <p>
+          That absence matters most on the day something is claimed to have changed — near a
+          mining operation, a medical or industrial source, a waste site, or after an incident
+          reported elsewhere. Without an established baseline, neither residents nor journalists
+          can check the claim; with one, a real anomaly shows up as a measurable deviation, and a
+          false alarm can be calmly ruled out. This stream will build that record:
+          <strong>continuous, citizen-hosted dose-rate measurements, published as open data</strong>
+          for independent verification and early warning.
+        </p>
+      </div>
+      <div class="stat-tiles" aria-label="Key figures on background radiation">
+        <div class="stat-tile">
+          <div class="val">≈2.4 mSv</div>
+          <div class="lbl">typical annual dose from natural background radiation, global average (UNSCEAR) — the ordinary level this stream will chart, city by city</div>
+          <div class="bar" aria-hidden="true"><i style="width:24%;background:var(--accent)"></i></div>
+        </div>
+        <div class="stat-tile">
+          <div class="val">0 — for now</div>
+          <div class="lbl">independent, openly published ambient-radiation readings in our network today. That's the gap this stream exists to close.</div>
+          <div class="bar" aria-hidden="true"><i style="width:4%;background:var(--aqi-unhealthy)"></i></div>
+        </div>
+      </div>
+    </div>
+    <p class="paper-credit">Background-dose figure: UNSCEAR (United Nations Scientific Committee on the Effects of Atomic Radiation). This page describes planned work — no radiation readings are being published yet.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA — stay updated
+     ============================================================ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <h2>Be there when the first reading goes public.</h2>
+    <p>Leave your details and we'll tell you when the radiation stream launches — and how to host a detector and help establish your city's baseline.</p>
+    <a class="btn btn-accent" href="https://docs.google.com/forms/d/e/1FAIpQLSdYwUWsyj5VQggCmpVh4O92VWt6NQ-J6kX-jN7uAa1FOELq0w/viewform" rel="noopener">Stay updated — join the list</a>
+    <p class="cta-proto">Prototype — this is a concept page for the sensors.AFRICA redesign. The radiation stream is not yet live. Meanwhile, <a href="air.html" style="color:var(--text-2)">explore live air data</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+        <p class="footer-mission">A pan-African citizen science initiative using sensors to monitor air, water and sound pollution — giving citizens actionable information about their cities.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Network</h4>
+        <ul>
+          <li><a href="air.html">Air quality</a></li>
+          <li><a href="water.html">Water</a></li>
+          <li><a href="sound.html">Sound</a></li>
+          <li><a href="radiation.html">Radiation</a></li>
+          <li><a href="data.html">Open data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-started.html">Get a sensor</a></li>
+          <li><a href="https://twitter.com/sensorsAFRICA/" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.instagram.com/sensorsAFRICA/" rel="noopener">Instagram</a></li>
+          <li><a href="https://medium.com/@sensors.AFRICA" rel="noopener">Medium</a></li>
+          <li><a href="https://github.com/CodeForAfrica/sensors.AFRICA" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a></li>
+          <li><a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a></li>
+          <li><a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Incubated by <a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a> · seed-funded by <a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a> · powered by <a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></span>
+      <span>Redesign prototype — the radiation stream is not yet live; this page describes planned work.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

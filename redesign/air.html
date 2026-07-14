@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Air — sensors.AFRICA · Live PM2.5 air quality for African cities</title>
+<meta name="description" content="Live, citizen-collected PM2.5 and PM10 air quality readings across 16 African cities — hour-by-hour trends, city comparisons, health guidance and open data from the sensors.AFRICA network.">
+
+<!-- Fonts: Fraunces (display serif) · Space Grotesk (data) · Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Leaflet (map) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+<style>
+/* ============================================================
+   TOKENS — shared with all subpages, do not diverge
+   ============================================================ */
+:root{
+  --ink:#0c0f16; --ink-2:#141821; --ink-3:#1a1f2b;
+  --paper:#f1eee7; --paper-ink:#17140f;
+  --text:#e9ebf0; --text-2:#9aa2b1; --muted:#6b7280;
+  --hair:rgba(255,255,255,0.09); --hair-strong:rgba(255,255,255,0.16);
+  --aqi-good:#46d17f; --aqi-moderate:#f4c542; --aqi-sensitive:#f5822e;
+  --aqi-unhealthy:#ef5350; --aqi-veryunhealthy:#b06ae0; --aqi-hazardous:#c0466c;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --data:"Space Grotesk","Inter",system-ui,sans-serif;
+  --maxw:1200px;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink); color:var(--text);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--aqi-moderate);outline-offset:3px;border-radius:2px}
+::selection{background:var(--aqi-sensitive);color:var(--ink)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.kicker{
+  font-family:var(--data);font-size:.75rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-2);
+}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+h2.display{
+  font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.4vw,2.6rem);
+  line-height:1.12;letter-spacing:-.01em;margin:10px 0 14px;
+}
+.lede{color:var(--text-2);max-width:56ch}
+.section{padding:84px 0}
+
+/* The AQI spine — a segmented band used as the page's structural accent */
+.aqi-spine{display:flex;height:4px;width:100%}
+.aqi-spine span{flex:1}
+.aqi-spine .s1{background:var(--aqi-good)}
+.aqi-spine .s2{background:var(--aqi-moderate)}
+.aqi-spine .s3{background:var(--aqi-sensitive)}
+.aqi-spine .s4{background:var(--aqi-unhealthy)}
+.aqi-spine .s5{background:var(--aqi-veryunhealthy)}
+.aqi-spine .s6{background:var(--aqi-hazardous)}
+.spine-sm{width:64px;height:4px;margin-bottom:14px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(12,15,22,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--hair);
+}
+.header-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px;
+}
+.wordmark{
+  font-family:var(--data);font-weight:700;font-size:1.05rem;letter-spacing:.01em;
+  text-decoration:none;white-space:nowrap;
+}
+.wordmark .dot-africa{color:var(--aqi-good)}
+.main-nav{display:flex;gap:2px;align-items:center;overflow-x:auto}
+.main-nav a{
+  font-family:var(--data);font-size:.82rem;font-weight:500;color:var(--text-2);
+  text-decoration:none;padding:8px 11px;border-radius:6px;white-space:nowrap;
+}
+.main-nav a:hover{color:var(--text);background:var(--ink-3)}
+.main-nav a.live-link{color:var(--text)}
+.main-nav a.live-link::before{
+  content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--aqi-good);margin-right:7px;vertical-align:1px;
+}
+.main-nav a[aria-current="page"]{color:var(--text);background:var(--ink-3)}
+.nav-cta{
+  font-family:var(--data);font-size:.82rem;font-weight:700;text-decoration:none;
+  color:var(--ink);background:var(--aqi-good);padding:9px 16px;border-radius:999px;white-space:nowrap;
+}
+.nav-cta:hover{background:#5fdd92}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
+.hero::before{ /* faint atmospheric wash */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(52rem 30rem at 78% -10%, rgba(245,130,46,.11), transparent 60%),
+    radial-gradient(44rem 26rem at 8% 110%, rgba(70,209,127,.06), transparent 60%);
+}
+.hero-grid{
+  position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:56px;align-items:center;padding:76px 0 68px;
+}
+.hero h1{
+  font-family:var(--serif);font-weight:640;font-variation-settings:"opsz" 100;
+  font-size:clamp(2.5rem,5.4vw,4.3rem);line-height:1.04;letter-spacing:-.015em;
+}
+.hero h1 em{font-style:italic;font-weight:520;color:var(--aqi-sensitive)}
+.hero .standfirst{margin-top:22px;font-size:1.08rem;color:var(--text-2);max-width:52ch}
+.hero-actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{
+  font-family:var(--data);font-weight:700;font-size:.92rem;text-decoration:none;
+  padding:13px 24px;border-radius:999px;display:inline-block;
+}
+.btn-primary{background:var(--aqi-good);color:var(--ink)}
+.btn-primary:hover{background:#5fdd92}
+.btn-ghost{color:var(--text);border:1px solid var(--hair-strong)}
+.btn-ghost:hover{border-color:var(--text-2)}
+.proto-badge{
+  display:inline-flex;align-items:center;gap:7px;margin-top:26px;
+  font-family:var(--data);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:5px 12px;
+}
+.proto-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aqi-moderate)}
+
+/* Live reading panel — the hero centerpiece */
+.reading-panel{
+  position:relative;background:var(--ink-2);border:1px solid var(--hair-strong);
+  border-radius:16px;padding:26px 28px 24px;box-shadow:0 24px 60px rgba(0,0,0,.45);
+}
+.reading-panel .panel-spine{position:absolute;top:0;left:0;right:0;border-radius:16px 16px 0 0;overflow:hidden}
+.panel-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:6px}
+.panel-city{font-family:var(--serif);font-size:1.5rem;font-weight:600}
+.panel-live{
+  font-family:var(--data);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);
+  display:inline-flex;align-items:center;gap:7px;
+}
+.panel-live .pulse{width:8px;height:8px;border-radius:50%;background:var(--aqi-good);animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(70,209,127,.55)}70%{box-shadow:0 0 0 9px rgba(70,209,127,0)}100%{box-shadow:0 0 0 0 rgba(70,209,127,0)}}
+.big-reading{display:flex;align-items:baseline;gap:12px;margin:14px 0 4px}
+.big-reading .num{
+  font-family:var(--data);font-weight:700;font-size:clamp(4rem,7vw,5.6rem);
+  line-height:1;letter-spacing:-.02em;color:var(--aqi-sensitive);
+}
+.big-reading .unit-block{font-family:var(--data);color:var(--text-2);font-size:.85rem;line-height:1.4}
+.band-chip{
+  display:inline-flex;align-items:center;gap:8px;margin-top:8px;
+  font-family:var(--data);font-size:.8rem;font-weight:500;color:var(--text);
+  background:var(--ink-3);border:1px solid var(--hair);border-radius:999px;padding:6px 14px;
+}
+.band-chip .swatch{width:9px;height:9px;border-radius:50%;background:var(--aqi-sensitive)}
+/* mini AQI meter: reading position on the health scale */
+.aqi-meter{margin-top:22px}
+.aqi-meter .track{position:relative;height:6px;border-radius:3px;overflow:visible;display:flex}
+.aqi-meter .track span{flex:1;opacity:.85}
+.aqi-meter .track span:first-child{border-radius:3px 0 0 3px}
+.aqi-meter .track span:last-child{border-radius:0 3px 3px 0}
+.aqi-meter .needle{
+  position:absolute;top:-4px;width:3px;height:14px;border-radius:2px;
+  background:var(--text);box-shadow:0 0 0 2px var(--ink-2);left:44%;
+}
+.aqi-meter .scale-labels{
+  display:flex;justify-content:space-between;margin-top:8px;
+  font-family:var(--data);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.panel-meta{
+  margin-top:20px;padding-top:14px;border-top:1px solid var(--hair);
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  font-family:var(--data);font-size:.72rem;color:var(--muted);
+}
+.panel-meta strong{color:var(--text-2);font-weight:500}
+
+/* ============================================================
+   CITY SELECTOR (dashboard)
+   ============================================================ */
+.city-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.city-tabs button{
+  font-family:var(--data);font-size:.84rem;font-weight:500;color:var(--text-2);
+  background:var(--ink-2);border:1px solid var(--hair);border-radius:999px;
+  padding:9px 17px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;
+  transition:border-color .15s ease,color .15s ease;
+}
+.city-tabs button:hover{color:var(--text);border-color:var(--hair-strong)}
+.city-tabs button[aria-pressed="true"]{color:var(--ink);background:var(--text);border-color:var(--text);font-weight:700}
+.city-tabs .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.tabs-note{margin-top:12px;font-family:var(--data);font-size:.74rem;color:var(--muted)}
+
+/* ============================================================
+   CHART CARDS
+   ============================================================ */
+.chart-card{
+  margin-top:34px;background:var(--ink-2);border:1px solid var(--hair);
+  border-radius:16px;padding:26px 22px 16px;position:relative;
+}
+.chart-card .chart-title-row{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;padding:0 8px}
+.chart-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:600}
+.chart-card .sub{font-family:var(--data);font-size:.74rem;color:var(--muted)}
+.trend-svg{width:100%;height:auto;display:block;margin-top:10px}
+.trend-svg text{font-family:var(--data)}
+.chart-tip{
+  position:absolute;pointer-events:none;display:none;z-index:5;
+  background:var(--ink);border:1px solid var(--hair-strong);border-radius:8px;
+  padding:7px 11px;font-family:var(--data);font-size:.75rem;white-space:nowrap;
+  transform:translate(-50%,-130%);box-shadow:0 8px 24px rgba(0,0,0,.5);
+}
+.chart-table{margin:6px 8px 10px}
+.chart-table summary{font-family:var(--data);font-size:.74rem;color:var(--muted);cursor:pointer}
+.chart-table summary:hover{color:var(--text-2)}
+.chart-table table{margin-top:12px;border-collapse:collapse;font-family:var(--data);font-size:.74rem;width:100%}
+.chart-table th,.chart-table td{
+  border:1px solid var(--hair);padding:4px 8px;text-align:right;
+  font-variant-numeric:tabular-nums;color:var(--text-2);
+}
+.chart-table th{color:var(--muted);font-weight:500}
+.data-note{margin-top:14px;font-size:.75rem;color:var(--muted);font-family:var(--data)}
+.bar-legend{
+  display:flex;flex-wrap:wrap;gap:6px 18px;padding:12px 8px 0;
+  font-family:var(--data);font-size:.72rem;color:var(--text-2);
+}
+.bar-legend li{list-style:none;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.bar-legend .sw{width:9px;height:9px;border-radius:50%;flex:none}
+
+/* ============================================================
+   MAP
+   ============================================================ */
+.map-section{background:var(--ink-2);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.map-shell{
+  position:relative;margin-top:34px;border:1px solid var(--hair-strong);
+  border-radius:16px;overflow:hidden;height:540px;
+  /* graceful fallback: atmospheric gradient + faint graticule if tiles never load */
+  background:
+    linear-gradient(var(--hair) 1px,transparent 1px),
+    linear-gradient(90deg,var(--hair) 1px,transparent 1px),
+    radial-gradient(60rem 34rem at 50% 20%,#151a26,var(--ink));
+  background-size:64px 64px,64px 64px,cover;
+}
+#africa-map{position:absolute;inset:0;background:transparent}
+.leaflet-container{background:transparent;font-family:var(--sans)}
+.map-fallback-note{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-family:var(--data);font-size:.85rem;text-align:center;padding:24px;
+}
+.map-legend{
+  position:absolute;z-index:800;left:16px;bottom:16px;
+  background:rgba(12,15,22,.9);border:1px solid var(--hair-strong);border-radius:12px;
+  padding:14px 16px;font-family:var(--data);font-size:.72rem;color:var(--text-2);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.map-legend .lg-title{font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.62rem;color:var(--muted);margin-bottom:9px}
+.map-legend ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:5px 18px}
+.map-legend li{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.map-legend .sw{width:9px;height:9px;border-radius:50%;flex:none}
+.map-count{
+  position:absolute;z-index:800;right:16px;top:16px;text-align:right;
+  background:rgba(12,15,22,.9);border:1px solid var(--hair-strong);border-radius:12px;padding:12px 16px;
+  font-family:var(--data);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.map-count .n{font-size:1.5rem;font-weight:700;line-height:1.1}
+.map-count .l{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.leaflet-popup-content-wrapper{background:var(--ink-3);color:var(--text);border-radius:10px;border:1px solid var(--hair-strong)}
+.leaflet-popup-tip{background:var(--ink-3)}
+.leaflet-popup-content{font-family:var(--data);font-size:.85rem;margin:12px 16px}
+.popup-city{font-weight:700;font-size:1rem}
+.popup-reading{font-variant-numeric:tabular-nums}
+
+/* ============================================================
+   HEALTH GUIDANCE — the six bands
+   ============================================================ */
+.band-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.band-card{
+  position:relative;background:var(--ink-2);border:1px solid var(--hair);
+  border-radius:14px;padding:26px 24px 22px;overflow:hidden;
+}
+.band-card .accent{position:absolute;top:0;left:0;right:0;height:3px}
+.band-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.band-card h3{font-family:var(--serif);font-size:1.22rem;font-weight:600;display:flex;align-items:center;gap:10px}
+.band-card h3 .sw{width:10px;height:10px;border-radius:50%;flex:none}
+.band-range{font-family:var(--data);font-size:.72rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.band-card .meaning{font-size:.88rem;color:var(--text-2);margin-top:10px;min-height:3.2em}
+.band-card .advice{margin-top:14px;padding-top:13px;border-top:1px solid var(--hair);font-size:.84rem;color:var(--text-2)}
+.band-card .advice strong{
+  color:var(--text);font-weight:700;font-family:var(--data);font-size:.64rem;
+  letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:5px;
+}
+
+/* ============================================================
+   PAPER SECTION — why it matters (long-form reading surface)
+   ============================================================ */
+.paper-section{background:var(--paper);color:var(--paper-ink)}
+.paper-section .kicker{color:#6d675c}
+.paper-section h2.display{color:var(--paper-ink)}
+.paper-section .lede{color:#4d473c}
+.impact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start;margin-top:20px}
+.impact-prose{font-family:var(--serif);font-size:1.16rem;line-height:1.72;color:#2c2820;font-weight:420}
+.impact-prose p+p{margin-top:1.1em}
+.impact-prose strong{font-weight:640;color:var(--paper-ink)}
+.stat-tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat-tile{background:#fff;border:1px solid #e2ddd1;border-radius:12px;padding:20px 20px 18px}
+.stat-tile .val{font-family:var(--data);font-weight:700;font-size:2.1rem;line-height:1.1;color:var(--paper-ink)}
+.stat-tile .lbl{font-size:.8rem;color:#6d675c;margin-top:6px;line-height:1.45}
+.stat-tile .bar{height:4px;border-radius:2px;background:#ece8dd;margin-top:14px;overflow:hidden}
+.stat-tile .bar i{display:block;height:100%;border-radius:2px}
+.paper-credit{margin-top:34px;font-family:var(--data);font-size:.74rem;color:#8a8375}
+
+/* ============================================================
+   HOW THE SENSORS WORK
+   ============================================================ */
+.sensor-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:start;margin-top:30px}
+.sensor-prose p{color:var(--text-2)}
+.sensor-prose p+p{margin-top:1em}
+.sensor-prose strong{color:var(--text);font-weight:600}
+.spec-card{background:var(--ink-2);border:1px solid var(--hair);border-radius:14px;padding:26px 26px 20px}
+.spec-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:16px}
+.spec-card dl{font-family:var(--data);font-size:.85rem}
+.spec-card .spec-row{
+  display:flex;justify-content:space-between;gap:18px;
+  padding:10px 0;border-top:1px solid var(--hair);
+}
+.spec-card dt{color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding-top:2px;white-space:nowrap}
+.spec-card dd{color:var(--text);text-align:right}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta-section{position:relative;overflow:hidden;border-top:1px solid var(--hair)}
+.cta-section::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50rem 26rem at 50% 120%, rgba(70,209,127,.1), transparent 65%);
+}
+.cta-inner{position:relative;text-align:center;padding:96px 24px;max-width:760px;margin:0 auto}
+.cta-inner h2{
+  font-family:var(--serif);font-weight:640;font-size:clamp(2rem,4.4vw,3.3rem);
+  line-height:1.08;letter-spacing:-.015em;
+}
+.cta-inner p{margin:20px auto 32px;color:var(--text-2);max-width:46ch}
+.cta-inner .aqi-spine{width:120px;margin:0 auto 28px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:#080a10;border-top:1px solid var(--hair);padding:64px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-mission{font-size:.9rem;color:var(--text-2);margin-top:14px;max-width:38ch}
+.footer-col h4{
+  font-family:var(--data);font-size:.66rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:16px;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{font-size:.88rem;color:var(--text-2);text-decoration:none}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{
+  margin-top:52px;padding-top:22px;border-top:1px solid var(--hair);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-family:var(--data);font-size:.74rem;color:var(--muted);
+}
+.footer-bottom a{color:var(--text-2)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1020px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .impact-grid{grid-template-columns:1fr;gap:36px}
+  .band-grid{grid-template-columns:1fr 1fr}
+  .sensor-grid{grid-template-columns:1fr;gap:34px}
+}
+@media (max-width:820px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;padding:56px 0}
+  .main-nav{display:none}
+  .map-shell{height:440px}
+}
+@media (max-width:600px){
+  .stat-tiles,.footer-grid,.band-grid{grid-template-columns:1fr}
+  .section{padding:60px 0}
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .panel-live .pulse{animation:none}
+  .city-tabs button{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+    <nav class="main-nav" aria-label="Primary">
+      <a class="live-link" href="air.html" aria-current="page">Air</a>
+      <a href="water.html">Water</a>
+      <a href="sound.html">Sound</a>
+      <a href="radiation.html">Radiation</a>
+      <a href="data.html">Data</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="nav-cta" href="get-started.html">Get a sensor</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     HERO — editorial headline + featured live reading
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">Air stream &middot; Live network &middot; PM<sub>2.5</sub> / PM<sub>10</sub></p>
+      <h1>We've tested the quality of <em>your city's air.</em></h1>
+      <p class="standfirst">
+        Hundreds of low-cost, citizen-hosted sensors measure the fine particulate matter —
+        PM<sub>2.5</sub> — that reaches deepest into human lungs. Every reading is open data:
+        evidence for journalists, ammunition for watchdogs, and a daily answer to a simple
+        question — <em>is it safe to breathe outside today?</em>
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="get-started.html">Host an air sensor</a>
+        <a class="btn btn-ghost" href="data.html">Download the data</a>
+      </div>
+      <span class="proto-badge">Prototype &middot; illustrative data</span>
+    </div>
+
+    <!-- Featured reading panel (updated by the city selector below) -->
+    <aside class="reading-panel" aria-label="Featured air quality reading (sample data)" aria-live="polite">
+      <div class="panel-spine aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+      <div class="panel-top">
+        <span class="panel-city" id="feat-city">Nairobi, Kenya</span>
+        <span class="panel-live"><span class="pulse" aria-hidden="true"></span>Live reading</span>
+      </div>
+      <div class="big-reading">
+        <span class="num" id="feat-pm25">38.4</span>
+        <span class="unit-block">µg/m³<br>PM<sub>2.5</sub></span>
+      </div>
+      <span class="band-chip"><span class="swatch" id="feat-swatch" aria-hidden="true"></span><span id="feat-band">Unhealthy for sensitive groups</span></span>
+      <div class="aqi-meter">
+        <div class="track" aria-hidden="true">
+          <span style="background:var(--aqi-good)"></span><span style="background:var(--aqi-moderate)"></span><span style="background:var(--aqi-sensitive)"></span><span style="background:var(--aqi-unhealthy)"></span><span style="background:var(--aqi-veryunhealthy)"></span><span style="background:var(--aqi-hazardous)"></span>
+        </div>
+        <div class="needle" id="feat-needle" aria-hidden="true" style="left:35.8%"></div>
+        <div class="scale-labels" aria-hidden="true"><span>Good</span><span>Hazardous</span></div>
+      </div>
+      <div class="panel-meta">
+        <span>PM<sub>10</sub> <strong id="feat-pm10">51.2 µg/m³</strong></span>
+        <span>SDS011 &middot; Luftdaten network</span>
+        <span>Updated <strong id="feat-updated">just now</strong></span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     CITY DASHBOARD — selector + 24-hour trend chart
+     (chart fully authored in markup; JS only re-themes it)
+     ============================================================ -->
+<section class="section" id="dashboard">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">City dashboard</p>
+        <h2 class="display">One day in your city's air</h2>
+      </div>
+      <p class="lede">Rush hours leave fingerprints. PM<sub>2.5</sub> climbs with the morning commute, eases at midday, and peaks again as the city drives home. Pick a city — the featured reading above and the chart below follow.</p>
+    </div>
+
+    <div class="city-tabs" role="group" aria-label="Choose a featured city" id="city-tabs">
+      <button type="button" data-city="nairobi" aria-pressed="true"><span class="dot" style="background:var(--aqi-sensitive)" aria-hidden="true"></span>Nairobi</button>
+      <button type="button" data-city="lagos" aria-pressed="false"><span class="dot" style="background:var(--aqi-unhealthy)" aria-hidden="true"></span>Lagos</button>
+      <button type="button" data-city="accra" aria-pressed="false"><span class="dot" style="background:var(--aqi-sensitive)" aria-hidden="true"></span>Accra</button>
+      <button type="button" data-city="dar" aria-pressed="false"><span class="dot" style="background:var(--aqi-moderate)" aria-hidden="true"></span>Dar es Salaam</button>
+      <button type="button" data-city="kano" aria-pressed="false"><span class="dot" style="background:var(--aqi-unhealthy)" aria-hidden="true"></span>Kano</button>
+      <button type="button" data-city="lusaka" aria-pressed="false"><span class="dot" style="background:var(--aqi-good)" aria-hidden="true"></span>Lusaka</button>
+    </div>
+    <p class="tabs-note">Dot = current PM<sub>2.5</sub> health band. Sample data for illustration.</p>
+
+    <div class="chart-card" id="trend-card">
+      <div class="chart-title-row">
+        <h3 id="trend-title">PM<sub>2.5</sub> over 24 hours — <span id="trend-city">Nairobi</span> (sample day)</h3>
+        <span class="sub">µg/m³ &middot; illustrative data</span>
+      </div>
+
+      <svg id="trend-chart" class="trend-svg" viewBox="0 0 760 360" role="img"
+           aria-label="Line chart of PM2.5 over 24 hours in Nairobi. Values fall overnight to 13 micrograms per cubic metre, rise to a morning-commute peak of 41 at 8am, dip after midday, and peak at 52 micrograms per cubic metre at 6pm — five times the WHO guideline of 10.">
+
+        <!-- gridlines: recessive hairlines -->
+        <g stroke="rgba(255,255,255,0.08)" stroke-width="1" shape-rendering="crispEdges">
+          <line id="grid-1" x1="52" y1="24"  x2="664" y2="24"></line>
+          <line id="grid-2" x1="52" y1="116" x2="664" y2="116"></line>
+          <line id="grid-3" x1="52" y1="208" x2="664" y2="208"></line>
+        </g>
+        <!-- baseline (x-axis) -->
+        <line x1="52" y1="300" x2="664" y2="300" stroke="rgba(255,255,255,0.16)" stroke-width="1" shape-rendering="crispEdges"></line>
+
+        <!-- y-axis tick labels -->
+        <g font-size="11" fill="var(--muted)" text-anchor="end" style="font-variant-numeric:tabular-nums">
+          <text x="44" y="304">0</text>
+          <text x="44" y="212" id="ytick-1">20</text>
+          <text x="44" y="120" id="ytick-2">40</text>
+          <text x="44" y="28"  id="ytick-3">60</text>
+        </g>
+
+        <!-- x-axis tick labels -->
+        <g font-size="11" fill="var(--muted)" text-anchor="middle" style="font-variant-numeric:tabular-nums">
+          <text x="52"    y="322" text-anchor="start">00:00</text>
+          <text x="211.7" y="322">06:00</text>
+          <text x="371.3" y="322">12:00</text>
+          <text x="531"   y="322">18:00</text>
+          <text x="664"   y="322" text-anchor="end">23:00</text>
+        </g>
+        <text x="52" y="345" font-size="10" fill="var(--muted)" id="x-caption">Hour of day (EAT) · sample values, hourly means</text>
+
+        <!-- WHO guideline reference line (threshold → dashed, labeled) -->
+        <line id="who-line" x1="52" y1="254" x2="664" y2="254" stroke="var(--aqi-good)" stroke-width="1.5" stroke-dasharray="6 5"></line>
+        <text id="who-label" x="58" y="248" font-size="10.5" fill="var(--text-2)" font-weight="500">WHO guideline (10 µg/m³)</text>
+
+        <!-- area wash under the line (~8% opacity) -->
+        <path id="trend-area" fill="#f5822e" opacity="0.08" d="M52,300 L52,217.2 L78.6,226.4 L105.2,231 L131.8,235.6 L158.4,240.2 L185,231 L211.7,198.8 L238.3,143.6 L264.9,111.4 L291.5,125.2 L318.1,152.8 L344.7,171.2 L371.3,180.4 L397.9,185 L424.5,175.8 L451.1,162 L477.7,134.4 L504.3,97.6 L531,60.8 L557.6,74.6 L584.2,93 L610.8,106.8 L637.4,116 L664,123.4 L664,300 Z"></path>
+
+        <!-- data line: 2px, round joins, fully visible with zero JS -->
+        <polyline id="trend-line" fill="none" stroke="#f5822e" stroke-width="2"
+                  stroke-linejoin="round" stroke-linecap="round"
+                  points="52,217.2 78.6,226.4 105.2,231 131.8,235.6 158.4,240.2 185,231 211.7,198.8 238.3,143.6 264.9,111.4 291.5,125.2 318.1,152.8 344.7,171.2 371.3,180.4 397.9,185 424.5,175.8 451.1,162 477.7,134.4 504.3,97.6 531,60.8 557.6,74.6 584.2,93 610.8,106.8 637.4,116 664,123.4"></polyline>
+
+        <!-- selective direct labels: the peak and the endpoint -->
+        <circle id="peak-dot" cx="531" cy="60.8" r="4.5" fill="#f5822e" stroke="var(--ink-2)" stroke-width="2"></circle>
+        <text id="peak-val" x="531" y="46" font-size="12" font-weight="700" fill="var(--text)" text-anchor="middle">52</text>
+        <text id="peak-lbl" x="531" y="33" font-size="9.5" fill="var(--text-2)" text-anchor="middle">evening peak</text>
+        <circle id="end-dot" cx="664" cy="123.4" r="4.5" fill="#f5822e" stroke="var(--ink-2)" stroke-width="2"></circle>
+        <text id="end-val" x="656" y="116" font-size="12" font-weight="700" fill="var(--text)" text-anchor="end">38.4</text>
+
+        <!-- hover layer (populated by JS as progressive enhancement) -->
+        <g id="trend-hover" aria-hidden="true"></g>
+      </svg>
+
+      <div class="chart-tip" id="trend-tip" role="status" aria-live="off"></div>
+
+      <details class="chart-table">
+        <summary>View this chart as a table</summary>
+        <table>
+          <caption class="sub" style="text-align:left;padding:4px 0;color:var(--muted)" id="trend-caption">Hourly PM2.5 (µg/m³), Nairobi — sample day</caption>
+          <tr><th scope="row">Hour</th><td>00</td><td>01</td><td>02</td><td>03</td><td>04</td><td>05</td><td>06</td><td>07</td><td>08</td><td>09</td><td>10</td><td>11</td></tr>
+          <tr id="trend-vals-a"><th scope="row">PM2.5</th><td>18</td><td>16</td><td>15</td><td>14</td><td>13</td><td>15</td><td>22</td><td>34</td><td>41</td><td>38</td><td>32</td><td>28</td></tr>
+          <tr><th scope="row">Hour</th><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td></tr>
+          <tr id="trend-vals-b"><th scope="row">PM2.5</th><td>26</td><td>25</td><td>27</td><td>30</td><td>36</td><td>44</td><td>52</td><td>49</td><td>45</td><td>42</td><td>40</td><td>38.4</td></tr>
+        </table>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CITY COMPARISON — horizontal bars, static markup
+     ============================================================ -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">Across the network</p>
+        <h2 class="display">Sixteen cities, ranked by what they breathe</h2>
+      </div>
+      <p class="lede">Current PM<sub>2.5</sub> across every monitored city, coloured by health band. The dashed line is the WHO annual guideline — 10 µg/m³. Most of the network sits well beyond it.</p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title-row">
+        <h3>Current PM<sub>2.5</sub> by city</h3>
+        <span class="sub">µg/m³ &middot; illustrative snapshot</span>
+      </div>
+
+      <svg id="compare-chart" class="trend-svg" viewBox="0 0 760 530" role="img"
+           aria-label="Horizontal bar chart ranking 16 African cities by current PM2.5. Maiduguri leads at 161 micrograms per cubic metre (very unhealthy), followed by Kano at 138.7 (unhealthy); Lusaka is lowest at 11.2 (good). Only Lusaka is near the WHO guideline of 10.">
+
+        <!-- vertical gridlines -->
+        <g stroke="rgba(255,255,255,0.08)" stroke-width="1" shape-rendering="crispEdges">
+          <line x1="313.3" y1="18" x2="313.3" y2="486"></line>
+          <line x1="486.7" y1="18" x2="486.7" y2="486"></line>
+          <line x1="660"   y1="18" x2="660"   y2="486"></line>
+        </g>
+        <!-- zero axis -->
+        <line x1="140" y1="18" x2="140" y2="486" stroke="rgba(255,255,255,0.16)" stroke-width="1" shape-rendering="crispEdges"></line>
+
+        <!-- WHO guideline marker -->
+        <line x1="168.9" y1="18" x2="168.9" y2="486" stroke="var(--aqi-good)" stroke-width="1.5" stroke-dasharray="6 5"></line>
+        <text x="175" y="14" font-size="10.5" fill="var(--text-2)" font-weight="500">WHO guideline (10 µg/m³)</text>
+
+        <!-- x-axis labels -->
+        <g font-size="11" fill="var(--muted)" text-anchor="middle" style="font-variant-numeric:tabular-nums">
+          <text x="140" y="504">0</text>
+          <text x="313.3" y="504">60</text>
+          <text x="486.7" y="504">120</text>
+          <text x="660" y="504">180</text>
+        </g>
+        <text x="672" y="504" font-size="10" fill="var(--muted)" text-anchor="start">µg/m³</text>
+        <text x="140" y="524" font-size="10" fill="var(--muted)">Current PM2.5 snapshot · sample values, coloured by EPA health band</text>
+
+        <!-- bars: rounded data-end, city label left, value label at end -->
+        <g font-size="11" style="font-variant-numeric:tabular-nums">
+          <g class="cbar"><title>Maiduguri, Nigeria — 161.0 µg/m³ · Very unhealthy</title>
+            <text x="130" y="38" fill="var(--text-2)" text-anchor="end">Maiduguri</text>
+            <path fill="#b06ae0" d="M140 26 h461.1 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="613.1" y="38" fill="var(--text)" font-weight="700">161.0</text></g>
+          <g class="cbar"><title>Kano, Nigeria — 138.7 µg/m³ · Unhealthy</title>
+            <text x="130" y="67" fill="var(--text-2)" text-anchor="end">Kano</text>
+            <path fill="#ef5350" d="M140 55 h396.7 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="548.7" y="67" fill="var(--text)" font-weight="700">138.7</text></g>
+          <g class="cbar"><title>Port Harcourt, Nigeria — 74.5 µg/m³ · Unhealthy</title>
+            <text x="130" y="96" fill="var(--text-2)" text-anchor="end">Port Harcourt</text>
+            <path fill="#ef5350" d="M140 84 h211.2 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="363.2" y="96" fill="var(--text)" font-weight="700">74.5</text></g>
+          <g class="cbar"><title>Lagos, Nigeria — 68.2 µg/m³ · Unhealthy</title>
+            <text x="130" y="125" fill="var(--text-2)" text-anchor="end">Lagos</text>
+            <path fill="#ef5350" d="M140 113 h193 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="345" y="125" fill="var(--text)" font-weight="700">68.2</text></g>
+          <g class="cbar"><title>Ilorin, Nigeria — 52.6 µg/m³ · Unhealthy for sensitive groups</title>
+            <text x="130" y="154" fill="var(--text-2)" text-anchor="end">Ilorin</text>
+            <path fill="#f5822e" d="M140 142 h148 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="300" y="154" fill="var(--text)" font-weight="700">52.6</text></g>
+          <g class="cbar"><title>Accra, Ghana — 47.3 µg/m³ · Unhealthy for sensitive groups</title>
+            <text x="130" y="183" fill="var(--text-2)" text-anchor="end">Accra</text>
+            <path fill="#f5822e" d="M140 171 h132.6 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="284.6" y="183" fill="var(--text)" font-weight="700">47.3</text></g>
+          <g class="cbar"><title>Abuja, Nigeria — 44.1 µg/m³ · Unhealthy for sensitive groups</title>
+            <text x="130" y="212" fill="var(--text-2)" text-anchor="end">Abuja</text>
+            <path fill="#f5822e" d="M140 200 h123.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="275.4" y="212" fill="var(--text)" font-weight="700">44.1</text></g>
+          <g class="cbar"><title>Awka, Nigeria — 41.9 µg/m³ · Unhealthy for sensitive groups</title>
+            <text x="130" y="241" fill="var(--text-2)" text-anchor="end">Awka</text>
+            <path fill="#f5822e" d="M140 229 h117 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="269" y="241" fill="var(--text)" font-weight="700">41.9</text></g>
+          <g class="cbar"><title>Nairobi, Kenya — 38.4 µg/m³ · Unhealthy for sensitive groups</title>
+            <text x="130" y="270" fill="var(--text-2)" text-anchor="end">Nairobi</text>
+            <path fill="#f5822e" d="M140 258 h106.9 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="258.9" y="270" fill="var(--text)" font-weight="700">38.4</text></g>
+          <g class="cbar"><title>Kumasi, Ghana — 35.9 µg/m³ · Unhealthy for sensitive groups</title>
+            <text x="130" y="299" fill="var(--text-2)" text-anchor="end">Kumasi</text>
+            <path fill="#f5822e" d="M140 287 h99.7 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="251.7" y="299" fill="var(--text)" font-weight="700">35.9</text></g>
+          <g class="cbar"><title>Akure, Nigeria — 33.5 µg/m³ · Moderate</title>
+            <text x="130" y="328" fill="var(--text-2)" text-anchor="end">Akure</text>
+            <path fill="#f4c542" d="M140 316 h92.8 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="244.8" y="328" fill="var(--text)" font-weight="700">33.5</text></g>
+          <g class="cbar"><title>Ado-Ekiti, Nigeria — 29.8 µg/m³ · Moderate</title>
+            <text x="130" y="357" fill="var(--text-2)" text-anchor="end">Ado-Ekiti</text>
+            <path fill="#f4c542" d="M140 345 h82.1 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="234.1" y="357" fill="var(--text)" font-weight="700">29.8</text></g>
+          <g class="cbar"><title>Dar es Salaam, Tanzania — 28.9 µg/m³ · Moderate</title>
+            <text x="130" y="386" fill="var(--text-2)" text-anchor="end">Dar es Salaam</text>
+            <path fill="#f4c542" d="M140 374 h79.5 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="231.5" y="386" fill="var(--text)" font-weight="700">28.9</text></g>
+          <g class="cbar"><title>Nakuru, Kenya — 21.7 µg/m³ · Moderate</title>
+            <text x="130" y="415" fill="var(--text-2)" text-anchor="end">Nakuru</text>
+            <path fill="#f4c542" d="M140 403 h58.7 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="210.7" y="415" fill="var(--text)" font-weight="700">21.7</text></g>
+          <g class="cbar"><title>Kisumu, Kenya — 17.3 µg/m³ · Moderate</title>
+            <text x="130" y="444" fill="var(--text-2)" text-anchor="end">Kisumu</text>
+            <path fill="#f4c542" d="M140 432 h46 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="198" y="444" fill="var(--text)" font-weight="700">17.3</text></g>
+          <g class="cbar"><title>Lusaka, Zambia — 11.2 µg/m³ · Good</title>
+            <text x="130" y="473" fill="var(--text-2)" text-anchor="end">Lusaka</text>
+            <path fill="#46d17f" d="M140 461 h28.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H140 Z"></path>
+            <text x="180.4" y="473" fill="var(--text)" font-weight="700">11.2</text></g>
+        </g>
+      </svg>
+
+      <ul class="bar-legend" aria-label="Health band colour key">
+        <li><span class="sw" style="background:var(--aqi-good)"></span>Good ≤ 12</li>
+        <li><span class="sw" style="background:var(--aqi-moderate)"></span>Moderate ≤ 35.4</li>
+        <li><span class="sw" style="background:var(--aqi-sensitive)"></span>Sensitive ≤ 55.4</li>
+        <li><span class="sw" style="background:var(--aqi-unhealthy)"></span>Unhealthy ≤ 150.4</li>
+        <li><span class="sw" style="background:var(--aqi-veryunhealthy)"></span>Very unhealthy ≤ 250.4</li>
+        <li><span class="sw" style="background:var(--aqi-hazardous)"></span>Hazardous &gt; 250.4</li>
+      </ul>
+
+      <details class="chart-table">
+        <summary>View this chart as a table</summary>
+        <table>
+          <caption class="sub" style="text-align:left;padding:4px 0;color:var(--muted)">Current PM2.5 by city (µg/m³) — illustrative snapshot</caption>
+          <tr><th scope="col" style="text-align:left">City</th><th scope="col">PM2.5</th><th scope="col" style="text-align:left">Health band</th></tr>
+          <tr><td style="text-align:left">Maiduguri, Nigeria</td><td>161.0</td><td style="text-align:left">Very unhealthy</td></tr>
+          <tr><td style="text-align:left">Kano, Nigeria</td><td>138.7</td><td style="text-align:left">Unhealthy</td></tr>
+          <tr><td style="text-align:left">Port Harcourt, Nigeria</td><td>74.5</td><td style="text-align:left">Unhealthy</td></tr>
+          <tr><td style="text-align:left">Lagos, Nigeria</td><td>68.2</td><td style="text-align:left">Unhealthy</td></tr>
+          <tr><td style="text-align:left">Ilorin, Nigeria</td><td>52.6</td><td style="text-align:left">Unhealthy for sensitive groups</td></tr>
+          <tr><td style="text-align:left">Accra, Ghana</td><td>47.3</td><td style="text-align:left">Unhealthy for sensitive groups</td></tr>
+          <tr><td style="text-align:left">Abuja, Nigeria</td><td>44.1</td><td style="text-align:left">Unhealthy for sensitive groups</td></tr>
+          <tr><td style="text-align:left">Awka, Nigeria</td><td>41.9</td><td style="text-align:left">Unhealthy for sensitive groups</td></tr>
+          <tr><td style="text-align:left">Nairobi, Kenya</td><td>38.4</td><td style="text-align:left">Unhealthy for sensitive groups</td></tr>
+          <tr><td style="text-align:left">Kumasi, Ghana</td><td>35.9</td><td style="text-align:left">Unhealthy for sensitive groups</td></tr>
+          <tr><td style="text-align:left">Akure, Nigeria</td><td>33.5</td><td style="text-align:left">Moderate</td></tr>
+          <tr><td style="text-align:left">Ado-Ekiti, Nigeria</td><td>29.8</td><td style="text-align:left">Moderate</td></tr>
+          <tr><td style="text-align:left">Dar es Salaam, Tanzania</td><td>28.9</td><td style="text-align:left">Moderate</td></tr>
+          <tr><td style="text-align:left">Nakuru, Kenya</td><td>21.7</td><td style="text-align:left">Moderate</td></tr>
+          <tr><td style="text-align:left">Kisumu, Kenya</td><td>17.3</td><td style="text-align:left">Moderate</td></tr>
+          <tr><td style="text-align:left">Lusaka, Zambia</td><td>11.2</td><td style="text-align:left">Good</td></tr>
+        </table>
+      </details>
+    </div>
+    <p class="data-note">Prototype — illustrative data. Live data credited to the WHO Global Platform on Air Quality &amp; Health.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAP
+     ============================================================ -->
+<section class="section map-section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">The air network</p>
+        <h2 class="display">Where the sensors are breathing</h2>
+      </div>
+      <p class="lede">Each marker is a monitored city, coloured by its current PM<sub>2.5</sub> health band. Tap a marker for the reading.</p>
+    </div>
+    <div class="map-shell">
+      <p class="map-fallback-note" id="map-fallback">Interactive map — requires a network connection for basemap tiles.</p>
+      <div id="africa-map" aria-label="Map of monitored African cities coloured by air-quality band"></div>
+      <div class="map-count">
+        <div class="n">16<span style="color:var(--muted)">/</span>5</div>
+        <div class="l">cities / countries</div>
+      </div>
+      <div class="map-legend">
+        <div class="lg-title">PM2.5 health band (µg/m³)</div>
+        <ul>
+          <li><span class="sw" style="background:var(--aqi-good)"></span>Good ≤ 12</li>
+          <li><span class="sw" style="background:var(--aqi-moderate)"></span>Moderate ≤ 35.4</li>
+          <li><span class="sw" style="background:var(--aqi-sensitive)"></span>Sensitive ≤ 55.4</li>
+          <li><span class="sw" style="background:var(--aqi-unhealthy)"></span>Unhealthy ≤ 150.4</li>
+          <li><span class="sw" style="background:var(--aqi-veryunhealthy)"></span>Very unhealthy ≤ 250.4</li>
+          <li><span class="sw" style="background:var(--aqi-hazardous)"></span>Hazardous &gt; 250.4</li>
+        </ul>
+      </div>
+    </div>
+    <p class="data-note">Sample readings for illustration. Live data credited to the WHO Global Platform on Air Quality &amp; Health.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     HEALTH GUIDANCE — the six bands, explained
+     ============================================================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">Health guidance</p>
+        <h2 class="display">What the colours ask of you</h2>
+      </div>
+      <p class="lede">Every reading on this page is banded by the US&nbsp;EPA PM<sub>2.5</sub> scale. Here is what each band means — and what to do when your street turns that colour.</p>
+    </div>
+    <div class="band-grid">
+      <article class="band-card">
+        <span class="accent" style="background:var(--aqi-good)" aria-hidden="true"></span>
+        <div class="band-head">
+          <h3><span class="sw" style="background:var(--aqi-good)" aria-hidden="true"></span>Good</h3>
+          <span class="band-range">0 – 12 µg/m³</span>
+        </div>
+        <p class="meaning">Air quality poses little or no health risk. Particulate levels are near the cleanest the WHO considers safe.</p>
+        <p class="advice"><strong>What to do</strong>Enjoy it. Walk, run, cycle — and open the windows while it lasts.</p>
+      </article>
+      <article class="band-card">
+        <span class="accent" style="background:var(--aqi-moderate)" aria-hidden="true"></span>
+        <div class="band-head">
+          <h3><span class="sw" style="background:var(--aqi-moderate)" aria-hidden="true"></span>Moderate</h3>
+          <span class="band-range">12.1 – 35.4 µg/m³</span>
+        </div>
+        <p class="meaning">Acceptable for most people, but already above the WHO guideline. Unusually sensitive individuals may notice effects.</p>
+        <p class="advice"><strong>What to do</strong>If you're unusually sensitive to particle pollution, consider shortening intense outdoor exercise.</p>
+      </article>
+      <article class="band-card">
+        <span class="accent" style="background:var(--aqi-sensitive)" aria-hidden="true"></span>
+        <div class="band-head">
+          <h3><span class="sw" style="background:var(--aqi-sensitive)" aria-hidden="true"></span>Unhealthy for sensitive groups</h3>
+          <span class="band-range">35.5 – 55.4 µg/m³</span>
+        </div>
+        <p class="meaning">Children, older adults, pregnant people and anyone with heart or lung disease can start to feel effects.</p>
+        <p class="advice"><strong>What to do</strong>Sensitive groups: reduce prolonged or heavy exertion outdoors. Everyone else: watch for symptoms.</p>
+      </article>
+      <article class="band-card">
+        <span class="accent" style="background:var(--aqi-unhealthy)" aria-hidden="true"></span>
+        <div class="band-head">
+          <h3><span class="sw" style="background:var(--aqi-unhealthy)" aria-hidden="true"></span>Unhealthy</h3>
+          <span class="band-range">55.5 – 150.4 µg/m³</span>
+        </div>
+        <p class="meaning">Everyone may begin to experience effects — irritated airways, coughing, shortness of breath. Sensitive groups face more serious ones.</p>
+        <p class="advice"><strong>What to do</strong>Cut back outdoor exertion; move workouts indoors. Sensitive groups should avoid prolonged time outside.</p>
+      </article>
+      <article class="band-card">
+        <span class="accent" style="background:var(--aqi-veryunhealthy)" aria-hidden="true"></span>
+        <div class="band-head">
+          <h3><span class="sw" style="background:var(--aqi-veryunhealthy)" aria-hidden="true"></span>Very unhealthy</h3>
+          <span class="band-range">150.5 – 250.4 µg/m³</span>
+        </div>
+        <p class="meaning">Health alert: the risk of effects is increased for everyone, not just sensitive groups.</p>
+        <p class="advice"><strong>What to do</strong>Avoid prolonged exertion outdoors. Keep children and elders indoors; close windows, filter air if you can, mask up outside.</p>
+      </article>
+      <article class="band-card">
+        <span class="accent" style="background:var(--aqi-hazardous)" aria-hidden="true"></span>
+        <div class="band-head">
+          <h3><span class="sw" style="background:var(--aqi-hazardous)" aria-hidden="true"></span>Hazardous</h3>
+          <span class="band-range">&gt; 250.4 µg/m³</span>
+        </div>
+        <p class="meaning">Emergency conditions. The entire population is likely to be affected; this is the air of severe dust storms and open burning.</p>
+        <p class="advice"><strong>What to do</strong>Stay indoors with windows sealed. Avoid all outdoor activity. Follow local public-health alerts.</p>
+      </article>
+    </div>
+    <p class="data-note">Bands follow the US EPA breakpoints for 24-hour PM2.5. The WHO guideline (10 µg/m³ annual mean) is stricter than all but the Good band.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY IT MATTERS — paper reading surface with impact stats
+     ============================================================ -->
+<section class="section paper-section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <p class="kicker">Why air, first</p>
+    <h2 class="display">The quiet emergency in every breath</h2>
+    <div class="impact-grid">
+      <div class="impact-prose">
+        <p>
+          Air pollution is linked to roughly <strong>one in nine deaths worldwide</strong> — a toll that
+          makes it one of the greatest environmental risks to health. The World Health Organization
+          attributes about <strong>seven million premature deaths every year</strong> to it: around
+          4.2&nbsp;million from ambient (outdoor) pollution and 3.8&nbsp;million from household air —
+          the smoke of indoor stoves and open fires.
+        </p>
+        <p>
+          The particles that do the damage are the ones you cannot see. PM<sub>2.5</sub> — fine
+          particulate matter under 2.5 microns wide — slips past the body's defences into the
+          bloodstream, driving strokes, heart disease, lung cancer and COPD. And across much of
+          Africa, the street-level data needed to fight it barely exists. That is the gap this
+          network was built to close: <strong>evidence, block by block, breath by breath.</strong>
+        </p>
+      </div>
+      <div class="stat-tiles" aria-label="Share of deaths linked to air pollution, by cause (WHO)">
+        <div class="stat-tile">
+          <div class="val">~36%</div>
+          <div class="lbl">of lung-cancer deaths are linked to air pollution</div>
+          <div class="bar" aria-hidden="true"><i style="width:36%;background:var(--aqi-hazardous)"></i></div>
+        </div>
+        <div class="stat-tile">
+          <div class="val">~35%</div>
+          <div class="lbl">of deaths from COPD are linked to air pollution</div>
+          <div class="bar" aria-hidden="true"><i style="width:35%;background:var(--aqi-veryunhealthy)"></i></div>
+        </div>
+        <div class="stat-tile">
+          <div class="val">~34%</div>
+          <div class="lbl">of stroke deaths are linked to air pollution</div>
+          <div class="bar" aria-hidden="true"><i style="width:34%;background:var(--aqi-unhealthy)"></i></div>
+        </div>
+        <div class="stat-tile">
+          <div class="val">~27%</div>
+          <div class="lbl">of heart-disease deaths are linked to air pollution</div>
+          <div class="bar" aria-hidden="true"><i style="width:27%;background:var(--aqi-sensitive)"></i></div>
+        </div>
+      </div>
+    </div>
+    <p class="paper-credit">Figures: World Health Organization. Air-quality data credited to the WHO Global Platform on Air Quality &amp; Health.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW THE SENSORS WORK
+     ============================================================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">Under the hood</p>
+        <h2 class="display">A laser, a fan, and a Wi-Fi chip</h2>
+      </div>
+    </div>
+    <div class="sensor-grid">
+      <div class="sensor-prose">
+        <p>
+          Every air reading on this page comes from an <strong>SDS011 particulate sensor</strong> —
+          the workhorse of the open-source <strong>Luftdaten</strong> citizen-sensing movement. A small
+          fan draws air through a chamber where a laser beam scatters off airborne particles; from
+          that scatter the sensor counts what's floating in the air and reports
+          <strong>PM<sub>2.5</sub> and PM<sub>10</sub> concentrations in µg/m³</strong> every few minutes.
+        </p>
+        <p>
+          The sensor rides on a low-cost microcontroller that pushes each reading over
+          <strong>Wi-Fi — or GSM where connectivity is thin</strong> — to the open sensors.AFRICA
+          platform, where it is mapped, archived and published. The whole station costs about as
+          much as a pair of shoes, mounts on a window ledge, and is assembled by the citizens who
+          host it. That is the point: cheap enough for a household, honest enough for a newsroom.
+        </p>
+      </div>
+      <div class="spec-card">
+        <h3>Station at a glance</h3>
+        <dl>
+          <div class="spec-row" style="border-top:none"><dt>Sensor</dt><dd>Nova SDS011</dd></div>
+          <div class="spec-row"><dt>Method</dt><dd>Laser light scattering</dd></div>
+          <div class="spec-row"><dt>Measures</dt><dd>PM<sub>2.5</sub> &amp; PM<sub>10</sub> (µg/m³)</dd></div>
+          <div class="spec-row"><dt>Cadence</dt><dd>Every 2–5 minutes</dd></div>
+          <div class="spec-row"><dt>Uplink</dt><dd>Wi-Fi, GSM where needed</dd></div>
+          <div class="spec-row"><dt>Firmware</dt><dd>Open-source Luftdaten</dd></div>
+          <div class="spec-row"><dt>Data</dt><dd>Open — free to reuse</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <h2>Put your street on this page.</h2>
+    <p>Host an air sensor at your home, school or office and add your block to the public record. No lab coat required — just a window ledge and Wi-Fi.</p>
+    <a class="btn btn-primary" href="get-started.html">Get started — host a sensor</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+        <p class="footer-mission">A pan-African citizen science initiative using sensors to monitor air, water and sound pollution — giving citizens actionable information about their cities.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Network</h4>
+        <ul>
+          <li><a href="air.html">Air quality</a></li>
+          <li><a href="water.html">Water</a></li>
+          <li><a href="sound.html">Sound</a></li>
+          <li><a href="radiation.html">Radiation</a></li>
+          <li><a href="data.html">Open data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-started.html">Get a sensor</a></li>
+          <li><a href="https://twitter.com/sensorsAFRICA/" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.instagram.com/sensorsAFRICA/" rel="noopener">Instagram</a></li>
+          <li><a href="https://medium.com/@sensors.AFRICA" rel="noopener">Medium</a></li>
+          <li><a href="https://github.com/CodeForAfrica/sensors.AFRICA" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a></li>
+          <li><a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a></li>
+          <li><a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Incubated by <a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a> · seed-funded by <a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a> · powered by <a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></span>
+      <span>Redesign prototype — all readings on this page are illustrative sample data.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPT 1 — MAP (isolated; failure here cannot affect charts)
+     ============================================================ -->
+<script>
+try {
+  // EPA PM2.5 breakpoints → AQI band color + name
+  function aqiBandMap(v){
+    if (v <= 12)    return { color:'#46d17f', name:'Good' };
+    if (v <= 35.4)  return { color:'#f4c542', name:'Moderate' };
+    if (v <= 55.4)  return { color:'#f5822e', name:'Unhealthy for sensitive groups' };
+    if (v <= 150.4) return { color:'#ef5350', name:'Unhealthy' };
+    if (v <= 250.4) return { color:'#b06ae0', name:'Very unhealthy' };
+    return { color:'#c0466c', name:'Hazardous' };
+  }
+
+  var MAP_CITIES = [
+    { name:'Nairobi',        country:'Kenya',    lat:-1.2864,  lng:36.8172,  pm25:38.4 },
+    { name:'Nakuru',         country:'Kenya',    lat:-0.3031,  lng:36.0800,  pm25:21.7 },
+    { name:'Kisumu',         country:'Kenya',    lat:-0.0917,  lng:34.7680,  pm25:17.3 },
+    { name:'Dar es Salaam',  country:'Tanzania', lat:-6.7924,  lng:39.2083,  pm25:28.9 },
+    { name:'Lagos',          country:'Nigeria',  lat:6.5244,   lng:3.3792,   pm25:68.2 },
+    { name:'Abuja',          country:'Nigeria',  lat:9.0765,   lng:7.3986,   pm25:44.1 },
+    { name:'Ilorin',         country:'Nigeria',  lat:8.4966,   lng:4.5421,   pm25:52.6 },
+    { name:'Maiduguri',      country:'Nigeria',  lat:11.8333,  lng:13.1510,  pm25:161.0 },
+    { name:'Port Harcourt',  country:'Nigeria',  lat:4.8156,   lng:7.0498,   pm25:74.5 },
+    { name:'Kano',           country:'Nigeria',  lat:12.0022,  lng:8.5920,   pm25:138.7 },
+    { name:'Awka',           country:'Nigeria',  lat:6.2120,   lng:7.0740,   pm25:41.9 },
+    { name:'Akure',          country:'Nigeria',  lat:7.2571,   lng:5.2058,   pm25:33.5 },
+    { name:'Ado-Ekiti',      country:'Nigeria',  lat:7.6233,   lng:5.2210,   pm25:29.8 },
+    { name:'Accra',          country:'Ghana',    lat:5.6037,   lng:-0.1870,  pm25:47.3 },
+    { name:'Kumasi',         country:'Ghana',    lat:6.6885,   lng:-1.6244,  pm25:35.9 },
+    { name:'Lusaka',         country:'Zambia',   lat:-15.3875, lng:28.3228,  pm25:11.2 }
+  ];
+
+  if (typeof L !== 'undefined') {
+    var map = L.map('africa-map', {
+      center: [2.5, 18],
+      zoom: 4,
+      minZoom: 3,
+      maxZoom: 10,
+      scrollWheelZoom: false,
+      attributionControl: true
+    });
+
+    // CARTO dark basemap — the shell behind it carries a styled fallback
+    // background, so a tile failure never looks broken.
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    MAP_CITIES.forEach(function (c) {
+      var band = aqiBandMap(c.pm25);
+      L.circleMarker([c.lat, c.lng], {
+        radius: 8,
+        color: '#0c0f16',       // 2px surface ring so overlapping markers stay legible
+        weight: 2,
+        fillColor: band.color,
+        fillOpacity: 0.95
+      }).addTo(map).bindPopup(
+        '<div class="popup-city">' + c.name + ', ' + c.country + '</div>' +
+        '<div class="popup-reading">PM2.5 <strong>' + c.pm25.toFixed(1) + ' µg/m³</strong></div>' +
+        '<div style="color:' + band.color + ';font-size:.75rem;margin-top:2px">&#9679; <span style="color:#9aa2b1">' + band.name + '</span></div>' +
+        '<div style="color:#6b7280;font-size:.68rem;margin-top:4px">Sample reading — illustrative</div>'
+      );
+    });
+
+    // Map is live: retire the static fallback note
+    var note = document.getElementById('map-fallback');
+    if (note) note.style.display = 'none';
+  }
+} catch (err) {
+  // Map failure is cosmetic: the shell keeps its styled fallback background.
+  console.warn('Map init skipped:', err && err.message);
+}
+</script>
+
+<!-- ============================================================
+     SCRIPT 2 — TREND CHART hover layer (progressive enhancement
+     only; the chart is fully rendered in static markup above)
+     ============================================================ -->
+<script>
+try {
+  // Shared state so the city selector (script 3) can retarget the hover data.
+  window.airTrendState = window.airTrendState || {
+    series: [18,16,15,14,13,15,22,34,41,38,32,28,26,25,27,30,36,44,52,49,45,42,40,38.4],
+    ys: 276 / 60
+  };
+
+  var svg  = document.getElementById('trend-chart');
+  var card = document.getElementById('trend-card');
+  var tip  = document.getElementById('trend-tip');
+  var hoverG = document.getElementById('trend-hover');
+
+  if (svg && card && tip && hoverG) {
+    var SVGNS = 'http://www.w3.org/2000/svg';
+    var X0 = 52, XW = 612, Y0 = 300;
+
+    // wide hover hit area (whole plot), nearest-point crosshair + dot
+    var cross = document.createElementNS(SVGNS, 'line');
+    cross.setAttribute('stroke', 'rgba(255,255,255,0.25)');
+    cross.setAttribute('stroke-width', '1');
+    cross.setAttribute('y1', '24'); cross.setAttribute('y2', '300');
+    cross.style.display = 'none';
+    hoverG.appendChild(cross);
+
+    var dot = document.createElementNS(SVGNS, 'circle');
+    dot.setAttribute('r', '5');
+    dot.setAttribute('fill', '#f5822e');
+    dot.setAttribute('stroke', '#141821');
+    dot.setAttribute('stroke-width', '2');
+    dot.style.display = 'none';
+    hoverG.appendChild(dot);
+    window.airTrendState.hoverDot = dot;   // selector re-colors it on city change
+
+    function hideHover(){ cross.style.display = 'none'; dot.style.display = 'none'; tip.style.display = 'none'; }
+
+    svg.addEventListener('mousemove', function (e) {
+      var s = window.airTrendState;
+      var rect = svg.getBoundingClientRect();
+      var sx = 760 / rect.width;                     // CSS px → viewBox units
+      var vx = (e.clientX - rect.left) * sx;
+      if (vx < X0 - 10 || vx > X0 + XW + 10) { hideHover(); return; }
+      var i = Math.round((vx - X0) / (XW / 23));
+      i = Math.max(0, Math.min(23, i));
+      var px = X0 + i * (XW / 23);
+      var py = Y0 - s.series[i] * s.ys;
+
+      cross.setAttribute('x1', px); cross.setAttribute('x2', px);
+      cross.style.display = '';
+      dot.setAttribute('cx', px); dot.setAttribute('cy', py);
+      dot.style.display = '';
+
+      tip.textContent = String(i).padStart(2, '0') + ':00 — ' + s.series[i] + ' µg/m³';
+      tip.style.display = 'block';
+      var cardRect = card.getBoundingClientRect();
+      tip.style.left = ((px / 760) * rect.width + rect.left - cardRect.left) + 'px';
+      tip.style.top  = ((py / 360) * rect.height + rect.top - cardRect.top) + 'px';
+    });
+    svg.addEventListener('mouseleave', hideHover);
+  }
+} catch (err) {
+  console.warn('Chart hover enhancement skipped:', err && err.message);
+}
+</script>
+
+<!-- ============================================================
+     SCRIPT 3 — CITY SELECTOR interaction (isolated; the page is
+     fully readable with zero JS — Nairobi is baked into markup)
+     ============================================================ -->
+<script>
+try {
+  function aqiBandSel(v){
+    var B = [
+      { lo:0,     hi:12,    color:'#46d17f', name:'Good' },
+      { lo:12,    hi:35.4,  color:'#f4c542', name:'Moderate' },
+      { lo:35.4,  hi:55.4,  color:'#f5822e', name:'Unhealthy for sensitive groups' },
+      { lo:55.4,  hi:150.4, color:'#ef5350', name:'Unhealthy' },
+      { lo:150.4, hi:250.4, color:'#b06ae0', name:'Very unhealthy' },
+      { lo:250.4, hi:350,   color:'#c0466c', name:'Hazardous' }
+    ];
+    for (var i = 0; i < B.length; i++) {
+      if (v <= B[i].hi || i === B.length - 1) {
+        var frac = Math.min(1, Math.max(0, (v - B[i].lo) / (B[i].hi - B[i].lo)));
+        return { i:i, color:B[i].color, name:B[i].name, meterPct: ((i + frac) / 6) * 100 };
+      }
+    }
+  }
+
+  var DASH = {
+    nairobi: { label:'Nairobi', country:'Kenya', tz:'EAT', pm10:51.2,
+      series:[18,16,15,14,13,15,22,34,41,38,32,28,26,25,27,30,36,44,52,49,45,42,40,38.4] },
+    lagos:   { label:'Lagos', country:'Nigeria', tz:'WAT', pm10:89.5,
+      series:[42,39,37,35,36,41,55,72,84,79,70,64,58,55,57,61,68,79,88,83,77,73,70,68.2] },
+    accra:   { label:'Accra', country:'Ghana', tz:'GMT', pm10:63.8,
+      series:[26,24,22,21,22,26,35,48,56,52,46,41,38,36,38,42,49,58,63,58,54,51,49,47.3] },
+    dar:     { label:'Dar es Salaam', country:'Tanzania', tz:'EAT', pm10:42.6,
+      series:[15,14,13,12,12,14,19,27,33,31,27,24,22,21,22,25,29,34,38,35,32,31,30,28.9] },
+    kano:    { label:'Kano', country:'Nigeria', tz:'WAT', pm10:214.9,
+      series:[96,92,88,85,88,97,112,128,142,150,146,138,130,124,120,124,131,142,155,151,147,143,140,138.7] },
+    lusaka:  { label:'Lusaka', country:'Zambia', tz:'CAT', pm10:19.4,
+      series:[7,6,6,5,5,6,9,13,16,15,13,11,10,9,10,11,13,16,18,16,14,13,12,11.2] }
+  };
+
+  var X0 = 52, XW = 612, Y0 = 300, YH = 276;
+  var YMAXES = [30, 60, 90, 120, 150, 180, 240, 300];
+
+  function $(id){ return document.getElementById(id); }
+  function fmt(v){ return (Math.round(v * 10) / 10).toString(); }
+
+  function renderCity(key){
+    var c = DASH[key];
+    if (!c) return;
+    var now = c.series[c.series.length - 1];
+    var band = aqiBandSel(now);
+
+    /* --- featured reading panel --- */
+    $('feat-city').textContent = c.label + ', ' + c.country;
+    var num = $('feat-pm25');
+    num.textContent = fmt(now);
+    num.style.color = band.color;
+    $('feat-band').textContent = band.name;
+    $('feat-swatch').style.background = band.color;
+    $('feat-needle').style.left = band.meterPct.toFixed(1) + '%';
+    $('feat-pm10').textContent = fmt(c.pm10) + ' µg/m³';
+
+    /* --- trend chart geometry --- */
+    var peakV = Math.max.apply(null, c.series);
+    var ymax = YMAXES[YMAXES.length - 1];
+    for (var m = 0; m < YMAXES.length; m++) {
+      if (YMAXES[m] >= peakV * 1.05) { ymax = YMAXES[m]; break; }
+    }
+    var ys = YH / ymax;
+    var pts = [], peakI = 0;
+    for (var i = 0; i < 24; i++) {
+      var px = X0 + i * (XW / 23);
+      var py = Y0 - c.series[i] * ys;
+      pts.push(px.toFixed(1) + ',' + py.toFixed(1));
+      if (c.series[i] > c.series[peakI]) peakI = i;
+    }
+    $('trend-line').setAttribute('points', pts.join(' '));
+    $('trend-line').setAttribute('stroke', band.color);
+    $('trend-area').setAttribute('d', 'M52,300 L' + pts.join(' L') + ' L664,300 Z');
+    $('trend-area').setAttribute('fill', band.color);
+
+    /* y ticks: thirds of a round ymax */
+    $('ytick-1').textContent = Math.round(ymax / 3);
+    $('ytick-2').textContent = Math.round(2 * ymax / 3);
+    $('ytick-3').textContent = ymax;
+
+    /* WHO guideline line */
+    var whoY = Y0 - 10 * ys;
+    $('who-line').setAttribute('y1', whoY.toFixed(1));
+    $('who-line').setAttribute('y2', whoY.toFixed(1));
+    $('who-label').setAttribute('y', (whoY - 6).toFixed(1));
+
+    /* peak + endpoint direct labels */
+    var peakX = X0 + peakI * (XW / 23), peakY = Y0 - c.series[peakI] * ys;
+    var lblX = Math.min(Math.max(peakX, 80), 620);
+    $('peak-dot').setAttribute('cx', peakX.toFixed(1));
+    $('peak-dot').setAttribute('cy', peakY.toFixed(1));
+    $('peak-dot').setAttribute('fill', band.color);
+    $('peak-val').setAttribute('x', lblX.toFixed(1));
+    $('peak-val').setAttribute('y', Math.max(14, peakY - 14.8).toFixed(1));
+    $('peak-val').textContent = fmt(c.series[peakI]);
+    $('peak-lbl').setAttribute('x', lblX.toFixed(1));
+    $('peak-lbl').setAttribute('y', Math.max(4, peakY - 27.8).toFixed(1));
+    $('peak-lbl').textContent = peakI >= 15 ? 'evening peak' : 'morning peak';
+    var endY = Y0 - now * ys;
+    $('end-dot').setAttribute('cy', endY.toFixed(1));
+    $('end-dot').setAttribute('fill', band.color);
+    $('end-val').setAttribute('y', (endY - 7).toFixed(1));
+    $('end-val').textContent = fmt(now);
+
+    /* titles, captions, accessibility text */
+    $('trend-city').textContent = c.label;
+    $('x-caption').textContent = 'Hour of day (' + c.tz + ') · sample values, hourly means';
+    $('trend-chart').setAttribute('aria-label',
+      'Line chart of PM2.5 over 24 hours in ' + c.label + '. Values peak at ' +
+      fmt(c.series[peakI]) + ' micrograms per cubic metre and currently read ' + fmt(now) +
+      ', against the WHO guideline of 10.');
+    $('trend-caption').textContent = 'Hourly PM2.5 (µg/m³), ' + c.label + ' — sample day';
+
+    /* table rows */
+    function rowHTML(vals){
+      var h = '<th scope="row">PM2.5</th>';
+      for (var k = 0; k < vals.length; k++) h += '<td>' + fmt(vals[k]) + '</td>';
+      return h;
+    }
+    $('trend-vals-a').innerHTML = rowHTML(c.series.slice(0, 12));
+    $('trend-vals-b').innerHTML = rowHTML(c.series.slice(12));
+
+    /* retarget the hover layer (script 2) */
+    window.airTrendState = window.airTrendState || {};
+    window.airTrendState.series = c.series;
+    window.airTrendState.ys = ys;
+    if (window.airTrendState.hoverDot) window.airTrendState.hoverDot.setAttribute('fill', band.color);
+  }
+
+  var tabs = $('city-tabs');
+  if (tabs) {
+    var buttons = tabs.querySelectorAll('button[data-city]');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        renderCity(btn.getAttribute('data-city'));
+      });
+    });
+  }
+
+  /* Timestamp the featured panel with a plausible "last updated" time */
+  var updated = $('feat-updated');
+  if (updated) {
+    var nowD = new Date();
+    updated.textContent = String(nowD.getHours()).padStart(2, '0') + ':' +
+                          String(nowD.getMinutes()).padStart(2, '0') + ' local';
+  }
+} catch (err) {
+  console.warn('City selector enhancement skipped:', err && err.message);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open data — sensors.AFRICA</title>
+<meta name="description" content="sensors.AFRICA publishes open, real-time and historical air-quality data for African cities — embeddable widgets, a public API and downloadable archives for journalists, researchers and civic watchdogs.">
+
+<!-- Fonts: Fraunces (display serif) · Space Grotesk (data) · Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — shared with all subpages, do not diverge
+   ============================================================ */
+:root{
+  --ink:#0c0f16; --ink-2:#141821; --ink-3:#1a1f2b;
+  --paper:#f1eee7; --paper-ink:#17140f;
+  --text:#e9ebf0; --text-2:#9aa2b1; --muted:#6b7280;
+  --hair:rgba(255,255,255,0.09); --hair-strong:rgba(255,255,255,0.16);
+  --aqi-good:#46d17f; --aqi-moderate:#f4c542; --aqi-sensitive:#f5822e;
+  --aqi-unhealthy:#ef5350; --aqi-veryunhealthy:#b06ae0; --aqi-hazardous:#c0466c;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --data:"Space Grotesk","Inter",system-ui,sans-serif;
+  --maxw:1200px;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink); color:var(--text);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--aqi-moderate);outline-offset:3px;border-radius:2px}
+::selection{background:var(--aqi-sensitive);color:var(--ink)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.kicker{
+  font-family:var(--data);font-size:.75rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-2);
+}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+h2.display{
+  font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.4vw,2.6rem);
+  line-height:1.12;letter-spacing:-.01em;margin:10px 0 14px;
+}
+.lede{color:var(--text-2);max-width:56ch}
+
+/* The AQI spine — a segmented band used as the page's structural accent */
+.aqi-spine{display:flex;height:4px;width:100%}
+.aqi-spine span{flex:1}
+.aqi-spine .s1{background:var(--aqi-good)}
+.aqi-spine .s2{background:var(--aqi-moderate)}
+.aqi-spine .s3{background:var(--aqi-sensitive)}
+.aqi-spine .s4{background:var(--aqi-unhealthy)}
+.aqi-spine .s5{background:var(--aqi-veryunhealthy)}
+.aqi-spine .s6{background:var(--aqi-hazardous)}
+.spine-sm{width:64px;height:4px;margin-bottom:14px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(12,15,22,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--hair);
+}
+.header-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px;
+}
+.wordmark{
+  font-family:var(--data);font-weight:700;font-size:1.05rem;letter-spacing:.01em;
+  text-decoration:none;white-space:nowrap;
+}
+.wordmark .dot-africa{color:var(--aqi-good)}
+.main-nav{display:flex;gap:2px;align-items:center;overflow-x:auto}
+.main-nav a{
+  font-family:var(--data);font-size:.82rem;font-weight:500;color:var(--text-2);
+  text-decoration:none;padding:8px 11px;border-radius:6px;white-space:nowrap;
+}
+.main-nav a:hover{color:var(--text);background:var(--ink-3)}
+.main-nav a.live-link{color:var(--text)}
+.main-nav a.live-link::before{
+  content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--aqi-good);margin-right:7px;vertical-align:1px;
+}
+.main-nav a[aria-current="page"]{color:var(--text);background:var(--ink-3)}
+.nav-cta{
+  font-family:var(--data);font-size:.82rem;font-weight:700;text-decoration:none;
+  color:var(--ink);background:var(--aqi-good);padding:9px 16px;border-radius:999px;white-space:nowrap;
+}
+.nav-cta:hover{background:#5fdd92}
+
+/* ============================================================
+   SHARED SECTION / BUTTON / CTA CHROME (same as landing)
+   ============================================================ */
+.section{padding:84px 0}
+.btn{
+  font-family:var(--data);font-weight:700;font-size:.92rem;text-decoration:none;
+  padding:13px 24px;border-radius:999px;display:inline-block;
+}
+.btn-primary{background:var(--aqi-good);color:var(--ink)}
+.btn-primary:hover{background:#5fdd92}
+.btn-ghost{color:var(--text);border:1px solid var(--hair-strong)}
+.btn-ghost:hover{border-color:var(--text-2)}
+.proto-badge{
+  display:inline-flex;align-items:center;gap:7px;margin-top:26px;
+  font-family:var(--data);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:5px 12px;
+}
+.proto-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aqi-moderate)}
+.cta-section{position:relative;overflow:hidden;border-top:1px solid var(--hair)}
+.cta-section::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50rem 26rem at 50% 120%, rgba(70,209,127,.1), transparent 65%);
+}
+.cta-inner{position:relative;text-align:center;padding:96px 24px;max-width:760px;margin:0 auto}
+.cta-inner h2{
+  font-family:var(--serif);font-weight:640;font-size:clamp(2rem,4.4vw,3.3rem);
+  line-height:1.08;letter-spacing:-.015em;
+}
+.cta-inner p{margin:20px auto 32px;color:var(--text-2);max-width:46ch}
+.cta-inner .aqi-spine{width:120px;margin:0 auto 28px}
+
+/* ============================================================
+   PAGE HERO — editorial, data-hub flavour
+   ============================================================ */
+.data-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
+.data-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(52rem 30rem at 82% -12%, rgba(70,209,127,.08), transparent 60%),
+    radial-gradient(44rem 26rem at 4% 115%, rgba(245,130,46,.06), transparent 60%);
+}
+.data-hero .hero-inner{position:relative;padding:80px 0 70px;max-width:820px}
+.data-hero h1{
+  font-family:var(--serif);font-weight:640;font-variation-settings:"opsz" 100;
+  font-size:clamp(2.5rem,5.4vw,4.1rem);line-height:1.05;letter-spacing:-.015em;margin-top:14px;
+}
+.data-hero h1 em{font-style:italic;font-weight:520;color:var(--aqi-good)}
+.data-hero .standfirst{margin-top:22px;font-size:1.08rem;color:var(--text-2);max-width:60ch}
+.hero-facts{
+  display:flex;gap:28px;flex-wrap:wrap;margin-top:32px;
+  font-family:var(--data);font-size:.8rem;color:var(--text-2);
+}
+.hero-facts .fact strong{
+  display:block;font-size:1.25rem;font-weight:700;color:var(--text);
+  font-variant-numeric:tabular-nums;
+}
+.hero-credit{margin-top:30px;font-family:var(--data);font-size:.74rem;color:var(--muted)}
+.hero-credit strong{color:var(--text-2);font-weight:500}
+
+/* ============================================================
+   EMBED WIDGETS
+   ============================================================ */
+.embed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.embed-card{
+  background:var(--ink-2);border:1px solid var(--hair);border-radius:14px;
+  padding:24px 22px 22px;position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.embed-card .accent{position:absolute;top:0;left:0;right:0;height:3px}
+.embed-card h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin-bottom:8px}
+.embed-card>p{font-size:.88rem;color:var(--text-2);margin-bottom:16px}
+.embed-preview{
+  border:1px solid var(--hair);border-radius:10px;background:var(--ink);
+  margin-bottom:16px;overflow:hidden;
+}
+.embed-preview svg{width:100%;height:auto;display:block}
+.snippet{position:relative;margin-top:auto}
+.snippet-label{
+  font-family:var(--data);font-size:.62rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:7px;
+}
+.snippet pre{
+  background:var(--ink);border:1px solid var(--hair);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;
+}
+.snippet code{
+  font-family:var(--data);font-size:.76rem;line-height:1.55;color:var(--text-2);
+  white-space:pre;
+}
+.snippet code .u{color:var(--aqi-good)}
+.snippet code .t{color:var(--aqi-moderate)}
+.snippet+.snippet{margin-top:14px}
+.copy-btn{
+  position:absolute;top:26px;right:8px;
+  font-family:var(--data);font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text-2);background:var(--ink-3);border:1px solid var(--hair-strong);
+  border-radius:6px;padding:4px 9px;cursor:pointer;
+}
+.copy-btn:hover{color:var(--text);border-color:var(--text-2)}
+.copy-btn.copied{color:var(--aqi-good);border-color:rgba(70,209,127,.5)}
+.embed-note{margin-top:22px;font-family:var(--data);font-size:.78rem;color:var(--muted);max-width:74ch}
+.embed-note code{
+  font-family:var(--data);font-size:.76rem;color:var(--aqi-moderate);
+  background:var(--ink-2);border:1px solid var(--hair);border-radius:5px;padding:1px 6px;
+}
+
+/* ============================================================
+   API + ARCHIVES (resource cards on paper band)
+   ============================================================ */
+.paper-section{background:var(--paper);color:var(--paper-ink)}
+.paper-section .kicker{color:#6d675c}
+.paper-section h2.display{color:var(--paper-ink)}
+.paper-section .lede{color:#4d473c}
+.resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.resource-card{
+  background:#fff;border:1px solid #e2ddd1;border-radius:14px;padding:28px 26px;
+  display:flex;flex-direction:column;
+}
+.resource-card .r-kicker{
+  font-family:var(--data);font-size:.64rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#8a8375;margin-bottom:12px;
+}
+.resource-card h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;margin-bottom:10px;color:var(--paper-ink)}
+.resource-card p{font-size:.92rem;color:#4d473c}
+.resource-card ul{
+  list-style:none;margin:16px 0 4px;font-family:var(--data);font-size:.82rem;color:#4d473c;
+}
+.resource-card li{
+  padding:7px 0;border-top:1px solid #ece8dd;display:flex;gap:10px;align-items:baseline;
+}
+.resource-card li::before{content:"→";color:var(--aqi-sensitive);font-weight:700;flex:none}
+.resource-links{margin-top:auto;padding-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+.resource-links a{
+  font-family:var(--data);font-size:.8rem;font-weight:700;text-decoration:none;
+  color:var(--paper-ink);border:1px solid #d6d0c2;border-radius:999px;padding:9px 18px;
+}
+.resource-links a:hover{border-color:var(--paper-ink)}
+.resource-links a.solid{background:var(--paper-ink);color:var(--paper);border-color:var(--paper-ink)}
+.resource-links a.solid:hover{background:#000}
+.api-endpoint{
+  font-family:var(--data);font-size:.78rem;color:#4d473c;
+  background:#f7f4ec;border:1px solid #e2ddd1;border-radius:8px;
+  padding:11px 14px;margin-top:16px;white-space:pre-wrap;overflow-wrap:anywhere;
+}
+.api-endpoint b{color:var(--paper-ink)}
+
+/* ============================================================
+   LICENCE + PROVENANCE
+   ============================================================ */
+.terms-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.term-card{
+  background:var(--ink-2);border:1px solid var(--hair);border-radius:14px;padding:28px 26px;
+  position:relative;overflow:hidden;
+}
+.term-card .accent{position:absolute;top:0;left:0;bottom:0;width:3px}
+.term-card h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin-bottom:10px}
+.term-card p{font-size:.9rem;color:var(--text-2)}
+.term-card p+p{margin-top:12px}
+.term-card a{color:var(--text)}
+.term-card .attr-line{
+  margin-top:16px;font-family:var(--data);font-size:.78rem;color:var(--text-2);
+  background:var(--ink);border:1px solid var(--hair);border-radius:8px;padding:11px 14px;
+}
+.spec-list{
+  list-style:none;margin-top:16px;font-family:var(--data);font-size:.82rem;color:var(--text-2);
+}
+.spec-list li{padding:8px 0;border-top:1px solid var(--hair);display:flex;justify-content:space-between;gap:14px}
+.spec-list li span:last-child{color:var(--text);text-align:right}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:#080a10;border-top:1px solid var(--hair);padding:64px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-mission{font-size:.9rem;color:var(--text-2);margin-top:14px;max-width:38ch}
+.footer-col h4{
+  font-family:var(--data);font-size:.66rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:16px;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{font-size:.88rem;color:var(--text-2);text-decoration:none}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{
+  margin-top:52px;padding-top:22px;border-top:1px solid var(--hair);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-family:var(--data);font-size:.74rem;color:var(--muted);
+}
+.footer-bottom a{color:var(--text-2)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1020px){
+  .embed-grid{grid-template-columns:1fr}
+  .resource-grid,.terms-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .main-nav{display:none}
+  .data-hero .hero-inner{padding:56px 0}
+}
+@media (max-width:600px){
+  .footer-grid{grid-template-columns:1fr}
+  .section{padding:60px 0}
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+    <nav class="main-nav" aria-label="Primary">
+      <a class="live-link" href="air.html">Air</a>
+      <a href="water.html">Water</a>
+      <a href="sound.html">Sound</a>
+      <a href="radiation.html">Radiation</a>
+      <a href="data.html" aria-current="page">Data</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="nav-cta" href="get-started.html">Get a sensor</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     HERO — open data hub
+     ============================================================ -->
+<section class="data-hero">
+  <div class="wrap hero-inner">
+    <p class="kicker">Data &middot; open by default</p>
+    <h1>Open data. <em>Take it, use it, publish with it.</em></h1>
+    <p class="standfirst">
+      sensors.AFRICA publishes open, real-time and historical air-quality data —
+      PM<sub>2.5</sub> and PM<sub>10</sub> particulate readings in µg/m³ — for African cities.
+      Journalists chase leads with it, researchers model with it, and civic watchdogs hold
+      polluters and policymakers to account with it. Everything on this page is free to use:
+      live widgets you can embed anywhere, a public API, and downloadable archives.
+    </p>
+    <div class="hero-facts" aria-label="What the open data covers">
+      <div class="fact"><strong>PM2.5 / PM10</strong>particulates, µg/m³</div>
+      <div class="fact"><strong>Real-time</strong>live sensor readings</div>
+      <div class="fact"><strong>Historical</strong>downloadable archives</div>
+      <div class="fact"><strong>Open</strong>free to reuse, with credit</div>
+    </div>
+    <p class="hero-credit">Air-quality data credited to the <strong>WHO Global Platform on Air Quality &amp; Health</strong>.</p>
+    <span class="proto-badge">Prototype &middot; illustrative previews</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     EMBEDDABLE WIDGETS
+     ============================================================ -->
+<section class="section" id="embeds">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">Embeddable widgets</p>
+        <h2 class="display">Put live air quality on your own site</h2>
+      </div>
+      <p class="lede">Anyone — a newsroom, a school, a blog — can embed our live map, graph or dial with one iframe. No key, no sign-up. Swap the <code style="font-family:var(--data);color:var(--aqi-moderate)">city</code> parameter for your own.</p>
+    </div>
+
+    <div class="embed-grid">
+      <!-- MAP widget -->
+      <article class="embed-card">
+        <span class="accent" style="background:var(--aqi-good)" aria-hidden="true"></span>
+        <h3>Live map</h3>
+        <p>An interactive city map with every sensor node coloured by its current health band.</p>
+        <div class="embed-preview" aria-hidden="true">
+          <svg viewBox="0 0 320 130" role="img" aria-label="Stylised preview of the embeddable map widget">
+            <rect width="320" height="130" fill="#10141d"></rect>
+            <g stroke="rgba(255,255,255,0.07)" stroke-width="1">
+              <path d="M0,40 L320,52" fill="none"></path><path d="M0,86 L320,74" fill="none"></path>
+              <path d="M70,0 L84,130" fill="none"></path><path d="M180,0 L170,130" fill="none"></path><path d="M256,0 L266,130" fill="none"></path>
+            </g>
+            <circle cx="96" cy="58" r="7" fill="var(--aqi-sensitive)" stroke="#0c0f16" stroke-width="2"></circle>
+            <circle cx="150" cy="84" r="7" fill="var(--aqi-moderate)" stroke="#0c0f16" stroke-width="2"></circle>
+            <circle cx="205" cy="46" r="7" fill="var(--aqi-good)" stroke="#0c0f16" stroke-width="2"></circle>
+            <circle cx="243" cy="92" r="7" fill="var(--aqi-unhealthy)" stroke="#0c0f16" stroke-width="2"></circle>
+            <circle cx="62" cy="100" r="7" fill="var(--aqi-good)" stroke="#0c0f16" stroke-width="2"></circle>
+          </svg>
+        </div>
+        <div class="snippet">
+          <div class="snippet-label">Widget URL</div>
+          <pre><code id="map-url"><span class="u">https://sensors.africa/embeded/air/map</span>?city=<span class="t">nairobi</span></code></pre>
+          <button class="copy-btn" type="button" data-copy="map-url">Copy</button>
+        </div>
+        <div class="snippet">
+          <div class="snippet-label">Iframe snippet</div>
+          <pre><code id="map-iframe">&lt;iframe
+  src="<span class="u">https://sensors.africa/embeded/air/map?city=nairobi</span>"
+  width="100%" height="400"
+  frameborder="0" title="sensors.AFRICA air quality map — Nairobi"&gt;
+&lt;/iframe&gt;</code></pre>
+          <button class="copy-btn" type="button" data-copy="map-iframe">Copy</button>
+        </div>
+      </article>
+
+      <!-- GRAPH widget -->
+      <article class="embed-card">
+        <span class="accent" style="background:var(--aqi-moderate)" aria-hidden="true"></span>
+        <h3>Live graph</h3>
+        <p>A rolling PM<sub>2.5</sub>/PM<sub>10</sub> trend chart for the city, updated as readings arrive.</p>
+        <div class="embed-preview" aria-hidden="true">
+          <svg viewBox="0 0 320 130" role="img" aria-label="Stylised preview of the embeddable graph widget">
+            <rect width="320" height="130" fill="#10141d"></rect>
+            <g stroke="rgba(255,255,255,0.07)" stroke-width="1">
+              <line x1="24" y1="30" x2="300" y2="30"></line>
+              <line x1="24" y1="66" x2="300" y2="66"></line>
+              <line x1="24" y1="102" x2="300" y2="102"></line>
+            </g>
+            <path d="M24,88 C60,84 84,58 116,64 S172,96 204,86 S262,38 300,50" fill="none" stroke="var(--aqi-sensitive)" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M24,102 C64,98 96,80 128,84 S188,106 220,100 S268,66 300,74" fill="none" stroke="var(--aqi-good)" stroke-width="2" stroke-linecap="round" opacity="0.75"></path>
+          </svg>
+        </div>
+        <div class="snippet">
+          <div class="snippet-label">Widget URL</div>
+          <pre><code id="graph-url"><span class="u">https://sensors.africa/embeded/air/graph</span>?city=<span class="t">nairobi</span></code></pre>
+          <button class="copy-btn" type="button" data-copy="graph-url">Copy</button>
+        </div>
+        <div class="snippet">
+          <div class="snippet-label">Iframe snippet</div>
+          <pre><code id="graph-iframe">&lt;iframe
+  src="<span class="u">https://sensors.africa/embeded/air/graph?city=nairobi</span>"
+  width="100%" height="340"
+  frameborder="0" title="sensors.AFRICA air quality graph — Nairobi"&gt;
+&lt;/iframe&gt;</code></pre>
+          <button class="copy-btn" type="button" data-copy="graph-iframe">Copy</button>
+        </div>
+      </article>
+
+      <!-- DIAL widget -->
+      <article class="embed-card">
+        <span class="accent" style="background:var(--aqi-sensitive)" aria-hidden="true"></span>
+        <h3>Live dial</h3>
+        <p>A compact at-a-glance gauge showing the city's current reading on the health scale.</p>
+        <div class="embed-preview" aria-hidden="true">
+          <svg viewBox="0 0 320 130" role="img" aria-label="Stylised preview of the embeddable dial widget">
+            <rect width="320" height="130" fill="#10141d"></rect>
+            <path d="M100,104 A62,62 0 0 1 128,53" fill="none" stroke="var(--aqi-good)" stroke-width="9" stroke-linecap="round"></path>
+            <path d="M136,49 A62,62 0 0 1 184,49" fill="none" stroke="var(--aqi-moderate)" stroke-width="9" stroke-linecap="round"></path>
+            <path d="M192,53 A62,62 0 0 1 220,104" fill="none" stroke="var(--aqi-sensitive)" stroke-width="9" stroke-linecap="round"></path>
+            <line x1="160" y1="104" x2="196" y2="66" stroke="#e9ebf0" stroke-width="3" stroke-linecap="round"></line>
+            <circle cx="160" cy="104" r="5" fill="#e9ebf0"></circle>
+            <text x="160" y="124" text-anchor="middle" font-size="12" font-weight="700" fill="#e9ebf0" font-family="Space Grotesk, sans-serif">38.4 µg/m³</text>
+          </svg>
+        </div>
+        <div class="snippet">
+          <div class="snippet-label">Widget URL</div>
+          <pre><code id="dial-url"><span class="u">https://sensors.africa/embeded/air/dial</span>?city=<span class="t">nairobi</span></code></pre>
+          <button class="copy-btn" type="button" data-copy="dial-url">Copy</button>
+        </div>
+        <div class="snippet">
+          <div class="snippet-label">Iframe snippet</div>
+          <pre><code id="dial-iframe">&lt;iframe
+  src="<span class="u">https://sensors.africa/embeded/air/dial?city=nairobi</span>"
+  width="300" height="250"
+  frameborder="0" title="sensors.AFRICA air quality dial — Nairobi"&gt;
+&lt;/iframe&gt;</code></pre>
+          <button class="copy-btn" type="button" data-copy="dial-iframe">Copy</button>
+        </div>
+      </article>
+    </div>
+
+    <p class="embed-note">
+      Replace <code>city=nairobi</code> with any monitored city — e.g. <code>lagos</code>,
+      <code>accra</code>, <code>dar-es-salaam</code> — to embed its live view. Widgets are served
+      from sensors.africa and update automatically; previews above are illustrative.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     API + ARCHIVES — paper band
+     ============================================================ -->
+<section class="section paper-section" id="api">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">For developers &amp; researchers</p>
+        <h2 class="display">The API and the archives</h2>
+      </div>
+      <p class="lede">Widgets are the front door. Behind them sit a public API for live queries and bulk archives for serious analysis.</p>
+    </div>
+
+    <div class="resource-grid">
+      <article class="resource-card">
+        <p class="r-kicker">Public API</p>
+        <h3>Query readings, city by city</h3>
+        <p>
+          The sensors.AFRICA API serves current and recent air-quality readings by city, plus
+          pointers to historical archives — the same data behind the maps and widgets, as clean
+          JSON. Endpoints, parameters and examples are documented on the project wiki.
+        </p>
+        <ul>
+          <li>Live and recent PM<sub>2.5</sub> / PM<sub>10</sub> readings by city</li>
+          <li>Per-node sensor data across the network</li>
+          <li>Historical archives for long-run analysis</li>
+        </ul>
+        <div class="api-endpoint"><b>GET</b> https://api.sensors.africa/v2/data/  <b>·</b>  see wiki for full reference</div>
+        <div class="resource-links">
+          <a class="solid" href="https://github.com/CodeForAfrica/sensors.AFRICA/wiki/APIs" rel="noopener">API documentation →</a>
+        </div>
+      </article>
+
+      <article class="resource-card">
+        <p class="r-kicker">Archives &amp; source</p>
+        <h3>Download the raw record</h3>
+        <p>
+          Need more than a live snapshot? Historical sensor readings are archived and linked from
+          the project wiki for bulk download, and the entire platform — API, frontend and sensor
+          firmware ecosystem — is developed in the open on GitHub. File issues, read the code,
+          or fork it for your own network.
+        </p>
+        <ul>
+          <li>Historical data archives, linked from the wiki</li>
+          <li>Open-source platform code and issue tracker</li>
+          <li>Wiki guides for working with the data</li>
+        </ul>
+        <div class="resource-links">
+          <a class="solid" href="https://github.com/CodeForAfrica/sensors.AFRICA/wiki" rel="noopener">Wiki &amp; archives →</a>
+          <a href="https://github.com/CodeForAfrica/sensors.AFRICA" rel="noopener">GitHub repository →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LICENCE + PROVENANCE
+     ============================================================ -->
+<section class="section" id="use">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">Using the data</p>
+        <h2 class="display">Credit it, and it's yours</h2>
+      </div>
+      <p class="lede">An open project should be easy to reuse responsibly. Here's how to attribute the data — and how it's produced in the first place.</p>
+    </div>
+
+    <div class="terms-grid">
+      <article class="term-card">
+        <span class="accent" style="background:var(--aqi-good)" aria-hidden="true"></span>
+        <h3>Attribution &amp; licence</h3>
+        <p>
+          sensors.AFRICA is an open project incubated by
+          <a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a>. The data is
+          published openly for journalists, researchers and civic watchdogs to reuse — we ask
+          only that you credit the source. The platform software is free and open source,
+          released under the <a href="https://github.com/CodeForAfrica/sensors.AFRICA/blob/master/LICENSE" rel="noopener">GNU GPL v3.0</a>.
+        </p>
+        <p class="attr-line">Suggested credit: &ldquo;Air-quality data: sensors.AFRICA, a Code for Africa project &middot; WHO Global Platform on Air Quality &amp; Health.&rdquo;</p>
+      </article>
+
+      <article class="term-card">
+        <span class="accent" style="background:var(--aqi-sensitive)" aria-hidden="true"></span>
+        <h3>How the data is produced</h3>
+        <p>
+          Readings come from low-cost, open-source sensors built on
+          <a href="https://luftdaten.info/" rel="noopener">Luftdaten</a> technology around the
+          SDS011 particulate sensor. Citizens host them at homes, schools and offices; each node
+          measures the air and streams its readings to the open platform over WiFi or GSM.
+        </p>
+        <ul class="spec-list">
+          <li><span>Sensor</span><span>SDS011 (open-source Luftdaten design)</span></li>
+          <li><span>Measures</span><span>PM<sub>2.5</sub> &amp; PM<sub>10</sub>, µg/m³</span></li>
+          <li><span>Connectivity</span><span>WiFi or GSM</span></li>
+          <li><span>Hosted by</span><span>Citizens — homes, schools, offices</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <h2>The best dataset is the one you help build.</h2>
+    <p>Host a sensor and your street becomes a data point — open, live and citable. Or just take the data above and put it to work.</p>
+    <a class="btn btn-primary" href="get-started.html">Get started — join the network</a>
+    <div><span class="proto-badge">Prototype &middot; illustrative previews; embed &amp; API links are real</span></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+        <p class="footer-mission">A pan-African citizen science initiative using sensors to monitor air, water and sound pollution — giving citizens actionable information about their cities.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Network</h4>
+        <ul>
+          <li><a href="air.html">Air quality</a></li>
+          <li><a href="water.html">Water</a></li>
+          <li><a href="sound.html">Sound</a></li>
+          <li><a href="radiation.html">Radiation</a></li>
+          <li><a href="data.html">Open data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-started.html">Get a sensor</a></li>
+          <li><a href="https://twitter.com/sensorsAFRICA/" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.instagram.com/sensorsAFRICA/" rel="noopener">Instagram</a></li>
+          <li><a href="https://medium.com/@sensors.AFRICA" rel="noopener">Medium</a></li>
+          <li><a href="https://github.com/CodeForAfrica/sensors.AFRICA" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a></li>
+          <li><a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a></li>
+          <li><a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Incubated by <a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a> · seed-funded by <a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a> · powered by <a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></span>
+      <span>Redesign prototype — all readings on this page are illustrative sample data.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPT — copy buttons (non-essential enhancement; snippets are
+     fully readable and selectable with zero JS)
+     ============================================================ -->
+<script>
+try {
+  var buttons = document.querySelectorAll('.copy-btn');
+  if (!navigator.clipboard) {
+    // No async clipboard (e.g. non-secure context): keep snippets selectable, hide buttons.
+    buttons.forEach(function (b) { b.style.display = 'none'; });
+  } else {
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        try {
+          var target = document.getElementById(btn.getAttribute('data-copy'));
+          if (!target) return;
+          navigator.clipboard.writeText(target.textContent).then(function () {
+            btn.textContent = 'Copied';
+            btn.classList.add('copied');
+            setTimeout(function () {
+              btn.textContent = 'Copy';
+              btn.classList.remove('copied');
+            }, 1600);
+          }).catch(function () { /* clipboard denied — snippet stays selectable */ });
+        } catch (e) { /* non-essential */ }
+      });
+    });
+  }
+} catch (err) {
+  console.warn('Copy enhancement skipped:', err && err.message);
+}
+</script>
+
+</body>
+</html>

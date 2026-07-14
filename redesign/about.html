@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — sensors.AFRICA</title>
+<meta name="description" content="sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor air, water and sound pollution to give citizens actionable information about their cities.">
+
+<!-- Fonts: Fraunces (display serif) · Space Grotesk (data) · Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — shared with all subpages, do not diverge
+   ============================================================ */
+:root{
+  --ink:#0c0f16; --ink-2:#141821; --ink-3:#1a1f2b;
+  --paper:#f1eee7; --paper-ink:#17140f;
+  --text:#e9ebf0; --text-2:#9aa2b1; --muted:#6b7280;
+  --hair:rgba(255,255,255,0.09); --hair-strong:rgba(255,255,255,0.16);
+  --aqi-good:#46d17f; --aqi-moderate:#f4c542; --aqi-sensitive:#f5822e;
+  --aqi-unhealthy:#ef5350; --aqi-veryunhealthy:#b06ae0; --aqi-hazardous:#c0466c;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --data:"Space Grotesk","Inter",system-ui,sans-serif;
+  --maxw:1200px;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink); color:var(--text);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--aqi-moderate);outline-offset:3px;border-radius:2px}
+::selection{background:var(--aqi-sensitive);color:var(--ink)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.kicker{
+  font-family:var(--data);font-size:.75rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-2);
+}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+h2.display{
+  font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.4vw,2.6rem);
+  line-height:1.12;letter-spacing:-.01em;margin:10px 0 14px;
+}
+.lede{color:var(--text-2);max-width:56ch}
+
+/* The AQI spine — a segmented band used as the page's structural accent */
+.aqi-spine{display:flex;height:4px;width:100%}
+.aqi-spine span{flex:1}
+.aqi-spine .s1{background:var(--aqi-good)}
+.aqi-spine .s2{background:var(--aqi-moderate)}
+.aqi-spine .s3{background:var(--aqi-sensitive)}
+.aqi-spine .s4{background:var(--aqi-unhealthy)}
+.aqi-spine .s5{background:var(--aqi-veryunhealthy)}
+.aqi-spine .s6{background:var(--aqi-hazardous)}
+.spine-sm{width:64px;height:4px;margin-bottom:14px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(12,15,22,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--hair);
+}
+.header-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px;
+}
+.wordmark{
+  font-family:var(--data);font-weight:700;font-size:1.05rem;letter-spacing:.01em;
+  text-decoration:none;white-space:nowrap;
+}
+.wordmark .dot-africa{color:var(--aqi-good)}
+.main-nav{display:flex;gap:2px;align-items:center;overflow-x:auto}
+.main-nav a{
+  font-family:var(--data);font-size:.82rem;font-weight:500;color:var(--text-2);
+  text-decoration:none;padding:8px 11px;border-radius:6px;white-space:nowrap;
+}
+.main-nav a:hover{color:var(--text);background:var(--ink-3)}
+.main-nav a.live-link{color:var(--text)}
+.main-nav a.live-link::before{
+  content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--aqi-good);margin-right:7px;vertical-align:1px;
+}
+.main-nav a[aria-current="page"]{color:var(--text);background:var(--ink-3)}
+.nav-cta{
+  font-family:var(--data);font-size:.82rem;font-weight:700;text-decoration:none;
+  color:var(--ink);background:var(--aqi-good);padding:9px 16px;border-radius:999px;white-space:nowrap;
+}
+.nav-cta:hover{background:#5fdd92}
+
+/* ============================================================
+   BUTTONS (shared)
+   ============================================================ */
+.btn{
+  font-family:var(--data);font-weight:700;font-size:.92rem;text-decoration:none;
+  padding:13px 24px;border-radius:999px;display:inline-block;
+}
+.btn-primary{background:var(--aqi-good);color:var(--ink)}
+.btn-primary:hover{background:#5fdd92}
+.btn-ghost{color:var(--text);border:1px solid var(--hair-strong)}
+.btn-ghost:hover{border-color:var(--text-2)}
+.proto-badge{
+  display:inline-flex;align-items:center;gap:7px;margin-top:26px;
+  font-family:var(--data);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:5px 12px;
+}
+.proto-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aqi-moderate)}
+
+/* ============================================================
+   EDITORIAL HERO
+   ============================================================ */
+.about-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
+.about-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(52rem 30rem at 78% -10%, rgba(245,130,46,.09), transparent 60%),
+    radial-gradient(44rem 26rem at 8% 110%, rgba(70,209,127,.06), transparent 60%);
+}
+.about-hero .hero-inner{position:relative;max-width:820px;padding:88px 0 76px}
+.about-hero h1{
+  font-family:var(--serif);font-weight:640;font-variation-settings:"opsz" 100;
+  font-size:clamp(2.4rem,5.2vw,4rem);line-height:1.06;letter-spacing:-.015em;margin-top:14px;
+}
+.about-hero h1 .dot-africa{color:var(--aqi-good)}
+.about-hero .mission{
+  margin-top:24px;font-family:var(--serif);font-weight:460;font-style:italic;
+  font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.5;color:var(--text-2);max-width:56ch;
+}
+
+/* ============================================================
+   PAPER — long-form reading surface
+   ============================================================ */
+.section{padding:84px 0}
+.paper-section{background:var(--paper);color:var(--paper-ink)}
+.paper-section .kicker{color:#6d675c}
+.paper-section h2.display{color:var(--paper-ink)}
+.paper-section .lede{color:#4d473c}
+.story-cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:start;margin-top:20px}
+.story-prose{font-family:var(--serif);font-size:1.16rem;line-height:1.72;color:#2c2820;font-weight:420}
+.story-prose p+p{margin-top:1.1em}
+.story-prose strong{font-weight:640;color:var(--paper-ink)}
+.story-aside{display:flex;flex-direction:column;gap:14px}
+.fact-card{background:#fff;border:1px solid #e2ddd1;border-radius:12px;padding:20px 20px 18px}
+.fact-card .fk{
+  font-family:var(--data);font-size:.64rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#8a8375;margin-bottom:8px;
+}
+.fact-card .fv{font-family:var(--serif);font-weight:600;font-size:1.08rem;line-height:1.4;color:var(--paper-ink)}
+.fact-card .fv a{color:var(--paper-ink);text-decoration-color:#c9c2b2;text-underline-offset:3px}
+.fact-card .fv a:hover{text-decoration-color:var(--paper-ink)}
+.fact-card .fs{font-size:.82rem;color:#6d675c;margin-top:6px;line-height:1.5}
+.fact-card .fbar{height:4px;border-radius:2px;margin-top:14px}
+.paper-credit{margin-top:34px;font-family:var(--data);font-size:.74rem;color:#8a8375}
+
+/* ============================================================
+   PROJECTS — three cards
+   ============================================================ */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.project-card{
+  position:relative;display:flex;flex-direction:column;text-decoration:none;
+  background:var(--ink-2);border:1px solid var(--hair);border-radius:14px;
+  padding:26px 24px 24px;overflow:hidden;transition:transform .2s ease,border-color .2s ease;
+}
+.project-card:hover{transform:translateY(-3px);border-color:var(--hair-strong)}
+.project-card .accent{position:absolute;top:0;left:0;right:0;height:3px}
+.project-card .p-tag{
+  font-family:var(--data);font-size:.64rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--text-2);margin-bottom:14px;
+}
+.project-card h3{font-family:var(--serif);font-size:1.4rem;font-weight:600;margin-bottom:9px}
+.project-card p{font-size:.9rem;color:var(--text-2);flex:1}
+.project-card .p-foot{
+  margin-top:18px;font-family:var(--data);font-size:.74rem;color:var(--muted);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.project-card .p-stat{
+  font-family:var(--data);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--hair-strong);border-radius:999px;padding:4px 11px;color:var(--text);
+}
+
+/* ============================================================
+   PARTNERS
+   ============================================================ */
+.backers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.backer-card{background:#fff;border:1px solid #e2ddd1;border-radius:12px;padding:22px 22px 20px;text-decoration:none;display:block;transition:transform .2s ease,border-color .2s ease}
+.backer-card:hover{transform:translateY(-2px);border-color:#c9c2b2}
+.backer-card .bk{
+  font-family:var(--data);font-size:.64rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#8a8375;margin-bottom:8px;
+}
+.backer-card .bn{font-family:var(--serif);font-weight:640;font-size:1.35rem;color:var(--paper-ink)}
+.backer-card .bs{font-size:.84rem;color:#6d675c;margin-top:7px;line-height:1.5}
+.media-title{
+  margin-top:44px;font-family:var(--data);font-size:.66rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:#8a8375;
+}
+.media-grid{
+  margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+  list-style:none;
+}
+.media-grid li{
+  background:#fff;border:1px solid #e2ddd1;border-radius:10px;padding:16px 18px;
+  font-family:var(--serif);font-weight:600;font-size:1.02rem;color:var(--paper-ink);
+  display:flex;align-items:center;justify-content:center;text-align:center;min-height:64px;
+}
+
+/* ============================================================
+   TEAM
+   ============================================================ */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.team-card{
+  background:var(--ink-2);border:1px solid var(--hair);border-radius:14px;padding:24px 22px 22px;
+}
+.team-card .avatar{
+  width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--data);font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:16px;
+}
+.team-card h3{font-family:var(--serif);font-size:1.18rem;font-weight:600;line-height:1.25}
+.team-card .role{font-family:var(--data);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.team-card .email{display:inline-block;margin-top:14px;font-family:var(--data);font-size:.78rem;color:var(--text-2);text-decoration:none;word-break:break-all}
+.team-card .email:hover{color:var(--text)}
+
+/* ============================================================
+   WHERE WE WORK
+   ============================================================ */
+.countries-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px}
+.country-card{background:#fff;border:1px solid #e2ddd1;border-radius:12px;padding:20px 20px 18px}
+.country-card .flag{font-size:1.4rem;line-height:1;margin-bottom:12px}
+.country-card h3{font-family:var(--serif);font-size:1.15rem;font-weight:640;color:var(--paper-ink)}
+.country-card .count{font-family:var(--data);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a8375;margin:3px 0 12px}
+.country-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.country-card li{
+  font-family:var(--data);font-size:.76rem;color:#4d473c;background:var(--paper);
+  border:1px solid #e2ddd1;border-radius:999px;padding:3px 11px;white-space:nowrap;
+}
+.where-total{margin-top:26px;font-family:var(--data);font-size:.82rem;color:#6d675c}
+.where-total strong{color:var(--paper-ink)}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta-section{position:relative;overflow:hidden;border-top:1px solid var(--hair)}
+.cta-section::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50rem 26rem at 50% 120%, rgba(70,209,127,.1), transparent 65%);
+}
+.cta-inner{position:relative;text-align:center;padding:96px 24px;max-width:760px;margin:0 auto}
+.cta-inner h2{
+  font-family:var(--serif);font-weight:640;font-size:clamp(2rem,4.4vw,3.3rem);
+  line-height:1.08;letter-spacing:-.015em;
+}
+.cta-inner p{margin:20px auto 32px;color:var(--text-2);max-width:46ch}
+.cta-inner .aqi-spine{width:120px;margin:0 auto 28px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:#080a10;border-top:1px solid var(--hair);padding:64px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-mission{font-size:.9rem;color:var(--text-2);margin-top:14px;max-width:38ch}
+.footer-col h4{
+  font-family:var(--data);font-size:.66rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:16px;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{font-size:.88rem;color:var(--text-2);text-decoration:none}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{
+  margin-top:52px;padding-top:22px;border-top:1px solid var(--hair);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-family:var(--data);font-size:.74rem;color:var(--muted);
+}
+.footer-bottom a{color:var(--text-2)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1020px){
+  .story-cols{grid-template-columns:1fr;gap:36px}
+  .projects-grid{grid-template-columns:1fr}
+  .backers-grid{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .countries-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .main-nav{display:none}
+  .about-hero .hero-inner{padding:64px 0 56px}
+}
+@media (max-width:600px){
+  .media-grid,.team-grid,.countries-grid,.footer-grid{grid-template-columns:1fr}
+  .section{padding:60px 0}
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .project-card,.backer-card{transition:none}
+  .project-card:hover,.backer-card:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+    <nav class="main-nav" aria-label="Primary">
+      <a class="live-link" href="air.html">Air</a>
+      <a href="water.html">Water</a>
+      <a href="sound.html">Sound</a>
+      <a href="radiation.html">Radiation</a>
+      <a href="data.html">Data</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html" aria-current="page">About</a>
+    </nav>
+    <a class="nav-cta" href="get-started.html">Get a sensor</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     EDITORIAL HERO
+     ============================================================ -->
+<section class="about-hero">
+  <div class="wrap hero-inner">
+    <p class="kicker">Who we are</p>
+    <h1>About sensors<span class="dot-africa">.AFRICA</span></h1>
+    <p class="mission">
+      sensors.AFRICA is a pan-African citizen science initiative that uses sensors to monitor
+      air, water and sound pollution to give citizens actionable information about their cities.
+    </p>
+    <span class="proto-badge">Prototype &middot; redesign concept</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     LONG-FORM STORY — warm paper reading surface
+     ============================================================ -->
+<section class="section paper-section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <p class="kicker">Our story</p>
+    <h2 class="display">Citizen science, built for the data gaps</h2>
+    <div class="story-cols">
+      <div class="story-prose">
+        <p>
+          sensors.AFRICA is a citizen-science project by <strong>Code for Africa</strong> that
+          addresses the data gaps across the continent by providing low-cost sensors that people
+          use to measure and monitor the air, water and sound quality of their own communities.
+        </p>
+        <p>
+          Our air quality sensors are built on <strong>open-source technology from the Luftdaten
+          project</strong> — hardware cheap enough for a household to host, and open enough for
+          anyone to inspect. The initiative was <strong>seed-funded by innovateAFRICA</strong> and
+          is <strong>incubated by Code for Africa</strong>.
+        </p>
+        <p>
+          Citizens and governments alike are increasingly aware of the toxic health risks of air
+          pollution — but what they lack is accessible, hyper-local, real-time data about the air
+          on their own streets. <strong>sensors.AFRICA changes this.</strong> Data from our
+          low-cost sensor network is already being used by <strong>watchdog NGOs and
+          journalists</strong> to spotlight public-health risks: live readings for what is
+          happening right now, and historical archives for the patterns that only emerge over
+          months and years.
+        </p>
+      </div>
+      <div class="story-aside" aria-label="Key facts about sensors.AFRICA">
+        <div class="fact-card">
+          <div class="fk">Incubated by</div>
+          <div class="fv"><a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a></div>
+          <div class="fs">The continent's largest network of civic technology and data journalism labs.</div>
+          <div class="fbar" style="background:var(--aqi-good)" aria-hidden="true"></div>
+        </div>
+        <div class="fact-card">
+          <div class="fk">Seed-funded by</div>
+          <div class="fv"><a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a></div>
+          <div class="fs">Backing digital innovation experiments in African news and civic media.</div>
+          <div class="fbar" style="background:var(--aqi-moderate)" aria-hidden="true"></div>
+        </div>
+        <div class="fact-card">
+          <div class="fk">Powered by</div>
+          <div class="fv"><a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></div>
+          <div class="fs">Open-source sensor technology from the global Luftdaten community.</div>
+          <div class="fbar" style="background:var(--aqi-sensitive)" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+    <p class="paper-credit">Live sensor data and historical archives are published openly for journalists, researchers and residents.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS UNDER sensors.AFRICA
+     ============================================================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">What we run</p>
+        <h2 class="display">Projects under sensors.AFRICA</h2>
+      </div>
+      <p class="lede">One network, three fronts: the air above the city, the water it drinks, and the storms on its largest lake.</p>
+    </div>
+    <div class="projects-grid">
+      <a class="project-card" href="air.html">
+        <span class="accent" style="background:var(--aqi-sensitive)" aria-hidden="true"></span>
+        <p class="p-tag">Air</p>
+        <h3>sensors.AFRICA AIR</h3>
+        <p>Live air-quality monitoring with low-cost sensors measuring PM<sub>2.5</sub> and PM<sub>10</sub> particulates — hyper-local readings published in real time, city by city.</p>
+        <div class="p-foot"><span class="p-stat" style="color:var(--aqi-good);border-color:rgba(70,209,127,.4)">Live network</span><span>PM2.5 &middot; PM10</span></div>
+      </a>
+      <a class="project-card" href="water.html">
+        <span class="accent" style="background:#4fa8d8" aria-hidden="true"></span>
+        <p class="p-tag">Water</p>
+        <h3>sensors.AFRICA WATER</h3>
+        <p>Monitoring drinking-water contamination — sensor-driven evidence about the safety of the water communities rely on every day.</p>
+        <div class="p-foot"><span class="p-stat">Water quality</span><span>Contamination monitoring</span></div>
+      </a>
+      <a class="project-card" href="stories.html">
+        <span class="accent" style="background:var(--aqi-veryunhealthy)" aria-hidden="true"></span>
+        <p class="p-tag">StormWatch</p>
+        <h3>StormWatch &middot; VIEWS</h3>
+        <p>A storm early-warning system for Lake Victoria — "VIEWS" — giving fishing communities advance notice of dangerous weather on the lake.</p>
+        <div class="p-foot"><span class="p-stat" style="color:var(--aqi-moderate);border-color:rgba(244,197,66,.4)">~93% accuracy</span><span>Reported prediction accuracy</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PARTNERS & MEDIA PARTNERS — paper surface
+     ============================================================ -->
+<section class="section paper-section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">Partners</p>
+        <h2 class="display">Built with partners, amplified by newsrooms</h2>
+      </div>
+      <p class="lede">The institutions that incubate, fund and power the network — and the media partners who turn its data into public-interest journalism.</p>
+    </div>
+
+    <div class="backers-grid">
+      <a class="backer-card" href="https://codeforafrica.org/" rel="noopener">
+        <div class="bk">Incubated by</div>
+        <div class="bn">Code for Africa</div>
+        <div class="bs">sensors.AFRICA is a citizen-science project incubated within Code for Africa.</div>
+      </a>
+      <a class="backer-card" href="https://innovateafrica.fund/" rel="noopener">
+        <div class="bk">Seed-funded by</div>
+        <div class="bn">innovateAFRICA</div>
+        <div class="bs">Seed funding from the innovateAFRICA fund launched the sensor network.</div>
+      </a>
+      <a class="backer-card" href="https://luftdaten.info/" rel="noopener">
+        <div class="bk">Powered by</div>
+        <div class="bn">Luftdaten</div>
+        <div class="bs">Our air-quality sensors use open-source technology from the Luftdaten project.</div>
+      </a>
+    </div>
+
+    <p class="media-title">Media partners</p>
+    <ul class="media-grid" aria-label="Media partners">
+      <li>Business Daily</li>
+      <li>Premium Times</li>
+      <li>The Guardian</li>
+      <li>The Nation</li>
+      <li>The Star</li>
+      <li>Woman NG</li>
+      <li>Daily Nation</li>
+      <li>The Cable</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTRIBUTORS & STAFF
+     ============================================================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">The people</p>
+        <h2 class="display">Contributors &amp; staff</h2>
+      </div>
+      <p class="lede">The team building and running the network — reach any of us directly.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="avatar" style="background:var(--aqi-good)" aria-hidden="true">AO</div>
+        <h3>Alicia Olago</h3>
+        <p class="role">sensors.AFRICA team</p>
+        <a class="email" href="mailto:alicia.olago@codeforafrica.org">alicia.olago@codeforafrica.org</a>
+      </div>
+      <div class="team-card">
+        <div class="avatar" style="background:var(--aqi-moderate)" aria-hidden="true">AM</div>
+        <h3>Augustine Mwendwa</h3>
+        <p class="role">sensors.AFRICA team</p>
+        <a class="email" href="mailto:mwendwa.mutinda@codeforafrica.org">mwendwa.mutinda@codeforafrica.org</a>
+      </div>
+      <div class="team-card">
+        <div class="avatar" style="background:var(--aqi-sensitive)" aria-hidden="true">GM</div>
+        <h3>Gideon Maina</h3>
+        <p class="role">sensors.AFRICA team</p>
+        <a class="email" href="mailto:gideon@codeforafrica.org">gideon@codeforafrica.org</a>
+      </div>
+      <div class="team-card">
+        <div class="avatar" style="background:var(--aqi-veryunhealthy)" aria-hidden="true">AU</div>
+        <h3>Ahmed Biu Usman</h3>
+        <p class="role">sensors.AFRICA team</p>
+        <a class="email" href="mailto:usman@codeforafrica.org">usman@codeforafrica.org</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHERE WE WORK — paper surface
+     ============================================================ -->
+<section class="section paper-section">
+  <div class="wrap">
+    <div class="aqi-spine spine-sm" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <div class="section-head">
+      <div>
+        <p class="kicker">Where we work</p>
+        <h2 class="display">Sixteen cities, five countries</h2>
+      </div>
+      <p class="lede">From Nairobi's estates to Lagos mainland, sensors hosted by citizens are putting African cities on the pollution map.</p>
+    </div>
+    <div class="countries-grid">
+      <div class="country-card">
+        <div class="flag" aria-hidden="true">🇰🇪</div>
+        <h3>Kenya</h3>
+        <p class="count">3 cities</p>
+        <ul>
+          <li>Nairobi</li>
+          <li>Nakuru</li>
+          <li>Kisumu</li>
+        </ul>
+      </div>
+      <div class="country-card">
+        <div class="flag" aria-hidden="true">🇹🇿</div>
+        <h3>Tanzania</h3>
+        <p class="count">1 city</p>
+        <ul>
+          <li>Dar es Salaam</li>
+        </ul>
+      </div>
+      <div class="country-card">
+        <div class="flag" aria-hidden="true">🇳🇬</div>
+        <h3>Nigeria</h3>
+        <p class="count">9 cities</p>
+        <ul>
+          <li>Lagos</li>
+          <li>Abuja</li>
+          <li>Ilorin</li>
+          <li>Maiduguri</li>
+          <li>Port Harcourt</li>
+          <li>Kano</li>
+          <li>Awka</li>
+          <li>Akure</li>
+          <li>Ado-Ekiti</li>
+        </ul>
+      </div>
+      <div class="country-card">
+        <div class="flag" aria-hidden="true">🇬🇭</div>
+        <h3>Ghana</h3>
+        <p class="count">2 cities</p>
+        <ul>
+          <li>Accra</li>
+          <li>Kumasi</li>
+        </ul>
+      </div>
+      <div class="country-card">
+        <div class="flag" aria-hidden="true">🇿🇲</div>
+        <h3>Zambia</h3>
+        <p class="count">1 city</p>
+        <ul>
+          <li>Lusaka</li>
+        </ul>
+      </div>
+    </div>
+    <p class="where-total"><strong>16 cities</strong> across <strong>5 countries</strong> — and every new sensor host extends the map.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="aqi-spine" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span><span class="s6"></span></div>
+    <h2>Be the sensor your street is missing.</h2>
+    <p>Host a low-cost sensor at your home, school or office and add your neighbourhood to the public record.</p>
+    <a class="btn btn-primary" href="get-started.html">Get started — join the network</a>
+    <div><span class="proto-badge">Prototype &middot; redesign concept</span></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="index.html">sensors<span class="dot-africa">.AFRICA</span></a>
+        <p class="footer-mission">A pan-African citizen science initiative using sensors to monitor air, water and sound pollution — giving citizens actionable information about their cities.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Network</h4>
+        <ul>
+          <li><a href="air.html">Air quality</a></li>
+          <li><a href="water.html">Water</a></li>
+          <li><a href="sound.html">Sound</a></li>
+          <li><a href="radiation.html">Radiation</a></li>
+          <li><a href="data.html">Open data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-started.html">Get a sensor</a></li>
+          <li><a href="https://twitter.com/sensorsAFRICA/" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.instagram.com/sensorsAFRICA/" rel="noopener">Instagram</a></li>
+          <li><a href="https://medium.com/@sensors.AFRICA" rel="noopener">Medium</a></li>
+          <li><a href="https://github.com/CodeForAfrica/sensors.AFRICA" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a></li>
+          <li><a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a></li>
+          <li><a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Incubated by <a href="https://codeforafrica.org/" rel="noopener">Code for Africa</a> · seed-funded by <a href="https://innovateafrica.fund/" rel="noopener">innovateAFRICA</a> · powered by <a href="https://luftdaten.info/" rel="noopener">Luftdaten</a></span>
+      <span>Redesign prototype — all readings on this page are illustrative sample data.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPT — cosmetic only; page is fully functional without JS
+     ============================================================ -->
+<script>
+try {
+  // Defensive nav highlight: keep About marked active even if markup is reused.
+  var links = document.querySelectorAll('.main-nav a');
+  for (var i = 0; i < links.length; i++) {
+    var href = links[i].getAttribute('href') || '';
+    if (href.indexOf('about.html') !== -1) links[i].setAttribute('aria-current', 'page');
+  }
+} catch (err) {
+  console.warn('Nav highlight skipped:', err && err.message);
+}
+</script>
+
+</body>
+</html>
