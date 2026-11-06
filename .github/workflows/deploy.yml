@@ -2,8 +2,8 @@ name: Deploy redesign to Pages
 
 on:
   push:
-    branches: [fable-5-redesign]
-    paths: [redesign/**]
+    branches: [2026-redesign]
+    paths: [redesign/**, .github/workflows/deploy.yml]
   workflow_dispatch:
 
 permissions:
